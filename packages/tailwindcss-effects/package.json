@@ -1,0 +1,27 @@
+{
+  "name": "@casoon/tailwindcss-effects",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./index.css": "./index.css"
+  },
+  "files": [
+    "index.css",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@casoon/tokens": "^0.1.0",
+    "@casoon/tailwindcss-glass": "^0.1.0",
+    "@casoon/tailwindcss-orbs": "^0.1.0",
+    "@casoon/tailwindcss-gradients": "^0.1.0",
+    "@casoon/tailwindcss-scroll": "^0.1.0"
+  }
+}

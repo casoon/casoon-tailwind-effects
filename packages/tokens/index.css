@@ -1,0 +1,46 @@
+@layer base {
+  @theme {
+    /* Glass tokens */
+    --glass-bg: rgba(255,255,255,.08);
+    --glass-bg-hover: rgba(255,255,255,.12);
+    --glass-border: rgba(255,255,255,.15);
+    --glass-border-strong: rgba(255,255,255,.20);
+    --glass-shadow: 0 8px 32px 0 rgba(0,0,0,.30);
+    --glass-shadow-hover: 0 20px 40px 0 rgba(0,0,0,.40);
+
+    --glass-radius: 1.25rem;
+    --glass-blur: 12px;
+
+    /* Palette hooks */
+    --glass-accent-from: #f97316; /* orange-500 */
+    --glass-accent-to: #0891b2;   /* cyan-600 */
+    --glass-secondary: #0d9488;   /* teal-600 */
+
+    /* Text gradients */
+    --text-grad-from: #ffffff;
+    --text-grad-to: #94a3b8;      /* slate-400 */
+    --text-accent-from: #f97316;  /* orange-500 */
+    --text-accent-to: #0891b2;    /* cyan-600 */
+
+    /* Progress */
+    --progress-from: #10b981;     /* emerald-500 */
+    --progress-to: #06b6d4;       /* cyan-500 */
+
+    /* Background glows / bases */
+    --bg-glow-1: #1e40af;   /* blue-700 */
+    --bg-glow-2: #0891b2;   /* cyan-600 */
+    --bg-glow-3: #f97316;   /* orange-500 */
+    --bg-base-from: #0f172a;/* slate-900 */
+    --bg-base-to: #1e293b;  /* slate-800 */
+  }
+
+  /* Shared keyframes */
+  @keyframes progressGrow { from { width: 0% } to { width: var(--progress-width, 75%) } }
+  @keyframes glassPulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+  @keyframes orbFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
+  }
+}

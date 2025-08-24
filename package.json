@@ -1,0 +1,14 @@
+{
+  "name": "casoon-effects-css-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": ["packages/*"],
+  "packageManager": "pnpm@9.0.0",
+  "license": "MIT",
+  "scripts": {
+    "release": "node scripts/release.mjs",
+    "release:all": "node scripts/release.mjs all",
+    "release:dry": "DRY_RUN=1 node scripts/release.mjs all"
+  }
+}

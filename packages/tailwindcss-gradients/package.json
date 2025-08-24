@@ -1,0 +1,20 @@
+{
+  "name": "@casoon/tailwindcss-gradients",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./index.css": "./index.css"
+  },
+  "files": [
+    "index.css",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT"
+}

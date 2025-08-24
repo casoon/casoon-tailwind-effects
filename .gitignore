@@ -1,0 +1,57 @@
+# ---- Node / pnpm monorepo ----
+node_modules/
+.npm/
+.pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Keep lockfile (pnpm) committed!
+# pnpm-lock.yaml
+
+# ---- Logs ----
+logs/
+*.log
+*.log.*
+*.err
+*.out
+
+# ---- Build outputs / caches ----
+dist/
+build/
+.out/
+.next/
+.cache/
+.tmp/
+temp/
+tmp/
+coverage/
+.storybook-out/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.turbo/
+
+# ---- Frameworks / tools (optional, safe to ignore) ----
+.astro/
+.vercel/
+.netlify/
+
+# ---- Editors / OS ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# ---- Env files ----
+.env
+.env.*
+!.env.example
+
+# ---- Misc ----
+*.zip
+*.tgz
+*.swp
