@@ -8,21 +8,11 @@
     "LICENSE",
     "README.md"
   ],
-  "keywords": [
-    "tailwindcss",
-    "css",
-    "utilities",
-    "css-utilities"
-  ],
-  "author": "Casoon",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/casoon/casoon-tailwind-effects.git",
-    "directory": "packages/tailwindcss-utilities"
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
   },
-  "bugs": {
-    "url": "https://github.com/casoon/casoon-tailwind-effects/issues"
+  "publishConfig": {
+    "access": "public"
   },
-  "homepage": "https://github.com/casoon/casoon-tailwind-effects#readme"
+  "license": "MIT"
 }
