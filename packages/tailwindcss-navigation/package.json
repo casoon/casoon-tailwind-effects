@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-navigation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Navigation components and utilities for Tailwind CSS v4",
   "main": "index.css",
   "files": [
