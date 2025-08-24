@@ -1,12 +1,62 @@
 @layer base {
-  @keyframes sFadeIn { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+  /* Keyframes: Fade */
+  @keyframes scrollFadeIn { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes scrollFadeUp { from { opacity: 0; transform: translateY(var(--scroll-distance)) } to { opacity: 1; transform: none } }
+  @keyframes scrollFadeDown { from { opacity: 0; transform: translateY(calc(var(--scroll-distance) * -1)) } to { opacity: 1; transform: none } }
+  @keyframes scrollFadeLeft { from { opacity: 0; transform: translateX(var(--scroll-distance)) } to { opacity: 1; transform: none } }
+  @keyframes scrollFadeRight { from { opacity: 0; transform: translateX(calc(var(--scroll-distance) * -1)) } to { opacity: 1; transform: none } }
+
+  /* Keyframes: Slide */
+  @keyframes scrollSlideUp { from { transform: translateY(var(--scroll-distance)) } to { transform: none } }
+  @keyframes scrollSlideDown { from { transform: translateY(calc(var(--scroll-distance) * -1)) } to { transform: none } }
+  @keyframes scrollSlideLeft { from { transform: translateX(var(--scroll-distance)) } to { transform: none } }
+  @keyframes scrollSlideRight { from { transform: translateX(calc(var(--scroll-distance) * -1)) } to { transform: none } }
+
+  /* Keyframes: Zoom */
+  @keyframes scrollZoomIn { from { opacity: 0; transform: scale(var(--scroll-zoom-from)) } to { opacity: 1; transform: none } }
+  @keyframes scrollZoomOut { from { opacity: 0; transform: scale(calc(1/var(--scroll-zoom-from))) } to { opacity: 1; transform: none } }
+
+  /* Keyframes: Flip */
+  @keyframes scrollFlipLeft { from { opacity: 0; transform: perspective(800px) rotateY(var(--scroll-rotate)) } to { opacity: 1; transform: none } }
+  @keyframes scrollFlipRight { from { opacity: 0; transform: perspective(800px) rotateY(calc(var(--scroll-rotate) * -1)) } to { opacity: 1; transform: none } }
+  @keyframes scrollFlipUp { from { opacity: 0; transform: perspective(800px) rotateX(calc(var(--scroll-rotate) * -1)) } to { opacity: 1; transform: none } }
+  @keyframes scrollFlipDown { from { opacity: 0; transform: perspective(800px) rotateX(var(--scroll-rotate)) } to { opacity: 1; transform: none } }
 }
+
 @layer components {
-  .s { opacity: 0; transform: translateY(8px); }
-  .s-in { animation: sFadeIn var(--s-duration, .6s) var(--s-ease, cubic-bezier(.22,.8,.36,1)) both; }
-  .s-delay-100 { animation-delay: 100ms; }
-  .s-delay-200 { animation-delay: 200ms; }
-  .s-delay-300 { animation-delay: 300ms; }
-  .s-slow { animation-duration: 1s; }
-  .s-fast { animation-duration: .35s; }
+  .scroll { opacity: 0; will-change: transform, opacity; backface-visibility: hidden; }
+  .scroll-in { animation-duration: var(--scroll-duration); animation-timing-function: var(--scroll-ease); animation-fill-mode: both; }
+
+  /* === Effects === */
+  .scroll-fade.scroll-in { animation-name: scrollFadeIn }
+  .scroll-fade-up.scroll-in { animation-name: scrollFadeUp }
+  .scroll-fade-down.scroll-in { animation-name: scrollFadeDown }
+  .scroll-fade-left.scroll-in { animation-name: scrollFadeLeft }
+  .scroll-fade-right.scroll-in { animation-name: scrollFadeRight }
+
+  .scroll-slide-up.scroll-in { animation-name: scrollSlideUp }
+  .scroll-slide-down.scroll-in { animation-name: scrollSlideDown }
+  .scroll-slide-left.scroll-in { animation-name: scrollSlideLeft }
+  .scroll-slide-right.scroll-in { animation-name: scrollSlideRight }
+
+  .scroll-zoom-in.scroll-in { animation-name: scrollZoomIn }
+  .scroll-zoom-out.scroll-in { animation-name: scrollZoomOut }
+
+  .scroll-flip-left.scroll-in { animation-name: scrollFlipLeft }
+  .scroll-flip-right.scroll-in { animation-name: scrollFlipRight }
+  .scroll-flip-up.scroll-in { animation-name: scrollFlipUp }
+  .scroll-flip-down.scroll-in { animation-name: scrollFlipDown }
+
+  /* === Utilities === */
+  .scroll-delay-100 { animation-delay: 100ms }
+  .scroll-delay-200 { animation-delay: 200ms }
+  .scroll-delay-300 { animation-delay: 300ms }
+
+  .scroll-fast { animation-duration: .35s }
+  .scroll-slow { animation-duration: 1s }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    .scroll, .scroll-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
 }
