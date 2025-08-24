@@ -1,0 +1,28 @@
+{
+  "name": "@casoon/tailwindcss-utilities",
+  "version": "0.1.0",
+  "description": "Utility CSS classes for Tailwind CSS v4",
+  "main": "index.css",
+  "files": [
+    "index.css",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "tailwindcss",
+    "css",
+    "utilities",
+    "css-utilities"
+  ],
+  "author": "Casoon",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/casoon/casoon-tailwind-effects.git",
+    "directory": "packages/tailwindcss-utilities"
+  },
+  "bugs": {
+    "url": "https://github.com/casoon/casoon-tailwind-effects/issues"
+  },
+  "homepage": "https://github.com/casoon/casoon-tailwind-effects#readme"
+}

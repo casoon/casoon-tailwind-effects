@@ -1,12 +1,12 @@
 @layer base {
-  @keyframes saFadeIn { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+  @keyframes sFadeIn { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
 }
 @layer components {
-  .sa { opacity: 0; transform: translateY(8px); }
-  .sa-in { animation: saFadeIn var(--sa-duration, .6s) var(--sa-ease, cubic-bezier(.22,.8,.36,1)) both; }
-  .sa-delay-100 { animation-delay: 100ms; }
-  .sa-delay-200 { animation-delay: 200ms; }
-  .sa-delay-300 { animation-delay: 300ms; }
-  .sa-slow { animation-duration: 1s; }
-  .sa-fast { animation-duration: .35s; }
+  .s { opacity: 0; transform: translateY(8px); }
+  .s-in { animation: sFadeIn var(--s-duration, .6s) var(--s-ease, cubic-bezier(.22,.8,.36,1)) both; }
+  .s-delay-100 { animation-delay: 100ms; }
+  .s-delay-200 { animation-delay: 200ms; }
+  .s-delay-300 { animation-delay: 300ms; }
+  .s-slow { animation-duration: 1s; }
+  .s-fast { animation-duration: .35s; }
 }

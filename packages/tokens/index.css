@@ -1,6 +1,6 @@
 @layer base {
   @theme {
-    /* Glass tokens */
+    /* Glass tokens (Base) */
     --glass-bg: rgba(255,255,255,.08);
     --glass-bg-hover: rgba(255,255,255,.12);
     --glass-border: rgba(255,255,255,.15);
@@ -32,7 +32,110 @@
     --bg-glow-3: #f97316;   /* orange-500 */
     --bg-base-from: #0f172a;/* slate-900 */
     --bg-base-to: #1e293b;  /* slate-800 */
+
+    /* ===== Extended Tokens ===== */
+    --glass-light-bg: rgba(255, 255, 255, 0.95);
+    --glass-dark-bg: rgba(15, 23, 42, 0.9);
+    --glass-theme-gradient: linear-gradient(135deg, #ff6b35, #00d4ff);
+
+    /* secondary hooks used by extended variants */
+    --border-secondary: rgba(255, 255, 255, 0.25);
+    --shadow-secondary: 0 20px 40px rgba(0, 0, 0, 0.25);
+  
+
+
+   /* ===== NAV Tokens (Default → mappen auf bestehende Glass/Text Tokens) ===== */
+    /* Surface & Content */
+    --nav-bg: var(--glass-bg);
+    --nav-bg-hover: var(--glass-bg-hover);
+    --nav-fg: var(--text-grad-from);
+    --nav-fg-hover: #ffffff;
+    --nav-border: var(--glass-border);
+    --nav-radius: var(--glass-radius);
+    --nav-blur: var(--glass-blur);
+    --nav-shadow: var(--glass-shadow);
+
+    /* Accent & CTA */
+    --nav-accent-from: var(--glass-accent-from);
+    --nav-accent-to: var(--glass-accent-to);
+    --nav-cta-shadow: var(--shadow-secondary);
+
+    /* Density / Sizing */
+    --nav-gap: .5rem;
+    --nav-link-px: .875rem;   /* x‑Padding */
+    --nav-link-py: .5rem;     /* y‑Padding */
+    --nav-link-radius: .5rem;
+    --nav-link-compact-px: .625rem;
+    --nav-link-compact-py: .375rem;
+    --nav-link-roomy-px: 1rem;
+    --nav-link-roomy-py: .75rem;
+
+    /* Tabs / Pills */
+    --nav-tab-fg: #334155;                        /* slate-700 */
+    --nav-tab-active-bg: color-mix(in oklab, #000 8%, transparent);
+    --nav-tab-active-ring: rgba(0,0,0,.08);
+    --nav-pill-active-fg: #ffffff;
+
+    /* Subnav / Flyout */
+    --nav-subnav-bg: var(--glass-light-bg);
+    --nav-subnav-fg: #0f172a;
+    --nav-subnav-hover: rgba(0,0,0,.06);
+    --nav-subnav-border: var(--glass-border);
+    --nav-subnav-blur: var(--glass-blur);
+
+    /* Light/Dark Presets (für Helper-Klassen, optional) */
+    --nav-light-bg: var(--glass-light-bg);
+    --nav-light-fg: #0f172a;
+    --nav-light-hover: rgba(0,0,0,.06);
+    --nav-light-border: rgba(0,0,0,.12);
+
+    --nav-dark-bg: var(--glass-dark-bg);
+    --nav-dark-fg: #e5e7eb;
+    --nav-dark-hover: rgba(255,255,255,.10);
+    --nav-dark-border: var(--border-secondary);
+
+
+    /* Farben & Text */
+    --util-bg-primary: #ffffff;
+    --util-bg-secondary: #f8fafc;         /* slate-50-ish */
+    --util-text-primary: #0f172a;         /* slate-900 */
+    --util-text-secondary: #334155;       /* slate-700 */
+    --util-text-muted: #64748b;           /* slate-500 */
+
+    /* Rahmen & Schatten */
+    --util-border-primary: rgba(0,0,0,.10);
+    --util-border-secondary: rgba(0,0,0,.06);
+    --util-shadow-primary: 0 8px 24px rgba(0,0,0,.10);
+    --util-shadow-secondary: 0 20px 40px rgba(0,0,0,.18);
+
+    /* Radius & Blur */
+    --util-radius: 0.75rem;
+    --util-blur: 0px;
+
+    /* Akzent / Gradients */
+    --util-accent-from: #f97316;          /* orange-500 */
+    --util-accent-to:   #0891b2;          /* cyan-600 */
+    --util-accent-contrast: #ffffff;
+
+    /* Layout & Spacing */
+    --util-container-max: 72rem;
+    --util-section-min: 3rem;
+    --util-section-max: 6rem;
+    --util-grid-gap: 1.25rem;
+    --util-card-gap: 1rem;
+    --util-grid-min: 260px;
+
+    /* Hero */
+    --util-hero-min-h: 100svh;
+
+    /* Transitions */
+    --util-transition-fast: 150ms;
+    --util-transition-base: 300ms;
+
+
+
   }
+
 
   /* Shared keyframes */
   @keyframes progressGrow { from { width: 0% } to { width: var(--progress-width, 75%) } }
@@ -43,4 +146,13 @@
     50% { background-position: 100% 50% }
     100% { background-position: 0% 50% }
   }
+  @keyframes slideProgress { 0%, 100% { width: 33% } 50% { width: 66% } }
+
+
+
+
+
 }
+
+
+

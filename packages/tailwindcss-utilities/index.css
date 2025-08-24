@@ -1,0 +1,98 @@
+/* @casoon/tailwindcss-utilities */
+/* Utility CSS classes for Tailwind CSS v4 */
+
+@layer utilities {
+
+    /* ===== Container / Sections / Layout ===== */
+    .util-container {
+      max-width: var(--util-container-max);
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 3vw, 2rem);
+    }
+  
+    .util-section {
+      padding-block: clamp(var(--util-section-min), 6vw, var(--util-section-max));
+    }
+  
+    .util-hero {
+      min-height: var(--util-hero-min-h);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+  
+    .util-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(var(--util-grid-min), 1fr));
+      gap: var(--util-grid-gap);
+      transition: all var(--util-transition-base) ease;
+    }
+  
+    /* ===== Text & Gradients (neutral) ===== */
+    .util-text-primary   { color: var(--util-text-primary); }
+    .util-text-secondary { color: var(--util-text-secondary); }
+    .util-text-muted     { color: var(--util-text-muted); }
+  
+    .util-text-accent-gradient {
+      background: linear-gradient(135deg, var(--util-accent-from) 0%, var(--util-accent-to) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+  
+    .util-text-accent-gradient-enhanced {
+      background: linear-gradient(135deg,
+        var(--util-accent-from) 0%,
+        color-mix(in oklab, var(--util-accent-from) 85%, #fff) 25%,
+        var(--util-accent-to) 75%,
+        color-mix(in oklab, var(--util-accent-to) 85%, #fff) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      text-shadow: 0 1px 2px rgba(0,0,0,.30);
+      filter: contrast(1.08) brightness(1.06);
+    }
+  
+    /* ===== Content / Page Transitions ===== */
+    .util-content-transition { position: relative; }
+    .util-content-transition::before {
+      content: "";
+      position: absolute; top: -2rem; left: 0; right: 0; height: 2rem;
+      background: linear-gradient(to bottom, color-mix(in oklab, var(--util-bg-primary) 95%, #fff), transparent);
+      pointer-events: none;
+    }
+  
+    .util-hero-overlay-top::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 4rem;
+      background: linear-gradient(to bottom, color-mix(in oklab, var(--util-bg-primary) 95%, #fff), transparent);
+      pointer-events: none; z-index: 1;
+    }
+  
+    .util-page-transition { transition: background-color var(--util-transition-base) ease; }
+  
+    /* ===== Cards (neutral) ===== */
+    .util-card {
+      background: var(--util-bg-secondary);
+      border: 1px solid var(--util-border-primary);
+      border-radius: var(--util-radius);
+      backdrop-filter: blur(var(--util-blur));
+      box-shadow: var(--util-shadow-primary);
+      transition: transform var(--util-transition-base) ease, box-shadow var(--util-transition-base) ease;
+    }
+    .util-card-hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--util-shadow-secondary);
+    }
+    .util-card-pad { padding: clamp(1rem, 3vw, 1.5rem); }
+  
+    /* ===== Responsive Helpers ===== */
+    @media (max-width: 768px) {
+      .util-container { padding-inline: 1rem; }
+      .util-grid-cards { grid-template-columns: 1fr; gap: 1rem; }
+    }
+  
+    /* ===== Misc ===== */
+    .util-center         { display: grid; place-items: center; }
+    .util-max-w-prose    { max-width: 70ch; }
+    .util-hidden-scrollbar { scrollbar-width: none; }
+    .util-hidden-scrollbar::-webkit-scrollbar { display: none; }
+  }
+  

@@ -1,24 +1,24 @@
 @layer components {
   /* Dezenter Section-Gradient (neutral benannt) */
-  .bg-surface-subtle {
+  .gradient-bg-surface-subtle {
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   }
 
   /* Weitere Gradient-Utilities (optional) */
-  .grad-bg { background: linear-gradient(135deg, var(--glass-accent-from), var(--glass-accent-to)); }
+  .gradient-bg { background: linear-gradient(135deg, var(--glass-accent-from), var(--glass-accent-to)); }
 
-  .grad-bg-animated {
+  .gradient-bg-animated {
     background: linear-gradient(270deg, var(--glass-accent-from), var(--glass-accent-to), var(--bg-glow-1));
     background-size: 200% 200%;
     animation: gradientShift 12s ease infinite;
   }
 
-  .grad-text {
+  .gradient-text {
     background: linear-gradient(135deg, var(--text-grad-from), var(--text-grad-to));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
 
-  .grad-accent-text {
+  .gradient-accent-text {
     background: linear-gradient(135deg, var(--text-accent-from), var(--text-accent-to));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }

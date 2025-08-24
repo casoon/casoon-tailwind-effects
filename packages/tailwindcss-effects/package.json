@@ -19,9 +19,11 @@
   "license": "MIT",
   "dependencies": {
     "@casoon/tokens": "^0.1.0",
-    "@casoon/tailwindcss-glass": "^0.1.0",
+    "@casoon/tailwindcss-glass": "^0.1.1",
     "@casoon/tailwindcss-orbs": "^0.1.0",
     "@casoon/tailwindcss-gradients": "^0.1.0",
-    "@casoon/tailwindcss-scroll": "^0.1.0"
+    "@casoon/tailwindcss-scroll": "^0.1.0",
+    "@casoon/tailwindcss-navigation": "^0.1.0",
+    "@casoon/tailwindcss-utilities": "^0.1.0"
   }
 }

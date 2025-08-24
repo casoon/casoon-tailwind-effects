@@ -8,7 +8,8 @@ A collection of **CSS-first** libraries that provide beautiful visual effects an
 - **Tailwind v4 Ready**: Built specifically for Tailwind CSS v4 with `@theme` support
 - **Modular**: Import only what you need or use the meta package
 - **Performance**: Lightweight and optimized CSS utilities
-- **Modern**: Glassmorphism, gradients, scroll animations, and more
+- **Modern**: Glassmorphism, gradients, scroll animations, layout utilities, and navigation components
+- **Production Ready**: Comprehensive utility classes for real-world applications
 
 ## 📦 Packages
 
@@ -19,7 +20,9 @@ A collection of **CSS-first** libraries that provide beautiful visual effects an
 | [`@casoon/tailwindcss-orbs`](./packages/tailwindcss-orbs) | Orb backgrounds & helper utilities | ~8KB |
 | [`@casoon/tailwindcss-gradients`](./packages/tailwindcss-gradients) | Gradient backgrounds & text effects | ~6KB |
 | [`@casoon/tailwindcss-scroll`](./packages/tailwindcss-scroll) | Scroll animation primitives | ~4KB |
-| [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package that imports all effects | ~25KB |
+| [`@casoon/tailwindcss-utilities`](./packages/tailwindcss-utilities) | Layout utilities, cards, text effects & responsive helpers | ~8KB |
+| [`@casoon/tailwindcss-navigation`](./packages/tailwindcss-navigation) | Navigation components, variants & subnav systems | ~12KB |
+| [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package that imports all effects | ~50KB |
 
 ## 🚀 Quick Start
 
@@ -41,6 +44,8 @@ Import only the packages you need:
 @import "@casoon/tailwindcss-orbs/index.css";
 @import "@casoon/tailwindcss-gradients/index.css";
 @import "@casoon/tailwindcss-scroll/index.css";
+@import "@casoon/tailwindcss-utilities/index.css";
+@import "@casoon/tailwindcss-navigation/index.css";
 ```
 
 ## 📋 Requirements
@@ -86,9 +91,29 @@ pnpm add @casoon/tailwindcss-effects
 
 ### Scroll Animations
 ```html
-<div class="sa sa-in sa-delay-200">
+<div class="s s-in s-delay-200">
   <p>This content animates in on scroll</p>
 </div>
+```
+
+### Layout Utilities
+```html
+<div class="util-container">
+  <section class="util-section">
+    <div class="util-hero">
+      <h1 class="util-text-accent-gradient-enhanced text-6xl font-bold">Hero Section</h1>
+    </div>
+  </section>
+</div>
+```
+
+### Navigation Components
+```html
+<nav class="nav nav--horizontal nav--underline nav-surface">
+  <a href="#" class="nav-link" aria-current="page">Home</a>
+  <a href="#" class="nav-link">About</a>
+  <a href="#" class="nav-link nav-link--primary">Get Started</a>
+</nav>
 ```
 
 ## 🎨 Available Utilities
@@ -105,15 +130,44 @@ pnpm add @casoon/tailwindcss-effects
 - `.orb-color-*` - Color variants with opacity support
 
 ### Gradients (`@casoon/tailwindcss-gradients`)
-- `.gradient-bg-*` - Background gradient variants
-- `.gradient-text-*` - Text gradient variants
-- `.gradient-border-*` - Border gradient variants
+- `.gradient-bg` - Background gradient variants
+- `.gradient-text` - Text gradient variants
+- `.gradient-accent-text` - Enhanced accent text gradients
+- `.gradient-bg-animated` - Animated background gradients
 
 ### Scroll Animations (`@casoon/tailwindcss-scroll`)
-- `.sa` - Scroll animation base class
-- `.sa-in` - Animation trigger
-- `.sa-delay-*` - Delay variants
-- `.sa-speed-*` - Speed variants
+- `.s` - Scroll animation base class
+- `.s-in` - Animation trigger
+- `.s-delay-*` - Delay variants
+- `.s-speed-*` - Speed variants
+
+### Utilities (`@casoon/tailwindcss-utilities`)
+- **Layout**: `.util-container`, `.util-section`, `.util-hero`, `.util-grid-cards`
+- **Text**: `.util-text-primary`, `.util-text-accent-gradient`, `.util-text-accent-gradient-enhanced`
+- **Cards**: `.util-card`, `.util-card-hover-lift`, `.util-card-pad`
+- **Transitions**: `.util-content-transition`, `.util-hero-overlay-top`, `.util-page-transition`
+- **Responsive**: Mobile-first responsive helpers and grid systems
+
+### Navigation (`@casoon/tailwindcss-navigation`)
+- **Core**: `.nav`, `.nav-link`, `.nav-item` with flexible orientation
+- **Variants**: `.nav--underline`, `.nav--tabs`, `.nav--pills`, `.nav--ghost`
+- **Density**: `.nav--compact`, `.nav--roomy` for different spacing needs
+- **Special**: `.nav-link--primary` CTA button with enhanced hover effects
+- **Advanced**: Subnav panels, flyout menus, and responsive navigation patterns
+
+## 🎯 Key Features
+
+### CSS-First Approach
+- **No JavaScript dependencies** - Pure CSS solutions that work immediately
+- **Tailwind v4 optimized** - Built specifically for the latest Tailwind CSS version
+- **CSS Custom Properties** - Leverages modern CSS with `@theme` variables
+- **Performance focused** - Lightweight and optimized for production use
+
+### Modular Architecture
+- **Granular imports** - Import only what you need to keep bundle size minimal
+- **Consistent API** - Unified design patterns across all packages
+- **Extensible** - Easy to customize and extend with your own CSS variables
+- **Type-safe** - Full TypeScript support for CSS custom properties
 
 ## 🏗️ Development
 

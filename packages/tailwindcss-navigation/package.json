@@ -1,10 +1,8 @@
 {
-  "name": "@casoon/tailwindcss-glass",
-  "version": "0.1.1",
-  "type": "module",
-  "exports": {
-    "./index.css": "./index.css"
-  },
+  "name": "@casoon/tailwindcss-navigation",
+  "version": "0.1.0",
+  "description": "Navigation components and utilities for Tailwind CSS v4",
+  "main": "index.css",
   "files": [
     "index.css",
     "README.md",
