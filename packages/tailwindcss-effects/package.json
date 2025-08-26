@@ -18,12 +18,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@casoon/tailwindcss-animations": "^0.1.5",
-    "@casoon/tailwindcss-glass": "^0.1.5",
-    "@casoon/tailwindcss-orbs": "^0.1.5",
-    "@casoon/tailwindcss-gradients": "^0.1.5",
-    "@casoon/tailwindcss-scroll": "^0.1.5",
-    "@casoon/tailwindcss-navigation": "^0.1.5",
-    "@casoon/tailwindcss-utilities": "^0.1.5"
+    "@casoon/tailwindcss-animations": "workspace:*",
+    "@casoon/tailwindcss-glass": "workspace:*",
+    "@casoon/tailwindcss-orbs": "workspace:*",
+    "@casoon/tailwindcss-gradients": "workspace:*",
+    "@casoon/tailwindcss-scroll": "workspace:*",
+    "@casoon/tailwindcss-navigation": "workspace:*",
+    "@casoon/tailwindcss-utilities": "workspace:*"
   }
 }
