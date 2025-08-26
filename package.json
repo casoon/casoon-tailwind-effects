@@ -1,9 +1,11 @@
 {
   "name": "casoon-tailwind-effects",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "packageManager": "pnpm@9.0.0",
   "license": "MIT",
   "scripts": {
