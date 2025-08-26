@@ -92,17 +92,23 @@ pnpm add @casoon/tailwindcss-effects
 
 ### Scroll Animations
 ```html
-<div class="s s-in s-delay-200">
+<div class="scroll scroll-in scroll-delay-200 scroll-fade-up">
   <p>This content animates in on scroll</p>
+  <!-- Optional: stagger for children -->
+  <div class="scroll-stagger">
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+  </div>
 </div>
 ```
 
 ### Layout Utilities
 ```html
-<div class="util-container">
-  <section class="util-section">
-    <div class="util-hero">
-      <h1 class="util-text-accent-gradient-enhanced text-6xl font-bold">Hero Section</h1>
+<div class="cs-container">
+  <section class="cs-section">
+    <div class="cs-hero">
+      <h1 class="cs-text-primary text-6xl font-bold">Hero Section</h1>
     </div>
   </section>
 </div>
@@ -136,23 +142,30 @@ pnpm add @casoon/tailwindcss-effects
 - `.orb-color-*` - Color variants with opacity support
 
 ### Gradients (`@casoon/tailwindcss-gradients`)
-- `.gradient-bg` - Background gradient variants
-- `.gradient-text` - Text gradient variants
-- `.gradient-accent-text` - Enhanced accent text gradients
-- `.gradient-bg-animated` - Animated background gradients
+- `.gradient-bg`, `.gradient-bg-linear`, `.gradient-bg-radial`, `.gradient-bg-conic`
+- `.gradient-bg-animated` - animated brand gradient
+- `.gradient-text`, `.gradient-accent-text` - text gradients
+- `.gradient-overlay`, `.gradient-interactive`, `.gradient-focusable`
+- `.gradient-border`, `.gradient-ring` - gradient borders/rings
+- Presets: `.gradient-accent`, `.gradient-primary`, `.gradient-success`, `.gradient-warning`, `.gradient-neutral`
 
 ### Scroll Animations (`@casoon/tailwindcss-scroll`)
-- `.s` - Scroll animation base class
-- `.s-in` - Animation trigger
-- `.s-delay-*` - Delay variants
-- `.s-speed-*` - Speed variants
+- `.scroll` - base (hidden until in-view)
+- `.scroll-in` - activate animation
+- Effect aliases: `.scroll-fade*`, `.scroll-slide-*`, `.scroll-zoom-*`, `.scroll-rotate-in`, `.scroll-reveal-3d-*`, `.scroll-blur-in`
+- Timing: `.scroll-delay-*`, `.scroll-fast|normal|slow`, `.scroll-loop`
+- Helpers: `.scroll-stagger`, `.scroll-parallax`
 
 ### Utilities (`@casoon/tailwindcss-utilities`)
-- **Layout**: `.util-container`, `.util-section`, `.util-hero`, `.util-grid-cards`
-- **Text**: `.util-text-primary`, `.util-text-accent-gradient`, `.util-text-accent-gradient-enhanced`
-- **Cards**: `.util-card`, `.util-card-hover-lift`, `.util-card-pad`
-- **Transitions**: `.util-content-transition`, `.util-hero-overlay-top`, `.util-page-transition`
-- **Responsive**: Mobile-first responsive helpers and grid systems
+- **Page/Surface**: `.cs-page`, `.cs-surface`, `.cs-surface-elevated`
+- **Layout**: `.cs-container`, `.cs-section`, `.cs-stack(-sm|-lg)`, `.cs-cluster`, `.cs-grid-cards`, `.cs-grid-sidebar`, `.cs-grid-12`, `.cs-col-span`
+- **Hero**: `.cs-hero`
+- **Cards**: `.cs-card`, `.cs-card-hover-lift`, `.cs-card-pad`, `.cs-card-pad-lg`, `.cs-card-inset`
+- **Typography**: `.cs-text-primary`, `.cs-text-secondary`, `.cs-text-muted`, `.cs-text-balance`, `.cs-text-pretty`, `.cs-text-truncate`, `.cs-text-2lines`, `.cs-hyphens-auto`
+- **Media/Aspect**: `.cs-aspect`, `.cs-aspect-square`, `.cs-media-fit-cover`, `.cs-media-fit-contain`, `.cs-media-rounded`
+- **Forms/Buttons**: `.cs-input`, `.cs-btn`, `.cs-field`, `.cs-field-inline`
+- **A11y/Focus**: `.cs-focus-ring`, `.cs-visually-hidden`, `.cs-kbd`
+- **Helpers**: `.cs-safe-pi`, `.cs-safe-pb`, `.cs-safe-pt`, `.cs-center`, `.cs-max-w-prose`
 
 ### Navigation (`@casoon/tailwindcss-navigation`)
 - **Core**: `.nav`, `.nav-link`, `.nav-item` with flexible orientation
