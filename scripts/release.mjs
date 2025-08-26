@@ -97,16 +97,18 @@ function main() {
     targets = listPackages().map((f) => path.join(PKGS_DIR, f));
   }
 
-  // Publish in dependency order: tokens first, then others, meta last
+  // Publish in dependency order: animations first, then others, meta last
   targets.sort((a, b) => {
     const A = readPkgJson(a).name;
     const B = readPkgJson(b).name;
     const order = [
-      "@casoon/tokens",
+      "@casoon/tailwindcss-animations",
       "@casoon/tailwindcss-glass",
       "@casoon/tailwindcss-orbs",
       "@casoon/tailwindcss-gradients",
       "@casoon/tailwindcss-scroll",
+      "@casoon/tailwindcss-utilities",
+      "@casoon/tailwindcss-navigation",
       "@casoon/tailwindcss-effects"
     ];
     return order.indexOf(A) - order.indexOf(B);

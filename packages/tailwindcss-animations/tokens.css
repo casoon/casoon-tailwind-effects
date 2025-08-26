@@ -1,0 +1,142 @@
+/* animationseffekt.tokens.css
+   Ebene: @layer base → @theme
+   Zweck: universelle Animations-Tokens für die gesamte Codebase
+*/
+@layer base {
+    @theme {
+      /* ============================================================
+         ANIMATION TOKENS (universell)  -- Präfix: --anim-*
+         ============================================================ */
+  
+      /* ---- Dauer & Geschwindigkeiten ---- */
+      --anim-duration-xxs: 120ms;
+      --anim-duration-xs:  160ms;
+      --anim-duration-sm:  220ms;
+      --anim-duration-md:  320ms;
+      --anim-duration-lg:  480ms;
+      --anim-duration-xl:  720ms;
+      --anim-duration-2xl: 1200ms;
+  
+      /* ---- Standardzuweisungen (können per Klasse überschrieben werden) ---- */
+      --anim-duration: var(--anim-duration-md);
+  
+      /* ---- Easing / Bezier-Kurven (Material/Fluent-inspirierte Presets) ---- */
+      --anim-ease-standard: cubic-bezier(.2,.8,.2,1);
+      --anim-ease-emphasized: cubic-bezier(.2,.0,0,1);
+      --anim-ease-decelerate: cubic-bezier(0,0,.2,1);
+      --anim-ease-accelerate: cubic-bezier(.4,0,1,1);
+      --anim-ease-spring: cubic-bezier(.34,1.56,.64,1); /* „springy“ ohne Overshoot-Loop */
+      --anim-ease-soft-spring: cubic-bezier(.2, .9, .3, 1.2);
+  
+      --anim-ease: var(--anim-ease-standard);
+  
+      /* ---- Distanzen / Größen / Opazität (motion scales) ---- */
+      --anim-translate-xs: 4px;
+      --anim-translate-sm: 8px;
+      --anim-translate-md: 16px;
+      --anim-translate-lg: 24px;
+      --anim-translate-xl: 40px;
+  
+      --anim-scale-sm: .96;
+      --anim-scale-md: .98;
+      --anim-scale-lg: 1.04;
+  
+      --anim-rotate-sm: 6deg;
+      --anim-rotate-md: 12deg;
+  
+      --anim-opacity-hidden: 0;
+      --anim-opacity-visible: 1;
+  
+      --anim-blur-sm: 4px;
+      --anim-blur-md: 8px;
+      --anim-blur-lg: 16px;
+  
+      /* ---- 3D / Perspektive ---- */
+      --anim-perspective: 800px;
+      --anim-tilt-x: 6deg;
+      --anim-tilt-y: 6deg;
+  
+      /* ---- Repetition / Richtung ---- */
+      --anim-iter-infinite: infinite;
+      --anim-direction: normal;
+      --anim-fill: both;
+      --anim-delay: 0ms;
+  
+      /* ---- Marquee / Parallax ---- */
+      --anim-marquee-speed: 24s;  /* größere Zahl = langsamer */
+      --anim-parallax-speed: 18s;
+  
+      /* ---- Fokus / Ring (neutral, nicht produkt-/brand-spezifisch) ---- */
+      --anim-focus-ring: 0 0 0 3px rgba(59,130,246,.25);
+  
+      /* ---- Motion Sicherheit ---- */
+      --anim-reduced-motion-duration: 1ms; /* praktisch aus */
+      --anim-reduced-motion-ease: linear;
+  
+      /* ============================================================
+         SHARED KEYFRAMES (global nutzbar)
+         ============================================================ */
+  
+      /* Ein-/Ausblendungen & Kombis */
+      @keyframes anim-fade-in   { from { opacity: 0 }   to { opacity: 1 } }
+      @keyframes anim-fade-out  { from { opacity: 1 }   to { opacity: 0 } }
+  
+      @keyframes anim-scale-in  {
+        from { transform: scale(var(--anim-scale-sm)); opacity: 0 }
+        to   { transform: scale(1);                    opacity: 1 }
+      }
+      @keyframes anim-scale-out {
+        from { transform: scale(1);                    opacity: 1 }
+        to   { transform: scale(var(--anim-scale-sm)); opacity: 0 }
+      }
+  
+      @keyframes anim-blur-in {
+        from { filter: blur(var(--anim-blur-md)); opacity: 0 }
+        to   { filter: blur(0);                   opacity: 1 }
+      }
+      @keyframes anim-blur-out {
+        from { filter: blur(0);                   opacity: 1 }
+        to   { filter: blur(var(--anim-blur-md)); opacity: 0 }
+      }
+  
+      /* Slides */
+      @keyframes anim-slide-up    { from { transform: translateY(var(--anim-translate-md)); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+      @keyframes anim-slide-down  { from { transform: translateY(calc(var(--anim-translate-md) * -1)); opacity: 0 } to { transform: translateY(0); opacity: 1 } }
+      @keyframes anim-slide-left  { from { transform: translateX(var(--anim-translate-md)); opacity: 0 } to { transform: translateX(0); opacity: 1 } }
+      @keyframes anim-slide-right { from { transform: translateX(calc(var(--anim-translate-md) * -1)); opacity: 0 } to { transform: translateX(0); opacity: 1 } }
+  
+      /* Rotationen / Flip */
+      @keyframes anim-rotate-in  { from { transform: rotate(var(--anim-rotate-md)); opacity: 0 } to { transform: rotate(0); opacity: 1 } }
+      @keyframes anim-rotate     { to   { transform: rotate(360deg) } }
+  
+      /* 3D Reveal */
+      @keyframes anim-reveal-3d-up {
+        from { transform: perspective(var(--anim-perspective)) rotateX(var(--anim-tilt-x)) translateY(var(--anim-translate-md)); opacity: 0 }
+        to   { transform: perspective(var(--anim-perspective)) rotateX(0) translateY(0); opacity: 1 }
+      }
+      @keyframes anim-reveal-3d-right {
+        from { transform: perspective(var(--anim-perspective)) rotateY(calc(var(--anim-tilt-y) * -1)) translateX(calc(var(--anim-translate-md) * -1)); opacity: 0 }
+        to   { transform: perspective(var(--anim-perspective)) rotateY(0) translateX(0); opacity: 1 }
+      }
+  
+      /* Attention / Micro-Interactions */
+      @keyframes anim-pulse { 0%,100% { transform: scale(1);   } 50% { transform: scale(1.03); } }
+      @keyframes anim-bounce {
+        0%,100% { transform: translateY(0) }
+        40%     { transform: translateY(-10%) }
+      }
+      @keyframes anim-wiggle {
+        0%,100% { transform: rotate(0deg) }
+        25%     { transform: rotate(2deg) }
+        75%     { transform: rotate(-2deg) }
+      }
+  
+      /* Marquee / Parallax */
+      @keyframes anim-marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+      @keyframes anim-parallax-y { from { transform: translateY(-10%) } to { transform: translateY(10%) } }
+  
+      /* Progress / Utility */
+      @keyframes anim-progress-grow { from { width: 0% } to { width: var(--progress-width, 75%) } }
+    }
+  }
+  

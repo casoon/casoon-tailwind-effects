@@ -1,0 +1,171 @@
+/* Import tokens first */
+@import "./tokens.css";
+
+/* animations.css
+   Ebene: @layer components
+   Zweck: generische Animations-Utilities & Pattern-Komponenten,
+          die ausschließlich --anim-* Tokens verwenden.
+*/
+@layer components {
+
+    /* ============================================================
+       Grund-Utility: API über CSS-Variablen
+       ============================================================ */
+  
+    /* Basisklasse: setzt Dauer/Ease/Füllung/Delay, Keyframe via Subklasse */
+    .anim {
+      animation-duration: var(--anim-duration, var(--anim-duration-md));
+      animation-timing-function: var(--anim-ease, var(--anim-ease-standard));
+      animation-iteration-count: 1;
+      animation-direction: var(--anim-direction, normal);
+      animation-fill-mode: var(--anim-fill, both);
+      animation-delay: var(--anim-delay, 0ms);
+    }
+  
+    /* Iteration & Loop-Helfer */
+    .anim-infinite { animation-iteration-count: var(--anim-iter-infinite); }
+    .anim-reverse  { animation-direction: reverse; }
+    .anim-alt      { animation-direction: alternate; }
+    .anim-both     { animation-fill-mode: both; }
+    .anim-forward  { animation-fill-mode: forwards; }
+  
+    /* Schnelle Dauer-Utilities */
+    .anim-xxs { --anim-duration: var(--anim-duration-xxs); }
+    .anim-xs  { --anim-duration: var(--anim-duration-xs); }
+    .anim-sm  { --anim-duration: var(--anim-duration-sm); }
+    .anim-md  { --anim-duration: var(--anim-duration-md); }
+    .anim-lg  { --anim-duration: var(--anim-duration-lg); }
+    .anim-xl  { --anim-duration: var(--anim-duration-xl); }
+    .anim-2xl { --anim-duration: var(--anim-duration-2xl); }
+  
+    /* Easing-Utilities */
+    .ease-standard    { --anim-ease: var(--anim-ease-standard); }
+    .ease-emphasized  { --anim-ease: var(--anim-ease-emphasized); }
+    .ease-decelerate  { --anim-ease: var(--anim-ease-decelerate); }
+    .ease-accelerate  { --anim-ease: var(--anim-ease-accelerate); }
+    .ease-spring      { --anim-ease: var(--anim-ease-spring); }
+    .ease-soft-spring { --anim-ease: var(--anim-ease-soft-spring); }
+  
+    /* Will-change Helfer (Performance-Hint) */
+    .will-transform { will-change: transform; }
+    .will-opacity   { will-change: opacity; }
+    .will-filter    { will-change: filter; }
+    .will-layout    { will-change: contents; }
+  
+    /* ============================================================
+       Einfache Effekte (Keyframe-Mappings)
+       → Kombiniere mit .anim + Dauer/Ease-Utilities
+       ============================================================ */
+  
+    .fade-in   { animation-name: anim-fade-in; }
+    .fade-out  { animation-name: anim-fade-out; }
+    .scale-in  { animation-name: anim-scale-in; }
+    .scale-out { animation-name: anim-scale-out; }
+    .blur-in   { animation-name: anim-blur-in; }
+    .blur-out  { animation-name: anim-blur-out; }
+  
+    .slide-up    { animation-name: anim-slide-up; }
+    .slide-down  { animation-name: anim-slide-down; }
+    .slide-left  { animation-name: anim-slide-left; }
+    .slide-right { animation-name: anim-slide-right; }
+  
+    .rotate-in { animation-name: anim-rotate-in; }
+    .rotate    { animation-name: anim-rotate; }
+  
+    .reveal-3d-up    { animation-name: anim-reveal-3d-up;    transform-style: preserve-3d; }
+    .reveal-3d-right { animation-name: anim-reveal-3d-right; transform-style: preserve-3d; }
+  
+    .pulse   { animation-name: anim-pulse; }
+    .bounce  { animation-name: anim-bounce; }
+    .wiggle  { animation-name: anim-wiggle; }
+  
+    .marquee     { animation-name: anim-marquee; animation-duration: var(--anim-marquee-speed); animation-timing-function: linear; animation-iteration-count: infinite; }
+    .parallax-y  { animation-name: anim-parallax-y; animation-duration: var(--anim-parallax-speed); animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: alternate; }
+  
+    .progress-grow { animation-name: anim-progress-grow; animation-duration: 1.6s; animation-timing-function: ease-out; }
+  
+    /* ============================================================
+       Interaktions-Pattern (ohne JS)
+       – Hover/Focus/Active/Details[open]/ARIA
+       ============================================================ */
+  
+    /* Hover-Lifts / Press-Feedback (keine Keyframes; Transition-basiert) */
+    .hover-raise {
+      transition: transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard);
+    }
+    .hover-raise:hover   { transform: translateY(-4px); }
+    .hover-press:active  { transform: translateY(1px) scale(.99); }
+  
+    /* Fokus-Ring (neutral) */
+    .focus-ring:focus-visible { outline: none; box-shadow: var(--anim-focus-ring); }
+  
+    /* Details/Open (Disclosure) */
+    details.anim-reveal > * { transform-origin: top; }
+    details[open].anim-reveal > * {
+      animation: anim-slide-down var(--anim-duration) var(--anim-ease) both;
+    }
+  
+    /* ARIA expanded (z. B. Akkordeons) */
+    [aria-expanded="true"].anim-expand-target {
+      animation: anim-slide-down var(--anim-duration) var(--anim-ease) both;
+    }
+    [aria-expanded="false"].anim-expand-target {
+      animation: anim-slide-up var(--anim-duration) var(--anim-ease) reverse both;
+    }
+  
+    /* ============================================================
+       Kompositionen (Compound Effects) – vordefinierte Rezepte
+       ============================================================ */
+  
+    /* sanfter Card-Enter */
+    .enter-card { animation: anim-blur-in var(--anim-duration) var(--anim-ease-decelerate) both; }
+  
+    /* toast/snackbar */
+    .enter-toast { animation: anim-slide-up var(--anim-duration-sm) var(--anim-ease-decelerate) both; }
+    .exit-toast  { animation: anim-slide-down var(--anim-duration-sm) var(--anim-ease-accelerate) both; }
+  
+    /* modal */
+    .enter-modal { animation: anim-scale-in var(--anim-duration) var(--anim-ease-emphasized) both; }
+    .exit-modal  { animation: anim-scale-out var(--anim-duration) var(--anim-ease-accelerate) both; }
+  
+    /* hero visual */
+    .parallax-hero { animation: anim-parallax-y var(--anim-parallax-speed) linear infinite alternate; }
+  
+    /* ============================================================
+       Utility: Transform/Filter Baselines (für zusammengesetzte Transitions)
+       ============================================================ */
+    .t-origin-top     { transform-origin: top; }
+    .t-origin-center  { transform-origin: center; }
+    .t-origin-bottom  { transform-origin: bottom; }
+    .t-preserve-3d    { transform-style: preserve-3d; }
+    .perspective      { perspective: var(--anim-perspective); }
+    .tilt             { transform: rotateX(var(--anim-tilt-x)) rotateY(var(--anim-tilt-y)); }
+  
+    /* ============================================================
+       Motion-Safety: Nutzerpräferenzen respektieren
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      .anim,
+      .fade-in, .fade-out, .scale-in, .scale-out, .blur-in, .blur-out,
+      .slide-up, .slide-down, .slide-left, .slide-right,
+      .rotate-in, .rotate, .reveal-3d-up, .reveal-3d-right,
+      .pulse, .bounce, .wiggle,
+      .marquee, .parallax-y, .progress-grow,
+      .enter-card, .enter-toast, .exit-toast, .enter-modal, .exit-modal,
+      .parallax-hero {
+        animation-duration: var(--anim-reduced-motion-duration) !important;
+        animation-iteration-count: 1 !important;
+        animation-timing-function: var(--anim-reduced-motion-ease) !important;
+        transition: none !important;
+      }
+      .hover-raise:hover, .hover-press:active { transform: none !important; }
+    }
+  
+    /* ============================================================
+       Fallbacks / Kompatibilität
+       ============================================================ */
+    @supports not (animation-timing-function: cubic-bezier(0,0,1,1)) {
+      .anim { animation-timing-function: ease; }
+    }
+  }
+  

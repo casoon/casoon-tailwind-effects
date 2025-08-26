@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-effects",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "exports": {
     "./index.css": "./index.css"
@@ -18,12 +18,12 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@casoon/tokens": "^0.1.3",
-    "@casoon/tailwindcss-glass": "^0.1.3",
-    "@casoon/tailwindcss-orbs": "^0.1.3",
-    "@casoon/tailwindcss-gradients": "^0.1.3",
-    "@casoon/tailwindcss-scroll": "^0.1.3",
-    "@casoon/tailwindcss-navigation": "^0.1.3",
-    "@casoon/tailwindcss-utilities": "^0.1.3"
+    "@casoon/tailwindcss-animations": "^0.1.5",
+    "@casoon/tailwindcss-glass": "^0.1.5",
+    "@casoon/tailwindcss-orbs": "^0.1.5",
+    "@casoon/tailwindcss-gradients": "^0.1.5",
+    "@casoon/tailwindcss-scroll": "^0.1.5",
+    "@casoon/tailwindcss-navigation": "^0.1.5",
+    "@casoon/tailwindcss-utilities": "^0.1.5"
   }
 }

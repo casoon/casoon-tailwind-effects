@@ -15,7 +15,7 @@ A collection of **CSS-first** libraries that provide beautiful visual effects an
 
 | Package | Description | Size |
 |---------|-------------|------|
-| [`@casoon/tokens`](./packages/tokens) | Shared `@theme` tokens, variables & keyframes | ~2KB |
+| [`@casoon/tailwindcss-animations`](./packages/tailwindcss-animations) | Animation utilities & keyframes | ~3KB |
 | [`@casoon/tailwindcss-glass`](./packages/tailwindcss-glass) | Glassmorphism components & utilities | ~5KB |
 | [`@casoon/tailwindcss-orbs`](./packages/tailwindcss-orbs) | Orb backgrounds & helper utilities | ~8KB |
 | [`@casoon/tailwindcss-gradients`](./packages/tailwindcss-gradients) | Gradient backgrounds & text effects | ~6KB |
@@ -39,7 +39,7 @@ Import only the packages you need:
 
 ```css
 @import "tailwindcss";
-@import "@casoon/tokens/index.css";
+@import "@casoon/tailwindcss-animations/index.css";
 @import "@casoon/tailwindcss-glass/index.css";
 @import "@casoon/tailwindcss-orbs/index.css";
 @import "@casoon/tailwindcss-gradients/index.css";
@@ -117,6 +117,11 @@ pnpm add @casoon/tailwindcss-effects
 ```
 
 ## 🎨 Available Utilities
+
+### Animations (`@casoon/tailwindcss-animations`)
+- Animation utilities and keyframes for Tailwind CSS v4
+- Custom animation classes and transitions
+- Performance-optimized CSS animations
 
 ### Glassmorphism (`@casoon/tailwindcss-glass`)
 - `.glass` - Base glassmorphism component
