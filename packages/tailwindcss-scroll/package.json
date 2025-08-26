@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-scroll",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "type": "module",
   "exports": {
     "./index.css": "./index.css"
@@ -8,6 +8,7 @@
   "files": [
     "index.css",
     "tokens.css",
+    "scroll.js",
     "README.md",
     "LICENSE"
   ],

@@ -178,7 +178,27 @@ pnpm add @casoon/tailwindcss-effects
 
 ## 🏗️ Development
 
-This is a monorepo managed with pnpm workspaces.
+This is a monorepo managed with pnpm workspaces and unified versioning.
+
+### 📦 Version Management
+
+All packages use the same version number for consistency. To update versions:
+
+```bash
+# Check current versions
+npm run version:check
+
+# Update all packages to next patch version (0.2.0 → 0.2.1)
+npm run version:patch
+
+# Update all packages to next minor version (0.2.0 → 0.3.0)
+npm run version:minor
+
+# Update all packages to next major version (0.2.0 → 1.0.0)
+npm run version:major
+```
+
+**Note:** These commands automatically update both the root `package.json` and all package versions simultaneously.
 
 ```bash
 # Install dependencies
