@@ -1,3 +1,6 @@
+/* Import tokens first */
+@import "./tokens.css";
+
 /* @casoon/tailwindcss-navigation */
 /* Navigation components and utilities for Tailwind CSS v4 */
 

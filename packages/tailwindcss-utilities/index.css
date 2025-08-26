@@ -1,98 +1,225 @@
+/* Import tokens first */
+@import "./tokens.css";
+
 /* @casoon/tailwindcss-utilities */
-/* Utility CSS classes for Tailwind CSS v4 */
+/* Practical, neutral utilities for Tailwind CSS v4 (cs- prefix, tokens required) */
 
 @layer utilities {
 
-    /* ===== Container / Sections / Layout ===== */
-    .util-container {
-      max-width: var(--util-container-max);
-      margin-inline: auto;
-      padding-inline: clamp(1rem, 3vw, 2rem);
-    }
-  
-    .util-section {
-      padding-block: clamp(var(--util-section-min), 6vw, var(--util-section-max));
-    }
-  
-    .util-hero {
-      min-height: var(--util-hero-min-h);
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-  
-    .util-grid-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(var(--util-grid-min), 1fr));
-      gap: var(--util-grid-gap);
-      transition: all var(--util-transition-base) ease;
-    }
-  
-    /* ===== Text & Gradients (neutral) ===== */
-    .util-text-primary   { color: var(--util-text-primary); }
-    .util-text-secondary { color: var(--util-text-secondary); }
-    .util-text-muted     { color: var(--util-text-muted); }
-  
-    .util-text-accent-gradient {
-      background: linear-gradient(135deg, var(--util-accent-from) 0%, var(--util-accent-to) 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    }
-  
-    .util-text-accent-gradient-enhanced {
-      background: linear-gradient(135deg,
-        var(--util-accent-from) 0%,
-        color-mix(in oklab, var(--util-accent-from) 85%, #fff) 25%,
-        var(--util-accent-to) 75%,
-        color-mix(in oklab, var(--util-accent-to) 85%, #fff) 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-      text-shadow: 0 1px 2px rgba(0,0,0,.30);
-      filter: contrast(1.08) brightness(1.06);
-    }
-  
-    /* ===== Content / Page Transitions ===== */
-    .util-content-transition { position: relative; }
-    .util-content-transition::before {
-      content: "";
-      position: absolute; top: -2rem; left: 0; right: 0; height: 2rem;
-      background: linear-gradient(to bottom, color-mix(in oklab, var(--util-bg-primary) 95%, #fff), transparent);
-      pointer-events: none;
-    }
-  
-    .util-hero-overlay-top::before {
-      content: "";
-      position: absolute; top: 0; left: 0; right: 0; height: 4rem;
-      background: linear-gradient(to bottom, color-mix(in oklab, var(--util-bg-primary) 95%, #fff), transparent);
-      pointer-events: none; z-index: 1;
-    }
-  
-    .util-page-transition { transition: background-color var(--util-transition-base) ease; }
-  
-    /* ===== Cards (neutral) ===== */
-    .util-card {
-      background: var(--util-bg-secondary);
-      border: 1px solid var(--util-border-primary);
-      border-radius: var(--util-radius);
-      backdrop-filter: blur(var(--util-blur));
-      box-shadow: var(--util-shadow-primary);
-      transition: transform var(--util-transition-base) ease, box-shadow var(--util-transition-base) ease;
-    }
-    .util-card-hover-lift:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--util-shadow-secondary);
-    }
-    .util-card-pad { padding: clamp(1rem, 3vw, 1.5rem); }
-  
-    /* ===== Responsive Helpers ===== */
-    @media (max-width: 768px) {
-      .util-container { padding-inline: 1rem; }
-      .util-grid-cards { grid-template-columns: 1fr; gap: 1rem; }
-    }
-  
-    /* ===== Misc ===== */
-    .util-center         { display: grid; place-items: center; }
-    .util-max-w-prose    { max-width: 70ch; }
-    .util-hidden-scrollbar { scrollbar-width: none; }
-    .util-hidden-scrollbar::-webkit-scrollbar { display: none; }
+  /* ===== Page & Base Surfaces ===== */
+  .cs-page {
+    background: var(--cs-bg-page);
+    color: var(--cs-text-primary);
   }
-  
+  .cs-surface {
+    background: var(--cs-bg-surface);
+    color: var(--cs-text-primary);
+  }
+  .cs-surface-elevated {
+    background: var(--cs-bg-elevated);
+    box-shadow: var(--cs-shadow-1);
+  }
+
+  /* ===== Container / Sections / Layout ===== */
+  .cs-container {
+    max-width: var(--cs-container-max);
+    margin-inline: auto;
+    padding-inline: var(--cs-container-pad-inline);
+  }
+
+  .cs-section {
+    padding-block: clamp(var(--cs-section-min), 6vw, var(--cs-section-max));
+  }
+
+  /* Vertical Stack (gap-controlled flow layout) */
+  .cs-stack { display: grid; gap: var(--cs-grid-gap); }
+  .cs-stack-sm { display: grid; gap: var(--cs-size-3); }
+  .cs-stack-lg { display: grid; gap: var(--cs-size-8); }
+
+  /* Inline Cluster (row wrap with gap) */
+  .cs-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--cs-grid-gap);
+  }
+
+  /* Responsive Cards Grid (auto-fit) */
+  .cs-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--cs-grid-min), 1fr));
+    gap: var(--cs-grid-gap);
+  }
+
+  /* Sidebar Grid (content + sidebar) */
+  .cs-grid-sidebar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+    gap: var(--cs-grid-gap);
+  }
+  @container (max-width: 56rem) {
+    .cs-grid-sidebar { grid-template-columns: 1fr; }
+  }
+
+  /* 12-col Utility Grid (CSS vars for spans) */
+  .cs-grid-12 {
+    --cs-cols: 12;
+    display: grid;
+    grid-template-columns: repeat(var(--cs-cols), minmax(0, 1fr));
+    gap: var(--cs-grid-gap);
+  }
+  .cs-col-span {
+    grid-column: span var(--span, 12) / span var(--span, 12);
+  }
+
+  /* ===== Hero (neutral) ===== */
+  .cs-hero {
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: clip;
+  }
+
+  /* ===== Cards (neutral) ===== */
+  .cs-card {
+    background: var(--cs-bg-surface);
+    border: 1px solid var(--cs-border-color);
+    border-radius: var(--cs-radius);
+    box-shadow: var(--cs-shadow-1);
+    transition:
+      box-shadow var(--cs-transition-base) ease,
+      transform var(--cs-transition-base) ease;
+  }
+  .cs-card-hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--cs-shadow-2);
+  }
+  .cs-card-pad    { padding: clamp(1rem, 3vw, 1.25rem); }
+  .cs-card-pad-lg { padding: clamp(1.25rem, 4vw, 1.75rem); }
+  .cs-card-inset  { border-color: color-mix(in oklab, var(--cs-border-color) 70%, transparent); }
+
+  /* ===== Typography Helpers (neutral) ===== */
+  .cs-text-primary   { color: var(--cs-text-primary); }
+  .cs-text-secondary { color: var(--cs-text-secondary); }
+  .cs-text-muted     { color: var(--cs-text-muted); }
+
+  .cs-text-balance { text-wrap: balance; }
+  .cs-text-pretty  { text-wrap: pretty; }
+  .cs-text-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cs-text-2lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .cs-hyphens-auto { hyphens: auto; }
+
+  /* ===== Aspect Ratio ===== */
+  .cs-aspect { position: relative; width: 100%; }
+  .cs-aspect::before {
+    content: ""; display: block; padding-top: var(--ratio, var(--cs-aspect-16-9));
+  }
+  .cs-aspect > * {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+  }
+  .cs-aspect-square { --ratio: var(--cs-aspect-1-1); }
+
+  /* ===== Media Helpers ===== */
+  .cs-media-fit-cover { object-fit: cover; }
+  .cs-media-fit-contain { object-fit: contain; }
+  .cs-media-rounded { border-radius: var(--cs-radius); }
+
+  /* ===== Forms (neutral defaults) ===== */
+  .cs-input {
+    appearance: none;
+    background: var(--cs-bg-surface);
+    border: 1px solid var(--cs-border-color);
+    color: var(--cs-text-primary);
+    border-radius: var(--cs-radius-sm);
+    padding: 0.5rem 0.75rem;
+    line-height: 1.5;
+  }
+  .cs-input::placeholder { color: var(--cs-text-muted); }
+  .cs-input:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 var(--cs-focus-offset) var(--cs-bg-surface),
+      0 0 0 calc(var(--cs-focus-ring) + var(--cs-focus-offset))
+        color-mix(in oklab, var(--cs-focus-color) 85%, transparent);
+  }
+
+  .cs-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    border-radius: var(--cs-radius);
+    border: 1px solid var(--cs-border-color);
+    padding: 0.625rem 0.9rem;
+    background: var(--cs-bg-elevated);
+    color: var(--cs-text-primary);
+    transition:
+      background-color var(--cs-transition-base) ease,
+      border-color var(--cs-transition-base) ease;
+  }
+  .cs-btn:hover {
+    border-color: color-mix(in oklab, var(--cs-border-color) 70%, transparent);
+  }
+  .cs-btn:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 var(--cs-focus-offset) var(--cs-bg-elevated),
+      0 0 0 calc(var(--cs-focus-ring) + var(--cs-focus-offset))
+        color-mix(in oklab, var(--cs-focus-color) 85%, transparent);
+  }
+
+  /* Input groups & controls */
+  .cs-field { display: grid; gap: var(--cs-size-2); }
+  .cs-field-inline { display: flex; align-items: center; gap: var(--cs-size-3); }
+
+  /* ===== Focus & Accessibility ===== */
+  .cs-focus-ring {
+    outline: none;
+    box-shadow:
+      0 0 0 var(--cs-focus-offset) currentColor,
+      0 0 0 calc(var(--cs-focus-ring) + var(--cs-focus-offset))
+        color-mix(in oklab, var(--cs-focus-color) 85%, transparent);
+  }
+
+  .cs-visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    margin: -1px; padding: 0;
+    border: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .cs-kbd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.875em;
+    padding: 0.15em 0.4em;
+    border: 1px solid var(--cs-border-color);
+    border-bottom-width: 2px;
+    border-radius: var(--cs-radius-xs);
+    background: var(--cs-bg-elevated);
+  }
+
+  /* ===== Safe Area & Logical helpers ===== */
+  .cs-safe-pi { padding-inline: max(var(--cs-container-pad-inline), env(safe-area-inset-left, 0px)); }
+  .cs-safe-pb { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .cs-safe-pt { padding-top: env(safe-area-inset-top, 0px); }
+
+  /* ===== Utility Alignment ===== */
+  .cs-center { display: grid; place-items: center; }
+  .cs-max-w-prose { max-width: 70ch; }
+
+  /* ===== Responsive Helpers ===== */
+  @media (max-width: 48rem) {
+    .cs-container { padding-inline: 1rem; }
+    .cs-grid-cards { grid-template-columns: 1fr; gap: var(--cs-size-4); }
+    .cs-grid-sidebar { grid-template-columns: 1fr; }
+  }
+
+  /* ===== Reduced Motion Respect ===== */
+  @media (prefers-reduced-motion: reduce) {
+    *:where(.cs-card, .cs-btn) { transition: none !important; }
+  }
+}

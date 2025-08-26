@@ -8,21 +8,22 @@ A collection of **CSS-first** libraries that provide beautiful visual effects an
 - **Tailwind v4 Ready**: Built specifically for Tailwind CSS v4 with `@theme` support
 - **Modular**: Import only what you need or use the meta package
 - **Performance**: Lightweight and optimized CSS utilities
-- **Modern**: Glassmorphism, gradients, scroll animations, layout utilities, and navigation components
+- **Modern**: Glassmorphism, gradients, scroll animations, layout utilities, navigation components, and animations
 - **Production Ready**: Comprehensive utility classes for real-world applications
+- **Self-Contained**: Each package includes its own design tokens and CSS variables
 
 ## 📦 Packages
 
 | Package | Description | Size |
 |---------|-------------|------|
 | [`@casoon/tailwindcss-animations`](./packages/tailwindcss-animations) | Animation utilities & keyframes | ~3KB |
-| [`@casoon/tailwindcss-glass`](./packages/tailwindcss-glass) | Glassmorphism components & utilities | ~5KB |
+| [`@casoon/tailwindcss-glass`](./packages/tailwindcss-glass) | Glassmorphism components & utilities | ~16KB |
 | [`@casoon/tailwindcss-orbs`](./packages/tailwindcss-orbs) | Orb backgrounds & helper utilities | ~8KB |
 | [`@casoon/tailwindcss-gradients`](./packages/tailwindcss-gradients) | Gradient backgrounds & text effects | ~6KB |
 | [`@casoon/tailwindcss-scroll`](./packages/tailwindcss-scroll) | Scroll animation primitives | ~4KB |
 | [`@casoon/tailwindcss-utilities`](./packages/tailwindcss-utilities) | Layout utilities, cards, text effects & responsive helpers | ~8KB |
 | [`@casoon/tailwindcss-navigation`](./packages/tailwindcss-navigation) | Navigation components, variants & subnav systems | ~12KB |
-| [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package that imports all effects | ~50KB |
+| [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package that imports all effects | ~60KB |
 
 ## 🚀 Quick Start
 
@@ -165,14 +166,15 @@ pnpm add @casoon/tailwindcss-effects
 ### CSS-First Approach
 - **No JavaScript dependencies** - Pure CSS solutions that work immediately
 - **Tailwind v4 optimized** - Built specifically for the latest Tailwind CSS version
-- **CSS Custom Properties** - Leverages modern CSS with `@theme` variables
+- **CSS Custom Properties** - Each package includes its own design tokens
 - **Performance focused** - Lightweight and optimized for production use
 
 ### Modular Architecture
 - **Granular imports** - Import only what you need to keep bundle size minimal
+- **Self-contained packages** - Each package includes its own tokens and CSS variables
 - **Consistent API** - Unified design patterns across all packages
-- **Extensible** - Easy to customize and extend with your own CSS variables
-- **Type-safe** - Full TypeScript support for CSS custom properties
+- **Extensible** - Easy to customize and extend with package-specific CSS variables
+- **No global dependencies** - Each package works independently
 
 ## 🏗️ Development
 

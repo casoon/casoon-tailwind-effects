@@ -1,25 +1,228 @@
-@layer components {
+/* Import tokens first */
+@import "./tokens.css";
+
+@layer components { 
+  /* ============================================================
+     Bestehende Klassen – jetzt tokenisiert
+     ============================================================ */
+
   /* Dezenter Section-Gradient (neutral benannt) */
   .gradient-bg-surface-subtle {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: linear-gradient(
+      var(--gradient-angle),
+      var(--gradient-surface-subtle-from) 0%,
+      var(--gradient-surface-subtle-to) 100%
+    );
   }
 
-  /* Weitere Gradient-Utilities (optional) */
-  .gradient-bg { background: linear-gradient(135deg, var(--glass-accent-from), var(--glass-accent-to)); }
+  /* Marken-/Akzentverlauf (linear) */
+  .gradient-bg {
+    background: linear-gradient(
+      var(--gradient-angle),
+      var(--gradient-stop-1),
+      var(--gradient-stop-2),
+      var(--gradient-stop-3)
+    );
+    background-origin: border-box;
+    background-clip: border-box;
+  }
 
+  /* Animierter Markenverlauf */
   .gradient-bg-animated {
-    background: linear-gradient(270deg, var(--glass-accent-from), var(--glass-accent-to), var(--bg-glow-1));
-    background-size: 200% 200%;
-    animation: gradientShift 12s ease infinite;
+    background: linear-gradient(
+      270deg,
+      var(--gradient-accent-from),
+      var(--gradient-accent-to),
+      var(--gradient-primary-from)
+    );
+    background-size: var(--gradient-anim-size);
+    animation: gradientShift var(--gradient-anim-duration) var(--gradient-anim-timing) infinite var(--gradient-anim-direction);
+    will-change: background-position;
   }
 
+  /* Text: neutraler Verlauf */
   .gradient-text {
-    background: linear-gradient(135deg, var(--text-grad-from), var(--text-grad-to));
+    background: linear-gradient(var(--gradient-angle), var(--text-grad-from), var(--text-grad-to));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
 
+  /* Text: Akzentverlauf */
   .gradient-accent-text {
-    background: linear-gradient(135deg, var(--text-accent-from), var(--text-accent-to));
+    background: linear-gradient(var(--gradient-angle), var(--text-accent-from), var(--text-accent-to));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  /* ============================================================
+     Neue Utilities – Linear, Radial, Conic
+     ============================================================ */
+
+  .gradient-bg-linear {
+    /* Nutzt zentrale Stop-Definitionen */
+    background: linear-gradient(
+      var(--gradient-angle),
+      var(--gradient-stop-1),
+      var(--gradient-stop-2),
+      var(--gradient-stop-3)
+    );
+  }
+
+  .gradient-bg-radial {
+    background: radial-gradient(
+      var(--gradient-shape) var(--gradient-size) at var(--gradient-position),
+      var(--gradient-stop-1),
+      var(--gradient-stop-2),
+      var(--gradient-stop-3)
+    );
+  }
+
+  .gradient-bg-conic {
+    background: conic-gradient(
+      from var(--gradient-conic-angle) at var(--gradient-position),
+      var(--gradient-stop-1),
+      var(--gradient-stop-2),
+      var(--gradient-stop-3)
+    );
+  }
+
+  /* ============================================================
+     Modifiers & Helfer
+     ============================================================ */
+
+  /* Overlay-Layer (Noise + Lighten/Soft-Light etc.) */
+  .gradient-overlay { position: relative; isolation: isolate; }
+  .gradient-overlay::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(1px 1px at 25% 32%, rgba(0,0,0,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 62% 12%, rgba(0,0,0,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 8% 75%, rgba(0,0,0,.35) 50%, transparent 51%);
+    background-size: var(--gradient-noise-size) var(--gradient-noise-size);
+    opacity: var(--gradient-noise-opacity);
+    mix-blend-mode: var(--gradient-overlay-mode);
+  }
+  .gradient-overlay::before {
+    /* optional weißes Overlay zur „Milchigkeit“ */
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: rgba(255,255,255,var(--gradient-overlay-alpha));
+    mix-blend-mode: var(--gradient-overlay-mode);
+  }
+
+  /* Hover-Shift (dreht Winkel leicht) */
+  .gradient-interactive {
+    transition: transform .25s ease, filter .25s ease, background .25s ease;
+    will-change: background-image, background;
+  }
+  .gradient-interactive:hover {
+    /* Näherung: wir rekonstruierten via var() additiv – Fallback: leichtes Brightness-Play */
+    filter: brightness(1.04) saturate(1.02);
+  }
+
+  /* Fokus-Ring passend zum Gradient */
+  .gradient-focusable:focus-visible { outline: none; box-shadow: var(--gradient-focus-ring); }
+
+  /* Borders mit Gradient (für sichtbare Kanten / Badges) */
+  .gradient-border {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--gradient-border-angle), var(--gradient-border-from), var(--gradient-border-to)) border-box,
+      linear-gradient(#0000, #0000) padding-box; /* isoliert Inhalt */
+    /* Tipp: kombiniere mit background-clip: padding-box; für inner content */
+  }
+
+  /* Ringe über box-shadow */
+  .gradient-ring {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--gradient-border-from) 60%, var(--gradient-border-to)),
+      0 0 0 4px color-mix(in oklab, var(--gradient-border-from) 25%, transparent);
+  }
+
+  /* ============================================================
+     Presets (Semantik) – schnell einsetzbar
+     ============================================================ */
+
+  .gradient-accent {
+    --gradient-stop-1: var(--gradient-accent-from);
+    --gradient-stop-2: var(--gradient-accent-mid) 50%;
+    --gradient-stop-3: var(--gradient-accent-to);
+  }
+  .gradient-primary {
+    --gradient-stop-1: var(--gradient-primary-from);
+    --gradient-stop-2: var(--gradient-primary-mid) 50%;
+    --gradient-stop-3: var(--gradient-primary-to);
+  }
+  .gradient-success {
+    --gradient-stop-1: var(--gradient-success-from);
+    --gradient-stop-2: var(--gradient-success-mid) 50%;
+    --gradient-stop-3: var(--gradient-success-to);
+  }
+  .gradient-warning {
+    --gradient-stop-1: var(--gradient-warning-from);
+    --gradient-stop-2: var(--gradient-warning-mid) 50%;
+    --gradient-stop-3: var(--gradient-warning-to);
+  }
+  .gradient-neutral {
+    --gradient-stop-1: var(--gradient-neutral-from);
+    --gradient-stop-2: var(--gradient-neutral-mid) 50%;
+    --gradient-stop-3: var(--gradient-neutral-to);
+  }
+
+  /* ============================================================
+     Masks / Clipping (moderne, weiche Abschattungen)
+     ============================================================ */
+  .gradient-mask-top {
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  }
+  .gradient-mask-bottom {
+    -webkit-mask-image: linear-gradient(to top, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to top, #000 70%, transparent 100%);
+  }
+  .gradient-mask-fade {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+  }
+
+  /* ============================================================
+     Dark/Light Tweaks
+     ============================================================ */
+  [data-theme="light"] .gradient-bg,
+  [data-theme="light"] .gradient-bg-linear,
+  [data-theme="light"] .gradient-bg-animated,
+  [data-theme="light"] .gradient-bg-radial,
+  [data-theme="light"] .gradient-bg-conic {
+    filter: brightness(calc(100% + var(--gradient-light-boost)));
+  }
+
+  [data-theme="dark"] .gradient-bg,
+  [data-theme="dark"] .gradient-bg-linear,
+  [data-theme="dark"] .gradient-bg-animated,
+  [data-theme="dark"] .gradient-bg-radial,
+  [data-theme="dark"] .gradient-bg-conic {
+    filter: brightness(calc(100% + var(--gradient-dark-boost)));
+  }
+
+  /* ============================================================
+     A11y / Motion / Fallbacks
+     ============================================================ */
+
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-bg-animated { animation: none !important; background-position: 50% 50% !important; }
+  }
+
+  /* Fallback, wenn color-mix/oklab nicht verfügbar:
+     (Wir liefern weiterhin brauchbare Verläufe, nur ohne Space-Magie) */
+  @supports not (background: color-mix(in oklab, white 10%, transparent)) {
+    .gradient-ring {
+      box-shadow:
+        0 0 0 1px var(--gradient-border-from),
+        0 0 0 4px rgba(0,0,0,.08);
+    }
+  }
+
+  /* Optionale zusätzliche Animation (falls gradientShift nicht global vorhanden ist) */
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50% }
+    50%  { background-position: 100% 50% }
+    100% { background-position: 0% 50% }
   }
 }

@@ -1,0 +1,83 @@
+@layer base {
+    @theme {
+      /* ============================================================
+         GRADIENT DESIGN TOKENS
+         Bereich: ausschließlich Gradients (Präfix --gradient-*)
+         Konsumiert von: gradients.components.css
+         Ziel: maximale Konfigurierbarkeit mit sinnvollen Defaults
+         ============================================================ */
+  
+      /* -------- Engine / Global Defaults -------- */
+      --gradient-space: oklab;                 /* oklab | srgb | lab | lch – via color-mix genutzt */
+      --gradient-angle: 135deg;                /* Default Winkel für lineare Gradients */
+      --gradient-shape: ellipse;               /* radial shape: circle | ellipse */
+      --gradient-size: farthest-corner;        /* radial size */
+      --gradient-position: 50% 50%;            /* radial/conic center */
+      --gradient-conic-angle: 0deg;            /* Startwinkel für conic-gradients */
+  
+      /* Animations */
+      --gradient-anim-duration: 12s;
+      --gradient-anim-timing: cubic-bezier(.22,.8,.36,1);
+      --gradient-anim-direction: alternate;    /* normal | reverse | alternate | alternate-reverse */
+      --gradient-anim-size: 200% 200%;         /* background-size für animierte Flächen */
+  
+      /* Interaktion */
+      --gradient-hover-shift: 6deg;            /* Wie stark angle auf :hover rotiert */
+      --gradient-focus-ring: 0 0 0 3px color-mix(in oklab, var(--gradient-accent-from) 25%, transparent);
+  
+      /* -------- Paletten (Semantik) --------
+         Verwende diese für konsistente Markenverläufe.
+         Jede Palette hat from/mid/to + Text-Variante. */
+      --gradient-accent-from: #f97316;
+      --gradient-accent-mid:  #fb923c;
+      --gradient-accent-to:   #0891b2;
+  
+      --gradient-primary-from: #6366f1;  /* indigo-500 */
+      --gradient-primary-mid:  #8b5cf6;  /* violet-500 */
+      --gradient-primary-to:   #22d3ee;  /* cyan-400 */
+  
+      --gradient-success-from: #10b981;  /* emerald-500 */
+      --gradient-success-mid:  #34d399;  /* emerald-400 */
+      --gradient-success-to:   #06b6d4;  /* cyan-500 */
+  
+      --gradient-warning-from: #f59e0b;  /* amber-500 */
+      --gradient-warning-mid:  #f97316;  /* orange-500 */
+      --gradient-warning-to:   #ef4444;  /* red-500 */
+  
+      --gradient-neutral-from: #f8fafc;  /* slate-50 */
+      --gradient-neutral-mid:  #e2e8f0;  /* slate-200 */
+      --gradient-neutral-to:   #cbd5e1;  /* slate-300 */
+  
+      /* Text-Gradient Hooks (kompatibel zu bestehendem Naming) */
+      --text-grad-from: #ffffff;
+      --text-grad-to:   #94a3b8;
+      --text-accent-from: var(--gradient-accent-from);
+      --text-accent-to:   var(--gradient-accent-to);
+  
+      /* -------- Surface Presets (für Flächen) -------- */
+      --gradient-surface-subtle-from: #f8fafc;
+      --gradient-surface-subtle-to:   #e2e8f0;
+  
+      /* -------- Stop-Logik --------
+         Nutze diese, wenn du lineare Stops zentral controln willst. */
+      --gradient-stop-1: var(--gradient-accent-from);
+      --gradient-stop-2: var(--gradient-accent-mid) 50%;
+      --gradient-stop-3: var(--gradient-accent-to);
+  
+      /* -------- Overlay Layer -------- */
+      --gradient-overlay-alpha: .12;           /* Intensität eines optionalen Weiß/Schwarz-Overlays */
+      --gradient-overlay-mode: lighten;        /* lighten | soft-light | overlay etc. */
+      --gradient-noise-opacity: .05;           /* feines Korn über Gradients */
+      --gradient-noise-size: 160px;
+  
+      /* -------- Borders & Rings -------- */
+      --gradient-border-angle: 135deg;
+      --gradient-border-from: var(--gradient-primary-from);
+      --gradient-border-to:   var(--gradient-primary-to);
+  
+      /* -------- Dark/Light Tweaks -------- */
+      --gradient-light-boost: 0%;              /* Helligkeitsschub für Light */
+      --gradient-dark-boost:  0%;              /* …für Dark */
+    }
+  }
+  

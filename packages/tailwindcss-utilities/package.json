@@ -1,12 +1,13 @@
 {
   "name": "@casoon/tailwindcss-utilities",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Utility CSS classes for Tailwind CSS v4",
   "main": "index.css",
   "files": [
     "index.css",
-    "LICENSE",
-    "README.md"
+    "tokens.css",
+    "README.md",
+    "LICENSE"
   ],
   "peerDependencies": {
     "tailwindcss": "^4.0.0"

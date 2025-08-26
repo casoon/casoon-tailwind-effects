@@ -1,0 +1,15 @@
+@layer tokens {
+  :root {
+    /* Sichtbarkeitslogik */
+    --scroll-root-margin: 0px 0px -12% 0px; /* „Offset“ wie bei AOS */
+    --scroll-threshold: .15;                /* 0..1 */
+
+    /* Stagger / Parallax */
+    --scroll-stagger-step: 80ms;
+    --scroll-parallax-max: 40px;
+    --scroll-parallax-scale: 1.06;
+
+    /* Motion-Safety */
+    --scroll-reduce-opacity: 1;
+  }
+}

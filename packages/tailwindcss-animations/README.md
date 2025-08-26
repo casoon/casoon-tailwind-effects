@@ -7,3 +7,5 @@ Animation utilities and keyframes for Tailwind CSS v4.
 @import "tailwindcss";
 @import "@casoon/tailwindcss-animations/index.css";
 ```
+
+**Note:** This package includes its own design tokens in `tokens.css` which are automatically loaded by `index.css`.

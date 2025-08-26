@@ -1,3 +1,6 @@
+/* Import tokens first */
+@import "./tokens.css";
+
 @layer components {
   /* Hero/Section Glow Background (neutral benannt) */
   .bg-orbs-hero {
