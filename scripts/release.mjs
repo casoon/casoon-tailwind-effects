@@ -39,6 +39,7 @@ function listPackages() {
 }
 
 function isVersionPublished(name, version) {
+  if (DRY) return false; // offline/dry-run: skip registry check
   // Query specific version; returns null if not found
   const out = sh(`npm view ${name}@${version} version --silent`);
   return out === version;
@@ -74,7 +75,7 @@ function publishPackage(dir) {
 }
 
 function main() {
-  assertNpmLogin();
+  if (!DRY) assertNpmLogin();
 
   const arg = process.argv[2];
   let targets = [];
