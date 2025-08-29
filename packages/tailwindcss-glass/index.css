@@ -162,6 +162,29 @@
   .glass-glow { box-shadow: 0 0 0 1px color-mix(in oklab, #fff 25%, transparent), 0 12px 32px rgba(255,255,255,.12), inset 0 1px 0 rgba(255,255,255,.25); }
   .glass-shadow { box-shadow: 0 20px 40px rgba(0,0,0,.25); }
   .glass-border-glow { border: 1px solid color-mix(in oklab, #fff 55%, transparent); }
+
+  /* Interactions */
+  .glass-hover:hover { transform: translateY(-2px); box-shadow: var(--glass-shadow-hover); }
+  .glass-focus:focus-visible { outline: none; box-shadow: var(--glass-ring); }
+  .glass-active:active { transform: translateY(1px); }
+
+  /* Sizes */
+  .glass-xs { --_glass-radius: calc(var(--glass-radius) * .6); }
+  .glass-sm { --_glass-radius: calc(var(--glass-radius) * .85); }
+  .glass-md { --_glass-radius: var(--glass-radius); }
+  .glass-lg { --_glass-radius: calc(var(--glass-radius) * 1.25); }
+  .glass-xl { --_glass-radius: calc(var(--glass-radius) * 1.5); }
+
+  /* Shapes */
+  .glass-rounded { border-radius: var(--_glass-radius, var(--glass-radius)); }
+  .glass-pill { border-radius: 9999px; }
+  .glass-hexagon { clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%); }
+
+  /* Overlays */
+  .glass-overlay { position: relative; isolation: isolate; }
+  .glass-overlay::after { content: ""; position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(2px); }
+  .glass-mask { -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent); mask-image: linear-gradient(to bottom, #000 70%, transparent); }
+  .glass-clip { overflow: clip; }
   /* Disabled */
   .glass-button:disabled,
   .glass-button[aria-disabled="true"],

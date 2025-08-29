@@ -100,6 +100,10 @@
     opacity: var(--gradient-noise-opacity);
     mix-blend-mode: var(--gradient-overlay-mode);
   }
+  .gradient-overlay-light { position: relative; isolation: isolate; }
+  .gradient-overlay-light::before { content: ""; position: absolute; inset: 0; mix-blend-mode: screen; background: rgba(255,255,255, .1); }
+  .gradient-overlay-dark { position: relative; isolation: isolate; }
+  .gradient-overlay-dark::before { content: ""; position: absolute; inset: 0; mix-blend-mode: multiply; background: rgba(0,0,0, .08); }
   .gradient-overlay::before {
     /* optional weißes Overlay zur „Milchigkeit“ */
     content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
@@ -242,6 +246,7 @@
   .gradient-pulse  { filter: brightness(1); animation: gradientPulse 2.4s ease-in-out infinite; }
   .gradient-hover:hover { filter: brightness(1.05) saturate(1.05); }
   .gradient-focus:focus-visible { outline: none; box-shadow: var(--gradient-focus-ring); }
+  .gradient-active:active { filter: brightness(1.06) saturate(1.06); }
 
   /* Patterns */
   .gradient-stripes { background-image: repeating-linear-gradient(45deg, color-mix(in oklab, var(--gradient-stop-1) 35%, transparent) 0 12px, transparent 12px 24px); }
@@ -251,6 +256,11 @@
   /* Text effects */
   .gradient-text-3d { text-shadow: 0 1px 0 color-mix(in oklab, currentColor 35%, transparent), 0 2px 0 color-mix(in oklab, currentColor 25%, transparent), 0 3px 0 color-mix(in oklab, currentColor 15%, transparent), 0 4px 6px rgba(0,0,0,.15); }
   .gradient-text-shadow { text-shadow: 0 2px 8px color-mix(in oklab, var(--gradient-stop-1) 35%, transparent); }
+
+  /* Shapes (via clip-path) */
+  .gradient-circle { clip-path: circle(50% at 50% 50%); }
+  .gradient-heart { clip-path: path('M 50 15 C 35 -5, 0 0, 0 30 C 0 55, 25 75, 50 95 C 75 75, 100 55, 100 30 C 100 0, 65 -5, 50 15 Z'); }
+  .gradient-star { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
 
   @keyframes gradientRotate { to { --gradient-conic-angle: 360deg; } }
   @keyframes gradientPulse { 0%,100% { filter: brightness(1) } 50% { filter: brightness(1.08) } }

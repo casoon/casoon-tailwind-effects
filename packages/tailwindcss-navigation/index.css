@@ -200,6 +200,14 @@
     .menu-slide-up[data-open="true"], .menu-slide-up[aria-expanded="true"] { transform: scaleY(1); opacity: 1; }
     .menu-fade-in { opacity: 0; transition: opacity .18s ease; }
     .menu-fade-in[data-open="true"], .menu-fade-in[aria-expanded="true"] { opacity: 1; }
+
+    /* Mobile menu helpers */
+    .mobile-menu-overlay { position: fixed; inset: 0; background: color-mix(in oklab, #000 55%, transparent); opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+    .mobile-menu-overlay[data-open="true"], .mobile-menu-overlay[aria-expanded="true"] { opacity: 1; pointer-events: auto; }
+    .mobile-menu-slide { position: fixed; inset-inline: 0; top: 0; height: 100dvh; transform: translateY(-100%); transition: transform .25s ease; }
+    .mobile-menu-slide[data-open="true"], .mobile-menu-slide[aria-expanded="true"] { transform: translateY(0); }
+    .mobile-menu-fade { position: fixed; inset: 0; opacity: 0; transition: opacity .2s ease; }
+    .mobile-menu-fade[data-open="true"], .mobile-menu-fade[aria-expanded="true"] { opacity: 1; }
   
     /* ===== Optional: Preset-Helper (nutzt deine vordefinierten Light/Dark Tokens) ===== */
     .nav-theme-light {

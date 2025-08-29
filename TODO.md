@@ -48,12 +48,12 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 
 ### Verbesserte Formularelemente mit interaktiven Zuständen
 - [x] **Input-States**: `.input-focus`, `.input-hover`, `.input-active`, `.input-disabled` (als `.cs-input-*` umgesetzt)
-- [ ] **Input-Variants**: `.input-outline`, `.input-filled`, `.input-minimal`
+- [x] **Input-Variants**: `.input-outline`, `.input-filled`, `.input-minimal` (als `.cs-input-*` umgesetzt)
 - [x] **Input-Sizes**: `.input-sm`, `.input-md`, `.input-lg` (als `.cs-input-*` umgesetzt)
 - [~] **Input-Groups**: `.input-group`, `.input-group-vertical`, `.input-group-horizontal` (Basis `.cs-input-group` vorhanden)
 
 ### Erweiterte Button-Utilities
-- [ ] **Button-States**: `.btn-hover`, `.btn-active`, `.btn-focus`, `.btn-disabled`
+- [x] **Button-States**: `.btn-hover`, `.btn-active`, `.btn-focus`, `.btn-disabled` (als `.cs-btn-*` umgesetzt)
 - [x] **Button-Variants**: `.btn-outline`, `.btn-ghost`, `.btn-link`, `.btn-3d` (als `.cs-btn-*` umgesetzt)
 - [x] **Button-Sizes**: `.btn-sm`, `.btn-md`, `.btn-lg`, `.btn-xl` (als `.cs-btn-*` umgesetzt)
 - [x] **Button-Groups**: `.btn-group`, `.btn-group-vertical` (als `.cs-btn-group*` umgesetzt)
@@ -76,7 +76,7 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 ### Mikro-Interaktionen
 - [x] **Menu-Transitions**: `.menu-slide-down`, `.menu-slide-up`, `.menu-fade-in`
 - [x] **Subnav-Animationen**: `.subnav-expand`, `.subnav-collapse`, `.subnav-slide`
-- [ ] **Mobile-Menu**: `.mobile-menu-overlay`, `.mobile-menu-slide`, `.mobile-menu-fade`
+  - [x] **Mobile-Menu**: `.mobile-menu-overlay`, `.mobile-menu-slide`, `.mobile-menu-fade`
 
 ---
 
@@ -86,12 +86,12 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 - [x] **Glass-Variants**: `.glass-frosted`, `.glass-clear`, `.glass-mirror`, `.glass-smoke`
 - [x] **Backdrop-Filters**: `.backdrop-blur-sm`, `.backdrop-blur-md`, `.backdrop-blur-lg`
 - [x] **Glass-Effects**: `.glass-glow`, `.glass-shadow`, `.glass-border-glow`
-- [ ] **Glass-Interactions**: `.glass-hover`, `.glass-focus`, `.glass-active`
+  - [x] **Glass-Interactions**: `.glass-hover`, `.glass-focus`, `.glass-active`
 
 ### Erweiterte Glass-Effekte
-- [ ] **Glass-Sizes**: `.glass-xs`, `.glass-sm`, `.glass-md`, `.glass-lg`, `.glass-xl`
-- [ ] **Glass-Shapes**: `.glass-rounded`, `.glass-pill`, `.glass-hexagon`
-- [ ] **Glass-Overlays**: `.glass-overlay`, `.glass-mask`, `.glass-clip`
+  - [x] **Glass-Sizes**: `.glass-xs`, `.glass-sm`, `.glass-md`, `.glass-lg`, `.glass-xl`
+  - [x] **Glass-Shapes**: `.glass-rounded`, `.glass-pill`, `.glass-hexagon`
+  - [x] **Glass-Overlays**: `.glass-overlay`, `.glass-mask`, `.glass-clip`
 
 ---
 
@@ -99,12 +99,12 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 
 ### Erweiterte Gradient-Effekte
 - [x] **Gradient-Animationen**: `.gradient-shift`, `.gradient-rotate`, `.gradient-pulse`
-- [x] **Gradient-Interactions**: `.gradient-hover`, `.gradient-focus`, `.gradient-active` (teilweise: `.gradient-active` noch offen)
+- [x] **Gradient-Interactions**: `.gradient-hover`, `.gradient-focus`, `.gradient-active`
 - [x] **Gradient-Masks**: `.gradient-mask-radial`, `.gradient-mask-conic`
-- [ ] **Gradient-Overlays**: `.gradient-overlay-light`, `.gradient-overlay-dark`
+- [x] **Gradient-Overlays**: `.gradient-overlay-light`, `.gradient-overlay-dark`
 
 ### Moderne Gradient-Utilities
-- [ ] **Gradient-Shapes**: `.gradient-circle`, `.gradient-heart`, `.gradient-star`
+- [x] **Gradient-Shapes**: `.gradient-circle`, `.gradient-heart`, `.gradient-star`
 - [x] **Gradient-Patterns**: `.gradient-stripes`, `.gradient-dots`, `.gradient-grid`
 - [x] **Gradient-Text-Effekte**: `.gradient-text-3d`, `.gradient-text-shadow`
 
@@ -114,7 +114,7 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 
 ### Erweiterte Orb-Effekte
 - [x] **Orb-Animationen**: `.orb-float`, `.orb-pulse`, `.orb-rotate`, `.orb-bounce`
-- [ ] **Orb-Interactions**: `.orb-hover`, `.orb-focus`, `.orb-active`
+- [x] **Orb-Interactions**: `.orb-hover`, `.orb-focus`, `.orb-active`
 - [x] **Orb-Patterns**: `.orb-stripes`, `.orb-dots`, `.orb-waves`
 - [x] **Orb-Shapes**: `.orb-oval`, `.orb-hexagon`, `.orb-star`
 

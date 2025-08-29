@@ -19,27 +19,36 @@
       "classes": [
         "cs-input", "cs-btn", "cs-card",
         "cs-input-sm", "cs-btn-outline", "cs-grid-12",
+        "cs-input-outline", "cs-input-filled", "cs-input-minimal",
+        "cs-btn-hover", "cs-btn-active", "cs-btn-focus", "cs-btn-disabled",
         "spinner-dots", "spinner-bars", "progress"
       ]
     },
     "tailwindcss-glass": {
       "classes": [
-        "glass-frosted", "backdrop-blur-sm", "glass-border-glow"
+        "glass-frosted", "backdrop-blur-sm", "glass-border-glow",
+        "glass-hover", "glass-focus", "glass-active",
+        "glass-xs", "glass-xl", "glass-pill", "glass-hexagon", "glass-overlay", "glass-mask", "glass-clip"
       ]
     },
     "tailwindcss-gradients": {
       "classes": [
-        "gradient-shift", "gradient-mask-radial", "gradient-stripes"
+        "gradient-shift", "gradient-mask-radial", "gradient-stripes",
+        "gradient-overlay-light", "gradient-overlay-dark", "gradient-active",
+        "gradient-circle", "gradient-heart", "gradient-star"
       ]
     },
     "tailwindcss-orbs": {
       "classes": [
-        "orb-float", "orb-rotate"
+        "orb-float", "orb-rotate",
+        "orb-hover", "orb-focus", "orb-active",
+        "orb-transition-fast", "orb-responsive-md"
       ]
     },
     "tailwindcss-navigation": {
       "classes": [
-        "nav-hover-slide", "nav-active-glow", "subnav-slide"
+        "nav-hover-slide", "nav-active-glow", "subnav-slide",
+        "mobile-menu-overlay", "mobile-menu-slide", "mobile-menu-fade"
       ]
     }
   }

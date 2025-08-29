@@ -56,4 +56,18 @@
   .orb-oval { border-radius: 50% / 40%; }
   .orb-hexagon { clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%); }
   .orb-star { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+
+  /* Interactions */
+  .orb-hover:hover { filter: brightness(1.06) saturate(1.06); }
+  .orb-focus:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in oklab, var(--bg-glow-2) 40%, transparent); }
+  .orb-active:active { transform: translateY(1px); }
+
+  /* Transitions */
+  .orb-transition-fast { transition: all .15s ease; }
+  .orb-transition-slow { transition: all .35s ease; }
+
+  /* Responsive presets (size) */
+  .orb-responsive-sm { width: clamp(80px, 20vw, 140px); height: clamp(80px, 20vw, 140px); }
+  .orb-responsive-md { width: clamp(120px, 28vw, 220px); height: clamp(120px, 28vw, 220px); }
+  .orb-responsive-lg { width: clamp(180px, 40vw, 320px); height: clamp(180px, 40vw, 320px); }
 }
