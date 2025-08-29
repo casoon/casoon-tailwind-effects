@@ -1,0 +1,44 @@
+{
+  "packages": {
+    "tailwindcss-animations": {
+      "classes": [
+        "hover-lift-sm", "hover-lift-md", "hover-lift-lg",
+        "hover-scale-105", "hover-rotate-1", "hover-skew-x-1",
+        "transition-fast", "ease-bounce", "delay-100"
+      ]
+    },
+    "tailwindcss-scroll": {
+      "classes": [
+        "scroll", "scroll-in", "scroll-parallax",
+        "scroll-parallax-slow", "scroll-stagger-2",
+        "scroll-trigger-top"
+      ]
+    },
+    "tailwindcss-utilities": {
+      "classes": [
+        "cs-input", "cs-btn", "cs-card",
+        "cs-input-sm", "cs-btn-outline", "cs-grid-12"
+      ]
+    },
+    "tailwindcss-glass": {
+      "classes": [
+        "glass-frosted", "backdrop-blur-sm"
+      ]
+    },
+    "tailwindcss-gradients": {
+      "classes": [
+        "gradient-shift"
+      ]
+    },
+    "tailwindcss-orbs": {
+      "classes": [
+        "orb-float"
+      ]
+    },
+    "tailwindcss-navigation": {
+      "classes": [
+        "nav-hover-slide"
+      ]
+    }
+  }
+}

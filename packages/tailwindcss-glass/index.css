@@ -399,3 +399,15 @@
     .glass-slide-card { min-height: 240px; padding: 1.5rem; }
   }
 }
+
+/* Additional Effects (TODO Phase 1) */
+@layer components {
+  .glass-frosted { --_glass-blur: clamp(10px, 1.5vw, 16px); --_glass-bg: color-mix(in oklab, #fff 12%, transparent); }
+  .glass-clear   { --_glass-blur: 0px; --_glass-bg: color-mix(in oklab, #fff 6%, transparent); }
+  .glass-smoke   { --_glass-blur: clamp(6px, 1vw, 12px); --_glass-bg: color-mix(in oklab, #000 12%, transparent); }
+  .glass-mirror  { --_glass-blur: clamp(8px, 1.2vw, 14px); --_glass-bg: color-mix(in oklab, #fff 18%, transparent); }
+
+  .backdrop-blur-sm { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  .backdrop-blur-md { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .backdrop-blur-lg { -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+}

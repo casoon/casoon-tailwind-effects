@@ -226,3 +226,8 @@
     100% { background-position: 0% 50% }
   }
 }
+
+/* Aliases */
+@layer components {
+  .gradient-shift { @apply gradient-bg-animated; }
+}

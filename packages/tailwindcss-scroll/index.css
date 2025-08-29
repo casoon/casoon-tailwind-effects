@@ -84,6 +84,10 @@
     transform: translate3d(var(--sx,0), var(--sy,0), 0) scale(var(--ss,1));
   }
 
+  /* Speed presets for parallax (adjust factor used by JS) */
+  .scroll-parallax-slow { --scroll-parallax-scale: .5 }
+  .scroll-parallax-fast { --scroll-parallax-scale: 1.0 }
+
   /* Motion-Safety */
   @media (prefers-reduced-motion: reduce) {
     .scroll, .scroll-in, .anim {
@@ -96,4 +100,16 @@
       transition: none !important;
     }
   }
+}
+
+@layer utilities {
+  /* Stagger presets */
+  .scroll-stagger-2 > * { --scroll-stagger-step: 120ms }
+  .scroll-stagger-3 > * { --scroll-stagger-step: 160ms }
+  .scroll-stagger-4 > * { --scroll-stagger-step: 200ms }
+
+  /* Trigger helpers (interpreted in JS via offset) */
+  .scroll-trigger-top { --scroll-trigger: top }
+  .scroll-trigger-center { --scroll-trigger: center }
+  .scroll-trigger-bottom { --scroll-trigger: bottom }
 }

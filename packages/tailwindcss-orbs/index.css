@@ -34,3 +34,12 @@
       radial-gradient(400px circle at 40% 80%, color-mix(in oklab, var(--bg-glow-3) 30%, transparent), transparent 60%);
   }
 }
+
+@layer components {
+  @keyframes orbFloat {
+    0% { transform: translateY(0) }
+    50% { transform: translateY(-10px) }
+    100% { transform: translateY(0) }
+  }
+  .orb-float { animation: orbFloat 6s ease-in-out infinite; }
+}

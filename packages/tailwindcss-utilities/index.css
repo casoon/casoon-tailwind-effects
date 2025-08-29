@@ -140,6 +140,9 @@
     padding: 0.5rem 0.75rem;
     line-height: 1.5;
   }
+  /* Sizes */
+  .cs-input-sm { padding: 0.375rem 0.5rem; font-size: .9rem; }
+  .cs-input-lg { padding: 0.75rem 1rem; font-size: 1.05rem; }
   .cs-input::placeholder { color: var(--cs-text-muted); }
   .cs-input:focus {
     outline: none;
@@ -160,6 +163,14 @@
       background-color var(--cs-transition-base) ease,
       border-color var(--cs-transition-base) ease;
   }
+  .cs-btn-outline {
+    background: transparent;
+    color: var(--cs-text-primary);
+    border-color: color-mix(in oklab, var(--cs-border-color) 80%, transparent);
+  }
+  .cs-btn-ghost { background: transparent; border-color: transparent; }
+  .cs-btn-link { background: transparent; border-color: transparent; padding-inline: .25rem; }
+  .cs-btn-3d:hover { transform: translateY(-2px); box-shadow: var(--cs-shadow-2); }
   .cs-btn:hover {
     border-color: color-mix(in oklab, var(--cs-border-color) 70%, transparent);
   }

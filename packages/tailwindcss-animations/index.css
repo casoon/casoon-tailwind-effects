@@ -168,4 +168,65 @@
       .anim { animation-timing-function: ease; }
     }
   }
+
+  /* ============================================================
+     Erweiterte Hover-Utilities (TODO Phase 1)
+     ============================================================ */
+  @layer utilities {
+    /* Lift Variants */
+    .hover-lift-sm { transition: transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-lift-sm:hover { transform: translateY(-2px); box-shadow: 0 6px 12px color-mix(in oklab, #000 10%, transparent); }
+    .hover-lift-md { transition: transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-lift-md:hover { transform: translateY(-4px); box-shadow: 0 10px 18px color-mix(in oklab, #000 14%, transparent); }
+    .hover-lift-lg { transition: transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-lift-lg:hover { transform: translateY(-6px); box-shadow: 0 16px 28px color-mix(in oklab, #000 18%, transparent); }
+
+    /* Scale */
+    .hover-scale-105 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-scale-105:hover { transform: scale(1.05); }
+    .hover-scale-110 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-scale-110:hover { transform: scale(1.10); }
+    .hover-scale-125 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-scale-125:hover { transform: scale(1.25); }
+
+    /* Rotate */
+    .hover-rotate-1 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-rotate-1:hover { transform: rotate(.5deg); }
+    .hover-rotate-2 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-rotate-2:hover { transform: rotate(1deg); }
+    .hover-rotate-3 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-rotate-3:hover { transform: rotate(2deg); }
+
+    /* Skew */
+    .hover-skew-x-1 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-skew-x-1:hover { transform: skewX(2deg); }
+    .hover-skew-y-1 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-skew-y-1:hover { transform: skewY(2deg); }
+
+    /* Blur / Brightness */
+    .hover-blur-sm { transition: filter var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-blur-sm:hover { filter: blur(2px); }
+    .hover-blur-md { transition: filter var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-blur-md:hover { filter: blur(3px); }
+    .hover-blur-lg { transition: filter var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-blur-lg:hover { filter: blur(4px); }
+    .hover-brightness-110 { transition: filter var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-brightness-110:hover { filter: brightness(1.10); }
+    .hover-brightness-125 { transition: filter var(--anim-duration-sm) var(--anim-ease-standard); }
+    .hover-brightness-125:hover { filter: brightness(1.25); }
+
+    /* Transition/Easing Presets */
+    .transition-fast   { transition-duration: var(--anim-duration-xs); }
+    .transition-normal { transition-duration: var(--anim-duration-sm); }
+    .transition-slow   { transition-duration: var(--anim-duration-lg); }
+    .ease-bounce { transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
+    .ease-elastic { transition-timing-function: cubic-bezier(.5,1.7,.3,.85); }
+    .ease-back { transition-timing-function: cubic-bezier(.33,1.4,.6,1); }
+
+    /* Delay utilities */
+    .delay-100 { transition-delay: 100ms; --anim-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; --anim-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; --anim-delay: 300ms; }
+    .delay-500 { transition-delay: 500ms; --anim-delay: 500ms; }
+  }
   
