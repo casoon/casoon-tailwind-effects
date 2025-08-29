@@ -103,6 +103,19 @@ pnpm add @casoon/tailwindcss-effects
 </div>
 ```
 
+### Loading, Spinners & Progress
+```html
+<div class="flex items-center gap-4">
+  <div class="spinner spinner-dots"><span></span></div>
+  <div class="spinner-rings"></div>
+  <div class="spinner-bars"></div>
+</div>
+
+<div class="progress progress-striped progress-animated mt-4" style="--progress: 60%">
+  <div class="progress-fill"></div>
+</div>
+```
+
 ### Layout Utilities
 ```html
 <div class="cs-container">
@@ -121,6 +134,13 @@ pnpm add @casoon/tailwindcss-effects
   <a href="#" class="nav-link">About</a>
   <a href="#" class="nav-link nav-link--primary">Get Started</a>
 </nav>
+```
+
+### Glass Glow
+```html
+<div class="glass glass-glow p-6">
+  <h3 class="text-white font-semibold">Glowing Glass</h3>
+</div>
 ```
 
 ## 🎨 Available Utilities
@@ -239,5 +259,4 @@ For detailed documentation on each package, see the individual README files in e
 ---
 
 **Made with ❤️ by the Casoon team**
-
 

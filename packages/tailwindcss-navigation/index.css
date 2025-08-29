@@ -117,6 +117,24 @@
       opacity: 0; pointer-events: none;
       transition: opacity .18s ease, transform .18s ease; z-index: 50;
     }
+    /* Subnav animation variants */
+    .subnav-expand .subnav-panel { transform: scale(.96); }
+    .subnav-expand:hover > .subnav-panel,
+    .subnav-expand:focus-within > .subnav-panel,
+    .subnav-expand[data-open="true"] > .subnav-panel,
+    .subnav-expand .subnav-toggle[aria-expanded="true"] + .subnav-panel { transform: scale(1); opacity: 1; }
+
+    .subnav-slide .subnav-panel { transform: translateY(-6px); }
+    .subnav-slide:hover > .subnav-panel,
+    .subnav-slide:focus-within > .subnav-panel,
+    .subnav-slide[data-open="true"] > .subnav-panel,
+    .subnav-slide .subnav-toggle[aria-expanded="true"] + .subnav-panel { transform: translateY(0); opacity: 1; }
+
+    .subnav-collapse .subnav-panel { transform: scaleY(.96); transform-origin: top; }
+    .subnav-collapse:hover > .subnav-panel,
+    .subnav-collapse:focus-within > .subnav-panel,
+    .subnav-collapse[data-open="true"] > .subnav-panel,
+    .subnav-collapse .subnav-toggle[aria-expanded="true"] + .subnav-panel { transform: scaleY(1); opacity: 1; }
     /* Öffnen via :hover / :focus-within / data-open / aria-expanded */
     .subnav:hover > .subnav-panel,
     .subnav:focus-within > .subnav-panel,

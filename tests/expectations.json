@@ -4,40 +4,42 @@
       "classes": [
         "hover-lift-sm", "hover-lift-md", "hover-lift-lg",
         "hover-scale-105", "hover-rotate-1", "hover-skew-x-1",
-        "transition-fast", "ease-bounce", "delay-100"
+        "transition-fast", "ease-bounce", "delay-700",
+        "stagger-3", "shake-horizontal"
       ]
     },
     "tailwindcss-scroll": {
       "classes": [
         "scroll", "scroll-in", "scroll-parallax",
         "scroll-parallax-slow", "scroll-stagger-2",
-        "scroll-trigger-top"
+        "scroll-trigger-center", "scroll-loop-alternate"
       ]
     },
     "tailwindcss-utilities": {
       "classes": [
         "cs-input", "cs-btn", "cs-card",
-        "cs-input-sm", "cs-btn-outline", "cs-grid-12"
+        "cs-input-sm", "cs-btn-outline", "cs-grid-12",
+        "spinner-dots", "spinner-bars", "progress"
       ]
     },
     "tailwindcss-glass": {
       "classes": [
-        "glass-frosted", "backdrop-blur-sm"
+        "glass-frosted", "backdrop-blur-sm", "glass-border-glow"
       ]
     },
     "tailwindcss-gradients": {
       "classes": [
-        "gradient-shift"
+        "gradient-shift", "gradient-mask-radial", "gradient-stripes"
       ]
     },
     "tailwindcss-orbs": {
       "classes": [
-        "orb-float"
+        "orb-float", "orb-rotate"
       ]
     },
     "tailwindcss-navigation": {
       "classes": [
-        "nav-hover-slide"
+        "nav-hover-slide", "nav-active-glow", "subnav-slide"
       ]
     }
   }

@@ -244,6 +244,52 @@
   .cs-safe-pb { padding-bottom: env(safe-area-inset-bottom, 0px); }
   .cs-safe-pt { padding-top: env(safe-area-inset-top, 0px); }
 
+  /* ===== Loading / Spinners / Progress ===== */
+  @keyframes csSpin { to { transform: rotate(360deg) } }
+  @keyframes csPulse { 0%,100%{ opacity: .4 } 50%{ opacity: 1 } }
+  @keyframes csBar { 0%{ transform: translateX(-100%) } 100%{ transform: translateX(100%) } }
+
+  /* Base spinner container */
+  .spinner { display: inline-grid; place-items: center; width: 2rem; height: 2rem; }
+  .spinner-sm { width: 1.25rem; height: 1.25rem; }
+  .spinner-lg { width: 2.75rem; height: 2.75rem; }
+
+  /* Dots */
+  .spinner-dots { display: inline-flex; gap: .3rem; }
+  .spinner-dots::before, .spinner-dots::after, .spinner-dots span {
+    content: ""; width: .45em; height: .45em; border-radius: 50%; background: currentColor; animation: csPulse 1s ease-in-out infinite;
+  }
+  .spinner-dots::after { animation-delay: .2s }
+  .spinner-dots span { animation-delay: .4s }
+
+  /* Bars */
+  .spinner-bars { position: relative; overflow: hidden; width: 4rem; height: .35rem; border-radius: 999px; background: color-mix(in oklab, currentColor 12%, transparent); }
+  .spinner-bars::after { content: ""; position: absolute; inset: 0; width: 40%; background: currentColor; border-radius: inherit; animation: csBar 1s linear infinite; }
+
+  /* Rings */
+  .spinner-rings { width: 2rem; height: 2rem; border-radius: 50%; border: 2px solid color-mix(in oklab, currentColor 30%, transparent); border-top-color: currentColor; animation: csSpin .8s linear infinite; }
+
+  /* Pulse */
+  .spinner-pulse { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: currentColor; animation: csPulse 1s ease-in-out infinite; }
+
+  /* Generic loading state */
+  .loading { pointer-events: none; opacity: .7; }
+
+  /* Overlay */
+  .loading-overlay { position: relative; }
+  .loading-overlay::after { content: ""; position: absolute; inset: 0; background: color-mix(in oklab, var(--cs-bg-page) 45%, transparent); backdrop-filter: blur(2px); }
+
+  /* Skeleton */
+  .loading-skeleton { position: relative; overflow: hidden; background: color-mix(in oklab, currentColor 8%, transparent); border-radius: var(--cs-radius); }
+  .loading-skeleton::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, color-mix(in oklab, currentColor 15%, transparent), transparent); transform: translateX(-100%); animation: csBar 1.2s ease-in-out infinite; }
+
+  /* Progress */
+  .progress { height: .5rem; background: color-mix(in oklab, currentColor 12%, transparent); border-radius: 999px; overflow: hidden; }
+  .progress > .progress-fill { height: 100%; background: currentColor; width: var(--progress, 0%); transition: width .2s ease; }
+  .progress-striped > .progress-fill { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.35) 0 10px, rgba(255,255,255,.15) 10px 20px); }
+  .progress-animated > .progress-fill { position: relative; }
+  .progress-animated > .progress-fill::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent); animation: csBar 1s linear infinite; }
+
   /* ===== Utility Alignment ===== */
   .cs-center { display: grid; place-items: center; }
   .cs-max-w-prose { max-width: 70ch; }
