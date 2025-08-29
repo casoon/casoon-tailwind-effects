@@ -42,4 +42,18 @@
     100% { transform: translateY(0) }
   }
   .orb-float { animation: orbFloat 6s ease-in-out infinite; }
+  @keyframes orbPulse { 0%,100%{ transform: scale(1) } 50%{ transform: scale(1.06) } }
+  @keyframes orbRotate { to { transform: rotate(360deg) } }
+  @keyframes orbBounce { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-6px) } }
+  .orb-pulse { animation: orbPulse 2.2s ease-in-out infinite; }
+  .orb-rotate { animation: orbRotate 12s linear infinite; }
+  .orb-bounce { animation: orbBounce 1.4s ease-in-out infinite; }
+
+  /* Patterns & shapes */
+  .orb-stripes { background: repeating-conic-gradient(from 0deg, color-mix(in oklab, var(--bg-glow-2) 30%, transparent) 0 10deg, transparent 10deg 20deg); }
+  .orb-dots { background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.25) 2px, transparent 3px) 0 0 / 12px 12px; }
+  .orb-waves { background: radial-gradient(60px circle at 50% 50%, color-mix(in oklab, var(--bg-glow-3) 35%, transparent), transparent 60%); }
+  .orb-oval { border-radius: 50% / 40%; }
+  .orb-hexagon { clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%); }
+  .orb-star { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
 }

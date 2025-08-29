@@ -230,4 +230,11 @@
 /* Aliases */
 @layer components {
   .gradient-shift { @apply gradient-bg-animated; }
+  .gradient-rotate { background: conic-gradient(from var(--gradient-conic-angle) at var(--gradient-position), var(--gradient-stop-1), var(--gradient-stop-2), var(--gradient-stop-3)); animation: gradientRotate 6s linear infinite; }
+  .gradient-pulse  { filter: brightness(1); animation: gradientPulse 2.4s ease-in-out infinite; }
+  .gradient-hover:hover { filter: brightness(1.05) saturate(1.05); }
+  .gradient-focus:focus-visible { outline: none; box-shadow: var(--gradient-focus-ring); }
+
+  @keyframes gradientRotate { to { --gradient-conic-angle: 360deg; } }
+  @keyframes gradientPulse { 0%,100% { filter: brightness(1) } 50% { filter: brightness(1.08) } }
 }

@@ -149,6 +149,39 @@
       transform: translateX(-100%); transition: transform .25s ease; z-index: -1;
     }
     .nav-hover-slide .nav-link:hover::after { transform: translateX(0); }
+
+    /* Hover fade */
+    .nav-hover-fade .nav-link { transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .nav-hover-fade .nav-link:hover { background: var(--nav-bg-hover); color: var(--nav-fg-hover); }
+
+    /* Hover scale */
+    .nav-hover-scale .nav-link { transition: transform .15s ease; }
+    .nav-hover-scale .nav-link:hover { transform: scale(1.04); }
+
+    /* Active states */
+    .nav-active-glow .nav-link[aria-current="page"],
+    .nav-active-glow .nav-link[data-active="true"] {
+      box-shadow: 0 0 0 2px color-mix(in oklab, var(--nav-accent-from) 60%, transparent);
+    }
+    .nav-active-pulse .nav-link[aria-current="page"],
+    .nav-active-pulse .nav-link[data-active="true"] { animation: navPulse .9s ease-in-out; }
+    .nav-active-bounce .nav-link[aria-current="page"],
+    .nav-active-bounce .nav-link[data-active="true"] { animation: navBounce .6s ease; }
+    @keyframes navPulse { 0%{ transform: scale(1) } 50%{ transform: scale(1.04) } 100%{ transform: scale(1) } }
+    @keyframes navBounce { 0%{ transform: translateY(0) } 50%{ transform: translateY(-2px) } 100%{ transform: translateY(0) } }
+
+    /* Focus enhancers */
+    .nav-focus-ring .nav-link:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--nav-focus-ring, color-mix(in oklab, var(--nav-accent-to) 55%, transparent)); }
+    .nav-focus-glow .nav-link:focus-visible { outline: none; box-shadow: 0 0 0 4px color-mix(in oklab, var(--nav-accent-to) 35%, transparent); }
+    .nav-focus-scale .nav-link:focus-visible { transform: scale(1.04); }
+
+    /* Menu transitions (utility containers) */
+    .menu-slide-down { transform-origin: top; transform: scaleY(.98); opacity: 0; transition: transform .18s ease, opacity .18s ease; }
+    .menu-slide-down[data-open="true"], .menu-slide-down[aria-expanded="true"] { transform: scaleY(1); opacity: 1; }
+    .menu-slide-up { transform-origin: bottom; transform: scaleY(1.02); opacity: 0; transition: transform .18s ease, opacity .18s ease; }
+    .menu-slide-up[data-open="true"], .menu-slide-up[aria-expanded="true"] { transform: scaleY(1); opacity: 1; }
+    .menu-fade-in { opacity: 0; transition: opacity .18s ease; }
+    .menu-fade-in[data-open="true"], .menu-fade-in[aria-expanded="true"] { opacity: 1; }
   
     /* ===== Optional: Preset-Helper (nutzt deine vordefinierten Light/Dark Tokens) ===== */
     .nav-theme-light {

@@ -61,10 +61,17 @@
         if (s === 'false') return false;
         return Boolean(s);
       };
+      const classes = el.classList;
+      let trigger = 'top';
+      if (classes.contains('scroll-trigger-center')) trigger = 'center';
+      if (classes.contains('scroll-trigger-bottom')) trigger = 'bottom';
+      const trigAttr = el.getAttribute('data-scroll-trigger');
+      if (trigAttr) trigger = trigAttr;
       return {
         once: f('data-scroll-once', DEFAULTS.once),
         mirror: f('data-scroll-mirror', DEFAULTS.mirror),
         offset: parseInt(v('data-scroll-offset', '0'), 10),
+        trigger,
         parallaxY: parseFloat(v('data-scroll-parallax-y', '0')),
         parallaxX: parseFloat(v('data-scroll-parallax-x', '0')),
         parallaxScale: parseFloat(v('data-scroll-parallax-scale', '0')),
@@ -126,6 +133,12 @@
     const getVar = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
     const pxVar  = (n) => parseFloat(getVar(n)) || 0;
   
+    function triggerOptions(trigger) {
+      if (trigger === 'center') return { threshold: 0.5, rootMargin: DEFAULTS.rootMargin };
+      if (trigger === 'bottom') return { threshold: 0.05, rootMargin: DEFAULTS.rootMargin };
+      return { threshold: DEFAULTS.threshold, rootMargin: DEFAULTS.rootMargin };
+    }
+
     function setup() {
       const els = selectElements();
   
@@ -141,10 +154,11 @@
           el.classList.add('scroll-fade');
         }
         // IO mit individuellem offset
+        const trig = triggerOptions(opt.trigger);
         const io = new IntersectionObserver(onIntersect, {
           root: DEFAULTS.root,
-          rootMargin: computeRootMargin(opt.offset),
-          threshold: DEFAULTS.threshold
+          rootMargin: computeRootMargin(opt.offset) || trig.rootMargin,
+          threshold: trig.threshold
         });
         io.observe(el);
         STATE.items.push({ el, io });

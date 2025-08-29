@@ -112,4 +112,18 @@
   .scroll-trigger-top { --scroll-trigger: top }
   .scroll-trigger-center { --scroll-trigger: center }
   .scroll-trigger-bottom { --scroll-trigger: bottom }
+
+  /* Loop helpers */
+  .scroll-loop { --anim-iter: infinite }
+  .scroll-loop-reverse { --anim-iter: infinite; --anim-direction: reverse }
+  .scroll-loop-alternate { --anim-iter: infinite; --anim-direction: alternate }
+  
+  /* Micro interactions */
+  .scroll-hover-lift { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }
+  .scroll-hover-lift:hover { transform: translateY(-2px); }
+  .scroll-hover-scale:hover { transform: scale(1.04); }
+  .scroll-focus-ring:focus-visible { outline: none; box-shadow: var(--anim-focus-ring); }
+  .scroll-focus-glow:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in oklab, var(--cs-focus-color, #3b82f6) 70%, transparent); }
+  .scroll-active-pulse { animation-name: anim-pulse; }
+  .scroll-active-bounce { animation-name: anim-bounce; }
 }
