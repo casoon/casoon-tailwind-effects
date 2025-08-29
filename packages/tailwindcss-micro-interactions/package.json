@@ -1,0 +1,21 @@
+{
+  "name": "@casoon/tailwindcss-micro-interactions",
+  "version": "0.4.2",
+  "type": "module",
+  "exports": {
+    "./index.css": "./index.css"
+  },
+  "files": [
+    "index.css",
+    "tokens.css",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT"
+}

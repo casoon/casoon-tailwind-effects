@@ -98,6 +98,10 @@ A comprehensive utility library for Tailwind CSS v4, providing practical layout 
 - **`.cs-btn`** - Button component with hover states
 - **`.cs-field`** - Form field with label spacing
 - **`.cs-field-inline`** - Inline form field layout
+ - **`.cs-input-group`** - Horizontal input group wrapper (merged borders)
+ - **`.cs-input-group-horizontal`** - Explicit horizontal group
+ - **`.cs-input-group-vertical`** - Vertical stacked group
+ - **`.cs-input-addon`** - Text/label/button addon visually attached to inputs
 
 ### Accessibility & Focus
 - **`.cs-focus-ring`** - Consistent focus ring styling
@@ -154,6 +158,31 @@ A comprehensive utility library for Tailwind CSS v4, providing practical layout 
   
   <button type="submit" class="cs-btn">Submit</button>
 </form>
+```
+
+### Input Groups & Addons
+Horizontal group with leading addon:
+```html
+<div class="cs-input-group">
+  <span class="cs-input-addon">@</span>
+  <input type="text" class="cs-input" placeholder="username" />
+  <span class="cs-input-addon">.com</span>
+  <button class="cs-input-addon">Check</button>
+  <!-- The group will show a unified focus outline when any child is focused -->
+  <!-- Tip: Wrap the entire group in a <label> for clickable prefix/suffix semantics -->
+  <!-- Focus state is applied via :focus-within on the group container -->
+</div>
+```
+
+Vertical group (stacked inputs merged):
+```html
+<div class="cs-input-group-vertical" style="max-width: 24rem">
+  <input type="text" class="cs-input" placeholder="First name" />
+  <input type="text" class="cs-input" placeholder="Last name" />
+  <div class="cs-input-addon">Optional note</div>
+  <button class="cs-btn">Save</button>
+  <!-- .cs-input-group-vertical merges adjacent borders and rounds first/last -->
+</div>
 ```
 
 ### Card Grid with Hover Effects

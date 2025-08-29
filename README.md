@@ -24,6 +24,8 @@ A collection of **CSS-first** libraries that provide beautiful visual effects an
 | [`@casoon/tailwindcss-utilities`](./packages/tailwindcss-utilities) | Layout utilities, cards, text effects & responsive helpers | ~8KB |
 | [`@casoon/tailwindcss-navigation`](./packages/tailwindcss-navigation) | Navigation components, variants & subnav systems | ~12KB |
 | [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package that imports all effects | ~60KB |
+| [`@casoon/tailwindcss-loading`](./packages/tailwindcss-loading) | Skeletons, progress indicators, and loading overlays | ~3KB |
+| [`@casoon/tailwindcss-micro-interactions`](./packages/tailwindcss-micro-interactions) | Click/Hover/Focus micro‑interaction utilities | ~2KB |
 
 ## 🚀 Quick Start
 
@@ -47,6 +49,8 @@ Import only the packages you need:
 @import "@casoon/tailwindcss-scroll/index.css";
 @import "@casoon/tailwindcss-utilities/index.css";
 @import "@casoon/tailwindcss-navigation/index.css";
+@import "@casoon/tailwindcss-loading/index.css";
+@import "@casoon/tailwindcss-micro-interactions/index.css";
 ```
 
 ## 📋 Requirements
@@ -146,53 +150,51 @@ pnpm add @casoon/tailwindcss-effects
 ## 🎨 Available Utilities
 
 ### Animations (`@casoon/tailwindcss-animations`)
-- Animation utilities and keyframes for Tailwind CSS v4
-- Custom animation classes and transitions
-- Performance-optimized CSS animations
+- Core keyframes and timing/easing utilities
+- Hover utilities: `hover-lift-*`, `hover-scale-*`, `hover-rotate-*`, `hover-skew-*`, `hover-blur-*`, `hover-brightness-*`
+- Timing helpers: `transition-*`, `delay-700`, `stagger-1..5`, `ease-*`
+- Extra effects: `morph-*`, `wave-*`, `shake-*`, `pulse-{slow,fast,bounce}`
 
 ### Glassmorphism (`@casoon/tailwindcss-glass`)
-- `.glass` - Base glassmorphism component
-- `.glass-sm`, `.glass-md`, `.glass-lg` - Size variants
-- `.glass-border` - Border variants
-- `.glass-shadow` - Shadow variants
+- Variants: `.glass-frosted`, `.glass-clear`, `.glass-smoke`, `.glass-mirror`
+- Interactions: `.glass-hover`, `.glass-focus`, `.glass-active`
+- Backdrop filters: `.backdrop-blur-(sm|md|lg)`
+- Sizing & shape: `.glass-(xs|sm|md|lg|xl)`, `.glass-(rounded|pill|hexagon)`
+- Overlays: `.glass-(overlay|mask|clip)`, glow: `.glass-(glow|border-glow|shadow)`
 
 ### Orbs (`@casoon/tailwindcss-orbs`)
-- `.orb-bg` - Orb background container
-- `.orb-size-*` - Size variants (sm, md, lg, xl)
-- `.orb-color-*` - Color variants with opacity support
+- Animations: `.orb-(float|pulse|rotate|bounce)`
+- Patterns & shapes: `.orb-(stripes|dots|waves)`, `.orb-(oval|hexagon|star)`
+- Interactions & UX: `.orb-(hover|focus|active)`, `.orb-transition-(fast|slow)`
+- Responsive sizes: `.orb-responsive-(sm|md|lg)`
 
 ### Gradients (`@casoon/tailwindcss-gradients`)
-- `.gradient-bg`, `.gradient-bg-linear`, `.gradient-bg-radial`, `.gradient-bg-conic`
-- `.gradient-bg-animated` - animated brand gradient
-- `.gradient-text`, `.gradient-accent-text` - text gradients
-- `.gradient-overlay`, `.gradient-interactive`, `.gradient-focusable`
-- `.gradient-border`, `.gradient-ring` - gradient borders/rings
-- Presets: `.gradient-accent`, `.gradient-primary`, `.gradient-success`, `.gradient-warning`, `.gradient-neutral`
+- Backgrounds: `.gradient-bg(-linear|-radial|-conic)`, `.gradient-bg-animated`
+- Helpers: `.gradient-(rotate|pulse|hover|focus|active)`
+- Masks & overlays: `.gradient-mask-(radial|conic)`, `.gradient-overlay-(light|dark)`
+- Patterns & text: `.gradient-(stripes|dots|grid)`, `.gradient-text(-3d|-shadow)`
+- Presets: `.gradient-(accent|primary|success|warning|neutral)`
 
 ### Scroll Animations (`@casoon/tailwindcss-scroll`)
-- `.scroll` - base (hidden until in-view)
-- `.scroll-in` - activate animation
-- Effect aliases: `.scroll-fade*`, `.scroll-slide-*`, `.scroll-zoom-*`, `.scroll-rotate-in`, `.scroll-reveal-3d-*`, `.scroll-blur-in`
-- Timing: `.scroll-delay-*`, `.scroll-fast|normal|slow`, `.scroll-loop`
-- Helpers: `.scroll-stagger`, `.scroll-parallax`
+- Effects: `.scroll-fade*`, `.scroll-slide-*`, `.scroll-zoom-*`, `.scroll-rotate-in`, `.scroll-reveal-3d-*`, `.scroll-blur-in`
+- Timing/loop: `.scroll-delay-*`, `.scroll-(fast|normal|slow)`, `.scroll-loop{,-reverse,-alternate}`
+- Triggers: `.scroll-trigger-(top|center|bottom)` influence IO threshold
+- Helpers: `.scroll-stagger{,-2,-3,-4}`, `.scroll-parallax{,-slow,-fast}`
+- Micro UX: `.scroll-hover-lift`, `.scroll-hover-scale`, `.scroll-focus-(ring|glow)`, `.scroll-active-(pulse|bounce)`
 
 ### Utilities (`@casoon/tailwindcss-utilities`)
-- **Page/Surface**: `.cs-page`, `.cs-surface`, `.cs-surface-elevated`
-- **Layout**: `.cs-container`, `.cs-section`, `.cs-stack(-sm|-lg)`, `.cs-cluster`, `.cs-grid-cards`, `.cs-grid-sidebar`, `.cs-grid-12`, `.cs-col-span`
-- **Hero**: `.cs-hero`
-- **Cards**: `.cs-card`, `.cs-card-hover-lift`, `.cs-card-pad`, `.cs-card-pad-lg`, `.cs-card-inset`
-- **Typography**: `.cs-text-primary`, `.cs-text-secondary`, `.cs-text-muted`, `.cs-text-balance`, `.cs-text-pretty`, `.cs-text-truncate`, `.cs-text-2lines`, `.cs-hyphens-auto`
-- **Media/Aspect**: `.cs-aspect`, `.cs-aspect-square`, `.cs-media-fit-cover`, `.cs-media-fit-contain`, `.cs-media-rounded`
-- **Forms/Buttons**: `.cs-input`, `.cs-btn`, `.cs-field`, `.cs-field-inline`
-- **A11y/Focus**: `.cs-focus-ring`, `.cs-visually-hidden`, `.cs-kbd`
-- **Helpers**: `.cs-safe-pi`, `.cs-safe-pb`, `.cs-safe-pt`, `.cs-center`, `.cs-max-w-prose`
+- Page/Surface/Layout: `.cs-page`, `.cs-surface`, `.cs-container`, `.cs-section`, stacks/grids
+- Forms: `.cs-input(-sm|-lg)`, variants `.cs-input-(outline|filled|minimal)`, groups `.cs-input-group`
+- Buttons: `.cs-btn`, variants `.cs-btn-(outline|ghost|link|3d)`, sizes `.cs-btn-(sm|lg|xl)`, groups `.cs-btn-group{,-vertical}`
+- Loading: `.spinner-(dots|bars|rings|pulse)`, `.loading`, `.loading-overlay`, `.loading-skeleton`, `.progress{,-striped,-animated}`
+- Cards, Media, Typography, A11y helpers as before
 
 ### Navigation (`@casoon/tailwindcss-navigation`)
-- **Core**: `.nav`, `.nav-link`, `.nav-item` with flexible orientation
-- **Variants**: `.nav--underline`, `.nav--tabs`, `.nav--pills`, `.nav--ghost`
-- **Density**: `.nav--compact`, `.nav--roomy` for different spacing needs
-- **Special**: `.nav-link--primary` CTA button with enhanced hover effects
-- **Advanced**: Subnav panels, flyout menus, and responsive navigation patterns
+- Core/Variants/Density as before
+- Hovers: `.nav-hover-(slide|fade|scale)`
+- Active/Focus: `.nav-active-(glow|pulse|bounce)`, `.nav-focus-(ring|glow|scale)`
+- Subnav: `.subnav-(expand|slide|collapse)`
+- Mobile: `.mobile-menu-(overlay|slide|fade)`
 
 ## 🎯 Key Features
 
@@ -259,4 +261,13 @@ For detailed documentation on each package, see the individual README files in e
 ---
 
 **Made with ❤️ by the Casoon team**
+### Loading (`@casoon/tailwindcss-loading`)
+- Skeletons: `.skeleton`, `.skeleton-text`, `.skeleton-avatar`
+- Progress: `.progress-circle`, `.progress-steps`, `.progress-timeline`
+- Overlays/Spinners: `.loading-spinner`, `.loading-dots`, `.loading-bars`
 
+### Micro‑Interactions (`@casoon/tailwindcss-micro-interactions`)
+- Click: `.click-ripple`, `.click-bounce`, `.click-squish`
+- Hover: `.hover-magnetic`, `.hover-tilt`, `.hover-float`
+- Focus: `.focus-glow`, `.focus-scale`, `.focus-rotate`
+- State: `.state-loading`, `.state-success`, `.state-error`

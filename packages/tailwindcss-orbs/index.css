@@ -59,6 +59,15 @@
 
   /* Interactions */
   .orb-hover:hover { filter: brightness(1.06) saturate(1.06); }
+  /* Hover variants */
+  .orb-hover-scale { will-change: transform; }
+  .orb-hover-scale:hover { transform: scale(1.04); }
+  .orb-hover-glow:hover {
+    box-shadow:
+      0 0 0 3px color-mix(in oklab, var(--bg-glow-2) 35%, transparent),
+      0 10px 24px color-mix(in oklab, var(--bg-glow-2) 30%, transparent);
+  }
+  .orb-hover-blur:hover { filter: blur(1.5px) saturate(1.05); }
   .orb-focus:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in oklab, var(--bg-glow-2) 40%, transparent); }
   .orb-active:active { transform: translateY(1px); }
 

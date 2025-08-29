@@ -165,10 +165,88 @@
   .cs-input-disabled,
   .cs-input:disabled { opacity: .6; cursor: not-allowed; }
 
-  .cs-input-group { display: flex; align-items: stretch; }
-  .cs-input-group > .cs-input:first-child { border-top-right-radius: 0; border-bottom-right-radius: 0; }
-  .cs-input-group > .cs-input + .cs-input { border-left-width: 0; }
-  .cs-input-group > .cs-input:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+  /* Input Groups */
+  .cs-input-group {
+    display: flex;
+    align-items: stretch;
+  }
+  .cs-input-group-horizontal { display: flex; flex-direction: row; align-items: stretch; }
+  .cs-input-group-vertical { display: flex; flex-direction: column; align-items: stretch; }
+
+  /* Horizontal merge */
+  .cs-input-group,
+  .cs-input-group-horizontal {
+    /* Merge adjacent borders */
+  }
+  .cs-input-group > .cs-input:first-child,
+  .cs-input-group-horizontal > .cs-input:first-child {
+    border-top-right-radius: 0; border-bottom-right-radius: 0;
+  }
+  .cs-input-group > .cs-input + .cs-input,
+  .cs-input-group-horizontal > .cs-input + .cs-input {
+    border-left-width: 0;
+  }
+  .cs-input-group > .cs-input:last-child,
+  .cs-input-group-horizontal > .cs-input:last-child {
+    border-top-left-radius: 0; border-bottom-left-radius: 0;
+  }
+
+  /* Vertical merge */
+  .cs-input-group-vertical > .cs-input + .cs-input { border-top-width: 0; }
+  .cs-input-group-vertical > .cs-input { border-radius: 0; }
+  .cs-input-group-vertical > .cs-input:first-child { border-top-left-radius: var(--cs-radius-sm); border-top-right-radius: var(--cs-radius-sm); }
+  .cs-input-group-vertical > .cs-input:last-child { border-bottom-left-radius: var(--cs-radius-sm); border-bottom-right-radius: var(--cs-radius-sm); }
+
+  /* Addons (text/label/buttons that visually attach to inputs) */
+  .cs-input-addon {
+    display: inline-flex; align-items: center; padding: 0 0.75rem;
+    background: var(--cs-bg-elevated);
+    color: var(--cs-text-secondary);
+    border: 1px solid var(--cs-border-color);
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  /* Horizontal addon radii */
+  .cs-input-group > .cs-input-addon:first-child,
+  .cs-input-group-horizontal > .cs-input-addon:first-child {
+    border-top-right-radius: 0; border-bottom-right-radius: 0;
+    border-right-width: 0;
+    border-top-left-radius: var(--cs-radius-sm); border-bottom-left-radius: var(--cs-radius-sm);
+  }
+  .cs-input-group > .cs-input-addon:last-child,
+  .cs-input-group-horizontal > .cs-input-addon:last-child {
+    border-top-left-radius: 0; border-bottom-left-radius: 0;
+    border-left-width: 0;
+    border-top-right-radius: var(--cs-radius-sm); border-bottom-right-radius: var(--cs-radius-sm);
+  }
+  /* Ensure adjacent input gets merged border with addon */
+  .cs-input-group > .cs-input-addon + .cs-input,
+  .cs-input-group-horizontal > .cs-input-addon + .cs-input { border-left-width: 0; }
+  .cs-input-group > .cs-input + .cs-input-addon,
+  .cs-input-group-horizontal > .cs-input + .cs-input-addon { border-left-width: 0; }
+
+  /* Vertical addon radii */
+  .cs-input-group-vertical > .cs-input-addon { border-radius: 0; }
+  .cs-input-group-vertical > .cs-input-addon:first-child {
+    border-bottom-width: 0;
+    border-top-left-radius: var(--cs-radius-sm); border-top-right-radius: var(--cs-radius-sm);
+  }
+  .cs-input-group-vertical > .cs-input-addon:last-child {
+    border-top-width: 0;
+    border-bottom-left-radius: var(--cs-radius-sm); border-bottom-right-radius: var(--cs-radius-sm);
+  }
+  .cs-input-group-vertical > .cs-input-addon + .cs-input { border-top-width: 0; }
+  .cs-input-group-vertical > .cs-input + .cs-input-addon { border-top-width: 0; }
+
+  /* Group focus ring (wrap group with focus state when any control focused) */
+  .cs-input-group:focus-within,
+  .cs-input-group-horizontal:focus-within,
+  .cs-input-group-vertical:focus-within {
+    box-shadow:
+      0 0 0 var(--cs-focus-offset) var(--cs-bg-surface),
+      0 0 0 calc(var(--cs-focus-ring) + var(--cs-focus-offset)) color-mix(in oklab, var(--cs-focus-color) 85%, transparent);
+    border-radius: var(--cs-radius-sm);
+  }
 
   .cs-btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;

@@ -28,6 +28,8 @@ function main() {
     '@casoon/tailwindcss-scroll',
     '@casoon/tailwindcss-navigation',
     '@casoon/tailwindcss-utilities',
+    '@casoon/tailwindcss-loading',
+    '@casoon/tailwindcss-micro-interactions',
   ];
   for (const dep of required) {
     const got = effDeps[dep];
@@ -61,4 +63,3 @@ function main() {
 }
 
 main();
-

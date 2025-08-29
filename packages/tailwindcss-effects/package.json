@@ -24,6 +24,8 @@
     "@casoon/tailwindcss-gradients": "^0.4.0",
     "@casoon/tailwindcss-scroll": "^0.4.0",
     "@casoon/tailwindcss-navigation": "^0.4.0",
-    "@casoon/tailwindcss-utilities": "^0.4.0"
+    "@casoon/tailwindcss-utilities": "^0.4.0",
+    "@casoon/tailwindcss-loading": "^0.4.0",
+    "@casoon/tailwindcss-micro-interactions": "^0.4.0"
   }
 }

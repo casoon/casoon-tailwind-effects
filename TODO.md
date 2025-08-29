@@ -50,7 +50,7 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 - [x] **Input-States**: `.input-focus`, `.input-hover`, `.input-active`, `.input-disabled` (als `.cs-input-*` umgesetzt)
 - [x] **Input-Variants**: `.input-outline`, `.input-filled`, `.input-minimal` (als `.cs-input-*` umgesetzt)
 - [x] **Input-Sizes**: `.input-sm`, `.input-md`, `.input-lg` (als `.cs-input-*` umgesetzt)
-- [~] **Input-Groups**: `.input-group`, `.input-group-vertical`, `.input-group-horizontal` (Basis `.cs-input-group` vorhanden)
+- [x] **Input-Groups**: `.input-group`, `.input-group-vertical`, `.input-group-horizontal` (inkl. `.cs-input-addon`)
 
 ### Erweiterte Button-Utilities
 - [x] **Button-States**: `.btn-hover`, `.btn-active`, `.btn-focus`, `.btn-disabled` (als `.cs-btn-*` umgesetzt)
@@ -119,24 +119,24 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 - [x] **Orb-Shapes**: `.orb-oval`, `.orb-hexagon`, `.orb-star`
 
 ### Mikro-Interaktionen für Orbs
-- [ ] **Orb-Hover-Effekte**: `.orb-hover-scale`, `.orb-hover-glow`, `.orb-hover-blur`
-- [ ] **Orb-Transitions**: `.orb-transition-fast`, `.orb-transition-slow`
-- [ ] **Orb-Responsive**: `.orb-responsive-sm`, `.orb-responsive-md`, `.orb-responsive-lg`
+- [x] **Orb-Hover-Effekte**: `.orb-hover-scale`, `.orb-hover-glow`, `.orb-hover-blur`
+- [x] **Orb-Transitions**: `.orb-transition-fast`, `.orb-transition-slow`
+- [x] **Orb-Responsive**: `.orb-responsive-sm`, `.orb-responsive-md`, `.orb-responsive-lg`
 
 ---
 
 ## 🚀 **Neue Package-Ideen**
 
 ### **@casoon/tailwindcss-micro-interactions**
-- [ ] **Click-Effekte**: `.click-ripple`, `.click-bounce`, `.click-squish`
-- [ ] **Hover-Effekte**: `.hover-magnetic`, `.hover-tilt`, `.hover-float`
-- [ ] **Focus-Effekte**: `.focus-glow`, `.focus-scale`, `.focus-rotate`
-- [ ] **State-Transitions**: `.state-loading`, `.state-success`, `.state-error`
+- [x] **Click-Effekte**: `.click-ripple`, `.click-bounce`, `.click-squish`
+- [x] **Hover-Effekte**: `.hover-magnetic`, `.hover-tilt`, `.hover-float`
+- [x] **Focus-Effekte**: `.focus-glow`, `.focus-scale`, `.focus-rotate`
+- [x] **State-Transitions**: `.state-loading`, `.state-success`, `.state-error`
 
 ### **@casoon/tailwindcss-loading**
-- [ ] **Skeleton-Loading**: `.skeleton`, `.skeleton-text`, `.skeleton-avatar`
-- [ ] **Progress-Indicators**: `.progress-circle`, `.progress-steps`, `.progress-timeline`
-- [ ] **Loading-Overlays**: `.loading-spinner`, `.loading-dots`, `.loading-bars`
+- [x] **Skeleton-Loading**: `.skeleton`, `.skeleton-text`, `.skeleton-avatar`
+- [x] **Progress-Indicators**: `.progress-circle`, `.progress-steps`, `.progress-timeline`
+- [x] **Loading-Overlays**: `.loading-spinner`, `.loading-dots`, `.loading-bars`
 
 ---
 

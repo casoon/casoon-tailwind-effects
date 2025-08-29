@@ -48,6 +48,7 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 
 ### Base Orb
 - **`.orb-bg`** - Base orb background component
+ - Also supports interaction utilities like `orb-hover-*` below
 
 ### Size Variants
 - **`.orb-size-sm`** - Small orb (default)
@@ -64,6 +65,18 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 - **`.orb-color-red-500/20`** - Red orb with 20% opacity
 - **`.orb-color-indigo-500/25`** - Indigo orb with 25% opacity
 - **`.orb-color-teal-500/20`** - Teal orb with 20% opacity
+
+### Interactions & Transitions
+- **`.orb-hover-scale`** - Scales the orb slightly on hover
+- **`.orb-hover-glow`** - Adds a soft glow outline on hover
+- **`.orb-hover-blur`** - Applies a subtle blur + saturation on hover
+- **`.orb-transition-fast`** - Faster transitions for orb state changes
+- **`.orb-transition-slow`** - Slower, smoother transitions
+
+### Responsive Presets
+- **`.orb-responsive-sm`** - Responsive small size via `clamp()`
+- **`.orb-responsive-md`** - Responsive medium size via `clamp()`
+- **`.orb-responsive-lg`** - Responsive large size via `clamp()`
 
 ### Custom Opacity
 - **`.orb-color-{color}-{opacity}`** - Any Tailwind color with custom opacity
@@ -86,7 +99,7 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 
 ### Orb with Content
 ```html
-<div class="orb-bg orb-size-lg orb-color-blue-500/20 p-8 rounded-2xl">
+<div class="orb-bg orb-size-lg orb-color-blue-500/20 orb-hover-scale orb-transition-fast p-8 rounded-2xl">
   <div class="text-center">
     <h2 class="text-2xl font-bold mb-4">Feature Title</h2>
     <p class="text-gray-700">Description of the feature with beautiful orb background</p>
@@ -96,7 +109,7 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 
 ### Responsive Orbs
 ```html
-<div class="orb-bg orb-size-sm md:orb-size-md lg:orb-size-lg">
+<div class="orb-bg orb-responsive-sm md:orb-responsive-md lg:orb-responsive-lg orb-hover-glow orb-transition-slow">
   <div class="p-6">
     <h3>Responsive Orb</h3>
     <p>This orb changes size based on screen size</p>
