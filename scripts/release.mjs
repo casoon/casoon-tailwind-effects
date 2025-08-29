@@ -104,6 +104,8 @@ function main() {
     const B = readPkgJson(b).name;
     const order = [
       "@casoon/tailwindcss-animations",
+      "@casoon/tailwindcss-loading",
+      "@casoon/tailwindcss-micro-interactions",
       "@casoon/tailwindcss-glass",
       "@casoon/tailwindcss-orbs",
       "@casoon/tailwindcss-gradients",

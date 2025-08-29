@@ -1,7 +1,7 @@
 {
   "name": "casoon-tailwind-effects",
   "private": true,
-  "version": "0.4.2",
+  "version": "0.4.3",
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -13,9 +13,9 @@
     "release:all": "node scripts/release.mjs all",
     "release:dry": "DRY_RUN=1 node scripts/release.mjs all",
     "test": "node scripts/verify-css.mjs && node scripts/verify-deps.mjs && node scripts/verify-prefixes.mjs",
-    "version:patch": "npm version patch --workspaces",
-    "version:minor": "npm version minor --workspaces",
-    "version:major": "npm version major --workspaces",
+    "version:patch": "node scripts/bump-version.mjs patch",
+    "version:minor": "node scripts/bump-version.mjs minor",
+    "version:major": "node scripts/bump-version.mjs major",
     "version:check": "npm run version:check:packages && npm run version:check:root",
     "version:check:packages": "node scripts/check-versions.mjs",
     "version:check:root": "echo 'Root version:' && npm version --dry-run"
