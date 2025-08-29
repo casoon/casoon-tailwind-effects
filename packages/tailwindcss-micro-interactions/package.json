@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-micro-interactions",
-  "version": "0.4.3",
+  "version": "0.4.5",
   "type": "module",
   "exports": {
     "./index.css": "./index.css"
