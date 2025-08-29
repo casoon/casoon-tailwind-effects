@@ -8,74 +8,74 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 ## 🎨 **@casoon/tailwindcss-animations**
 
 ### Erweiterte Hover-Effekte und Mikro-Interaktionen
-- [ ] **Hover-Lift Varianten**: `.hover-lift-sm`, `.hover-lift-md`, `.hover-lift-lg`
-- [ ] **Hover-Scale Effekte**: `.hover-scale-105`, `.hover-scale-110`, `.hover-scale-125`
-- [ ] **Hover-Rotate**: `.hover-rotate-1`, `.hover-rotate-2`, `.hover-rotate-3`
-- [ ] **Hover-Skew**: `.hover-skew-x-1`, `.hover-skew-y-1`
-- [ ] **Hover-Blur**: `.hover-blur-sm`, `.hover-blur-md`, `.hover-blur-lg`
-- [ ] **Hover-Brightness**: `.hover-brightness-110`, `.hover-brightness-125`
+- [x] **Hover-Lift Varianten**: `.hover-lift-sm`, `.hover-lift-md`, `.hover-lift-lg`
+- [x] **Hover-Scale Effekte**: `.hover-scale-105`, `.hover-scale-110`, `.hover-scale-125`
+- [x] **Hover-Rotate**: `.hover-rotate-1`, `.hover-rotate-2`, `.hover-rotate-3`
+- [x] **Hover-Skew**: `.hover-skew-x-1`, `.hover-skew-y-1`
+- [x] **Hover-Blur**: `.hover-blur-sm`, `.hover-blur-md`, `.hover-blur-lg`
+- [x] **Hover-Brightness**: `.hover-brightness-110`, `.hover-brightness-125`
 
 ### Sanfte Übergänge und Animationen
-- [ ] **Transition-Presets**: `.transition-fast`, `.transition-normal`, `.transition-slow`
-- [ ] **Easing-Presets**: `.ease-bounce`, `.ease-elastic`, `.ease-back`
-- [ ] **Stagger-Utilities**: `.stagger-1`, `.stagger-2`, `.stagger-3`, `.stagger-4`, `.stagger-5`
-- [ ] **Delay-Utilities**: `.delay-100`, `.delay-200`, `.delay-300`, `.delay-500`, `.delay-700`
+- [x] **Transition-Presets**: `.transition-fast`, `.transition-normal`, `.transition-slow`
+- [x] **Easing-Presets**: `.ease-bounce`, `.ease-elastic`, `.ease-back`
+- [x] **Stagger-Utilities**: `.stagger-1`, `.stagger-2`, `.stagger-3`, `.stagger-4`, `.stagger-5`
+- [x] **Delay-Utilities**: `.delay-100`, `.delay-200`, `.delay-300`, `.delay-500`, `.delay-700`
 
 ### Benutzerdefinierte Utility-Klassen für komplexe Animationen
-- [ ] **Morph-Animationen**: `.morph-circle`, `.morph-square`, `.morph-triangle`
-- [ ] **Wave-Effekte**: `.wave-1`, `.wave-2`, `.wave-3`
-- [ ] **Pulse-Varianten**: `.pulse-slow`, `.pulse-fast`, `.pulse-bounce`
-- [ ] **Shake-Effekte**: `.shake-horizontal`, `.shake-vertical`, `.shake-rotate`
+- [x] **Morph-Animationen**: `.morph-circle`, `.morph-square`, `.morph-triangle`
+- [x] **Wave-Effekte**: `.wave-1`, `.wave-2`, `.wave-3`
+- [x] **Pulse-Varianten**: `.pulse-slow`, `.pulse-fast`, `.pulse-bounce`
+- [x] **Shake-Effekte**: `.shake-horizontal`, `.shake-vertical`, `.shake-rotate`
 
 ---
 
 ## 🌊 **@casoon/tailwindcss-scroll**
 
 ### Erweiterte Scroll-Animationen
-- [ ] **Scroll-Parallax Varianten**: `.scroll-parallax-slow`, `.scroll-parallax-fast`
-- [ ] **Scroll-Stagger Erweiterungen**: `.scroll-stagger-2`, `.scroll-stagger-3`, `.scroll-stagger-4`
-- [ ] **Scroll-Trigger Varianten**: `.scroll-trigger-top`, `.scroll-trigger-center`, `.scroll-trigger-bottom`
-- [ ] **Scroll-Loop**: `.scroll-loop`, `.scroll-loop-reverse`, `.scroll-loop-alternate`
+- [x] **Scroll-Parallax Varianten**: `.scroll-parallax-slow`, `.scroll-parallax-fast`
+- [x] **Scroll-Stagger Erweiterungen**: `.scroll-stagger-2`, `.scroll-stagger-3`, `.scroll-stagger-4`
+- [x] **Scroll-Trigger Varianten**: `.scroll-trigger-top`, `.scroll-trigger-center`, `.scroll-trigger-bottom`
+- [x] **Scroll-Loop**: `.scroll-loop`, `.scroll-loop-reverse`, `.scroll-loop-alternate`
 
 ### Mikro-Interaktionen
-- [ ] **Scroll-Hover**: `.scroll-hover-lift`, `.scroll-hover-scale`
-- [ ] **Scroll-Focus**: `.scroll-focus-ring`, `.scroll-focus-glow`
-- [ ] **Scroll-Active**: `.scroll-active-pulse`, `.scroll-active-bounce`
+- [x] **Scroll-Hover**: `.scroll-hover-lift`, `.scroll-hover-scale`
+- [x] **Scroll-Focus**: `.scroll-focus-ring`, `.scroll-focus-glow`
+- [x] **Scroll-Active**: `.scroll-active-pulse`, `.scroll-active-bounce`
 
 ---
 
 ## 🛠️ **@casoon/tailwindcss-utilities**
 
 ### Verbesserte Formularelemente mit interaktiven Zuständen
-- [ ] **Input-States**: `.input-focus`, `.input-hover`, `.input-active`, `.input-disabled`
+- [x] **Input-States**: `.input-focus`, `.input-hover`, `.input-active`, `.input-disabled` (als `.cs-input-*` umgesetzt)
 - [ ] **Input-Variants**: `.input-outline`, `.input-filled`, `.input-minimal`
-- [ ] **Input-Sizes**: `.input-sm`, `.input-md`, `.input-lg`
-- [ ] **Input-Groups**: `.input-group`, `.input-group-vertical`, `.input-group-horizontal`
+- [x] **Input-Sizes**: `.input-sm`, `.input-md`, `.input-lg` (als `.cs-input-*` umgesetzt)
+- [~] **Input-Groups**: `.input-group`, `.input-group-vertical`, `.input-group-horizontal` (Basis `.cs-input-group` vorhanden)
 
 ### Erweiterte Button-Utilities
 - [ ] **Button-States**: `.btn-hover`, `.btn-active`, `.btn-focus`, `.btn-disabled`
-- [ ] **Button-Variants**: `.btn-outline`, `.btn-ghost`, `.btn-link`, `.btn-3d`
-- [ ] **Button-Sizes**: `.btn-sm`, `.btn-md`, `.btn-lg`, `.btn-xl`
-- [ ] **Button-Groups**: `.btn-group`, `.btn-group-vertical`
+- [x] **Button-Variants**: `.btn-outline`, `.btn-ghost`, `.btn-link`, `.btn-3d` (als `.cs-btn-*` umgesetzt)
+- [x] **Button-Sizes**: `.btn-sm`, `.btn-md`, `.btn-lg`, `.btn-xl` (als `.cs-btn-*` umgesetzt)
+- [x] **Button-Groups**: `.btn-group`, `.btn-group-vertical` (als `.cs-btn-group*` umgesetzt)
 
 ### Professionelle Ladeanimationen und Spinner
-- [ ] **Spinner-Types**: `.spinner-dots`, `.spinner-bars`, `.spinner-rings`, `.spinner-pulse`
-- [ ] **Spinner-Sizes**: `.spinner-sm`, `.spinner-md`, `.spinner-lg`
-- [ ] **Loading-States**: `.loading`, `.loading-overlay`, `.loading-skeleton`
-- [ ] **Progress-Bars**: `.progress`, `.progress-striped`, `.progress-animated`
+- [x] **Spinner-Types**: `.spinner-dots`, `.spinner-bars`, `.spinner-rings`, `.spinner-pulse`
+- [x] **Spinner-Sizes**: `.spinner-sm`, `.spinner-md`, `.spinner-lg`
+- [x] **Loading-States**: `.loading`, `.loading-overlay`, `.loading-skeleton`
+- [x] **Progress-Bars**: `.progress`, `.progress-striped`, `.progress-animated`
 
 ---
 
 ## 🧭 **@casoon/tailwindcss-navigation**
 
 ### Erweiterte Navigation-Effekte
-- [ ] **Hover-Animationen**: `.nav-hover-slide`, `.nav-hover-fade`, `.nav-hover-scale`
-- [ ] **Active-States**: `.nav-active-glow`, `.nav-active-pulse`, `.nav-active-bounce`
-- [ ] **Focus-Enhancements**: `.nav-focus-ring`, `.nav-focus-glow`, `.nav-focus-scale`
+- [x] **Hover-Animationen**: `.nav-hover-slide`, `.nav-hover-fade`, `.nav-hover-scale`
+- [x] **Active-States**: `.nav-active-glow`, `.nav-active-pulse`, `.nav-active-bounce`
+- [x] **Focus-Enhancements**: `.nav-focus-ring`, `.nav-focus-glow`, `.nav-focus-scale`
 
 ### Mikro-Interaktionen
-- [ ] **Menu-Transitions**: `.menu-slide-down`, `.menu-slide-up`, `.menu-fade-in`
-- [ ] **Subnav-Animationen**: `.subnav-expand`, `.subnav-collapse`, `.subnav-slide`
+- [x] **Menu-Transitions**: `.menu-slide-down`, `.menu-slide-up`, `.menu-fade-in`
+- [x] **Subnav-Animationen**: `.subnav-expand`, `.subnav-collapse`, `.subnav-slide`
 - [ ] **Mobile-Menu**: `.mobile-menu-overlay`, `.mobile-menu-slide`, `.mobile-menu-fade`
 
 ---
@@ -83,9 +83,9 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 ## 🪟 **@casoon/tailwindcss-glass**
 
 ### Moderne Glassmorphism- und Backdrop-Effekte
-- [ ] **Glass-Variants**: `.glass-frosted`, `.glass-clear`, `.glass-mirror`, `.glass-smoke`
-- [ ] **Backdrop-Filters**: `.backdrop-blur-sm`, `.backdrop-blur-md`, `.backdrop-blur-lg`
-- [ ] **Glass-Effects**: `.glass-glow`, `.glass-shadow`, `.glass-border-glow`
+- [x] **Glass-Variants**: `.glass-frosted`, `.glass-clear`, `.glass-mirror`, `.glass-smoke`
+- [x] **Backdrop-Filters**: `.backdrop-blur-sm`, `.backdrop-blur-md`, `.backdrop-blur-lg`
+- [x] **Glass-Effects**: `.glass-glow`, `.glass-shadow`, `.glass-border-glow`
 - [ ] **Glass-Interactions**: `.glass-hover`, `.glass-focus`, `.glass-active`
 
 ### Erweiterte Glass-Effekte
@@ -98,25 +98,25 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 ## 🌈 **@casoon/tailwindcss-gradients**
 
 ### Erweiterte Gradient-Effekte
-- [ ] **Gradient-Animationen**: `.gradient-shift`, `.gradient-rotate`, `.gradient-pulse`
-- [ ] **Gradient-Interactions**: `.gradient-hover`, `.gradient-focus`, `.gradient-active`
-- [ ] **Gradient-Masks**: `.gradient-mask-radial`, `.gradient-mask-conic`
+- [x] **Gradient-Animationen**: `.gradient-shift`, `.gradient-rotate`, `.gradient-pulse`
+- [x] **Gradient-Interactions**: `.gradient-hover`, `.gradient-focus`, `.gradient-active` (teilweise: `.gradient-active` noch offen)
+- [x] **Gradient-Masks**: `.gradient-mask-radial`, `.gradient-mask-conic`
 - [ ] **Gradient-Overlays**: `.gradient-overlay-light`, `.gradient-overlay-dark`
 
 ### Moderne Gradient-Utilities
 - [ ] **Gradient-Shapes**: `.gradient-circle`, `.gradient-heart`, `.gradient-star`
-- [ ] **Gradient-Patterns**: `.gradient-stripes`, `.gradient-dots`, `.gradient-grid`
-- [ ] **Gradient-Text-Effekte**: `.gradient-text-3d`, `.gradient-text-shadow`
+- [x] **Gradient-Patterns**: `.gradient-stripes`, `.gradient-dots`, `.gradient-grid`
+- [x] **Gradient-Text-Effekte**: `.gradient-text-3d`, `.gradient-text-shadow`
 
 ---
 
 ## 🔮 **@casoon/tailwindcss-orbs**
 
 ### Erweiterte Orb-Effekte
-- [ ] **Orb-Animationen**: `.orb-float`, `.orb-pulse`, `.orb-rotate`, `.orb-bounce`
+- [x] **Orb-Animationen**: `.orb-float`, `.orb-pulse`, `.orb-rotate`, `.orb-bounce`
 - [ ] **Orb-Interactions**: `.orb-hover`, `.orb-focus`, `.orb-active`
-- [ ] **Orb-Patterns**: `.orb-stripes`, `.orb-dots`, `.orb-waves`
-- [ ] **Orb-Shapes**: `.orb-oval`, `.orb-hexagon`, `.orb-star`
+- [x] **Orb-Patterns**: `.orb-stripes`, `.orb-dots`, `.orb-waves`
+- [x] **Orb-Shapes**: `.orb-oval`, `.orb-hexagon`, `.orb-star`
 
 ### Mikro-Interaktionen für Orbs
 - [ ] **Orb-Hover-Effekte**: `.orb-hover-scale`, `.orb-hover-glow`, `.orb-hover-blur`
@@ -170,5 +170,5 @@ Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte K
 
 ---
 
-*Letzte Aktualisierung: $(date)*
-*Status: In Planung*
+*Letzte Aktualisierung: 2025-08-29*
+*Status: In Umsetzung*
