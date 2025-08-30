@@ -174,6 +174,26 @@ Conic progress ring (CSS‑only):
 <div class="gradient-conic-progress" style="--value:72; --g-size:64px; --g-thickness:10px; --g-color: var(--gradient-primary-from)"></div>
 ```
 
+Stop density presets (control mid stop position):
+```html
+<div class="gradient-bg gradient-accent gradient-stops-compact"></div>
+<div class="gradient-bg gradient-accent gradient-stops-even"></div>
+<div class="gradient-bg gradient-accent gradient-stops-wide"></div>
+```
+
+Text gradient angles:
+```html
+<h1 class="gradient-text gradient-text-angle-90">Vertical Text Gradient</h1>
+```
+
+Layered background (accent + primary):
+```html
+<div class="gradient-bg-duo p-8 rounded-xl text-white">
+  Dual-layer gradient background
+  <!-- Optionally tune angles and mid stop with existing utilities -->
+</div>
+```
+
 ## 🎭 Examples
 
 ### Hero Section with Gradients

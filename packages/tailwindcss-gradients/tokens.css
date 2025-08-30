@@ -61,8 +61,9 @@
   
       /* -------- Stop-Logik --------
          Nutze diese, wenn du lineare Stops zentral controln willst. */
+      --gradient-stop-mid-pct: 50%;
       --gradient-stop-1: var(--gradient-accent-from);
-      --gradient-stop-2: var(--gradient-accent-mid) 50%;
+      --gradient-stop-2: var(--gradient-accent-mid) var(--gradient-stop-mid-pct);
       --gradient-stop-3: var(--gradient-accent-to);
   
       /* -------- Overlay Layer -------- */

@@ -84,6 +84,38 @@
     );
   }
 
+  /* Text gradient angle presets (aliases for readability) */
+  .gradient-text-angle-0   { --gradient-angle: 0deg; }
+  .gradient-text-angle-45  { --gradient-angle: 45deg; }
+  .gradient-text-angle-90  { --gradient-angle: 90deg; }
+  .gradient-text-angle-135 { --gradient-angle: 135deg; }
+  .gradient-text-angle-180 { --gradient-angle: 180deg; }
+  .gradient-text-angle-225 { --gradient-angle: 225deg; }
+  .gradient-text-angle-270 { --gradient-angle: 270deg; }
+  .gradient-text-angle-315 { --gradient-angle: 315deg; }
+
+  /* Layered dual gradient (accent + primary) */
+  .gradient-bg-duo {
+    background:
+      linear-gradient(var(--gradient-angle),
+        var(--gradient-accent-from),
+        var(--gradient-accent-mid) var(--gradient-stop-mid-pct, 50%),
+        var(--gradient-accent-to)
+      ),
+      linear-gradient(calc(var(--gradient-angle) + 45deg),
+        var(--gradient-primary-from),
+        var(--gradient-primary-mid) var(--gradient-stop-mid-pct, 50%),
+        var(--gradient-primary-to)
+      );
+    background-blend-mode: screen;
+  }
+
+  /* High contrast boost (opt-in) */
+  .gradient-hc {}
+  @media (prefers-contrast: more) {
+    .gradient-hc { filter: contrast(1.1) saturate(1.05); }
+  }
+
   /* ===== Angle / Shape / Position Utilities ===== */
   /* Angle presets */
   .gradient-angle-0   { --gradient-angle: 0deg; }
@@ -192,35 +224,62 @@
     );
   }
 
+  /* ===== Conic Progress Ring ===== */
+  .gradient-conic-progress {
+    --value: 66; /* 0..100 */
+    --g-size: 48px;
+    --g-thickness: 8px;
+    --g-color: var(--gradient-border-from);
+    width: var(--g-size); height: var(--g-size);
+    border-radius: 50%;
+    background:
+      conic-gradient(var(--g-color) calc(var(--value) * 1%), color-mix(in oklab, var(--g-color) 20%, transparent) 0);
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      transparent calc(50% - var(--g-thickness)),
+      color-mix(in oklab, var(--gradient-ink-dark, #000) 100%, transparent) calc(50% - var(--g-thickness) + 1px)
+    );
+            mask: radial-gradient(
+      farthest-side,
+      transparent calc(50% - var(--g-thickness)),
+      color-mix(in oklab, var(--gradient-ink-dark, #000) 100%, transparent) calc(50% - var(--g-thickness) + 1px)
+    );
+  }
+
   /* ============================================================
      Presets (Semantik) – schnell einsetzbar
      ============================================================ */
 
   .gradient-accent {
     --gradient-stop-1: var(--gradient-accent-from);
-    --gradient-stop-2: var(--gradient-accent-mid) 50%;
+    --gradient-stop-2: var(--gradient-accent-mid) var(--gradient-stop-mid-pct, 50%);
     --gradient-stop-3: var(--gradient-accent-to);
   }
   .gradient-primary {
     --gradient-stop-1: var(--gradient-primary-from);
-    --gradient-stop-2: var(--gradient-primary-mid) 50%;
+    --gradient-stop-2: var(--gradient-primary-mid) var(--gradient-stop-mid-pct, 50%);
     --gradient-stop-3: var(--gradient-primary-to);
   }
   .gradient-success {
     --gradient-stop-1: var(--gradient-success-from);
-    --gradient-stop-2: var(--gradient-success-mid) 50%;
+    --gradient-stop-2: var(--gradient-success-mid) var(--gradient-stop-mid-pct, 50%);
     --gradient-stop-3: var(--gradient-success-to);
   }
   .gradient-warning {
     --gradient-stop-1: var(--gradient-warning-from);
-    --gradient-stop-2: var(--gradient-warning-mid) 50%;
+    --gradient-stop-2: var(--gradient-warning-mid) var(--gradient-stop-mid-pct, 50%);
     --gradient-stop-3: var(--gradient-warning-to);
   }
   .gradient-neutral {
     --gradient-stop-1: var(--gradient-neutral-from);
-    --gradient-stop-2: var(--gradient-neutral-mid) 50%;
+    --gradient-stop-2: var(--gradient-neutral-mid) var(--gradient-stop-mid-pct, 50%);
     --gradient-stop-3: var(--gradient-neutral-to);
   }
+
+  /* Stop density presets */
+  .gradient-stops-compact { --gradient-stop-mid-pct: 35%; }
+  .gradient-stops-even    { --gradient-stop-mid-pct: 50%; }
+  .gradient-stops-wide    { --gradient-stop-mid-pct: 65%; }
 
   /* ============================================================
      Masks / Clipping (moderne, weiche Abschattungen)
