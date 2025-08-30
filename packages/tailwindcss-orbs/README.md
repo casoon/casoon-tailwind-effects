@@ -123,6 +123,26 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 
 ## 🎭 Examples
 
+### Hero Preset
+```html
+<section class="min-h-[60svh] bg-orbs-hero text-white grid place-items-center p-8">
+  <div class="max-w-prose text-center">
+    <h1 class="text-4xl font-bold mb-4">Stunning Hero</h1>
+    <p class="text-white/80">Beautiful orb glows with a subtle base gradient.</p>
+  </div>
+</section>
+```
+
+Note: On mobile, we avoid `background-attachment: fixed` to reduce jank (handled in CSS via a media query override).
+
+### Parallax (CSS‑only)
+```html
+<section class="min-h-[60svh] bg-orbs-parallax grid place-items-center p-8">
+  <h2 class="text-3xl font-semibold">Parallax‑style Background</h2>
+</section>
+```
+Tweak speed using `--orbs-parallax-speed` (e.g., `24s`–`60s`). `prefers-reduced-motion` disables the animation.
+
 ## 🎨 Theme Overrides
 
 Orbs read from background tokens; define them per mode:
