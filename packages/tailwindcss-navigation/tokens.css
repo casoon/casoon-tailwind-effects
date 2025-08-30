@@ -48,6 +48,13 @@
     /* Helpers */
     --nav-badge-fg: #ffffff;
     --nav-overlay-ink: #000000;
+
+    /* ===== Sidebar Tokens ===== */
+    --sidebar-width: 16rem;
+    --sidebar-top: env(safe-area-inset-top, 0);
+    --sidebar-gap: .25rem;
+    --sidebar-indent: 1rem;
+    --sidebar-active-marker: color-mix(in oklab, var(--nav-accent-from) 60%, transparent);
   }
 
   @media (prefers-color-scheme: dark) {

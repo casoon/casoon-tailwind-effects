@@ -113,6 +113,39 @@ A comprehensive navigation component library for Tailwind CSS v4, featuring flex
 - **`.nav-theme-light`** - Light theme styling
 - **`.nav-theme-dark`** - Dark theme styling
 
+## 📚 Sidebar
+
+Build vertical, sticky sidebars using dedicated helpers:
+
+```html
+<aside class="sidebar sidebar-sticky sidebar-scroll" style="--sidebar-top: 4rem">
+  <div class="sidebar-section">
+    <div class="sidebar-heading">Docs</div>
+    <a class="sidebar-link" href="#intro">Introduction</a>
+    <a class="sidebar-link" href="#install" aria-current="page">Installation</a>
+  </div>
+
+  <details class="sidebar-group">
+    <summary>Guides</summary>
+    <ul class="sidebar-nested sidebar--marker">
+      <li class="sidebar-level-1"><a class="sidebar-link" href="#setup">Setup</a></li>
+      <li class="sidebar-level-1"><a class="sidebar-link" href="#theming" data-active="true">Theming</a></li>
+      <li class="sidebar-level-1"><a class="sidebar-link" href="#deploy">Deploy</a></li>
+    </ul>
+  </details>
+</aside>
+```
+
+Helpers
+- `.sidebar`: vertical rail with `--sidebar-width`, uses `--nav-*` tokens
+- `.sidebar-sticky`: `position: sticky; top: var(--sidebar-top)`
+- `.sidebar-scroll`: constrained scroll area (100dvh)
+- `.sidebar-section`, `.sidebar-heading`: structure + small heading style
+- `.sidebar-link`: full-width link; hover/active use nav tokens
+- `.sidebar--marker`: active left marker via `--sidebar-active-marker`
+- `.sidebar-nested` + `.sidebar-level-1..3`: nested indent control
+- `.sidebar-group` (`<details>`): collapsible section with animated expand
+
 ## 🎨 Theme Overrides
 
 Set surface and text tokens per mode:

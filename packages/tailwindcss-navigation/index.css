@@ -4,7 +4,7 @@
 /* @casoon/tailwindcss-navigation */
 /* Navigation components and utilities for Tailwind CSS v4 */
 
-@layer components {
+  @layer components {
 
     /* ===== Core ===== */
     .nav { @apply flex items-center; gap: var(--nav-gap); }
@@ -222,5 +222,59 @@
       --nav-bg-hover: var(--nav-dark-hover);
       --nav-border: var(--nav-dark-border);
     }
+
+    /* ===== Sidebar (vertical navigation) ===== */
+    .sidebar {
+      @apply flex flex-col; gap: var(--sidebar-gap);
+      width: var(--sidebar-width);
+      background: var(--nav-bg);
+      color: var(--nav-fg);
+      border-right: 1px solid var(--nav-border);
+      border-radius: 0; /* container itself is a rail */
+    }
+    .sidebar-sticky { position: sticky; top: var(--sidebar-top); align-self: start; }
+    .sidebar-scroll { overflow-y: auto; max-height: 100dvh; overscroll-behavior: contain; }
+
+    .sidebar-section { @apply flex flex-col; gap: var(--sidebar-gap); padding: .25rem; }
+    .sidebar-heading { @apply text-xs font-semibold uppercase tracking-wide; opacity: .7; padding: .5rem .75rem; }
+
+    .sidebar-link {
+      @apply inline-flex items-center gap-2 font-medium no-underline outline-none;
+      color: var(--nav-fg); background: transparent; border-radius: var(--nav-link-radius);
+      padding: var(--nav-link-py) var(--nav-link-px); width: 100%;
+      transition: background .18s ease, color .18s ease, transform .18s ease;
+    }
+    .sidebar-link:hover { background: var(--nav-bg-hover); color: var(--nav-fg-hover); }
+    .sidebar-link[aria-current="page"],
+    .sidebar-link[data-active="true"] { @apply font-semibold; }
+
+    /* Active marker (left bar) */
+    .sidebar--marker .sidebar-link { position: relative; }
+    .sidebar--marker .sidebar-link::before {
+      content: ""; position: absolute; left: .25rem; top: 10%; bottom: 10%; width: 3px; border-radius: 2px;
+      background: transparent; transition: background .18s ease;
+    }
+    .sidebar--marker .sidebar-link[aria-current="page"]::before,
+    .sidebar--marker .sidebar-link[data-active="true"]::before { background: var(--sidebar-active-marker); }
+
+    /* Nested levels */
+    .sidebar-nested { list-style: none; margin: 0; padding: 0; }
+    .sidebar-level-1 { --_level: 1; }
+    .sidebar-level-2 { --_level: 2; }
+    .sidebar-level-3 { --_level: 3; }
+    .sidebar-nested .sidebar-link { padding-left: calc(var(--nav-link-px) + var(--sidebar-indent) * var(--_level, 1)); }
+
+    /* Collapsible groups (details/summary) */
+    .sidebar-group { @apply flex flex-col; }
+    .sidebar-group > summary {
+      list-style: none; cursor: pointer; @apply select-none;
+      padding: var(--nav-link-py) var(--nav-link-px); border-radius: var(--nav-link-radius);
+      color: var(--nav-fg); background: transparent; outline: none; transition: background .18s ease;
+    }
+    .sidebar-group > summary::-webkit-details-marker { display: none; }
+    .sidebar-group > summary:hover { background: var(--nav-bg-hover); color: var(--nav-fg-hover); }
+    .sidebar-group[open] > summary { @apply font-semibold; }
+    .sidebar-group[open] > .sidebar-nested { animation: sidebarExpand .18s ease; }
+    @keyframes sidebarExpand { from { opacity:.9; transform: translateY(-2px) } to { opacity:1; transform: translateY(0) } }
   }
   
