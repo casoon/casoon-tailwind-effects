@@ -84,6 +84,36 @@
     );
   }
 
+  /* ===== Angle / Shape / Position Utilities ===== */
+  /* Angle presets */
+  .gradient-angle-0   { --gradient-angle: 0deg; }
+  .gradient-angle-45  { --gradient-angle: 45deg; }
+  .gradient-angle-90  { --gradient-angle: 90deg; }
+  .gradient-angle-135 { --gradient-angle: 135deg; }
+  .gradient-angle-180 { --gradient-angle: 180deg; }
+  .gradient-angle-225 { --gradient-angle: 225deg; }
+  .gradient-angle-270 { --gradient-angle: 270deg; }
+  .gradient-angle-315 { --gradient-angle: 315deg; }
+
+  /* Radial shape/size */
+  .gradient-shape-circle  { --gradient-shape: circle; }
+  .gradient-shape-ellipse { --gradient-shape: ellipse; }
+  .gradient-size-closest-side   { --gradient-size: closest-side; }
+  .gradient-size-closest-corner { --gradient-size: closest-corner; }
+  .gradient-size-farthest-side  { --gradient-size: farthest-side; }
+  .gradient-size-farthest-corner{ --gradient-size: farthest-corner; }
+
+  /* Position presets */
+  .gradient-pos-tl { --gradient-position: 0% 0%; }
+  .gradient-pos-tc { --gradient-position: 50% 0%; }
+  .gradient-pos-tr { --gradient-position: 100% 0%; }
+  .gradient-pos-cl { --gradient-position: 0% 50%; }
+  .gradient-pos-cc { --gradient-position: 50% 50%; }
+  .gradient-pos-cr { --gradient-position: 100% 50%; }
+  .gradient-pos-bl { --gradient-position: 0% 100%; }
+  .gradient-pos-bc { --gradient-position: 50% 100%; }
+  .gradient-pos-br { --gradient-position: 100% 100%; }
+
   /* ============================================================
      Modifiers & Helfer
      ============================================================ */
@@ -138,6 +168,28 @@
     box-shadow:
       0 0 0 1px color-mix(in oklab, var(--gradient-border-from) 60%, var(--gradient-border-to)),
       0 0 0 4px color-mix(in oklab, var(--gradient-border-from) 25%, transparent);
+  }
+
+  /* ===== Conic Progress Ring ===== */
+  .gradient-conic-progress {
+    --value: 66; /* 0..100 */
+    --g-size: 48px;
+    --g-thickness: 8px;
+    --g-color: var(--gradient-border-from);
+    width: var(--g-size); height: var(--g-size);
+    border-radius: 50%;
+    background:
+      conic-gradient(var(--g-color) calc(var(--value) * 1%), color-mix(in oklab, var(--g-color) 20%, transparent) 0);
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      transparent calc(50% - var(--g-thickness)),
+      color-mix(in oklab, var(--gradient-ink-dark, #000) 100%, transparent) calc(50% - var(--g-thickness) + 1px)
+    );
+            mask: radial-gradient(
+      farthest-side,
+      transparent calc(50% - var(--g-thickness)),
+      color-mix(in oklab, var(--gradient-ink-dark, #000) 100%, transparent) calc(50% - var(--g-thickness) + 1px)
+    );
   }
 
   /* ============================================================

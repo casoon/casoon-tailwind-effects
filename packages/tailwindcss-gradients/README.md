@@ -155,6 +155,25 @@ Align text and neutral gradient stops per mode:
 </div>
 ```
 
+## 🧭 Utilities Cheatsheet
+
+Angle presets for quick orientation:
+```html
+<div class="gradient-bg gradient-angle-45"></div>
+<div class="gradient-bg gradient-angle-90"></div>
+```
+
+Radial shape/size and position helpers:
+```html
+<div class="gradient-bg-radial gradient-shape-circle gradient-size-farthest-corner gradient-pos-tl"></div>
+<div class="gradient-bg-radial gradient-shape-ellipse gradient-size-closest-side gradient-pos-bc"></div>
+```
+
+Conic progress ring (CSS‑only):
+```html
+<div class="gradient-conic-progress" style="--value:72; --g-size:64px; --g-thickness:10px; --g-color: var(--gradient-primary-from)"></div>
+```
+
 ## 🎭 Examples
 
 ### Hero Section with Gradients
