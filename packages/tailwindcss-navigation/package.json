@@ -6,6 +6,7 @@
   "files": [
     "index.css",
     "tokens.css",
+    "nav.js",
     "README.md",
     "LICENSE"
   ],

@@ -167,13 +167,15 @@ Helpers
 
 JS (example):
 ```js
+import { initSidebarDrawer } from '@casoon/tailwindcss-navigation/nav.js';
+
 const drawer = document.getElementById('sidebarDrawer');
 const overlay = document.getElementById('sidebarOverlay');
-const open = () => { drawer.dataset.open = 'true'; overlay.dataset.open = 'true'; drawer.setAttribute('aria-expanded','true'); };
-const close = () => { delete drawer.dataset.open; delete overlay.dataset.open; drawer.setAttribute('aria-expanded','false'); };
-document.getElementById('openSidebar').addEventListener('click', open);
-document.getElementById('closeSidebar').addEventListener('click', close);
-overlay.addEventListener('click', close);
+const trigger = document.getElementById('openSidebar');
+const closeBtn = document.getElementById('closeSidebar');
+
+// Adds focus-trap, Escape to close, overlay-click to close, focus restore
+const controls = initSidebarDrawer({ trigger, drawer, overlay, closeButton: closeBtn });
 ```
 
 ### Mobile Top Nav
@@ -193,17 +195,15 @@ Use existing helpers for overlays and panels:
 ### Active Link Sync (Observer)
 
 ```js
-const links = [...document.querySelectorAll('.sidebar-link[href^="#"]')];
-const targets = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
-const io = new IntersectionObserver((entries) => {
-  const visible = entries.filter(e => e.isIntersecting).sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
-  if (!visible) return;
-  links.forEach(l => l.removeAttribute('aria-current'));
-  const active = links.find(l => l.getAttribute('href') === '#' + visible.target.id);
-  if (active) active.setAttribute('aria-current','page');
-}, { rootMargin: '-30% 0px -60% 0px', threshold: [0, .25, .5, .75, 1] });
-targets.forEach(t => io.observe(t));
+import { initActiveLinkSync } from '@casoon/tailwindcss-navigation/nav.js';
+const teardown = initActiveLinkSync();
 ```
+
+### Accessibility Notes
+- Drawer toggles `aria-expanded` on the panel and keeps focus within the drawer using a focus trap.
+- Escape closes the drawer; focus returns to the element that opened it.
+- The overlay is clickable to dismiss and does not trap scroll behind it.
+- Ensure triggers reference the drawer with `aria-controls` when possible.
 
 ## 🎨 Theme Overrides
 
