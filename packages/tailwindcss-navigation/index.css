@@ -276,5 +276,15 @@
     .sidebar-group[open] > summary { @apply font-semibold; }
     .sidebar-group[open] > .sidebar-nested { animation: sidebarExpand .18s ease; }
     @keyframes sidebarExpand { from { opacity:.9; transform: translateY(-2px) } to { opacity:1; transform: translateY(0) } }
+
+    /* ===== Sidebar Mobile Drawer ===== */
+    .sidebar-drawer { position: fixed; inset: 0 auto 0 0; width: var(--sidebar-width-mobile); max-width: 100%; height: 100dvh; transform: translateX(-100%); transition: transform .25s ease; z-index: var(--sidebar-z); background: var(--nav-bg); color: var(--nav-fg); border-right: 1px solid var(--nav-border); }
+    .sidebar-drawer[data-open="true"], .sidebar-drawer[aria-expanded="true"] { transform: translateX(0); }
+    .sidebar-overlay { position: fixed; inset: 0; background: color-mix(in oklab, var(--nav-overlay-ink, #000) calc(var(--sidebar-overlay-opacity) * 100%), transparent); opacity: 0; pointer-events: none; transition: opacity .2s ease; z-index: calc(var(--sidebar-z) - 1); backdrop-filter: blur(var(--sidebar-backdrop-blur)); }
+    .sidebar-overlay[data-open="true"], .sidebar-overlay[aria-expanded="true"] { opacity: 1; pointer-events: auto; }
+
+    /* Optional: horizontal nav scroll with snap for mobile */
+    .nav-scroll-snap { scroll-snap-type: x mandatory; }
+    .nav-scroll-snap .nav-link { scroll-snap-align: start; }
   }
   

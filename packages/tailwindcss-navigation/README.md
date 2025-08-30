@@ -146,6 +146,65 @@ Helpers
 - `.sidebar-nested` + `.sidebar-level-1..3`: nested indent control
 - `.sidebar-group` (`<details>`): collapsible section with animated expand
 
+### Mobile Sidebar (Drawer)
+
+```html
+<button id="openSidebar" class="nav-link">Menu</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar-drawer" id="sidebarDrawer" aria-expanded="false">
+  <nav class="sidebar sidebar-scroll">
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Menu</div>
+      <a class="sidebar-link" href="#home">Home</a>
+      <a class="sidebar-link" href="#about">About</a>
+    </div>
+  </nav>
+  <!-- place a close button inside for accessibility -->
+  <button class="nav-link" id="closeSidebar">Close</button>
+  <!-- toggle by setting [data-open=true] or [aria-expanded=true] on .sidebar-drawer and .sidebar-overlay -->
+</aside>
+```
+
+JS (example):
+```js
+const drawer = document.getElementById('sidebarDrawer');
+const overlay = document.getElementById('sidebarOverlay');
+const open = () => { drawer.dataset.open = 'true'; overlay.dataset.open = 'true'; drawer.setAttribute('aria-expanded','true'); };
+const close = () => { delete drawer.dataset.open; delete overlay.dataset.open; drawer.setAttribute('aria-expanded','false'); };
+document.getElementById('openSidebar').addEventListener('click', open);
+document.getElementById('closeSidebar').addEventListener('click', close);
+overlay.addEventListener('click', close);
+```
+
+### Mobile Top Nav
+
+Use existing helpers for overlays and panels:
+```html
+<button id="openMenu" class="nav-link">Menu</button>
+<div class="mobile-menu-overlay" id="menuOverlay"></div>
+<div class="mobile-menu-slide" id="menuPanel" aria-expanded="false">
+  <nav class="nav nav--vertical p-2">
+    <a class="nav-link" href="#home">Home</a>
+    <a class="nav-link" href="#about">About</a>
+  </nav>
+</div>
+```
+
+### Active Link Sync (Observer)
+
+```js
+const links = [...document.querySelectorAll('.sidebar-link[href^="#"]')];
+const targets = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+const io = new IntersectionObserver((entries) => {
+  const visible = entries.filter(e => e.isIntersecting).sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
+  if (!visible) return;
+  links.forEach(l => l.removeAttribute('aria-current'));
+  const active = links.find(l => l.getAttribute('href') === '#' + visible.target.id);
+  if (active) active.setAttribute('aria-current','page');
+}, { rootMargin: '-30% 0px -60% 0px', threshold: [0, .25, .5, .75, 1] });
+targets.forEach(t => io.observe(t));
+```
+
 ## 🎨 Theme Overrides
 
 Set surface and text tokens per mode:

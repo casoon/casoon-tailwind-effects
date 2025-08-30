@@ -51,10 +51,14 @@
 
     /* ===== Sidebar Tokens ===== */
     --sidebar-width: 16rem;
+    --sidebar-width-mobile: 85vw;
     --sidebar-top: env(safe-area-inset-top, 0);
     --sidebar-gap: .25rem;
     --sidebar-indent: 1rem;
     --sidebar-active-marker: color-mix(in oklab, var(--nav-accent-from) 60%, transparent);
+    --sidebar-z: 60;
+    --sidebar-overlay-opacity: .4;
+    --sidebar-backdrop-blur: 8px;
   }
 
   @media (prefers-color-scheme: dark) {
