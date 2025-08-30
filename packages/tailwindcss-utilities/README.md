@@ -314,7 +314,40 @@ Extend the library with your own utilities:
 }
 ```
 
+## 🌓 Dark Mode
+
+- Tailwind Standard: toggling the `.dark` class on a root element enables dark mode; OS fallback via `prefers-color-scheme` is supported by the tokens.
+- Override tokens per mode to brand your app:
+
+```css
+:root {
+  --cs-text-primary: oklch(18% 0.03 260);
+  --cs-bg-surface: oklch(100% 0 0);
+}
+:where(.dark) {
+  --cs-text-primary: oklch(92% 0.03 260);
+  --cs-bg-surface: oklch(22% 0.02 260);
+}
+```
+
 ## ♿ Accessibility
+
+## 🎨 Theme Overrides
+
+Use these minimal per‑mode overrides to align utilities with your brand:
+
+```css
+:root {
+  --cs-text-primary: oklch(18% 0.03 260);
+  --cs-bg-surface: oklch(100% 0 0);
+  --cs-border-color: oklch(84% 0.02 260);
+}
+:where(.dark) {
+  --cs-text-primary: oklch(92% 0.03 260);
+  --cs-bg-surface: oklch(22% 0.02 260);
+  --cs-border-color: oklch(36% 0.03 260);
+}
+```
 
 ### Focus Management
 - Consistent focus rings across all interactive elements

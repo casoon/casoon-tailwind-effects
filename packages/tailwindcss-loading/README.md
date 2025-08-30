@@ -15,6 +15,10 @@ Tailwind CSS v4 compatible loading primitives: skeletons, progress indicators, a
 @import "@casoon/tailwindcss-loading/index.css";
 ```
 
+## 🌓 Dark Mode
+
+- Loading visuals follow `currentColor` and tokens. Override `--loading-*` or shared `--cs-*` per mode; `.dark` is supported with OS fallback.
+
 ## Notes
 
 - Honors `prefers-reduced-motion` for shimmer and spinning effects.
@@ -47,3 +51,18 @@ Use the following CSS custom properties to customize behavior and appearance:
 - Respects `prefers-reduced-motion: reduce` by slowing/limiting animations.
 - Skeletons should not convey essential information; pair with ARIA live regions for real status.
 - Use spinners sparingly; progress components communicate state more clearly.
+
+## 🎨 Theme Overrides
+
+Common per‑mode overrides for masks and accents:
+
+```css
+:root {
+  --loading-color: color-mix(in oklab, currentColor 12%, transparent);
+  --loading-accent: currentColor;
+  --loading-mask-ink:#000;
+}
+:where(.dark){
+  --loading-mask-ink:#000;
+}
+```

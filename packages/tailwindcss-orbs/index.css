@@ -17,7 +17,7 @@
   .orb {
     position: relative; width: 200px; height: 200px; border-radius: 9999px;
     background:
-      radial-gradient(circle at 35% 35%, rgba(255,255,255,.8), rgba(255,255,255,.2) 40%, transparent 60%),
+      radial-gradient(circle at 35% 35%, color-mix(in oklab, var(--orb-ink-light, #fff) 80%, transparent), color-mix(in oklab, var(--orb-ink-light, #fff) 20%, transparent) 40%, transparent 60%),
       radial-gradient(circle at 60% 60%, var(--bg-glow-2), transparent 50%);
     filter: blur(.3px);
   }
@@ -51,7 +51,7 @@
 
   /* Patterns & shapes */
   .orb-stripes { background: repeating-conic-gradient(from 0deg, color-mix(in oklab, var(--bg-glow-2) 30%, transparent) 0 10deg, transparent 10deg 20deg); }
-  .orb-dots { background: radial-gradient(circle at 50% 50%, rgba(255,255,255,.25) 2px, transparent 3px) 0 0 / 12px 12px; }
+  .orb-dots { background: radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--orb-ink-light, #fff) 25%, transparent) 2px, transparent 3px) 0 0 / 12px 12px; }
   .orb-waves { background: radial-gradient(60px circle at 50% 50%, color-mix(in oklab, var(--bg-glow-3) 35%, transparent), transparent 60%); }
   .orb-oval { border-radius: 50% / 40%; }
   .orb-hexagon { clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%); }

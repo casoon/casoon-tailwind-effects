@@ -12,4 +12,9 @@
     /* Motion-Safety */
     --scroll-reduce-opacity: 1;
   }
+
+  /* Dark-mode scaffolding (no color tokens here, but forward UA hints) */
+  :root { color-scheme: light dark; }
+  @media (prefers-color-scheme: dark) { :root { /* reserved for potential future scroll tokens */ } }
+  :where(.dark, [data-theme="dark"]) { color-scheme: dark; }
 }

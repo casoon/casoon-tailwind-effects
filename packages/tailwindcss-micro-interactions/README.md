@@ -16,6 +16,10 @@ Compact, accessible micro‑interaction utilities for Tailwind CSS v4: click eff
 @import "@casoon/tailwindcss-micro-interactions/index.css";
 ```
 
+## Dark Mode
+
+- Utilities derive visuals from `currentColor` and tokens. Enabling `.dark` on the root integrates with your theme; override `--mi-*` tokens as needed in `.dark`.
+
 ## Notes
 
 - Respects `prefers-reduced-motion` by softening or disabling animations.
@@ -44,3 +48,19 @@ Customize timing, distances, and feedback styling via CSS variables:
 - Honors `prefers-reduced-motion: reduce` by toning down or disabling transforms.
 - Do not remove outlines on focusable elements; `.focus-*` utilities provide additive affordances.
 - Provide semantic states (ARIA) alongside visual `state-*` classes when relevant.
+
+## 🎨 Theme Overrides
+
+Define ring colors and shadow ink per mode:
+
+```css
+:root {
+  --mi-focus-color: color-mix(in oklab, currentColor 55%, transparent);
+  --mi-success: oklch(62% 0.15 150);
+  --mi-error: oklch(62% 0.2 25);
+  --mi-shadow-ink:#000;
+}
+:where(.dark){
+  --mi-shadow-ink:#000;
+}
+```

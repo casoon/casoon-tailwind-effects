@@ -1,0 +1,7 @@
+@layer base {
+  @theme {
+    /* Orb inks / overlays */
+    --orb-ink-light: #ffffff;
+    --orb-ink-dark:  #000000;
+  }
+}

@@ -18,6 +18,10 @@ A comprehensive animation library for Tailwind CSS v4, providing CSS-first anima
 @import "@casoon/tailwindcss-animations/index.css";
 ```
 
+## 🌓 Dark Mode
+
+- Animations are token-driven and largely color-agnostic. Hover-lift shadows use `--anim-shadow-ink`; define it per mode if needed.
+
 ## 🎯 Basic Usage
 
 ### 1. Base Animation Class
@@ -135,8 +139,17 @@ Hover and focus effects without JavaScript:
 <!-- Accordion with animations -->
 <details class="anim-reveal">
   <summary>Click to expand</summary>
-  <div>Content animates in/out</div>
+<div>Content animates in/out</div>
 </details>
+
+## 🎨 Theme Overrides
+
+Only needed if you want to adjust shadow ink for hover-lift utilities:
+
+```css
+:root { --anim-shadow-ink:#000; }
+:where(.dark){ --anim-shadow-ink:#000; }
+```
 
 <!-- Expandable content -->
 <div class="anim-expand-target" aria-expanded="false">

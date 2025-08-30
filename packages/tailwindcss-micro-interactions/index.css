@@ -30,7 +30,7 @@
   .hover-tilt:hover { transform: perspective(var(--mi-tilt-3d)) rotateX(.75deg) rotateY(-.75deg) translateY(calc(var(--mi-translate-sm) * -1)); }
 
   .hover-float { transition: transform var(--mi-duration-sm) var(--mi-ease-standard), box-shadow var(--mi-duration-sm) var(--mi-ease-standard); }
-  .hover-float:hover { transform: translateY(calc(var(--mi-translate-md) * -1)); box-shadow: 0 10px 22px color-mix(in oklab, #000 12%, transparent); }
+  .hover-float:hover { transform: translateY(calc(var(--mi-translate-md) * -1)); box-shadow: 0 10px 22px color-mix(in oklab, var(--mi-shadow-ink, #000) 12%, transparent); }
 
   /* ================= Focus Effects ================= */
   .focus-glow:focus-visible {
@@ -46,8 +46,8 @@
 
   /* ================= State Helpers ================= */
   .state-loading { opacity: .7; cursor: progress; pointer-events: none; }
-  .state-success { --mi-ring: color-mix(in oklab, var(--mi-success) 60%, transparent); box-shadow: 0 0 0 2px #fff, 0 0 0 6px var(--mi-ring); }
-  .state-error   { --mi-ring: color-mix(in oklab, var(--mi-error) 60%, transparent);   box-shadow: 0 0 0 2px #fff, 0 0 0 6px var(--mi-ring); }
+  .state-success { --mi-ring: color-mix(in oklab, var(--mi-success) 60%, transparent); box-shadow: 0 0 0 2px var(--mi-ink-light, #fff), 0 0 0 6px var(--mi-ring); }
+  .state-error   { --mi-ring: color-mix(in oklab, var(--mi-error) 60%, transparent);   box-shadow: 0 0 0 2px var(--mi-ink-light, #fff), 0 0 0 6px var(--mi-ring); }
 }
 
 @layer utilities {
@@ -62,4 +62,3 @@
     .focus-scale:focus-visible, .focus-rotate:focus-visible { transform: none; }
   }
 }
-

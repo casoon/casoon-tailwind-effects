@@ -19,6 +19,22 @@ A comprehensive navigation component library for Tailwind CSS v4, featuring flex
 @import "@casoon/tailwindcss-navigation/index.css";
 ```
 
+## 🌓 Dark Mode
+
+- Tokens include light and dark values. Enable Tailwind dark mode with `.dark` at the root; OS fallback is supported.
+- Example overrides:
+
+```css
+:root { /* light */
+  --nav-bg: #ffffff;
+  --nav-fg: #0f172a;
+}
+:where(.dark) { /* dark */
+  --nav-bg: rgba(15,23,42,.90);
+  --nav-fg: #e5e7eb;
+}
+```
+
 ## 🎯 Basic Usage
 
 ### 1. Simple Navigation
@@ -96,6 +112,25 @@ A comprehensive navigation component library for Tailwind CSS v4, featuring flex
 ### Theme Support
 - **`.nav-theme-light`** - Light theme styling
 - **`.nav-theme-dark`** - Dark theme styling
+
+## 🎨 Theme Overrides
+
+Set surface and text tokens per mode:
+
+```css
+:root {
+  --nav-bg:#fff;
+  --nav-fg:#0f172a;
+  --nav-border:rgba(0,0,0,.12);
+  --nav-bg-hover: rgba(0,0,0,.06);
+}
+:where(.dark){
+  --nav-bg:rgba(15,23,42,.90);
+  --nav-fg:#e5e7eb;
+  --nav-border:rgba(255,255,255,.28);
+  --nav-bg-hover: rgba(255,255,255,.10);
+}
+```
 
 ## 🔧 Advanced Usage
 

@@ -20,6 +20,10 @@ A powerful scroll-triggered animation library for Tailwind CSS v4, featuring AOS
 @import "@casoon/tailwindcss-scroll/index.css";
 ```
 
+## 🌓 Dark Mode
+
+- Inherits tokens from `@casoon/tailwindcss-utilities` and related packages. Enable `.dark` on the root; focus glows use `--cs-focus-color`/`currentColor`.
+
 ## 🎯 Basic Usage
 
 ### 1. Simple Scroll Reveal
@@ -131,6 +135,10 @@ The library automatically detects and converts AOS attributes:
 - `data-aos-delay` → `--anim-delay`
 - `data-aos-easing` → `--anim-ease`
 - `data-aos-once` → `data-scroll-once`
+
+## 🎨 Theme Overrides
+
+No special overrides are required. Scroll utilities are farbagnostisch and inherit focus colors from `@casoon/tailwindcss-utilities` (`--cs-focus-color`) and `currentColor`.
 
 ## 🌊 Parallax Effects
 

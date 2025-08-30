@@ -31,7 +31,7 @@
     background:
       conic-gradient(var(--loading-accent) calc(var(--value) * 1%), color-mix(in oklab, var(--loading-accent) 20%, transparent) 0);
     mask:
-      radial-gradient(circle at 50% 50%, transparent 58%, #000 59%);
+      radial-gradient(circle at 50% 50%, transparent 58%, var(--loading-mask-ink, #000) 59%);
   }
 
   .progress-steps { display: flex; gap: .5rem; align-items: center; }
@@ -79,4 +79,3 @@
     .loading-spinner, .loading-dots::before, .loading-dots::after, .loading-dots span, .loading-bars::after { animation-duration: 1.8s; animation-iteration-count: 1; }
   }
 }
-

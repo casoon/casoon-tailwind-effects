@@ -93,21 +93,21 @@
   .gradient-overlay::after {
     content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background:
-      radial-gradient(1px 1px at 25% 32%, rgba(0,0,0,.35) 50%, transparent 51%),
-      radial-gradient(1px 1px at 62% 12%, rgba(0,0,0,.35) 50%, transparent 51%),
-      radial-gradient(1px 1px at 8% 75%, rgba(0,0,0,.35) 50%, transparent 51%);
+      radial-gradient(1px 1px at 25% 32%, color-mix(in oklab, var(--gradient-ink-dark, #000) 35%, transparent) 50%, transparent 51%),
+      radial-gradient(1px 1px at 62% 12%, color-mix(in oklab, var(--gradient-ink-dark, #000) 35%, transparent) 50%, transparent 51%),
+      radial-gradient(1px 1px at 8% 75%, color-mix(in oklab, var(--gradient-ink-dark, #000) 35%, transparent) 50%, transparent 51%);
     background-size: var(--gradient-noise-size) var(--gradient-noise-size);
     opacity: var(--gradient-noise-opacity);
     mix-blend-mode: var(--gradient-overlay-mode);
   }
   .gradient-overlay-light { position: relative; isolation: isolate; }
-  .gradient-overlay-light::before { content: ""; position: absolute; inset: 0; mix-blend-mode: screen; background: rgba(255,255,255, .1); }
+  .gradient-overlay-light::before { content: ""; position: absolute; inset: 0; mix-blend-mode: screen; background: color-mix(in oklab, var(--gradient-ink-light, #fff) 10%, transparent); }
   .gradient-overlay-dark { position: relative; isolation: isolate; }
-  .gradient-overlay-dark::before { content: ""; position: absolute; inset: 0; mix-blend-mode: multiply; background: rgba(0,0,0, .08); }
+  .gradient-overlay-dark::before { content: ""; position: absolute; inset: 0; mix-blend-mode: multiply; background: color-mix(in oklab, var(--gradient-ink-dark, #000) 8%, transparent); }
   .gradient-overlay::before {
     /* optional weißes Overlay zur „Milchigkeit“ */
     content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-    background: rgba(255,255,255,var(--gradient-overlay-alpha));
+    background: color-mix(in oklab, var(--gradient-ink-light, #fff) calc(var(--gradient-overlay-alpha) * 100%), transparent);
     mix-blend-mode: var(--gradient-overlay-mode);
   }
 
@@ -129,7 +129,7 @@
     border: 1px solid transparent;
     background:
       linear-gradient(var(--gradient-border-angle), var(--gradient-border-from), var(--gradient-border-to)) border-box,
-      linear-gradient(#0000, #0000) padding-box; /* isoliert Inhalt */
+      linear-gradient(transparent, transparent) padding-box; /* isoliert Inhalt */
     /* Tipp: kombiniere mit background-clip: padding-box; für inner content */
   }
 
@@ -174,24 +174,24 @@
      Masks / Clipping (moderne, weiche Abschattungen)
      ============================================================ */
   .gradient-mask-top {
-    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, var(--gradient-ink-dark, #000) 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, var(--gradient-ink-dark, #000) 70%, transparent 100%);
   }
   .gradient-mask-bottom {
-    -webkit-mask-image: linear-gradient(to top, #000 70%, transparent 100%);
-    mask-image: linear-gradient(to top, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, var(--gradient-ink-dark, #000) 70%, transparent 100%);
+    mask-image: linear-gradient(to top, var(--gradient-ink-dark, #000) 70%, transparent 100%);
   }
   .gradient-mask-fade {
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
-    mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, var(--gradient-ink-dark, #000) 20%, var(--gradient-ink-dark, #000) 80%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, var(--gradient-ink-dark, #000) 20%, var(--gradient-ink-dark, #000) 80%, transparent);
   }
   .gradient-mask-radial {
-    -webkit-mask-image: radial-gradient(circle at var(--gradient-position), #000 60%, transparent 100%);
-    mask-image: radial-gradient(circle at var(--gradient-position), #000 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at var(--gradient-position), var(--gradient-ink-dark, #000) 60%, transparent 100%);
+    mask-image: radial-gradient(circle at var(--gradient-position), var(--gradient-ink-dark, #000) 60%, transparent 100%);
   }
   .gradient-mask-conic {
-    -webkit-mask-image: conic-gradient(from var(--gradient-conic-angle) at var(--gradient-position), #000, transparent);
-    mask-image: conic-gradient(from var(--gradient-conic-angle) at var(--gradient-position), #000, transparent);
+    -webkit-mask-image: conic-gradient(from var(--gradient-conic-angle) at var(--gradient-position), var(--gradient-ink-dark, #000), transparent);
+    mask-image: conic-gradient(from var(--gradient-conic-angle) at var(--gradient-position), var(--gradient-ink-dark, #000), transparent);
   }
 
   /* ============================================================
@@ -227,7 +227,7 @@
     .gradient-ring {
       box-shadow:
         0 0 0 1px var(--gradient-border-from),
-        0 0 0 4px rgba(0,0,0,.08);
+        0 0 0 4px color-mix(in oklab, var(--gradient-ink-dark, #000) 8%, transparent);
     }
   }
 
@@ -254,7 +254,7 @@
   .gradient-grid { background-image: linear-gradient(transparent, transparent calc(100% - 1px), currentColor calc(100% - 1px)), linear-gradient(90deg, transparent, transparent calc(100% - 1px), currentColor calc(100% - 1px)); background-size: 24px 24px; }
 
   /* Text effects */
-  .gradient-text-3d { text-shadow: 0 1px 0 color-mix(in oklab, currentColor 35%, transparent), 0 2px 0 color-mix(in oklab, currentColor 25%, transparent), 0 3px 0 color-mix(in oklab, currentColor 15%, transparent), 0 4px 6px rgba(0,0,0,.15); }
+  .gradient-text-3d { text-shadow: 0 1px 0 color-mix(in oklab, currentColor 35%, transparent), 0 2px 0 color-mix(in oklab, currentColor 25%, transparent), 0 3px 0 color-mix(in oklab, currentColor 15%, transparent), 0 4px 6px color-mix(in oklab, var(--gradient-ink-dark, #000) 15%, transparent); }
   .gradient-text-shadow { text-shadow: 0 2px 8px color-mix(in oklab, var(--gradient-stop-1) 35%, transparent); }
 
   /* Shapes (via clip-path) */

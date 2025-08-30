@@ -18,6 +18,10 @@
     --mi-focus-color: color-mix(in oklab, currentColor 55%, transparent);
     --mi-success: oklch(62% 0.15 150);
     --mi-error:   oklch(62% 0.2  25);
+
+    /* Inks / Shadows */
+    --mi-ink-light: #ffffff;
+    --mi-ink-dark:  #000000;
+    --mi-shadow-ink: var(--mi-ink-dark);
   }
 }
-

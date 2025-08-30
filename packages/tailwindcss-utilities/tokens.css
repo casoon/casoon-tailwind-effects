@@ -3,7 +3,8 @@
    Central design tokens for cs-utilities (Tailwind v4 friendly)
    Override in themes or per scope as needed
    ===================================================================== */
-   :root {
+    :root {
+      color-scheme: light dark;
       /* --- Sizing / Spacing scale --- */
       --cs-size-0: 0;
       --cs-size-1: 0.25rem;
@@ -53,14 +54,36 @@
       --cs-focus-ring: 2px;
       --cs-focus-color: oklch(55% 0.15 260);
       --cs-focus-offset: 2px;
+
+      /* Inks (for stripes/overlays, etc.) */
+      --cs-ink-light: #ffffff;
+      --cs-ink-dark:  #000000;
     
       /* --- Media / Aspect --- */
       --cs-aspect-16-9: calc(9 / 16 * 100%);
       --cs-aspect-1-1: 100%;
     }
     
-    /* Optional: dark theme override */
-    [data-theme="dark"] {
+    /* Dark theme via OS preference (fallback when no class is set) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --cs-text-primary:   oklch(92% 0.03 260);
+        --cs-text-secondary: oklch(75% 0.02 260);
+        --cs-text-muted:     oklch(65% 0.02 260);
+
+        --cs-bg-page:      oklch(18% 0.02 260);
+        --cs-bg-surface:   oklch(22% 0.02 260);
+        --cs-bg-elevated:  oklch(26% 0.02 260);
+
+        --cs-border-color: oklch(36% 0.03 260);
+
+        --cs-focus-color:  oklch(70% 0.12 260);
+      }
+    }
+
+    /* Dark theme via class (Tailwind standard) */
+    :where(.dark, [data-theme="dark"]) {
+      color-scheme: dark;
       --cs-text-primary:   oklch(92% 0.03 260);
       --cs-text-secondary: oklch(75% 0.02 260);
       --cs-text-muted:     oklch(65% 0.02 260);

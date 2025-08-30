@@ -157,7 +157,7 @@
     .nav-badge {
       @apply inline-flex items-center justify-center text-xs font-semibold rounded-full px-2 py-0.5;
       background: color-mix(in oklab, var(--nav-accent-to) 20%, transparent);
-      color: #fff;
+      color: var(--nav-badge-fg, #fff);
     }
   
     /* Hover Slide effect container */
@@ -202,7 +202,7 @@
     .menu-fade-in[data-open="true"], .menu-fade-in[aria-expanded="true"] { opacity: 1; }
 
     /* Mobile menu helpers */
-    .mobile-menu-overlay { position: fixed; inset: 0; background: color-mix(in oklab, #000 55%, transparent); opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+    .mobile-menu-overlay { position: fixed; inset: 0; background: color-mix(in oklab, var(--nav-overlay-ink, #000) 55%, transparent); opacity: 0; pointer-events: none; transition: opacity .2s ease; }
     .mobile-menu-overlay[data-open="true"], .mobile-menu-overlay[aria-expanded="true"] { opacity: 1; pointer-events: auto; }
     .mobile-menu-slide { position: fixed; inset-inline: 0; top: 0; height: 100dvh; transform: translateY(-100%); transition: transform .25s ease; }
     .mobile-menu-slide[data-open="true"], .mobile-menu-slide[aria-expanded="true"] { transform: translateY(0); }

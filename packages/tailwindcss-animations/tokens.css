@@ -72,6 +72,9 @@
       /* ---- Motion Sicherheit ---- */
       --anim-reduced-motion-duration: 1ms; /* praktisch aus */
       --anim-reduced-motion-ease: linear;
+
+      /* Shadow ink for hover-lift utilities */
+      --anim-shadow-ink: #000000;
   
       /* ============================================================
          SHARED KEYFRAMES (global nutzbar)

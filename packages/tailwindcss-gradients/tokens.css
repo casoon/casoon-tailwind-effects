@@ -1,4 +1,5 @@
 @layer base {
+    :root { color-scheme: light dark; }
     @theme {
       /* ============================================================
          GRADIENT DESIGN TOKENS
@@ -69,6 +70,10 @@
       --gradient-overlay-mode: lighten;        /* lighten | soft-light | overlay etc. */
       --gradient-noise-opacity: .05;           /* feines Korn über Gradients */
       --gradient-noise-size: 160px;
+
+      /* Inks for overlays/masks */
+      --gradient-ink-light: #ffffff;
+      --gradient-ink-dark:  #000000;
   
       /* -------- Borders & Rings -------- */
       --gradient-border-angle: 135deg;
@@ -78,6 +83,29 @@
       /* -------- Dark/Light Tweaks -------- */
       --gradient-light-boost: 0%;              /* Helligkeitsschub für Light */
       --gradient-dark-boost:  0%;              /* …für Dark */
+    }
+
+    /* Dark-mode scaffolding: OS fallback + class override */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        /* Text gradients slightly brighter on dark */
+        --text-grad-from: #e5e7eb; /* slate-200 */
+        --text-grad-to:   #94a3b8; /* slate-400 */
+
+        /* Neutral surfaces shift to dark palette */
+        --gradient-neutral-from: #0f172a; /* slate-900 */
+        --gradient-neutral-mid:  #1f2937; /* gray-800  */
+        --gradient-neutral-to:   #334155; /* slate-700 */
+      }
+    }
+
+    :where(.dark, [data-theme="dark"]) {
+      color-scheme: dark;
+      --text-grad-from: #e5e7eb;
+      --text-grad-to:   #94a3b8;
+      --gradient-neutral-from: #0f172a;
+      --gradient-neutral-mid:  #1f2937;
+      --gradient-neutral-to:   #334155;
     }
   }
   

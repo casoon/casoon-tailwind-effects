@@ -1,174 +1,156 @@
-# TODO - Casoon Tailwind Effects Erweiterungen
+# TODO: Dark‑Mode-Konzept (Tailwind v4 Standard) & Verbesserungen
 
-## 🎯 Übersicht
-Erweiterte Hover-Effekte, Mikro-Interaktionen, moderne Effekte und verbesserte Komponenten für alle Packages.
+## Zielbild
+- Einheitlicher Light/Dark‑Mechanismus für alle Packages in `packages/*`.
+- Kompatibel zum Tailwind‑Standard: Umschaltung via `.dark` Klasse (empfohlen) und Unterstützung von `prefers-color-scheme` (Media‑Fallback).
+- Alle Farben nur noch über Tokens (`--cs-*` bzw. paket‑spezifische Tokens) – keine harten Hexwerte in Utilities/Komponenten.
+- Saubere Priorität: manuelle Klassen‑Umschaltung gewinnt vor OS‑Einstellung.
+- Keine Layout‑Thrash, Motion‑safe, barrierearm (Kontrast/Focus, `color-scheme`).
 
----
+## Strategie & Architektur
+- Modus‑Strategie:
+  - Class‑Mode: Root erhält `.dark` (Tailwind‑Standard, `dark:` Varianten). Optional auch `[data-theme="dark"]`.
+  - Media‑Fallback: `@media (prefers-color-scheme: dark)` setzt Dark‑Tokens, wenn keine Klasse gesetzt ist.
+- Priorität:
+  1) `.dark` / `[data-theme="dark"]` (höchste Prio, explizit)  
+  2) `@media (prefers-color-scheme: dark)` (implizit, OS)  
+  3) `:root` (Light‑Defaults)
+- Token‑Modell:
+  - Gemeinsame, semantische Grund‑Tokens in jedem Paket: z. B. `--cs-bg-page`, `--cs-bg-surface`, `--cs-text-primary`, `--cs-border-color`, …
+  - Paket‑spezifische Tokens bleiben bestehen (z. B. `--glass-*`, `--nav-*`, `--orb-*`) und werden über Light/Dark konsistent übersteuert.
+  - Keine Direktfarben in Klassen – alles via `var(--… )`.
+- CSS‑Schichten:
+  - Tokens in `@layer base` (bzw. `@theme` wo bereits genutzt) definieren und überschreiben; Utilities/Komponenten in `@layer utilities`/`components` konsumieren nur `var()`.
+- UA‑Hinweis:
+  - `color-scheme: light dark;` auf `:root`, sowie `color-scheme: dark;` im Dark‑Scope, damit Form Controls/Scrollbars korrekt rendern.
 
-## 🎨 **@casoon/tailwindcss-animations**
+## Referenz‑Skelett für Tokens (pro Paket in `tokens.css`)
 
-### Erweiterte Hover-Effekte und Mikro-Interaktionen
-- [x] **Hover-Lift Varianten**: `.hover-lift-sm`, `.hover-lift-md`, `.hover-lift-lg`
-- [x] **Hover-Scale Effekte**: `.hover-scale-105`, `.hover-scale-110`, `.hover-scale-125`
-- [x] **Hover-Rotate**: `.hover-rotate-1`, `.hover-rotate-2`, `.hover-rotate-3`
-- [x] **Hover-Skew**: `.hover-skew-x-1`, `.hover-skew-y-1`
-- [x] **Hover-Blur**: `.hover-blur-sm`, `.hover-blur-md`, `.hover-blur-lg`
-- [x] **Hover-Brightness**: `.hover-brightness-110`, `.hover-brightness-125`
+```css
+/* 1) Defaults (Light) */
+:root {
+  color-scheme: light dark; /* UA Hints */
+  /* Beispiel: Grundtokens */
+  --cs-text-primary:   oklch(18% 0.03 260);
+  --cs-text-secondary: oklch(45% 0.03 260);
+  --cs-text-muted:     oklch(60% 0.02 260);
+  --cs-bg-page:        oklch(98% 0.01 260);
+  --cs-bg-surface:     oklch(100% 0 0);
+  --cs-bg-elevated:    oklch(97% 0.01 260);
+  --cs-border-color:   oklch(84% 0.02 260);
+  /* … weitere Paket‑/Komponenten‑Tokens … */
+}
 
-### Sanfte Übergänge und Animationen
-- [x] **Transition-Presets**: `.transition-fast`, `.transition-normal`, `.transition-slow`
-- [x] **Easing-Presets**: `.ease-bounce`, `.ease-elastic`, `.ease-back`
-- [x] **Stagger-Utilities**: `.stagger-1`, `.stagger-2`, `.stagger-3`, `.stagger-4`, `.stagger-5`
-- [x] **Delay-Utilities**: `.delay-100`, `.delay-200`, `.delay-300`, `.delay-500`, `.delay-700`
+/* 2) Media‑Fallback (OS Dark) – nur aktiv wenn keine .dark Klasse gesetzt ist */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cs-text-primary:   oklch(92% 0.03 260);
+    --cs-text-secondary: oklch(75% 0.02 260);
+    --cs-text-muted:     oklch(65% 0.02 260);
+    --cs-bg-page:        oklch(18% 0.02 260);
+    --cs-bg-surface:     oklch(22% 0.02 260);
+    --cs-bg-elevated:    oklch(26% 0.02 260);
+    --cs-border-color:   oklch(36% 0.03 260);
+    /* paket‑spezifische Dark‑Mappings (z. B. --glass-*, --nav-*) */
+  }
+}
 
-### Benutzerdefinierte Utility-Klassen für komplexe Animationen
-- [x] **Morph-Animationen**: `.morph-circle`, `.morph-square`, `.morph-triangle`
-- [x] **Wave-Effekte**: `.wave-1`, `.wave-2`, `.wave-3`
-- [x] **Pulse-Varianten**: `.pulse-slow`, `.pulse-fast`, `.pulse-bounce`
-- [x] **Shake-Effekte**: `.shake-horizontal`, `.shake-vertical`, `.shake-rotate`
+/* 3) Class‑Mode (Tailwind Standard) – höchste Priorität */
+:where(.dark, [data-theme="dark"]) {
+  color-scheme: dark; /* UA Hints */
+  --cs-text-primary:   oklch(92% 0.03 260);
+  --cs-text-secondary: oklch(75% 0.02 260);
+  --cs-text-muted:     oklch(65% 0.02 260);
+  --cs-bg-page:        oklch(18% 0.02 260);
+  --cs-bg-surface:     oklch(22% 0.02 260);
+  --cs-bg-elevated:    oklch(26% 0.02 260);
+  --cs-border-color:   oklch(36% 0.03 260);
+  /* paket‑spezifische Dark‑Mappings */
+}
+```
 
----
+Hinweise:
+- `:where()` reduziert Spezifität, damit Nutzer‑Overrides einfacher bleiben.
+- Reihenfolge im Stylesheet: `:root` → `@media (dark)` → `:where(.dark)` (so gewinnt Class‑Mode).
+- Wo bereits `[data-theme="dark"]` existiert: `.dark` zusätzlich einführen; bestehendes beibehalten (keine Breaking Changes).
 
-## 🌊 **@casoon/tailwindcss-scroll**
+## Auswirkungen je Paket (Kurzfassung)
+- `tailwindcss-utilities`:
+  - Bereits Tokens vorhanden; ergänzen um `.dark` + `@media` Fallback und `color-scheme`.
+  - Sicherstellen, dass alle `.cs-*` Klassen nur `var(--cs-*)` verwenden (Audit auf harte Farben).
+- `tailwindcss-animations`:
+  - Farben in Keyframe‑Effekten (Glows, shadows) auf Tokens umlenken, z. B. via `--anim-accent`/`--anim-shadow` mit Light/Dark‑Werten.
+  - Respect `prefers-reduced-motion` weiterhin; keine Farb‑Transitions beim Theme‑Wechsel erzwingen.
+- `tailwindcss-glass`:
+  - `--glass-*` Bases dual definieren (Light/Dark) inkl. Schatten/Border‑Alpha.
+  - Nav‑Tokens (`--nav-*`) für beide Modi konsistent setzen; Transparenzen in Dark ggf. erhöhen.
+- `tailwindcss-gradients`:
+  - Gradient‑Stops über semantische Tokens (`--grad-from`, `--grad-to`) abbilden; Dark leicht abdunkeln/kontrastieren.
+- `tailwindcss-navigation`:
+  - Active/Hover/Focus via Tokens; Kontrast in Dark hoch halten, Focus‑Ring sichtbar.
+- `tailwindcss-orbs`:
+  - Lichteffekte/blur‑Shadows über Tokens dimmen/aufhellen je Modus.
+- `tailwindcss-scroll`:
+  - Reveal‑Overlays/Masken im Dark‑Modus anpassen; Intersection‑Logik unverändert.
+- `tailwindcss-effects` (Meta):
+  - Nur Re‑Exports; sicherstellen, dass Reihenfolge der Imports Tokens → Komponenten/Utilities ist.
 
-### Erweiterte Scroll-Animationen
-- [x] **Scroll-Parallax Varianten**: `.scroll-parallax-slow`, `.scroll-parallax-fast`
-- [x] **Scroll-Stagger Erweiterungen**: `.scroll-stagger-2`, `.scroll-stagger-3`, `.scroll-stagger-4`
-- [x] **Scroll-Trigger Varianten**: `.scroll-trigger-top`, `.scroll-trigger-center`, `.scroll-trigger-bottom`
-- [x] **Scroll-Loop**: `.scroll-loop`, `.scroll-loop-reverse`, `.scroll-loop-alternate`
+## Migrationsrichtlinien (für Nutzer)
+- Empfohlen: `<html class="dark">` setzen, um die Tailwind `dark:` Variante und unsere Tokens synchron zu schalten. Alternativ: `<html data-theme="dark">`.
+- Ohne Klassentoggle greift OS‑Dark via `prefers-color-scheme` automatisch.
+- Branding: Eigene Markenfarben per Überschreiben der Tokens in `:root` und `.dark`/`[data-theme=dark]`.
 
-### Mikro-Interaktionen
-- [x] **Scroll-Hover**: `.scroll-hover-lift`, `.scroll-hover-scale`
-- [x] **Scroll-Focus**: `.scroll-focus-ring`, `.scroll-focus-glow`
-- [x] **Scroll-Active**: `.scroll-active-pulse`, `.scroll-active-bounce`
+## QA‑Checkliste
+- Token‑Audit: Keine harten Farben in `index.css` Dateien (nur `var(--…)`).
+- Visuelle Prüfung: Light/Dark pro Paket (Page/Surface, Card, Input, Nav, Gradients, Glass).
+- Accessibility: Kontrast ≥ WCAG AA, Focus‑Ring klar sichtbar in beiden Modi.
+- Motion: Keine abrupten Farb‑Transitions beim Umschalten; `prefers-reduced-motion` respektiert.
+- Browser: Aktuelle Chromium/Firefox/Safari, Scrollbars/Form Controls prüfen (via `color-scheme`).
 
----
+## Automatisierung (Vorschläge)
+- `scripts/verify-tokens.mjs`: Fail wenn in `packages/*/index.css` Hex/RGB(A)/HSL vorkommt (Whitelist: keyframes‑intern oder Tokens‑Definitionen).
+- `scripts/verify-dark.mjs`: Prüft pro Paket das Vorhandensein der drei Blöcke (`:root`, `@media (prefers-color-scheme: dark)`, `:where(.dark, [data-theme=dark])`).
+- `npm run version:check` vor PRs; Readmes: Dark‑Hinweis und Snippet ergänzen.
 
-## 🛠️ **@casoon/tailwindcss-utilities**
+## Code‑Beispiele zum Einbau
 
-### Verbesserte Formularelemente mit interaktiven Zuständen
-- [x] **Input-States**: `.input-focus`, `.input-hover`, `.input-active`, `.input-disabled` (als `.cs-input-*` umgesetzt)
-- [x] **Input-Variants**: `.input-outline`, `.input-filled`, `.input-minimal` (als `.cs-input-*` umgesetzt)
-- [x] **Input-Sizes**: `.input-sm`, `.input-md`, `.input-lg` (als `.cs-input-*` umgesetzt)
-- [x] **Input-Groups**: `.input-group`, `.input-group-vertical`, `.input-group-horizontal` (inkl. `.cs-input-addon`)
+Utilities (Beispiel):
+```css
+/* tokens.css – siehe Skelett oben */
+@import "./tokens.css";
 
-### Erweiterte Button-Utilities
-- [x] **Button-States**: `.btn-hover`, `.btn-active`, `.btn-focus`, `.btn-disabled` (als `.cs-btn-*` umgesetzt)
-- [x] **Button-Variants**: `.btn-outline`, `.btn-ghost`, `.btn-link`, `.btn-3d` (als `.cs-btn-*` umgesetzt)
-- [x] **Button-Sizes**: `.btn-sm`, `.btn-md`, `.btn-lg`, `.btn-xl` (als `.cs-btn-*` umgesetzt)
-- [x] **Button-Groups**: `.btn-group`, `.btn-group-vertical` (als `.cs-btn-group*` umgesetzt)
+@layer utilities {
+  .cs-page { background: var(--cs-bg-page); color: var(--cs-text-primary); }
+  .cs-surface { background: var(--cs-bg-surface); color: var(--cs-text-primary); }
+  .cs-card { background: var(--cs-bg-surface); border: 1px solid var(--cs-border-color); }
+  .cs-text-muted { color: var(--cs-text-muted); }
+}
+```
 
-### Professionelle Ladeanimationen und Spinner
-- [x] **Spinner-Types**: `.spinner-dots`, `.spinner-bars`, `.spinner-rings`, `.spinner-pulse`
-- [x] **Spinner-Sizes**: `.spinner-sm`, `.spinner-md`, `.spinner-lg`
-- [x] **Loading-States**: `.loading`, `.loading-overlay`, `.loading-skeleton`
-- [x] **Progress-Bars**: `.progress`, `.progress-striped`, `.progress-animated`
+Glass (Dark‑Mapping, Auszug):
+```css
+:root {
+  --glass-bg: rgba(255,255,255,.08);
+  --nav-bg: var(--glass-bg);
+  /* … */
+}
+@media (prefers-color-scheme: dark) { :root {
+  --glass-bg: rgba(15,23,42,.85);
+  --nav-bg: var(--glass-bg);
+} }
+:where(.dark, [data-theme="dark"]) {
+  --glass-bg: rgba(15,23,42,.90);
+  --nav-bg: var(--glass-bg);
+}
+```
 
----
-
-## 🧭 **@casoon/tailwindcss-navigation**
-
-### Erweiterte Navigation-Effekte
-- [x] **Hover-Animationen**: `.nav-hover-slide`, `.nav-hover-fade`, `.nav-hover-scale`
-- [x] **Active-States**: `.nav-active-glow`, `.nav-active-pulse`, `.nav-active-bounce`
-- [x] **Focus-Enhancements**: `.nav-focus-ring`, `.nav-focus-glow`, `.nav-focus-scale`
-
-### Mikro-Interaktionen
-- [x] **Menu-Transitions**: `.menu-slide-down`, `.menu-slide-up`, `.menu-fade-in`
-- [x] **Subnav-Animationen**: `.subnav-expand`, `.subnav-collapse`, `.subnav-slide`
-  - [x] **Mobile-Menu**: `.mobile-menu-overlay`, `.mobile-menu-slide`, `.mobile-menu-fade`
-
----
-
-## 🪟 **@casoon/tailwindcss-glass**
-
-### Moderne Glassmorphism- und Backdrop-Effekte
-- [x] **Glass-Variants**: `.glass-frosted`, `.glass-clear`, `.glass-mirror`, `.glass-smoke`
-- [x] **Backdrop-Filters**: `.backdrop-blur-sm`, `.backdrop-blur-md`, `.backdrop-blur-lg`
-- [x] **Glass-Effects**: `.glass-glow`, `.glass-shadow`, `.glass-border-glow`
-  - [x] **Glass-Interactions**: `.glass-hover`, `.glass-focus`, `.glass-active`
-
-### Erweiterte Glass-Effekte
-  - [x] **Glass-Sizes**: `.glass-xs`, `.glass-sm`, `.glass-md`, `.glass-lg`, `.glass-xl`
-  - [x] **Glass-Shapes**: `.glass-rounded`, `.glass-pill`, `.glass-hexagon`
-  - [x] **Glass-Overlays**: `.glass-overlay`, `.glass-mask`, `.glass-clip`
-
----
-
-## 🌈 **@casoon/tailwindcss-gradients**
-
-### Erweiterte Gradient-Effekte
-- [x] **Gradient-Animationen**: `.gradient-shift`, `.gradient-rotate`, `.gradient-pulse`
-- [x] **Gradient-Interactions**: `.gradient-hover`, `.gradient-focus`, `.gradient-active`
-- [x] **Gradient-Masks**: `.gradient-mask-radial`, `.gradient-mask-conic`
-- [x] **Gradient-Overlays**: `.gradient-overlay-light`, `.gradient-overlay-dark`
-
-### Moderne Gradient-Utilities
-- [x] **Gradient-Shapes**: `.gradient-circle`, `.gradient-heart`, `.gradient-star`
-- [x] **Gradient-Patterns**: `.gradient-stripes`, `.gradient-dots`, `.gradient-grid`
-- [x] **Gradient-Text-Effekte**: `.gradient-text-3d`, `.gradient-text-shadow`
-
----
-
-## 🔮 **@casoon/tailwindcss-orbs**
-
-### Erweiterte Orb-Effekte
-- [x] **Orb-Animationen**: `.orb-float`, `.orb-pulse`, `.orb-rotate`, `.orb-bounce`
-- [x] **Orb-Interactions**: `.orb-hover`, `.orb-focus`, `.orb-active`
-- [x] **Orb-Patterns**: `.orb-stripes`, `.orb-dots`, `.orb-waves`
-- [x] **Orb-Shapes**: `.orb-oval`, `.orb-hexagon`, `.orb-star`
-
-### Mikro-Interaktionen für Orbs
-- [x] **Orb-Hover-Effekte**: `.orb-hover-scale`, `.orb-hover-glow`, `.orb-hover-blur`
-- [x] **Orb-Transitions**: `.orb-transition-fast`, `.orb-transition-slow`
-- [x] **Orb-Responsive**: `.orb-responsive-sm`, `.orb-responsive-md`, `.orb-responsive-lg`
-
----
-
-## 🚀 **Neue Package-Ideen**
-
-### **@casoon/tailwindcss-micro-interactions**
-- [x] **Click-Effekte**: `.click-ripple`, `.click-bounce`, `.click-squish`
-- [x] **Hover-Effekte**: `.hover-magnetic`, `.hover-tilt`, `.hover-float`
-- [x] **Focus-Effekte**: `.focus-glow`, `.focus-scale`, `.focus-rotate`
-- [x] **State-Transitions**: `.state-loading`, `.state-success`, `.state-error`
-
-### **@casoon/tailwindcss-loading**
-- [x] **Skeleton-Loading**: `.skeleton`, `.skeleton-text`, `.skeleton-avatar`
-- [x] **Progress-Indicators**: `.progress-circle`, `.progress-steps`, `.progress-timeline`
-- [x] **Loading-Overlays**: `.loading-spinner`, `.loading-dots`, `.loading-bars`
-
----
-
-## 📋 **Implementierungs-Priorität**
-
-### **Phase 1 (Hoch)**
-1. Erweiterte Hover-Effekte in `tailwindcss-animations`
-2. Verbesserte Formularelemente in `tailwindcss-utilities`
-3. Moderne Glassmorphism-Effekte in `tailwindcss-glass`
-
-### **Phase 2 (Mittel)**
-1. Scroll-Animationen in `tailwindcss-scroll`
-2. Navigation-Effekte in `tailwindcss-navigation`
-3. Gradient-Animationen in `tailwindcss-gradients`
-
-### **Phase 3 (Niedrig)**
-1. Orb-Animationen in `tailwindcss-orbs`
-2. Neue Package-Erstellung
-3. Erweiterte Mikro-Interaktionen
+## Weitere Verbesserungen (Vorschläge)
+- Konsolidierte Theme‑Hooks: Kleines „Core‑Tokens“-Dok (README Abschnitt) mit empfohlenen semantischen Tokens je Paket.
+- High‑Contrast Support: optionale Varianten via `@media (prefers-contrast: more)` für Border/Focus‑Ring.
+- Reduced‑Transparency Mode: `[data-reduce-transparency]` mindert Glas/Blur‑Effekte (Barrierefreiheit).
+- Spezifitäts‑Hygiene: Systematisch `:where()` in Scopes verwenden, damit Userland‑Overrides trivial bleiben.
+- Linting: `verify-css.mjs` erweitern, um `@import`‑Reihenfolge Tokens→Utilities sicherzustellen.
+- Doku: Dark‑Mode Abschnitt in jedem Paket‑README mit Copy‑Paste Snippets (`.dark` Umschalter, lokale Token‑Overrides).
 
 ---
-
-## 🎯 **Ziele**
-
-- **Konsistente API** über alle Packages
-- **Performance-optimiert** mit minimalen Repaints
-- **Accessibility-first** mit reduzierter Motion-Unterstützung
-- **Responsive Design** für alle Bildschirmgrößen
-- **TypeScript-Support** für bessere Entwicklererfahrung
-- **Comprehensive Testing** für alle neuen Features
-
----
-
-*Letzte Aktualisierung: 2025-08-29*
-*Status: In Umsetzung*
+Status: Konzept fixiert; nächste Schritte: pro Paket `tokens.css` angleichen, Farbhärten entfernen, Readmes ergänzen, Verifier‑Skripte hinzufügen.

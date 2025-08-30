@@ -33,6 +33,7 @@
      --glass-tint-s: 100%;    /* 0–100% */
      --glass-tint-l: 60%;     /* 0–100% */
      --glass-tint-a: 0.18;    /* 0–1    */
+     --glass-tint-color: hsl(var(--glass-tint-h) var(--glass-tint-s) var(--glass-tint-l) / calc(var(--glass-tint-a) * 100%));
  
      /* ---- Accents / Palette Hooks ---- */
      --glass-accent-from: #f97316; /* orange-500 */
@@ -55,6 +56,17 @@
      --glass-inner-shadow: rgba(0,0,0,.18);
      --glass-noise-opacity: .06;
      --glass-noise-size: 160px;
+
+     /* ---- Foreground / Ink ---- */
+     --glass-fg: #ffffff;          /* default foreground on dark glass */
+     --glass-fg-contrast: #0f172a; /* foreground for light glass */
+     --glass-ink-light: #ffffff;   /* white ink for effects/mix */
+     --glass-ink-dark: #000000;    /* black ink for effects/mix */
+
+     /* ---- Inputs / Placeholders / Rails ---- */
+     --glass-input-placeholder: rgba(255,255,255,.55);
+     --glass-input-light-placeholder: rgba(100,116,139,.7);
+     --glass-rail: rgba(255,255,255,.10);
  
      /* ---- Component-spezifische Radien (optional) ---- */
      --glass-card-radius: 1rem;
@@ -174,6 +186,52 @@
      @keyframes orbFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
      @keyframes gradientShift { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
      @keyframes slideProgress { 0%, 100% { width: 33% } 50% { width: 66% } }
+   }
+ }
+
+ /* Dark-mode scaffolding: OS fallback + class override */
+  @layer base {
+    :root { color-scheme: light dark; }
+
+   @media (prefers-color-scheme: dark) {
+     :root {
+       /* Base glass surfaces */
+       --glass-bg: rgba(15, 23, 42, 0.88);
+       --glass-bg-hover: rgba(15, 23, 42, 0.92);
+       --glass-border: rgba(255, 255, 255, 0.22);
+       --glass-border-strong: rgba(255, 255, 255, 0.30);
+       --glass-shadow: 0 8px 32px 0 rgba(0,0,0,.55);
+       --glass-shadow-hover: 0 20px 40px 0 rgba(0,0,0,.6);
+
+       /* Navigation base hook to dark surface */
+       --nav-bg: var(--glass-dark-bg);
+       --nav-fg: #e5e7eb;
+       --nav-border: rgba(255,255,255, .25);
+       --nav-subnav-bg: var(--glass-dark-bg);
+       --nav-subnav-fg: #e5e7eb;
+       --nav-subnav-border: rgba(255,255,255, .25);
+
+       /* Foreground in dark */
+       --glass-fg: #e5e7eb;
+     }
+   }
+
+   :where(.dark, [data-theme="dark"]) {
+     color-scheme: dark;
+     --glass-bg: rgba(15, 23, 42, 0.90);
+     --glass-bg-hover: rgba(15, 23, 42, 0.94);
+     --glass-border: rgba(255, 255, 255, 0.24);
+     --glass-border-strong: rgba(255, 255, 255, 0.34);
+     --glass-shadow: 0 8px 32px 0 rgba(0,0,0,.58);
+     --glass-shadow-hover: 0 20px 40px 0 rgba(0,0,0,.62);
+
+     --nav-bg: var(--glass-dark-bg);
+     --nav-fg: #e5e7eb;
+     --nav-border: rgba(255,255,255, .28);
+     --nav-subnav-bg: var(--glass-dark-bg);
+     --nav-subnav-fg: #e5e7eb;
+     --nav-subnav-border: rgba(255,255,255, .28);
+     --glass-fg: #e5e7eb;
    }
  }
  

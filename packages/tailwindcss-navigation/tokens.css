@@ -1,0 +1,81 @@
+@layer base {
+  :root { color-scheme: light dark; }
+  @theme {
+    /* Navigation tokens (standalone, ohne glass Abhängigkeit) */
+    --nav-bg: rgba(255,255,255,.08);
+    --nav-bg-hover: rgba(255,255,255,.12);
+    --nav-fg: #0f172a;
+    --nav-fg-hover: #0b1220;
+    --nav-border: rgba(0,0,0,.10);
+    --nav-radius: .75rem;
+    --nav-blur: 12px;
+    --nav-shadow: 0 8px 24px rgba(0,0,0,.10);
+
+    --nav-accent-from: #f97316;
+    --nav-accent-to:   #0891b2;
+    --nav-cta-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+    --nav-gap: .5rem;
+    --nav-link-px: .875rem;
+    --nav-link-py: .5rem;
+    --nav-link-radius: .5rem;
+    --nav-link-compact-px: .625rem;
+    --nav-link-compact-py: .375rem;
+    --nav-link-roomy-px: 1rem;
+    --nav-link-roomy-py: .75rem;
+
+    --nav-tab-fg: #334155;
+    --nav-tab-active-bg: color-mix(in oklab, #000 8%, transparent);
+    --nav-tab-active-ring: rgba(0,0,0,.08);
+    --nav-pill-active-fg: #ffffff;
+
+    --nav-subnav-bg: #ffffff;
+    --nav-subnav-fg: #0f172a;
+    --nav-subnav-hover: rgba(0,0,0,.06);
+    --nav-subnav-border: rgba(0,0,0,.12);
+    --nav-subnav-blur: 12px;
+
+    --nav-light-bg: #ffffff;
+    --nav-light-fg: #0f172a;
+    --nav-light-hover: rgba(0,0,0,.06);
+    --nav-light-border: rgba(0,0,0,.12);
+
+    --nav-dark-bg: rgba(15, 23, 42, 0.9);
+    --nav-dark-fg: #e5e7eb;
+    --nav-dark-hover: rgba(255,255,255,.10);
+    --nav-dark-border: rgba(255,255,255, .25);
+
+    /* Helpers */
+    --nav-badge-fg: #ffffff;
+    --nav-overlay-ink: #000000;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --nav-bg: rgba(15, 23, 42, 0.88);
+      --nav-bg-hover: rgba(15, 23, 42, 0.92);
+      --nav-fg: #e5e7eb;
+      --nav-fg-hover: #ffffff;
+      --nav-border: rgba(255,255,255, .22);
+      --nav-shadow: 0 8px 24px rgba(0,0,0,.35);
+
+      --nav-subnav-bg: rgba(15, 23, 42, 0.9);
+      --nav-subnav-fg: #e5e7eb;
+      --nav-subnav-border: rgba(255,255,255, .25);
+    }
+  }
+
+  :where(.dark, [data-theme="dark"]) {
+    color-scheme: dark;
+    --nav-bg: rgba(15, 23, 42, 0.90);
+    --nav-bg-hover: rgba(15, 23, 42, 0.94);
+    --nav-fg: #e5e7eb;
+    --nav-fg-hover: #ffffff;
+    --nav-border: rgba(255,255,255, .28);
+    --nav-shadow: 0 12px 32px rgba(0,0,0,.45);
+
+    --nav-subnav-bg: rgba(15, 23, 42, 0.92);
+    --nav-subnav-fg: #e5e7eb;
+    --nav-subnav-border: rgba(255,255,255, .28);
+  }
+}

@@ -19,6 +19,21 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 @import "@casoon/tailwindcss-gradients/index.css";
 ```
 
+## 🌓 Dark Mode
+
+- Works with Tailwind `.dark` and OS fallback. Tune text and neutral stops per mode:
+
+```css
+:root {
+  --text-grad-from: #ffffff;
+  --text-grad-to:   #94a3b8;
+}
+:where(.dark) {
+  --text-grad-from: #e5e7eb;
+  --text-grad-to:   #94a3b8;
+}
+```
+
 ## 🎯 Basic Usage
 
 ### 1. Background Gradients
@@ -45,6 +60,27 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 ```
 
 ## 🎨 Available Classes
+
+## 🎨 Theme Overrides
+
+Align text and neutral gradient stops per mode:
+
+```css
+:root {
+  --text-grad-from: #fff;
+  --text-grad-to: #94a3b8;
+  --gradient-neutral-from: #f8fafc;
+  --gradient-neutral-mid: #e2e8f0;
+  --gradient-neutral-to: #cbd5e1;
+}
+:where(.dark){
+  --text-grad-from:#e5e7eb;
+  --text-grad-to:#94a3b8;
+  --gradient-neutral-from:#0f172a;
+  --gradient-neutral-mid:#1f2937;
+  --gradient-neutral-to:#334155;
+}
+```
 
 ### Background Gradients
 - **`.gradient-bg`** - Base gradient background

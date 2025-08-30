@@ -175,11 +175,11 @@
   @layer utilities {
     /* Lift Variants */
     .hover-lift-sm { transition: transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard); }
-    .hover-lift-sm:hover { transform: translateY(-2px); box-shadow: 0 6px 12px color-mix(in oklab, #000 10%, transparent); }
+    .hover-lift-sm:hover { transform: translateY(-2px); box-shadow: 0 6px 12px color-mix(in oklab, var(--anim-shadow-ink, #000) 10%, transparent); }
     .hover-lift-md { transition: transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard); }
-    .hover-lift-md:hover { transform: translateY(-4px); box-shadow: 0 10px 18px color-mix(in oklab, #000 14%, transparent); }
+    .hover-lift-md:hover { transform: translateY(-4px); box-shadow: 0 10px 18px color-mix(in oklab, var(--anim-shadow-ink, #000) 14%, transparent); }
     .hover-lift-lg { transition: transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard); }
-    .hover-lift-lg:hover { transform: translateY(-6px); box-shadow: 0 16px 28px color-mix(in oklab, #000 18%, transparent); }
+    .hover-lift-lg:hover { transform: translateY(-6px); box-shadow: 0 16px 28px color-mix(in oklab, var(--anim-shadow-ink, #000) 18%, transparent); }
 
     /* Scale */
     .hover-scale-105 { transition: transform var(--anim-duration-sm) var(--anim-ease-standard); }

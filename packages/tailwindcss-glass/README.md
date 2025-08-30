@@ -265,6 +265,22 @@ Create your own glass effects:
 }
 ```
 
+## 🌓 Dark Mode
+
+- Enable Tailwind dark mode by toggling the `.dark` class on a root element. Our tokens provide OS fallback via `prefers-color-scheme`.
+- Example overrides:
+
+```css
+:root { /* light */
+  --glass-bg: rgba(255,255,255,.08);
+  --nav-bg: var(--glass-bg);
+}
+:where(.dark) { /* dark */
+  --glass-bg: rgba(15,23,42,.90);
+  --nav-bg: var(--glass-bg);
+}
+```
+
 ## ♿ Accessibility
 
 ### Contrast Considerations
@@ -337,6 +353,26 @@ const GlassContainer = styled.div`
 ## 🤝 Contributing
 
 Contributions are welcome! Please ensure all components respect accessibility guidelines and include proper fallbacks.
+
+
+## 🎨 Theme Overrides
+
+Quick per‑mode overrides for core glass tokens:
+
+```css
+:root {
+  --glass-bg: rgba(255,255,255,.08);
+  --glass-border: rgba(255,255,255,.15);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,.30);
+  --glass-fg: #fff;
+}
+:where(.dark) {
+  --glass-bg: rgba(15,23,42,.90);
+  --glass-border: rgba(255,255,255,.28);
+  --glass-shadow: 0 12px 32px rgba(0,0,0,.45);
+  --glass-fg: #e5e7eb;
+}
+```
 
 ---
 

@@ -15,6 +15,8 @@
 
     --avatar-size: 3rem;
     --progress-size: 2.5rem; /* circle */
+
+    /* Inks */
+    --loading-mask-ink: #000000;
   }
 }
-

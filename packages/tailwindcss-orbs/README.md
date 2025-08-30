@@ -19,6 +19,10 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 @import "@casoon/tailwindcss-orbs/index.css";
 ```
 
+## 🌓 Dark Mode
+
+- Orbs use background tokens; no special setup is required. Add `.dark` on the root to switch themes and override `--bg-glow-*` per mode.
+
 ## 🎯 Basic Usage
 
 ### 1. Simple Orb Background
@@ -118,6 +122,27 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 ```
 
 ## 🎭 Examples
+
+## 🎨 Theme Overrides
+
+Orbs read from background tokens; define them per mode:
+
+```css
+:root {
+  --bg-base-from:#0ea5e9;
+  --bg-base-to:#6366f1;
+  --bg-glow-1:#22d3ee;
+  --bg-glow-2:#a78bfa;
+  --bg-glow-3:#f472b6;
+}
+:where(.dark){
+  --bg-base-from:#0b1220;
+  --bg-base-to:#0f172a;
+  --bg-glow-1:#22d3ee;
+  --bg-glow-2:#a78bfa;
+  --bg-glow-3:#f472b6;
+}
+```
 
 ### Hero Section with Orbs
 ```html
