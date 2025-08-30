@@ -27,7 +27,7 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 
 ### 1. Simple Orb Background
 ```html
-<div class="orb-bg">
+<div class="bg-orbs">
   <h2>Content with Orb Background</h2>
   <p>Beautiful floating orb effect</p>
 </div>
@@ -35,17 +35,17 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 
 ### 2. Size Variants
 ```html
-<div class="orb-bg orb-size-sm">Small Orb</div>
-<div class="orb-bg orb-size-md">Medium Orb</div>
-<div class="orb-bg orb-size-lg">Large Orb</div>
-<div class="orb-bg orb-size-xl">Extra Large Orb</div>
+<div class="orb orb-sm"></div>
+<div class="orb orb-md"></div>
+<div class="orb orb-lg"></div>
 ```
 
 ### 3. Color Variants
 ```html
-<div class="orb-bg orb-color-blue-500/20">Blue Orb</div>
-<div class="orb-bg orb-color-purple-500/30">Purple Orb</div>
-<div class="orb-bg orb-color-green-500/25">Green Orb</div>
+<!-- Use tokens or Tailwind bg utilities on wrappers to influence glow colors -->
+<div class="orb orb-md" style="--bg-glow-2:#60a5fa"></div>
+<div class="orb orb-md" style="--bg-glow-2:#a78bfa"></div>
+<div class="orb orb-md" style="--bg-glow-2:#34d399"></div>
 ```
 
 ## 🎨 Available Classes
@@ -113,7 +113,7 @@ A beautiful orb background library for Tailwind CSS v4, providing decorative orb
 
 ### Responsive Orbs
 ```html
-<div class="orb-bg orb-responsive-sm md:orb-responsive-md lg:orb-responsive-lg orb-hover-glow orb-transition-slow">
+<div class="bg-orbs orb-responsive-sm md:orb-responsive-md lg:orb-responsive-lg orb-hover-glow orb-transition-slow">
   <div class="p-6">
     <h3>Responsive Orb</h3>
     <p>This orb changes size based on screen size</p>
