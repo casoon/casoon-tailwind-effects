@@ -1,26 +1,16 @@
 {
   "name": "@casoon/tailwindcss-gradients",
-  "version": "0.5.0",
+  "version": "0.5.1",
+  "description": "Beautiful gradient utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./plugin.js",
-      "require": "./plugin.cjs"
-    },
-    "./index.css": "./index.css",
-    "./dist.css": "./dist.css",
-    "./plugin": {
-      "import": "./plugin.js",
-      "require": "./plugin.cjs"
-    },
-    "./tokens.css": "./tokens.css"
+    ".": "./plugin.js",
+    "./plugin": "./plugin.js"
   },
+  "main": "./plugin.js",
+  "module": "./plugin.js",
   "files": [
-    "index.css",
-    "dist.css",
-    "tokens.css",
     "plugin.js",
-    "plugin.cjs",
     "README.md",
     "LICENSE"
   ],
@@ -30,7 +20,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "MIT",
-  "main": "./plugin.cjs",
-  "module": "./plugin.js"
+  "license": "MIT"
 }

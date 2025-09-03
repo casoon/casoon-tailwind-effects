@@ -7,73 +7,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const PKGS_DIR = join(ROOT, 'packages');
 
-// Function to flatten CSS content (remove @layer nesting)
-const flattenCSS = (cssContent) => {
-  // Remove @layer wrappers while preserving content
-  let flattened = cssContent
-    .replace(/@layer\s+(components|utilities)\s*\{/g, '')
-    .replace(/^\s*\}\s*$/gm, ''); // Remove standalone closing braces
-  
-  // Clean up excessive whitespace
-  flattened = flattened
-    .replace(/\n\s*\n\s*\n/g, '\n\n')
-    .trim();
-    
-  return flattened;
-};
+// Pure plugin architecture - no CSS build needed
 
-// Function to build CSS distributions for a package
-const buildCSSDistribution = (packagePath) => {
-  const packageJson = JSON.parse(readFileSync(join(packagePath, 'package.json'), 'utf8'));
-  const packageName = packageJson.name;
-  
-  const indexCssPath = join(packagePath, 'index.css');
-  const distCssPath = join(packagePath, 'dist.css');
-  
-  if (!existsSync(indexCssPath)) {
-    console.log(`⚠️  No index.css found for ${packageName}, skipping...`);
-    return;
-  }
-  
-  console.log(`🔧 Building CSS distribution for ${packageName}...`);
-  
-  try {
-    const originalCSS = readFileSync(indexCssPath, 'utf8');
-    let processedCSS;
-    
-    // Special handling for effects package (import aggregator)
-    if (packageName === '@casoon/tailwindcss-effects') {
-      processedCSS = originalCSS
-        .replace(/@import "([^"]+)\/index\.css";/g, '@import "$1/dist.css";');
-    } else {
-      processedCSS = flattenCSS(originalCSS);
-    }
-    
-    // Add header comment
-    const header = `/* ========================================================================
-   ${packageName} - Flattened CSS Distribution
-   Tailwind CSS v4 compatible utilities without deep @layer nesting
-   ===================================================================== */
-
-`;
-    
-    const finalCSS = header + processedCSS;
-    writeFileSync(distCssPath, finalCSS);
-    
-    console.log(`✅ Built dist.css for ${packageName}`);
-    
-  } catch (error) {
-    console.error(`❌ Error building CSS for ${packageName}:`, error.message);
-  }
-};
-
-// Function to validate plugin files
+// Function to validate plugin files (ESM only)
 const validatePluginFiles = (packagePath) => {
   const packageJson = JSON.parse(readFileSync(join(packagePath, 'package.json'), 'utf8'));
   const packageName = packageJson.name;
   
   const pluginJSPath = join(packagePath, 'plugin.js');
-  const pluginCJSPath = join(packagePath, 'plugin.cjs');
   
   console.log(`🔍 Validating plugin files for ${packageName}...`);
   
@@ -82,21 +23,11 @@ const validatePluginFiles = (packagePath) => {
     return false;
   }
   
-  if (!existsSync(pluginCJSPath)) {
-    console.error(`❌ Missing plugin.cjs for ${packageName}`);
-    return false;
-  }
-  
-  // Basic syntax validation (try to require/import)
+  // Basic syntax validation
   try {
     const pluginContent = readFileSync(pluginJSPath, 'utf8');
-    if (!pluginContent.includes('export default function') && !pluginContent.includes('export { effectsPlugin')) {
+    if (!pluginContent.includes('export default function') && !pluginContent.includes('export {')) {
       throw new Error('Missing default export function');
-    }
-    
-    const cjsContent = readFileSync(pluginCJSPath, 'utf8');
-    if (!cjsContent.includes('module.exports =')) {
-      throw new Error('Missing CommonJS export');
     }
     
     console.log(`✅ Plugin files valid for ${packageName}`);
@@ -108,14 +39,15 @@ const validatePluginFiles = (packagePath) => {
   }
 };
 
-// Function to check package.json exports
+// Function to check package.json exports (Plugin-only)
 const validatePackageExports = (packagePath) => {
   const packageJson = JSON.parse(readFileSync(join(packagePath, 'package.json'), 'utf8'));
   const packageName = packageJson.name;
   
   console.log(`📦 Validating package.json exports for ${packageName}...`);
   
-  const requiredExports = ['.', './index.css', './dist.css', './plugin', './tokens.css'];
+  // For pure plugin architecture, we only need . and ./plugin exports
+  const requiredExports = ['.', './plugin'];
   const missingExports = [];
   
   if (!packageJson.exports) {
@@ -193,8 +125,7 @@ const buildPackages = () => {
       allValid = false;
     }
     
-    // Build CSS distributions
-    buildCSSDistribution(packagePath);
+    // CSS distributions are no longer needed for pure plugin architecture
   });
   
   console.log('\\n' + '='.repeat(60));

@@ -2,37 +2,39 @@
 
 A comprehensive collection of modern CSS effects and utilities for **Tailwind CSS v4**. Built with performance in mind, these plugins provide glassmorphism effects, animations, gradients, scroll animations, and essential utility classes—all optimized for modern build tools and framework compatibility.
 
-> **🚀 Major Update (v0.5)**: Now available as **Tailwind CSS plugins** with improved build tool compatibility and flattened CSS distributions!
+> **🚀 Latest (v0.5.1)**: Pure Tailwind CSS v4 plugins with **configurable design tokens** and modern ESM architecture!
 
 ## ✨ Features
 
-- **🔌 Plugin Architecture**: Modern Tailwind CSS v4 plugins with proper ESM/CJS exports
+- **🔌 Pure Plugin Architecture**: Modern Tailwind CSS v4 plugins with ESM-first design
+- **🎨 Configurable Design Tokens**: Override default values through plugin configuration
 - **📦 Framework Compatible**: Works seamlessly with Vite, Astro, Next.js, and other modern build tools
-- **🎯 No @layer Issues**: Flattened CSS distributions eliminate PostCSS parsing problems
 - **⚡ Performance Optimized**: Tree-shakeable with minimal bundle impact
-- **🎨 Complete Toolkit**: Animations, glassmorphism, gradients, scroll effects, and utility classes
-- **🔧 Flexible Usage**: Use as plugins or direct CSS imports
+- **🎯 Complete Toolkit**: Animations, glassmorphism, gradients, scroll effects, and utility classes
+- **🚀 Zero Configuration**: Works out of the box, customize only what you need
 - **♿ Accessibility First**: Motion-safe variants and proper focus management
 - **🌗 Dark Mode Ready**: Built-in dark mode support with CSS custom properties
 
 ## 📦 Packages
 
-| Package | Description | Size |
-|---------|-------------|------|
-| [`@casoon/tailwindcss-animations`](./packages/tailwindcss-animations) | Animation utilities & keyframes | ~3KB |
-| [`@casoon/tailwindcss-glass`](./packages/tailwindcss-glass) | Glassmorphism components & utilities | ~16KB |
-| [`@casoon/tailwindcss-orbs`](./packages/tailwindcss-orbs) | Orb backgrounds & helper utilities | ~8KB |
-| [`@casoon/tailwindcss-gradients`](./packages/tailwindcss-gradients) | Gradient backgrounds & text effects | ~6KB |
-| [`@casoon/tailwindcss-scroll`](./packages/tailwindcss-scroll) | Scroll animation primitives | ~4KB |
-| [`@casoon/tailwindcss-utilities`](./packages/tailwindcss-utilities) | Layout utilities, cards, text effects & responsive helpers | ~8KB |
-| [`@casoon/tailwindcss-navigation`](./packages/tailwindcss-navigation) | Navigation components, variants & subnav systems | ~12KB |
-| [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package that imports all effects | ~60KB |
-| [`@casoon/tailwindcss-loading`](./packages/tailwindcss-loading) | Skeletons, progress indicators, and loading overlays | ~3KB |
-| [`@casoon/tailwindcss-micro-interactions`](./packages/tailwindcss-micro-interactions) | Click/Hover/Focus micro‑interaction utilities | ~2KB |
+| Package | Description | Status |
+|---------|-------------|--------|
+| [`@casoon/tailwindcss-animations`](./packages/tailwindcss-animations) | Animation utilities & keyframes | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-glass`](./packages/tailwindcss-glass) | Glassmorphism components & utilities | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-orbs`](./packages/tailwindcss-orbs) | Orb backgrounds & helper utilities | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-gradients`](./packages/tailwindcss-gradients) | Gradient backgrounds & text effects | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-scroll`](./packages/tailwindcss-scroll) | Scroll animation primitives | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-utilities`](./packages/tailwindcss-utilities) | Layout utilities, cards, text effects & responsive helpers | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-navigation`](./packages/tailwindcss-navigation) | Navigation components, variants & subnav systems | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package that imports all effects | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-loading`](./packages/tailwindcss-loading) | Skeletons, progress indicators, and loading overlays | ✅ v0.5.1 |
+| [`@casoon/tailwindcss-micro-interactions`](./packages/tailwindcss-micro-interactions) | Click/Hover/Focus micro‑interaction utilities | ✅ v0.5.1 |
+
+> All packages support **configurable design tokens** as of v0.5.1
 
 ## 🚀 Quick Start
 
-### Method 1: Plugin (Recommended) 🔌
+### Plugin Installation 🔌
 
 **All Effects (Bundle)**
 ```js
@@ -47,7 +49,9 @@ export default {
 **Individual Plugins (Granular Control)**
 ```js
 // tailwind.config.js
-import { animations, glass, utilities } from '@casoon/tailwindcss-effects';
+import animations from '@casoon/tailwindcss-animations';
+import glass from '@casoon/tailwindcss-glass';
+import utilities from '@casoon/tailwindcss-utilities';
 
 export default {
   plugins: [
@@ -58,50 +62,38 @@ export default {
 }
 ```
 
-**Plugin Configuration**
+**With Token Customization** ⭐ *New in v0.5.1*
 ```js
-// Disable specific modules
-import effects from '@casoon/tailwindcss-effects';
+// tailwind.config.js
+import animations from '@casoon/tailwindcss-animations';
 
 export default {
   plugins: [
-    effects({
-      animations: true,
-      glass: false, // Disable glass effects
-      orbs: true,
-      // ... other options
+    animations({
+      tokens: {
+        durations: {
+          md: '400ms'  // Override default 300ms
+        },
+        easing: {
+          standard: 'ease-out'  // Simpler easing
+        }
+      }
     })
   ]
 }
 ```
 
-### Method 2: CSS Import (Legacy) 📦
-
-**All Effects**
-```css
-@import "tailwindcss";
-@import "@casoon/tailwindcss-effects/dist.css";
-```
-
-**Individual Packages**
-```css
-@import "tailwindcss";
-@import "@casoon/tailwindcss-animations/dist.css";
-@import "@casoon/tailwindcss-glass/dist.css";
-/* ... other packages */
-```
-
 ## 🛠️ Framework Compatibility
 
-| Framework | Plugin Support | CSS Import | Status |
-|-----------|----------------|------------|--------|
-| **Vite** | ✅ ESM | ✅ | Full support |
-| **Next.js** | ✅ CJS | ✅ | Full support |
-| **Astro** | ✅ ESM | ✅ | Full support |
-| **SvelteKit** | ✅ ESM | ✅ | Full support |
-| **Nuxt** | ✅ ESM | ✅ | Full support |
-| **Remix** | ✅ CJS | ✅ | Full support |
-| **Webpack** | ✅ CJS | ✅ | Full support |
+| Framework | Plugin Support | Status |
+|-----------|----------------|--------|
+| **Vite** | ✅ ESM | Full support |
+| **Next.js** | ✅ ESM | Full support |
+| **Astro** | ✅ ESM | Full support |
+| **SvelteKit** | ✅ ESM | Full support |
+| **Nuxt** | ✅ ESM | Full support |
+| **Remix** | ✅ ESM | Full support |
+| **Webpack** | ✅ ESM | Full support |
 
 ### Framework Examples
 
@@ -124,9 +116,9 @@ export default {
 
 ```js
 // tailwind.config.js
-const effects = require('@casoon/tailwindcss-effects');
+import effects from '@casoon/tailwindcss-effects';
 
-module.exports = {
+export default {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -182,7 +174,50 @@ yarn add @casoon/tailwindcss-effects
 pnpm add @casoon/tailwindcss-effects
 ```
 
+## 🎨 Token Customization ⭐ *v0.5.1*
+
+All plugins support **configurable design tokens**. Override default values without writing custom CSS:
+
+```js
+// Customize animation durations and easing
+import animations from '@casoon/tailwindcss-animations';
+
+export default {
+  plugins: [
+    animations({
+      tokens: {
+        durations: { md: '400ms', lg: '800ms' },
+        easing: { standard: 'cubic-bezier(0.25, 0.1, 0.25, 1)' },
+        colors: { shadowInk: '#333' }
+      }
+    })
+  ]
+}
+```
+
+**Available token categories:**
+- `tokens.durations` - Animation and transition durations
+- `tokens.easing` - Timing functions and easing curves  
+- `tokens.colors` - Theme colors and shadow tints
+- `tokens.spacing` - Layout spacing and sizing values
+- `tokens.effects` - Effect-specific parameters
+
+> 📝 Full token reference available in our documentation
+
 ## 💡 Usage Examples
+
+### Animations with Custom Timing
+```html
+<!-- Use default timing -->
+<div class="anim fade-in scale-in anim-md ease-standard">
+  Default fade + scale animation
+</div>
+
+<!-- Override timing with tokens -->
+<div class="anim fade-in slide-up anim-lg ease-spring">
+  Slower animation with spring easing
+</div>
+```
 
 ### Glassmorphism
 ```html

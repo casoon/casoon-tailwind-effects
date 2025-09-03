@@ -1,29 +1,86 @@
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 /**
  * @casoon/tailwindcss-animations - Tailwind CSS Plugin
  * 
  * Provides comprehensive animation utilities and keyframes for Tailwind CSS v4.
  * Includes transitions, transforms, and motion-safe variants.
+ * 
+ * @param {Object} options - Plugin configuration options
+ * @param {Object} options.tokens - Token overrides for customization
+ * @param {Object} options.tokens.durations - Duration token overrides
+ * @param {Object} options.tokens.easing - Easing function token overrides  
+ * @param {Object} options.tokens.colors - Color token overrides
+ * @param {Object} options.tokens.motionSafety - Motion safety token overrides
  */
 export default function animationsPlugin(options = {}) {
+  // Default tokens
+  const defaultTokens = {
+    durations: {
+      xxs: '100ms',
+      xs: '150ms', 
+      sm: '200ms',
+      md: '300ms',
+      lg: '500ms',
+      xl: '700ms',
+      '2xl': '1000ms'
+    },
+    easing: {
+      standard: 'cubic-bezier(0.2, 0, 0, 1)',
+      emphasized: 'cubic-bezier(0.3, 0, 0.8, 0.15)',
+      decelerate: 'cubic-bezier(0.05, 0.7, 0.1, 1)',
+      accelerate: 'cubic-bezier(0.3, 0, 1, 1)',
+      spring: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+      softSpring: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+    },
+    colors: {
+      shadowInk: '#000'
+    },
+    motionSafety: {
+      duration: '1ms',
+      ease: 'ease'
+    }
+  };
+
+  // Merge user tokens with defaults
+  const tokens = {
+    durations: { ...defaultTokens.durations, ...(options.tokens?.durations || {}) },
+    easing: { ...defaultTokens.easing, ...(options.tokens?.easing || {}) },
+    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
+    motionSafety: { ...defaultTokens.motionSafety, ...(options.tokens?.motionSafety || {}) }
+  };
+
   return {
-    handler: ({ addUtilities, addComponents, theme }) => {
-      // Load CSS content
-      const cssContent = readFileSync(join(__dirname, 'dist.css'), 'utf8');
-      
-      // Parse and inject CSS
-      // For now, we'll inject as raw CSS - this can be optimized later
+    handler: ({ addUtilities, addComponents, addKeyframes }) => {
+      // CSS Custom Properties (Design Tokens)
       addComponents({
-        '@layer components': cssContent
+        ':root': {
+          // Animation Durations
+          '--anim-duration-xxs': tokens.durations.xxs,
+          '--anim-duration-xs': tokens.durations.xs,
+          '--anim-duration-sm': tokens.durations.sm,
+          '--anim-duration-md': tokens.durations.md,
+          '--anim-duration-lg': tokens.durations.lg,
+          '--anim-duration-xl': tokens.durations.xl,
+          '--anim-duration-2xl': tokens.durations['2xl'],
+          
+          // Animation Easing Functions
+          '--anim-ease-standard': tokens.easing.standard,
+          '--anim-ease-emphasized': tokens.easing.emphasized,
+          '--anim-ease-decelerate': tokens.easing.decelerate,
+          '--anim-ease-accelerate': tokens.easing.accelerate,
+          '--anim-ease-spring': tokens.easing.spring,
+          '--anim-ease-soft-spring': tokens.easing.softSpring,
+          
+          // Motion Safety
+          '--anim-reduced-motion-duration': tokens.motionSafety.duration,
+          '--anim-reduced-motion-ease': tokens.motionSafety.ease,
+          
+          // Shadow for hover effects
+          '--anim-shadow-ink': tokens.colors.shadowInk
+        }
       });
 
-      // Add keyframes programmatically (extracted from CSS)
-      const keyframes = {
+      // Add keyframes
+      addKeyframes({
         'anim-fade-in': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' }
@@ -77,30 +134,86 @@ export default function animationsPlugin(options = {}) {
           '50%': { opacity: '0.5' }
         },
         'anim-bounce': {
-          '0%, 100%': { transform: 'translateY(0)', 'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)' },
-          '50%': { transform: 'translateY(-25%)', 'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)' }
+          '0%, 100%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
+          '50%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' }
         },
         'anim-wiggle': {
           '0%, 100%': { transform: 'rotate(0deg)' },
           '25%': { transform: 'rotate(-3deg)' },
           '75%': { transform: 'rotate(3deg)' }
+        },
+        'anim-reveal-3d-up': {
+          '0%': { opacity: '0', transform: 'rotateX(-90deg)' },
+          '100%': { opacity: '1', transform: 'rotateX(0deg)' }
+        },
+        'anim-reveal-3d-right': {
+          '0%': { opacity: '0', transform: 'rotateY(90deg)' },
+          '100%': { opacity: '1', transform: 'rotateY(0deg)' }
+        },
+        'anim-marquee': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' }
+        },
+        'anim-parallax-y': {
+          '0%': { transform: 'translateY(-10px)' },
+          '100%': { transform: 'translateY(10px)' }
+        },
+        'anim-progress-grow': {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' }
         }
-      };
+      });
 
-      // Add custom keyframes to theme
-      theme.extend = theme.extend || {};
-      theme.extend.keyframes = { ...theme.extend.keyframes, ...keyframes };
-
-      // Add animation utilities
-      const animations = {
+      // Add base animation components
+      addComponents({
         '.anim': {
-          'animation-duration': 'var(--anim-duration, 300ms)',
-          'animation-timing-function': 'var(--anim-ease, ease-out)',
+          'animation-duration': 'var(--anim-duration, var(--anim-duration-md))',
+          'animation-timing-function': 'var(--anim-ease, var(--anim-ease-standard))',
           'animation-iteration-count': '1',
           'animation-direction': 'var(--anim-direction, normal)',
           'animation-fill-mode': 'var(--anim-fill, both)',
           'animation-delay': 'var(--anim-delay, 0ms)'
         },
+        
+        // Animation Control Utilities
+        '.anim-infinite': { 'animation-iteration-count': 'infinite' },
+        '.anim-reverse': { 'animation-direction': 'reverse' },
+        '.anim-alternate': { 'animation-direction': 'alternate' },
+        '.anim-both': { 'animation-fill-mode': 'both' },
+        '.anim-forwards': { 'animation-fill-mode': 'forwards' },
+        
+        // Performance Hints
+        '.will-transform': { 'will-change': 'transform' },
+        '.will-opacity': { 'will-change': 'opacity' },
+        '.will-filter': { 'will-change': 'filter' },
+        
+        // Transform Origins
+        '.t-origin-top': { 'transform-origin': 'top' },
+        '.t-origin-center': { 'transform-origin': 'center' },
+        '.t-origin-bottom': { 'transform-origin': 'bottom' },
+        '.t-preserve-3d': { 'transform-style': 'preserve-3d' }
+      });
+
+      // Add animation utilities
+      addUtilities({
+        // Duration utilities
+        '.anim-xxs': { '--anim-duration': 'var(--anim-duration-xxs)' },
+        '.anim-xs': { '--anim-duration': 'var(--anim-duration-xs)' },
+        '.anim-sm': { '--anim-duration': 'var(--anim-duration-sm)' },
+        '.anim-md': { '--anim-duration': 'var(--anim-duration-md)' },
+        '.anim-lg': { '--anim-duration': 'var(--anim-duration-lg)' },
+        '.anim-xl': { '--anim-duration': 'var(--anim-duration-xl)' },
+        '.anim-2xl': { '--anim-duration': 'var(--anim-duration-2xl)' },
+        
+        // Easing utilities
+        '.ease-standard': { '--anim-ease': 'var(--anim-ease-standard)' },
+        '.ease-emphasized': { '--anim-ease': 'var(--anim-ease-emphasized)' },
+        '.ease-decelerate': { '--anim-ease': 'var(--anim-ease-decelerate)' },
+        '.ease-accelerate': { '--anim-ease': 'var(--anim-ease-accelerate)' },
+        '.ease-spring': { '--anim-ease': 'var(--anim-ease-spring)' },
+        '.ease-soft-spring': { '--anim-ease': 'var(--anim-ease-soft-spring)' },
+        
+        // Animation name utilities
         '.fade-in': { 'animation-name': 'anim-fade-in' },
         '.fade-out': { 'animation-name': 'anim-fade-out' },
         '.scale-in': { 'animation-name': 'anim-scale-in' },
@@ -116,74 +229,57 @@ export default function animationsPlugin(options = {}) {
         '.pulse': { 'animation-name': 'anim-pulse' },
         '.bounce': { 'animation-name': 'anim-bounce' },
         '.wiggle': { 'animation-name': 'anim-wiggle' },
-        // Duration utilities
-        '.anim-xxs': { '--anim-duration': '100ms' },
-        '.anim-xs': { '--anim-duration': '150ms' },
-        '.anim-sm': { '--anim-duration': '200ms' },
-        '.anim-md': { '--anim-duration': '300ms' },
-        '.anim-lg': { '--anim-duration': '500ms' },
-        '.anim-xl': { '--anim-duration': '700ms' },
-        '.anim-2xl': { '--anim-duration': '1000ms' },
-        // Easing utilities
-        '.ease-standard': { '--anim-ease': 'cubic-bezier(0.2, 0, 0, 1)' },
-        '.ease-emphasized': { '--anim-ease': 'cubic-bezier(0.3, 0, 0.8, 0.15)' },
-        '.ease-decelerate': { '--anim-ease': 'cubic-bezier(0.05, 0.7, 0.1, 1)' },
-        '.ease-accelerate': { '--anim-ease': 'cubic-bezier(0.3, 0, 1, 1)' },
-        '.ease-spring': { '--anim-ease': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)' },
-        '.ease-soft-spring': { '--anim-ease': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' },
+        '.reveal-3d-up': { 'animation-name': 'anim-reveal-3d-up' },
+        '.reveal-3d-right': { 'animation-name': 'anim-reveal-3d-right' },
+        
         // Hover effects
         '.hover-lift-sm': {
-          'transition': 'transform 200ms cubic-bezier(0.2, 0, 0, 1), box-shadow 200ms cubic-bezier(0.2, 0, 0, 1)',
+          'transition': 'transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard)',
           '&:hover': {
             'transform': 'translateY(-2px)',
-            'box-shadow': '0 6px 12px color-mix(in oklab, var(--anim-shadow-ink, #000) 10%, transparent)'
+            'box-shadow': '0 6px 12px color-mix(in oklab, var(--anim-shadow-ink) 10%, transparent)'
+          }
+        },
+        '.hover-lift-md': {
+          'transition': 'transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard)',
+          '&:hover': {
+            'transform': 'translateY(-4px)',
+            'box-shadow': '0 10px 18px color-mix(in oklab, var(--anim-shadow-ink) 14%, transparent)'
           }
         },
         '.hover-scale-105': {
-          'transition': 'transform 200ms cubic-bezier(0.2, 0, 0, 1)',
+          'transition': 'transform var(--anim-duration-sm) var(--anim-ease-standard)',
           '&:hover': { 'transform': 'scale(1.05)' }
         },
+        '.hover-scale-110': {
+          'transition': 'transform var(--anim-duration-sm) var(--anim-ease-standard)',
+          '&:hover': { 'transform': 'scale(1.10)' }
+        },
+        
+        // Composed animations
+        '.enter-card': { 
+          'animation': 'anim-fade-in var(--anim-duration-md) var(--anim-ease-decelerate) both'
+        },
+        '.enter-modal': { 
+          'animation': 'anim-scale-in var(--anim-duration-md) var(--anim-ease-emphasized) both'
+        },
+        '.exit-modal': { 
+          'animation': 'anim-scale-out var(--anim-duration-md) var(--anim-ease-accelerate) both'
+        },
+        
         // Motion safety
         '@media (prefers-reduced-motion: reduce)': {
-          '.anim, .fade-in, .fade-out, .scale-in, .scale-out, .slide-up, .slide-down, .slide-left, .slide-right, .blur-in, .blur-out, .rotate-in, .rotate, .pulse, .bounce, .wiggle': {
-            'animation-duration': '1ms !important',
+          '.anim, .fade-in, .fade-out, .scale-in, .scale-out, .slide-up, .slide-down, .slide-left, .slide-right, .blur-in, .blur-out, .rotate-in, .rotate, .pulse, .bounce, .wiggle, .reveal-3d-up, .reveal-3d-right, .enter-card, .enter-modal, .exit-modal': {
+            'animation-duration': 'var(--anim-reduced-motion-duration) !important',
             'animation-iteration-count': '1 !important',
-            'animation-timing-function': 'ease !important',
+            'animation-timing-function': 'var(--anim-reduced-motion-ease) !important',
             'transition': 'none !important'
           },
-          '.hover-lift-sm:hover, .hover-scale-105:hover': {
+          '.hover-lift-sm:hover, .hover-lift-md:hover, .hover-scale-105:hover, .hover-scale-110:hover': {
             'transform': 'none !important'
           }
         }
-      };
-
-      addUtilities(animations);
-    },
-    config: {
-      theme: {
-        extend: {
-          transitionDuration: {
-            'xxs': '100ms',
-            'xs': '150ms',
-            'sm': '200ms',
-            'md': '300ms',
-            'lg': '500ms',
-            'xl': '700ms',
-            '2xl': '1000ms'
-          },
-          transitionTimingFunction: {
-            'standard': 'cubic-bezier(0.2, 0, 0, 1)',
-            'emphasized': 'cubic-bezier(0.3, 0, 0.8, 0.15)',
-            'decelerate': 'cubic-bezier(0.05, 0.7, 0.1, 1)',
-            'accelerate': 'cubic-bezier(0.3, 0, 1, 1)',
-            'spring': 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-            'soft-spring': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-          }
-        }
-      }
+      });
     }
   };
 }
-
-// Export both default and named export for flexibility
-export { animationsPlugin };
