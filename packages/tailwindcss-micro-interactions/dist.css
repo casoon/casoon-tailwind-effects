@@ -1,0 +1,62 @@
+/* ========================================================================
+   @casoon/tailwindcss-micro-interactions - Flattened CSS Distribution
+   Tailwind CSS v4 compatible utilities without deep @layer nesting
+   ===================================================================== */
+
+/* Import tokens first */
+@import "./tokens.css";
+
+/* @casoon/tailwindcss-micro-interactions */
+/* Click, hover, focus, and state utilities — Tailwind v4 compatible */
+
+  /* ================= Click Effects ================= */
+  .click-ripple {
+    position: relative; overflow: hidden;
+    isolation: isolate;
+
+  .click-ripple:active::after {
+    content: ""; position: absolute; inset: 0; margin: auto; aspect-ratio: 1;
+    width: 20%; border-radius: 9999px; pointer-events: none;
+    background: radial-gradient(circle, color-mix(in oklab, currentColor 25%, transparent) 0%, transparent 60%);
+    transform: scale(0); opacity: .8;
+    animation: miRipple var(--mi-duration-lg) var(--mi-ease-standard) 1;
+
+  .click-bounce:active { animation: miBounce var(--mi-duration-md) var(--mi-ease-bounce) 1; }
+  .click-squish { transition: transform var(--mi-duration-sm) var(--mi-ease-standard); }
+  .click-squish:active { transform: scaleX(.96) scaleY(.9); }
+
+  /* ================= Hover Effects ================= */
+  .hover-magnetic { transition: transform var(--mi-duration-sm) var(--mi-ease-standard), filter var(--mi-duration-sm) var(--mi-ease-standard); will-change: transform; }
+  .hover-magnetic:hover { transform: translateY(calc(var(--mi-translate-sm) * -1)) scale(1.02); filter: saturate(1.02); }
+
+  .hover-tilt { transition: transform var(--mi-duration-sm) var(--mi-ease-standard); transform-style: preserve-3d; }
+  .hover-tilt:hover { transform: perspective(var(--mi-tilt-3d)) rotateX(.75deg) rotateY(-.75deg) translateY(calc(var(--mi-translate-sm) * -1)); }
+
+  .hover-float { transition: transform var(--mi-duration-sm) var(--mi-ease-standard), box-shadow var(--mi-duration-sm) var(--mi-ease-standard); }
+  .hover-float:hover { transform: translateY(calc(var(--mi-translate-md) * -1)); box-shadow: 0 10px 22px color-mix(in oklab, var(--mi-shadow-ink, #000) 12%, transparent); }
+
+  /* ================= Focus Effects ================= */
+  .focus-glow:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px currentColor,
+      0 0 0 6px var(--mi-focus-color);
+
+  .focus-scale { transition: transform var(--mi-duration-sm) var(--mi-ease-standard); }
+  .focus-scale:focus-visible { transform: scale(1.02); }
+  .focus-rotate { transition: transform var(--mi-duration-sm) var(--mi-ease-standard); }
+  .focus-rotate:focus-visible { transform: rotate(var(--mi-rotate)); }
+
+  /* ================= State Helpers ================= */
+  .state-loading { opacity: .7; cursor: progress; pointer-events: none; }
+  .state-success { --mi-ring: color-mix(in oklab, var(--mi-success) 60%, transparent); box-shadow: 0 0 0 2px var(--mi-ink-light, #fff), 0 0 0 6px var(--mi-ring); }
+  .state-error   { --mi-ring: color-mix(in oklab, var(--mi-error) 60%, transparent);   box-shadow: 0 0 0 2px var(--mi-ink-light, #fff), 0 0 0 6px var(--mi-ring); }
+
+  @keyframes miRipple { from { transform: scale(0); opacity: .8 } to { transform: scale(6); opacity: 0 } }
+  @keyframes miBounce { 0% { transform: scale(1) } 50% { transform: scale(.95) } 100% { transform: scale(1) } }
+
+@media (prefers-reduced-motion: reduce) {
+  
+    .click-bounce:active { animation-duration: calc(var(--mi-duration-lg) * 1.5); }
+    .hover-magnetic:hover, .hover-tilt:hover, .hover-float:hover { transform: none; box-shadow: none; }
+    .focus-scale:focus-visible, .focus-rotate:focus-visible { transform: none; }

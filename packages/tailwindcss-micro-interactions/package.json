@@ -1,13 +1,26 @@
 {
   "name": "@casoon/tailwindcss-micro-interactions",
-  "version": "0.4.7",
+  "version": "0.5.0",
   "type": "module",
   "exports": {
-    "./index.css": "./index.css"
+    ".": {
+      "import": "./plugin.js",
+      "require": "./plugin.cjs"
+    },
+    "./index.css": "./index.css",
+    "./dist.css": "./dist.css",
+    "./plugin": {
+      "import": "./plugin.js",
+      "require": "./plugin.cjs"
+    },
+    "./tokens.css": "./tokens.css"
   },
   "files": [
     "index.css",
+    "dist.css",
     "tokens.css",
+    "plugin.js",
+    "plugin.cjs",
     "README.md",
     "LICENSE"
   ],
@@ -17,5 +30,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "main": "./plugin.cjs",
+  "module": "./plugin.js"
 }

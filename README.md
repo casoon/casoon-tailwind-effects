@@ -1,16 +1,19 @@
-# Casoon Effects – Pure CSS Monorepo for Tailwind CSS v4
+# @casoon/tailwindcss-effects
 
-A collection of **CSS-first** libraries that provide beautiful visual effects and components for Tailwind CSS v4. No JavaScript plugins required, no `@apply` directives – just pure, performant CSS that works seamlessly with your Tailwind workflow.
+A comprehensive collection of modern CSS effects and utilities for **Tailwind CSS v4**. Built with performance in mind, these plugins provide glassmorphism effects, animations, gradients, scroll animations, and essential utility classes—all optimized for modern build tools and framework compatibility.
+
+> **🚀 Major Update (v0.5)**: Now available as **Tailwind CSS plugins** with improved build tool compatibility and flattened CSS distributions!
 
 ## ✨ Features
 
-- **Pure CSS**: No JavaScript dependencies or plugins required
-- **Tailwind v4 Ready**: Built specifically for Tailwind CSS v4 with `@theme` support
-- **Modular**: Import only what you need or use the meta package
-- **Performance**: Lightweight and optimized CSS utilities
-- **Modern**: Glassmorphism, gradients, scroll animations, layout utilities, navigation components, and animations
-- **Production Ready**: Comprehensive utility classes for real-world applications
-- **Self-Contained**: Each package includes its own design tokens and CSS variables
+- **🔌 Plugin Architecture**: Modern Tailwind CSS v4 plugins with proper ESM/CJS exports
+- **📦 Framework Compatible**: Works seamlessly with Vite, Astro, Next.js, and other modern build tools
+- **🎯 No @layer Issues**: Flattened CSS distributions eliminate PostCSS parsing problems
+- **⚡ Performance Optimized**: Tree-shakeable with minimal bundle impact
+- **🎨 Complete Toolkit**: Animations, glassmorphism, gradients, scroll effects, and utility classes
+- **🔧 Flexible Usage**: Use as plugins or direct CSS imports
+- **♿ Accessibility First**: Motion-safe variants and proper focus management
+- **🌗 Dark Mode Ready**: Built-in dark mode support with CSS custom properties
 
 ## 📦 Packages
 
@@ -29,34 +32,145 @@ A collection of **CSS-first** libraries that provide beautiful visual effects an
 
 ## 🚀 Quick Start
 
-### Option 1: All-in-One (Recommended)
-Import the meta package to get all effects at once:
+### Method 1: Plugin (Recommended) 🔌
 
-```css
-@import "tailwindcss";
-@import "@casoon/tailwindcss-effects/index.css";
+**All Effects (Bundle)**
+```js
+// tailwind.config.js
+import effects from '@casoon/tailwindcss-effects';
+
+export default {
+  plugins: [effects()]
+}
 ```
 
-### Option 2: Granular Imports
-Import only the packages you need:
+**Individual Plugins (Granular Control)**
+```js
+// tailwind.config.js
+import { animations, glass, utilities } from '@casoon/tailwindcss-effects';
 
+export default {
+  plugins: [
+    utilities(),
+    animations(),
+    glass()
+  ]
+}
+```
+
+**Plugin Configuration**
+```js
+// Disable specific modules
+import effects from '@casoon/tailwindcss-effects';
+
+export default {
+  plugins: [
+    effects({
+      animations: true,
+      glass: false, // Disable glass effects
+      orbs: true,
+      // ... other options
+    })
+  ]
+}
+```
+
+### Method 2: CSS Import (Legacy) 📦
+
+**All Effects**
 ```css
 @import "tailwindcss";
-@import "@casoon/tailwindcss-animations/index.css";
-@import "@casoon/tailwindcss-glass/index.css";
-@import "@casoon/tailwindcss-orbs/index.css";
-@import "@casoon/tailwindcss-gradients/index.css";
-@import "@casoon/tailwindcss-scroll/index.css";
-@import "@casoon/tailwindcss-utilities/index.css";
-@import "@casoon/tailwindcss-navigation/index.css";
-@import "@casoon/tailwindcss-loading/index.css";
-@import "@casoon/tailwindcss-micro-interactions/index.css";
+@import "@casoon/tailwindcss-effects/dist.css";
 ```
+
+**Individual Packages**
+```css
+@import "tailwindcss";
+@import "@casoon/tailwindcss-animations/dist.css";
+@import "@casoon/tailwindcss-glass/dist.css";
+/* ... other packages */
+```
+
+## 🛠️ Framework Compatibility
+
+| Framework | Plugin Support | CSS Import | Status |
+|-----------|----------------|------------|--------|
+| **Vite** | ✅ ESM | ✅ | Full support |
+| **Next.js** | ✅ CJS | ✅ | Full support |
+| **Astro** | ✅ ESM | ✅ | Full support |
+| **SvelteKit** | ✅ ESM | ✅ | Full support |
+| **Nuxt** | ✅ ESM | ✅ | Full support |
+| **Remix** | ✅ CJS | ✅ | Full support |
+| **Webpack** | ✅ CJS | ✅ | Full support |
+
+### Framework Examples
+
+<details>
+<summary><strong>Vite + Tailwind CSS</strong></summary>
+
+```js
+// tailwind.config.js
+import effects from '@casoon/tailwindcss-effects';
+
+export default {
+  content: ['./src/**/*.{html,js,svelte,ts,vue}'],
+  plugins: [effects()]
+}
+```
+</details>
+
+<details>
+<summary><strong>Next.js</strong></summary>
+
+```js
+// tailwind.config.js
+const effects = require('@casoon/tailwindcss-effects');
+
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  plugins: [effects()],
+}
+```
+</details>
+
+<details>
+<summary><strong>Astro</strong></summary>
+
+```js
+// tailwind.config.mjs
+import effects from '@casoon/tailwindcss-effects';
+
+export default {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  plugins: [effects()]
+}
+```
+</details>
+
+<details>
+<summary><strong>SvelteKit</strong></summary>
+
+```js
+// tailwind.config.js
+import effects from '@casoon/tailwindcss-effects';
+
+export default {
+  content: ['./src/**/*.{html,js,svelte,ts}'],
+  plugins: [effects()]
+}
+```
+</details>
 
 ## 📋 Requirements
 
-- Tailwind CSS v4+
-- Modern browser support (CSS custom properties, CSS Grid, Flexbox)
+- **Tailwind CSS v4.0+**
+- **Node.js 16+** (for plugin usage)
+- **Modern browser support**: CSS custom properties, CSS Grid, Flexbox
+- **Build tool**: Vite, Webpack, or compatible bundler
 
 ## 🔧 Installation
 

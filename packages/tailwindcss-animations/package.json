@@ -1,13 +1,28 @@
 {
   "name": "@casoon/tailwindcss-animations",
-  "version": "0.4.7",
+  "version": "0.5.0",
   "type": "module",
   "exports": {
-    "./index.css": "./index.css"
+    ".": {
+      "import": "./plugin.js",
+      "require": "./plugin.cjs"
+    },
+    "./index.css": "./index.css",
+    "./dist.css": "./dist.css",
+    "./plugin": {
+      "import": "./plugin.js",
+      "require": "./plugin.cjs"
+    },
+    "./tokens.css": "./tokens.css"
   },
+  "main": "./plugin.cjs",
+  "module": "./plugin.js",
   "files": [
     "index.css",
+    "dist.css",
     "tokens.css",
+    "plugin.js",
+    "plugin.cjs",
     "README.md",
     "LICENSE"
   ],

@@ -1,0 +1,423 @@
+/* ========================================================================
+   @casoon/tailwindcss-glass - Flattened CSS Distribution
+   Tailwind CSS v4 compatible utilities without deep @layer nesting
+   ===================================================================== */
+
+/* Import tokens first */
+@import "./tokens.css";
+
+  /* ============================================================
+     Core: interne Ableitungen (pro Komponente überschreibbar)
+     ============================================================ */
+  .glass,
+  .glass-light,
+  .glass-card,
+  .glass-card-light,
+  .glass-slide-card,
+  .glass-nav,
+  .glass-nav-light,
+  .glass-modal {
+    --_glass-radius: var(--glass-radius);
+    --_glass-blur: var(--glass-blur);
+    --_glass-border: var(--glass-border);
+    --_glass-border-strong: var(--glass-border-strong);
+    --_glass-bg: var(--glass-bg);
+    --_glass-bg-hover: var(--glass-bg-hover);
+    --_glass-shadow: var(--glass-shadow);
+
+    -webkit-backdrop-filter:
+      blur(var(--_glass-blur))
+      saturate(var(--glass-saturate))
+      contrast(var(--glass-contrast))
+      brightness(var(--glass-brightness));
+    backdrop-filter:
+      blur(var(--_glass-blur))
+      saturate(var(--glass-saturate))
+      contrast(var(--glass-contrast))
+      brightness(var(--glass-brightness));
+
+    background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    color: var(--glass-fg, #fff);
+    position: relative;
+    overflow: hidden;
+
+  /* ============================================================
+     Base Glass
+     ============================================================ */
+  .glass {
+    background: color-mix(in oklab, var(--glass-tint-color), transparent);
+    border-radius: var(--_glass-radius);
+    border: 1px solid var(--_glass-border);
+    box-shadow: var(--_glass-shadow);
+
+  .glass-hover { transition: transform var(--glass-duration) var(--glass-timing), box-shadow var(--glass-duration) var(--glass-timing), background var(--glass-duration) var(--glass-timing); }
+  .glass-hover:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: var(--glass-shadow-hover);
+    background: var(--_glass-bg-hover, var(--_glass-bg));
+
+  /* Light variant (opaque style hook) */
+  .glass-light {
+    background: var(--glass-light-bg);
+    border: 1px solid color-mix(in oklab, var(--glass-ink-light, #fff) 30%, transparent);
+    box-shadow: var(--glass-shadow);
+    color: var(--glass-fg-contrast, #1f2937);
+
+  /* Top sheen (angle & alpha steuerbar via --sheen-angle/--sheen-alpha) */
+  .glass-sheen::before,
+  .glass-card::before,
+  .glass-slide-card::before,
+  .glass-nav::before {
+    --sheen-angle: var(--sheen-angle, 90deg);
+    --sheen-alpha: var(--sheen-alpha, .30);
+    content: "";
+    position: absolute; inset-inline: 0; top: 0; height: 1px;
+    background: linear-gradient(
+      var(--sheen-angle),
+      transparent,
+      color-mix(in oklab, var(--glass-ink-light, #fff) calc(var(--sheen-alpha) * 100%), transparent),
+      transparent
+    );
+
+  /* ============================================================
+     Cards
+     ============================================================ */
+  .glass-card {
+    background: var(--_glass-bg);
+    border-radius: var(--glass-card-radius);
+    border: 1px solid var(--_glass-border);
+    box-shadow: var(--_glass-shadow);
+    padding: 2rem;
+    z-index: 1;
+    transition: transform var(--glass-duration) var(--glass-timing), box-shadow var(--glass-duration) var(--glass-timing), background var(--glass-duration) var(--glass-timing);
+
+  .glass-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: var(--glass-shadow-hover);
+    background: var(--_glass-bg-hover, var(--_glass-bg));
+
+  .glass-card-light {
+    background: var(--glass-light-bg);
+    border: 1px solid color-mix(in oklab, var(--glass-ink-light, #fff) 30%, transparent);
+    border-radius: var(--glass-card-radius);
+    color: var(--glass-fg-contrast, #1f2937);
+    padding: 2rem;
+    transition: transform var(--glass-duration) var(--glass-timing), box-shadow var(--glass-duration) var(--glass-timing), background var(--glass-duration) var(--glass-timing);
+
+  .glass-card-light:hover { transform: translateY(-0.25rem); box-shadow: var(--glass-shadow-hover); }
+
+  /* ============================================================
+     Buttons
+     ============================================================ */
+  .glass-button,
+  .glass-button-primary,
+  .glass-button-secondary {
+    border-radius: var(--glass-button-radius);
+    box-shadow: var(--glass-shadow);
+    color: var(--glass-btn-fg, #fff);
+    position: relative;
+    overflow: hidden;
+    padding: .625rem 1.25rem;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: .5rem;
+    -webkit-backdrop-filter: blur(var(--_glass-blur));
+    backdrop-filter: blur(var(--_glass-blur));
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+
+  .glass-button {
+    background: var(--_glass-bg);
+    border: 1px solid var(--glass-border-strong);
+
+  .glass-button-primary {
+    background: linear-gradient(135deg, var(--glass-accent-from), var(--glass-accent-to));
+    border: 1px solid color-mix(in oklab, var(--glass-ink-light, #fff) 30%, transparent);
+
+  .glass-button-secondary {
+    background: var(--glass-dark-bg);
+    border: 1px solid var(--glass-secondary);
+
+  .glass-button:focus-visible,
+  .glass-button-primary:focus-visible,
+  .glass-button-secondary:focus-visible {
+    outline: 0; box-shadow: var(--glass-ring);
+
+  .glass-button:hover,
+  .glass-button-secondary:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border);
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(-2px);
+
+  .glass-button-primary:hover {
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--glass-accent-from) 95%, white 5%),
+      color-mix(in oklab, var(--glass-accent-to) 95%, white 5%)
+    );
+    border-color: var(--glass-border-strong);
+    box-shadow: 0 25px 50px 0 color-mix(in oklab, var(--glass-accent-from) 50%, transparent);
+    transform: translateY(-3px);
+
+  /* Glow & border glow */
+  .glass-glow { box-shadow: 0 0 0 1px color-mix(in oklab, var(--glass-edge-highlight) 70%, transparent), 0 12px 32px color-mix(in oklab, var(--glass-ink-light, #fff) 12%, transparent), inset 0 1px 0 color-mix(in oklab, var(--glass-ink-light, #fff) 25%, transparent); }
+  .glass-shadow { box-shadow: var(--glass-shadow); }
+  .glass-border-glow { border: 1px solid color-mix(in oklab, var(--glass-edge-highlight) 70%, transparent); }
+
+  /* Interactions */
+  .glass-hover:hover { transform: translateY(-2px); box-shadow: var(--glass-shadow-hover); }
+  .glass-focus:focus-visible { outline: none; box-shadow: var(--glass-ring); }
+  .glass-active:active { transform: translateY(1px); }
+
+  /* Sizes */
+  .glass-xs { --_glass-radius: calc(var(--glass-radius) * .6); }
+  .glass-sm { --_glass-radius: calc(var(--glass-radius) * .85); }
+  .glass-md { --_glass-radius: var(--glass-radius); }
+  .glass-lg { --_glass-radius: calc(var(--glass-radius) * 1.25); }
+  .glass-xl { --_glass-radius: calc(var(--glass-radius) * 1.5); }
+
+  /* Shapes */
+  .glass-rounded { border-radius: var(--_glass-radius, var(--glass-radius)); }
+  .glass-pill { border-radius: 9999px; }
+  .glass-hexagon { clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%); }
+
+  /* Overlays */
+  .glass-overlay { position: relative; isolation: isolate; }
+  .glass-overlay::after { content: ""; position: absolute; inset: 0; pointer-events: none; backdrop-filter: blur(2px); }
+  .glass-mask { -webkit-mask-image: linear-gradient(to bottom, var(--glass-ink-dark, #000) 70%, transparent); mask-image: linear-gradient(to bottom, var(--glass-ink-dark, #000) 70%, transparent); }
+  .glass-clip { overflow: clip; }
+  /* Disabled */
+  .glass-button:disabled,
+  .glass-button[aria-disabled="true"],
+  .glass-button-primary:disabled,
+  .glass-button-primary[aria-disabled="true"],
+  .glass-button-secondary:disabled,
+  .glass-button-secondary[aria-disabled="true"] {
+    opacity: .55; cursor: not-allowed; transform: none !important; box-shadow: none !important;
+
+  /* Optional Accent-Modifier (tokenisiert) */
+  .glass-button.is-accent {
+    color: var(--glass-btn-fg);
+    background: linear-gradient(135deg, var(--glass-btn-accent-from), var(--glass-btn-accent-to));
+    border: 1px solid color-mix(in oklab, var(--glass-ink-light, #fff) 30%, transparent);
+
+  /* ============================================================
+     Navigation
+     ============================================================ */
+  .glass-nav,
+  .glass-nav-light {
+    border-radius: var(--nav-radius);
+    position: relative; overflow: hidden;
+
+  .glass-nav {
+    background: var(--nav-bg);
+    border: 1px solid var(--nav-border);
+    box-shadow: var(--nav-shadow);
+    color: var(--nav-fg);
+
+  .glass-nav a {
+    color: var(--nav-fg);
+    text-decoration: none; font-weight: 500;
+    padding: var(--nav-link-py) var(--nav-link-px);
+    border-radius: var(--nav-link-radius);
+    transition: background var(--glass-duration) var(--glass-timing), transform var(--glass-duration) var(--glass-timing), color var(--glass-duration) var(--glass-timing);
+    margin-right: var(--nav-gap);
+
+  .glass-nav a:hover { background: var(--nav-bg-hover); color: var(--nav-fg-hover); transform: translateY(-1px); }
+
+  .glass-nav-light {
+    background: var(--nav-light-bg);
+    border: 1px solid var(--nav-light-border);
+    color: var(--nav-light-fg);
+    box-shadow: var(--nav-shadow);
+
+  .glass-nav-light a { color: var(--nav-light-fg); }
+  .glass-nav-light a:hover { background: var(--nav-light-hover); color: var(--nav-light-fg); transform: translateY(-1px); }
+
+  /* ============================================================
+     Modal
+     ============================================================ */
+  .glass-modal {
+    background: var(--_glass-bg);
+    border-radius: var(--glass-modal-radius);
+    border: 1px solid var(--_glass-border);
+    box-shadow: var(--_glass-shadow);
+    color: var(--glass-fg, #fff); max-width: 42rem; padding: 1.5rem;
+
+  /* ============================================================
+     Inputs
+     ============================================================ */
+  .glass-input,
+  .glass-input-light {
+    border-radius: .75rem; padding: .625rem .875rem; width: 100%;
+    transition: border-color var(--glass-duration) var(--glass-timing), background var(--glass-duration) var(--glass-timing), box-shadow var(--glass-duration) var(--glass-timing);
+
+  .glass-input {
+    background: color-mix(in oklab, var(--glass-ink-light, #fff) 6%, transparent);
+    border: 1px solid var(--glass-border);
+    color: var(--glass-fg, #fff);
+
+  .glass-input::placeholder { color: var(--glass-input-placeholder); }
+  .glass-input:focus {
+    border-color: var(--glass-accent-from); outline: none;
+    background: color-mix(in oklab, var(--glass-ink-light, #fff) 10%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--glass-accent-from) 25%, transparent);
+
+  .glass-input-light {
+    background: var(--glass-light-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--glass-fg-contrast, #1f2937);
+
+  .glass-input-light::placeholder { color: var(--glass-input-light-placeholder); }
+  .glass-input-light:focus {
+    border-color: var(--glass-accent-from); outline: none;
+    background: var(--glass-light-bg);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--glass-accent-from) 15%, transparent);
+
+  /* ============================================================
+     Text / Progress / Grids / Specials (Hooks bleiben)
+     ============================================================ */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--text-grad-from), var(--text-grad-to));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+
+  .text-accent-gradient {
+    background: linear-gradient(135deg, var(--text-accent-from), var(--text-accent-to));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+
+  .progress-rail { width: 100%; height: 6px; background: var(--glass-rail); border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--progress-from), var(--progress-to)); border-radius: 3px; animation: progressGrow 1.6s ease-out both; }
+  .glass-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; width: 100%; }
+  .glass-grid-responsive { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; width: 100%; }
+  .glass-pulse { animation: glassPulse 2s ease-in-out infinite; }
+  .glass-glow { box-shadow: var(--glass-shadow), 0 0 20px color-mix(in oklab, var(--glass-accent-from) 30%, transparent), 0 0 40px color-mix(in oklab, var(--glass-accent-to) 20%, transparent); }
+
+  /* ============================================================
+     Slide Cards
+     ============================================================ */
+  .glass-slide-card {
+    background: var(--_glass-bg);
+    border-radius: var(--glass-slide-radius);
+    border: 1px solid var(--_glass-border);
+    box-shadow: var(--_glass-shadow);
+    color: var(--glass-fg, #fff);
+    padding: 2rem; min-height: 280px; z-index: 1;
+    display: flex; flex-direction: column; justify-content: space-between;
+    transition: transform var(--glass-duration) var(--glass-timing), box-shadow var(--glass-duration) var(--glass-timing), background var(--glass-duration) var(--glass-timing);
+
+  .glass-slide-card:hover {
+    transform: translateY(-.5rem);
+    box-shadow: var(--glass-shadow-hover);
+    background: var(--_glass-bg-hover, var(--_glass-bg));
+
+  /* ============================================================
+     Modifiers (opt-in, nicht brechend)
+     ============================================================ */
+  .is-pressable { transition: transform var(--glass-duration) var(--glass-timing), box-shadow var(--glass-duration) var(--glass-timing), background var(--glass-duration) var(--glass-timing); }
+  .is-pressable:hover { transform: translateY(-2px); }
+  .is-pressable:active { transform: translateY(var(--glass-press-translate)) scale(var(--glass-press-scale)); }
+
+  .is-selected { border-color: var(--glass-selected-border); box-shadow: var(--glass-selected-shadow); }
+
+  .is-contrast {
+    --glass-contrast: calc(var(--glass-contrast) * 1.15);
+    --glass-brightness: calc(var(--glass-brightness) * 1.05);
+
+  .is-noise { position: relative; isolation: isolate; }
+  .is-noise::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    opacity: var(--glass-noise-opacity);
+    background-image:
+      radial-gradient(1px 1px at 25% 32%, color-mix(in oklab, var(--glass-ink-dark, #000) 35%, transparent) 50%, transparent 51%),
+      radial-gradient(1px 1px at 62% 12%, color-mix(in oklab, var(--glass-ink-dark, #000) 35%, transparent) 50%, transparent 51%),
+      radial-gradient(1px 1px at 8% 75%, color-mix(in oklab, var(--glass-ink-dark, #000) 35%, transparent) 50%, transparent 51%);
+    background-size: var(--glass-noise-size) var(--glass-noise-size);
+    mix-blend-mode: overlay;
+
+  .is-edge::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    box-shadow: inset 0 1px 0 var(--glass-edge-highlight);
+
+  .is-inset::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    box-shadow: inset 0 8px 16px -12px var(--glass-inner-shadow);
+
+  /* Elevation Hilfsklassen */
+  .elev-1 { box-shadow: var(--glass-shadow-1); }
+  .elev-2 { box-shadow: var(--glass-shadow-2); }
+  .elev-3 { box-shadow: var(--glass-shadow-3); }
+  .elev-4 { box-shadow: var(--glass-shadow-4); }
+
+  /* Data-Attribute als Switch (optional) */
+  [data-glass~="noise"]  { /* entspricht .is-noise  */ }
+  [data-glass~="edge"]   { /* entspricht .is-edge   */ }
+  [data-glass~="inset"]  { /* entspricht .is-inset  */ }
+  [data-glass~="contrast"] { /* entspricht .is-contrast */ }
+  [data-glass~="elev1"]  { box-shadow: var(--glass-shadow-1); }
+  [data-glass~="elev2"]  { box-shadow: var(--glass-shadow-2); }
+  [data-glass~="elev3"]  { box-shadow: var(--glass-shadow-3); }
+  [data-glass~="elev4"]  { box-shadow: var(--glass-shadow-4); }
+
+  /* ============================================================
+     A11y & Fallbacks
+     ============================================================ */
+  @media (hover: none) {
+    .glass-hover:hover,
+    .glass-card:hover,
+    .glass-card-light:hover,
+    .glass-slide-card:hover,
+    .glass-button:hover,
+    .glass-button-primary:hover,
+    .glass-button-secondary:hover {
+      transform: none;
+      box-shadow: var(--glass-shadow);
+      background: inherit;
+
+  @media (prefers-reduced-motion: reduce) {
+    .glass-hover, .glass-card, .glass-card-light, .glass-slide-card { transition: none !important; }
+    .glass-pulse { animation: none !important; }
+
+  /* Fallback ohne backdrop-filter */
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .glass, .glass-card, .glass-slide-card, .glass-nav, .glass-modal { background: var(--_glass-bg, color-mix(in oklab, var(--glass-ink-light, #fff) 12%, transparent)); }
+
+  /* Kontrast-Boost */
+  @media (prefers-contrast: more) {
+    .glass, .glass-card, .glass-slide-card, .glass-nav, .glass-modal {
+      border-color: var(--glass-border-strong);
+      box-shadow: var(--glass-shadow-hover);
+
+    .is-contrast { --glass-contrast: 130%; }
+
+  /* Forced Colors (Windows High Contrast) */
+  @media (forced-colors: active) {
+    .glass, .glass-card, .glass-slide-card, .glass-nav, .glass-modal {
+      border: 1px solid CanvasText;
+      background: Canvas;
+      color: CanvasText;
+      box-shadow: none;
+
+    .glass-button, .glass-button-primary, .glass-button-secondary {
+      border: 1px solid CanvasText;
+      background: ButtonFace;
+      color: ButtonText;
+
+    .glass-button:focus-visible, .glass-button-primary:focus-visible, .glass-button-secondary:focus-visible {
+      outline: 2px solid Highlight; outline-offset: 2px;
+
+  /* Mobile tweaks */
+  @media (max-width: 768px) {
+    .glass-dashboard { grid-template-columns: 1fr; gap: 1rem; }
+    .glass-grid-responsive { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .glass-slide-card { min-height: 240px; padding: 1.5rem; }
+
+/* Additional Effects (TODO Phase 1) */
+
+  .glass-frosted { --_glass-blur: clamp(10px, 1.5vw, 16px); --_glass-bg: color-mix(in oklab, var(--glass-ink-light, #fff) 12%, transparent); }
+  .glass-clear   { --_glass-blur: 0px; --_glass-bg: color-mix(in oklab, var(--glass-ink-light, #fff) 6%, transparent); }
+  .glass-smoke   { --_glass-blur: clamp(6px, 1vw, 12px); --_glass-bg: color-mix(in oklab, var(--glass-ink-dark, #000) 12%, transparent); }
+  .glass-mirror  { --_glass-blur: clamp(8px, 1.2vw, 14px); --_glass-bg: color-mix(in oklab, var(--glass-ink-light, #fff) 18%, transparent); }
+
+  .backdrop-blur-sm { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  .backdrop-blur-md { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .backdrop-blur-lg { -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
