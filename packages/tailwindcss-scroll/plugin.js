@@ -1,53 +1,102 @@
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 /**
  * @casoon/tailwindcss-scroll - Tailwind CSS Plugin
  * 
- * @casoon/tailwindcss-scroll utilities for Tailwind CSS v4
+ * Scroll-based animations and utilities for Tailwind CSS v4.
  */
 export default function scrollPlugin(options = {}) {
   return {
-    handler: ({ addUtilities, addComponents, theme }) => {
-      // Load flattened CSS content
-      let cssContent = '';
-      try {
-        cssContent = readFileSync(join(__dirname, 'dist.css'), 'utf8');
-      } catch (err) {
-        // Fallback to original CSS if dist.css doesn't exist
-        cssContent = readFileSync(join(__dirname, 'index.css'), 'utf8');
-      }
-      
-      // Parse CSS content and extract utilities/components
-      // For now, inject as raw CSS - this will be optimized in future versions
-      if (cssContent.includes('@layer components')) {
-        const componentsMatch = cssContent.match(/@layer components \{([\s\S]*?)\}(?=\s*(@layer|$))/);
-        if (componentsMatch) {
-          addComponents(componentsMatch[1]);
+    handler: ({ addUtilities }) => {
+      // Scroll behavior utilities
+      addUtilities({
+        // Scroll behavior
+        '.scroll-smooth': {
+          'scroll-behavior': 'smooth'
+        },
+        '.scroll-auto': {
+          'scroll-behavior': 'auto'
+        },
+        
+        // Scroll snap utilities
+        '.scroll-snap-none': {
+          'scroll-snap-type': 'none'
+        },
+        '.scroll-snap-x': {
+          'scroll-snap-type': 'x mandatory'
+        },
+        '.scroll-snap-y': {
+          'scroll-snap-type': 'y mandatory'
+        },
+        '.scroll-snap-both': {
+          'scroll-snap-type': 'both mandatory'
+        },
+        '.scroll-snap-proximity': {
+          'scroll-snap-type': 'y proximity'
+        },
+        
+        // Scroll snap alignment
+        '.snap-start': {
+          'scroll-snap-align': 'start'
+        },
+        '.snap-end': {
+          'scroll-snap-align': 'end'
+        },
+        '.snap-center': {
+          'scroll-snap-align': 'center'
+        },
+        '.snap-align-none': {
+          'scroll-snap-align': 'none'
+        },
+        
+        // Scroll snap stop
+        '.snap-normal': {
+          'scroll-snap-stop': 'normal'
+        },
+        '.snap-always': {
+          'scroll-snap-stop': 'always'
+        },
+        
+        // Scroll margin utilities
+        '.scroll-m-0': { 'scroll-margin': '0px' },
+        '.scroll-m-1': { 'scroll-margin': '0.25rem' },
+        '.scroll-m-2': { 'scroll-margin': '0.5rem' },
+        '.scroll-m-4': { 'scroll-margin': '1rem' },
+        '.scroll-m-8': { 'scroll-margin': '2rem' },
+        '.scroll-m-16': { 'scroll-margin': '4rem' },
+        
+        // Scroll padding utilities
+        '.scroll-p-0': { 'scroll-padding': '0px' },
+        '.scroll-p-1': { 'scroll-padding': '0.25rem' },
+        '.scroll-p-2': { 'scroll-padding': '0.5rem' },
+        '.scroll-p-4': { 'scroll-padding': '1rem' },
+        '.scroll-p-8': { 'scroll-padding': '2rem' },
+        '.scroll-p-16': { 'scroll-padding': '4rem' },
+        
+        // Scrollbar utilities (WebKit)
+        '.scrollbar-none': {
+          'scrollbar-width': 'none',
+          '-ms-overflow-style': 'none'
+        },
+        '.scrollbar-none::-webkit-scrollbar': {
+          'display': 'none'
+        },
+        '.scrollbar-thin': {
+          'scrollbar-width': 'thin'
+        },
+        '.scrollbar-auto': {
+          'scrollbar-width': 'auto'
+        },
+        
+        // Custom scrollbar styling (WebKit)
+        '.scrollbar-thumb-gray': {
+          'scrollbar-color': '#6b7280 transparent'
+        },
+        '.scrollbar-thumb-blue': {
+          'scrollbar-color': '#3b82f6 transparent'
+        },
+        '.scrollbar-track-transparent': {
+          'scrollbar-color': 'inherit transparent'
         }
-      }
-      
-      if (cssContent.includes('@layer utilities')) {
-        const utilitiesMatch = cssContent.match(/@layer utilities \{([\s\S]*?)\}(?=\s*(@layer|$))/);
-        if (utilitiesMatch) {
-          addUtilities(utilitiesMatch[1]);
-        }
-      }
-      
-      // If no @layer detected, inject as utilities
-      if (!cssContent.includes('@layer')) {
-        addUtilities(cssContent);
-      }
-    },
-    config: {
-      theme: {
-        extend: {
-          // Package-specific theme extensions will be added here
-        }
-      }
+      });
     }
   };
 }

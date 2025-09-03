@@ -1,53 +1,108 @@
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 /**
  * @casoon/tailwindcss-gradients - Tailwind CSS Plugin
  * 
- * @casoon/tailwindcss-gradients utilities for Tailwind CSS v4
+ * Beautiful gradient utilities for Tailwind CSS v4.
  */
 export default function gradientsPlugin(options = {}) {
   return {
-    handler: ({ addUtilities, addComponents, theme }) => {
-      // Load flattened CSS content
-      let cssContent = '';
-      try {
-        cssContent = readFileSync(join(__dirname, 'dist.css'), 'utf8');
-      } catch (err) {
-        // Fallback to original CSS if dist.css doesn't exist
-        cssContent = readFileSync(join(__dirname, 'index.css'), 'utf8');
-      }
-      
-      // Parse CSS content and extract utilities/components
-      // For now, inject as raw CSS - this will be optimized in future versions
-      if (cssContent.includes('@layer components')) {
-        const componentsMatch = cssContent.match(/@layer components \{([\s\S]*?)\}(?=\s*(@layer|$))/);
-        if (componentsMatch) {
-          addComponents(componentsMatch[1]);
+    handler: ({ addUtilities }) => {
+      // Gradient utilities
+      addUtilities({
+        // Popular gradient backgrounds
+        '.gradient-sunset': {
+          'background': 'linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcf7f)'
+        },
+        '.gradient-ocean': {
+          'background': 'linear-gradient(135deg, #667eea, #764ba2)'
+        },
+        '.gradient-fire': {
+          'background': 'linear-gradient(135deg, #f093fb, #f5576c)'
+        },
+        '.gradient-mint': {
+          'background': 'linear-gradient(135deg, #4facfe, #00f2fe)'
+        },
+        '.gradient-purple': {
+          'background': 'linear-gradient(135deg, #a8edea, #fed6e3)'
+        },
+        '.gradient-orange': {
+          'background': 'linear-gradient(135deg, #ffeaa7, #fab1a0)'
+        },
+        '.gradient-blue': {
+          'background': 'linear-gradient(135deg, #74b9ff, #0984e3)'
+        },
+        '.gradient-pink': {
+          'background': 'linear-gradient(135deg, #fd79a8, #fdcb6e)'
+        },
+        
+        // Gradient text utilities
+        '.gradient-text': {
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent'
+        },
+        '.gradient-text-sunset': {
+          'background': 'linear-gradient(135deg, #ff6b6b, #ffd93d, #6bcf7f)',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent'
+        },
+        '.gradient-text-ocean': {
+          'background': 'linear-gradient(135deg, #667eea, #764ba2)',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent'
+        },
+        '.gradient-text-fire': {
+          'background': 'linear-gradient(135deg, #f093fb, #f5576c)',
+          'background-clip': 'text',
+          '-webkit-background-clip': 'text',
+          'color': 'transparent'
+        },
+        
+        // Radial gradients
+        '.gradient-radial-center': {
+          'background': 'radial-gradient(circle at center, var(--tw-gradient-stops))'
+        },
+        '.gradient-radial-top': {
+          'background': 'radial-gradient(circle at top, var(--tw-gradient-stops))'
+        },
+        '.gradient-radial-bottom': {
+          'background': 'radial-gradient(circle at bottom, var(--tw-gradient-stops))'
+        },
+        
+        // Conic gradients
+        '.gradient-conic': {
+          'background': 'conic-gradient(var(--tw-gradient-stops))'
+        },
+        '.gradient-conic-center': {
+          'background': 'conic-gradient(from 0deg at 50% 50%, var(--tw-gradient-stops))'
+        },
+        
+        // Gradient borders (using pseudo-elements)
+        '.gradient-border': {
+          'position': 'relative',
+          'background': 'linear-gradient(135deg, #667eea, #764ba2)',
+          'border-radius': '0.5rem'
+        },
+        '.gradient-border::before': {
+          'content': '""',
+          'position': 'absolute',
+          'inset': '1px',
+          'background': 'white',
+          'border-radius': 'calc(0.5rem - 1px)'
+        },
+        
+        // Animated gradients
+        '.gradient-animate': {
+          'background-size': '400% 400%',
+          'animation': 'gradient-shift 4s ease infinite'
+        },
+        '@keyframes gradient-shift': {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' }
         }
-      }
-      
-      if (cssContent.includes('@layer utilities')) {
-        const utilitiesMatch = cssContent.match(/@layer utilities \{([\s\S]*?)\}(?=\s*(@layer|$))/);
-        if (utilitiesMatch) {
-          addUtilities(utilitiesMatch[1]);
-        }
-      }
-      
-      // If no @layer detected, inject as utilities
-      if (!cssContent.includes('@layer')) {
-        addUtilities(cssContent);
-      }
-    },
-    config: {
-      theme: {
-        extend: {
-          // Package-specific theme extensions will be added here
-        }
-      }
+      });
     }
   };
 }

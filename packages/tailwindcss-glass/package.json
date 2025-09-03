@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-glass",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Glass morphism components and utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
