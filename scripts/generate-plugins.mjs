@@ -12,7 +12,6 @@ const createPackageExports = (packageName) => ({
     "import": "./plugin.js",
     "require": "./plugin.cjs"
   },
-  "./index.css": "./index.css",
   "./dist.css": "./dist.css",
   "./plugin": {
     "import": "./plugin.js",
@@ -41,8 +40,7 @@ export default function ${packageName.replace('@casoon/tailwindcss-', '').replac
       try {
         cssContent = readFileSync(join(__dirname, 'dist.css'), 'utf8');
       } catch (err) {
-        // Fallback to original CSS if dist.css doesn't exist
-        cssContent = readFileSync(join(__dirname, 'index.css'), 'utf8');
+        throw new Error('dist.css not found. Please ensure dist.css exists for ' + packageName);
       }
       
       // Parse CSS content and extract utilities/components
@@ -96,8 +94,7 @@ function ${packageName.replace('@casoon/tailwindcss-', '').replace('-', '')}Plug
       try {
         cssContent = readFileSync(join(__dirname, 'dist.css'), 'utf8');
       } catch (err) {
-        // Fallback to original CSS if dist.css doesn't exist
-        cssContent = readFileSync(join(__dirname, 'index.css'), 'utf8');
+        throw new Error('dist.css not found. Please ensure dist.css exists for ' + packageName);
       }
       
       // Parse CSS content and extract utilities/components
@@ -182,7 +179,6 @@ async function generatePlugins() {
       
       // Update files array
       const newFiles = [
-        'index.css',
         'dist.css',
         'tokens.css',
         'plugin.js',
@@ -211,24 +207,9 @@ async function generatePlugins() {
           writeFileSync(cjsPluginPath, createCJSPlugin(packageName, pluginDescription));
         }
         
-        // Create flattened CSS distribution
-        const distCssPath = join(packagePath, 'dist.css');
-        const indexCssPath = join(packagePath, 'index.css');
-        
-        if (existsSync(indexCssPath) && !existsSync(distCssPath)) {
-          const originalCSS = readFileSync(indexCssPath, 'utf8');
-          const flattenedCSS = flattenCSS(originalCSS);
-          
-          // Add header comment
-          const header = `/* ========================================================================
-   ${packageName} - Flattened CSS Distribution
-   Tailwind CSS v4 compatible utilities without deep @layer nesting
-   ===================================================================== */
-
-`;
-          
-          writeFileSync(distCssPath, header + flattenedCSS);
-        }
+        // Skip CSS generation - dist.css should be the source of truth
+        // For tailwindcss-animations, dist.css is already manually created
+        // Other packages should follow the same pattern
       }
       
       console.log(`✅ Updated ${packageName}`);

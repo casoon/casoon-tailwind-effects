@@ -49,3 +49,16 @@ export default function effectsPlugin(options = {}) {
 
 // Export the main plugin as both default and named export
 export { effectsPlugin, effectsPlugin as effects };
+
+// Re-export individual plugins for direct import
+export {
+  animationsPlugin as animations,
+  glassPlugin as glass,
+  orbsPlugin as orbs,
+  gradientsPlugin as gradients,
+  scrollPlugin as scroll,
+  navigationPlugin as navigation,
+  utilitiesPlugin as utilities,
+  loadingPlugin as loading,
+  microInteractionsPlugin as microInteractions
+};

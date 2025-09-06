@@ -1,3 +1,8 @@
+/* ========================================================================
+   @casoon/tailwindcss-utilities - Flattened CSS Distribution
+   Tailwind CSS v4 compatible utilities without deep @layer nesting
+   ===================================================================== */
+
 /*!
  * @casoon/tailwindcss-utilities v0.5.8
  * Utility CSS classes for Tailwind CSS v4
@@ -21,10 +26,8 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
 
 .container-fluid {
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
-}

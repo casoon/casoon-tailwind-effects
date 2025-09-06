@@ -4,21 +4,26 @@
   "description": "Beautiful gradient utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
-    ".": "./plugin.js",
-    "./plugin": "./plugin.js",
-    "./css": "./index.css",
-    "./index.css": "./index.css",
-    "./catalog": "./catalog.md",
-    "./catalog.md": "./catalog.md"
+    ".": {
+      "import": "./plugin.js",
+      "require": "./plugin.cjs"
+    },
+    "./dist.css": "./dist.css",
+    "./plugin": {
+      "import": "./plugin.js",
+      "require": "./plugin.cjs"
+    },
+    "./tokens.css": "./tokens.css"
   },
-  "main": "./plugin.js",
+  "main": "./plugin.cjs",
   "module": "./plugin.js",
   "files": [
+    "dist.css",
+    "tokens.css",
     "plugin.js",
+    "plugin.cjs",
     "README.md",
-    "LICENSE",
-    "index.css",
-    "catalog.md"
+    "LICENSE"
   ],
   "peerDependencies": {
     "tailwindcss": "^4.0.0"

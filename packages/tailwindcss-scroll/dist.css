@@ -1,3 +1,8 @@
+/* ========================================================================
+   @casoon/tailwindcss-scroll - Flattened CSS Distribution
+   Tailwind CSS v4 compatible utilities without deep @layer nesting
+   ===================================================================== */
+
 /*!
  * @casoon/tailwindcss-scroll v0.5.8
  * 
@@ -14,135 +19,101 @@
 :root {
   --cs-scroll-thumb-gray: #6b7280;
   --cs-scroll-thumb-blue: #3b82f6;
-}
-
 
 /* === Utilities === */
 .scroll-smooth {
   scroll-behavior: smooth;
-}
 
 .scroll-auto {
   scroll-behavior: auto;
-}
 
 .scroll-snap-none {
   scroll-snap-type: none;
-}
 
 .scroll-snap-x {
   scroll-snap-type: x mandatory;
-}
 
 .scroll-snap-y {
   scroll-snap-type: y mandatory;
-}
 
 .scroll-snap-both {
   scroll-snap-type: both mandatory;
-}
 
 .scroll-snap-proximity {
   scroll-snap-type: y proximity;
-}
 
 .snap-start {
   scroll-snap-align: start;
-}
 
 .snap-end {
   scroll-snap-align: end;
-}
 
 .snap-center {
   scroll-snap-align: center;
-}
 
 .snap-align-none {
   scroll-snap-align: none;
-}
 
 .snap-normal {
   scroll-snap-stop: normal;
-}
 
 .snap-always {
   scroll-snap-stop: always;
-}
 
 .scroll-m-0 {
   scroll-margin: 0px;
-}
 
 .scroll-m-1 {
   scroll-margin: 0.25rem;
-}
 
 .scroll-m-2 {
   scroll-margin: 0.5rem;
-}
 
 .scroll-m-4 {
   scroll-margin: 1rem;
-}
 
 .scroll-m-8 {
   scroll-margin: 2rem;
-}
 
 .scroll-m-16 {
   scroll-margin: 4rem;
-}
 
 .scroll-p-0 {
   scroll-padding: 0px;
-}
 
 .scroll-p-1 {
   scroll-padding: 0.25rem;
-}
 
 .scroll-p-2 {
   scroll-padding: 0.5rem;
-}
 
 .scroll-p-4 {
   scroll-padding: 1rem;
-}
 
 .scroll-p-8 {
   scroll-padding: 2rem;
-}
 
 .scroll-p-16 {
   scroll-padding: 4rem;
-}
 
 .scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;
-}
 
 .scrollbar-none::-webkit-scrollbar {
   display: none;
-}
 
 .scrollbar-thin {
   scrollbar-width: thin;
-}
 
 .scrollbar-auto {
   scrollbar-width: auto;
-}
 
 .scrollbar-thumb-gray {
   scrollbar-color: var(--cs-scroll-thumb-gray) transparent;
-}
 
 .scrollbar-thumb-blue {
   scrollbar-color: var(--cs-scroll-thumb-blue) transparent;
-}
 
 .scrollbar-track-transparent {
   scrollbar-color: inherit transparent;
-}

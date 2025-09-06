@@ -84,8 +84,8 @@ async function prepareRelease() {
   // 8. Build packages
   run('npm run build', 'Building packages');
 
-  // 9. Build CSS packages
-  run('npm run build:packages-css', 'Building CSS packages');
+  // 9. CSS packages are manually maintained (dist.css files)
+  // run('npm run build:packages-css', 'Building CSS packages');
 
   // 10. Integration test
   run('npm run test:integration', 'Running integration tests');

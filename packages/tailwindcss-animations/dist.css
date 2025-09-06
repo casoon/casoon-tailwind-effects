@@ -1,9 +1,14 @@
-/*!
+/* ========================================================================
+   @casoon/tailwindcss-animations - Flattened CSS Distribution
+   Tailwind CSS v4 compatible utilities without deep @layer nesting
+   ===================================================================== */
+
+/*! 
  * @casoon/tailwindcss-animations v0.5.8
  * Animation utilities and keyframes for Tailwind CSS v4
  * 
  * Generated from plugin.js - DO NOT EDIT MANUALLY
- * Build date: 2025-09-06T18:50:00.576Z
+ * Build date: 2025-09-06T19:15:13Z
  * 
  * Import via:
  * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-animations@0.5.8/index.css
@@ -237,7 +242,6 @@
   --cs-anim-shadow-ink: #000;
 }
 
-
 /* === Components === */
 .anim {
   animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
@@ -295,7 +299,6 @@
 .t-preserve-3d {
   transform-style: preserve-3d;
 }
-
 
 /* === Utilities === */
 .anim-xxs {
@@ -420,23 +423,35 @@
 
 .hover-lift-sm {
   transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+}
+
+.hover-lift-sm:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px color-mix(in oklab, var(--cs-anim-shadow-ink) 10%, transparent);
 }
 
 .hover-lift-md {
   transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+}
+
+.hover-lift-md:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 18px color-mix(in oklab, var(--cs-anim-shadow-ink) 14%, transparent);
 }
 
 .hover-scale-105 {
   transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+}
+
+.hover-scale-105:hover {
   transform: scale(1.05);
 }
 
 .hover-scale-110 {
   transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+}
+
+.hover-scale-110:hover {
   transform: scale(1.10);
 }
 
@@ -450,4 +465,16 @@
 
 .exit-modal {
   animation: anim-scale-out var(--cs-anim-duration-md) var(--cs-anim-ease-accelerate) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim, .fade-in, .fade-out, .scale-in, .scale-out, .slide-up, .slide-down, .slide-left, .slide-right, .blur-in, .blur-out, .rotate-in, .rotate, .pulse, .bounce, .wiggle, .reveal-3d-up, .reveal-3d-right, .enter-card, .enter-modal, .exit-modal {
+    animation-duration: var(--cs-anim-reduced-motion-duration) !important;
+    animation-iteration-count: 1 !important;
+    animation-timing-function: var(--cs-anim-reduced-motion-ease) !important;
+    transition: none !important;
+  }
+  .hover-lift-sm:hover, .hover-lift-md:hover, .hover-scale-105:hover, .hover-scale-110:hover {
+    transform: none !important;
+  }
 }

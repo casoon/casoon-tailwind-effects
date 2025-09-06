@@ -1,3 +1,8 @@
+/* ========================================================================
+   @casoon/tailwindcss-gradients - Flattened CSS Distribution
+   Tailwind CSS v4 compatible utilities without deep @layer nesting
+   ===================================================================== */
+
 /*!
  * @casoon/tailwindcss-gradients v0.5.8
  * Beautiful gradient utilities for Tailwind CSS v4
@@ -33,105 +38,83 @@
   --cs-gradient-custom-mid: null;
   --cs-gradient-custom-end: #764ba2;
   --cs-gradient-white: #ffffff;
-}
-
 
 /* === Utilities === */
 .gradient-sunset {
   background: linear-gradient(135deg, var(--cs-gradient-sunset-start), var(--cs-gradient-sunset-mid), var(--cs-gradient-sunset-end));
-}
 
 .gradient-ocean {
   background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
-}
 
 .gradient-fire {
   background: linear-gradient(135deg, var(--cs-gradient-fire-start), var(--cs-gradient-fire-end));
-}
 
 .gradient-mint {
   background: linear-gradient(135deg, var(--cs-gradient-mint-start), var(--cs-gradient-mint-end));
-}
 
 .gradient-purple {
   background: linear-gradient(135deg, var(--cs-gradient-purple-start), var(--cs-gradient-purple-end));
-}
 
 .gradient-orange {
   background: linear-gradient(135deg, var(--cs-gradient-orange-start), var(--cs-gradient-orange-end));
-}
 
 .gradient-blue {
   background: linear-gradient(135deg, var(--cs-gradient-blue-start), var(--cs-gradient-blue-end));
-}
 
 .gradient-pink {
   background: linear-gradient(135deg, var(--cs-gradient-pink-start), var(--cs-gradient-pink-end));
-}
 
 .gradient-custom {
   background: linear-gradient(135deg, var(--cs-gradient-custom-start), var(--cs-gradient-custom-end));
-}
 
 .gradient-text {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-}
 
 .gradient-text-sunset {
   background: linear-gradient(135deg, var(--cs-gradient-sunset-start), var(--cs-gradient-sunset-mid), var(--cs-gradient-sunset-end));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-}
 
 .gradient-text-ocean {
   background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-}
 
 .gradient-text-fire {
   background: linear-gradient(135deg, var(--cs-gradient-fire-start), var(--cs-gradient-fire-end));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-}
 
 .gradient-text-custom {
   background: linear-gradient(135deg, var(--cs-gradient-custom-start), var(--cs-gradient-custom-end));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-}
 
 .gradient-radial-center {
   background: radial-gradient(circle at center, var(--tw-gradient-stops));
-}
 
 .gradient-radial-top {
   background: radial-gradient(circle at top, var(--tw-gradient-stops));
-}
 
 .gradient-radial-bottom {
   background: radial-gradient(circle at bottom, var(--tw-gradient-stops));
-}
 
 .gradient-conic {
   background: conic-gradient(var(--tw-gradient-stops));
-}
 
 .gradient-conic-center {
   background: conic-gradient(from 0deg at 50% 50%, var(--tw-gradient-stops));
-}
 
 .gradient-border {
   position: relative;
   background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
   border-radius: 0.5rem;
-}
 
 .gradient-border::before {
   content: "";
@@ -139,9 +122,7 @@
   inset: 1px;
   background: var(--cs-gradient-white);
   border-radius: calc(0.5rem - 1px);
-}
 
 .gradient-animate {
   background-size: 400% 400%;
   animation: gradient-shift 4s ease infinite;
-}

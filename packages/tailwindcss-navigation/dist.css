@@ -1,3 +1,8 @@
+/* ========================================================================
+   @casoon/tailwindcss-navigation - Flattened CSS Distribution
+   Tailwind CSS v4 compatible utilities without deep @layer nesting
+   ===================================================================== */
+
 /*!
  * @casoon/tailwindcss-navigation v0.5.8
  * Navigation components and utilities for Tailwind CSS v4
@@ -16,8 +21,6 @@
   --cs-nav-white: #ffffff;
   --cs-nav-text-muted: #495057;
   --cs-nav-border: #dee2e6;
-}
-
 
 /* === Components === */
 .nav {
@@ -26,11 +29,9 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-}
 
 .nav-item {
   display: block;
-}
 
 .nav-link {
   display: block;
@@ -38,38 +39,30 @@
   color: inherit;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-}
 
 .nav-link:hover {
   text-decoration: none;
-}
 
 .nav-link.active {
   font-weight: 600;
-}
-
 
 /* === Utilities === */
 .nav-pills .nav-item .nav-link {
   border-radius: 0.25rem;
-}
 
 .nav-pills .nav-item .nav-link.active {
   background-color: var(--cs-nav-primary);
   color: var(--cs-nav-white);
-}
 
 .nav-tabs .nav-item .nav-link {
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-}
 
 .nav-tabs .nav-item .nav-link.active {
   color: var(--cs-nav-text-muted);
   background-color: var(--cs-nav-white);
   border-color: var(--cs-nav-border) var(--cs-nav-border) var(--cs-nav-white);
-}
 
 .navbar-brand {
   display: inline-block;
@@ -79,7 +72,6 @@
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
-}
 
 .navbar-nav {
   display: flex;
@@ -87,9 +79,7 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-}
 
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
-}
