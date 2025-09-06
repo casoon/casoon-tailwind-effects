@@ -17,34 +17,19 @@ import loadingPlugin from '@casoon/tailwindcss-loading';
 import microInteractionsPlugin from '@casoon/tailwindcss-micro-interactions';
 
 export default function effectsPlugin(options = {}) {
-  return {
-    handler: (api) => {
-      // Execute all individual plugins with their respective options
-      const plugins = [
-        { plugin: utilitiesPlugin, options: options.utilities },
-        { plugin: animationsPlugin, options: options.animations },
-        { plugin: loadingPlugin, options: options.loading },
-        { plugin: microInteractionsPlugin, options: options.microInteractions },
-        { plugin: glassPlugin, options: options.glass },
-        { plugin: orbsPlugin, options: options.orbs },
-        { plugin: gradientsPlugin, options: options.gradients },
-        { plugin: scrollPlugin, options: options.scroll },
-        { plugin: navigationPlugin, options: options.navigation }
-      ];
-
-      // Execute each plugin's handler
-      plugins.forEach(({ plugin, options: pluginOptions }) => {
-        try {
-          const pluginConfig = plugin(pluginOptions || {});
-          if (pluginConfig && typeof pluginConfig.handler === 'function') {
-            pluginConfig.handler(api);
-          }
-        } catch (error) {
-          console.warn(`Warning: Could not load plugin ${plugin.name}:`, error.message);
-        }
-      });
-    }
-  };
+  // Return array of plugins instead of single plugin with handler
+  // This allows Tailwind's purging mechanism to properly detect CSS classes
+  return [
+    utilitiesPlugin(options.utilities || {}),
+    animationsPlugin(options.animations || {}),
+    loadingPlugin(options.loading || {}),
+    microInteractionsPlugin(options.microInteractions || {}),
+    glassPlugin(options.glass || {}),
+    orbsPlugin(options.orbs || {}),
+    gradientsPlugin(options.gradients || {}),
+    scrollPlugin(options.scroll || {}),
+    navigationPlugin(options.navigation || {})
+  ].filter(Boolean); // Remove any undefined/null plugins
 }
 
 // Export the main plugin as both default and named export

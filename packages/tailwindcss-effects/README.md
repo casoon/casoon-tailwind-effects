@@ -3,10 +3,32 @@
 Meta CSS that imports tokens + all effect modules.
 
 ## Usage
+
+### CSS Import (Recommended)
 ```css
 @import "tailwindcss";
 @import "@casoon/tailwindcss-effects/index.css";
 ```
+
+### Tailwind Plugin
+```js
+// tailwind.config.js
+import effectsPlugin from '@casoon/tailwindcss-effects/plugin.js';
+
+export default {
+  plugins: [
+    ...effectsPlugin(), // Use spread operator!
+    // Or with options:
+    // ...effectsPlugin({
+    //   utilities: { /* options */ },
+    //   animations: { /* options */ },
+    //   glass: { /* options */ }
+    // })
+  ]
+};
+```
+
+> **Note:** The plugin returns an array of plugins, so you must use the spread operator (`...`) when adding it to your plugins array.
 
 ## 🎨 Theme Overrides
 
