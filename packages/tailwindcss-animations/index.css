@@ -1,0 +1,453 @@
+/*!
+ * @casoon/tailwindcss-animations v0.5.8
+ * Animation utilities and keyframes for Tailwind CSS v4
+ * 
+ * Generated from plugin.js - DO NOT EDIT MANUALLY
+ * Build date: 2025-09-06T18:50:00.576Z
+ * 
+ * Import via:
+ * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-animations@0.5.8/index.css
+ * - GitHub: https://raw.githubusercontent.com/casoon-tailwind-effects/main/packages/tailwindcss-animations/index.css
+ */
+
+@keyframes anim-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes anim-fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes anim-scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes anim-scale-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes anim-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes anim-slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes anim-slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes anim-slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes anim-blur-in {
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes anim-blur-out {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(4px);
+  }
+}
+
+@keyframes anim-rotate-in {
+  0% {
+    opacity: 0;
+    transform: rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes anim-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes anim-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes anim-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    animationTimingFunction: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(-25%);
+    animationTimingFunction: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes anim-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes anim-reveal-3d-up {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes anim-reveal-3d-right {
+  0% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes anim-marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes anim-parallax-y {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes anim-progress-grow {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* === Base Styles === */
+:root {
+  --cs-anim-duration-xxs: 100ms;
+  --cs-anim-duration-xs: 150ms;
+  --cs-anim-duration-sm: 200ms;
+  --cs-anim-duration-md: 300ms;
+  --cs-anim-duration-lg: 500ms;
+  --cs-anim-duration-xl: 700ms;
+  --cs-anim-duration-2xl: 1000ms;
+  --cs-anim-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --cs-anim-ease-emphasized: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --cs-anim-ease-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --cs-anim-ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --cs-anim-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --cs-anim-ease-soft-spring: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --cs-anim-reduced-motion-duration: 1ms;
+  --cs-anim-reduced-motion-ease: ease;
+  --cs-anim-shadow-ink: #000;
+}
+
+
+/* === Components === */
+.anim {
+  animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
+  animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
+  animation-iteration-count: 1;
+  animation-direction: var(--cs-anim-direction, normal);
+  animation-fill-mode: var(--cs-anim-fill, both);
+  animation-delay: var(--cs-anim-delay, 0ms);
+}
+
+.anim-infinite {
+  animation-iteration-count: infinite;
+}
+
+.anim-reverse {
+  animation-direction: reverse;
+}
+
+.anim-alternate {
+  animation-direction: alternate;
+}
+
+.anim-both {
+  animation-fill-mode: both;
+}
+
+.anim-forwards {
+  animation-fill-mode: forwards;
+}
+
+.will-transform {
+  will-change: transform;
+}
+
+.will-opacity {
+  will-change: opacity;
+}
+
+.will-filter {
+  will-change: filter;
+}
+
+.t-origin-top {
+  transform-origin: top;
+}
+
+.t-origin-center {
+  transform-origin: center;
+}
+
+.t-origin-bottom {
+  transform-origin: bottom;
+}
+
+.t-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+
+/* === Utilities === */
+.anim-xxs {
+  --cs-anim-duration: var(--cs-anim-duration-xxs);
+}
+
+.anim-xs {
+  --cs-anim-duration: var(--cs-anim-duration-xs);
+}
+
+.anim-sm {
+  --cs-anim-duration: var(--cs-anim-duration-sm);
+}
+
+.anim-md {
+  --cs-anim-duration: var(--cs-anim-duration-md);
+}
+
+.anim-lg {
+  --cs-anim-duration: var(--cs-anim-duration-lg);
+}
+
+.anim-xl {
+  --cs-anim-duration: var(--cs-anim-duration-xl);
+}
+
+.anim-2xl {
+  --cs-anim-duration: var(--cs-anim-duration-2xl);
+}
+
+.ease-standard {
+  --cs-anim-ease: var(--cs-anim-ease-standard);
+}
+
+.ease-emphasized {
+  --cs-anim-ease: var(--cs-anim-ease-emphasized);
+}
+
+.ease-decelerate {
+  --cs-anim-ease: var(--cs-anim-ease-decelerate);
+}
+
+.ease-accelerate {
+  --cs-anim-ease: var(--cs-anim-ease-accelerate);
+}
+
+.ease-spring {
+  --cs-anim-ease: var(--cs-anim-ease-spring);
+}
+
+.ease-soft-spring {
+  --cs-anim-ease: var(--cs-anim-ease-soft-spring);
+}
+
+.fade-in {
+  animation-name: anim-fade-in;
+}
+
+.fade-out {
+  animation-name: anim-fade-out;
+}
+
+.scale-in {
+  animation-name: anim-scale-in;
+}
+
+.scale-out {
+  animation-name: anim-scale-out;
+}
+
+.slide-up {
+  animation-name: anim-slide-up;
+}
+
+.slide-down {
+  animation-name: anim-slide-down;
+}
+
+.slide-left {
+  animation-name: anim-slide-left;
+}
+
+.slide-right {
+  animation-name: anim-slide-right;
+}
+
+.blur-in {
+  animation-name: anim-blur-in;
+}
+
+.blur-out {
+  animation-name: anim-blur-out;
+}
+
+.rotate-in {
+  animation-name: anim-rotate-in;
+}
+
+.rotate {
+  animation-name: anim-rotate;
+}
+
+.pulse {
+  animation-name: anim-pulse;
+}
+
+.bounce {
+  animation-name: anim-bounce;
+}
+
+.wiggle {
+  animation-name: anim-wiggle;
+}
+
+.reveal-3d-up {
+  animation-name: anim-reveal-3d-up;
+}
+
+.reveal-3d-right {
+  animation-name: anim-reveal-3d-right;
+}
+
+.hover-lift-sm {
+  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px color-mix(in oklab, var(--cs-anim-shadow-ink) 10%, transparent);
+}
+
+.hover-lift-md {
+  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 18px color-mix(in oklab, var(--cs-anim-shadow-ink) 14%, transparent);
+}
+
+.hover-scale-105 {
+  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+  transform: scale(1.05);
+}
+
+.hover-scale-110 {
+  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+  transform: scale(1.10);
+}
+
+.enter-card {
+  animation: anim-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-decelerate) both;
+}
+
+.enter-modal {
+  animation: anim-scale-in var(--cs-anim-duration-md) var(--cs-anim-ease-emphasized) both;
+}
+
+.exit-modal {
+  animation: anim-scale-out var(--cs-anim-duration-md) var(--cs-anim-ease-accelerate) both;
+}

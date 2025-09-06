@@ -6,8 +6,104 @@
  * accessibility support, container queries, and browser fallbacks.
  */
 export default function glassPlugin(options = {}) {
+  // Default color tokens for glass effects
+  const defaultTokens = {
+    colors: {
+      // Base colors
+      'white': '#ffffff',
+      'black': '#000000',
+      // Brand colors for tinted glass
+      'blue': '#3b82f6',
+      'purple': '#9333ea', 
+      'green': '#22c55e',
+      'pink': '#ec4899',
+      'amber': '#f59e0b'
+    },
+    opacity: {
+      // Transparency levels for different intensities
+      'weak': '5%',
+      'light': '10%', 
+      'medium': '15%',
+      'strong': '20%',
+      'border-light': '10%',
+      'border-medium': '20%',
+      'border-strong': '30%',
+      'shadow-light': '5%',
+      'shadow-medium': '10%',
+      'shadow-strong': '15%',
+      'shadow-xl': '20%',
+      'tooltip': '80%'
+    }
+  };
+  
+  // Merge with user options
+  const tokens = {
+    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
+    opacity: { ...defaultTokens.opacity, ...(options.tokens?.opacity || {}) }
+  };
+  
   return {
     handler: ({ addUtilities, addComponents, addBase }) => {
+      // Add CSS custom properties (tokens)
+      addBase({
+        ':root': {
+          // Base colors
+          '--cs-glass-white': tokens.colors.white,
+          '--cs-glass-black': tokens.colors.black,
+          '--cs-glass-blue': tokens.colors.blue,
+          '--cs-glass-purple': tokens.colors.purple,
+          '--cs-glass-green': tokens.colors.green,
+          '--cs-glass-pink': tokens.colors.pink,
+          '--cs-glass-amber': tokens.colors.amber,
+          // Glass backgrounds with color-mix
+          '--cs-glass-bg-light': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity.light}, transparent)`,
+          '--cs-glass-bg-weak': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity.weak}, transparent)`,
+          '--cs-glass-bg-medium': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity.medium}, transparent)`,
+          '--cs-glass-bg-strong': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity.strong}, transparent)`,
+          '--cs-glass-bg-dark': `color-mix(in srgb, var(--cs-glass-black) ${tokens.opacity.light}, transparent)`,
+          '--cs-glass-bg-dark-strong': `color-mix(in srgb, var(--cs-glass-black) ${tokens.opacity.strong}, transparent)`,
+          // Colored glass backgrounds
+          '--cs-glass-bg-blue': `color-mix(in srgb, var(--cs-glass-blue) ${tokens.opacity.light}, transparent)`,
+          '--cs-glass-bg-purple': `color-mix(in srgb, var(--cs-glass-purple) ${tokens.opacity.light}, transparent)`,
+          '--cs-glass-bg-green': `color-mix(in srgb, var(--cs-glass-green) ${tokens.opacity.light}, transparent)`,
+          '--cs-glass-bg-pink': `color-mix(in srgb, var(--cs-glass-pink) ${tokens.opacity.light}, transparent)`,
+          '--cs-glass-bg-amber': `color-mix(in srgb, var(--cs-glass-amber) ${tokens.opacity.light}, transparent)`,
+          // Borders
+          '--cs-glass-border-light': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity['border-light']}, transparent)`,
+          '--cs-glass-border-medium': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-border-strong': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity['border-strong']}, transparent)`,
+          // Colored borders
+          '--cs-glass-border-blue': `color-mix(in srgb, var(--cs-glass-blue) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-border-purple': `color-mix(in srgb, var(--cs-glass-purple) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-border-green': `color-mix(in srgb, var(--cs-glass-green) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-border-pink': `color-mix(in srgb, var(--cs-glass-pink) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-border-amber': `color-mix(in srgb, var(--cs-glass-amber) ${tokens.opacity['border-medium']}, transparent)`,
+          // Shadows
+          '--cs-glass-shadow-light': `color-mix(in srgb, var(--cs-glass-black) ${tokens.opacity['shadow-light']}, transparent)`,
+          '--cs-glass-shadow-medium': `color-mix(in srgb, var(--cs-glass-black) ${tokens.opacity['shadow-medium']}, transparent)`,
+          '--cs-glass-shadow-strong': `color-mix(in srgb, var(--cs-glass-black) ${tokens.opacity['shadow-strong']}, transparent)`,
+          '--cs-glass-shadow-xl': `color-mix(in srgb, var(--cs-glass-black) ${tokens.opacity['shadow-xl']}, transparent)`,
+          // Special cases
+          '--cs-glass-tooltip-bg': `color-mix(in srgb, var(--cs-glass-black) ${tokens.opacity.tooltip}, transparent)`,
+          // Interactive state backgrounds
+          '--cs-glass-bg-hover': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity.medium}, transparent)`,
+          '--cs-glass-bg-light-hover': `color-mix(in srgb, var(--cs-glass-white) 25%, transparent)`,
+          // High contrast backgrounds
+          '--cs-glass-bg-contrast': `color-mix(in srgb, var(--cs-glass-white) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-bg-dark-contrast': `color-mix(in srgb, var(--cs-glass-black) ${tokens.opacity['border-medium']}, transparent)`,
+          // Fallback backgrounds
+          '--cs-glass-bg-fallback': `color-mix(in srgb, var(--cs-glass-white) 25%, transparent)`,
+          '--cs-glass-bg-dark-fallback': `color-mix(in srgb, var(--cs-glass-black) 25%, transparent)`,
+          // Colored fallback backgrounds
+          '--cs-glass-bg-blue-fallback': `color-mix(in srgb, var(--cs-glass-blue) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-bg-purple-fallback': `color-mix(in srgb, var(--cs-glass-purple) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-bg-green-fallback': `color-mix(in srgb, var(--cs-glass-green) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-bg-pink-fallback': `color-mix(in srgb, var(--cs-glass-pink) ${tokens.opacity['border-medium']}, transparent)`,
+          '--cs-glass-bg-amber-fallback': `color-mix(in srgb, var(--cs-glass-amber) ${tokens.opacity['border-medium']}, transparent)`,
+          // Focus ring
+          '--cs-glass-focus-ring': `color-mix(in srgb, var(--cs-glass-blue) 50%, transparent)`
+        }
+      });
       // CSS Layers for better specificity control
       addBase({
         '@layer glass-base, glass-utilities, glass-components;': {}
@@ -20,14 +116,14 @@ export default function glassPlugin(options = {}) {
           '.glass': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(255, 255, 255, 0.1)',
-            'border': '1px solid rgba(255, 255, 255, 0.2)'
+            'background': 'var(--cs-glass-bg-light)',
+            'border': '1px solid var(--cs-glass-border-medium)'
           },
           '.glass-dark': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(0, 0, 0, 0.1)',
-            'border': '1px solid rgba(255, 255, 255, 0.1)'
+            'background': 'var(--cs-glass-bg-dark)',
+            'border': '1px solid var(--cs-glass-border-light)'
           },
 
           // Size variants
@@ -44,52 +140,52 @@ export default function glassPlugin(options = {}) {
           '.glass-weak': {
             'backdrop-filter': 'blur(4px)',
             '-webkit-backdrop-filter': 'blur(4px)',
-            'background': 'rgba(255, 255, 255, 0.05)',
-            'border': '1px solid rgba(255, 255, 255, 0.1)'
+            'background': 'var(--cs-glass-bg-weak)',
+            'border': '1px solid var(--cs-glass-border-light)'
           },
           '.glass-medium': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(255, 255, 255, 0.1)',
-            'border': '1px solid rgba(255, 255, 255, 0.2)'
+            'background': 'var(--cs-glass-bg-light)',
+            'border': '1px solid var(--cs-glass-border-medium)'
           },
           '.glass-strong': {
             'backdrop-filter': 'blur(32px)',
             '-webkit-backdrop-filter': 'blur(32px)',
-            'background': 'rgba(255, 255, 255, 0.15)',
-            'border': '1px solid rgba(255, 255, 255, 0.3)'
+            'background': 'var(--cs-glass-bg-medium)',
+            'border': '1px solid var(--cs-glass-border-strong)'
           },
 
           // Colored glass variants
           '.glass-blue': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(59, 130, 246, 0.1)',
-            'border': '1px solid rgba(59, 130, 246, 0.2)'
+            'background': 'var(--cs-glass-bg-blue)',
+            'border': '1px solid var(--cs-glass-border-blue)'
           },
           '.glass-purple': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(147, 51, 234, 0.1)',
-            'border': '1px solid rgba(147, 51, 234, 0.2)'
+            'background': 'var(--cs-glass-bg-purple)',
+            'border': '1px solid var(--cs-glass-border-purple)'
           },
           '.glass-green': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(34, 197, 94, 0.1)',
-            'border': '1px solid rgba(34, 197, 94, 0.2)'
+            'background': 'var(--cs-glass-bg-green)',
+            'border': '1px solid var(--cs-glass-border-green)'
           },
           '.glass-pink': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(236, 72, 153, 0.1)',
-            'border': '1px solid rgba(236, 72, 153, 0.2)'
+            'background': 'var(--cs-glass-bg-pink)',
+            'border': '1px solid var(--cs-glass-border-pink)'
           },
           '.glass-amber': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(245, 158, 11, 0.1)',
-            'border': '1px solid rgba(245, 158, 11, 0.2)'
+            'background': 'var(--cs-glass-bg-amber)',
+            'border': '1px solid var(--cs-glass-border-amber)'
           },
 
           // Border radius variants
@@ -102,16 +198,16 @@ export default function glassPlugin(options = {}) {
 
           // Shadow variants
           '.glass-shadow-sm': {
-            'box-shadow': '0 1px 2px rgba(0, 0, 0, 0.05)'
+            'box-shadow': '0 1px 2px var(--cs-glass-shadow-light)'
           },
           '.glass-shadow': {
-            'box-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)'
+            'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)'
           },
           '.glass-shadow-lg': {
-            'box-shadow': '0 20px 40px rgba(0, 0, 0, 0.15)'
+            'box-shadow': '0 20px 40px var(--cs-glass-shadow-strong)'
           },
           '.glass-shadow-xl': {
-            'box-shadow': '0 25px 50px rgba(0, 0, 0, 0.2)'
+            'box-shadow': '0 25px 50px var(--cs-glass-shadow-xl)'
           }
         }
       });
@@ -123,22 +219,22 @@ export default function glassPlugin(options = {}) {
           '.glass-toast': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(255, 255, 255, 0.1)',
-            'border': '1px solid rgba(255, 255, 255, 0.2)',
+            'background': 'var(--cs-glass-bg-light)',
+            'border': '1px solid var(--cs-glass-border-medium)',
             'border-radius': '0.75rem',
             'padding': '1rem 1.5rem',
-            'box-shadow': '0 8px 32px rgba(0, 0, 0, 0.15)',
+            'box-shadow': '0 8px 32px var(--cs-glass-shadow-strong)',
             'position': 'relative',
             'overflow': 'hidden'
           },
           '.glass-tooltip': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(0, 0, 0, 0.8)',
-            'border': '1px solid rgba(255, 255, 255, 0.2)',
+            'background': 'var(--cs-glass-tooltip-bg)',
+            'border': '1px solid var(--cs-glass-border-medium)',
             'border-radius': '0.5rem',
             'padding': '0.5rem 0.75rem',
-            'box-shadow': '0 4px 16px rgba(0, 0, 0, 0.2)',
+            'box-shadow': '0 4px 16px var(--cs-glass-shadow-xl)',
             'font-size': '0.875rem',
             'color': 'white',
             'white-space': 'nowrap'
@@ -146,10 +242,10 @@ export default function glassPlugin(options = {}) {
           '.glass-dropdown': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
-            'background': 'rgba(255, 255, 255, 0.1)',
-            'border': '1px solid rgba(255, 255, 255, 0.2)',
+            'background': 'var(--cs-glass-bg-light)',
+            'border': '1px solid var(--cs-glass-border-medium)',
             'border-radius': '0.75rem',
-            'box-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
+            'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
             'padding': '0.5rem',
             'min-width': '12rem'
           }
@@ -169,11 +265,11 @@ export default function glassPlugin(options = {}) {
         '@media (prefers-contrast: high)': {
           '.glass, .glass-card, .glass-nav, .glass-button': {
             'border-width': '2px',
-            'background': 'rgba(255, 255, 255, 0.2)'
+            'background': 'var(--cs-glass-bg-contrast)'
           },
           '.glass-dark': {
-            'background': 'rgba(0, 0, 0, 0.2)',
-            'border-color': 'rgba(255, 255, 255, 0.3)'
+            'background': 'var(--cs-glass-bg-dark-contrast)',
+            'border-color': 'var(--cs-glass-border-strong)'
           }
         }
       });
@@ -204,17 +300,17 @@ export default function glassPlugin(options = {}) {
       addComponents({
         '@supports not (backdrop-filter: blur(16px))': {
           '.glass, .glass-card, .glass-nav, .glass-button': {
-            'background': 'rgba(255, 255, 255, 0.25)',
-            'box-shadow': '0 4px 16px rgba(0, 0, 0, 0.1)'
+            'background': 'var(--cs-glass-bg-fallback)',
+            'box-shadow': '0 4px 16px var(--cs-glass-shadow-medium)'
           },
           '.glass-dark': {
-            'background': 'rgba(0, 0, 0, 0.25)'
+            'background': 'var(--cs-glass-bg-dark-fallback)'
           },
-          '.glass-blue': { 'background': 'rgba(59, 130, 246, 0.2)' },
-          '.glass-purple': { 'background': 'rgba(147, 51, 234, 0.2)' },
-          '.glass-green': { 'background': 'rgba(34, 197, 94, 0.2)' },
-          '.glass-pink': { 'background': 'rgba(236, 72, 153, 0.2)' },
-          '.glass-amber': { 'background': 'rgba(245, 158, 11, 0.2)' }
+          '.glass-blue': { 'background': 'var(--cs-glass-bg-blue-fallback)' },
+          '.glass-purple': { 'background': 'var(--cs-glass-bg-purple-fallback)' },
+          '.glass-green': { 'background': 'var(--cs-glass-bg-green-fallback)' },
+          '.glass-pink': { 'background': 'var(--cs-glass-bg-pink-fallback)' },
+          '.glass-amber': { 'background': 'var(--cs-glass-bg-amber-fallback)' }
         }
       });
 
@@ -224,81 +320,81 @@ export default function glassPlugin(options = {}) {
         '.glass-card': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
-          'background': 'rgba(255, 255, 255, 0.1)',
-          'border': '1px solid rgba(255, 255, 255, 0.2)',
+          'background': 'var(--cs-glass-bg-light)',
+          'border': '1px solid var(--cs-glass-border-medium)',
           'border-radius': '20px',
           'padding': '2rem',
-          'box-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
+          'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
           'transition': 'all 0.3s ease',
           '&:hover': {
-            'background': 'rgba(255, 255, 255, 0.15)',
-            'box-shadow': '0 20px 40px rgba(0, 0, 0, 0.15)',
+            'background': 'var(--cs-glass-bg-hover)',
+            'box-shadow': '0 20px 40px var(--cs-glass-shadow-strong)',
             'transform': 'translateY(-2px)',
-            'border': '1px solid rgba(255, 255, 255, 0.3)'
+            'border': '1px solid var(--cs-glass-border-strong)'
           },
           '&:focus-within': {
-            'outline': '2px solid rgba(59, 130, 246, 0.5)',
+            'outline': '2px solid var(--cs-glass-focus-ring)',
             'outline-offset': '2px'
           }
         },
         '.glass-card-light': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
-          'background': 'rgba(255, 255, 255, 0.2)',
-          'border': '1px solid rgba(255, 255, 255, 0.3)',
+          'background': 'var(--cs-glass-bg-medium)',
+          'border': '1px solid var(--cs-glass-border-strong)',
           'border-radius': '20px',
           'padding': '2rem',
-          'box-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
+          'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
           'transition': 'all 0.3s ease',
           '&:hover': {
-            'background': 'rgba(255, 255, 255, 0.25)',
+            'background': 'var(--cs-glass-bg-light-hover)',
             'transform': 'translateY(-1px)',
-            'box-shadow': '0 12px 24px rgba(0, 0, 0, 0.15)'
+            'box-shadow': '0 12px 24px var(--cs-glass-shadow-strong)'
           },
           '&:focus-within': {
-            'outline': '2px solid rgba(59, 130, 246, 0.5)',
+            'outline': '2px solid var(--cs-glass-focus-ring)',
             'outline-offset': '2px'
           }
         },
         '.glass-nav': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
-          'background': 'rgba(255, 255, 255, 0.1)',
-          'border': '1px solid rgba(255, 255, 255, 0.2)',
+          'background': 'var(--cs-glass-bg-light)',
+          'border': '1px solid var(--cs-glass-border-medium)',
           'border-radius': '12px',
-          'box-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
+          'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
           'transition': 'all 0.3s ease'
         },
         '.glass-nav-light': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
-          'background': 'rgba(255, 255, 255, 0.2)',
-          'border': '1px solid rgba(255, 255, 255, 0.3)',
+          'background': 'var(--cs-glass-bg-medium)',
+          'border': '1px solid var(--cs-glass-border-strong)',
           'border-radius': '12px',
-          'box-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
+          'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
           'transition': 'all 0.3s ease'
         },
         '.glass-button': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
-          'background': 'rgba(255, 255, 255, 0.1)',
-          'border': '1px solid rgba(255, 255, 255, 0.2)',
+          'background': 'var(--cs-glass-bg-light)',
+          'border': '1px solid var(--cs-glass-border-medium)',
           'border-radius': '12px',
           'padding': '0.75rem 1.5rem',
           'transition': 'all 0.3s ease',
           'cursor': 'pointer',
           '&:hover': {
-            'background': 'rgba(255, 255, 255, 0.15)',
+            'background': 'var(--cs-glass-bg-hover)',
             'transform': 'translateY(-1px)',
-            'box-shadow': '0 8px 16px rgba(0, 0, 0, 0.1)'
+            'box-shadow': '0 8px 16px var(--cs-glass-shadow-medium)'
           },
           '&:focus': {
-            'outline': '2px solid rgba(59, 130, 246, 0.5)',
+            'outline': '2px solid var(--cs-glass-focus-ring)',
             'outline-offset': '2px'
           },
           '&:active': {
             'transform': 'translateY(0)',
-            'box-shadow': '0 4px 8px rgba(0, 0, 0, 0.1)'
+            'box-shadow': '0 4px 8px var(--cs-glass-shadow-medium)'
           }
         }
       });
@@ -307,10 +403,10 @@ export default function glassPlugin(options = {}) {
       addComponents({
         '@supports not (backdrop-filter: blur(16px))': {
           '.glass, .glass-card, .glass-nav, .glass-button': {
-            'background': 'rgba(255, 255, 255, 0.2)'
+            'background': 'var(--cs-glass-bg-contrast)'
           },
           '.glass-dark': {
-            'background': 'rgba(0, 0, 0, 0.2)'
+            'background': 'var(--cs-glass-bg-dark-contrast)'
           }
         }
       });

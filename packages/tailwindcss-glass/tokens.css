@@ -1,0 +1,115 @@
+/* Glass Effect Tokens */
+:root {
+  color-scheme: light dark;
+  
+  /* Base glass colors */
+  --cs-glass-primary: #0ea5e9;
+  --cs-glass-secondary: #a855f7;
+  --cs-glass-accent: #06b6d4;
+  --cs-glass-neutral: #64748b;
+  --cs-glass-surface: #f8fafc;
+  --cs-glass-surface-dark: #1e293b;
+  --cs-glass-border: #e2e8f0;
+  --cs-glass-border-dark: #334155;
+  --cs-glass-text: #1e293b;
+  --cs-glass-text-dark: #f1f5f9;
+  --cs-glass-white: #ffffff;
+  --cs-glass-black: #000000;
+
+  /* Opacity levels */
+  --cs-glass-opacity-subtle: 0.03;
+  --cs-glass-opacity-light: 0.05;
+  --cs-glass-opacity-medium: 0.1;
+  --cs-glass-opacity-strong: 0.15;
+  --cs-glass-opacity-intense: 0.2;
+  --cs-glass-opacity-bold: 0.25;
+  --cs-glass-opacity-heavy: 0.3;
+  --cs-glass-opacity-contrast: 0.4;
+
+  /* Interactive states opacity */
+  --cs-glass-opacity-hover: 0.08;
+  --cs-glass-opacity-active: 0.12;
+  --cs-glass-opacity-focus: 0.1;
+
+  /* Generated glass backgrounds using color-mix */
+  --cs-glass-bg-subtle: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-subtle), transparent);
+  --cs-glass-bg-light: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-light), transparent);
+  --cs-glass-bg-medium: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-medium), transparent);
+  --cs-glass-bg-strong: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-strong), transparent);
+  --cs-glass-bg-intense: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-intense), transparent);
+  --cs-glass-bg-bold: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-bold), transparent);
+  --cs-glass-bg-heavy: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-heavy), transparent);
+  --cs-glass-bg-contrast: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-contrast), transparent);
+
+  /* Dark glass backgrounds */
+  --cs-glass-bg-dark-subtle: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-subtle), transparent);
+  --cs-glass-bg-dark-light: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-light), transparent);
+  --cs-glass-bg-dark-medium: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-medium), transparent);
+  --cs-glass-bg-dark-strong: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-strong), transparent);
+  --cs-glass-bg-dark-intense: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-intense), transparent);
+  --cs-glass-bg-dark-bold: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-bold), transparent);
+  --cs-glass-bg-dark-heavy: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-heavy), transparent);
+  --cs-glass-bg-dark-contrast: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-contrast), transparent);
+
+  /* Interactive state backgrounds */
+  --cs-glass-bg-hover: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-hover), transparent);
+  --cs-glass-bg-active: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-active), transparent);
+  --cs-glass-bg-focus: color-mix(in srgb, var(--cs-glass-white) var(--cs-glass-opacity-focus), transparent);
+
+  --cs-glass-bg-dark-hover: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-hover), transparent);
+  --cs-glass-bg-dark-active: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-active), transparent);
+  --cs-glass-bg-dark-focus: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-focus), transparent);
+
+  /* Colored glass backgrounds */
+  --cs-glass-bg-primary: color-mix(in srgb, var(--cs-glass-primary) var(--cs-glass-opacity-medium), transparent);
+  --cs-glass-bg-secondary: color-mix(in srgb, var(--cs-glass-secondary) var(--cs-glass-opacity-medium), transparent);
+  --cs-glass-bg-accent: color-mix(in srgb, var(--cs-glass-accent) var(--cs-glass-opacity-medium), transparent);
+  --cs-glass-bg-neutral: color-mix(in srgb, var(--cs-glass-neutral) var(--cs-glass-opacity-medium), transparent);
+
+  /* Border colors */
+  --cs-glass-border-light: color-mix(in srgb, var(--cs-glass-border) var(--cs-glass-opacity-medium), transparent);
+  --cs-glass-border-dark: color-mix(in srgb, var(--cs-glass-border-dark) var(--cs-glass-opacity-medium), transparent);
+
+  /* Focus and shadow colors */
+  --cs-glass-focus-ring: color-mix(in srgb, var(--cs-glass-primary) var(--cs-glass-opacity-bold), transparent);
+  --cs-glass-shadow: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-light), transparent);
+  --cs-glass-shadow-strong: color-mix(in srgb, var(--cs-glass-black) var(--cs-glass-opacity-medium), transparent);
+}
+
+/* Media fallback (OS Dark) - only active when no .dark class is set */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Enhanced dark mode glass backgrounds for better visibility */
+    --cs-glass-bg-subtle: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-subtle) * 0.8), transparent);
+    --cs-glass-bg-light: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-light) * 1.2), transparent);
+    --cs-glass-bg-medium: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-medium) * 1.5), transparent);
+    --cs-glass-bg-strong: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-strong) * 1.3), transparent);
+    --cs-glass-bg-contrast: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-contrast) * 0.8), transparent);
+    
+    /* Adjust borders for dark mode */
+    --cs-glass-border-light: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-medium) * 1.5), transparent);
+    
+    /* Stronger shadows in dark mode */
+    --cs-glass-shadow: color-mix(in srgb, var(--cs-glass-black) calc(var(--cs-glass-opacity-medium) * 1.8), transparent);
+    --cs-glass-shadow-strong: color-mix(in srgb, var(--cs-glass-black) calc(var(--cs-glass-opacity-strong) * 2), transparent);
+  }
+}
+
+/* Class mode (Tailwind Standard) - highest priority */
+:where(.dark, [data-theme="dark"]) {
+  color-scheme: dark;
+  
+  /* Enhanced dark mode glass backgrounds for better visibility */
+  --cs-glass-bg-subtle: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-subtle) * 0.8), transparent);
+  --cs-glass-bg-light: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-light) * 1.2), transparent);
+  --cs-glass-bg-medium: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-medium) * 1.5), transparent);
+  --cs-glass-bg-strong: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-strong) * 1.3), transparent);
+  --cs-glass-bg-contrast: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-contrast) * 0.8), transparent);
+  
+  /* Adjust borders for dark mode */
+  --cs-glass-border-light: color-mix(in srgb, var(--cs-glass-white) calc(var(--cs-glass-opacity-medium) * 1.5), transparent);
+  
+  /* Stronger shadows in dark mode */
+  --cs-glass-shadow: color-mix(in srgb, var(--cs-glass-black) calc(var(--cs-glass-opacity-medium) * 1.8), transparent);
+  --cs-glass-shadow-strong: color-mix(in srgb, var(--cs-glass-black) calc(var(--cs-glass-opacity-strong) * 2), transparent);
+}

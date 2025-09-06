@@ -4,8 +4,32 @@
  * Navigation components and utilities for Tailwind CSS v4.
  */
 export default function navigationPlugin(options = {}) {
+  // Default color tokens
+  const defaultTokens = {
+    colors: {
+      'primary': '#007bff',
+      'white': '#ffffff',
+      'text-muted': '#495057',
+      'border': '#dee2e6'
+    }
+  };
+  
+  // Merge with user options
+  const tokens = {
+    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) }
+  };
+  
   return {
-    handler: ({ addUtilities, addComponents }) => {
+    handler: ({ addUtilities, addComponents, addBase }) => {
+      // Add CSS custom properties (tokens)
+      addBase({
+        ':root': {
+          '--cs-nav-primary': tokens.colors['primary'],
+          '--cs-nav-white': tokens.colors['white'],
+          '--cs-nav-text-muted': tokens.colors['text-muted'],
+          '--cs-nav-border': tokens.colors['border']
+        }
+      });
       // Navigation components
       addComponents({
         '.nav': {
@@ -39,8 +63,8 @@ export default function navigationPlugin(options = {}) {
           'border-radius': '0.25rem'
         },
         '.nav-pills .nav-item .nav-link.active': {
-          'background-color': '#007bff',
-          'color': '#fff'
+          'background-color': 'var(--cs-nav-primary)',
+          'color': 'var(--cs-nav-white)'
         },
         '.nav-tabs .nav-item .nav-link': {
           'border': '1px solid transparent',
@@ -48,9 +72,9 @@ export default function navigationPlugin(options = {}) {
           'border-top-right-radius': '0.25rem'
         },
         '.nav-tabs .nav-item .nav-link.active': {
-          'color': '#495057',
-          'background-color': '#fff',
-          'border-color': '#dee2e6 #dee2e6 #fff'
+          'color': 'var(--cs-nav-text-muted)',
+          'background-color': 'var(--cs-nav-white)',
+          'border-color': 'var(--cs-nav-border) var(--cs-nav-border) var(--cs-nav-white)'
         },
         '.navbar-brand': {
           'display': 'inline-block',

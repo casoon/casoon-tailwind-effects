@@ -1,0 +1,42 @@
+/*!
+ * @casoon/tailwindcss-loading v0.5.8
+ *  for Tailwind CSS v4
+ * 
+ * Generated from plugin.js - DO NOT EDIT MANUALLY
+ * Build date: 2025-09-06T18:50:00.565Z
+ * 
+ * Import via:
+ * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-loading@0.5.8/index.css
+ * - GitHub: https://raw.githubusercontent.com/casoon-tailwind-effects/main/packages/tailwindcss-loading/index.css
+ */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Base Styles === */
+:root {
+  --cs-loading-spinner-base: #f3f3f3;
+  --cs-loading-spinner-active: #3498db;
+}
+
+
+/* === Utilities === */
+.spinner {
+  border: 4px solid var(--cs-loading-spinner-base);
+  border-top: 4px solid var(--cs-loading-spinner-active);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+.loading {
+  opacity: 0.5;
+  pointer-events: none;
+}

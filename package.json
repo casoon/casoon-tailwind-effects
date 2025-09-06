@@ -1,7 +1,7 @@
 {
   "name": "casoon-tailwind-effects",
   "private": true,
-  "version": "0.5.6",
+  "version": "0.5.8",
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -10,6 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "build:packages-css": "node scripts/build-css-packages.mjs",
     "release": "npm test && npm run build && node scripts/release.mjs",
     "release:all": "npm test && npm run build && node scripts/release.mjs all",
     "release:dry": "npm test && npm run build && DRY_RUN=1 node scripts/release.mjs all",
@@ -30,7 +31,8 @@
     "version:sync": "node scripts/extract-classes-global.mjs",
     "validate": "npm run test:classes && npm run version:check",
     "prepublishOnly": "npm run validate",
-    "generate:plugins": "node scripts/generate-plugins.mjs"
+    "generate:plugins": "node scripts/generate-plugins.mjs",
+    "generate:catalog": "node scripts/generate-catalog.mjs"
   },
   "dependencies": {
     "glob": "^11.0.3"

@@ -2,6 +2,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { PackageCSSBuilder } from './build-css-packages.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -76,8 +77,8 @@ const validatePackageExports = (packagePath) => {
 };
 
 // Main build function
-const buildPackages = () => {
-  console.log('🏗️  Building @casoon/tailwindcss-effects packages...\n');
+const buildPackages = async () => {
+  console.log('🏗️  Building @casoon/tailwindcss-effects packages...\\n');
   
   const packageDirs = readdirSync(PKGS_DIR, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
@@ -135,6 +136,12 @@ const buildPackages = () => {
     console.log('\\n📋 Summary:');
     console.log('   ✅ All packages have proper exports');
     console.log('   ✅ All plugin files are valid');
+    
+    // Generate CSS files for packages
+    console.log('\\n🏗️  Generating package CSS files...');
+    const cssBuilder = new PackageCSSBuilder();
+    await cssBuilder.buildAllPackageCSS();
+    
     console.log('   ✅ All CSS distributions built');
     console.log('\\n🚀 Ready for publishing!');
   } else {
@@ -145,4 +152,7 @@ const buildPackages = () => {
 };
 
 // Run the build
-buildPackages();
+buildPackages().catch(error => {
+  console.error('Build failed:', error);
+  process.exit(1);
+});

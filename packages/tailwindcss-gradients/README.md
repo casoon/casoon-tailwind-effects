@@ -61,37 +61,92 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 
 ## 🎨 Available Classes
 
-## 🎨 Theme Overrides
+### Preset Background Gradients
+- **`.gradient-sunset`** - Sunset colors (red → yellow → green)
+- **`.gradient-ocean`** - Ocean colors (blue → purple) 
+- **`.gradient-fire`** - Fire colors (pink → red)
+- **`.gradient-mint`** - Mint colors (light blue → turquoise)
+- **`.gradient-purple`** - Purple tones (mint → pink)
+- **`.gradient-orange`** - Orange tones (yellow → orange)
+- **`.gradient-blue`** - Blue tones (light → dark blue)
+- **`.gradient-pink`** - Pink tones (pink → yellow)
+- **`.gradient-custom`** - ✨ **NEW**: Fully customizable gradient
 
-Align text and neutral gradient stops per mode:
+### Preset Text Gradients
+- **`.gradient-text`** - Base gradient text (transparent color)
+- **`.gradient-text-sunset`** - Sunset gradient text
+- **`.gradient-text-ocean`** - Ocean gradient text
+- **`.gradient-text-fire`** - Fire gradient text
+- **`.gradient-text-custom`** - ✨ **NEW**: Custom gradient text
 
-```css
-:root {
-  --text-grad-from: #fff;
-  --text-grad-to: #94a3b8;
-  --gradient-neutral-from: #f8fafc;
-  --gradient-neutral-mid: #e2e8f0;
-  --gradient-neutral-to: #cbd5e1;
-}
-:where(.dark){
-  --text-grad-from:#e5e7eb;
-  --text-grad-to:#94a3b8;
-  --gradient-neutral-from:#0f172a;
-  --gradient-neutral-mid:#1f2937;
-  --gradient-neutral-to:#334155;
+### Advanced Gradients
+- **`.gradient-radial-center`** - Radial gradient from center
+- **`.gradient-radial-top`** - Radial gradient from top
+- **`.gradient-radial-bottom`** - Radial gradient from bottom
+- **`.gradient-conic`** - Conic gradient
+- **`.gradient-conic-center`** - Conic gradient from center
+- **`.gradient-border`** - Gradient border effect
+- **`.gradient-animate`** - Animated gradient (moving effect)
+
+## 🎨 Customization System
+
+### 🎆 Using .gradient-custom
+
+The new `.gradient-custom` and `.gradient-text-custom` classes are **fully configurable**:
+
+```js
+// tailwind.config.js
+import gradients from '@casoon/tailwindcss-gradients';
+
+export default {
+  plugins: [
+    gradients({
+      tokens: {
+        colors: {
+          // Define your custom gradient
+          'custom-start': '#ff0000',    // Start color
+          'custom-mid': '#00ff00',      // Optional middle color
+          'custom-end': '#0000ff'       // End color
+        }
+      }
+    })
+  ]
 }
 ```
 
-### Background Gradients
-- **`.gradient-bg`** - Base gradient background
-- **`.gradient-bg-linear`** - Linear gradient background
-- **`.gradient-bg-radial`** - Radial gradient background
-- **`.gradient-bg-conic`** - Conic gradient background
-- **`.gradient-bg-animated`** - Animated gradient background
+**Usage:**
+```html
+<!-- Custom gradient background -->
+<div class="gradient-custom p-8 text-white">
+  My custom gradient!
+</div>
 
-### Text Gradients
-- **`.gradient-text`** - Base gradient text effect
-- **`.gradient-accent-text`** - Accent gradient text effect
+<!-- Custom gradient text -->
+<h1 class="gradient-text-custom text-4xl font-bold">
+  Custom Gradient Text
+</h1>
+```
+
+### 🌌 Override Preset Gradients
+
+You can also customize the preset gradients:
+
+```js
+// Change the sunset gradient to your brand colors
+gradients({
+  tokens: {
+    colors: {
+      'sunset-start': '#your-brand-primary',
+      'sunset-mid': '#your-brand-secondary', 
+      'sunset-end': '#your-brand-accent'
+    }
+  }
+})
+```
+
+**Two-Color vs Three-Color Gradients:**
+- If `custom-mid` is `null` or omitted: 2-color gradient
+- If `custom-mid` has a value: 3-color gradient
 
 ### Surface Gradients
 - **`.gradient-bg-surface-subtle`** - Subtle surface gradient

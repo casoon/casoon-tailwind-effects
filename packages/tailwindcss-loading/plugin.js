@@ -4,8 +4,28 @@
  * Loading animations and spinners for Tailwind CSS v4.
  */
 export default function loadingPlugin(options = {}) {
+  // Default color tokens
+  const defaultTokens = {
+    colors: {
+      'spinner-base': '#f3f3f3',
+      'spinner-active': '#3498db'
+    }
+  };
+  
+  // Merge with user options
+  const tokens = {
+    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) }
+  };
+  
   return {
-    handler: ({ addUtilities, addKeyframes }) => {
+    handler: ({ addUtilities, addKeyframes, addBase }) => {
+      // Add CSS custom properties (tokens)
+      addBase({
+        ':root': {
+          '--cs-loading-spinner-base': tokens.colors['spinner-base'],
+          '--cs-loading-spinner-active': tokens.colors['spinner-active']
+        }
+      });
       // Add keyframes for loading animations
       addKeyframes({
         'spin': {
@@ -17,8 +37,8 @@ export default function loadingPlugin(options = {}) {
       // Loading utilities
       addUtilities({
         '.spinner': {
-          'border': '4px solid #f3f3f3',
-          'border-top': '4px solid #3498db',
+          'border': '4px solid var(--cs-loading-spinner-base)',
+          'border-top': '4px solid var(--cs-loading-spinner-active)',
           'border-radius': '50%',
           'width': '40px',
           'height': '40px',

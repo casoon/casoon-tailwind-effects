@@ -1,12 +1,14 @@
 {
   "name": "@casoon/tailwindcss-scroll",
-  "version": "0.5.6",
+  "version": "0.5.8",
   "type": "module",
   "exports": {
     ".": "./plugin.js",
     "./plugin": "./plugin.js",
     "./scroll.js": "./scroll.js",
-    "./js": "./scroll.js"
+    "./js": "./scroll.js",
+    "./css": "./index.css",
+    "./index.css": "./index.css"
   },
   "main": "./plugin.js",
   "module": "./plugin.js",
@@ -14,8 +16,12 @@
     "plugin.js",
     "scroll.js",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "index.css"
   ],
+  "dependencies": {
+    "@casoon/tailwindcss-animations": "^0.5.6"
+  },
   "peerDependencies": {
     "tailwindcss": "^4.0.0"
   },

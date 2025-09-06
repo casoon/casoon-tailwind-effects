@@ -49,33 +49,33 @@ export default function animationsPlugin(options = {}) {
   };
 
   return {
-    handler: ({ addUtilities, addComponents, addKeyframes }) => {
+    handler: ({ addUtilities, addComponents, addKeyframes, addBase }) => {
       // CSS Custom Properties (Design Tokens)
-      addComponents({
+      addBase({
         ':root': {
           // Animation Durations
-          '--anim-duration-xxs': tokens.durations.xxs,
-          '--anim-duration-xs': tokens.durations.xs,
-          '--anim-duration-sm': tokens.durations.sm,
-          '--anim-duration-md': tokens.durations.md,
-          '--anim-duration-lg': tokens.durations.lg,
-          '--anim-duration-xl': tokens.durations.xl,
-          '--anim-duration-2xl': tokens.durations['2xl'],
+          '--cs-anim-duration-xxs': tokens.durations.xxs,
+          '--cs-anim-duration-xs': tokens.durations.xs,
+          '--cs-anim-duration-sm': tokens.durations.sm,
+          '--cs-anim-duration-md': tokens.durations.md,
+          '--cs-anim-duration-lg': tokens.durations.lg,
+          '--cs-anim-duration-xl': tokens.durations.xl,
+          '--cs-anim-duration-2xl': tokens.durations['2xl'],
           
           // Animation Easing Functions
-          '--anim-ease-standard': tokens.easing.standard,
-          '--anim-ease-emphasized': tokens.easing.emphasized,
-          '--anim-ease-decelerate': tokens.easing.decelerate,
-          '--anim-ease-accelerate': tokens.easing.accelerate,
-          '--anim-ease-spring': tokens.easing.spring,
-          '--anim-ease-soft-spring': tokens.easing.softSpring,
+          '--cs-anim-ease-standard': tokens.easing.standard,
+          '--cs-anim-ease-emphasized': tokens.easing.emphasized,
+          '--cs-anim-ease-decelerate': tokens.easing.decelerate,
+          '--cs-anim-ease-accelerate': tokens.easing.accelerate,
+          '--cs-anim-ease-spring': tokens.easing.spring,
+          '--cs-anim-ease-soft-spring': tokens.easing.softSpring,
           
           // Motion Safety
-          '--anim-reduced-motion-duration': tokens.motionSafety.duration,
-          '--anim-reduced-motion-ease': tokens.motionSafety.ease,
+          '--cs-anim-reduced-motion-duration': tokens.motionSafety.duration,
+          '--cs-anim-reduced-motion-ease': tokens.motionSafety.ease,
           
           // Shadow for hover effects
-          '--anim-shadow-ink': tokens.colors.shadowInk
+          '--cs-anim-shadow-ink': tokens.colors.shadowInk
         }
       });
 
@@ -167,12 +167,12 @@ export default function animationsPlugin(options = {}) {
       // Add base animation components
       addComponents({
         '.anim': {
-          'animation-duration': 'var(--anim-duration, var(--anim-duration-md))',
-          'animation-timing-function': 'var(--anim-ease, var(--anim-ease-standard))',
+          'animation-duration': 'var(--cs-anim-duration, var(--cs-anim-duration-md))',
+          'animation-timing-function': 'var(--cs-anim-ease, var(--cs-anim-ease-standard))',
           'animation-iteration-count': '1',
-          'animation-direction': 'var(--anim-direction, normal)',
-          'animation-fill-mode': 'var(--anim-fill, both)',
-          'animation-delay': 'var(--anim-delay, 0ms)'
+          'animation-direction': 'var(--cs-anim-direction, normal)',
+          'animation-fill-mode': 'var(--cs-anim-fill, both)',
+          'animation-delay': 'var(--cs-anim-delay, 0ms)'
         },
         
         // Animation Control Utilities
@@ -197,21 +197,21 @@ export default function animationsPlugin(options = {}) {
       // Add animation utilities
       addUtilities({
         // Duration utilities
-        '.anim-xxs': { '--anim-duration': 'var(--anim-duration-xxs)' },
-        '.anim-xs': { '--anim-duration': 'var(--anim-duration-xs)' },
-        '.anim-sm': { '--anim-duration': 'var(--anim-duration-sm)' },
-        '.anim-md': { '--anim-duration': 'var(--anim-duration-md)' },
-        '.anim-lg': { '--anim-duration': 'var(--anim-duration-lg)' },
-        '.anim-xl': { '--anim-duration': 'var(--anim-duration-xl)' },
-        '.anim-2xl': { '--anim-duration': 'var(--anim-duration-2xl)' },
+        '.anim-xxs': { '--cs-anim-duration': 'var(--cs-anim-duration-xxs)' },
+        '.anim-xs': { '--cs-anim-duration': 'var(--cs-anim-duration-xs)' },
+        '.anim-sm': { '--cs-anim-duration': 'var(--cs-anim-duration-sm)' },
+        '.anim-md': { '--cs-anim-duration': 'var(--cs-anim-duration-md)' },
+        '.anim-lg': { '--cs-anim-duration': 'var(--cs-anim-duration-lg)' },
+        '.anim-xl': { '--cs-anim-duration': 'var(--cs-anim-duration-xl)' },
+        '.anim-2xl': { '--cs-anim-duration': 'var(--cs-anim-duration-2xl)' },
         
         // Easing utilities
-        '.ease-standard': { '--anim-ease': 'var(--anim-ease-standard)' },
-        '.ease-emphasized': { '--anim-ease': 'var(--anim-ease-emphasized)' },
-        '.ease-decelerate': { '--anim-ease': 'var(--anim-ease-decelerate)' },
-        '.ease-accelerate': { '--anim-ease': 'var(--anim-ease-accelerate)' },
-        '.ease-spring': { '--anim-ease': 'var(--anim-ease-spring)' },
-        '.ease-soft-spring': { '--anim-ease': 'var(--anim-ease-soft-spring)' },
+        '.ease-standard': { '--cs-anim-ease': 'var(--cs-anim-ease-standard)' },
+        '.ease-emphasized': { '--cs-anim-ease': 'var(--cs-anim-ease-emphasized)' },
+        '.ease-decelerate': { '--cs-anim-ease': 'var(--cs-anim-ease-decelerate)' },
+        '.ease-accelerate': { '--cs-anim-ease': 'var(--cs-anim-ease-accelerate)' },
+        '.ease-spring': { '--cs-anim-ease': 'var(--cs-anim-ease-spring)' },
+        '.ease-soft-spring': { '--cs-anim-ease': 'var(--cs-anim-ease-soft-spring)' },
         
         // Animation name utilities
         '.fade-in': { 'animation-name': 'anim-fade-in' },
@@ -234,45 +234,45 @@ export default function animationsPlugin(options = {}) {
         
         // Hover effects
         '.hover-lift-sm': {
-          'transition': 'transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard)',
+          'transition': 'transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard)',
           '&:hover': {
             'transform': 'translateY(-2px)',
-            'box-shadow': '0 6px 12px color-mix(in oklab, var(--anim-shadow-ink) 10%, transparent)'
+            'box-shadow': '0 6px 12px color-mix(in oklab, var(--cs-anim-shadow-ink) 10%, transparent)'
           }
         },
         '.hover-lift-md': {
-          'transition': 'transform var(--anim-duration-sm) var(--anim-ease-standard), box-shadow var(--anim-duration-sm) var(--anim-ease-standard)',
+          'transition': 'transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard)',
           '&:hover': {
             'transform': 'translateY(-4px)',
-            'box-shadow': '0 10px 18px color-mix(in oklab, var(--anim-shadow-ink) 14%, transparent)'
+            'box-shadow': '0 10px 18px color-mix(in oklab, var(--cs-anim-shadow-ink) 14%, transparent)'
           }
         },
         '.hover-scale-105': {
-          'transition': 'transform var(--anim-duration-sm) var(--anim-ease-standard)',
+          'transition': 'transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard)',
           '&:hover': { 'transform': 'scale(1.05)' }
         },
         '.hover-scale-110': {
-          'transition': 'transform var(--anim-duration-sm) var(--anim-ease-standard)',
+          'transition': 'transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard)',
           '&:hover': { 'transform': 'scale(1.10)' }
         },
         
         // Composed animations
         '.enter-card': { 
-          'animation': 'anim-fade-in var(--anim-duration-md) var(--anim-ease-decelerate) both'
+          'animation': 'anim-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-decelerate) both'
         },
         '.enter-modal': { 
-          'animation': 'anim-scale-in var(--anim-duration-md) var(--anim-ease-emphasized) both'
+          'animation': 'anim-scale-in var(--cs-anim-duration-md) var(--cs-anim-ease-emphasized) both'
         },
         '.exit-modal': { 
-          'animation': 'anim-scale-out var(--anim-duration-md) var(--anim-ease-accelerate) both'
+          'animation': 'anim-scale-out var(--cs-anim-duration-md) var(--cs-anim-ease-accelerate) both'
         },
         
         // Motion safety
         '@media (prefers-reduced-motion: reduce)': {
           '.anim, .fade-in, .fade-out, .scale-in, .scale-out, .slide-up, .slide-down, .slide-left, .slide-right, .blur-in, .blur-out, .rotate-in, .rotate, .pulse, .bounce, .wiggle, .reveal-3d-up, .reveal-3d-right, .enter-card, .enter-modal, .exit-modal': {
-            'animation-duration': 'var(--anim-reduced-motion-duration) !important',
+            'animation-duration': 'var(--cs-anim-reduced-motion-duration) !important',
             'animation-iteration-count': '1 !important',
-            'animation-timing-function': 'var(--anim-reduced-motion-ease) !important',
+            'animation-timing-function': 'var(--cs-anim-reduced-motion-ease) !important',
             'transition': 'none !important'
           },
           '.hover-lift-sm:hover, .hover-lift-md:hover, .hover-scale-105:hover, .hover-scale-110:hover': {

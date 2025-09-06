@@ -1,11 +1,13 @@
 {
   "name": "@casoon/tailwindcss-glass",
-  "version": "0.5.6",
+  "version": "0.5.8",
   "description": "Glass morphism components and utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
     ".": "./plugin.js",
-    "./plugin": "./plugin.js"
+    "./plugin": "./plugin.js",
+    "./css": "./index.css",
+    "./index.css": "./index.css"
   },
   "main": "./plugin.js",
   "module": "./plugin.js",
@@ -13,7 +15,8 @@
     "plugin.js",
     "README.md",
     "LICENSE",
-    "class-definitions.json"
+    "class-definitions.json",
+    "index.css"
   ],
   "scripts": {
     "test": "node scripts/test-classes.mjs",

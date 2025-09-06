@@ -19,6 +19,29 @@ function isInsideVar(css, idx) {
   return after !== -1 && after >= idx;
 }
 
+function isInsideCustomProperty(css, idx) {
+  // Check if hex color is inside a CSS custom property definition
+  // Look for :root block and --property-name: pattern
+  const lines = css.slice(0, idx).split('\n');
+  const currentLine = css.slice(0, idx).split('\n').pop();
+  
+  // Check if current line contains a CSS custom property assignment
+  if (/--[\w-]+:\s*/.test(currentLine)) {
+    // Look backwards to find if we're in a :root block
+    for (let i = lines.length - 2; i >= 0; i--) {
+      const line = lines[i].trim();
+      if (line.includes(':root {') || line === ':root') {
+        return true;
+      }
+      if (line.includes('}') && !line.includes(':root')) {
+        break;
+      }
+    }
+  }
+  
+  return false;
+}
+
 function checkFile(file) {
   const css = read(file);
   const failures = [];
@@ -30,9 +53,10 @@ function checkFile(file) {
     const idx = m.index;
     // allow fully transparent shorthand '#0000' and '#00000000'
     if (match.toLowerCase() === '#0000' || match.toLowerCase() === '#00000000') continue;
-    if (!isInsideVar(css, idx)) {
+    // allow hex colors inside var() fallback or CSS custom property definitions
+    if (!isInsideVar(css, idx) && !isInsideCustomProperty(css, idx)) {
       const around = css.slice(Math.max(0, idx - 40), Math.min(css.length, idx + 40)).replace(/\n/g, ' ');
-      failures.push(`hex '${match}' not in var() fallback …${around}…`);
+      failures.push(`hex '${match}' not in var() fallback or custom property …${around}…`);
     }
   }
 

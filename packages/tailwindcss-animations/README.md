@@ -20,7 +20,7 @@ A comprehensive animation library for Tailwind CSS v4, providing CSS-first anima
 
 ## 🌓 Dark Mode
 
-- Animations are token-driven and largely color-agnostic. Hover-lift shadows use `--anim-shadow-ink`; define it per mode if needed.
+- Animations are token-driven and largely color-agnostic. Hover-lift shadows use `--cs-anim-shadow-ink`; define it per mode if needed.
 
 ## 🎯 Basic Usage
 
@@ -147,8 +147,8 @@ Hover and focus effects without JavaScript:
 Only needed if you want to adjust shadow ink for hover-lift utilities:
 
 ```css
-:root { --anim-shadow-ink:#000; }
-:where(.dark){ --anim-shadow-ink:#000; }
+:root { --cs-anim-shadow-ink:#000; }
+:where(.dark){ --cs-anim-shadow-ink:#000; }
 ```
 
 <!-- Expandable content -->
@@ -220,10 +220,10 @@ All animations use CSS custom properties that can be overridden:
 
 ```css
 :root {
-  --anim-duration: 500ms;
-  --anim-ease: cubic-bezier(0.4, 0, 0.2, 1);
-  --anim-translate-md: 24px;
-  --anim-scale-sm: 0.9;
+  --cs-anim-duration: 500ms;
+  --cs-anim-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --cs-anim-duration-md: 300ms;
+  --cs-anim-ease-standard: cubic-bezier(0.2, 0, 0, 1);
 }
 ```
 

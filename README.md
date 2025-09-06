@@ -2,20 +2,20 @@
 
 A comprehensive collection of modern CSS effects and utilities for **Tailwind CSS v4**. Built with performance in mind, these plugins provide glassmorphism effects, animations, gradients, scroll animations, and essential utility classes—all optimized for modern build tools and framework compatibility.
 
-> **🚀 Latest (v0.5.6)**: Complete pure Tailwind CSS v4 plugins with **configurable design tokens**, **JavaScript helpers**, **automated class testing**, and modern ESM architecture!
+> **🚀 Latest (v0.5.7)**: Complete token-based system with **zero hard-coded colors**, **modern color-mix()**, **dark mode support**, **configurable design tokens**, and **automated testing**!
 
 ## ✨ Features
 
+- **🎨 Token-Based System**: Complete CSS custom properties with zero hard-coded colors
+- **🌈 Modern Color-Mix**: Dynamic color generation using CSS color-mix() functions
+- **🌗 Dark Mode Native**: Full Tailwind `.dark` class + OS `prefers-color-scheme` support
 - **🔌 Pure Plugin Architecture**: Modern Tailwind CSS v4 plugins with ESM-first design
-- **🎨 Configurable Design Tokens**: Override default values through plugin configuration  
-- **📦 Framework Compatible**: Works seamlessly with Vite, Astro, Next.js, and other modern build tools
-- **⚡ Performance Optimized**: Tree-shakeable with minimal bundle impact
+- **⚡ Performance Optimized**: Tree-shakeable with minimal bundle impact and pre-computed styles
 - **🎯 Complete Toolkit**: Animations, glassmorphism, gradients, scroll effects, navigation, and utilities
 - **📜 JavaScript Helpers**: Optional JS modules for scroll animations and navigation interactions
 - **🚀 Zero Configuration**: Works out of the box, customize only what you need
 - **🧪 Automated Testing**: Global class compatibility testing prevents breaking changes
-- **♠ Accessibility First**: Motion-safe variants and proper focus management
-- **🌗 Dark Mode Ready**: Built-in dark mode support with CSS custom properties
+- **♿ Accessibility First**: Motion-safe variants, proper focus management, and contrast compliance
 
 ## 📦 Packages
 
@@ -32,7 +32,7 @@ A comprehensive collection of modern CSS effects and utilities for **Tailwind CS
 | [`@casoon/tailwindcss-loading`](./packages/tailwindcss-loading) | Skeletons, progress indicators, and loading overlays | ✅ Plugin + Keyframes |
 | [`@casoon/tailwindcss-micro-interactions`](./packages/tailwindcss-micro-interactions) | Click/Hover/Focus micro‑interaction utilities | ✅ Plugin + Transitions |
 
-> **All packages v0.5.6** • Configurable design tokens • Pure plugin architecture • Automated class testing
+> **All packages v0.5.7** • Token-based system • Zero hard-coded colors • Dark mode support • Automated testing
 
 ## 🚀 Quick Start
 
@@ -84,6 +84,27 @@ export default {
   ]
 }
 ```
+
+### Direct CSS Import 🔗 *New in v0.5.6*
+
+For projects without build processes or direct CDN usage:
+
+```html
+<!-- Via CDN (jsdelivr) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/@casoon/tailwindcss-glass@0.5.7/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/@casoon/tailwindcss-animations@0.5.7/index.css">
+
+<!-- Via GitHub (raw files) -->
+<link rel="stylesheet" href="https://raw.githubusercontent.com/jseidel19/casoon-tailwind-effects/main/packages/tailwindcss-glass/index.css">
+```
+
+```js
+// Via npm import  
+import '@casoon/tailwindcss-glass/css';
+import '@casoon/tailwindcss-animations/index.css';
+```
+
+> **Note**: CSS imports provide pre-generated styles but lose the configurability and dynamic features of the full plugin system.
 
 ## 🛠️ Framework Compatibility
 
@@ -176,35 +197,64 @@ yarn add @casoon/tailwindcss-effects
 pnpm add @casoon/tailwindcss-effects
 ```
 
-## 🎨 Token Customization ⭐ *v0.5.1*
+## 🎨 Token System ⭐ *v0.5.7 - Complete Rewrite*
 
-All plugins support **configurable design tokens**. Override default values without writing custom CSS:
+All packages now use **100% token-based CSS** with zero hard-coded colors. Every color value is defined through CSS custom properties and modern `color-mix()` functions:
 
-```js
-// Customize animation durations and easing
-import animations from '@casoon/tailwindcss-animations';
-
-export default {
-  plugins: [
-    animations({
-      tokens: {
-        durations: { md: '400ms', lg: '800ms' },
-        easing: { standard: 'cubic-bezier(0.25, 0.1, 0.25, 1)' },
-        colors: { shadowInk: '#333' }
-      }
-    })
-  ]
+### 🌈 Automatic Color Generation
+```css
+/* Packages automatically generate color variants */
+:root {
+  --cs-orb-primary: #0ea5e9;
+  --cs-orb-opacity-medium: 0.1;
+  
+  /* Auto-generated using color-mix() */
+  --cs-orb-bg-primary: color-mix(in srgb, var(--cs-orb-primary) var(--cs-orb-opacity-medium), transparent);
 }
 ```
 
-**Available token categories:**
-- `tokens.durations` - Animation and transition durations
-- `tokens.easing` - Timing functions and easing curves  
-- `tokens.colors` - Theme colors and shadow tints
-- `tokens.spacing` - Layout spacing and sizing values
-- `tokens.effects` - Effect-specific parameters
+### 🌗 Dark Mode Integration  
+```css
+/* Full Tailwind dark mode support with OS fallback */
+:root {
+  color-scheme: light dark;
+  --cs-glass-bg: rgba(255,255,255,.08);
+}
 
-> 📝 Full token reference available in our documentation
+@media (prefers-color-scheme: dark) {
+  :root { --cs-glass-bg: rgba(15,23,42,.85); }
+}
+
+:where(.dark, [data-theme="dark"]) {
+  color-scheme: dark;
+  --cs-glass-bg: rgba(15,23,42,.90);
+}
+```
+
+### ⚙️ Easy Customization
+```css
+/* Override any package tokens */
+:root {
+  /* Orbs */
+  --cs-orb-primary: #ff6b6b;
+  --cs-orb-secondary: #4ecdc4;
+  
+  /* Glass effects */
+  --cs-glass-bg-medium: rgba(255, 255, 255, 0.15);
+  --cs-glass-border-light: rgba(255, 255, 255, 0.3);
+  
+  /* Micro-interactions */
+  --cs-focus-ring-color: #3b82f6;
+  --cs-focus-ring-opacity: 0.5;
+}
+```
+
+**Key Benefits:**
+- ✨ **Zero hard-coded colors** - Every color uses CSS custom properties
+- 💱 **Dynamic transparency** - Uses modern `color-mix()` for alpha blending
+- 🌗 **Dark mode ready** - Built-in light/dark theme switching
+- ⚡ **Performance optimized** - Pre-computed color variations
+- 🎨 **Fully customizable** - Override any token without custom CSS
 
 ## 📜 JavaScript Helpers ⭐ *Optional*
 
@@ -536,14 +586,24 @@ For detailed documentation on each package, see the individual README files in e
 
 ---
 
-**Made with ❤️ by the Casoon team**
-### Loading (`@casoon/tailwindcss-loading`)
-- Skeletons: `.skeleton`, `.skeleton-text`, `.skeleton-avatar`
-- Progress: `.progress-circle`, `.progress-steps`, `.progress-timeline`
-- Overlays/Spinners: `.loading-spinner`, `.loading-dots`, `.loading-bars`
 
-### Micro‑Interactions (`@casoon/tailwindcss-micro-interactions`)
-- Click: `.click-ripple`, `.click-bounce`, `.click-squish`
-- Hover: `.hover-magnetic`, `.hover-tilt`, `.hover-float`
-- Focus: `.focus-glow`, `.focus-scale`, `.focus-rotate`
-- State: `.state-loading`, `.state-success`, `.state-error`
+## 📝 What's New in v0.5.7
+
+### 🌈 Complete Token System
+- **Zero hard-coded colors**: All rgba() and hex values replaced with CSS custom properties
+- **Modern color-mix()**: Dynamic transparency using CSS color-mix() functions
+- **Automatic variants**: Base colors + opacity tokens = infinite color combinations
+
+### 🌗 Native Dark Mode
+- **Tailwind `.dark` class**: Full integration with Tailwind's dark mode system
+- **OS fallback**: Automatic dark mode via `prefers-color-scheme: dark`
+- **Proper scaffolding**: Includes `color-scheme` for native browser controls
+
+### 🧪 Quality Assurance
+- **Automated testing**: All packages tested for hard-coded colors before release
+- **Zero breaking changes**: Token system maintains 100% API compatibility
+- **Future-proof**: Ready for any color space or theming requirements
+
+---
+
+**Made with ❤️ by the Casoon team**

@@ -4,8 +4,28 @@
  * Scroll-based animations and utilities for Tailwind CSS v4.
  */
 export default function scrollPlugin(options = {}) {
+  // Default color tokens
+  const defaultTokens = {
+    colors: {
+      'thumb-gray': '#6b7280',
+      'thumb-blue': '#3b82f6'
+    }
+  };
+  
+  // Merge with user options
+  const tokens = {
+    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) }
+  };
+  
   return {
-    handler: ({ addUtilities }) => {
+    handler: ({ addUtilities, addBase }) => {
+      // Add CSS custom properties (tokens)
+      addBase({
+        ':root': {
+          '--cs-scroll-thumb-gray': tokens.colors['thumb-gray'],
+          '--cs-scroll-thumb-blue': tokens.colors['thumb-blue']
+        }
+      });
       // Scroll behavior utilities
       addUtilities({
         // Scroll behavior
@@ -88,10 +108,10 @@ export default function scrollPlugin(options = {}) {
         
         // Custom scrollbar styling (WebKit)
         '.scrollbar-thumb-gray': {
-          'scrollbar-color': '#6b7280 transparent'
+          'scrollbar-color': 'var(--cs-scroll-thumb-gray) transparent'
         },
         '.scrollbar-thumb-blue': {
-          'scrollbar-color': '#3b82f6 transparent'
+          'scrollbar-color': 'var(--cs-scroll-thumb-blue) transparent'
         },
         '.scrollbar-track-transparent': {
           'scrollbar-color': 'inherit transparent'

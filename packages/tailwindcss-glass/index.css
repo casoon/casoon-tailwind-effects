@@ -1,0 +1,149 @@
+/*!
+ * @casoon/tailwindcss-glass v0.5.8
+ * Glass morphism components and utilities for Tailwind CSS v4
+ * 
+ * Generated from plugin.js - DO NOT EDIT MANUALLY
+ * Build date: 2025-09-06T18:50:00.569Z
+ * 
+ * Import via:
+ * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-glass@0.5.8/index.css
+ * - GitHub: https://raw.githubusercontent.com/casoon-tailwind-effects/main/packages/tailwindcss-glass/index.css
+ */
+
+/* === Base Styles === */
+:root {
+  --cs-glass-white: #ffffff;
+  --cs-glass-black: #000000;
+  --cs-glass-blue: #3b82f6;
+  --cs-glass-purple: #9333ea;
+  --cs-glass-green: #22c55e;
+  --cs-glass-pink: #ec4899;
+  --cs-glass-amber: #f59e0b;
+  --cs-glass-bg-light: color-mix(in srgb, var(--cs-glass-white) 10%, transparent);
+  --cs-glass-bg-weak: color-mix(in srgb, var(--cs-glass-white) 5%, transparent);
+  --cs-glass-bg-medium: color-mix(in srgb, var(--cs-glass-white) 15%, transparent);
+  --cs-glass-bg-strong: color-mix(in srgb, var(--cs-glass-white) 20%, transparent);
+  --cs-glass-bg-dark: color-mix(in srgb, var(--cs-glass-black) 10%, transparent);
+  --cs-glass-bg-dark-strong: color-mix(in srgb, var(--cs-glass-black) 20%, transparent);
+  --cs-glass-bg-blue: color-mix(in srgb, var(--cs-glass-blue) 10%, transparent);
+  --cs-glass-bg-purple: color-mix(in srgb, var(--cs-glass-purple) 10%, transparent);
+  --cs-glass-bg-green: color-mix(in srgb, var(--cs-glass-green) 10%, transparent);
+  --cs-glass-bg-pink: color-mix(in srgb, var(--cs-glass-pink) 10%, transparent);
+  --cs-glass-bg-amber: color-mix(in srgb, var(--cs-glass-amber) 10%, transparent);
+  --cs-glass-border-light: color-mix(in srgb, var(--cs-glass-white) 10%, transparent);
+  --cs-glass-border-medium: color-mix(in srgb, var(--cs-glass-white) 20%, transparent);
+  --cs-glass-border-strong: color-mix(in srgb, var(--cs-glass-white) 30%, transparent);
+  --cs-glass-border-blue: color-mix(in srgb, var(--cs-glass-blue) 20%, transparent);
+  --cs-glass-border-purple: color-mix(in srgb, var(--cs-glass-purple) 20%, transparent);
+  --cs-glass-border-green: color-mix(in srgb, var(--cs-glass-green) 20%, transparent);
+  --cs-glass-border-pink: color-mix(in srgb, var(--cs-glass-pink) 20%, transparent);
+  --cs-glass-border-amber: color-mix(in srgb, var(--cs-glass-amber) 20%, transparent);
+  --cs-glass-shadow-light: color-mix(in srgb, var(--cs-glass-black) 5%, transparent);
+  --cs-glass-shadow-medium: color-mix(in srgb, var(--cs-glass-black) 10%, transparent);
+  --cs-glass-shadow-strong: color-mix(in srgb, var(--cs-glass-black) 15%, transparent);
+  --cs-glass-shadow-xl: color-mix(in srgb, var(--cs-glass-black) 20%, transparent);
+  --cs-glass-tooltip-bg: color-mix(in srgb, var(--cs-glass-black) 80%, transparent);
+  --cs-glass-bg-hover: color-mix(in srgb, var(--cs-glass-white) 15%, transparent);
+  --cs-glass-bg-light-hover: color-mix(in srgb, var(--cs-glass-white) 25%, transparent);
+  --cs-glass-bg-contrast: color-mix(in srgb, var(--cs-glass-white) 20%, transparent);
+  --cs-glass-bg-dark-contrast: color-mix(in srgb, var(--cs-glass-black) 20%, transparent);
+  --cs-glass-bg-fallback: color-mix(in srgb, var(--cs-glass-white) 25%, transparent);
+  --cs-glass-bg-dark-fallback: color-mix(in srgb, var(--cs-glass-black) 25%, transparent);
+  --cs-glass-bg-blue-fallback: color-mix(in srgb, var(--cs-glass-blue) 20%, transparent);
+  --cs-glass-bg-purple-fallback: color-mix(in srgb, var(--cs-glass-purple) 20%, transparent);
+  --cs-glass-bg-green-fallback: color-mix(in srgb, var(--cs-glass-green) 20%, transparent);
+  --cs-glass-bg-pink-fallback: color-mix(in srgb, var(--cs-glass-pink) 20%, transparent);
+  --cs-glass-bg-amber-fallback: color-mix(in srgb, var(--cs-glass-amber) 20%, transparent);
+  --cs-glass-focus-ring: color-mix(in srgb, var(--cs-glass-blue) 50%, transparent);
+}
+
+
+/* === Base Styles === */
+@layer glass-base, glass-utilities, glass-components; {
+}
+
+
+/* === Utilities === */
+
+/* === Components === */
+
+/* === Utilities === */
+
+/* === Utilities === */
+
+/* === Components === */
+
+/* === Components === */
+.glass-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  transition: all 0.3s ease;
+  background: var(--cs-glass-bg-hover);
+  box-shadow: 0 20px 40px var(--cs-glass-shadow-strong);
+  transform: translateY(-2px);
+  border: 1px solid var(--cs-glass-border-strong);
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+}
+
+.glass-card-light {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  transition: all 0.3s ease;
+  background: var(--cs-glass-bg-light-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px var(--cs-glass-shadow-strong);
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+}
+
+.glass-nav {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  transition: all 0.3s ease;
+}
+
+.glass-nav-light {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  transition: all 0.3s ease;
+}
+
+.glass-button {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: var(--cs-glass-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px var(--cs-glass-shadow-medium);
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+  transform: translateY(0);
+  box-shadow: 0 4px 8px var(--cs-glass-shadow-medium);
+}
+
+
+/* === Components === */

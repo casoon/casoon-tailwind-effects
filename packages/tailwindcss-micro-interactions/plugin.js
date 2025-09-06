@@ -4,8 +4,38 @@
  * Micro-interaction utilities for Tailwind CSS v4.
  */
 export default function microInteractionsPlugin(options = {}) {
+  // Default color tokens for micro-interactions
+  const defaultTokens = {
+    colors: {
+      'focus-ring': '#3b82f6', // Blue focus color
+      'shadow': '#000000'      // Black shadow
+    },
+    opacity: {
+      'focus-strong': '50%',
+      'focus-medium': '30%',
+      'shadow-light': '10%'
+    }
+  };
+  
+  // Merge with user options
+  const tokens = {
+    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
+    opacity: { ...defaultTokens.opacity, ...(options.tokens?.opacity || {}) }
+  };
+  
   return {
-    handler: ({ addUtilities }) => {
+    handler: ({ addUtilities, addBase }) => {
+      // Add CSS custom properties (tokens)
+      addBase({
+        ':root': {
+          '--cs-micro-focus-ring': tokens.colors['focus-ring'],
+          '--cs-micro-shadow': tokens.colors.shadow,
+          // Focus ring colors with color-mix
+          '--cs-micro-focus-ring-strong': `color-mix(in srgb, var(--cs-micro-focus-ring) ${tokens.opacity['focus-strong']}, transparent)`,
+          '--cs-micro-focus-ring-medium': `color-mix(in srgb, var(--cs-micro-focus-ring) ${tokens.opacity['focus-medium']}, transparent)`,
+          '--cs-micro-shadow-light': `color-mix(in srgb, var(--cs-micro-shadow) ${tokens.opacity['shadow-light']}, transparent)`
+        }
+      });
       // Micro-interaction utilities
       addUtilities({
         // Hover scale effects
@@ -84,13 +114,13 @@ export default function microInteractionsPlugin(options = {}) {
         '.focus-ring-2': {
           '&:focus': {
             'outline': 'none',
-            'box-shadow': '0 0 0 2px rgba(59, 130, 246, 0.5)'
+            'box-shadow': '0 0 0 2px var(--cs-micro-focus-ring-strong)'
           }
         },
         '.focus-ring-4': {
           '&:focus': {
             'outline': 'none',
-            'box-shadow': '0 0 0 4px rgba(59, 130, 246, 0.3)'
+            'box-shadow': '0 0 0 4px var(--cs-micro-focus-ring-medium)'
           }
         },
         
@@ -120,11 +150,11 @@ export default function microInteractionsPlugin(options = {}) {
           'transition': 'transform 0.1s ease, box-shadow 0.1s ease',
           '&:hover': {
             'transform': 'translateY(-1px)',
-            'box-shadow': '0 4px 8px rgba(0, 0, 0, 0.1)'
+            'box-shadow': '0 4px 8px var(--cs-micro-shadow-light)'
           },
           '&:active': {
             'transform': 'translateY(0)',
-            'box-shadow': '0 2px 4px rgba(0, 0, 0, 0.1)'
+            'box-shadow': '0 2px 4px var(--cs-micro-shadow-light)'
           }
         }
       });

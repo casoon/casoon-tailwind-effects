@@ -1,18 +1,21 @@
 {
   "name": "@casoon/tailwindcss-loading",
-  "version": "0.5.6",
+  "version": "0.5.8",
   "description": " for Tailwind CSS v4",
   "type": "module",
   "exports": {
     ".": "./plugin.js",
-    "./plugin": "./plugin.js"
+    "./plugin": "./plugin.js",
+    "./css": "./index.css",
+    "./index.css": "./index.css"
   },
   "main": "./plugin.js",
   "module": "./plugin.js",
   "files": [
     "plugin.js",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "index.css"
   ],
   "peerDependencies": {
     "tailwindcss": "^4.0.0"

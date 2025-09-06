@@ -4,8 +4,75 @@
  * Animated orb and blob components for Tailwind CSS v4.
  */
 export default function orbsPlugin(options = {}) {
+  // Default color tokens for orb effects
+  const defaultTokens = {
+    colors: {
+      // Base colors for orbs
+      'blue': '#3b82f6',
+      'blue-light': '#93c5fd',
+      'blue-lighter': '#dbeafe',
+      'purple': '#9333ea',
+      'purple-light': '#c4b5fd',
+      'purple-lighter': '#ede9fe',
+      'pink': '#ec4899',
+      'pink-light': '#fbcfe8',
+      'pink-lighter': '#fdf2f8',
+      // Custom orb colors (user-definable)
+      'custom-primary': '#667eea',
+      'custom-secondary': '#764ba2',
+      'custom-accent': '#f093fb'
+    },
+    opacity: {
+      'strong': '50%',
+      'medium': '30%', 
+      'weak': '10%'
+    }
+  };
+  
+  // Merge with user options
+  const tokens = {
+    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
+    opacity: { ...defaultTokens.opacity, ...(options.tokens?.opacity || {}) }
+  };
+  
   return {
-    handler: ({ addUtilities, addKeyframes }) => {
+    handler: ({ addUtilities, addKeyframes, addBase }) => {
+      // Add CSS custom properties (tokens)
+      addBase({
+        ':root': {
+          // Base colors
+          '--cs-orb-blue': tokens.colors.blue,
+          '--cs-orb-blue-light': tokens.colors['blue-light'],
+          '--cs-orb-blue-lighter': tokens.colors['blue-lighter'],
+          '--cs-orb-purple': tokens.colors.purple,
+          '--cs-orb-purple-light': tokens.colors['purple-light'],
+          '--cs-orb-purple-lighter': tokens.colors['purple-lighter'],
+          '--cs-orb-pink': tokens.colors.pink,
+          '--cs-orb-pink-light': tokens.colors['pink-light'],
+          '--cs-orb-pink-lighter': tokens.colors['pink-lighter'],
+          // Custom orb colors
+          '--cs-orb-custom-primary': tokens.colors['custom-primary'],
+          '--cs-orb-custom-secondary': tokens.colors['custom-secondary'],
+          '--cs-orb-custom-accent': tokens.colors['custom-accent'],
+          // Orb gradients with color-mix
+          '--cs-orb-gradient-blue': `radial-gradient(circle, 
+            color-mix(in srgb, var(--cs-orb-blue) ${tokens.opacity.strong}, transparent) 0%, 
+            color-mix(in srgb, var(--cs-orb-blue-light) ${tokens.opacity.medium}, transparent) 50%, 
+            color-mix(in srgb, var(--cs-orb-blue-lighter) ${tokens.opacity.weak}, transparent) 100%)`,
+          '--cs-orb-gradient-purple': `radial-gradient(circle, 
+            color-mix(in srgb, var(--cs-orb-purple) ${tokens.opacity.strong}, transparent) 0%, 
+            color-mix(in srgb, var(--cs-orb-purple-light) ${tokens.opacity.medium}, transparent) 50%, 
+            color-mix(in srgb, var(--cs-orb-purple-lighter) ${tokens.opacity.weak}, transparent) 100%)`,
+          '--cs-orb-gradient-pink': `radial-gradient(circle, 
+            color-mix(in srgb, var(--cs-orb-pink) ${tokens.opacity.strong}, transparent) 0%, 
+            color-mix(in srgb, var(--cs-orb-pink-light) ${tokens.opacity.medium}, transparent) 50%, 
+            color-mix(in srgb, var(--cs-orb-pink-lighter) ${tokens.opacity.weak}, transparent) 100%)`,
+          '--cs-orb-gradient-custom': `radial-gradient(circle, 
+            color-mix(in srgb, var(--cs-orb-custom-primary) ${tokens.opacity.strong}, transparent) 0%, 
+            color-mix(in srgb, var(--cs-orb-custom-secondary) ${tokens.opacity.medium}, transparent) 50%, 
+            color-mix(in srgb, var(--cs-orb-custom-accent) ${tokens.opacity.weak}, transparent) 100%)`
+        }
+      });
       // Orb animation keyframes
       addKeyframes({
         'orb-float': {
@@ -67,15 +134,18 @@ export default function orbsPlugin(options = {}) {
           'position': 'fixed'
         },
         
-        // Common orb colors (can be combined with Tailwind colors)
+        // Common orb colors with modern color-mix
         '.orb-gradient-blue': {
-          'background': 'radial-gradient(circle, rgba(59,130,246,0.5) 0%, rgba(147,197,253,0.3) 50%, rgba(219,234,254,0.1) 100%)'
+          'background': 'var(--cs-orb-gradient-blue)'
         },
         '.orb-gradient-purple': {
-          'background': 'radial-gradient(circle, rgba(147,51,234,0.5) 0%, rgba(196,181,253,0.3) 50%, rgba(237,233,254,0.1) 100%)'
+          'background': 'var(--cs-orb-gradient-purple)'
         },
         '.orb-gradient-pink': {
-          'background': 'radial-gradient(circle, rgba(236,72,153,0.5) 0%, rgba(251,207,232,0.3) 50%, rgba(253,242,248,0.1) 100%)'
+          'background': 'var(--cs-orb-gradient-pink)'
+        },
+        '.orb-gradient-custom': {
+          'background': 'var(--cs-orb-gradient-custom)'
         }
       });
     }
