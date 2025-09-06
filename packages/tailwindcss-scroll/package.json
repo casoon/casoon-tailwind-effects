@@ -8,7 +8,9 @@
     "./scroll.js": "./scroll.js",
     "./js": "./scroll.js",
     "./css": "./index.css",
-    "./index.css": "./index.css"
+    "./index.css": "./index.css",
+    "./catalog": "./catalog.md",
+    "./catalog.md": "./catalog.md"
   },
   "main": "./plugin.js",
   "module": "./plugin.js",
@@ -17,7 +19,8 @@
     "scroll.js",
     "README.md",
     "LICENSE",
-    "index.css"
+    "index.css",
+    "catalog.md"
   ],
   "dependencies": {
     "@casoon/tailwindcss-animations": "^0.5.6"

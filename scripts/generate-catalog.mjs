@@ -167,12 +167,15 @@ class CatalogGenerator {
       console.log(`${colors.green}  ✅ Found ${classes.size} classes, ${variables.size} variables${colors.reset}`);
     }
 
-    // Generate markdown content
-    const catalogContent = await this.generateMarkdownContent(catalogData);
+    // Generate global markdown content
+    const globalCatalogContent = await this.generateMarkdownContent(catalogData);
     
-    // Write catalog file
-    await fs.writeFile(this.catalogPath, catalogContent);
-    console.log(`\n${colors.green}✅ Catalog generated: ${this.catalogPath}${colors.reset}`);
+    // Write global catalog file
+    await fs.writeFile(this.catalogPath, globalCatalogContent);
+    console.log(`\n${colors.green}✅ Global catalog generated: ${this.catalogPath}${colors.reset}`);
+
+    // Generate individual package catalogs
+    await this.generateIndividualCatalogs(catalogData);
   }
 
   async generateMarkdownContent(catalogData) {
@@ -265,6 +268,115 @@ Override any CSS variable to customize the design:
 ---
 
 > **Note for AI Assistants**: This catalog is automatically generated and updated. When suggesting classes, prioritize the documented classes above and mention the consistent \`--cs-\` prefix for CSS variables. All animations respect \`prefers-reduced-motion\` for accessibility.
+`;
+
+    return content;
+  }
+
+  async generateIndividualCatalogs(catalogData) {
+    console.log(`\n${colors.cyan}📦 Generating individual package catalogs...${colors.reset}`);
+
+    for (const [packageName, data] of catalogData) {
+      const packageCatalogPath = path.join(this.packagesDir, packageName, 'catalog.md');
+      
+      // Create package-specific catalog content
+      const packageCatalogContent = await this.generatePackageCatalog(data);
+      
+      // Write package catalog
+      await fs.writeFile(packageCatalogPath, packageCatalogContent);
+      console.log(`${colors.green}  ✅ ${packageName}/catalog.md${colors.reset}`);
+    }
+  }
+
+  async generatePackageCatalog(packageData) {
+    const header = `# ${packageData.fullName} - CSS Classes Catalog
+
+> **${packageData.description}**
+
+> This catalog provides a comprehensive list of all available CSS classes and variables in this package. All CSS custom properties use the consistent \`--cs-\` prefix.
+
+## Package Information
+
+- **Package**: \`${packageData.fullName}\`
+- **Version**: \`${packageData.version}\`
+- **Type**: Tailwind CSS v4 Plugin
+
+`;
+
+    let content = header;
+
+    // Add classes section
+    if (packageData.classes.length > 0) {
+      content += `## CSS Classes (${packageData.classes.length})
+
+`;
+      packageData.classes.forEach(className => {
+        content += `- \`${className}\`\n`;
+      });
+      content += '\n';
+    }
+
+    // Add variables section  
+    if (packageData.variables.length > 0) {
+      content += `## CSS Variables (${packageData.variables.length})
+
+\`\`\`css\n`;
+      packageData.variables.forEach(variable => {
+        content += `${variable}: /* value */\n`;
+      });
+      content += '```\n\n';
+    }
+
+    // Add usage examples for this specific package
+    content += `## Usage Examples
+
+### As Tailwind Plugin
+\`\`\`js
+import plugin from '${packageData.fullName}';
+
+export default {
+  plugins: [plugin()]
+}
+\`\`\`
+
+### Direct CSS Import
+\`\`\`css
+@import "${packageData.fullName}/index.css";
+\`\`\`
+
+### With Custom Configuration
+\`\`\`js
+import plugin from '${packageData.fullName}';
+
+export default {
+  plugins: [
+    plugin({
+      // Package-specific configuration options
+      tokens: {
+        // Override default tokens
+      }
+    })
+  ]
+}
+\`\`\`
+
+## CSS Variable Customization
+
+Override any CSS variable to customize the design:
+
+\`\`\`css
+:root {
+  /* Customize this package's tokens */`;
+
+    // Add example customizations from the package's variables
+    if (packageData.variables.length > 0) {
+      const exampleVars = packageData.variables.slice(0, 3); // Show first 3 as examples
+      exampleVars.forEach(variable => {
+        content += `\n  ${variable}: /* your custom value */;`;
+      });
+    }
+
+    content += `\n}\n\`\`\`\n\n---\n\n> **Generated automatically** from plugin analysis. For the complete collection, see [@casoon/tailwindcss-effects](https://www.npmjs.com/package/@casoon/tailwindcss-effects).
 `;
 
     return content;

@@ -7,7 +7,9 @@
     ".": "./plugin.js",
     "./plugin": "./plugin.js",
     "./css": "./index.css",
-    "./index.css": "./index.css"
+    "./index.css": "./index.css",
+    "./catalog": "./catalog.md",
+    "./catalog.md": "./catalog.md"
   },
   "main": "./plugin.js",
   "module": "./plugin.js",
@@ -16,7 +18,8 @@
     "README.md",
     "LICENSE",
     "class-definitions.json",
-    "index.css"
+    "index.css",
+    "catalog.md"
   ],
   "scripts": {
     "test": "node scripts/test-classes.mjs",

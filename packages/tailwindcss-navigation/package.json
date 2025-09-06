@@ -9,7 +9,9 @@
     "./nav.js": "./nav.js",
     "./js": "./nav.js",
     "./css": "./index.css",
-    "./index.css": "./index.css"
+    "./index.css": "./index.css",
+    "./catalog": "./catalog.md",
+    "./catalog.md": "./catalog.md"
   },
   "main": "./plugin.js",
   "module": "./plugin.js",
@@ -18,7 +20,8 @@
     "nav.js",
     "README.md",
     "LICENSE",
-    "index.css"
+    "index.css",
+    "catalog.md"
   ],
   "peerDependencies": {
     "tailwindcss": "^4.0.0"
