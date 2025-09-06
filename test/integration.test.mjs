@@ -23,11 +23,25 @@ async function runIntegrationTests() {
       throw new Error('Default export is not a function');
     }
     
-    // Test plugin creation
-    const plugin = effects.default();
-    if (!plugin.handler || typeof plugin.handler !== 'function') {
-      throw new Error('Plugin does not have handler function');
+    // Test plugin creation - should return array of plugins
+    const pluginArray = effects.default();
+    if (!Array.isArray(pluginArray)) {
+      throw new Error('Plugin should return an array of plugins');
     }
+    
+    if (pluginArray.length === 0) {
+      throw new Error('Plugin array should not be empty');
+    }
+    
+    // Each item in array should be a plugin object with handler
+    pluginArray.forEach((plugin, index) => {
+      if (!plugin || typeof plugin !== 'object') {
+        throw new Error(`Plugin at index ${index} is not an object`);
+      }
+      if (!plugin.handler || typeof plugin.handler !== 'function') {
+        throw new Error(`Plugin at index ${index} does not have handler function`);
+      }
+    });
     
     console.log('✅ Main plugin import works');
     
@@ -71,7 +85,7 @@ async function runIntegrationTests() {
       }
       const plugin = effects();
       if (!plugin.handler) {
-        throw new Error('CJS plugin creation failed');
+        throw new Error('CJS plugin creation failed - CJS uses single handler approach');
       }
       console.log('CJS import successful');
     `;

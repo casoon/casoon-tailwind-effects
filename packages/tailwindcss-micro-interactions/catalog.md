@@ -7,7 +7,7 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-micro-interactions`
-- **Version**: `0.5.9`
+- **Version**: `0.6.0`
 - **Type**: Tailwind CSS v4 Plugin
 
 ## CSS Classes (23)
