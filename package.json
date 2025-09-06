@@ -1,7 +1,7 @@
 {
   "name": "casoon-tailwind-effects",
   "private": true,
-  "version": "0.5.3",
+  "version": "0.5.6",
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -10,19 +10,29 @@
   "license": "MIT",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "release": "npm run build && node scripts/release.mjs",
-    "release:all": "npm run build && node scripts/release.mjs all",
-    "release:dry": "npm run build && DRY_RUN=1 node scripts/release.mjs all",
-    "test": "node scripts/verify-css.mjs && node scripts/verify-deps.mjs && node scripts/verify-prefixes.mjs && node scripts/verify-tokens.mjs && node scripts/verify-dark.mjs",
+    "release": "npm test && npm run build && node scripts/release.mjs",
+    "release:all": "npm test && npm run build && node scripts/release.mjs all",
+    "release:dry": "npm test && npm run build && DRY_RUN=1 node scripts/release.mjs all",
+    "test": "npm run test:classes && npm run test:syntax && node scripts/verify-deps.mjs && node scripts/verify-prefixes.mjs && node scripts/verify-tokens.mjs && node scripts/verify-dark.mjs",
+    "test:classes": "node scripts/test-classes-global.mjs",
+    "test:classes:extract": "node scripts/extract-classes-global.mjs",
+    "test:compatibility": "node scripts/test-classes-global.mjs",
+    "test:syntax": "node scripts/test-syntax.mjs",
     "test:integration": "node test/integration.test.mjs",
     "verify:tokens": "node scripts/verify-tokens.mjs",
     "verify:dark": "node scripts/verify-dark.mjs",
     "version:patch": "node scripts/bump-version.mjs patch",
     "version:minor": "node scripts/bump-version.mjs minor",
     "version:major": "node scripts/bump-version.mjs major",
-    "version:check": "npm run version:check:packages && npm run version:check:root",
+    "version:check": "npm run version:check:packages && npm run version:check:root && npm run version:sync",
     "version:check:packages": "node scripts/check-versions.mjs",
     "version:check:root": "echo 'Root version:' && npm version --dry-run",
+    "version:sync": "node scripts/extract-classes-global.mjs",
+    "validate": "npm run test:classes && npm run version:check",
+    "prepublishOnly": "npm run validate",
     "generate:plugins": "node scripts/generate-plugins.mjs"
+  },
+  "dependencies": {
+    "glob": "^11.0.3"
   }
 }

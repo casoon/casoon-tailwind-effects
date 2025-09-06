@@ -332,10 +332,57 @@ const GlassContainer = styled.div`
 `;
 ```
 
+## 🧪 Testing & Quality Assurance
+
+This package includes automated testing to prevent accidental removal or renaming of CSS classes:
+
+### Class Compatibility Testing
+
+```bash
+# Run all compatibility tests (recommended before publishing)
+npm test
+
+# Extract and compare classes with definitions
+npm run test:classes
+
+# Run comprehensive compatibility test suite
+npm run test:compatibility
+
+# Validate package integrity
+npm run validate
+```
+
+### Test Suite Features
+
+- **🔍 Class Extraction**: Automatically extracts all CSS classes from plugin.js
+- **📋 Definition Comparison**: Compares against `class-definitions.json` for consistency
+- **🚨 Breaking Change Detection**: Identifies removal of critical classes
+- **⚡ Webkit Prefix Validation**: Ensures browser compatibility prefixes are present
+- **✅ Syntax Validation**: Verifies plugin structure and exports
+- **🔒 Pre-publish Hooks**: Automatically runs tests before publishing
+
+### Critical Classes
+
+These classes are considered critical and cannot be removed without a major version bump:
+```
+.glass, .glass-dark, .glass-sm, .glass-lg,
+.glass-card, .glass-card-light, 
+.glass-nav, .glass-nav-light, .glass-button
+```
+
+### Adding New Classes
+
+When adding new classes:
+1. Add the class to `plugin.js`
+2. Run `npm run test:classes` to see new classes
+3. Update `class-definitions.json` to include new classes
+4. Run `npm test` to verify everything works
+
 ## 📦 Package Contents
 
-- **`index.css`** - Main glass components and utilities
-- **`tokens.css`** - CSS custom properties and design tokens
+- **`plugin.js`** - Main Tailwind CSS plugin
+- **`class-definitions.json`** - Class compatibility reference
+- **`scripts/`** - Testing and validation scripts
 - **`README.md`** - This documentation
 
 ## 🎯 Browser Support

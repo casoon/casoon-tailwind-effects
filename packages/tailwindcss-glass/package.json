@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-glass",
-  "version": "0.5.3",
+  "version": "0.5.6",
   "description": "Glass morphism components and utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
@@ -12,8 +12,17 @@
   "files": [
     "plugin.js",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "class-definitions.json"
   ],
+  "scripts": {
+    "test": "node scripts/test-classes.mjs",
+    "test:classes": "node scripts/extract-classes.mjs",
+    "test:compatibility": "node scripts/test-classes.mjs",
+    "prepublishOnly": "npm run test:compatibility",
+    "preversion": "npm run test:compatibility",
+    "validate": "npm run test:compatibility"
+  },
   "peerDependencies": {
     "tailwindcss": "^4.0.0"
   },

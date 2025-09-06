@@ -1,16 +1,19 @@
 {
   "name": "@casoon/tailwindcss-navigation",
-  "version": "0.5.3",
+  "version": "0.5.6",
   "description": "Navigation components and utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
     ".": "./plugin.js",
-    "./plugin": "./plugin.js"
+    "./plugin": "./plugin.js",
+    "./nav.js": "./nav.js",
+    "./js": "./nav.js"
   },
   "main": "./plugin.js",
   "module": "./plugin.js",
   "files": [
     "plugin.js",
+    "nav.js",
     "README.md",
     "LICENSE"
   ],

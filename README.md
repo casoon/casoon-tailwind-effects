@@ -2,35 +2,37 @@
 
 A comprehensive collection of modern CSS effects and utilities for **Tailwind CSS v4**. Built with performance in mind, these plugins provide glassmorphism effects, animations, gradients, scroll animations, and essential utility classes—all optimized for modern build tools and framework compatibility.
 
-> **🚀 Latest (v0.5.1)**: Pure Tailwind CSS v4 plugins with **configurable design tokens** and modern ESM architecture!
+> **🚀 Latest (v0.5.6)**: Complete pure Tailwind CSS v4 plugins with **configurable design tokens**, **JavaScript helpers**, **automated class testing**, and modern ESM architecture!
 
 ## ✨ Features
 
 - **🔌 Pure Plugin Architecture**: Modern Tailwind CSS v4 plugins with ESM-first design
-- **🎨 Configurable Design Tokens**: Override default values through plugin configuration
+- **🎨 Configurable Design Tokens**: Override default values through plugin configuration  
 - **📦 Framework Compatible**: Works seamlessly with Vite, Astro, Next.js, and other modern build tools
 - **⚡ Performance Optimized**: Tree-shakeable with minimal bundle impact
-- **🎯 Complete Toolkit**: Animations, glassmorphism, gradients, scroll effects, and utility classes
+- **🎯 Complete Toolkit**: Animations, glassmorphism, gradients, scroll effects, navigation, and utilities
+- **📜 JavaScript Helpers**: Optional JS modules for scroll animations and navigation interactions
 - **🚀 Zero Configuration**: Works out of the box, customize only what you need
-- **♿ Accessibility First**: Motion-safe variants and proper focus management
+- **🧪 Automated Testing**: Global class compatibility testing prevents breaking changes
+- **♠ Accessibility First**: Motion-safe variants and proper focus management
 - **🌗 Dark Mode Ready**: Built-in dark mode support with CSS custom properties
 
 ## 📦 Packages
 
-| Package | Description | Status |
-|---------|-------------|--------|
-| [`@casoon/tailwindcss-animations`](./packages/tailwindcss-animations) | Animation utilities & keyframes | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-glass`](./packages/tailwindcss-glass) | Glassmorphism components & utilities | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-orbs`](./packages/tailwindcss-orbs) | Orb backgrounds & helper utilities | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-gradients`](./packages/tailwindcss-gradients) | Gradient backgrounds & text effects | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-scroll`](./packages/tailwindcss-scroll) | Scroll animation primitives | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-utilities`](./packages/tailwindcss-utilities) | Layout utilities, cards, text effects & responsive helpers | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-navigation`](./packages/tailwindcss-navigation) | Navigation components, variants & subnav systems | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package that imports all effects | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-loading`](./packages/tailwindcss-loading) | Skeletons, progress indicators, and loading overlays | ✅ v0.5.1 |
-| [`@casoon/tailwindcss-micro-interactions`](./packages/tailwindcss-micro-interactions) | Click/Hover/Focus micro‑interaction utilities | ✅ v0.5.1 |
+| Package | Description | Features |
+|---------|-------------|----------|
+| [`@casoon/tailwindcss-animations`](./packages/tailwindcss-animations) | Animation utilities & keyframes | ✅ Plugin + Token Config |
+| [`@casoon/tailwindcss-glass`](./packages/tailwindcss-glass) | Glassmorphism components & utilities | ✅ Plugin + Token Config |
+| [`@casoon/tailwindcss-orbs`](./packages/tailwindcss-orbs) | Orb backgrounds & helper utilities | ✅ Plugin + Keyframes |
+| [`@casoon/tailwindcss-gradients`](./packages/tailwindcss-gradients) | Gradient backgrounds & text effects | ✅ Plugin + Animations |
+| [`@casoon/tailwindcss-scroll`](./packages/tailwindcss-scroll) | Scroll animation primitives | ✅ Plugin + **JS Helper** |
+| [`@casoon/tailwindcss-utilities`](./packages/tailwindcss-utilities) | Layout utilities, cards, text effects & responsive helpers | ✅ Plugin Only |
+| [`@casoon/tailwindcss-navigation`](./packages/tailwindcss-navigation) | Navigation components, variants & subnav systems | ✅ Plugin + **JS Helper** |
+| [`@casoon/tailwindcss-effects`](./packages/tailwindcss-effects) | Meta package (standalone, no dependencies) | ✅ Plugin Bundle |
+| [`@casoon/tailwindcss-loading`](./packages/tailwindcss-loading) | Skeletons, progress indicators, and loading overlays | ✅ Plugin + Keyframes |
+| [`@casoon/tailwindcss-micro-interactions`](./packages/tailwindcss-micro-interactions) | Click/Hover/Focus micro‑interaction utilities | ✅ Plugin + Transitions |
 
-> All packages support **configurable design tokens** as of v0.5.1
+> **All packages v0.5.6** • Configurable design tokens • Pure plugin architecture • Automated class testing
 
 ## 🚀 Quick Start
 
@@ -204,6 +206,49 @@ export default {
 
 > 📝 Full token reference available in our documentation
 
+## 📜 JavaScript Helpers ⭐ *Optional*
+
+Some packages include optional JavaScript modules for enhanced functionality:
+
+### Scroll Animations
+```js
+// Import the scroll reveal helper (AOS-compatible)
+import '@casoon/tailwindcss-scroll/scroll.js';
+
+// Or import programmatically
+import { ScrollRevealX } from '@casoon/tailwindcss-scroll/js';
+ScrollRevealX.init({ threshold: 0.2 });
+```
+
+```html
+<!-- Use with CSS classes -->
+<div class="scroll scroll-fade-up" data-scroll-delay="100">
+  Reveals on scroll with fade-up animation
+</div>
+
+<!-- AOS-compatible syntax -->
+<div data-aos="fade-up" data-aos-duration="800">
+  AOS-style animation (auto-converted)
+</div>
+```
+
+### Navigation Helpers
+```js
+// Import navigation utilities
+import { initSidebarDrawer, initActiveLinkSync } from '@casoon/tailwindcss-navigation/js';
+
+// Initialize sidebar with focus management
+const sidebar = initSidebarDrawer({
+  trigger: document.querySelector('[data-sidebar-open]'),
+  drawer: document.querySelector('.sidebar')
+});
+
+// Auto-sync active navigation links
+const linkSync = initActiveLinkSync({
+  selector: '.nav-link[href^="#"]'
+});
+```
+
 ## 💡 Usage Examples
 
 ### Animations with Custom Timing
@@ -219,51 +264,107 @@ export default {
 </div>
 ```
 
-### Glassmorphism
+### Glassmorphism Effects
 ```html
-<div class="glass bg-white/20 backdrop-blur-md border border-white/30 rounded-xl p-6">
+<div class="glass bg-white/10 p-6 rounded-xl">
   <h2 class="text-2xl font-bold text-white">Glass Card</h2>
   <p class="text-white/80">Beautiful glassmorphism effect</p>
 </div>
-```
 
-### Orb Backgrounds
-```html
-<div class="orb-bg orb-bg-blue-500/20 orb-size-lg">
-  <div class="p-8 text-center">
-    <h1 class="text-4xl font-bold">Orb Background</h1>
-  </div>
+<!-- Different glass variants -->
+<div class="glass-dark glass-lg p-4">
+  Dark glass with stronger blur
 </div>
 ```
 
-### Gradient Text
+### Orb Effects with Animations
 ```html
-<h1 class="gradient-text gradient-text-sunset text-6xl font-bold">
+<!-- Animated floating orbs -->
+<div class="orb orb-lg orb-float orb-gradient-blue absolute top-10 left-10">
+</div>
+<div class="orb orb-md orb-pulse orb-gradient-purple absolute bottom-20 right-20">
+</div>
+
+<!-- Custom orb with background -->
+<div class="orb orb-xl orb-drift bg-gradient-to-r from-blue-400 to-purple-500">
+</div>
+```
+
+### Gradient Text & Backgrounds
+```html
+<!-- Gradient text -->
+<h1 class="gradient-text-sunset text-6xl font-bold">
   Beautiful Gradient Text
 </h1>
+
+<!-- Animated gradient background -->
+<div class="gradient-ocean gradient-animate p-8 rounded-xl">
+  <p class="text-white">Animated gradient background</p>
+</div>
+
+<!-- Gradient borders -->
+<div class="gradient-border p-4">
+  Card with gradient border
+</div>
 ```
 
-### Scroll Animations
+### Scroll Effects & Utilities
 ```html
-<div class="scroll scroll-in scroll-delay-200 scroll-fade-up">
+<!-- Scroll reveal animations (requires JS helper) -->
+<div class="scroll scroll-fade-up" data-scroll-delay="200">
   <p>This content animates in on scroll</p>
-  <!-- Optional: stagger for children -->
-  <div class="scroll-stagger">
-    <div>Item 1</div>
-    <div>Item 2</div>
-    <div>Item 3</div>
-  </div>
+</div>
+
+<!-- Scroll behavior utilities -->
+<div class="scroll-smooth scroll-snap-y h-screen overflow-y-auto">
+  <section class="snap-center h-screen">Section 1</section>
+  <section class="snap-center h-screen">Section 2</section>
+</div>
+
+<!-- Custom scrollbar -->
+<div class="scrollbar-thin scrollbar-thumb-blue overflow-auto h-64">
+  <p>Content with styled scrollbar</p>
 </div>
 ```
 
-### Loading, Spinners & Progress
+### Navigation Components
 ```html
-<div class="flex items-center gap-4">
-  <div class="spinner spinner-dots"><span></span></div>
-  <div class="spinner-rings"></div>
-  <div class="spinner-bars"></div>
-</div>
+<!-- Navigation with styling -->
+<nav class="nav">
+  <div class="nav-item">
+    <a href="#" class="nav-link active">Home</a>
+  </div>
+  <div class="nav-item">
+    <a href="#" class="nav-link">About</a>
+  </div>
+</nav>
 
+<!-- Pills style navigation -->
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+</ul>
+```
+
+### Loading & Micro-Interactions
+```html
+<!-- Loading spinner -->
+<div class="spinner"></div>
+<div class="loading opacity-50">Content in loading state</div>
+
+<!-- Interactive elements -->
+<button class="interactive hover-scale-105 focus-ring-2 p-3 bg-blue-500 text-white rounded">
+  Interactive Button
+</button>
+
+<div class="hover-lift-md hover-rotate-1 p-4 bg-white rounded-lg shadow">
+  Card with hover effects
+</div>
+```
 <div class="progress progress-striped progress-animated mt-4" style="--progress: 60%">
   <div class="progress-fill"></div>
 </div>
@@ -360,29 +461,55 @@ export default {
 - **Extensible** - Easy to customize and extend with package-specific CSS variables
 - **No global dependencies** - Each package works independently
 
+### Automated Quality Assurance 🆕 *New in v0.5.6*
+- **Global Class Testing** - Automated extraction and validation of all CSS classes across packages
+- **Breaking Change Prevention** - Critical classes cannot be removed without major version bump
+- **Version Synchronization** - Automatic version syncing between packages and test definitions  
+- **Plugin API Integration** - Uses Tailwind’s plugin API directly for 100% accurate class extraction
+- **Pre-Publish Safety** - All packages automatically tested before publishing
+- **200+ Classes Monitored** - Comprehensive coverage across all 10 packages
+
 ## 🏗️ Development
 
 This is a monorepo managed with pnpm workspaces and unified versioning.
+
+### 🧪 Testing & Quality Assurance
+
+All packages include automated testing to prevent breaking changes:
+
+```bash
+# Run full test suite (includes class compatibility testing)
+npm test
+
+# Test class compatibility across all packages  
+npm run test:classes
+
+# Extract and analyze classes from all plugins
+npm run test:classes:extract
+
+# Run comprehensive validation before publishing
+npm run validate
+```
 
 ### 📦 Version Management
 
 All packages use the same version number for consistency. To update versions:
 
 ```bash
-# Check current versions
+# Check current versions (includes class definition sync)
 npm run version:check
 
-# Update all packages to next patch version (0.2.0 → 0.2.1)
+# Update all packages to next patch version (0.5.5 → 0.5.6)
 npm run version:patch
 
-# Update all packages to next minor version (0.2.0 → 0.3.0)
+# Update all packages to next minor version (0.5.5 → 0.6.0)
 npm run version:minor
 
-# Update all packages to next major version (0.2.0 → 1.0.0)
+# Update all packages to next major version (0.5.5 → 1.0.0)
 npm run version:major
 ```
 
-**Note:** These commands automatically update both the root `package.json` and all package versions simultaneously.
+**Note:** These commands automatically update both the root `package.json` and all package versions simultaneously, plus sync class definitions.
 
 ```bash
 # Install dependencies

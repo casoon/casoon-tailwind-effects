@@ -1,0 +1,178 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-09-06T15:06:09.521Z",
+  "description": "Definitive list of all CSS classes provided by @casoon/tailwindcss packages. This file is used for backwards compatibility testing to prevent accidental deletion or renaming of classes across all packages.",
+  "monorepoVersion": "0.5.6",
+  "packages": {
+    "tailwindcss-glass": {
+      "version": "0.5.6",
+      "description": "Glassmorphism components and utilities",
+      "utilities": {
+        "base": [
+          ".glass",
+          ".glass-dark"
+        ],
+        "sizes": [
+          ".glass-sm",
+          ".glass-lg"
+        ],
+        "intensity": [
+          ".glass-weak",
+          ".glass-medium",
+          ".glass-strong"
+        ],
+        "colors": [
+          ".glass-blue",
+          ".glass-purple",
+          ".glass-green",
+          ".glass-pink",
+          ".glass-amber"
+        ],
+        "borderRadius": [
+          ".glass-rounded-sm",
+          ".glass-rounded",
+          ".glass-rounded-lg",
+          ".glass-rounded-xl",
+          ".glass-rounded-2xl",
+          ".glass-rounded-3xl"
+        ],
+        "shadows": [
+          ".glass-shadow-sm",
+          ".glass-shadow",
+          ".glass-shadow-lg",
+          ".glass-shadow-xl"
+        ],
+        "responsive": [
+          ".glass-responsive"
+        ]
+      },
+      "components": {
+        "cards": [
+          ".glass-card",
+          ".glass-card-light"
+        ],
+        "navigation": [
+          ".glass-nav",
+          ".glass-nav-light"
+        ],
+        "interactive": [
+          ".glass-button"
+        ],
+        "advanced": [
+          ".glass-toast",
+          ".glass-tooltip",
+          ".glass-dropdown"
+        ]
+      },
+      "criticalClasses": [
+        ".glass",
+        ".glass-dark",
+        ".glass-sm",
+        ".glass-lg",
+        ".glass-card",
+        ".glass-card-light",
+        ".glass-nav",
+        ".glass-nav-light",
+        ".glass-button"
+      ]
+    },
+    "tailwindcss-utilities": {
+      "version": "0.5.6",
+      "description": "Essential utility classes",
+      "utilities": {
+        "accessibility": [
+          ".sr-only"
+        ],
+        "layout": [
+          ".container-fluid"
+        ]
+      },
+      "components": {},
+      "criticalClasses": [
+        ".sr-only",
+        ".container-fluid"
+      ]
+    },
+    "tailwindcss-animations": {
+      "version": "0.5.6",
+      "description": "Animation utilities and components",
+      "utilities": {
+        "base": [],
+        "keyframes": [],
+        "timing": []
+      },
+      "components": {},
+      "criticalClasses": []
+    },
+    "tailwindcss-gradients": {
+      "version": "0.5.6",
+      "description": "Gradient utilities and components",
+      "utilities": {
+        "base": [],
+        "directional": [],
+        "radial": []
+      },
+      "components": {},
+      "criticalClasses": []
+    },
+    "tailwindcss-navigation": {
+      "version": "0.5.6",
+      "description": "Navigation components and utilities",
+      "utilities": {},
+      "components": {},
+      "criticalClasses": []
+    },
+    "tailwindcss-orbs": {
+      "version": "0.5.6",
+      "description": "Orb effects and components",
+      "utilities": {},
+      "components": {},
+      "criticalClasses": []
+    },
+    "tailwindcss-scroll": {
+      "version": "0.5.6",
+      "description": "Scroll effects and utilities",
+      "utilities": {},
+      "components": {},
+      "criticalClasses": []
+    },
+    "tailwindcss-loading": {
+      "version": "0.5.6",
+      "description": "Loading animations and components",
+      "utilities": {},
+      "components": {},
+      "criticalClasses": []
+    },
+    "tailwindcss-micro-interactions": {
+      "version": "0.5.6",
+      "description": "Micro interaction utilities",
+      "utilities": {},
+      "components": {},
+      "criticalClasses": []
+    },
+    "tailwindcss-effects": {
+      "version": "0.5.6",
+      "description": "Meta package bundling all effects",
+      "utilities": {},
+      "components": {},
+      "criticalClasses": [],
+      "isMeta": true
+    }
+  },
+  "globalPolicies": {
+    "breakingChangePolicy": "Any removal or renaming of classes in 'criticalClasses' requires a major version bump.",
+    "deprecationPolicy": "Classes should be deprecated for at least one minor version before removal.",
+    "newClassPolicy": "New classes should be added to class-definitions.json before publishing.",
+    "versioningPolicy": "All package versions are automatically synced from package.json files."
+  },
+  "testingConfig": {
+    "enabledPackages": [
+      "tailwindcss-glass",
+      "tailwindcss-utilities"
+    ],
+    "strictMode": true,
+    "webkitPrefixRequired": true,
+    "syntaxValidation": true,
+    "versionSync": true
+  }
+}
