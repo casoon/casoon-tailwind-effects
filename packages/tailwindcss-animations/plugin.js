@@ -275,7 +275,7 @@ export default function animationsPlugin(options = {}) {
             'animation-timing-function': 'var(--cs-anim-reduced-motion-ease) !important',
             'transition': 'none !important'
           },
-          '.hover-lift-sm:hover, .hover-lift-md:hover, .hover-scale-105:hover, .hover-scale-110:hover': {
+          '.cs-hover-lift-sm:hover, .cs-hover-lift-md:hover, .hover-scale-105:hover, .hover-scale-110:hover': {
             'transform': 'none !important'
           }
         }

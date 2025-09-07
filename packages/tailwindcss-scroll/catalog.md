@@ -7,7 +7,7 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-scroll`
-- **Version**: `0.6.1`
+- **Version**: `0.6.2`
 - **Type**: Tailwind CSS v4 Plugin
 
 ## CSS Classes (32)

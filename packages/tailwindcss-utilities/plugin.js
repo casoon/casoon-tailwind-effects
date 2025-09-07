@@ -8,7 +8,7 @@ export default function utilitiesPlugin(options = {}) {
     handler: ({ addUtilities, addComponents }) => {
       // Essential utility classes
       addUtilities({
-        '.sr-only': {
+        '.cs-sr-only': {
           'position': 'absolute',
           'width': '1px',
           'height': '1px',
@@ -19,7 +19,7 @@ export default function utilitiesPlugin(options = {}) {
           'white-space': 'nowrap',
           'border': '0'
         },
-        '.container-fluid': {
+        '.cs-container-fluid': {
           'width': '100%',
           'padding-left': '1rem',
           'padding-right': '1rem'

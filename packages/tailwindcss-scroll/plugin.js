@@ -96,7 +96,7 @@ export default function scrollPlugin(options = {}) {
           'scrollbar-width': 'none',
           '-ms-overflow-style': 'none'
         },
-        '.scrollbar-none::-webkit-scrollbar': {
+        '.cs-scrollbar-none::-webkit-scrollbar': {
           'display': 'none'
         },
         '.scrollbar-thin': {
