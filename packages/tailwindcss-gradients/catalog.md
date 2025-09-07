@@ -35,7 +35,7 @@
 - `.gradient-text-ocean`
 - `.gradient-text-sunset`
 
-## CSS Variables (21)
+## CSS Variables (22)
 
 ```css
 --cs-gradient-blue-end: /* value */
@@ -55,6 +55,7 @@
 --cs-gradient-pink-start: /* value */
 --cs-gradient-purple-end: /* value */
 --cs-gradient-purple-start: /* value */
+--cs-gradient-stops: /* value */
 --cs-gradient-sunset-end: /* value */
 --cs-gradient-sunset-mid: /* value */
 --cs-gradient-sunset-start: /* value */

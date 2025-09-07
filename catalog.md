@@ -238,6 +238,7 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 --cs-gradient-pink-start: /* value */
 --cs-gradient-purple-end: /* value */
 --cs-gradient-purple-start: /* value */
+--cs-gradient-stops: /* value */
 --cs-gradient-sunset-end: /* value */
 --cs-gradient-sunset-mid: /* value */
 --cs-gradient-sunset-start: /* value */

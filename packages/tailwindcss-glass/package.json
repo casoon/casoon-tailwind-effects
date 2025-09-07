@@ -12,17 +12,18 @@
     "./plugin": {
       "import": "./plugin.js",
       "require": "./plugin.cjs"
-    }
+    },
+    "./tokens.css": "./tokens.css"
   },
   "main": "./plugin.cjs",
   "module": "./plugin.js",
   "files": [
     "dist.css",
+    "tokens.css",
     "plugin.js",
     "plugin.cjs",
     "README.md",
-    "LICENSE",
-    "catalog.md"
+    "LICENSE"
   ],
   "scripts": {
     "test": "node scripts/test-classes.mjs",
