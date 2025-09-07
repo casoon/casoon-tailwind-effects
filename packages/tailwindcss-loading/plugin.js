@@ -36,7 +36,7 @@ export default function loadingPlugin(options = {}) {
 
       // Loading utilities
       addUtilities({
-        '.spinner': {
+        '.cs-spinner': {
           'border': '4px solid var(--cs-loading-spinner-base)',
           'border-top': '4px solid var(--cs-loading-spinner-active)',
           'border-radius': '50%',
@@ -44,7 +44,7 @@ export default function loadingPlugin(options = {}) {
           'height': '40px',
           'animation': 'spin 2s linear infinite'
         },
-        '.loading': {
+        '.cs-loading': {
           'opacity': '0.5',
           'pointer-events': 'none'
         }

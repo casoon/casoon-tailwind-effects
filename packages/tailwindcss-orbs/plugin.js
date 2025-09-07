@@ -94,7 +94,7 @@ export default function orbsPlugin(options = {}) {
       // Orb utilities
       addUtilities({
         // Base orb styles
-        '.orb': {
+        '.cs-orb': {
           'border-radius': '50%',
           'filter': 'blur(1px)',
           'opacity': '0.7',
@@ -102,49 +102,49 @@ export default function orbsPlugin(options = {}) {
         },
         
         // Orb sizes
-        '.orb-xs': { 'width': '50px', 'height': '50px' },
-        '.orb-sm': { 'width': '75px', 'height': '75px' },
-        '.orb-md': { 'width': '100px', 'height': '100px' },
-        '.orb-lg': { 'width': '150px', 'height': '150px' },
-        '.orb-xl': { 'width': '200px', 'height': '200px' },
-        '.orb-2xl': { 'width': '300px', 'height': '300px' },
+        '.cs-orb-xs': { 'width': '50px', 'height': '50px' },
+        '.cs-orb-sm': { 'width': '75px', 'height': '75px' },
+        '.cs-orb-md': { 'width': '100px', 'height': '100px' },
+        '.cs-orb-lg': { 'width': '150px', 'height': '150px' },
+        '.cs-orb-xl': { 'width': '200px', 'height': '200px' },
+        '.cs-orb-2xl': { 'width': '300px', 'height': '300px' },
         
         // Orb blur levels
-        '.orb-blur-none': { 'filter': 'blur(0)' },
-        '.orb-blur-sm': { 'filter': 'blur(2px)' },
-        '.orb-blur-md': { 'filter': 'blur(4px)' },
-        '.orb-blur-lg': { 'filter': 'blur(8px)' },
+        '.cs-orb-blur-none': { 'filter': 'blur(0)' },
+        '.cs-orb-blur-sm': { 'filter': 'blur(2px)' },
+        '.cs-orb-blur-md': { 'filter': 'blur(4px)' },
+        '.cs-orb-blur-lg': { 'filter': 'blur(8px)' },
         
         // Orb animations
-        '.orb-float': {
+        '.cs-orb-float': {
           'animation': 'orb-float 6s ease-in-out infinite'
         },
-        '.orb-pulse': {
+        '.cs-orb-pulse': {
           'animation': 'orb-pulse 4s ease-in-out infinite'
         },
-        '.orb-drift': {
+        '.cs-orb-drift': {
           'animation': 'orb-drift 8s ease-in-out infinite'
         },
         
         // Orb positioning helpers
-        '.orb-absolute': {
+        '.cs-orb-absolute': {
           'position': 'absolute'
         },
-        '.orb-fixed': {
+        '.cs-orb-fixed': {
           'position': 'fixed'
         },
         
         // Common orb colors with modern color-mix
-        '.orb-gradient-blue': {
+        '.cs-orb-gradient-blue': {
           'background': 'var(--cs-orb-gradient-blue)'
         },
-        '.orb-gradient-purple': {
+        '.cs-orb-gradient-purple': {
           'background': 'var(--cs-orb-gradient-purple)'
         },
-        '.orb-gradient-pink': {
+        '.cs-orb-gradient-pink': {
           'background': 'var(--cs-orb-gradient-pink)'
         },
-        '.orb-gradient-custom': {
+        '.cs-orb-gradient-custom': {
           'background': 'var(--cs-orb-gradient-custom)'
         }
       });

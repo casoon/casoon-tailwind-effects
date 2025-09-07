@@ -32,51 +32,51 @@ export default function navigationPlugin(options = {}) {
       });
       // Navigation components
       addComponents({
-        '.nav': {
+        '.cs-nav': {
           'display': 'flex',
           'flex-wrap': 'wrap',
           'padding-left': '0',
           'margin-bottom': '0',
           'list-style': 'none'
         },
-        '.nav-item': {
+        '.cs-nav-item': {
           'display': 'block'
         },
-        '.nav-link': {
+        '.cs-nav-link': {
           'display': 'block',
           'padding': '0.5rem 1rem',
           'color': 'inherit',
           'text-decoration': 'none',
           'transition': 'color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out'
         },
-        '.nav-link:hover': {
+        '.cs-nav-link:hover': {
           'text-decoration': 'none'
         },
-        '.nav-link.active': {
+        '.cs-nav-link.active': {
           'font-weight': '600'
         }
       });
 
       // Navigation utilities
       addUtilities({
-        '.nav-pills .nav-item .nav-link': {
+        '.cs-nav-pills .cs-nav-item .cs-nav-link': {
           'border-radius': '0.25rem'
         },
-        '.nav-pills .nav-item .nav-link.active': {
+        '.cs-nav-pills .cs-nav-item .cs-nav-link.active': {
           'background-color': 'var(--cs-nav-primary)',
           'color': 'var(--cs-nav-white)'
         },
-        '.nav-tabs .nav-item .nav-link': {
+        '.cs-nav-tabs .cs-nav-item .cs-nav-link': {
           'border': '1px solid transparent',
           'border-top-left-radius': '0.25rem',
           'border-top-right-radius': '0.25rem'
         },
-        '.nav-tabs .nav-item .nav-link.active': {
+        '.cs-nav-tabs .cs-nav-item .cs-nav-link.active': {
           'color': 'var(--cs-nav-text-muted)',
           'background-color': 'var(--cs-nav-white)',
           'border-color': 'var(--cs-nav-border) var(--cs-nav-border) var(--cs-nav-white)'
         },
-        '.navbar-brand': {
+        '.cs-navbar-brand': {
           'display': 'inline-block',
           'padding-top': '0.3125rem',
           'padding-bottom': '0.3125rem',
@@ -85,14 +85,14 @@ export default function navigationPlugin(options = {}) {
           'line-height': 'inherit',
           'white-space': 'nowrap'
         },
-        '.navbar-nav': {
+        '.cs-navbar-nav': {
           'display': 'flex',
           'flex-direction': 'column',
           'padding-left': '0',
           'margin-bottom': '0',
           'list-style': 'none'
         },
-        '.navbar-nav .nav-link': {
+        '.cs-navbar-nav .cs-nav-link': {
           'padding-right': '0',
           'padding-left': '0'
         }
