@@ -113,13 +113,13 @@ export default function glassPlugin(options = {}) {
       addUtilities({
         '@layer glass-utilities': {
           // Base glass effects
-          '.glass': {
+          '.cs-glass': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-light)',
             'border': '1px solid var(--cs-glass-border-medium)'
           },
-          '.glass-dark': {
+          '.cs-glass-dark': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-dark)',
@@ -127,29 +127,29 @@ export default function glassPlugin(options = {}) {
           },
 
           // Size variants
-          '.glass-sm': {
+          '.cs-glass-sm': {
             'backdrop-filter': 'blur(8px)',
             '-webkit-backdrop-filter': 'blur(8px)'
           },
-          '.glass-lg': {
+          '.cs-glass-lg': {
             'backdrop-filter': 'blur(24px)',
             '-webkit-backdrop-filter': 'blur(24px)'
           },
 
           // Intensity variants
-          '.glass-weak': {
+          '.cs-glass-weak': {
             'backdrop-filter': 'blur(4px)',
             '-webkit-backdrop-filter': 'blur(4px)',
             'background': 'var(--cs-glass-bg-weak)',
             'border': '1px solid var(--cs-glass-border-light)'
           },
-          '.glass-medium': {
+          '.cs-glass-medium': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-light)',
             'border': '1px solid var(--cs-glass-border-medium)'
           },
-          '.glass-strong': {
+          '.cs-glass-strong': {
             'backdrop-filter': 'blur(32px)',
             '-webkit-backdrop-filter': 'blur(32px)',
             'background': 'var(--cs-glass-bg-medium)',
@@ -157,31 +157,31 @@ export default function glassPlugin(options = {}) {
           },
 
           // Colored glass variants
-          '.glass-blue': {
+          '.cs-glass-blue': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-blue)',
             'border': '1px solid var(--cs-glass-border-blue)'
           },
-          '.glass-purple': {
+          '.cs-glass-purple': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-purple)',
             'border': '1px solid var(--cs-glass-border-purple)'
           },
-          '.glass-green': {
+          '.cs-glass-green': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-green)',
             'border': '1px solid var(--cs-glass-border-green)'
           },
-          '.glass-pink': {
+          '.cs-glass-pink': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-pink)',
             'border': '1px solid var(--cs-glass-border-pink)'
           },
-          '.glass-amber': {
+          '.cs-glass-amber': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-amber)',
@@ -189,24 +189,24 @@ export default function glassPlugin(options = {}) {
           },
 
           // Border radius variants
-          '.glass-rounded-sm': { 'border-radius': '0.25rem' },
-          '.glass-rounded': { 'border-radius': '0.5rem' },
-          '.glass-rounded-lg': { 'border-radius': '0.75rem' },
-          '.glass-rounded-xl': { 'border-radius': '1rem' },
-          '.glass-rounded-2xl': { 'border-radius': '1.5rem' },
-          '.glass-rounded-3xl': { 'border-radius': '2rem' },
+          '.cs-glass-rounded-sm': { 'border-radius': '0.25rem' },
+          '.cs-glass-rounded': { 'border-radius': '0.5rem' },
+          '.cs-glass-rounded-lg': { 'border-radius': '0.75rem' },
+          '.cs-glass-rounded-xl': { 'border-radius': '1rem' },
+          '.cs-glass-rounded-2xl': { 'border-radius': '1.5rem' },
+          '.cs-glass-rounded-3xl': { 'border-radius': '2rem' },
 
           // Shadow variants
-          '.glass-shadow-sm': {
+          '.cs-glass-shadow-sm': {
             'box-shadow': '0 1px 2px var(--cs-glass-shadow-light)'
           },
-          '.glass-shadow': {
+          '.cs-glass-shadow': {
             'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)'
           },
-          '.glass-shadow-lg': {
+          '.cs-glass-shadow-lg': {
             'box-shadow': '0 20px 40px var(--cs-glass-shadow-strong)'
           },
-          '.glass-shadow-xl': {
+          '.cs-glass-shadow-xl': {
             'box-shadow': '0 25px 50px var(--cs-glass-shadow-xl)'
           }
         }
@@ -216,7 +216,7 @@ export default function glassPlugin(options = {}) {
       addComponents({
         '@layer glass-components': {
           // Advanced components - new ones without legacy duplicates
-          '.glass-toast': {
+          '.cs-glass-toast': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-light)',
@@ -227,7 +227,7 @@ export default function glassPlugin(options = {}) {
             'position': 'relative',
             'overflow': 'hidden'
           },
-          '.glass-tooltip': {
+          '.cs-glass-tooltip': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-tooltip-bg)',
@@ -239,7 +239,7 @@ export default function glassPlugin(options = {}) {
             'color': 'white',
             'white-space': 'nowrap'
           },
-          '.glass-dropdown': {
+          '.cs-glass-dropdown': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)',
             'background': 'var(--cs-glass-bg-light)',
@@ -255,7 +255,7 @@ export default function glassPlugin(options = {}) {
       // Accessibility and motion safety
       addUtilities({
         '@media (prefers-reduced-motion: reduce)': {
-          '.glass-card, .glass-card-light, .glass-button, .glass-toast': {
+          '.cs-glass-card, .cs-glass-card-light, .cs-glass-button, .cs-glass-toast': {
             'transition': 'none',
             '&:hover': {
               'transform': 'none'
@@ -263,11 +263,11 @@ export default function glassPlugin(options = {}) {
           }
         },
         '@media (prefers-contrast: high)': {
-          '.glass, .glass-card, .glass-nav, .glass-button': {
+          '.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button': {
             'border-width': '2px',
             'background': 'var(--cs-glass-bg-contrast)'
           },
-          '.glass-dark': {
+          '.cs-glass-dark': {
             'background': 'var(--cs-glass-bg-dark-contrast)',
             'border-color': 'var(--cs-glass-border-strong)'
           }
@@ -277,19 +277,19 @@ export default function glassPlugin(options = {}) {
       // Container queries support
       addUtilities({
         '@container (min-width: 320px)': {
-          '.glass-responsive': {
+          '.cs-glass-responsive': {
             'backdrop-filter': 'blur(8px)',
             '-webkit-backdrop-filter': 'blur(8px)'
           }
         },
         '@container (min-width: 640px)': {
-          '.glass-responsive': {
+          '.cs-glass-responsive': {
             'backdrop-filter': 'blur(16px)',
             '-webkit-backdrop-filter': 'blur(16px)'
           }
         },
         '@container (min-width: 1024px)': {
-          '.glass-responsive': {
+          '.cs-glass-responsive': {
             'backdrop-filter': 'blur(24px)',
             '-webkit-backdrop-filter': 'blur(24px)'
           }
@@ -299,25 +299,25 @@ export default function glassPlugin(options = {}) {
       // Fallbacks for browsers without backdrop-filter support
       addComponents({
         '@supports not (backdrop-filter: blur(16px))': {
-          '.glass, .glass-card, .glass-nav, .glass-button': {
+          '.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button': {
             'background': 'var(--cs-glass-bg-fallback)',
             'box-shadow': '0 4px 16px var(--cs-glass-shadow-medium)'
           },
-          '.glass-dark': {
+          '.cs-glass-dark': {
             'background': 'var(--cs-glass-bg-dark-fallback)'
           },
-          '.glass-blue': { 'background': 'var(--cs-glass-bg-blue-fallback)' },
-          '.glass-purple': { 'background': 'var(--cs-glass-bg-purple-fallback)' },
-          '.glass-green': { 'background': 'var(--cs-glass-bg-green-fallback)' },
-          '.glass-pink': { 'background': 'var(--cs-glass-bg-pink-fallback)' },
-          '.glass-amber': { 'background': 'var(--cs-glass-bg-amber-fallback)' }
+          '.cs-glass-blue': { 'background': 'var(--cs-glass-bg-blue-fallback)' },
+          '.cs-glass-purple': { 'background': 'var(--cs-glass-bg-purple-fallback)' },
+          '.cs-glass-green': { 'background': 'var(--cs-glass-bg-green-fallback)' },
+          '.cs-glass-pink': { 'background': 'var(--cs-glass-bg-pink-fallback)' },
+          '.cs-glass-amber': { 'background': 'var(--cs-glass-bg-amber-fallback)' }
         }
       });
 
       // Enhanced legacy components with interactive states
 
       addComponents({
-        '.glass-card': {
+        '.cs-glass-card': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
           'background': 'var(--cs-glass-bg-light)',
@@ -337,7 +337,7 @@ export default function glassPlugin(options = {}) {
             'outline-offset': '2px'
           }
         },
-        '.glass-card-light': {
+        '.cs-glass-card-light': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
           'background': 'var(--cs-glass-bg-medium)',
@@ -356,7 +356,7 @@ export default function glassPlugin(options = {}) {
             'outline-offset': '2px'
           }
         },
-        '.glass-nav': {
+        '.cs-glass-nav': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
           'background': 'var(--cs-glass-bg-light)',
@@ -365,7 +365,7 @@ export default function glassPlugin(options = {}) {
           'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
           'transition': 'all 0.3s ease'
         },
-        '.glass-nav-light': {
+        '.cs-glass-nav-light': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
           'background': 'var(--cs-glass-bg-medium)',
@@ -374,7 +374,7 @@ export default function glassPlugin(options = {}) {
           'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
           'transition': 'all 0.3s ease'
         },
-        '.glass-button': {
+        '.cs-glass-button': {
           'backdrop-filter': 'blur(16px)',
           '-webkit-backdrop-filter': 'blur(16px)',
           'background': 'var(--cs-glass-bg-light)',

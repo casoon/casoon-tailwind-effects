@@ -7,44 +7,46 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-glass`
-- **Version**: `0.6.0`
+- **Version**: `0.6.1`
 - **Type**: Tailwind CSS v4 Plugin
 
-## CSS Classes (33)
+## CSS Classes (35)
 
-- `.glass`
+- `.cs-glass`
+- `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button`
+- `.cs-glass-amber`
+- `.cs-glass-blue`
+- `.cs-glass-button`
+- `.cs-glass-card`
+- `.cs-glass-card, .cs-glass-card-light, .cs-glass-button, .cs-glass-toast`
+- `.cs-glass-card-light`
+- `.cs-glass-dark`
+- `.cs-glass-dropdown`
+- `.cs-glass-green`
+- `.cs-glass-lg`
+- `.cs-glass-medium`
+- `.cs-glass-nav`
+- `.cs-glass-nav-light`
+- `.cs-glass-pink`
+- `.cs-glass-purple`
+- `.cs-glass-responsive`
+- `.cs-glass-rounded`
+- `.cs-glass-rounded-2xl`
+- `.cs-glass-rounded-3xl`
+- `.cs-glass-rounded-lg`
+- `.cs-glass-rounded-sm`
+- `.cs-glass-rounded-xl`
+- `.cs-glass-shadow`
+- `.cs-glass-shadow-lg`
+- `.cs-glass-shadow-sm`
+- `.cs-glass-shadow-xl`
+- `.cs-glass-sm`
+- `.cs-glass-strong`
+- `.cs-glass-toast`
+- `.cs-glass-tooltip`
+- `.cs-glass-weak`
 - `.glass, .glass-card, .glass-nav, .glass-button`
-- `.glass-amber`
-- `.glass-blue`
-- `.glass-button`
-- `.glass-card`
-- `.glass-card, .glass-card-light, .glass-button, .glass-toast`
-- `.glass-card-light`
 - `.glass-dark`
-- `.glass-dropdown`
-- `.glass-green`
-- `.glass-lg`
-- `.glass-medium`
-- `.glass-nav`
-- `.glass-nav-light`
-- `.glass-pink`
-- `.glass-purple`
-- `.glass-responsive`
-- `.glass-rounded`
-- `.glass-rounded-2xl`
-- `.glass-rounded-3xl`
-- `.glass-rounded-lg`
-- `.glass-rounded-sm`
-- `.glass-rounded-xl`
-- `.glass-shadow`
-- `.glass-shadow-lg`
-- `.glass-shadow-sm`
-- `.glass-shadow-xl`
-- `.glass-sm`
-- `.glass-strong`
-- `.glass-toast`
-- `.glass-tooltip`
-- `.glass-weak`
 
 ## CSS Variables (43)
 

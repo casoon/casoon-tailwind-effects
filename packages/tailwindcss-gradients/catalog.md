@@ -7,7 +7,7 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-gradients`
-- **Version**: `0.6.0`
+- **Version**: `0.6.1`
 - **Type**: Tailwind CSS v4 Plugin
 
 ## CSS Classes (22)

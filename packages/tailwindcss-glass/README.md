@@ -23,7 +23,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
 
 ### 1. Simple Glass Effect
 ```html
-<div class="glass">
+<div class="cs-glass">
   <h2>Glass Card</h2>
   <p>Beautiful translucent effect</p>
 </div>
@@ -31,7 +31,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
 
 ### 2. With Background
 ```html
-<div class="glass bg-white/20">
+<div class="cs-glass bg-white/20">
   <h2>Glass with Background</h2>
   <p>Custom background opacity</p>
 </div>
@@ -39,41 +39,62 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
 
 ### 3. Size Variants
 ```html
-<div class="glass glass-sm">Small Glass</div>
-<div class="glass glass-md">Medium Glass</div>
-<div class="glass glass-lg">Large Glass</div>
+<div class="cs-glass cs-glass-sm">Small Glass</div>
+<div class="cs-glass cs-glass-lg">Large Glass</div>
 ```
 
 ## 🎨 Available Classes
 
 ### Base Glass
-- **`.glass`** - Base glassmorphism component with default styling
+- **`.cs-glass`** - Base glassmorphism component with default styling
+- **`.cs-glass-dark`** - Dark variant with dark background
 
 ### Size Variants
-- **`.glass-sm`** - Small glass component
-- **`.glass-md`** - Medium glass component (default)
-- **`.glass-lg`** - Large glass component
+- **`.cs-glass-sm`** - Small glass component (8px blur)
+- **`.cs-glass-lg`** - Large glass component (24px blur)
 
-### Border Variants
-- **`.glass-border`** - Glass with enhanced border styling
-- **`.glass-border-thin`** - Thin border variant
-- **`.glass-border-thick`** - Thick border variant
+### Intensity Variants
+- **`.cs-glass-weak`** - Weak glass effect (4px blur)
+- **`.cs-glass-medium`** - Medium glass effect (16px blur)
+- **`.cs-glass-strong`** - Strong glass effect (32px blur)
+
+### Color Variants
+- **`.cs-glass-blue`** - Blue tinted glass
+- **`.cs-glass-purple`** - Purple tinted glass
+- **`.cs-glass-green`** - Green tinted glass
+- **`.cs-glass-pink`** - Pink tinted glass
+- **`.cs-glass-amber`** - Amber tinted glass
+
+### Border Radius Variants
+- **`.cs-glass-rounded-sm`** - Small border radius (0.25rem)
+- **`.cs-glass-rounded`** - Default border radius (0.5rem)
+- **`.cs-glass-rounded-lg`** - Large border radius (0.75rem)
+- **`.cs-glass-rounded-xl`** - Extra large border radius (1rem)
+- **`.cs-glass-rounded-2xl`** - 2XL border radius (1.5rem)
+- **`.cs-glass-rounded-3xl`** - 3XL border radius (2rem)
 
 ### Shadow Variants
-- **`.glass-shadow`** - Glass with enhanced shadow
-- **`.glass-shadow-soft`** - Soft shadow variant
-- **`.glass-shadow-strong`** - Strong shadow variant
+- **`.cs-glass-shadow-sm`** - Small shadow
+- **`.cs-glass-shadow`** - Default shadow
+- **`.cs-glass-shadow-lg`** - Large shadow
+- **`.cs-glass-shadow-xl`** - Extra large shadow
 
-### Special Variants
-- **`.glass-frosted`** - Extra frosted glass effect
-- **`.glass-clear`** - Minimal glass effect
-- **`.glass-mirror`** - Mirror-like reflective effect
+### Component Classes
+- **`.cs-glass-card`** - Complete glass card component
+- **`.cs-glass-card-light`** - Light variant glass card
+- **`.cs-glass-nav`** - Glass navigation component
+- **`.cs-glass-nav-light`** - Light variant navigation
+- **`.cs-glass-button`** - Interactive glass button
+- **`.cs-glass-toast`** - Glass toast notification
+- **`.cs-glass-tooltip`** - Glass tooltip component
+- **`.cs-glass-dropdown`** - Glass dropdown component
+- **`.cs-glass-responsive`** - Responsive glass with container queries
 
 ## 🔧 Advanced Usage
 
 ### Glass Card with Custom Background
 ```html
-<div class="glass bg-gradient-to-r from-blue-500/20 to-purple-500/20">
+<div class="cs-glass bg-gradient-to-r from-blue-500/20 to-purple-500/20">
   <h2 class="text-white font-bold">Gradient Glass</h2>
   <p class="text-white/80">Beautiful gradient background</p>
 </div>
@@ -81,7 +102,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
 
 ### Glass Navigation
 ```html
-<nav class="glass glass-border bg-white/10 backdrop-blur-md">
+<nav class="cs-glass-nav bg-white/10">
   <div class="flex items-center justify-between p-4">
     <h1 class="text-white font-bold">Logo</h1>
     <div class="flex space-x-4">
@@ -96,7 +117,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
 ### Glass Modal
 ```html
 <div class="fixed inset-0 bg-black/50 flex items-center justify-center">
-  <div class="glass glass-lg glass-shadow max-w-md mx-4 p-6">
+  <div class="cs-glass cs-glass-lg cs-glass-shadow max-w-md mx-4 p-6">
     <h2 class="text-xl font-bold mb-4">Modal Title</h2>
     <p class="mb-4">This is a glass modal with backdrop blur.</p>
     <button class="bg-blue-500 text-white px-4 py-2 rounded">
@@ -108,7 +129,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
 
 ### Glass Form Elements
 ```html
-<div class="glass glass-border p-6">
+<div class="cs-glass-card p-6">
   <form class="space-y-4">
     <div>
       <label class="block text-sm font-medium mb-2">Email</label>
@@ -118,7 +139,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
         placeholder="Enter your email"
       >
     </div>
-    <button type="submit" class="w-full bg-white/20 text-white py-2 rounded-md hover:bg-white/30">
+    <button type="submit" class="w-full cs-glass-button">
       Subscribe
     </button>
   </form>
@@ -130,14 +151,14 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
 ### Hero Section with Glass
 ```html
 <div class="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 flex items-center justify-center p-4">
-  <div class="glass glass-lg glass-shadow text-center p-12 max-w-2xl">
+  <div class="cs-glass-card text-center max-w-2xl">
     <h1 class="text-4xl font-bold text-white mb-6">
       Welcome to the Future
     </h1>
     <p class="text-xl text-white/80 mb-8">
       Experience the beauty of modern glassmorphism design with our cutting-edge components.
     </p>
-    <button class="bg-white/20 text-white px-8 py-3 rounded-lg hover:bg-white/30 transition-colors">
+    <button class="cs-glass-button">
       Get Started
     </button>
   </div>
@@ -151,7 +172,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
     <h2 class="text-3xl font-bold text-white text-center mb-12">Our Services</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="glass glass-border p-6 text-center">
+      <div class="cs-glass-card text-center">
         <div class="w-16 h-16 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -161,7 +182,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
         <p class="text-white/80">Blazing fast performance with modern optimization techniques.</p>
       </div>
       
-      <div class="glass glass-border p-6 text-center">
+      <div class="cs-glass-card text-center">
         <div class="w-16 h-16 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -171,7 +192,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
         <p class="text-white/80">Built with reliability and stability in mind.</p>
       </div>
       
-      <div class="glass glass-border p-6 text-center">
+      <div class="cs-glass-card text-center">
         <div class="w-16 h-16 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -188,7 +209,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
 ### Glass Sidebar
 ```html
 <div class="flex min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-  <aside class="w-64 glass glass-border bg-white/5">
+  <aside class="w-64 cs-glass-nav bg-white/5">
     <div class="p-6">
       <h1 class="text-2xl font-bold text-white mb-8">Dashboard</h1>
       
@@ -210,7 +231,7 @@ A beautiful glassmorphism library for Tailwind CSS v4, providing modern glass ef
   </aside>
   
   <main class="flex-1 p-8">
-    <div class="glass glass-border p-8">
+    <div class="cs-glass-card">
       <h2 class="text-3xl font-bold text-white mb-6">Welcome Back</h2>
       <p class="text-white/80 text-lg">
         This is your main content area with a beautiful glass background.
