@@ -2,15 +2,16 @@
 
 A comprehensive collection of modern CSS effects and utilities for **Tailwind CSS v4**. Built with performance in mind, these plugins provide glassmorphism effects, animations, gradients, scroll animations, and essential utility classes—all optimized for modern build tools and framework compatibility.
 
-> **🚀 Latest (v0.5.7)**: Complete token-based system with **zero hard-coded colors**, **modern color-mix()**, **dark mode support**, **configurable design tokens**, and **automated testing**!
+> **🚀 Latest (v0.7.1)**: Full **Tailwind CSS v4 compatibility** with native plugin objects, comprehensive token system, **zero hard-coded colors**, **modern color-mix()**, **dark mode support**, and **automated testing**!
 
 ## ✨ Features
 
-- **🔌 Modern Plugin Architecture**: Native Tailwind CSS v4 plugins with full configurability and dynamic theming
-- **🎨 Token-Based System**: Complete CSS custom properties with zero hard-coded colors
-- **🌈 Dynamic Color Generation**: Uses CSS color-mix() functions for automatic color variants
+- **🔌 Tailwind CSS v4 Native**: Pure v4 plugin objects with handlers - no legacy v3 compatibility layer
+- **🎨 Comprehensive Token System**: Complete CSS custom properties with zero hard-coded colors
+- **🌈 Dynamic Color Generation**: Uses CSS color-mix() functions for automatic color variants  
 - **🌗 Dark Mode Native**: Full Tailwind `.dark` class + OS `prefers-color-scheme` support
 - **⚡ Performance Optimized**: Tree-shakeable plugins with minimal bundle impact
+- **🔧 Zero Dependencies**: Self-contained plugins with internal token definitions
 - **🎯 Complete Toolkit**: Animations, glassmorphism, gradients, scroll effects, navigation, and utilities
 - **📜 Optional JavaScript Helpers**: Enhanced functionality for scroll animations and navigation
 - **🚀 Zero Configuration**: Works out of the box, customize through plugin options or CSS variables
@@ -32,7 +33,7 @@ A comprehensive collection of modern CSS effects and utilities for **Tailwind CS
 | [`@casoon/tailwindcss-loading`](./packages/tailwindcss-loading) | Skeletons, progress indicators, and loading overlays | ✅ Plugin + Keyframes |
 | [`@casoon/tailwindcss-micro-interactions`](./packages/tailwindcss-micro-interactions) | Click/Hover/Focus micro‑interaction utilities | ✅ Plugin + Transitions |
 
-> **All packages v0.5.7** • Token-based system • Zero hard-coded colors • Dark mode support • Automated testing
+> **All packages v0.7.1** • Tailwind CSS v4 native • Complete token system • Zero hard-coded colors • Dark mode support • Automated testing
 
 ## 🚀 Quick Start
 
@@ -93,8 +94,8 @@ For projects that can't use plugins or need a simpler setup (CSS-only fallback):
 
 ```html
 <!-- Via CDN (jsdelivr) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/@casoon/tailwindcss-glass@0.5.7/index.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/@casoon/tailwindcss-animations@0.5.7/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/@casoon/tailwindcss-glass@0.7.1/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/@casoon/tailwindcss-animations@0.7.1/index.css">
 
 <!-- Via GitHub (raw files) -->
 <link rel="stylesheet" href="https://raw.githubusercontent.com/jseidel19/casoon-tailwind-effects/main/packages/tailwindcss-glass/index.css">
@@ -184,7 +185,7 @@ export default {
 
 ## 📋 Requirements
 
-- **Tailwind CSS v4.0+**
+- **Tailwind CSS v4.0+** (native v4 plugin format)
 - **Node.js 16+** (for plugin usage)
 - **Modern browser support**: CSS custom properties, CSS Grid, Flexbox
 - **Build tool**: Vite, Webpack, or compatible bundler

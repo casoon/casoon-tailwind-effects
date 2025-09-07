@@ -89,15 +89,21 @@ class GlobalClassExtractor {
   }
 
   /**
-   * Extract CSS class names from a plugin.js file using Tailwind Plugin API
+   * Extract CSS class names from a plugin.js file using Tailwind Plugin API (v4 compatible)
    */
   async extractClassesFromPlugin(pluginPath, packageName) {
     try {
       // Import the plugin dynamically
       const { default: plugin } = await import(pluginPath);
       
-      if (typeof plugin !== 'function') {
-        console.log(`${colors.yellow}⚠️  ${packageName}: Plugin is not a function${colors.reset}`);
+      // Check plugin format (v4 supports objects, arrays, and functions)
+      const isV4CSSObject = plugin && typeof plugin === 'object' && plugin['@layer utilities'];
+      const isV4Array = Array.isArray(plugin);
+      const isV4Plugin = plugin && typeof plugin === 'object' && (plugin.__isPlugin || plugin.config || plugin.handler);
+      const isFunction = typeof plugin === 'function';
+      
+      if (!plugin || (!isV4CSSObject && !isV4Array && !isV4Plugin && !isFunction)) {
+        console.log(`${colors.yellow}⚠️  ${packageName}: Unknown plugin format${colors.reset}`);
         this.extractedClasses.set(packageName, new Set());
         return [];
       }
@@ -152,25 +158,82 @@ class GlobalClassExtractor {
         }
       };
       
-      // Execute the plugin with our mock API
+      // Execute the plugin based on its type (v4 compatible)
       try {
-        const pluginConfig = plugin();
-        if (pluginConfig && pluginConfig.handler) {
-          pluginConfig.handler({
-            addUtilities: mockAddUtilities,
-            addComponents: mockAddComponents,
-            addBase: mockAddBase,
-            // Add other commonly used plugin APIs
-            theme: () => ({}),
-            variants: () => [],
-            e: (str) => str,
-            prefix: (str) => str,
-            addVariant: () => {},
-            addKeyframes: (keyframes) => {
-              // Keyframes might contain class-like selectors, but usually don't contribute to utility classes
-              // Just mock it to prevent errors
+        if (isV4CSSObject) {
+          // Handle pure CSS object (like utilities plugin)
+          console.log(`${colors.cyan}  📄 ${packageName}: Processing v4 CSS object${colors.reset}`);
+          if (plugin['@layer utilities']) {
+            mockAddUtilities(plugin['@layer utilities']);
+          }
+          if (plugin['@layer components']) {
+            mockAddComponents(plugin['@layer components']);
+          }
+          if (plugin['@layer base']) {
+            mockAddBase(plugin['@layer base']);
+          }
+        } else if (isV4Array) {
+          // Handle plugin array (like effects meta-package)
+          console.log(`${colors.cyan}  📁 ${packageName}: Processing v4 plugin array with ${plugin.length} plugins${colors.reset}`);
+          for (const subPlugin of plugin) {
+            await this.processIndividualPlugin(subPlugin, mockAddUtilities, mockAddComponents, mockAddBase, packageName);
+          }
+        } else if (isV4Plugin) {
+          // Handle v4 plugin objects - use handler for actual CSS generation
+          console.log(`${colors.cyan}  🔧 ${packageName}: Processing v4 plugin object${colors.reset}`);
+          if (plugin.handler && typeof plugin.handler === 'function') {
+            plugin.handler({
+              addUtilities: mockAddUtilities,
+              addComponents: mockAddComponents,
+              addBase: mockAddBase,
+              theme: () => ({}),
+              variants: () => [],
+              e: (str) => str,
+              prefix: (str) => str,
+              addVariant: () => {},
+              addKeyframes: () => {}
+            });
+          } else {
+            console.log(`${colors.yellow}  ⚠️  No handler found in v4 plugin object${colors.reset}`);
+          }
+        } else if (isFunction) {
+          // Handle v3/v4 plugin functions
+          console.log(`${colors.cyan}  🔧 ${packageName}: Processing plugin function${colors.reset}`);
+          
+          try {
+            // Try calling directly as v4 plugin function
+            plugin({
+              addUtilities: mockAddUtilities,
+              addComponents: mockAddComponents,
+              addBase: mockAddBase,
+              theme: () => ({}),
+              variants: () => [],
+              e: (str) => str,
+              prefix: (str) => str,
+              addVariant: () => {},
+              addKeyframes: () => {}
+            });
+          } catch (directCallError) {
+            // If that fails, try as v3-style plugin
+            try {
+              const pluginConfig = plugin();
+              if (pluginConfig && pluginConfig.handler) {
+                pluginConfig.handler({
+                  addUtilities: mockAddUtilities,
+                  addComponents: mockAddComponents,
+                  addBase: mockAddBase,
+                  theme: () => ({}),
+                  variants: () => [],
+                  e: (str) => str,
+                  prefix: (str) => str,
+                  addVariant: () => {},
+                  addKeyframes: () => {}
+                });
+              }
+            } catch (v3Error) {
+              throw new Error(`Could not execute plugin: ${directCallError.message}`);
             }
-          });
+          }
         }
       } catch (pluginError) {
         console.log(`${colors.yellow}⚠️  ${packageName}: Error executing plugin - ${pluginError.message}${colors.reset}`);
@@ -182,6 +245,74 @@ class GlobalClassExtractor {
       console.error(`${colors.red}Error extracting classes from ${packageName}:${colors.reset}`, error.message);
       this.extractedClasses.set(packageName, new Set());
       return [];
+    }
+  }
+
+  /**
+   * Process individual v4 plugin for arrays (like effects meta-package)
+   */
+  async processIndividualPlugin(plugin, mockAddUtilities, mockAddComponents, mockAddBase, packageName) {
+    if (!plugin) return;
+    
+    try {
+      // Check if it's a v4 plugin object with handler
+      if (typeof plugin === 'object' && plugin !== null && plugin.handler) {
+        plugin.handler({
+          addUtilities: mockAddUtilities,
+          addComponents: mockAddComponents,
+          addBase: mockAddBase,
+          theme: () => ({}),
+          variants: () => [],
+          e: (str) => str,
+          prefix: (str) => str,
+          addVariant: () => {},
+          addKeyframes: () => {}
+        });
+      } else if (typeof plugin === 'function') {
+        // Try calling as function (might be v4 plugin function)
+        try {
+          plugin({
+            addUtilities: mockAddUtilities,
+            addComponents: mockAddComponents,
+            addBase: mockAddBase,
+            theme: () => ({}),
+            variants: () => [],
+            e: (str) => str,
+            prefix: (str) => str,
+            addVariant: () => {},
+            addKeyframes: () => {}
+          });
+        } catch (error) {
+          // If direct call fails, try as v3-style plugin
+          const pluginResult = plugin();
+          if (pluginResult && pluginResult.handler) {
+            pluginResult.handler({
+              addUtilities: mockAddUtilities,
+              addComponents: mockAddComponents,
+              addBase: mockAddBase,
+              theme: () => ({}),
+              variants: () => [],
+              e: (str) => str,
+              prefix: (str) => str,
+              addVariant: () => {},
+              addKeyframes: () => {}
+            });
+          }
+        }
+      } else if (typeof plugin === 'object' && plugin !== null) {
+        // Handle CSS object
+        if (plugin['@layer utilities']) {
+          mockAddUtilities(plugin['@layer utilities']);
+        }
+        if (plugin['@layer components']) {
+          mockAddComponents(plugin['@layer components']);
+        }
+        if (plugin['@layer base']) {
+          mockAddBase(plugin['@layer base']);
+        }
+      }
+    } catch (error) {
+      console.log(`${colors.yellow}  ⚠️  Error processing individual plugin in ${packageName}: ${error.message}${colors.reset}`);
     }
   }
 

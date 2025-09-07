@@ -81,7 +81,7 @@ class CSSBuilder {
       // Handle v4 plugin structure - now that tailwindcss is installed
       const isV4CSSObject = plugin && typeof plugin === 'object' && plugin['@layer utilities'];
       const isV4Array = Array.isArray(plugin);
-      const isV4Plugin = plugin && typeof plugin === 'object' && (plugin.__isPlugin || plugin.config);
+      const isV4Plugin = plugin && typeof plugin === 'object' && (plugin.__isPlugin || plugin.config || plugin.handler);
       const isFunction = typeof plugin === 'function';
       
       if (!plugin || (!isV4CSSObject && !isV4Array && !isV4Plugin && !isFunction)) {

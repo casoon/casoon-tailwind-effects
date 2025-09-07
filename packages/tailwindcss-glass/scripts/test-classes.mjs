@@ -94,7 +94,7 @@ class ClassCompatibilityTest {
   }
 
   /**
-   * Test: Plugin file is valid JavaScript
+   * Test: Plugin file is valid JavaScript (v4 compatible)
    */
   async testPluginSyntax() {
     const testName = 'Plugin Syntax Valid';
@@ -104,12 +104,19 @@ class ClassCompatibilityTest {
       
       // Basic functional test - try to load and invoke the plugin
       try {
-        const plugin = await import(pluginPath);
-        if (typeof plugin.default !== 'function') {
-          throw new Error('Plugin default export must be a function');
+        const { default: plugin } = await import(pluginPath);
+        
+        // Check v4 plugin formats
+        const isV4CSSObject = plugin && typeof plugin === 'object' && plugin['@layer utilities'];
+        const isV4Array = Array.isArray(plugin);
+        const isV4Plugin = plugin && typeof plugin === 'object' && (plugin.__isPlugin || plugin.config || plugin.handler);
+        const isFunction = typeof plugin === 'function';
+        
+        if (!plugin || (!isV4CSSObject && !isV4Array && !isV4Plugin && !isFunction)) {
+          throw new Error('Plugin must be a v4-compatible object, array, or function');
         }
         
-        // Test plugin execution
+        // Test plugin execution based on type
         const mockApi = {
           addUtilities: () => {},
           addComponents: () => {},
@@ -117,15 +124,41 @@ class ClassCompatibilityTest {
           theme: () => ({}),
           matchUtilities: () => {},
           addKeyframes: () => {},
-          e: (name) => name
+          e: (name) => name,
+          addVariant: () => {},
+          prefix: (str) => str,
+          variants: () => []
         };
         
-        const result = plugin.default();
-        if (!result || typeof result.handler !== 'function') {
-          throw new Error('Plugin must return an object with a handler function');
+        if (isV4Plugin && plugin.handler) {
+          // v4 plugin object with handler
+          plugin.handler(mockApi);
+        } else if (isV4CSSObject) {
+          // v4 CSS object - no execution needed, just validate structure
+          if (!plugin['@layer utilities'] && !plugin['@layer components'] && !plugin['@layer base']) {
+            throw new Error('v4 CSS object must contain at least one @layer');
+          }
+        } else if (isV4Array) {
+          // v4 plugin array - validate each plugin
+          for (const subPlugin of plugin) {
+            if (subPlugin && typeof subPlugin === 'object' && subPlugin.handler) {
+              subPlugin.handler(mockApi);
+            }
+          }
+        } else if (isFunction) {
+          // v3/v4 function - try both approaches
+          try {
+            plugin(mockApi); // v4 direct call
+          } catch (directError) {
+            // Try v3 approach
+            const result = plugin();
+            if (!result || typeof result.handler !== 'function') {
+              throw new Error('Plugin function must return an object with a handler or accept API directly');
+            }
+            result.handler(mockApi);
+          }
         }
         
-        result.handler(mockApi);
       } catch (error) {
         throw new Error(`Plugin functionality test failed: ${error.message}`);
       }

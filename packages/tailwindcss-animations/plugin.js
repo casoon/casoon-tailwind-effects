@@ -1,50 +1,103 @@
-import plugin from 'tailwindcss/plugin';
-
 /**
- * @casoon/tailwindcss-animations - Tailwind CSS Plugin
- * 
- * Provides comprehensive animation utilities and keyframes for Tailwind CSS v4.
- * Includes transitions, transforms, and motion-safe variants.
+ * @casoon/tailwindcss-animations - Tailwind CSS v4 Plugin
  */
-export default plugin(function ({ addUtilities, addComponents, addBase, theme }) {
-  // Get configuration options from theme
-  const options = theme('animations') || {};
-  
-  // Default tokens
-  const defaultTokens = {
-    durations: {
-      xxs: '100ms',
-      xs: '150ms', 
-      sm: '200ms',
-      md: '300ms',
-      lg: '500ms',
-      xl: '700ms',
-      '2xl': '1000ms'
-    },
-    easing: {
-      standard: 'cubic-bezier(0.2, 0, 0, 1)',
-      emphasized: 'cubic-bezier(0.3, 0, 0.8, 0.15)',
-      decelerate: 'cubic-bezier(0.05, 0.7, 0.1, 1)',
-      accelerate: 'cubic-bezier(0.3, 0, 1, 1)',
-      spring: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-      softSpring: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-    },
-    colors: {
-      shadowInk: '#000'
-    },
-    motionSafety: {
-      duration: '1ms',
-      ease: 'ease'
-    }
-  };
+const plugin = {
+  handler: ({ addUtilities, addComponents, addKeyframes, addBase }) => {
+    // Comprehensive tokens definition for v4 compatibility
+    const tokens = {
+      colors: {
+        // Basic colors
+        white: '#ffffff',
+        black: '#000000',
+        // Glass colors
+        blue: '#3b82f6',
+        purple: '#8b5cf6',
+        green: '#10b981',
+        pink: '#ec4899',
+        amber: '#f59e0b',
+        // Orb colors
+        'blue-light': '#60a5fa',
+        'blue-lighter': '#93c5fd',
+        'purple-light': '#a78bfa',
+        'purple-lighter': '#c4b5fd',
+        'pink-light': '#f472b6',
+        'pink-lighter': '#f9a8d4',
+        'custom-primary': '#3b82f6',
+        'custom-secondary': '#8b5cf6', 
+        'custom-accent': '#ec4899',
+        // Gradient colors
+        'sunset-start': '#f59e0b',
+        'sunset-mid': '#ef4444',
+        'sunset-end': '#ec4899',
+        'ocean-start': '#0ea5e9',
+        'ocean-end': '#3b82f6',
+        'fire-start': '#ef4444',
+        'fire-end': '#dc2626',
+        'mint-start': '#10b981',
+        'mint-end': '#059669',
+        'purple-start': '#8b5cf6',
+        'purple-end': '#7c3aed',
+        'orange-start': '#f97316',
+        'orange-end': '#ea580c',
+        'blue-start': '#3b82f6',
+        'blue-end': '#2563eb',
+        'pink-start': '#ec4899',
+        'pink-end': '#db2777',
+        'custom-start': '#3b82f6',
+        'custom-mid': '#8b5cf6',
+        'custom-end': '#ec4899',
+        // Loading colors
+        'spinner-base': '#e5e7eb',
+        'spinner-active': '#3b82f6',
+        // Micro-interactions colors
+        'focus-ring': '#3b82f6',
+        shadow: '#000000',
+        // Navigation colors
+        primary: '#3b82f6',
+        'text-muted': '#6b7280',
+        border: '#e5e7eb',
+        // Animation colors
+        shadowInk: '#000000'
+      },
+      opacity: {
+        weak: '15%',
+        light: '20%',
+        medium: '40%',
+        strong: '60%',
+        'border-light': '20%',
+        'border-medium': '30%',
+        'border-strong': '50%',
+        'shadow-light': '10%',
+        'shadow-medium': '25%',
+        'shadow-strong': '40%',
+        'shadow-xl': '60%',
+        tooltip: '90%',
+        'focus-strong': '40%',
+        'focus-medium': '25%'
+      },
+      durations: {
+        xxs: '100ms',
+        xs: '150ms',
+        sm: '200ms',
+        md: '300ms',
+        lg: '500ms',
+        xl: '700ms',
+        '2xl': '1000ms'
+      },
+      easing: {
+        standard: 'cubic-bezier(0.2, 0, 0, 1)',
+        emphasized: 'cubic-bezier(0.05, 0.7, 0.1, 1)',
+        decelerate: 'cubic-bezier(0, 0, 0.2, 1)',
+        accelerate: 'cubic-bezier(0.4, 0, 1, 1)',
+        spring: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        softSpring: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+      },
+      motionSafety: {
+        duration: '100ms',
+        ease: 'linear'
+      }
+    };
 
-  // Merge user tokens with defaults
-  const tokens = {
-    durations: { ...defaultTokens.durations, ...(options.tokens?.durations || {}) },
-    easing: { ...defaultTokens.easing, ...(options.tokens?.easing || {}) },
-    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
-    motionSafety: { ...defaultTokens.motionSafety, ...(options.tokens?.motionSafety || {}) }
-  };
       // CSS Custom Properties (Design Tokens)
       addBase({
         ':root': {
@@ -74,86 +127,86 @@ export default plugin(function ({ addUtilities, addComponents, addBase, theme })
         }
       });
 
-      // Add keyframes directly in addBase for v4 compatibility
-      addBase({
-        '@keyframes anim-fade-in': {
+      // Add keyframes
+      addKeyframes({
+        'anim-fade-in': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' }
         },
-        '@keyframes anim-fade-out': {
+        'anim-fade-out': {
           '0%': { opacity: '1' },
           '100%': { opacity: '0' }
         },
-        '@keyframes anim-scale-in': {
+        'anim-scale-in': {
           '0%': { opacity: '0', transform: 'scale(0.9)' },
           '100%': { opacity: '1', transform: 'scale(1)' }
         },
-        '@keyframes anim-scale-out': {
+        'anim-scale-out': {
           '0%': { opacity: '1', transform: 'scale(1)' },
           '100%': { opacity: '0', transform: 'scale(0.9)' }
         },
-        '@keyframes anim-slide-up': {
+        'anim-slide-up': {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
         },
-        '@keyframes anim-slide-down': {
+        'anim-slide-down': {
           '0%': { opacity: '0', transform: 'translateY(-20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
         },
-        '@keyframes anim-slide-left': {
+        'anim-slide-left': {
           '0%': { opacity: '0', transform: 'translateX(20px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' }
         },
-        '@keyframes anim-slide-right': {
+        'anim-slide-right': {
           '0%': { opacity: '0', transform: 'translateX(-20px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' }
         },
-        '@keyframes anim-blur-in': {
+        'anim-blur-in': {
           '0%': { opacity: '0', filter: 'blur(4px)' },
           '100%': { opacity: '1', filter: 'blur(0)' }
         },
-        '@keyframes anim-blur-out': {
+        'anim-blur-out': {
           '0%': { opacity: '1', filter: 'blur(0)' },
           '100%': { opacity: '0', filter: 'blur(4px)' }
         },
-        '@keyframes anim-rotate-in': {
+        'anim-rotate-in': {
           '0%': { opacity: '0', transform: 'rotate(-5deg)' },
           '100%': { opacity: '1', transform: 'rotate(0deg)' }
         },
-        '@keyframes anim-rotate': {
+        'anim-rotate': {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
         },
-        '@keyframes anim-pulse': {
+        'anim-pulse': {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' }
         },
-        '@keyframes anim-bounce': {
+        'anim-bounce': {
           '0%, 100%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
           '50%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' }
         },
-        '@keyframes anim-wiggle': {
+        'anim-wiggle': {
           '0%, 100%': { transform: 'rotate(0deg)' },
           '25%': { transform: 'rotate(-3deg)' },
           '75%': { transform: 'rotate(3deg)' }
         },
-        '@keyframes anim-reveal-3d-up': {
+        'anim-reveal-3d-up': {
           '0%': { opacity: '0', transform: 'rotateX(-90deg)' },
           '100%': { opacity: '1', transform: 'rotateX(0deg)' }
         },
-        '@keyframes anim-reveal-3d-right': {
+        'anim-reveal-3d-right': {
           '0%': { opacity: '0', transform: 'rotateY(90deg)' },
           '100%': { opacity: '1', transform: 'rotateY(0deg)' }
         },
-        '@keyframes anim-marquee': {
+        'anim-marquee': {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(-100%)' }
         },
-        '@keyframes anim-parallax-y': {
+        'anim-parallax-y': {
           '0%': { transform: 'translateY(-10px)' },
           '100%': { transform: 'translateY(10px)' }
         },
-        '@keyframes anim-progress-grow': {
+        'anim-progress-grow': {
           '0%': { width: '0%' },
           '100%': { width: '100%' }
         }
@@ -275,39 +328,7 @@ export default plugin(function ({ addUtilities, addComponents, addBase, theme })
           }
         }
       });
-}, {
-  // Theme configuration
-  theme: {
-    extend: {
-      animations: {
-        // Default configuration can be overridden by users
-        tokens: {
-          durations: {
-            xxs: '100ms',
-            xs: '150ms', 
-            sm: '200ms',
-            md: '300ms',
-            lg: '500ms',
-            xl: '700ms',
-            '2xl': '1000ms'
-          },
-          easing: {
-            standard: 'cubic-bezier(0.2, 0, 0, 1)',
-            emphasized: 'cubic-bezier(0.3, 0, 0.8, 0.15)',
-            decelerate: 'cubic-bezier(0.05, 0.7, 0.1, 1)',
-            accelerate: 'cubic-bezier(0.3, 0, 1, 1)',
-            spring: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-            softSpring: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-          },
-          colors: {
-            shadowInk: '#000'
-          },
-          motionSafety: {
-            duration: '1ms',
-            ease: 'ease'
-          }
-        }
-      }
     }
-  }
-});
+};
+
+export default plugin;

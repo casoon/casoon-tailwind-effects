@@ -1,55 +1,103 @@
-import plugin from 'tailwindcss/plugin';
-
 /**
- * @casoon/tailwindcss-gradients - Tailwind CSS Plugin
- * 
- * Beautiful gradient utilities for Tailwind CSS v4.
+ * @casoon/tailwindcss-gradients - Tailwind CSS v4 Plugin
  */
-export default plugin(function ({ addUtilities, addBase, theme }) {
-  // Get configuration options from theme
-  const options = theme('gradients') || {};
-  
-  // Default color tokens
-  const defaultTokens = {
-    colors: {
-      // Sunset gradient colors
-      'sunset-start': '#ff6b6b',
-      'sunset-mid': '#ffd93d', 
-      'sunset-end': '#6bcf7f',
-      // Ocean gradient colors
-      'ocean-start': '#667eea',
-      'ocean-end': '#764ba2',
-      // Fire gradient colors
-      'fire-start': '#f093fb',
-      'fire-end': '#f5576c',
-      // Mint gradient colors
-      'mint-start': '#4facfe',
-      'mint-end': '#00f2fe',
-      // Purple gradient colors
-      'purple-start': '#a8edea',
-      'purple-end': '#fed6e3',
-      // Orange gradient colors
-      'orange-start': '#ffeaa7',
-      'orange-end': '#fab1a0',
-      // Blue gradient colors
-      'blue-start': '#74b9ff',
-      'blue-end': '#0984e3',
-      // Pink gradient colors
-      'pink-start': '#fd79a8',
-      'pink-end': '#fdcb6e',
-      // Custom gradient colors (user-definable)
-      'custom-start': '#667eea',
-      'custom-mid': null,  // Optional middle color
-      'custom-end': '#764ba2',
-      // Neutral colors
-      'white': '#ffffff'
-    }
-  };
-  
-  // Merge with user options
-  const tokens = {
-    colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) }
-  };
+const plugin = {
+  handler: ({ addUtilities, addBase }) => {
+    // Comprehensive tokens definition for v4 compatibility
+    const tokens = {
+      colors: {
+        // Basic colors
+        white: '#ffffff',
+        black: '#000000',
+        // Glass colors
+        blue: '#3b82f6',
+        purple: '#8b5cf6',
+        green: '#10b981',
+        pink: '#ec4899',
+        amber: '#f59e0b',
+        // Orb colors
+        'blue-light': '#60a5fa',
+        'blue-lighter': '#93c5fd',
+        'purple-light': '#a78bfa',
+        'purple-lighter': '#c4b5fd',
+        'pink-light': '#f472b6',
+        'pink-lighter': '#f9a8d4',
+        'custom-primary': '#3b82f6',
+        'custom-secondary': '#8b5cf6', 
+        'custom-accent': '#ec4899',
+        // Gradient colors
+        'sunset-start': '#f59e0b',
+        'sunset-mid': '#ef4444',
+        'sunset-end': '#ec4899',
+        'ocean-start': '#0ea5e9',
+        'ocean-end': '#3b82f6',
+        'fire-start': '#ef4444',
+        'fire-end': '#dc2626',
+        'mint-start': '#10b981',
+        'mint-end': '#059669',
+        'purple-start': '#8b5cf6',
+        'purple-end': '#7c3aed',
+        'orange-start': '#f97316',
+        'orange-end': '#ea580c',
+        'blue-start': '#3b82f6',
+        'blue-end': '#2563eb',
+        'pink-start': '#ec4899',
+        'pink-end': '#db2777',
+        'custom-start': '#3b82f6',
+        'custom-mid': '#8b5cf6',
+        'custom-end': '#ec4899',
+        // Loading colors
+        'spinner-base': '#e5e7eb',
+        'spinner-active': '#3b82f6',
+        // Micro-interactions colors
+        'focus-ring': '#3b82f6',
+        shadow: '#000000',
+        // Navigation colors
+        primary: '#3b82f6',
+        'text-muted': '#6b7280',
+        border: '#e5e7eb',
+        // Animation colors
+        shadowInk: '#000000'
+      },
+      opacity: {
+        weak: '15%',
+        light: '20%',
+        medium: '40%',
+        strong: '60%',
+        'border-light': '20%',
+        'border-medium': '30%',
+        'border-strong': '50%',
+        'shadow-light': '10%',
+        'shadow-medium': '25%',
+        'shadow-strong': '40%',
+        'shadow-xl': '60%',
+        tooltip: '90%',
+        'focus-strong': '40%',
+        'focus-medium': '25%'
+      },
+      durations: {
+        xxs: '100ms',
+        xs: '150ms',
+        sm: '200ms',
+        md: '300ms',
+        lg: '500ms',
+        xl: '700ms',
+        '2xl': '1000ms'
+      },
+      easing: {
+        standard: 'cubic-bezier(0.2, 0, 0, 1)',
+        emphasized: 'cubic-bezier(0.05, 0.7, 0.1, 1)',
+        decelerate: 'cubic-bezier(0, 0, 0.2, 1)',
+        accelerate: 'cubic-bezier(0.4, 0, 1, 1)',
+        spring: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        softSpring: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+      },
+      motionSafety: {
+        duration: '100ms',
+        ease: 'linear'
+      }
+    };
+
       // Add CSS custom properties (tokens)
       addBase({
         ':root': {
@@ -181,52 +229,14 @@ export default plugin(function ({ addUtilities, addBase, theme }) {
         '.cs-gradient-animate': {
           'background-size': '400% 400%',
           'animation': 'gradient-shift 4s ease infinite'
-        }
-      });
-      
-      // Add keyframes for animated gradients
-      addBase({
+        },
         '@keyframes gradient-shift': {
           '0%': { 'background-position': '0% 50%' },
           '50%': { 'background-position': '100% 50%' },
           '100%': { 'background-position': '0% 50%' }
         }
       });
-}, {
-  // Theme configuration
-  theme: {
-    extend: {
-      gradients: {
-        // Default configuration can be overridden by users
-        tokens: {
-          colors: {
-            'sunset-start': '#ff6b6b',
-            'sunset-mid': '#ffd93d', 
-            'sunset-end': '#6bcf7f',
-            'ocean-start': '#667eea',
-            'ocean-end': '#764ba2',
-            'fire-start': '#f093fb',
-            'fire-end': '#f5576c',
-            'mint-start': '#4facfe',
-            'mint-end': '#00f2fe',
-            'purple-start': '#a8edea',
-            'purple-end': '#fed6e3',
-            'orange-start': '#ffeaa7',
-            'orange-end': '#fab1a0',
-            'blue-start': '#74b9ff',
-            'blue-end': '#0984e3',
-            'pink-start': '#fd79a8',
-            'pink-end': '#fdcb6e',
-            'custom-start': '#667eea',
-            'custom-mid': null,
-            'custom-end': '#764ba2',
-            'white': '#ffffff'
-          }
-        }
-      }
     }
-  }
-});
+};
 
-// Export both default and named export for flexibility
-export { plugin as gradients };
+export default plugin;

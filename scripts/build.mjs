@@ -24,11 +24,19 @@ const validatePluginFiles = (packagePath) => {
     return false;
   }
   
-  // Basic syntax validation
+  // Basic syntax validation - support both v3 functions and v4 objects
   try {
     const pluginContent = readFileSync(pluginJSPath, 'utf8');
-    if (!pluginContent.includes('export default function') && !pluginContent.includes('export {')) {
-      throw new Error('Missing default export function');
+    
+    // Check for v4 plugin object (const plugin = { handler: ... }; export default plugin)
+    const hasV4Object = pluginContent.includes('handler:') && pluginContent.includes('export default');
+    
+    // Check for v3 function (export default function) or direct object export
+    const hasV3Function = pluginContent.includes('export default function');
+    const hasDirectExport = pluginContent.includes('export {');
+    
+    if (!hasV4Object && !hasV3Function && !hasDirectExport) {
+      throw new Error('Missing valid plugin export (v4 object with handler or v3 function)');
     }
     
     console.log(`✅ Plugin files valid for ${packageName}`);
