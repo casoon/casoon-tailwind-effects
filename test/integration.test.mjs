@@ -19,29 +19,14 @@ async function runIntegrationTests() {
     console.log('📦 Testing main plugin import...');
     const effects = await import('@casoon/tailwindcss-effects');
     
-    if (typeof effects.default !== 'function') {
-      throw new Error('Default export is not a function');
+    // v4 plugin objects have direct handler, not function export
+    if (typeof effects.default !== 'object' || !effects.default.handler) {
+      throw new Error('Default export is not a v4 plugin object with handler');
     }
     
-    // Test plugin creation - should return array of plugins
-    const pluginArray = effects.default();
-    if (!Array.isArray(pluginArray)) {
-      throw new Error('Plugin should return an array of plugins');
+    if (typeof effects.default.handler !== 'function') {
+      throw new Error('Plugin handler is not a function');
     }
-    
-    if (pluginArray.length === 0) {
-      throw new Error('Plugin array should not be empty');
-    }
-    
-    // Each item in array should be a plugin object with handler
-    pluginArray.forEach((plugin, index) => {
-      if (!plugin || typeof plugin !== 'object') {
-        throw new Error(`Plugin at index ${index} is not an object`);
-      }
-      if (!plugin.handler || typeof plugin.handler !== 'function') {
-        throw new Error(`Plugin at index ${index} does not have handler function`);
-      }
-    });
     
     console.log('✅ Main plugin import works');
     
@@ -53,17 +38,18 @@ async function runIntegrationTests() {
   // Test 2: Can import individual plugins
   try {
     console.log('📦 Testing individual plugin imports...');
-    const effects = await import('@casoon/tailwindcss-effects');
-    const { animations, glass, utilities } = effects;
+    const animations = await import('@casoon/tailwindcss-animations');
+    const glass = await import('@casoon/tailwindcss-glass');
+    const utilities = await import('@casoon/tailwindcss-utilities');
     
-    if (typeof animations !== 'function') {
-      throw new Error('animations export is not a function');
+    if (typeof animations.default !== 'object' || !animations.default.handler) {
+      throw new Error('animations export is not a v4 plugin object');
     }
-    if (typeof glass !== 'function') {
-      throw new Error('glass export is not a function');
+    if (typeof glass.default !== 'object' || !glass.default.handler) {
+      throw new Error('glass export is not a v4 plugin object');
     }
-    if (typeof utilities !== 'function') {
-      throw new Error('utilities export is not a function');
+    if (typeof utilities.default !== 'object' || !utilities.default.handler) {
+      throw new Error('utilities export is not a v4 plugin object');
     }
     
     console.log('✅ Individual plugin imports work');
@@ -80,12 +66,11 @@ async function runIntegrationTests() {
     
     const testScript = `
       const effects = require('@casoon/tailwindcss-effects');
-      if (typeof effects !== 'function') {
-        throw new Error('CJS import failed');
+      if (typeof effects !== 'object' || !effects.handler) {
+        throw new Error('CJS import failed - expected v4 plugin object');
       }
-      const plugin = effects();
-      if (!plugin.handler) {
-        throw new Error('CJS plugin creation failed - CJS uses single handler approach');
+      if (typeof effects.handler !== 'function') {
+        throw new Error('CJS plugin handler is not a function');
       }
       console.log('CJS import successful');
     `;
