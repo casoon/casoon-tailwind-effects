@@ -381,9 +381,9 @@ Use these minimal per‑mode overrides to align utilities with your brand:
 ```css
 /* Override tokens for your brand */
 :root {
-  --cs-bg-surface: var(--brand-surface);
-  --cs-text-primary: var(--brand-text);
-  --cs-border-color: var(--brand-border);
+  --cs-bg-surface: var(--cs-brand-surface);
+  --cs-text-primary: var(--cs-brand-text);
+  --cs-border-color: var(--cs-brand-border);
 }
 ```
 

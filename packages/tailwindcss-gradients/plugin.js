@@ -144,21 +144,21 @@ export default function gradientsPlugin(options = {}) {
         
         // Radial gradients
         '.gradient-radial-center': {
-          'background': 'radial-gradient(circle at center, var(--tw-gradient-stops))'
+          'background': 'radial-gradient(circle at center, var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)))'
         },
         '.gradient-radial-top': {
-          'background': 'radial-gradient(circle at top, var(--tw-gradient-stops))'
+          'background': 'radial-gradient(circle at top, var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)))'
         },
         '.gradient-radial-bottom': {
-          'background': 'radial-gradient(circle at bottom, var(--tw-gradient-stops))'
+          'background': 'radial-gradient(circle at bottom, var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)))'
         },
         
         // Conic gradients
         '.gradient-conic': {
-          'background': 'conic-gradient(var(--tw-gradient-stops))'
+          'background': 'conic-gradient(var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)))'
         },
         '.gradient-conic-center': {
-          'background': 'conic-gradient(from 0deg at 50% 50%, var(--tw-gradient-stops))'
+          'background': 'conic-gradient(from 0deg at 50% 50%, var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)))'
         },
         
         // Gradient borders (using pseudo-elements)

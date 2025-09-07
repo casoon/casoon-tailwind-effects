@@ -25,12 +25,12 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 
 ```css
 :root {
-  --text-grad-from: #ffffff;
-  --text-grad-to:   #94a3b8;
+  --cs-text-grad-from: #ffffff;
+  --cs-text-grad-to:   #94a3b8;
 }
 :where(.dark) {
-  --text-grad-from: #e5e7eb;
-  --text-grad-to:   #94a3b8;
+  --cs-text-grad-from: #e5e7eb;
+  --cs-text-grad-to:   #94a3b8;
 }
 ```
 
@@ -226,7 +226,7 @@ Radial shape/size and position helpers:
 
 Conic progress ring (CSS‑only):
 ```html
-<div class="gradient-conic-progress" style="--value:72; --g-size:64px; --g-thickness:10px; --g-color: var(--gradient-primary-from)"></div>
+<div class="gradient-conic-progress" style="--value:72; --g-size:64px; --g-thickness:10px; --g-color: var(--cs-gradient-primary-from)"></div>
 ```
 
 Stop density presets (control mid stop position):
@@ -382,14 +382,14 @@ Override default values with CSS custom properties:
 
 ```css
 :root {
-  --gradient-angle: 135deg;
-  --gradient-stop-1: #667eea;
-  --gradient-stop-2: #764ba2;
-  --gradient-stop-3: #f093fb;
-  --gradient-accent-from: #ff6b6b;
-  --gradient-accent-to: #4ecdc4;
-  --gradient-surface-subtle-from: #f8fafc;
-  --gradient-surface-subtle-to: #e2e8f0;
+  --cs-gradient-angle: 135deg;
+  --cs-gradient-stop-1: #667eea;
+  --cs-gradient-stop-2: #764ba2;
+  --cs-gradient-stop-3: #f093fb;
+  --cs-gradient-accent-from: #ff6b6b;
+  --cs-gradient-accent-to: #4ecdc4;
+  --cs-gradient-surface-subtle-from: #f8fafc;
+  --cs-gradient-surface-subtle-to: #e2e8f0;
 }
 ```
 
@@ -399,10 +399,10 @@ Create your own gradient effects:
 ```css
 .gradient-custom {
   background: linear-gradient(
-    var(--gradient-angle),
-    var(--gradient-stop-1),
-    var(--gradient-stop-2),
-    var(--gradient-stop-3)
+    var(--cs-gradient-angle),
+    var(--cs-gradient-stop-1),
+    var(--cs-gradient-stop-2),
+    var(--cs-gradient-stop-3)
   );
 }
 ```
@@ -411,18 +411,18 @@ Create your own gradient effects:
 ```css
 /* Light theme */
 .gradient-theme-light {
-  --gradient-surface-subtle-from: #f8fafc;
-  --gradient-surface-subtle-to: #e2e8f0;
-  --gradient-text-from: #1e293b;
-  --gradient-text-to: #475569;
+  --cs-gradient-surface-subtle-from: #f8fafc;
+  --cs-gradient-surface-subtle-to: #e2e8f0;
+  --cs-gradient-text-from: #1e293b;
+  --cs-gradient-text-to: #475569;
 }
 
 /* Dark theme */
 .gradient-theme-dark {
-  --gradient-surface-subtle-from: #1e293b;
-  --gradient-surface-subtle-to: #334155;
-  --gradient-text-from: #f1f5f9;
-  --gradient-text-to: #cbd5e1;
+  --cs-gradient-surface-subtle-from: #1e293b;
+  --cs-gradient-surface-subtle-to: #334155;
+  --cs-gradient-text-from: #f1f5f9;
+  --cs-gradient-text-to: #cbd5e1;
 }
 ```
 
@@ -472,7 +472,7 @@ const GradientCard = ({ title, children, variant = 'default' }) => (
 // Styled-components example
 const GradientContainer = styled.div`
   ${gradientStyles}
-  background: ${props => props.gradient || 'var(--gradient-default)'};
+  background: ${props => props.gradient || 'var(--cs-gradient-default)'};
 `;
 ```
 

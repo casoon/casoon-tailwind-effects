@@ -26,12 +26,12 @@ A comprehensive navigation component library for Tailwind CSS v4, featuring flex
 
 ```css
 :root { /* light */
-  --nav-bg: #ffffff;
-  --nav-fg: #0f172a;
+  --cs-nav-bg: #ffffff;
+  --cs-nav-fg: #0f172a;
 }
 :where(.dark) { /* dark */
-  --nav-bg: rgba(15,23,42,.90);
-  --nav-fg: #e5e7eb;
+  --cs-nav-bg: rgba(15,23,42,.90);
+  --cs-nav-fg: #e5e7eb;
 }
 ```
 
@@ -137,7 +137,7 @@ Build vertical, sticky sidebars using dedicated helpers:
 ```
 
 Helpers
-- `.sidebar`: vertical rail with `--sidebar-width`, uses `--nav-*` tokens
+- `.sidebar`: vertical rail with `--sidebar-width`, uses `--cs-nav-*` tokens
 - `.sidebar-sticky`: `position: sticky; top: var(--sidebar-top)`
 - `.sidebar-scroll`: constrained scroll area (100dvh)
 - `.sidebar-section`, `.sidebar-heading`: structure + small heading style
@@ -211,16 +211,16 @@ Set surface and text tokens per mode:
 
 ```css
 :root {
-  --nav-bg:#fff;
-  --nav-fg:#0f172a;
-  --nav-border:rgba(0,0,0,.12);
-  --nav-bg-hover: rgba(0,0,0,.06);
+  --cs-nav-bg:#fff;
+  --cs-nav-fg:#0f172a;
+  --cs-nav-border:rgba(0,0,0,.12);
+  --cs-nav-bg-hover: rgba(0,0,0,.06);
 }
 :where(.dark){
-  --nav-bg:rgba(15,23,42,.90);
-  --nav-fg:#e5e7eb;
-  --nav-border:rgba(255,255,255,.28);
-  --nav-bg-hover: rgba(255,255,255,.10);
+  --cs-nav-bg:rgba(15,23,42,.90);
+  --cs-nav-fg:#e5e7eb;
+  --cs-nav-border:rgba(255,255,255,.28);
+  --cs-nav-bg-hover: rgba(255,255,255,.10);
 }
 ```
 
@@ -379,14 +379,14 @@ Override default values with CSS custom properties:
 
 ```css
 :root {
-  --nav-gap: 1rem;
-  --nav-link-py: 0.5rem;
-  --nav-link-px: 1rem;
-  --nav-link-radius: 0.375rem;
-  --nav-fg: #374151;
-  --nav-bg-hover: #f3f4f6;
-  --nav-accent-from: #3b82f6;
-  --nav-accent-to: #1d4ed8;
+  --cs-nav-gap: 1rem;
+  --cs-nav-link-py: 0.5rem;
+  --cs-nav-link-px: 1rem;
+  --cs-nav-link-radius: 0.375rem;
+  --cs-nav-fg: #374151;
+  --cs-nav-bg-hover: #f3f4f6;
+  --cs-nav-accent-from: #3b82f6;
+  --cs-nav-accent-to: #1d4ed8;
 }
 ```
 
@@ -395,10 +395,10 @@ Create your own navigation themes:
 
 ```css
 .nav-theme-custom {
-  --nav-bg: var(--custom-bg);
-  --nav-fg: var(--custom-fg);
-  --nav-bg-hover: var(--custom-hover);
-  --nav-border: var(--custom-border);
+  --cs-nav-bg: var(--cs-custom-bg);
+  --cs-nav-fg: var(--cs-custom-fg);
+  --cs-nav-bg-hover: var(--cs-custom-hover);
+  --cs-nav-border: var(--cs-custom-border);
 }
 ```
 
@@ -406,7 +406,7 @@ Create your own navigation themes:
 Extend the library with your own navigation styles:
 
 ```css
-.nav--custom .nav-link {
+.nav--cs-custom .nav-link {
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
   color: white;
   border-radius: 20px;

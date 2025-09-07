@@ -117,7 +117,7 @@ The library automatically detects and converts AOS attributes:
 </div>
 
 <!-- Native syntax -->
-<div class="scroll scroll-in scroll-fade-up" style="--anim-duration: 1000ms; --anim-delay: 200ms;">
+<div class="scroll scroll-in scroll-fade-up" style="--cs-anim-duration: 1000ms; --anim-delay: 200ms;">
   This uses native classes
 </div>
 ```
@@ -131,9 +131,9 @@ The library automatically detects and converts AOS attributes:
 - `data-aos="blur-in"` → `.scroll-blur-in`
 
 ### AOS Options Support
-- `data-aos-duration` → `--anim-duration`
+- `data-aos-duration` → `--cs-anim-duration`
 - `data-aos-delay` → `--anim-delay`
-- `data-aos-easing` → `--anim-ease`
+- `data-aos-easing` → `--cs-anim-ease`
 - `data-aos-once` → `data-scroll-once`
 
 ## 🎨 Theme Overrides
@@ -242,11 +242,11 @@ Override default values with CSS custom properties:
 
 ```css
 :root {
-  --scroll-root-margin: 0px 0px -20% 0px;
-  --scroll-threshold: 0.1;
-  --scroll-stagger-step: 100ms;
-  --scroll-parallax-max: 100px;
-  --scroll-parallax-scale: 1.08;
+  --cs-scroll-root-margin: 0px 0px -20% 0px;
+  --cs-scroll-threshold: 0.1;
+  --cs-scroll-stagger-step: 100ms;
+  --cs-scroll-parallax-max: 100px;
+  --cs-scroll-parallax-scale: 1.08;
 }
 ```
 
@@ -256,8 +256,8 @@ Extend the library with your own scroll effects:
 ```css
 .scroll-custom {
   animation-name: my-custom-animation;
-  animation-duration: var(--anim-duration);
-  animation-timing-function: var(--anim-ease);
+  animation-duration: var(--cs-anim-duration);
+  animation-timing-function: var(--cs-anim-ease);
 }
 ```
 

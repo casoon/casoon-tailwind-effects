@@ -17,7 +17,7 @@ Tailwind CSS v4 compatible loading primitives: skeletons, progress indicators, a
 
 ## 🌓 Dark Mode
 
-- Loading visuals follow `currentColor` and tokens. Override `--loading-*` or shared `--cs-*` per mode; `.dark` is supported with OS fallback.
+- Loading visuals follow `currentColor` and tokens. Override `--cs-loading-*` or shared `--cs-*` per mode; `.dark` is supported with OS fallback.
 
 ## Notes
 
@@ -28,12 +28,12 @@ Tailwind CSS v4 compatible loading primitives: skeletons, progress indicators, a
 
 Use the following CSS custom properties to customize behavior and appearance:
 
-- `--loading-duration`: base shimmer/bar animation duration (default `1.2s`)
-- `--loading-duration-fast`: faster animation duration (default `.8s`)
-- `--loading-duration-slow`: slower animation duration (default `1.8s`)
-- `--loading-ease`: easing function for loading animations
-- `--loading-color`: background/track color for skeletons/bars (uses `currentColor` mix)
-- `--loading-accent`: active/foreground color (defaults to `currentColor`)
+- `--cs-loading-duration`: base shimmer/bar animation duration (default `1.2s`)
+- `--cs-loading-duration-fast`: faster animation duration (default `.8s`)
+- `--cs-loading-duration-slow`: slower animation duration (default `1.8s`)
+- `--cs-loading-ease`: easing function for loading animations
+- `--cs-loading-color`: background/track color for skeletons/bars (uses `currentColor` mix)
+- `--cs-loading-accent`: active/foreground color (defaults to `currentColor`)
 - `--skeleton-radius`: corner radius for skeleton blocks
 - `--skeleton-height`: minimum skeleton block height
 - `--skeleton-sheen`: gradient used for the skeleton shimmer
@@ -43,7 +43,7 @@ Use the following CSS custom properties to customize behavior and appearance:
 ## Guidelines
 
 - Prefer setting colors via `color` on a wrapper; components derive from `currentColor`.
-- Avoid overly fast shimmer to reduce distraction; use `--loading-duration-slow` if needed.
+- Avoid overly fast shimmer to reduce distraction; use `--cs-loading-duration-slow` if needed.
 - Ensure contrast of overlays with underlying content for readability.
 
 ## Accessibility & Motion
@@ -58,11 +58,11 @@ Common per‑mode overrides for masks and accents:
 
 ```css
 :root {
-  --loading-color: color-mix(in oklab, currentColor 12%, transparent);
-  --loading-accent: currentColor;
-  --loading-mask-ink:#000;
+  --cs-loading-color: color-mix(in oklab, currentColor 12%, transparent);
+  --cs-loading-accent: currentColor;
+  --cs-loading-mask-ink:#000;
 }
 :where(.dark){
-  --loading-mask-ink:#000;
+  --cs-loading-mask-ink:#000;
 }
 ```

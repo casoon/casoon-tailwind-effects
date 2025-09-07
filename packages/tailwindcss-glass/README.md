@@ -227,11 +227,11 @@ Override default values with CSS custom properties:
 
 ```css
 :root {
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-blur: 10px;
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  --glass-radius: 16px;
+  --cs-glass-bg: rgba(255, 255, 255, 0.1);
+  --cs-glass-border: rgba(255, 255, 255, 0.2);
+  --cs-glass-blur: 10px;
+  --cs-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --cs-glass-radius: 16px;
 }
 ```
 
@@ -240,11 +240,11 @@ Create your own glass effects:
 
 ```css
 .glass-custom {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--glass-radius);
-  backdrop-filter: blur(var(--glass-blur));
-  box-shadow: var(--glass-shadow);
+  background: var(--cs-glass-bg);
+  border: 1px solid var(--cs-glass-border);
+  border-radius: var(--cs-glass-radius);
+  backdrop-filter: blur(var(--cs-glass-blur));
+  box-shadow: var(--cs-glass-shadow);
 }
 ```
 
@@ -252,16 +252,16 @@ Create your own glass effects:
 ```css
 /* Light theme */
 .glass-theme-light {
-  --glass-bg: rgba(0, 0, 0, 0.05);
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --cs-glass-bg: rgba(0, 0, 0, 0.05);
+  --cs-glass-border: rgba(0, 0, 0, 0.1);
+  --cs-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* Dark theme */
 .glass-theme-dark {
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --cs-glass-bg: rgba(255, 255, 255, 0.1);
+  --cs-glass-border: rgba(255, 255, 255, 0.2);
+  --cs-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 ```
 
@@ -272,12 +272,12 @@ Create your own glass effects:
 
 ```css
 :root { /* light */
-  --glass-bg: rgba(255,255,255,.08);
-  --nav-bg: var(--glass-bg);
+  --cs-glass-bg: rgba(255,255,255,.08);
+  --cs-nav-bg: var(--cs-glass-bg);
 }
 :where(.dark) { /* dark */
-  --glass-bg: rgba(15,23,42,.90);
-  --nav-bg: var(--glass-bg);
+  --cs-glass-bg: rgba(15,23,42,.90);
+  --cs-nav-bg: var(--cs-glass-bg);
 }
 ```
 
@@ -408,16 +408,16 @@ Quick per‑mode overrides for core glass tokens:
 
 ```css
 :root {
-  --glass-bg: rgba(255,255,255,.08);
-  --glass-border: rgba(255,255,255,.15);
-  --glass-shadow: 0 8px 32px rgba(0,0,0,.30);
-  --glass-fg: #fff;
+  --cs-glass-bg: rgba(255,255,255,.08);
+  --cs-glass-border: rgba(255,255,255,.15);
+  --cs-glass-shadow: 0 8px 32px rgba(0,0,0,.30);
+  --cs-glass-fg: #fff;
 }
 :where(.dark) {
-  --glass-bg: rgba(15,23,42,.90);
-  --glass-border: rgba(255,255,255,.28);
-  --glass-shadow: 0 12px 32px rgba(0,0,0,.45);
-  --glass-fg: #e5e7eb;
+  --cs-glass-bg: rgba(15,23,42,.90);
+  --cs-glass-border: rgba(255,255,255,.28);
+  --cs-glass-shadow: 0 12px 32px rgba(0,0,0,.45);
+  --cs-glass-fg: #e5e7eb;
 }
 ```
 

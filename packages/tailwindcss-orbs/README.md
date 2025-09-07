@@ -149,18 +149,18 @@ Orbs read from background tokens; define them per mode:
 
 ```css
 :root {
-  --bg-base-from:#0ea5e9;
-  --bg-base-to:#6366f1;
-  --bg-glow-1:#22d3ee;
-  --bg-glow-2:#a78bfa;
-  --bg-glow-3:#f472b6;
+  --cs-bg-base-from:#0ea5e9;
+  --cs-bg-base-to:#6366f1;
+  --cs-bg-glow-1:#22d3ee;
+  --cs-bg-glow-2:#a78bfa;
+  --cs-bg-glow-3:#f472b6;
 }
 :where(.dark){
-  --bg-base-from:#0b1220;
-  --bg-base-to:#0f172a;
-  --bg-glow-1:#22d3ee;
-  --bg-glow-2:#a78bfa;
-  --bg-glow-3:#f472b6;
+  --cs-bg-base-from:#0b1220;
+  --cs-bg-base-to:#0f172a;
+  --cs-bg-glow-1:#22d3ee;
+  --cs-bg-glow-2:#a78bfa;
+  --cs-bg-glow-3:#f472b6;
 }
 ```
 
@@ -322,12 +322,12 @@ Override default values with CSS custom properties:
 
 ```css
 :root {
-  --orb-size-sm: 120px;
-  --orb-size-md: 200px;
-  --orb-size-lg: 300px;
-  --orb-size-xl: 400px;
-  --orb-blur: 40px;
-  --orb-opacity: 0.2;
+  --cs-orb-size-sm: 120px;
+  --cs-orb-size-md: 200px;
+  --cs-orb-size-lg: 300px;
+  --cs-orb-size-xl: 400px;
+  --cs-orb-blur: 40px;
+  --cs-orb-opacity: 0.2;
 }
 ```
 
@@ -337,12 +337,12 @@ Create your own orb effects:
 ```css
 .orb-custom {
   position: absolute;
-  width: var(--orb-size);
-  height: var(--orb-size);
-  background: var(--orb-color);
+  width: var(--cs-orb-size);
+  height: var(--cs-orb-size);
+  background: var(--cs-orb-color);
   border-radius: 50%;
-  filter: blur(var(--orb-blur));
-  opacity: var(--orb-opacity);
+  filter: blur(var(--cs-orb-blur));
+  opacity: var(--cs-orb-opacity);
 }
 ```
 
@@ -350,16 +350,16 @@ Create your own orb effects:
 ```css
 /* Light theme */
 .orb-theme-light {
-  --orb-color-blue: rgba(59, 130, 246, 0.1);
-  --orb-color-purple: rgba(147, 51, 234, 0.1);
-  --orb-color-green: rgba(34, 197, 94, 0.1);
+  --cs-orb-color-blue: rgba(59, 130, 246, 0.1);
+  --cs-orb-color-purple: rgba(147, 51, 234, 0.1);
+  --cs-orb-color-green: rgba(34, 197, 94, 0.1);
 }
 
 /* Dark theme */
 .orb-theme-dark {
-  --orb-color-blue: rgba(59, 130, 246, 0.2);
-  --orb-color-purple: rgba(147, 51, 234, 0.2);
-  --orb-color-green: rgba(34, 197, 94, 0.2);
+  --cs-orb-color-blue: rgba(59, 130, 246, 0.2);
+  --cs-orb-color-purple: rgba(147, 51, 234, 0.2);
+  --cs-orb-color-green: rgba(34, 197, 94, 0.2);
 }
 ```
 
@@ -409,8 +409,8 @@ const OrbCard = ({ title, children, size = 'md', color = 'blue' }) => (
 // Styled-components example
 const OrbContainer = styled.div`
   ${orbStyles}
-  --orb-size: ${props => props.size || '200px'};
-  --orb-color: ${props => props.color || 'rgba(59, 130, 246, 0.2)'};
+  --cs-orb-size: ${props => props.size || '200px'};
+  --cs-orb-color: ${props => props.color || 'rgba(59, 130, 246, 0.2)'};
 `;
 ```
 

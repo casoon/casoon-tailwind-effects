@@ -40,12 +40,12 @@ Use per‑package overrides to brand the bundle. Example minimal set:
 :where(.dark) { --cs-text-primary: oklch(92% 0.03 260); --cs-bg-surface: oklch(22% 0.02 260); }
 
 /* Glass */
-:root { --glass-bg: rgba(255,255,255,.08); }
-:where(.dark) { --glass-bg: rgba(15,23,42,.90); }
+:root { --cs-glass-bg: rgba(255,255,255,.08); }
+:where(.dark) { --cs-glass-bg: rgba(15,23,42,.90); }
 
 /* Navigation */
-:root { --nav-bg:#fff; --nav-fg:#0f172a; }
-:where(.dark){ --nav-bg:rgba(15,23,42,.90); --nav-fg:#e5e7eb; }
+:root { --cs-nav-bg:#fff; --cs-nav-fg:#0f172a; }
+:where(.dark){ --cs-nav-bg:rgba(15,23,42,.90); --cs-nav-fg:#e5e7eb; }
 ```
 
 ## Dark Mode

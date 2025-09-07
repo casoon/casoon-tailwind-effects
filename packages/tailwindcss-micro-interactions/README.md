@@ -55,12 +55,12 @@ Define ring colors and shadow ink per mode:
 
 ```css
 :root {
-  --mi-focus-color: color-mix(in oklab, currentColor 55%, transparent);
-  --mi-success: oklch(62% 0.15 150);
-  --mi-error: oklch(62% 0.2 25);
-  --mi-shadow-ink:#000;
+  --cs-mi-focus-color: color-mix(in oklab, currentColor 55%, transparent);
+  --cs-mi-success: oklch(62% 0.15 150);
+  --cs-mi-error: oklch(62% 0.2 25);
+  --cs-mi-shadow-ink:#000;
 }
 :where(.dark){
-  --mi-shadow-ink:#000;
+  --cs-mi-shadow-ink:#000;
 }
 ```
