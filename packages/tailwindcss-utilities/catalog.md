@@ -7,7 +7,7 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-utilities`
-- **Version**: `0.6.3`
+- **Version**: `0.6.4`
 - **Type**: Tailwind CSS v4 Plugin
 
 ## CSS Classes (4)
