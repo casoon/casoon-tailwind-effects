@@ -12,8 +12,8 @@
 
 ## CSS Classes (2)
 
-- `.loading`
-- `.spinner`
+- `.cs-loading`
+- `.cs-spinner`
 
 ## CSS Variables (2)
 

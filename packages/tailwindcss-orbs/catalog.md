@@ -12,26 +12,26 @@
 
 ## CSS Classes (20)
 
-- `.orb`
-- `.orb-2xl`
-- `.orb-absolute`
-- `.orb-blur-lg`
-- `.orb-blur-md`
-- `.orb-blur-none`
-- `.orb-blur-sm`
-- `.orb-drift`
-- `.orb-fixed`
-- `.orb-float`
-- `.orb-gradient-blue`
-- `.orb-gradient-custom`
-- `.orb-gradient-pink`
-- `.orb-gradient-purple`
-- `.orb-lg`
-- `.orb-md`
-- `.orb-pulse`
-- `.orb-sm`
-- `.orb-xl`
-- `.orb-xs`
+- `.cs-orb`
+- `.cs-orb-2xl`
+- `.cs-orb-absolute`
+- `.cs-orb-blur-lg`
+- `.cs-orb-blur-md`
+- `.cs-orb-blur-none`
+- `.cs-orb-blur-sm`
+- `.cs-orb-drift`
+- `.cs-orb-fixed`
+- `.cs-orb-float`
+- `.cs-orb-gradient-blue`
+- `.cs-orb-gradient-custom`
+- `.cs-orb-gradient-pink`
+- `.cs-orb-gradient-purple`
+- `.cs-orb-lg`
+- `.cs-orb-md`
+- `.cs-orb-pulse`
+- `.cs-orb-sm`
+- `.cs-orb-xl`
+- `.cs-orb-xs`
 
 ## CSS Variables (16)
 

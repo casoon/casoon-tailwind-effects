@@ -12,18 +12,18 @@
 
 ## CSS Classes (12)
 
-- `.nav`
-- `.nav-item`
-- `.nav-link`
-- `.nav-link.active`
-- `.nav-link:hover`
-- `.nav-pills .nav-item .nav-link`
-- `.nav-pills .nav-item .nav-link.active`
-- `.nav-tabs .nav-item .nav-link`
-- `.nav-tabs .nav-item .nav-link.active`
-- `.navbar-brand`
-- `.navbar-nav`
-- `.navbar-nav .nav-link`
+- `.cs-nav`
+- `.cs-nav-item`
+- `.cs-nav-link`
+- `.cs-nav-link.active`
+- `.cs-nav-link:hover`
+- `.cs-nav-pills .cs-nav-item .cs-nav-link`
+- `.cs-nav-pills .cs-nav-item .cs-nav-link.active`
+- `.cs-nav-tabs .cs-nav-item .cs-nav-link`
+- `.cs-nav-tabs .cs-nav-item .cs-nav-link.active`
+- `.cs-navbar-brand`
+- `.cs-navbar-nav`
+- `.cs-navbar-nav .cs-nav-link`
 
 ## CSS Variables (4)
 

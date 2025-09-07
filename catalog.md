@@ -72,26 +72,26 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 >  for Tailwind CSS v4
 
 ### CSS Classes
-- `.orb`
-- `.orb-2xl`
-- `.orb-absolute`
-- `.orb-blur-lg`
-- `.orb-blur-md`
-- `.orb-blur-none`
-- `.orb-blur-sm`
-- `.orb-drift`
-- `.orb-fixed`
-- `.orb-float`
-- `.orb-gradient-blue`
-- `.orb-gradient-custom`
-- `.orb-gradient-pink`
-- `.orb-gradient-purple`
-- `.orb-lg`
-- `.orb-md`
-- `.orb-pulse`
-- `.orb-sm`
-- `.orb-xl`
-- `.orb-xs`
+- `.cs-orb`
+- `.cs-orb-2xl`
+- `.cs-orb-absolute`
+- `.cs-orb-blur-lg`
+- `.cs-orb-blur-md`
+- `.cs-orb-blur-none`
+- `.cs-orb-blur-sm`
+- `.cs-orb-drift`
+- `.cs-orb-fixed`
+- `.cs-orb-float`
+- `.cs-orb-gradient-blue`
+- `.cs-orb-gradient-custom`
+- `.cs-orb-gradient-pink`
+- `.cs-orb-gradient-purple`
+- `.cs-orb-lg`
+- `.cs-orb-md`
+- `.cs-orb-pulse`
+- `.cs-orb-sm`
+- `.cs-orb-xl`
+- `.cs-orb-xs`
 
 ### CSS Variables
 ```css
@@ -118,18 +118,18 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 > Navigation components and utilities for Tailwind CSS v4
 
 ### CSS Classes
-- `.nav`
-- `.nav-item`
-- `.nav-link`
-- `.nav-link.active`
-- `.nav-link:hover`
-- `.nav-pills .nav-item .nav-link`
-- `.nav-pills .nav-item .nav-link.active`
-- `.nav-tabs .nav-item .nav-link`
-- `.nav-tabs .nav-item .nav-link.active`
-- `.navbar-brand`
-- `.navbar-nav`
-- `.navbar-nav .nav-link`
+- `.cs-nav`
+- `.cs-nav-item`
+- `.cs-nav-link`
+- `.cs-nav-link.active`
+- `.cs-nav-link:hover`
+- `.cs-nav-pills .cs-nav-item .cs-nav-link`
+- `.cs-nav-pills .cs-nav-item .cs-nav-link.active`
+- `.cs-nav-tabs .cs-nav-item .cs-nav-link`
+- `.cs-nav-tabs .cs-nav-item .cs-nav-link.active`
+- `.cs-navbar-brand`
+- `.cs-navbar-nav`
+- `.cs-navbar-nav .cs-nav-link`
 
 ### CSS Variables
 ```css
@@ -182,8 +182,8 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 >  for Tailwind CSS v4
 
 ### CSS Classes
-- `.loading`
-- `.spinner`
+- `.cs-loading`
+- `.cs-spinner`
 
 ### CSS Variables
 ```css

@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-orbs",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": " for Tailwind CSS v4",
   "type": "module",
   "exports": {
