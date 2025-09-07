@@ -1,9 +1,14 @@
+import plugin from 'tailwindcss/plugin';
+
 /**
  * @casoon/tailwindcss-navigation - Tailwind CSS Plugin
  * 
  * Navigation components and utilities for Tailwind CSS v4.
  */
-export default function navigationPlugin(options = {}) {
+export default plugin(function ({ addUtilities, addComponents, addBase, theme }) {
+  // Get configuration options from theme
+  const options = theme('navigation') || {};
+  
   // Default color tokens
   const defaultTokens = {
     colors: {
@@ -18,9 +23,6 @@ export default function navigationPlugin(options = {}) {
   const tokens = {
     colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) }
   };
-  
-  return {
-    handler: ({ addUtilities, addComponents, addBase }) => {
       // Add CSS custom properties (tokens)
       addBase({
         ':root': {
@@ -97,9 +99,24 @@ export default function navigationPlugin(options = {}) {
           'padding-left': '0'
         }
       });
+}, {
+  // Theme configuration
+  theme: {
+    extend: {
+      navigation: {
+        // Default configuration can be overridden by users
+        tokens: {
+          colors: {
+            'primary': '#007bff',
+            'white': '#ffffff',
+            'text-muted': '#495057',
+            'border': '#dee2e6'
+          }
+        }
+      }
     }
-  };
-}
+  }
+});
 
 // Export both default and named export for flexibility
-export { navigationPlugin as navigation };
+export { plugin as navigation };

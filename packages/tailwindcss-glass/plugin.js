@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin';
+
 /**
  * @casoon/tailwindcss-glass - Tailwind CSS Plugin
  * 
@@ -5,7 +7,10 @@
  * Features: backdrop blur, intensity variants, colored glass, interactive states,
  * accessibility support, container queries, and browser fallbacks.
  */
-export default function glassPlugin(options = {}) {
+export default plugin(function ({ addUtilities, addComponents, addBase, theme }) {
+  // Get configuration options from theme
+  const options = theme('glass') || {};
+  
   // Default color tokens for glass effects
   const defaultTokens = {
     colors: {
@@ -41,9 +46,6 @@ export default function glassPlugin(options = {}) {
     colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
     opacity: { ...defaultTokens.opacity, ...(options.tokens?.opacity || {}) }
   };
-  
-  return {
-    handler: ({ addUtilities, addComponents, addBase }) => {
       // Add CSS custom properties (tokens)
       addBase({
         ':root': {
@@ -485,9 +487,41 @@ export default function glassPlugin(options = {}) {
           }
         }
       });
+}, {
+  // Theme configuration
+  theme: {
+    extend: {
+      glass: {
+        // Default configuration can be overridden by users
+        tokens: {
+          colors: {
+            'white': '#ffffff',
+            'black': '#000000',
+            'blue': '#3b82f6',
+            'purple': '#9333ea', 
+            'green': '#22c55e',
+            'pink': '#ec4899',
+            'amber': '#f59e0b'
+          },
+          opacity: {
+            'weak': '5%',
+            'light': '10%', 
+            'medium': '15%',
+            'strong': '20%',
+            'border-light': '10%',
+            'border-medium': '20%',
+            'border-strong': '30%',
+            'shadow-light': '5%',
+            'shadow-medium': '10%',
+            'shadow-strong': '15%',
+            'shadow-xl': '20%',
+            'tooltip': '80%'
+          }
+        }
+      }
     }
-  };
-}
+  }
+});
 
 // Export both default and named export for flexibility
-export { glassPlugin as glass };
+export { plugin as glass };

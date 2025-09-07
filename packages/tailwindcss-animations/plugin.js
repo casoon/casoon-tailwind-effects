@@ -1,17 +1,15 @@
+import plugin from 'tailwindcss/plugin';
+
 /**
  * @casoon/tailwindcss-animations - Tailwind CSS Plugin
  * 
  * Provides comprehensive animation utilities and keyframes for Tailwind CSS v4.
  * Includes transitions, transforms, and motion-safe variants.
- * 
- * @param {Object} options - Plugin configuration options
- * @param {Object} options.tokens - Token overrides for customization
- * @param {Object} options.tokens.durations - Duration token overrides
- * @param {Object} options.tokens.easing - Easing function token overrides  
- * @param {Object} options.tokens.colors - Color token overrides
- * @param {Object} options.tokens.motionSafety - Motion safety token overrides
  */
-export default function animationsPlugin(options = {}) {
+export default plugin(function ({ addUtilities, addComponents, addBase, theme }) {
+  // Get configuration options from theme
+  const options = theme('animations') || {};
+  
   // Default tokens
   const defaultTokens = {
     durations: {
@@ -47,9 +45,6 @@ export default function animationsPlugin(options = {}) {
     colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
     motionSafety: { ...defaultTokens.motionSafety, ...(options.tokens?.motionSafety || {}) }
   };
-
-  return {
-    handler: ({ addUtilities, addComponents, addKeyframes, addBase }) => {
       // CSS Custom Properties (Design Tokens)
       addBase({
         ':root': {
@@ -79,86 +74,86 @@ export default function animationsPlugin(options = {}) {
         }
       });
 
-      // Add keyframes
-      addKeyframes({
-        'anim-fade-in': {
+      // Add keyframes directly in addBase for v4 compatibility
+      addBase({
+        '@keyframes anim-fade-in': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' }
         },
-        'anim-fade-out': {
+        '@keyframes anim-fade-out': {
           '0%': { opacity: '1' },
           '100%': { opacity: '0' }
         },
-        'anim-scale-in': {
+        '@keyframes anim-scale-in': {
           '0%': { opacity: '0', transform: 'scale(0.9)' },
           '100%': { opacity: '1', transform: 'scale(1)' }
         },
-        'anim-scale-out': {
+        '@keyframes anim-scale-out': {
           '0%': { opacity: '1', transform: 'scale(1)' },
           '100%': { opacity: '0', transform: 'scale(0.9)' }
         },
-        'anim-slide-up': {
+        '@keyframes anim-slide-up': {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
         },
-        'anim-slide-down': {
+        '@keyframes anim-slide-down': {
           '0%': { opacity: '0', transform: 'translateY(-20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
         },
-        'anim-slide-left': {
+        '@keyframes anim-slide-left': {
           '0%': { opacity: '0', transform: 'translateX(20px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' }
         },
-        'anim-slide-right': {
+        '@keyframes anim-slide-right': {
           '0%': { opacity: '0', transform: 'translateX(-20px)' },
           '100%': { opacity: '1', transform: 'translateX(0)' }
         },
-        'anim-blur-in': {
+        '@keyframes anim-blur-in': {
           '0%': { opacity: '0', filter: 'blur(4px)' },
           '100%': { opacity: '1', filter: 'blur(0)' }
         },
-        'anim-blur-out': {
+        '@keyframes anim-blur-out': {
           '0%': { opacity: '1', filter: 'blur(0)' },
           '100%': { opacity: '0', filter: 'blur(4px)' }
         },
-        'anim-rotate-in': {
+        '@keyframes anim-rotate-in': {
           '0%': { opacity: '0', transform: 'rotate(-5deg)' },
           '100%': { opacity: '1', transform: 'rotate(0deg)' }
         },
-        'anim-rotate': {
+        '@keyframes anim-rotate': {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
         },
-        'anim-pulse': {
+        '@keyframes anim-pulse': {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' }
         },
-        'anim-bounce': {
+        '@keyframes anim-bounce': {
           '0%, 100%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
           '50%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' }
         },
-        'anim-wiggle': {
+        '@keyframes anim-wiggle': {
           '0%, 100%': { transform: 'rotate(0deg)' },
           '25%': { transform: 'rotate(-3deg)' },
           '75%': { transform: 'rotate(3deg)' }
         },
-        'anim-reveal-3d-up': {
+        '@keyframes anim-reveal-3d-up': {
           '0%': { opacity: '0', transform: 'rotateX(-90deg)' },
           '100%': { opacity: '1', transform: 'rotateX(0deg)' }
         },
-        'anim-reveal-3d-right': {
+        '@keyframes anim-reveal-3d-right': {
           '0%': { opacity: '0', transform: 'rotateY(90deg)' },
           '100%': { opacity: '1', transform: 'rotateY(0deg)' }
         },
-        'anim-marquee': {
+        '@keyframes anim-marquee': {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(-100%)' }
         },
-        'anim-parallax-y': {
+        '@keyframes anim-parallax-y': {
           '0%': { transform: 'translateY(-10px)' },
           '100%': { transform: 'translateY(10px)' }
         },
-        'anim-progress-grow': {
+        '@keyframes anim-progress-grow': {
           '0%': { width: '0%' },
           '100%': { width: '100%' }
         }
@@ -280,6 +275,39 @@ export default function animationsPlugin(options = {}) {
           }
         }
       });
+}, {
+  // Theme configuration
+  theme: {
+    extend: {
+      animations: {
+        // Default configuration can be overridden by users
+        tokens: {
+          durations: {
+            xxs: '100ms',
+            xs: '150ms', 
+            sm: '200ms',
+            md: '300ms',
+            lg: '500ms',
+            xl: '700ms',
+            '2xl': '1000ms'
+          },
+          easing: {
+            standard: 'cubic-bezier(0.2, 0, 0, 1)',
+            emphasized: 'cubic-bezier(0.3, 0, 0.8, 0.15)',
+            decelerate: 'cubic-bezier(0.05, 0.7, 0.1, 1)',
+            accelerate: 'cubic-bezier(0.3, 0, 1, 1)',
+            spring: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+            softSpring: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+          },
+          colors: {
+            shadowInk: '#000'
+          },
+          motionSafety: {
+            duration: '1ms',
+            ease: 'ease'
+          }
+        }
+      }
     }
-  };
-}
+  }
+});

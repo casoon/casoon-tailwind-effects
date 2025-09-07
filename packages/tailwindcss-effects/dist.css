@@ -1,224 +1,34 @@
-/* ========================================================================
-   @casoon/tailwindcss-effects - Flattened CSS Distribution
-   Tailwind CSS v4 compatible utilities without deep @layer nesting
-   ===================================================================== */
-
 /*!
- * @casoon/tailwindcss-effects v0.5.8
+ * @casoon/tailwindcss-effects v0.7.0
  * Complete collection of animation and UI effects for Tailwind CSS v4
  * 
- * Generated from plugin.js - DO NOT EDIT MANUALLY
- * Build date: 2025-09-06T18:50:00.575Z
- * 
- * Import via:
- * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-effects@0.5.8/index.css
- * - GitHub: https://raw.githubusercontent.com/casoon-tailwind-effects/main/packages/tailwindcss-effects/index.css
+ * Aggregated CSS from all @casoon/tailwindcss-* packages
+ * Generated: 2025-09-07T12:46:56.667Z
  */
 
-@keyframes anim-fade-in {
-  0% {
-    opacity: 0;
+/* This file contains CSS from all individual packages */
 
-  100% {
-    opacity: 1;
-
-@keyframes anim-fade-out {
-  0% {
-    opacity: 1;
-
-  100% {
-    opacity: 0;
-
-@keyframes anim-scale-in {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-
-@keyframes anim-scale-out {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-
-  100% {
-    opacity: 0;
-    transform: scale(0.9);
-
-@keyframes anim-slide-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-
-@keyframes anim-slide-down {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-
-@keyframes anim-slide-left {
-  0% {
-    opacity: 0;
-    transform: translateX(20px);
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-
-@keyframes anim-slide-right {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-
-@keyframes anim-blur-in {
-  0% {
-    opacity: 0;
-    filter: blur(4px);
-
-  100% {
-    opacity: 1;
-    filter: blur(0);
-
-@keyframes anim-blur-out {
-  0% {
-    opacity: 1;
-    filter: blur(0);
-
-  100% {
-    opacity: 0;
-    filter: blur(4px);
-
-@keyframes anim-rotate-in {
-  0% {
-    opacity: 0;
-    transform: rotate(-5deg);
-
-  100% {
-    opacity: 1;
-    transform: rotate(0deg);
-
-@keyframes anim-rotate {
-  0% {
-    transform: rotate(0deg);
-
-  100% {
-    transform: rotate(360deg);
-
-@keyframes anim-pulse {
-  0%, 100% {
-    opacity: 1;
-
-  50% {
-    opacity: 0.5;
-
-@keyframes anim-bounce {
-  0%, 100% {
-    transform: translateY(0);
-    animationTimingFunction: cubic-bezier(0.8, 0, 1, 1);
-
-  50% {
-    transform: translateY(-25%);
-    animationTimingFunction: cubic-bezier(0, 0, 0.2, 1);
-
-@keyframes anim-wiggle {
-  0%, 100% {
-    transform: rotate(0deg);
-
-  25% {
-    transform: rotate(-3deg);
-
-  75% {
-    transform: rotate(3deg);
-
-@keyframes anim-reveal-3d-up {
-  0% {
-    opacity: 0;
-    transform: rotateX(-90deg);
-
-  100% {
-    opacity: 1;
-    transform: rotateX(0deg);
-
-@keyframes anim-reveal-3d-right {
-  0% {
-    opacity: 0;
-    transform: rotateY(90deg);
-
-  100% {
-    opacity: 1;
-    transform: rotateY(0deg);
-
-@keyframes anim-marquee {
-  0% {
-    transform: translateX(100%);
-
-  100% {
-    transform: translateX(-100%);
-
-@keyframes anim-parallax-y {
-  0% {
-    transform: translateY(-10px);
-
-  100% {
-    transform: translateY(10px);
-
-@keyframes anim-progress-grow {
-  0% {
-    width: 0%;
-
-  100% {
-    width: 100%;
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-
-  100% {
-    transform: rotate(360deg);
-
-@keyframes orb-float {
-  0%, 100% {
-    transform: translateY(0px);
-
-  50% {
-    transform: translateY(-20px);
-
-@keyframes orb-pulse {
-  0%, 100% {
-    opacity: 0.7;
-    transform: scale(1);
-
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-
-@keyframes orb-drift {
-  0% {
-    transform: translateX(0px);
-
-  33% {
-    transform: translateX(30px);
-
-  66% {
-    transform: translateX(-20px);
-
-  100% {
-    transform: translateX(0px);
+/* ===== TAILWINDCSS-UTILITIES ===== */
 
 /* === Utilities === */
+.cs-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cs-container-fluid {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -229,211 +39,386 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
 
 .container-fluid {
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/* ===== TAILWINDCSS-SCROLL ===== */
 
 /* === Base Styles === */
 :root {
-  --cs-anim-duration-xxs: 100ms;
-  --cs-anim-duration-xs: 150ms;
-  --cs-anim-duration-sm: 200ms;
-  --cs-anim-duration-md: 300ms;
-  --cs-anim-duration-lg: 500ms;
-  --cs-anim-duration-xl: 700ms;
-  --cs-anim-duration-2xl: 1000ms;
-  --cs-anim-ease-standard: cubic-bezier(0.2, 0, 0, 1);
-  --cs-anim-ease-emphasized: cubic-bezier(0.3, 0, 0.8, 0.15);
-  --cs-anim-ease-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
-  --cs-anim-ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
-  --cs-anim-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --cs-anim-ease-soft-spring: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --cs-anim-reduced-motion-duration: 1ms;
-  --cs-anim-reduced-motion-ease: ease;
-  --cs-anim-shadow-ink: #000;
+  --cs-scroll-thumb-gray: #6b7280;
+  --cs-scroll-thumb-blue: #3b82f6;
+}
+
+
+/* === Utilities === */
+.cs-scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.cs-scroll-auto {
+  scroll-behavior: auto;
+}
+
+.cs-scroll-snap-none {
+  scroll-snap-type: none;
+}
+
+.cs-scroll-snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.cs-scroll-snap-y {
+  scroll-snap-type: y mandatory;
+}
+
+.cs-scroll-snap-both {
+  scroll-snap-type: both mandatory;
+}
+
+.cs-scroll-snap-proximity {
+  scroll-snap-type: y proximity;
+}
+
+.cs-snap-start {
+  scroll-snap-align: start;
+}
+
+.cs-snap-end {
+  scroll-snap-align: end;
+}
+
+.cs-snap-center {
+  scroll-snap-align: center;
+}
+
+.cs-snap-align-none {
+  scroll-snap-align: none;
+}
+
+.cs-snap-normal {
+  scroll-snap-stop: normal;
+}
+
+.cs-snap-always {
+  scroll-snap-stop: always;
+}
+
+.cs-scroll-m-0 {
+  scroll-margin: 0px;
+}
+
+.cs-scroll-m-1 {
+  scroll-margin: 0.25rem;
+}
+
+.cs-scroll-m-2 {
+  scroll-margin: 0.5rem;
+}
+
+.cs-scroll-m-4 {
+  scroll-margin: 1rem;
+}
+
+.cs-scroll-m-8 {
+  scroll-margin: 2rem;
+}
+
+.cs-scroll-m-16 {
+  scroll-margin: 4rem;
+}
+
+.cs-scroll-p-0 {
+  scroll-padding: 0px;
+}
+
+.cs-scroll-p-1 {
+  scroll-padding: 0.25rem;
+}
+
+.cs-scroll-p-2 {
+  scroll-padding: 0.5rem;
+}
+
+.cs-scroll-p-4 {
+  scroll-padding: 1rem;
+}
+
+.cs-scroll-p-8 {
+  scroll-padding: 2rem;
+}
+
+.cs-scroll-p-16 {
+  scroll-padding: 4rem;
+}
+
+.cs-scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cs-scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.cs-scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.cs-scrollbar-auto {
+  scrollbar-width: auto;
+}
+
+.cs-scrollbar-thumb-gray {
+  scrollbar-color: var(--cs-scroll-thumb-gray) transparent;
+}
+
+.cs-scrollbar-thumb-blue {
+  scrollbar-color: var(--cs-scroll-thumb-blue) transparent;
+}
+
+.cs-scrollbar-track-transparent {
+  scrollbar-color: inherit transparent;
+}
+
+/* ===== TAILWINDCSS-ORBS ===== */
+
+/* === Base Styles === */
+:root {
+  --cs-orb-blue: #3b82f6;
+  --cs-orb-blue-light: #93c5fd;
+  --cs-orb-blue-lighter: #dbeafe;
+  --cs-orb-purple: #9333ea;
+  --cs-orb-purple-light: #c4b5fd;
+  --cs-orb-purple-lighter: #ede9fe;
+  --cs-orb-pink: #ec4899;
+  --cs-orb-pink-light: #fbcfe8;
+  --cs-orb-pink-lighter: #fdf2f8;
+  --cs-orb-custom-primary: #667eea;
+  --cs-orb-custom-secondary: #764ba2;
+  --cs-orb-custom-accent: #f093fb;
+  --cs-orb-gradient-blue: radial-gradient(circle, 
+            color-mix(in srgb, var(--cs-orb-blue) 50%, transparent) 0%, 
+            color-mix(in srgb, var(--cs-orb-blue-light) 30%, transparent) 50%, 
+            color-mix(in srgb, var(--cs-orb-blue-lighter) 10%, transparent) 100%);
+  --cs-orb-gradient-purple: radial-gradient(circle, 
+            color-mix(in srgb, var(--cs-orb-purple) 50%, transparent) 0%, 
+            color-mix(in srgb, var(--cs-orb-purple-light) 30%, transparent) 50%, 
+            color-mix(in srgb, var(--cs-orb-purple-lighter) 10%, transparent) 100%);
+  --cs-orb-gradient-pink: radial-gradient(circle, 
+            color-mix(in srgb, var(--cs-orb-pink) 50%, transparent) 0%, 
+            color-mix(in srgb, var(--cs-orb-pink-light) 30%, transparent) 50%, 
+            color-mix(in srgb, var(--cs-orb-pink-lighter) 10%, transparent) 100%);
+  --cs-orb-gradient-custom: radial-gradient(circle, 
+            color-mix(in srgb, var(--cs-orb-custom-primary) 50%, transparent) 0%, 
+            color-mix(in srgb, var(--cs-orb-custom-secondary) 30%, transparent) 50%, 
+            color-mix(in srgb, var(--cs-orb-custom-accent) 10%, transparent) 100%);
+}
+
+
+/* === Base Styles === */
+@keyframes orb-float {
+  transform: translateY(0px);
+  transform: translateY(-20px);
+}
+
+@keyframes orb-pulse {
+  opacity: 0.7;
+  transform: scale(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes orb-drift {
+  transform: translateX(0px);
+  transform: translateX(30px);
+  transform: translateX(-20px);
+  transform: translateX(0px);
+}
+
+
+/* === Utilities === */
+.cs-orb {
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.cs-orb-xs {
+  width: 50px;
+  height: 50px;
+}
+
+.cs-orb-sm {
+  width: 75px;
+  height: 75px;
+}
+
+.cs-orb-md {
+  width: 100px;
+  height: 100px;
+}
+
+.cs-orb-lg {
+  width: 150px;
+  height: 150px;
+}
+
+.cs-orb-xl {
+  width: 200px;
+  height: 200px;
+}
+
+.cs-orb-2xl {
+  width: 300px;
+  height: 300px;
+}
+
+.cs-orb-blur-none {
+  filter: blur(0);
+}
+
+.cs-orb-blur-sm {
+  filter: blur(2px);
+}
+
+.cs-orb-blur-md {
+  filter: blur(4px);
+}
+
+.cs-orb-blur-lg {
+  filter: blur(8px);
+}
+
+.cs-orb-float {
+  animation: orb-float 6s ease-in-out infinite;
+}
+
+.cs-orb-pulse {
+  animation: orb-pulse 4s ease-in-out infinite;
+}
+
+.cs-orb-drift {
+  animation: orb-drift 8s ease-in-out infinite;
+}
+
+.cs-orb-absolute {
+  position: absolute;
+}
+
+.cs-orb-fixed {
+  position: fixed;
+}
+
+.cs-orb-gradient-blue {
+  background: var(--cs-orb-gradient-blue);
+}
+
+.cs-orb-gradient-purple {
+  background: var(--cs-orb-gradient-purple);
+}
+
+.cs-orb-gradient-pink {
+  background: var(--cs-orb-gradient-pink);
+}
+
+.cs-orb-gradient-custom {
+  background: var(--cs-orb-gradient-custom);
+}
+
+/* ===== TAILWINDCSS-NAVIGATION ===== */
+
+/* === Base Styles === */
+:root {
+  --cs-nav-primary: #007bff;
+  --cs-nav-white: #ffffff;
+  --cs-nav-text-muted: #495057;
+  --cs-nav-border: #dee2e6;
+}
+
 
 /* === Components === */
-.anim {
-  animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
-  animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
-  animation-iteration-count: 1;
-  animation-direction: var(--cs-anim-direction, normal);
-  animation-fill-mode: var(--cs-anim-fill, both);
-  animation-delay: var(--cs-anim-delay, 0ms);
+.cs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
 
-.anim-infinite {
-  animation-iteration-count: infinite;
+.cs-nav-item {
+  display: block;
+}
 
-.anim-reverse {
-  animation-direction: reverse;
+.cs-nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
 
-.anim-alternate {
-  animation-direction: alternate;
+.cs-nav-link:hover {
+  text-decoration: none;
+}
 
-.anim-both {
-  animation-fill-mode: both;
+.cs-nav-link.active {
+  font-weight: 600;
+}
 
-.anim-forwards {
-  animation-fill-mode: forwards;
-
-.will-transform {
-  will-change: transform;
-
-.will-opacity {
-  will-change: opacity;
-
-.will-filter {
-  will-change: filter;
-
-.t-origin-top {
-  transform-origin: top;
-
-.t-origin-center {
-  transform-origin: center;
-
-.t-origin-bottom {
-  transform-origin: bottom;
-
-.t-preserve-3d {
-  transform-style: preserve-3d;
 
 /* === Utilities === */
-.anim-xxs {
-  --cs-anim-duration: var(--cs-anim-duration-xxs);
+.cs-nav-pills .cs-nav-item .cs-nav-link {
+  border-radius: 0.25rem;
+}
 
-.anim-xs {
-  --cs-anim-duration: var(--cs-anim-duration-xs);
+.cs-nav-pills .cs-nav-item .cs-nav-link.active {
+  background-color: var(--cs-nav-primary);
+  color: var(--cs-nav-white);
+}
 
-.anim-sm {
-  --cs-anim-duration: var(--cs-anim-duration-sm);
+.cs-nav-tabs .cs-nav-item .cs-nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
 
-.anim-md {
-  --cs-anim-duration: var(--cs-anim-duration-md);
+.cs-nav-tabs .cs-nav-item .cs-nav-link.active {
+  color: var(--cs-nav-text-muted);
+  background-color: var(--cs-nav-white);
+  border-color: var(--cs-nav-border) var(--cs-nav-border) var(--cs-nav-white);
+}
 
-.anim-lg {
-  --cs-anim-duration: var(--cs-anim-duration-lg);
+.cs-navbar-brand {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
 
-.anim-xl {
-  --cs-anim-duration: var(--cs-anim-duration-xl);
+.cs-navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
 
-.anim-2xl {
-  --cs-anim-duration: var(--cs-anim-duration-2xl);
+.cs-navbar-nav .cs-nav-link {
+  padding-right: 0;
+  padding-left: 0;
+}
 
-.ease-standard {
-  --cs-anim-ease: var(--cs-anim-ease-standard);
-
-.ease-emphasized {
-  --cs-anim-ease: var(--cs-anim-ease-emphasized);
-
-.ease-decelerate {
-  --cs-anim-ease: var(--cs-anim-ease-decelerate);
-
-.ease-accelerate {
-  --cs-anim-ease: var(--cs-anim-ease-accelerate);
-
-.ease-spring {
-  --cs-anim-ease: var(--cs-anim-ease-spring);
-
-.ease-soft-spring {
-  --cs-anim-ease: var(--cs-anim-ease-soft-spring);
-
-.fade-in {
-  animation-name: anim-fade-in;
-
-.fade-out {
-  animation-name: anim-fade-out;
-
-.scale-in {
-  animation-name: anim-scale-in;
-
-.scale-out {
-  animation-name: anim-scale-out;
-
-.slide-up {
-  animation-name: anim-slide-up;
-
-.slide-down {
-  animation-name: anim-slide-down;
-
-.slide-left {
-  animation-name: anim-slide-left;
-
-.slide-right {
-  animation-name: anim-slide-right;
-
-.blur-in {
-  animation-name: anim-blur-in;
-
-.blur-out {
-  animation-name: anim-blur-out;
-
-.rotate-in {
-  animation-name: anim-rotate-in;
-
-.rotate {
-  animation-name: anim-rotate;
-
-.pulse {
-  animation-name: anim-pulse;
-
-.bounce {
-  animation-name: anim-bounce;
-
-.wiggle {
-  animation-name: anim-wiggle;
-
-.reveal-3d-up {
-  animation-name: anim-reveal-3d-up;
-
-.reveal-3d-right {
-  animation-name: anim-reveal-3d-right;
-
-.hover-lift-sm {
-  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px color-mix(in oklab, var(--cs-anim-shadow-ink) 10%, transparent);
-
-.hover-lift-md {
-  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 18px color-mix(in oklab, var(--cs-anim-shadow-ink) 14%, transparent);
-
-.hover-scale-105 {
-  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
-  transform: scale(1.05);
-
-.hover-scale-110 {
-  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
-  transform: scale(1.10);
-
-.enter-card {
-  animation: anim-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-decelerate) both;
-
-.enter-modal {
-  animation: anim-scale-in var(--cs-anim-duration-md) var(--cs-anim-ease-emphasized) both;
-
-.exit-modal {
-  animation: anim-scale-out var(--cs-anim-duration-md) var(--cs-anim-ease-accelerate) both;
-
-/* === Base Styles === */
-:root {
-  --cs-loading-spinner-base: #f3f3f3;
-  --cs-loading-spinner-active: #3498db;
-
-/* === Utilities === */
-.spinner {
-  border: 4px solid var(--cs-loading-spinner-base);
-  border-top: 4px solid var(--cs-loading-spinner-active);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 2s linear infinite;
-
-.loading {
-  opacity: 0.5;
-  pointer-events: none;
+/* ===== TAILWINDCSS-MICRO-INTERACTIONS ===== */
 
 /* === Base Styles === */
 :root {
@@ -442,99 +427,299 @@
   --cs-micro-focus-ring-strong: color-mix(in srgb, var(--cs-micro-focus-ring) 50%, transparent);
   --cs-micro-focus-ring-medium: color-mix(in srgb, var(--cs-micro-focus-ring) 30%, transparent);
   --cs-micro-shadow-light: color-mix(in srgb, var(--cs-micro-shadow) 10%, transparent);
+}
+
 
 /* === Utilities === */
-.hover-scale-95 {
+.cs-hover-scale-95 {
   transition: transform 0.2s ease;
   transform: scale(0.95);
+}
 
-.hover-scale-105 {
+.cs-hover-scale-105 {
   transition: transform 0.2s ease;
   transform: scale(1.05);
+}
 
-.hover-scale-110 {
+.cs-hover-scale-110 {
   transition: transform 0.2s ease;
   transform: scale(1.10);
+}
 
-.hover-fade-in {
+.cs-hover-fade-in {
   opacity: 0.7;
   transition: opacity 0.2s ease;
   opacity: 1;
+}
 
-.hover-fade-out {
+.cs-hover-fade-out {
   opacity: 1;
   transition: opacity 0.2s ease;
   opacity: 0.7;
+}
 
-.hover-brighten {
+.cs-hover-brighten {
   transition: filter 0.2s ease;
   filter: brightness(1.1);
+}
 
-.hover-darken {
+.cs-hover-darken {
   transition: filter 0.2s ease;
   filter: brightness(0.9);
+}
 
-.hover-rotate-1 {
+.cs-hover-rotate-1 {
   transition: transform 0.2s ease;
   transform: rotate(1deg);
+}
 
-.hover-rotate-3 {
+.cs-hover-rotate-3 {
   transition: transform 0.2s ease;
   transform: rotate(3deg);
+}
 
-.hover-rotate-6 {
+.cs-hover-rotate-6 {
   transition: transform 0.2s ease;
   transform: rotate(6deg);
+}
 
-.hover-translate-y-1 {
+.cs-hover-translate-y-1 {
   transition: transform 0.2s ease;
   transform: translateY(-0.25rem);
+}
 
-.hover-translate-y-2 {
+.cs-hover-translate-y-2 {
   transition: transform 0.2s ease;
   transform: translateY(-0.5rem);
+}
 
-.active-scale-95 {
+.cs-active-scale-95 {
   transform: scale(0.95);
+}
 
-.active-scale-98 {
+.cs-active-scale-98 {
   transform: scale(0.98);
+}
 
-.focus-scale-105 {
+.cs-focus-scale-105 {
   transition: transform 0.2s ease;
   transform: scale(1.05);
+}
 
-.focus-ring-2 {
+.cs-focus-ring-2 {
   outline: none;
-  box-shadow: 0 0 0 2px var(--cs-micro-focus-ring-strong);
+}
 
-.focus-ring-4 {
+.cs-focus-ring-4 {
   outline: none;
-  box-shadow: 0 0 0 4px var(--cs-micro-focus-ring-medium);
+}
 
-.tap-highlight-none {
+.cs-tap-highlight-none {
   -webkit-tap-highlight-color: transparent;
+}
 
-.tap-scale-95 {
+.cs-tap-scale-95 {
   transition: transform 0.1s ease;
   transform: scale(0.95);
+}
 
-.smooth-interaction {
+.cs-smooth-interaction {
   transition: all 0.2s ease;
+}
 
-.smooth-interaction-fast {
+.cs-smooth-interaction-fast {
   transition: all 0.1s ease;
+}
 
-.smooth-interaction-slow {
+.cs-smooth-interaction-slow {
   transition: all 0.3s ease;
+}
 
-.interactive {
+.cs-interactive {
   cursor: pointer;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px var(--cs-micro-shadow-light);
   transform: translateY(0);
-  box-shadow: 0 2px 4px var(--cs-micro-shadow-light);
+}
+
+/* ===== TAILWINDCSS-LOADING ===== */
+
+/* === Base Styles === */
+:root {
+  --cs-loading-spinner-base: #f3f3f3;
+  --cs-loading-spinner-active: #3498db;
+}
+
+
+/* === Base Styles === */
+@keyframes spin {
+  transform: rotate(0deg);
+  transform: rotate(360deg);
+}
+
+
+/* === Utilities === */
+.cs-spinner {
+  border: 4px solid var(--cs-loading-spinner-base);
+  border-top: 4px solid var(--cs-loading-spinner-active);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+.cs-loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ===== TAILWINDCSS-GRADIENTS ===== */
+
+/* === Base Styles === */
+:root {
+  --cs-gradient-sunset-start: #ff6b6b;
+  --cs-gradient-sunset-mid: #ffd93d;
+  --cs-gradient-sunset-end: #6bcf7f;
+  --cs-gradient-ocean-start: #667eea;
+  --cs-gradient-ocean-end: #764ba2;
+  --cs-gradient-fire-start: #f093fb;
+  --cs-gradient-fire-end: #f5576c;
+  --cs-gradient-mint-start: #4facfe;
+  --cs-gradient-mint-end: #00f2fe;
+  --cs-gradient-purple-start: #a8edea;
+  --cs-gradient-purple-end: #fed6e3;
+  --cs-gradient-orange-start: #ffeaa7;
+  --cs-gradient-orange-end: #fab1a0;
+  --cs-gradient-blue-start: #74b9ff;
+  --cs-gradient-blue-end: #0984e3;
+  --cs-gradient-pink-start: #fd79a8;
+  --cs-gradient-pink-end: #fdcb6e;
+  --cs-gradient-custom-start: #667eea;
+  --cs-gradient-custom-mid: null;
+  --cs-gradient-custom-end: #764ba2;
+  --cs-gradient-white: #ffffff;
+}
+
+
+/* === Utilities === */
+.cs-gradient-sunset {
+  background: linear-gradient(135deg, var(--cs-gradient-sunset-start), var(--cs-gradient-sunset-mid), var(--cs-gradient-sunset-end));
+}
+
+.cs-gradient-ocean {
+  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
+}
+
+.cs-gradient-fire {
+  background: linear-gradient(135deg, var(--cs-gradient-fire-start), var(--cs-gradient-fire-end));
+}
+
+.cs-gradient-mint {
+  background: linear-gradient(135deg, var(--cs-gradient-mint-start), var(--cs-gradient-mint-end));
+}
+
+.cs-gradient-purple {
+  background: linear-gradient(135deg, var(--cs-gradient-purple-start), var(--cs-gradient-purple-end));
+}
+
+.cs-gradient-orange {
+  background: linear-gradient(135deg, var(--cs-gradient-orange-start), var(--cs-gradient-orange-end));
+}
+
+.cs-gradient-blue {
+  background: linear-gradient(135deg, var(--cs-gradient-blue-start), var(--cs-gradient-blue-end));
+}
+
+.cs-gradient-pink {
+  background: linear-gradient(135deg, var(--cs-gradient-pink-start), var(--cs-gradient-pink-end));
+}
+
+.cs-gradient-custom {
+  background: linear-gradient(135deg, var(--cs-gradient-custom-start), var(--cs-gradient-custom-end));
+}
+
+.cs-gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-sunset {
+  background: linear-gradient(135deg, var(--cs-gradient-sunset-start), var(--cs-gradient-sunset-mid), var(--cs-gradient-sunset-end));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-ocean {
+  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-fire {
+  background: linear-gradient(135deg, var(--cs-gradient-fire-start), var(--cs-gradient-fire-end));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-custom {
+  background: linear-gradient(135deg, var(--cs-gradient-custom-start), var(--cs-gradient-custom-end));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-radial-center {
+  background: radial-gradient(circle at center, var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)));
+}
+
+.cs-gradient-radial-top {
+  background: radial-gradient(circle at top, var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)));
+}
+
+.cs-gradient-radial-bottom {
+  background: radial-gradient(circle at bottom, var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)));
+}
+
+.cs-gradient-conic {
+  background: conic-gradient(var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)));
+}
+
+.cs-gradient-conic-center {
+  background: conic-gradient(from 0deg at 50% 50%, var(--cs-gradient-stops, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end)));
+}
+
+.cs-gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
+  border-radius: 0.5rem;
+}
+
+.cs-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--cs-gradient-white);
+  border-radius: calc(0.5rem - 1px);
+}
+
+.cs-gradient-animate {
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+
+/* === Base Styles === */
+@keyframes gradient-shift {
+  background-position: 0% 50%;
+  background-position: 100% 50%;
+  background-position: 0% 50%;
+}
+
+/* ===== TAILWINDCSS-GLASS ===== */
 
 /* === Base Styles === */
 :root {
@@ -581,22 +766,151 @@
   --cs-glass-bg-pink-fallback: color-mix(in srgb, var(--cs-glass-pink) 20%, transparent);
   --cs-glass-bg-amber-fallback: color-mix(in srgb, var(--cs-glass-amber) 20%, transparent);
   --cs-glass-focus-ring: color-mix(in srgb, var(--cs-glass-blue) 50%, transparent);
+}
+
 
 /* === Base Styles === */
 @layer glass-base, glass-utilities, glass-components; {
+}
+
 
 /* === Utilities === */
+@layer glass-utilities {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-dark);
+  border: 1px solid var(--cs-glass-border-light);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background: var(--cs-glass-bg-weak);
+  border: 1px solid var(--cs-glass-border-light);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-blue);
+  border: 1px solid var(--cs-glass-border-blue);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-purple);
+  border: 1px solid var(--cs-glass-border-purple);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-green);
+  border: 1px solid var(--cs-glass-border-green);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-pink);
+  border: 1px solid var(--cs-glass-border-pink);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-amber);
+  border: 1px solid var(--cs-glass-border-amber);
+  border-radius: 0.25rem;
+  border-radius: 0.5rem;
+  border-radius: 0.75rem;
+  border-radius: 1rem;
+  border-radius: 1.5rem;
+  border-radius: 2rem;
+  box-shadow: 0 1px 2px var(--cs-glass-shadow-light);
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  box-shadow: 0 20px 40px var(--cs-glass-shadow-strong);
+  box-shadow: 0 25px 50px var(--cs-glass-shadow-xl);
+}
+
 
 /* === Components === */
+@layer glass-components {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-strong);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-tooltip-bg);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 4px 16px var(--cs-glass-shadow-xl);
+  font-size: 0.875rem;
+  color: white;
+  white-space: nowrap;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  padding: 0.5rem;
+  min-width: 12rem;
+}
+
 
 /* === Utilities === */
+@media (prefers-reduced-motion: reduce) {
+  transition: none;
+  transform: none;
+}
+
+@media (prefers-contrast: high) {
+  border-width: 2px;
+  background: var(--cs-glass-bg-contrast);
+  background: var(--cs-glass-bg-dark-contrast);
+  border-color: var(--cs-glass-border-strong);
+}
+
 
 /* === Utilities === */
+@container (min-width: 320px) {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@container (min-width: 640px) {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@container (min-width: 1024px) {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
 
 /* === Components === */
+@supports not (backdrop-filter: blur(16px)) {
+  background: var(--cs-glass-bg-fallback);
+  box-shadow: 0 4px 16px var(--cs-glass-shadow-medium);
+  background: var(--cs-glass-bg-dark-fallback);
+  background: var(--cs-glass-bg-blue-fallback);
+  background: var(--cs-glass-bg-purple-fallback);
+  background: var(--cs-glass-bg-green-fallback);
+  background: var(--cs-glass-bg-pink-fallback);
+  background: var(--cs-glass-bg-amber-fallback);
+}
+
 
 /* === Components === */
-.glass-card {
+.cs-glass-card {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   background: var(--cs-glass-bg-light);
@@ -606,11 +920,92 @@
   box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
   transition: all 0.3s ease;
   background: var(--cs-glass-bg-hover);
-  box-shadow: 0 20px 40px var(--cs-glass-shadow-strong);
-  transform: translateY(-2px);
-  border: 1px solid var(--cs-glass-border-strong);
   outline: 2px solid var(--cs-glass-focus-ring);
-  outline-offset: 2px;
+}
+
+.cs-glass-card-light {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  transition: all 0.3s ease;
+  background: var(--cs-glass-bg-light-hover);
+  outline: 2px solid var(--cs-glass-focus-ring);
+}
+
+.cs-glass-nav {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  transition: all 0.3s ease;
+}
+
+.cs-glass-nav-light {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  transition: all 0.3s ease;
+}
+
+.cs-glass-button {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: var(--cs-glass-bg-hover);
+  outline: 2px solid var(--cs-glass-focus-ring);
+  transform: translateY(0);
+}
+
+
+/* === Components === */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+}
+
+.glass-dark {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-dark);
+  border: 1px solid var(--cs-glass-border-light);
+}
+
+.glass-sm {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.glass-lg {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.glass-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
+  transition: all 0.3s ease;
+}
 
 .glass-card-light {
   backdrop-filter: blur(16px);
@@ -621,11 +1016,7 @@
   padding: 2rem;
   box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
   transition: all 0.3s ease;
-  background: var(--cs-glass-bg-light-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px var(--cs-glass-shadow-strong);
-  outline: 2px solid var(--cs-glass-focus-ring);
-  outline-offset: 2px;
+}
 
 .glass-nav {
   backdrop-filter: blur(16px);
@@ -635,6 +1026,7 @@
   border-radius: 12px;
   box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
   transition: all 0.3s ease;
+}
 
 .glass-nav-light {
   backdrop-filter: blur(16px);
@@ -644,6 +1036,7 @@
   border-radius: 12px;
   box-shadow: 0 8px 32px var(--cs-glass-shadow-medium);
   transition: all 0.3s ease;
+}
 
 .glass-button {
   backdrop-filter: blur(16px);
@@ -654,397 +1047,387 @@
   padding: 0.75rem 1.5rem;
   transition: all 0.3s ease;
   cursor: pointer;
-  background: var(--cs-glass-bg-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 16px var(--cs-glass-shadow-medium);
-  outline: 2px solid var(--cs-glass-focus-ring);
-  outline-offset: 2px;
+}
+
+@supports not (backdrop-filter: blur(16px)) {
+  background: var(--cs-glass-bg-contrast);
+  background: var(--cs-glass-bg-dark-contrast);
+}
+
+/* ===== TAILWINDCSS-ANIMATIONS ===== */
+
+/* === Base Styles === */
+:root {
+  --cs-anim-duration-xxs: 100ms;
+  --cs-anim-duration-xs: 150ms;
+  --cs-anim-duration-sm: 200ms;
+  --cs-anim-duration-md: 300ms;
+  --cs-anim-duration-lg: 500ms;
+  --cs-anim-duration-xl: 700ms;
+  --cs-anim-duration-2xl: 1000ms;
+  --cs-anim-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --cs-anim-ease-emphasized: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --cs-anim-ease-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --cs-anim-ease-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --cs-anim-ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --cs-anim-ease-soft-spring: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --cs-anim-reduced-motion-duration: 1ms;
+  --cs-anim-reduced-motion-ease: ease;
+  --cs-anim-shadow-ink: #000;
+}
+
+
+/* === Base Styles === */
+@keyframes anim-fade-in {
+  opacity: 0;
+  opacity: 1;
+}
+
+@keyframes anim-fade-out {
+  opacity: 1;
+  opacity: 0;
+}
+
+@keyframes anim-scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes anim-scale-out {
+  opacity: 1;
+  transform: scale(1);
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+@keyframes anim-slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  opacity: 1;
   transform: translateY(0);
-  box-shadow: 0 4px 8px var(--cs-glass-shadow-medium);
+}
 
-/* === Components === */
+@keyframes anim-slide-down {
+  opacity: 0;
+  transform: translateY(-20px);
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* === Base Styles === */
-:root {
-  --cs-orb-blue: #3b82f6;
-  --cs-orb-blue-light: #93c5fd;
-  --cs-orb-blue-lighter: #dbeafe;
-  --cs-orb-purple: #9333ea;
-  --cs-orb-purple-light: #c4b5fd;
-  --cs-orb-purple-lighter: #ede9fe;
-  --cs-orb-pink: #ec4899;
-  --cs-orb-pink-light: #fbcfe8;
-  --cs-orb-pink-lighter: #fdf2f8;
-  --cs-orb-custom-primary: #667eea;
-  --cs-orb-custom-secondary: #764ba2;
-  --cs-orb-custom-accent: #f093fb;
-  --cs-orb-gradient-blue: radial-gradient(circle, 
-            color-mix(in srgb, var(--cs-orb-blue) 50%, transparent) 0%, 
-            color-mix(in srgb, var(--cs-orb-blue-light) 30%, transparent) 50%, 
-            color-mix(in srgb, var(--cs-orb-blue-lighter) 10%, transparent) 100%);
-  --cs-orb-gradient-purple: radial-gradient(circle, 
-            color-mix(in srgb, var(--cs-orb-purple) 50%, transparent) 0%, 
-            color-mix(in srgb, var(--cs-orb-purple-light) 30%, transparent) 50%, 
-            color-mix(in srgb, var(--cs-orb-purple-lighter) 10%, transparent) 100%);
-  --cs-orb-gradient-pink: radial-gradient(circle, 
-            color-mix(in srgb, var(--cs-orb-pink) 50%, transparent) 0%, 
-            color-mix(in srgb, var(--cs-orb-pink-light) 30%, transparent) 50%, 
-            color-mix(in srgb, var(--cs-orb-pink-lighter) 10%, transparent) 100%);
-  --cs-orb-gradient-custom: radial-gradient(circle, 
-            color-mix(in srgb, var(--cs-orb-custom-primary) 50%, transparent) 0%, 
-            color-mix(in srgb, var(--cs-orb-custom-secondary) 30%, transparent) 50%, 
-            color-mix(in srgb, var(--cs-orb-custom-accent) 10%, transparent) 100%);
+@keyframes anim-slide-left {
+  opacity: 0;
+  transform: translateX(20px);
+  opacity: 1;
+  transform: translateX(0);
+}
 
-/* === Utilities === */
-.orb {
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: 0.7;
-  pointer-events: none;
+@keyframes anim-slide-right {
+  opacity: 0;
+  transform: translateX(-20px);
+  opacity: 1;
+  transform: translateX(0);
+}
 
-.orb-xs {
-  width: 50px;
-  height: 50px;
-
-.orb-sm {
-  width: 75px;
-  height: 75px;
-
-.orb-md {
-  width: 100px;
-  height: 100px;
-
-.orb-lg {
-  width: 150px;
-  height: 150px;
-
-.orb-xl {
-  width: 200px;
-  height: 200px;
-
-.orb-2xl {
-  width: 300px;
-  height: 300px;
-
-.orb-blur-none {
-  filter: blur(0);
-
-.orb-blur-sm {
-  filter: blur(2px);
-
-.orb-blur-md {
+@keyframes anim-blur-in {
+  opacity: 0;
   filter: blur(4px);
+  opacity: 1;
+  filter: blur(0);
+}
+
+@keyframes anim-blur-out {
+  opacity: 1;
+  filter: blur(0);
+  opacity: 0;
+  filter: blur(4px);
+}
+
+@keyframes anim-rotate-in {
+  opacity: 0;
+  transform: rotate(-5deg);
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+@keyframes anim-rotate {
+  transform: rotate(0deg);
+  transform: rotate(360deg);
+}
+
+@keyframes anim-pulse {
+  opacity: 1;
+  opacity: 0.5;
+}
+
+@keyframes anim-bounce {
+  transform: translateY(0);
+  animationTimingFunction: cubic-bezier(0.8, 0, 1, 1);
+  transform: translateY(-25%);
+  animationTimingFunction: cubic-bezier(0, 0, 0.2, 1);
+}
+
+@keyframes anim-wiggle {
+  transform: rotate(0deg);
+  transform: rotate(-3deg);
+  transform: rotate(3deg);
+}
+
+@keyframes anim-reveal-3d-up {
+  opacity: 0;
+  transform: rotateX(-90deg);
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+
+@keyframes anim-reveal-3d-right {
+  opacity: 0;
+  transform: rotateY(90deg);
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+@keyframes anim-marquee {
+  transform: translateX(100%);
+  transform: translateX(-100%);
+}
+
+@keyframes anim-parallax-y {
+  transform: translateY(-10px);
+  transform: translateY(10px);
+}
+
+@keyframes anim-progress-grow {
+  width: 0%;
+  width: 100%;
+}
 
-.orb-blur-lg {
-  filter: blur(8px);
-
-.orb-float {
-  animation: orb-float 6s ease-in-out infinite;
-
-.orb-pulse {
-  animation: orb-pulse 4s ease-in-out infinite;
-
-.orb-drift {
-  animation: orb-drift 8s ease-in-out infinite;
-
-.orb-absolute {
-  position: absolute;
-
-.orb-fixed {
-  position: fixed;
-
-.orb-gradient-blue {
-  background: var(--cs-orb-gradient-blue);
-
-.orb-gradient-purple {
-  background: var(--cs-orb-gradient-purple);
-
-.orb-gradient-pink {
-  background: var(--cs-orb-gradient-pink);
-
-.orb-gradient-custom {
-  background: var(--cs-orb-gradient-custom);
-
-/* === Base Styles === */
-:root {
-  --cs-gradient-sunset-start: #ff6b6b;
-  --cs-gradient-sunset-mid: #ffd93d;
-  --cs-gradient-sunset-end: #6bcf7f;
-  --cs-gradient-ocean-start: #667eea;
-  --cs-gradient-ocean-end: #764ba2;
-  --cs-gradient-fire-start: #f093fb;
-  --cs-gradient-fire-end: #f5576c;
-  --cs-gradient-mint-start: #4facfe;
-  --cs-gradient-mint-end: #00f2fe;
-  --cs-gradient-purple-start: #a8edea;
-  --cs-gradient-purple-end: #fed6e3;
-  --cs-gradient-orange-start: #ffeaa7;
-  --cs-gradient-orange-end: #fab1a0;
-  --cs-gradient-blue-start: #74b9ff;
-  --cs-gradient-blue-end: #0984e3;
-  --cs-gradient-pink-start: #fd79a8;
-  --cs-gradient-pink-end: #fdcb6e;
-  --cs-gradient-custom-start: #667eea;
-  --cs-gradient-custom-mid: null;
-  --cs-gradient-custom-end: #764ba2;
-  --cs-gradient-white: #ffffff;
-
-/* === Utilities === */
-.gradient-sunset {
-  background: linear-gradient(135deg, var(--cs-gradient-sunset-start), var(--cs-gradient-sunset-mid), var(--cs-gradient-sunset-end));
-
-.gradient-ocean {
-  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
-
-.gradient-fire {
-  background: linear-gradient(135deg, var(--cs-gradient-fire-start), var(--cs-gradient-fire-end));
-
-.gradient-mint {
-  background: linear-gradient(135deg, var(--cs-gradient-mint-start), var(--cs-gradient-mint-end));
-
-.gradient-purple {
-  background: linear-gradient(135deg, var(--cs-gradient-purple-start), var(--cs-gradient-purple-end));
-
-.gradient-orange {
-  background: linear-gradient(135deg, var(--cs-gradient-orange-start), var(--cs-gradient-orange-end));
-
-.gradient-blue {
-  background: linear-gradient(135deg, var(--cs-gradient-blue-start), var(--cs-gradient-blue-end));
-
-.gradient-pink {
-  background: linear-gradient(135deg, var(--cs-gradient-pink-start), var(--cs-gradient-pink-end));
-
-.gradient-custom {
-  background: linear-gradient(135deg, var(--cs-gradient-custom-start), var(--cs-gradient-custom-end));
-
-.gradient-text {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-text-sunset {
-  background: linear-gradient(135deg, var(--cs-gradient-sunset-start), var(--cs-gradient-sunset-mid), var(--cs-gradient-sunset-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-text-ocean {
-  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-text-fire {
-  background: linear-gradient(135deg, var(--cs-gradient-fire-start), var(--cs-gradient-fire-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-text-custom {
-  background: linear-gradient(135deg, var(--cs-gradient-custom-start), var(--cs-gradient-custom-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-radial-center {
-  background: radial-gradient(circle at center, var(--cs-gradient-stops));
-
-.gradient-radial-top {
-  background: radial-gradient(circle at top, var(--cs-gradient-stops));
-
-.gradient-radial-bottom {
-  background: radial-gradient(circle at bottom, var(--cs-gradient-stops));
-
-.gradient-conic {
-  background: conic-gradient(var(--cs-gradient-stops));
-
-.gradient-conic-center {
-  background: conic-gradient(from 0deg at 50% 50%, var(--cs-gradient-stops));
-
-.gradient-border {
-  position: relative;
-  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
-  border-radius: 0.5rem;
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  background: var(--cs-gradient-white);
-  border-radius: calc(0.5rem - 1px);
-
-.gradient-animate {
-  background-size: 400% 400%;
-  animation: gradient-shift 4s ease infinite;
-
-/* === Base Styles === */
-:root {
-  --cs-scroll-thumb-gray: #6b7280;
-  --cs-scroll-thumb-blue: #3b82f6;
-
-/* === Utilities === */
-.scroll-smooth {
-  scroll-behavior: smooth;
-
-.scroll-auto {
-  scroll-behavior: auto;
-
-.scroll-snap-none {
-  scroll-snap-type: none;
-
-.scroll-snap-x {
-  scroll-snap-type: x mandatory;
-
-.scroll-snap-y {
-  scroll-snap-type: y mandatory;
-
-.scroll-snap-both {
-  scroll-snap-type: both mandatory;
-
-.scroll-snap-proximity {
-  scroll-snap-type: y proximity;
-
-.snap-start {
-  scroll-snap-align: start;
-
-.snap-end {
-  scroll-snap-align: end;
-
-.snap-center {
-  scroll-snap-align: center;
-
-.snap-align-none {
-  scroll-snap-align: none;
-
-.snap-normal {
-  scroll-snap-stop: normal;
-
-.snap-always {
-  scroll-snap-stop: always;
-
-.scroll-m-0 {
-  scroll-margin: 0px;
-
-.scroll-m-1 {
-  scroll-margin: 0.25rem;
-
-.scroll-m-2 {
-  scroll-margin: 0.5rem;
-
-.scroll-m-4 {
-  scroll-margin: 1rem;
-
-.scroll-m-8 {
-  scroll-margin: 2rem;
-
-.scroll-m-16 {
-  scroll-margin: 4rem;
-
-.scroll-p-0 {
-  scroll-padding: 0px;
-
-.scroll-p-1 {
-  scroll-padding: 0.25rem;
-
-.scroll-p-2 {
-  scroll-padding: 0.5rem;
-
-.scroll-p-4 {
-  scroll-padding: 1rem;
-
-.scroll-p-8 {
-  scroll-padding: 2rem;
-
-.scroll-p-16 {
-  scroll-padding: 4rem;
-
-.scrollbar-none {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
-
-.scrollbar-thin {
-  scrollbar-width: thin;
-
-.scrollbar-auto {
-  scrollbar-width: auto;
-
-.scrollbar-thumb-gray {
-  scrollbar-color: var(--cs-scroll-thumb-gray) transparent;
-
-.scrollbar-thumb-blue {
-  scrollbar-color: var(--cs-scroll-thumb-blue) transparent;
-
-.scrollbar-track-transparent {
-  scrollbar-color: inherit transparent;
-
-/* === Base Styles === */
-:root {
-  --cs-nav-primary: #007bff;
-  --cs-nav-white: #ffffff;
-  --cs-nav-text-muted: #495057;
-  --cs-nav-border: #dee2e6;
 
 /* === Components === */
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
+.cs-anim {
+  animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
+  animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
+  animation-iteration-count: 1;
+  animation-direction: var(--cs-anim-direction, normal);
+  animation-fill-mode: var(--cs-anim-fill, both);
+  animation-delay: var(--cs-anim-delay, 0ms);
+}
 
-.nav-item {
-  display: block;
+.cs-anim-infinite {
+  animation-iteration-count: infinite;
+}
 
-.nav-link {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+.cs-anim-reverse {
+  animation-direction: reverse;
+}
 
-.nav-link:hover {
-  text-decoration: none;
+.cs-anim-alternate {
+  animation-direction: alternate;
+}
 
-.nav-link.active {
-  font-weight: 600;
+.cs-anim-both {
+  animation-fill-mode: both;
+}
+
+.cs-anim-forwards {
+  animation-fill-mode: forwards;
+}
+
+.cs-will-transform {
+  will-change: transform;
+}
+
+.cs-will-opacity {
+  will-change: opacity;
+}
+
+.cs-will-filter {
+  will-change: filter;
+}
+
+.cs-t-origin-top {
+  transform-origin: top;
+}
+
+.cs-t-origin-center {
+  transform-origin: center;
+}
+
+.cs-t-origin-bottom {
+  transform-origin: bottom;
+}
+
+.cs-t-preserve-3d {
+  transform-style: preserve-3d;
+}
+
 
 /* === Utilities === */
-.nav-pills .nav-item .nav-link {
-  border-radius: 0.25rem;
+.cs-anim-xxs {
+  --cs-anim-duration: var(--cs-anim-duration-xxs);
+}
 
-.nav-pills .nav-item .nav-link.active {
-  background-color: var(--cs-nav-primary);
-  color: var(--cs-nav-white);
+.cs-anim-xs {
+  --cs-anim-duration: var(--cs-anim-duration-xs);
+}
 
-.nav-tabs .nav-item .nav-link {
-  border: 1px solid transparent;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+.cs-anim-sm {
+  --cs-anim-duration: var(--cs-anim-duration-sm);
+}
 
-.nav-tabs .nav-item .nav-link.active {
-  color: var(--cs-nav-text-muted);
-  background-color: var(--cs-nav-white);
-  border-color: var(--cs-nav-border) var(--cs-nav-border) var(--cs-nav-white);
+.cs-anim-md {
+  --cs-anim-duration: var(--cs-anim-duration-md);
+}
 
-.navbar-brand {
-  display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap;
+.cs-anim-lg {
+  --cs-anim-duration: var(--cs-anim-duration-lg);
+}
 
-.navbar-nav {
-  display: flex;
-  flex-direction: column;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
+.cs-anim-xl {
+  --cs-anim-duration: var(--cs-anim-duration-xl);
+}
 
-.navbar-nav .nav-link {
-  padding-right: 0;
-  padding-left: 0;
+.cs-anim-2xl {
+  --cs-anim-duration: var(--cs-anim-duration-2xl);
+}
+
+.cs-ease-standard {
+  --cs-anim-ease: var(--cs-anim-ease-standard);
+}
+
+.cs-ease-emphasized {
+  --cs-anim-ease: var(--cs-anim-ease-emphasized);
+}
+
+.cs-ease-decelerate {
+  --cs-anim-ease: var(--cs-anim-ease-decelerate);
+}
+
+.cs-ease-accelerate {
+  --cs-anim-ease: var(--cs-anim-ease-accelerate);
+}
+
+.cs-ease-spring {
+  --cs-anim-ease: var(--cs-anim-ease-spring);
+}
+
+.cs-ease-soft-spring {
+  --cs-anim-ease: var(--cs-anim-ease-soft-spring);
+}
+
+.cs-fade-in {
+  animation-name: anim-fade-in;
+}
+
+.cs-fade-out {
+  animation-name: anim-fade-out;
+}
+
+.cs-scale-in {
+  animation-name: anim-scale-in;
+}
+
+.cs-scale-out {
+  animation-name: anim-scale-out;
+}
+
+.cs-slide-up {
+  animation-name: anim-slide-up;
+}
+
+.cs-slide-down {
+  animation-name: anim-slide-down;
+}
+
+.cs-slide-left {
+  animation-name: anim-slide-left;
+}
+
+.cs-slide-right {
+  animation-name: anim-slide-right;
+}
+
+.cs-blur-in {
+  animation-name: anim-blur-in;
+}
+
+.cs-blur-out {
+  animation-name: anim-blur-out;
+}
+
+.cs-rotate-in {
+  animation-name: anim-rotate-in;
+}
+
+.cs-rotate {
+  animation-name: anim-rotate;
+}
+
+.cs-pulse {
+  animation-name: anim-pulse;
+}
+
+.cs-bounce {
+  animation-name: anim-bounce;
+}
+
+.cs-wiggle {
+  animation-name: anim-wiggle;
+}
+
+.cs-reveal-3d-up {
+  animation-name: anim-reveal-3d-up;
+}
+
+.cs-reveal-3d-right {
+  animation-name: anim-reveal-3d-right;
+}
+
+.cs-hover-lift-sm {
+  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+  transform: translateY(-2px);
+}
+
+.cs-hover-lift-md {
+  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+  transform: translateY(-4px);
+}
+
+.cs-hover-scale-105 {
+  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+  transform: scale(1.05);
+}
+
+.cs-hover-scale-110 {
+  transition: transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);
+  transform: scale(1.10);
+}
+
+.cs-enter-card {
+  animation: anim-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-decelerate) both;
+}
+
+.cs-enter-modal {
+  animation: anim-scale-in var(--cs-anim-duration-md) var(--cs-anim-ease-emphasized) both;
+}
+
+.cs-exit-modal {
+  animation: anim-scale-out var(--cs-anim-duration-md) var(--cs-anim-ease-accelerate) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  animation-duration: var(--cs-anim-reduced-motion-duration) !important;
+  animation-iteration-count: 1 !important;
+  animation-timing-function: var(--cs-anim-reduced-motion-ease) !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+
+/* 
+ * Complete @casoon/tailwindcss-effects library
+ * 
+ * For individual packages and Tailwind plugin usage:
+ * https://www.npmjs.com/package/@casoon/tailwindcss-effects
+ */

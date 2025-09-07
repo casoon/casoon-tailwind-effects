@@ -1,9 +1,14 @@
+import plugin from 'tailwindcss/plugin';
+
 /**
  * @casoon/tailwindcss-gradients - Tailwind CSS Plugin
  * 
  * Beautiful gradient utilities for Tailwind CSS v4.
  */
-export default function gradientsPlugin(options = {}) {
+export default plugin(function ({ addUtilities, addBase, theme }) {
+  // Get configuration options from theme
+  const options = theme('gradients') || {};
+  
   // Default color tokens
   const defaultTokens = {
     colors: {
@@ -45,9 +50,6 @@ export default function gradientsPlugin(options = {}) {
   const tokens = {
     colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) }
   };
-  
-  return {
-    handler: ({ addUtilities, addBase }) => {
       // Add CSS custom properties (tokens)
       addBase({
         ':root': {
@@ -179,16 +181,52 @@ export default function gradientsPlugin(options = {}) {
         '.cs-gradient-animate': {
           'background-size': '400% 400%',
           'animation': 'gradient-shift 4s ease infinite'
-        },
+        }
+      });
+      
+      // Add keyframes for animated gradients
+      addBase({
         '@keyframes gradient-shift': {
           '0%': { 'background-position': '0% 50%' },
           '50%': { 'background-position': '100% 50%' },
           '100%': { 'background-position': '0% 50%' }
         }
       });
+}, {
+  // Theme configuration
+  theme: {
+    extend: {
+      gradients: {
+        // Default configuration can be overridden by users
+        tokens: {
+          colors: {
+            'sunset-start': '#ff6b6b',
+            'sunset-mid': '#ffd93d', 
+            'sunset-end': '#6bcf7f',
+            'ocean-start': '#667eea',
+            'ocean-end': '#764ba2',
+            'fire-start': '#f093fb',
+            'fire-end': '#f5576c',
+            'mint-start': '#4facfe',
+            'mint-end': '#00f2fe',
+            'purple-start': '#a8edea',
+            'purple-end': '#fed6e3',
+            'orange-start': '#ffeaa7',
+            'orange-end': '#fab1a0',
+            'blue-start': '#74b9ff',
+            'blue-end': '#0984e3',
+            'pink-start': '#fd79a8',
+            'pink-end': '#fdcb6e',
+            'custom-start': '#667eea',
+            'custom-mid': null,
+            'custom-end': '#764ba2',
+            'white': '#ffffff'
+          }
+        }
+      }
     }
-  };
-}
+  }
+});
 
 // Export both default and named export for flexibility
-export { gradientsPlugin as gradients };
+export { plugin as gradients };

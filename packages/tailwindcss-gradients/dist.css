@@ -1,128 +1,67 @@
-/* ========================================================================
-   @casoon/tailwindcss-gradients - Flattened CSS Distribution
-   Tailwind CSS v4 compatible utilities without deep @layer nesting
-   ===================================================================== */
-
 /*!
- * @casoon/tailwindcss-gradients v0.5.8
+ * @casoon/tailwindcss-gradients v0.7.0
  * Beautiful gradient utilities for Tailwind CSS v4
  * 
- * Generated from plugin.js - DO NOT EDIT MANUALLY
- * Build date: 2025-09-06T18:50:00.567Z
- * 
- * Import via:
- * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-gradients@0.5.8/index.css
- * - GitHub: https://raw.githubusercontent.com/casoon-tailwind-effects/main/packages/tailwindcss-gradients/index.css
+ * CSS Classes Distribution File
+ * Generated: 2025-09-07T12:46:55.917Z
  */
 
-/* === Base Styles === */
-:root {
-  --cs-gradient-sunset-start: #ff6b6b;
-  --cs-gradient-sunset-mid: #ffd93d;
-  --cs-gradient-sunset-end: #6bcf7f;
-  --cs-gradient-ocean-start: #667eea;
-  --cs-gradient-ocean-end: #764ba2;
-  --cs-gradient-fire-start: #f093fb;
-  --cs-gradient-fire-end: #f5576c;
-  --cs-gradient-mint-start: #4facfe;
-  --cs-gradient-mint-end: #00f2fe;
-  --cs-gradient-purple-start: #a8edea;
-  --cs-gradient-purple-end: #fed6e3;
-  --cs-gradient-orange-start: #ffeaa7;
-  --cs-gradient-orange-end: #fab1a0;
-  --cs-gradient-blue-start: #74b9ff;
-  --cs-gradient-blue-end: #0984e3;
-  --cs-gradient-pink-start: #fd79a8;
-  --cs-gradient-pink-end: #fdcb6e;
-  --cs-gradient-custom-start: #667eea;
-  --cs-gradient-custom-mid: null;
-  --cs-gradient-custom-end: #764ba2;
-  --cs-gradient-white: #ffffff;
+/* CSS Variables Available:
+ * --cs-gradient-blue-end
+ * --cs-gradient-blue-start
+ * --cs-gradient-custom-end
+ * --cs-gradient-custom-mid
+ * --cs-gradient-custom-start
+ * --cs-gradient-fire-end
+ * --cs-gradient-fire-start
+ * --cs-gradient-mint-end
+ * --cs-gradient-mint-start
+ * --cs-gradient-ocean-end
+ * --cs-gradient-ocean-start
+ * --cs-gradient-orange-end
+ * --cs-gradient-orange-start
+ * --cs-gradient-pink-end
+ * --cs-gradient-pink-start
+ * --cs-gradient-purple-end
+ * --cs-gradient-purple-start
+ * --cs-gradient-stops
+ * --cs-gradient-sunset-end
+ * --cs-gradient-sunset-mid
+ * --cs-gradient-sunset-start
+ * --cs-gradient-white
+ */
 
-/* === Utilities === */
-.gradient-sunset {
-  background: linear-gradient(135deg, var(--cs-gradient-sunset-start), var(--cs-gradient-sunset-mid), var(--cs-gradient-sunset-end));
+/* Keyframes */
+/* @keyframes gradient-shift - see plugin source for details */
+/* Available CSS Classes:
+ * .cs-gradient-animate
+ * .cs-gradient-blue
+ * .cs-gradient-border
+ * .cs-gradient-conic
+ * .cs-gradient-conic-center
+ * .cs-gradient-custom
+ * .cs-gradient-fire
+ * .cs-gradient-mint
+ * .cs-gradient-ocean
+ * .cs-gradient-orange
+ * .cs-gradient-pink
+ * .cs-gradient-purple
+ * .cs-gradient-radial-bottom
+ * .cs-gradient-radial-center
+ * .cs-gradient-radial-top
+ * .cs-gradient-sunset
+ * .cs-gradient-text
+ * .cs-gradient-text-custom
+ * .cs-gradient-text-fire
+ * .cs-gradient-text-ocean
+ * .cs-gradient-text-sunset
+ */
 
-.gradient-ocean {
-  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
-
-.gradient-fire {
-  background: linear-gradient(135deg, var(--cs-gradient-fire-start), var(--cs-gradient-fire-end));
-
-.gradient-mint {
-  background: linear-gradient(135deg, var(--cs-gradient-mint-start), var(--cs-gradient-mint-end));
-
-.gradient-purple {
-  background: linear-gradient(135deg, var(--cs-gradient-purple-start), var(--cs-gradient-purple-end));
-
-.gradient-orange {
-  background: linear-gradient(135deg, var(--cs-gradient-orange-start), var(--cs-gradient-orange-end));
-
-.gradient-blue {
-  background: linear-gradient(135deg, var(--cs-gradient-blue-start), var(--cs-gradient-blue-end));
-
-.gradient-pink {
-  background: linear-gradient(135deg, var(--cs-gradient-pink-start), var(--cs-gradient-pink-end));
-
-.gradient-custom {
-  background: linear-gradient(135deg, var(--cs-gradient-custom-start), var(--cs-gradient-custom-end));
-
-.gradient-text {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-text-sunset {
-  background: linear-gradient(135deg, var(--cs-gradient-sunset-start), var(--cs-gradient-sunset-mid), var(--cs-gradient-sunset-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-text-ocean {
-  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-text-fire {
-  background: linear-gradient(135deg, var(--cs-gradient-fire-start), var(--cs-gradient-fire-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-text-custom {
-  background: linear-gradient(135deg, var(--cs-gradient-custom-start), var(--cs-gradient-custom-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-
-.gradient-radial-center {
-  background: radial-gradient(circle at center, var(--cs-gradient-stops));
-
-.gradient-radial-top {
-  background: radial-gradient(circle at top, var(--cs-gradient-stops));
-
-.gradient-radial-bottom {
-  background: radial-gradient(circle at bottom, var(--cs-gradient-stops));
-
-.gradient-conic {
-  background: conic-gradient(var(--cs-gradient-stops));
-
-.gradient-conic-center {
-  background: conic-gradient(from 0deg at 50% 50%, var(--cs-gradient-stops));
-
-.gradient-border {
-  position: relative;
-  background: linear-gradient(135deg, var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end));
-  border-radius: 0.5rem;
-
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  background: var(--cs-gradient-white);
-  border-radius: calc(0.5rem - 1px);
-
-.gradient-animate {
-  background-size: 400% 400%;
-  animation: gradient-shift 4s ease infinite;
+/* 
+ * For full functionality, use this package as a Tailwind CSS plugin:
+ * import plugin from '@casoon/tailwindcss-gradients';
+ * 
+ * export default {
+ *   plugins: [plugin]
+ * }
+ */

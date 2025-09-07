@@ -7,13 +7,12 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-animations`
-- **Version**: `0.6.4`
+- **Version**: `0.7.0`
 - **Type**: Tailwind CSS v4 Plugin
 
-## CSS Classes (52)
+## CSS Classes (50)
 
 - `.cs-anim`
-- `.cs-anim, .cs-fade-in, .cs-fade-out, .cs-scale-in, .cs-scale-out, .cs-slide-up, .cs-slide-down, .cs-slide-left, .cs-slide-right, .cs-blur-in, .cs-blur-out, .cs-rotate-in, .cs-rotate, .cs-pulse, .cs-bounce, .cs-wiggle, .cs-reveal-3d-up, .cs-reveal-3d-right, .cs-enter-card, .cs-enter-modal, .cs-exit-modal`
 - `.cs-anim-2xl`
 - `.cs-anim-alternate`
 - `.cs-anim-both`
@@ -42,7 +41,6 @@
 - `.cs-fade-out`
 - `.cs-hover-lift-md`
 - `.cs-hover-lift-sm`
-- `.cs-hover-lift-sm:hover, .cs-hover-lift-md:hover, .cs-hover-scale-105:hover, .cs-hover-scale-110:hover`
 - `.cs-hover-scale-105`
 - `.cs-hover-scale-110`
 - `.cs-pulse`

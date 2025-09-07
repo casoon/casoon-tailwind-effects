@@ -7,22 +7,18 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-glass`
-- **Version**: `0.6.4`
+- **Version**: `0.7.0`
 - **Type**: Tailwind CSS v4 Plugin
 
-## CSS Classes (44)
+## CSS Classes (40)
 
 - `.cs-glass`
-- `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button`
-- `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button, .glass, .glass-card, .glass-nav, .glass-button`
 - `.cs-glass-amber`
 - `.cs-glass-blue`
 - `.cs-glass-button`
 - `.cs-glass-card`
-- `.cs-glass-card, .cs-glass-card-light, .cs-glass-button, .cs-glass-toast`
 - `.cs-glass-card-light`
 - `.cs-glass-dark`
-- `.cs-glass-dark, .glass-dark`
 - `.cs-glass-dropdown`
 - `.cs-glass-green`
 - `.cs-glass-lg`

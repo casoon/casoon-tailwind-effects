@@ -7,15 +7,14 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-gradients`
-- **Version**: `0.6.4`
+- **Version**: `0.7.0`
 - **Type**: Tailwind CSS v4 Plugin
 
-## CSS Classes (22)
+## CSS Classes (21)
 
 - `.cs-gradient-animate`
 - `.cs-gradient-blue`
 - `.cs-gradient-border`
-- `.cs-gradient-border::before`
 - `.cs-gradient-conic`
 - `.cs-gradient-conic-center`
 - `.cs-gradient-custom`

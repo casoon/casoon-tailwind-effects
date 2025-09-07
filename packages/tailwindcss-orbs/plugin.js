@@ -1,9 +1,14 @@
+import plugin from 'tailwindcss/plugin';
+
 /**
  * @casoon/tailwindcss-orbs - Tailwind CSS Plugin
  * 
  * Animated orb and blob components for Tailwind CSS v4.
  */
-export default function orbsPlugin(options = {}) {
+export default plugin(function ({ addUtilities, addBase, theme }) {
+  // Get configuration options from theme
+  const options = theme('orbs') || {};
+  
   // Default color tokens for orb effects
   const defaultTokens = {
     colors: {
@@ -34,9 +39,6 @@ export default function orbsPlugin(options = {}) {
     colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
     opacity: { ...defaultTokens.opacity, ...(options.tokens?.opacity || {}) }
   };
-  
-  return {
-    handler: ({ addUtilities, addKeyframes, addBase }) => {
       // Add CSS custom properties (tokens)
       addBase({
         ':root': {
@@ -73,17 +75,18 @@ export default function orbsPlugin(options = {}) {
             color-mix(in srgb, var(--cs-orb-custom-accent) ${tokens.opacity.weak}, transparent) 100%)`
         }
       });
-      // Orb animation keyframes
-      addKeyframes({
-        'orb-float': {
+      
+      // Orb animation keyframes - added directly to base for v4 compatibility
+      addBase({
+        '@keyframes orb-float': {
           '0%, 100%': { 'transform': 'translateY(0px)' },
           '50%': { 'transform': 'translateY(-20px)' }
         },
-        'orb-pulse': {
+        '@keyframes orb-pulse': {
           '0%, 100%': { 'opacity': '0.7', 'transform': 'scale(1)' },
           '50%': { 'opacity': '1', 'transform': 'scale(1.05)' }
         },
-        'orb-drift': {
+        '@keyframes orb-drift': {
           '0%': { 'transform': 'translateX(0px)' },
           '33%': { 'transform': 'translateX(30px)' },
           '66%': { 'transform': 'translateX(-20px)' },
@@ -148,9 +151,37 @@ export default function orbsPlugin(options = {}) {
           'background': 'var(--cs-orb-gradient-custom)'
         }
       });
+}, {
+  // Theme configuration
+  theme: {
+    extend: {
+      orbs: {
+        // Default configuration can be overridden by users
+        tokens: {
+          colors: {
+            'blue': '#3b82f6',
+            'blue-light': '#93c5fd',
+            'blue-lighter': '#dbeafe',
+            'purple': '#9333ea',
+            'purple-light': '#c4b5fd',
+            'purple-lighter': '#ede9fe',
+            'pink': '#ec4899',
+            'pink-light': '#fbcfe8',
+            'pink-lighter': '#fdf2f8',
+            'custom-primary': '#667eea',
+            'custom-secondary': '#764ba2',
+            'custom-accent': '#f093fb'
+          },
+          opacity: {
+            'strong': '50%',
+            'medium': '30%', 
+            'weak': '10%'
+          }
+        }
+      }
     }
-  };
-}
+  }
+});
 
 // Export both default and named export for flexibility
-export { orbsPlugin as orbs };
+export { plugin as orbs };

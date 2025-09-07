@@ -1,9 +1,14 @@
+import plugin from 'tailwindcss/plugin';
+
 /**
  * @casoon/tailwindcss-scroll - Tailwind CSS Plugin
  * 
  * Scroll-based animations and utilities for Tailwind CSS v4.
  */
-export default function scrollPlugin(options = {}) {
+export default plugin(function ({ addUtilities, addBase, theme }) {
+  // Get configuration options from theme
+  const options = theme('scroll') || {};
+  
   // Default color tokens
   const defaultTokens = {
     colors: {
@@ -16,9 +21,6 @@ export default function scrollPlugin(options = {}) {
   const tokens = {
     colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) }
   };
-  
-  return {
-    handler: ({ addUtilities, addBase }) => {
       // Add CSS custom properties (tokens)
       addBase({
         ':root': {
@@ -117,9 +119,22 @@ export default function scrollPlugin(options = {}) {
           'scrollbar-color': 'inherit transparent'
         }
       });
+}, {
+  // Theme configuration
+  theme: {
+    extend: {
+      scroll: {
+        // Default configuration can be overridden by users
+        tokens: {
+          colors: {
+            'thumb-gray': '#6b7280',
+            'thumb-blue': '#3b82f6'
+          }
+        }
+      }
     }
-  };
-}
+  }
+});
 
 // Export both default and named export for flexibility
-export { scrollPlugin as scroll };
+export { plugin as scroll };

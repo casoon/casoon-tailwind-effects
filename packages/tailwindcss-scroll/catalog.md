@@ -7,10 +7,10 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-scroll`
-- **Version**: `0.6.4`
+- **Version**: `0.7.0`
 - **Type**: Tailwind CSS v4 Plugin
 
-## CSS Classes (32)
+## CSS Classes (31)
 
 - `.cs-scroll-auto`
 - `.cs-scroll-m-0`
@@ -33,7 +33,6 @@
 - `.cs-scroll-snap-y`
 - `.cs-scrollbar-auto`
 - `.cs-scrollbar-none`
-- `.cs-scrollbar-none::-webkit-scrollbar`
 - `.cs-scrollbar-thin`
 - `.cs-scrollbar-thumb-blue`
 - `.cs-scrollbar-thumb-gray`

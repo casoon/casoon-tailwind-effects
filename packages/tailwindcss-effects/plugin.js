@@ -16,24 +16,23 @@ import utilitiesPlugin from '../tailwindcss-utilities/plugin.js';
 import loadingPlugin from '../tailwindcss-loading/plugin.js';
 import microInteractionsPlugin from '../tailwindcss-micro-interactions/plugin.js';
 
-export default function effectsPlugin(options = {}) {
-  // Return array of plugins instead of single plugin with handler
-  // This allows Tailwind's purging mechanism to properly detect CSS classes
-  return [
-    utilitiesPlugin(options.utilities || {}),
-    animationsPlugin(options.animations || {}),
-    loadingPlugin(options.loading || {}),
-    microInteractionsPlugin(options.microInteractions || {}),
-    glassPlugin(options.glass || {}),
-    orbsPlugin(options.orbs || {}),
-    gradientsPlugin(options.gradients || {}),
-    scrollPlugin(options.scroll || {}),
-    navigationPlugin(options.navigation || {})
-  ].filter(Boolean); // Remove any undefined/null plugins
-}
+// For Tailwind CSS v4, we simply export an array of plugins
+// Each plugin is now a properly constructed v4 plugin
+const effectsPlugins = [
+  utilitiesPlugin,
+  animationsPlugin,
+  loadingPlugin,
+  microInteractionsPlugin,
+  glassPlugin,
+  orbsPlugin,
+  gradientsPlugin,
+  scrollPlugin,
+  navigationPlugin
+];
 
-// Export the main plugin as both default and named export
-export { effectsPlugin, effectsPlugin as effects };
+// Export as default and named export
+export default effectsPlugins;
+export { effectsPlugins as effects };
 
 // Re-export individual plugins for direct import
 export {

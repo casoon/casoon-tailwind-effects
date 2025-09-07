@@ -1,9 +1,14 @@
+import plugin from 'tailwindcss/plugin';
+
 /**
  * @casoon/tailwindcss-micro-interactions - Tailwind CSS Plugin
  * 
  * Micro-interaction utilities for Tailwind CSS v4.
  */
-export default function microInteractionsPlugin(options = {}) {
+export default plugin(function ({ addUtilities, addBase, theme }) {
+  // Get configuration options from theme
+  const options = theme('microInteractions') || {};
+  
   // Default color tokens for micro-interactions
   const defaultTokens = {
     colors: {
@@ -22,9 +27,6 @@ export default function microInteractionsPlugin(options = {}) {
     colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) },
     opacity: { ...defaultTokens.opacity, ...(options.tokens?.opacity || {}) }
   };
-  
-  return {
-    handler: ({ addUtilities, addBase }) => {
       // Add CSS custom properties (tokens)
       addBase({
         ':root': {
@@ -158,9 +160,27 @@ export default function microInteractionsPlugin(options = {}) {
           }
         }
       });
+}, {
+  // Theme configuration
+  theme: {
+    extend: {
+      microInteractions: {
+        // Default configuration can be overridden by users
+        tokens: {
+          colors: {
+            'focus-ring': '#3b82f6',
+            'shadow': '#000000'
+          },
+          opacity: {
+            'focus-strong': '50%',
+            'focus-medium': '30%',
+            'shadow-light': '10%'
+          }
+        }
+      }
     }
-  };
-}
+  }
+});
 
 // Export both default and named export for flexibility
-export { microInteractionsPlugin as microInteractions };
+export { plugin as microInteractions };

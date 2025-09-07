@@ -1,9 +1,14 @@
+import plugin from 'tailwindcss/plugin';
+
 /**
  * @casoon/tailwindcss-loading - Tailwind CSS Plugin
  * 
  * Loading animations and spinners for Tailwind CSS v4.
  */
-export default function loadingPlugin(options = {}) {
+export default plugin(function ({ addUtilities, addBase, theme }) {
+  // Get configuration options from theme
+  const options = theme('loading') || {};
+  
   // Default color tokens
   const defaultTokens = {
     colors: {
@@ -16,9 +21,6 @@ export default function loadingPlugin(options = {}) {
   const tokens = {
     colors: { ...defaultTokens.colors, ...(options.tokens?.colors || {}) }
   };
-  
-  return {
-    handler: ({ addUtilities, addKeyframes, addBase }) => {
       // Add CSS custom properties (tokens)
       addBase({
         ':root': {
@@ -26,9 +28,10 @@ export default function loadingPlugin(options = {}) {
           '--cs-loading-spinner-active': tokens.colors['spinner-active']
         }
       });
-      // Add keyframes for loading animations
-      addKeyframes({
-        'spin': {
+      
+      // Add keyframes for loading animations directly to base for v4 compatibility
+      addBase({
+        '@keyframes spin': {
           '0%': { 'transform': 'rotate(0deg)' },
           '100%': { 'transform': 'rotate(360deg)' }
         }
@@ -49,9 +52,22 @@ export default function loadingPlugin(options = {}) {
           'pointer-events': 'none'
         }
       });
+}, {
+  // Theme configuration
+  theme: {
+    extend: {
+      loading: {
+        // Default configuration can be overridden by users
+        tokens: {
+          colors: {
+            'spinner-base': '#f3f3f3',
+            'spinner-active': '#3498db'
+          }
+        }
+      }
     }
-  };
-}
+  }
+});
 
 // Export both default and named export for flexibility
-export { loadingPlugin as loading };
+export { plugin as loading };

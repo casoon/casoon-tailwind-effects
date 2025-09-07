@@ -1,146 +1,62 @@
-/* ========================================================================
-   @casoon/tailwindcss-orbs - Flattened CSS Distribution
-   Tailwind CSS v4 compatible utilities without deep @layer nesting
-   ===================================================================== */
-
 /*!
- * @casoon/tailwindcss-orbs v0.5.8
+ * @casoon/tailwindcss-orbs v0.7.0
  *  for Tailwind CSS v4
  * 
- * Generated from plugin.js - DO NOT EDIT MANUALLY
- * Build date: 2025-09-06T18:50:00.560Z
- * 
- * Import via:
- * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-orbs@0.5.8/index.css
- * - GitHub: https://raw.githubusercontent.com/casoon-tailwind-effects/main/packages/tailwindcss-orbs/index.css
+ * CSS Classes Distribution File
+ * Generated: 2025-09-07T12:46:55.915Z
  */
 
-@keyframes orb-float {
-  0%, 100% {
-    transform: translateY(0px);
+/* CSS Variables Available:
+ * --cs-orb-blue
+ * --cs-orb-blue-light
+ * --cs-orb-blue-lighter
+ * --cs-orb-custom-accent
+ * --cs-orb-custom-primary
+ * --cs-orb-custom-secondary
+ * --cs-orb-gradient-blue
+ * --cs-orb-gradient-custom
+ * --cs-orb-gradient-pink
+ * --cs-orb-gradient-purple
+ * --cs-orb-pink
+ * --cs-orb-pink-light
+ * --cs-orb-pink-lighter
+ * --cs-orb-purple
+ * --cs-orb-purple-light
+ * --cs-orb-purple-lighter
+ */
 
-  50% {
-    transform: translateY(-20px);
+/* Keyframes */
+/* @keyframes orb-drift - see plugin source for details */
+/* @keyframes orb-float - see plugin source for details */
+/* @keyframes orb-pulse - see plugin source for details */
+/* Available CSS Classes:
+ * .cs-orb
+ * .cs-orb-2xl
+ * .cs-orb-absolute
+ * .cs-orb-blur-lg
+ * .cs-orb-blur-md
+ * .cs-orb-blur-none
+ * .cs-orb-blur-sm
+ * .cs-orb-drift
+ * .cs-orb-fixed
+ * .cs-orb-float
+ * .cs-orb-gradient-blue
+ * .cs-orb-gradient-custom
+ * .cs-orb-gradient-pink
+ * .cs-orb-gradient-purple
+ * .cs-orb-lg
+ * .cs-orb-md
+ * .cs-orb-pulse
+ * .cs-orb-sm
+ * .cs-orb-xl
+ * .cs-orb-xs
+ */
 
-@keyframes orb-pulse {
-  0%, 100% {
-    opacity: 0.7;
-    transform: scale(1);
-
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-
-@keyframes orb-drift {
-  0% {
-    transform: translateX(0px);
-
-  33% {
-    transform: translateX(30px);
-
-  66% {
-    transform: translateX(-20px);
-
-  100% {
-    transform: translateX(0px);
-
-/* === Base Styles === */
-:root {
-  --cs-orb-blue: #3b82f6;
-  --cs-orb-blue-light: #93c5fd;
-  --cs-orb-blue-lighter: #dbeafe;
-  --cs-orb-purple: #9333ea;
-  --cs-orb-purple-light: #c4b5fd;
-  --cs-orb-purple-lighter: #ede9fe;
-  --cs-orb-pink: #ec4899;
-  --cs-orb-pink-light: #fbcfe8;
-  --cs-orb-pink-lighter: #fdf2f8;
-  --cs-orb-custom-primary: #667eea;
-  --cs-orb-custom-secondary: #764ba2;
-  --cs-orb-custom-accent: #f093fb;
-  --cs-orb-gradient-blue: radial-gradient(circle, 
-            color-mix(in srgb, var(--cs-orb-blue) 50%, transparent) 0%, 
-            color-mix(in srgb, var(--cs-orb-blue-light) 30%, transparent) 50%, 
-            color-mix(in srgb, var(--cs-orb-blue-lighter) 10%, transparent) 100%);
-  --cs-orb-gradient-purple: radial-gradient(circle, 
-            color-mix(in srgb, var(--cs-orb-purple) 50%, transparent) 0%, 
-            color-mix(in srgb, var(--cs-orb-purple-light) 30%, transparent) 50%, 
-            color-mix(in srgb, var(--cs-orb-purple-lighter) 10%, transparent) 100%);
-  --cs-orb-gradient-pink: radial-gradient(circle, 
-            color-mix(in srgb, var(--cs-orb-pink) 50%, transparent) 0%, 
-            color-mix(in srgb, var(--cs-orb-pink-light) 30%, transparent) 50%, 
-            color-mix(in srgb, var(--cs-orb-pink-lighter) 10%, transparent) 100%);
-  --cs-orb-gradient-custom: radial-gradient(circle, 
-            color-mix(in srgb, var(--cs-orb-custom-primary) 50%, transparent) 0%, 
-            color-mix(in srgb, var(--cs-orb-custom-secondary) 30%, transparent) 50%, 
-            color-mix(in srgb, var(--cs-orb-custom-accent) 10%, transparent) 100%);
-
-/* === Utilities === */
-.orb {
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: 0.7;
-  pointer-events: none;
-
-.orb-xs {
-  width: 50px;
-  height: 50px;
-
-.orb-sm {
-  width: 75px;
-  height: 75px;
-
-.orb-md {
-  width: 100px;
-  height: 100px;
-
-.orb-lg {
-  width: 150px;
-  height: 150px;
-
-.orb-xl {
-  width: 200px;
-  height: 200px;
-
-.orb-2xl {
-  width: 300px;
-  height: 300px;
-
-.orb-blur-none {
-  filter: blur(0);
-
-.orb-blur-sm {
-  filter: blur(2px);
-
-.orb-blur-md {
-  filter: blur(4px);
-
-.orb-blur-lg {
-  filter: blur(8px);
-
-.orb-float {
-  animation: orb-float 6s ease-in-out infinite;
-
-.orb-pulse {
-  animation: orb-pulse 4s ease-in-out infinite;
-
-.orb-drift {
-  animation: orb-drift 8s ease-in-out infinite;
-
-.orb-absolute {
-  position: absolute;
-
-.orb-fixed {
-  position: fixed;
-
-.orb-gradient-blue {
-  background: var(--cs-orb-gradient-blue);
-
-.orb-gradient-purple {
-  background: var(--cs-orb-gradient-purple);
-
-.orb-gradient-pink {
-  background: var(--cs-orb-gradient-pink);
-
-.orb-gradient-custom {
-  background: var(--cs-orb-gradient-custom);
+/* 
+ * For full functionality, use this package as a Tailwind CSS plugin:
+ * import plugin from '@casoon/tailwindcss-orbs';
+ * 
+ * export default {
+ *   plugins: [plugin]
+ * }
+ */

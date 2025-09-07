@@ -1,117 +1,50 @@
-/* ========================================================================
-   @casoon/tailwindcss-micro-interactions - Flattened CSS Distribution
-   Tailwind CSS v4 compatible utilities without deep @layer nesting
-   ===================================================================== */
-
 /*!
- * @casoon/tailwindcss-micro-interactions v0.5.8
+ * @casoon/tailwindcss-micro-interactions v0.7.0
  *  for Tailwind CSS v4
  * 
- * Generated from plugin.js - DO NOT EDIT MANUALLY
- * Build date: 2025-09-06T18:50:00.563Z
- * 
- * Import via:
- * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-micro-interactions@0.5.8/index.css
- * - GitHub: https://raw.githubusercontent.com/casoon-tailwind-effects/main/packages/tailwindcss-micro-interactions/index.css
+ * CSS Classes Distribution File
+ * Generated: 2025-09-07T12:46:55.916Z
  */
 
-/* === Base Styles === */
-:root {
-  --cs-micro-focus-ring: #3b82f6;
-  --cs-micro-shadow: #000000;
-  --cs-micro-focus-ring-strong: color-mix(in srgb, var(--cs-micro-focus-ring) 50%, transparent);
-  --cs-micro-focus-ring-medium: color-mix(in srgb, var(--cs-micro-focus-ring) 30%, transparent);
-  --cs-micro-shadow-light: color-mix(in srgb, var(--cs-micro-shadow) 10%, transparent);
+/* CSS Variables Available:
+ * --cs-micro-focus-ring
+ * --cs-micro-focus-ring-medium
+ * --cs-micro-focus-ring-strong
+ * --cs-micro-shadow
+ * --cs-micro-shadow-light
+ */
 
-/* === Utilities === */
-.hover-scale-95 {
-  transition: transform 0.2s ease;
-  transform: scale(0.95);
+/* Available CSS Classes:
+ * .cs-active-scale-95
+ * .cs-active-scale-98
+ * .cs-focus-ring-2
+ * .cs-focus-ring-4
+ * .cs-focus-scale-105
+ * .cs-hover-brighten
+ * .cs-hover-darken
+ * .cs-hover-fade-in
+ * .cs-hover-fade-out
+ * .cs-hover-rotate-1
+ * .cs-hover-rotate-3
+ * .cs-hover-rotate-6
+ * .cs-hover-scale-105
+ * .cs-hover-scale-110
+ * .cs-hover-scale-95
+ * .cs-hover-translate-y-1
+ * .cs-hover-translate-y-2
+ * .cs-interactive
+ * .cs-smooth-interaction
+ * .cs-smooth-interaction-fast
+ * .cs-smooth-interaction-slow
+ * .cs-tap-highlight-none
+ * .cs-tap-scale-95
+ */
 
-.hover-scale-105 {
-  transition: transform 0.2s ease;
-  transform: scale(1.05);
-
-.hover-scale-110 {
-  transition: transform 0.2s ease;
-  transform: scale(1.10);
-
-.hover-fade-in {
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-  opacity: 1;
-
-.hover-fade-out {
-  opacity: 1;
-  transition: opacity 0.2s ease;
-  opacity: 0.7;
-
-.hover-brighten {
-  transition: filter 0.2s ease;
-  filter: brightness(1.1);
-
-.hover-darken {
-  transition: filter 0.2s ease;
-  filter: brightness(0.9);
-
-.hover-rotate-1 {
-  transition: transform 0.2s ease;
-  transform: rotate(1deg);
-
-.hover-rotate-3 {
-  transition: transform 0.2s ease;
-  transform: rotate(3deg);
-
-.hover-rotate-6 {
-  transition: transform 0.2s ease;
-  transform: rotate(6deg);
-
-.hover-translate-y-1 {
-  transition: transform 0.2s ease;
-  transform: translateY(-0.25rem);
-
-.hover-translate-y-2 {
-  transition: transform 0.2s ease;
-  transform: translateY(-0.5rem);
-
-.active-scale-95 {
-  transform: scale(0.95);
-
-.active-scale-98 {
-  transform: scale(0.98);
-
-.focus-scale-105 {
-  transition: transform 0.2s ease;
-  transform: scale(1.05);
-
-.focus-ring-2 {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--cs-micro-focus-ring-strong);
-
-.focus-ring-4 {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--cs-micro-focus-ring-medium);
-
-.tap-highlight-none {
-  -webkit-tap-highlight-color: transparent;
-
-.tap-scale-95 {
-  transition: transform 0.1s ease;
-  transform: scale(0.95);
-
-.smooth-interaction {
-  transition: all 0.2s ease;
-
-.smooth-interaction-fast {
-  transition: all 0.1s ease;
-
-.smooth-interaction-slow {
-  transition: all 0.3s ease;
-
-.interactive {
-  cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px var(--cs-micro-shadow-light);
-  transform: translateY(0);
-  box-shadow: 0 2px 4px var(--cs-micro-shadow-light);
+/* 
+ * For full functionality, use this package as a Tailwind CSS plugin:
+ * import plugin from '@casoon/tailwindcss-micro-interactions';
+ * 
+ * export default {
+ *   plugins: [plugin]
+ * }
+ */

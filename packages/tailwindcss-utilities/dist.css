@@ -1,22 +1,13 @@
-/* ========================================================================
-   @casoon/tailwindcss-utilities - Flattened CSS Distribution
-   Tailwind CSS v4 compatible utilities without deep @layer nesting
-   ===================================================================== */
-
 /*!
- * @casoon/tailwindcss-utilities v0.5.8
+ * @casoon/tailwindcss-utilities v0.7.0
  * Utility CSS classes for Tailwind CSS v4
  * 
- * Generated from plugin.js - DO NOT EDIT MANUALLY
- * Build date: 2025-09-06T18:50:00.555Z
- * 
- * Import via:
- * - CDN: https://cdn.jsdelivr.net/@casoon/tailwindcss-utilities@0.5.8/index.css
- * - GitHub: https://raw.githubusercontent.com/casoon-tailwind-effects/main/packages/tailwindcss-utilities/index.css
+ * CSS Classes Distribution File
+ * Generated: 2025-09-07T12:46:55.911Z
  */
 
-/* === Utilities === */
-.sr-only {
+/* Utilities */
+.cs-sr-only, .sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -26,8 +17,26 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
 
-.container-fluid {
+.cs-container-fluid, .container-fluid {
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+/* Available CSS Classes:
+ * .container-fluid
+ * .cs-container-fluid
+ * .cs-sr-only
+ * .sr-only
+ */
+
+/* 
+ * For full functionality, use this package as a Tailwind CSS plugin:
+ * import plugin from '@casoon/tailwindcss-utilities';
+ * 
+ * export default {
+ *   plugins: [plugin]
+ * }
+ */

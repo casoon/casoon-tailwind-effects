@@ -78,8 +78,14 @@ class CSSBuilder {
     try {
       const { default: plugin } = await import(pluginPath);
       
-      if (typeof plugin !== 'function') {
-        console.log(`${colors.yellow}⚠️  ${packageName}: Plugin is not a function${colors.reset}`);
+      // Handle v4 plugin structure - now that tailwindcss is installed
+      const isV4CSSObject = plugin && typeof plugin === 'object' && plugin['@layer utilities'];
+      const isV4Array = Array.isArray(plugin);
+      const isV4Plugin = plugin && typeof plugin === 'object' && (plugin.__isPlugin || plugin.config);
+      const isFunction = typeof plugin === 'function';
+      
+      if (!plugin || (!isV4CSSObject && !isV4Array && !isV4Plugin && !isFunction)) {
+        console.log(`${colors.yellow}⚠️  ${packageName}: Unknown plugin format${colors.reset}`);
         return null;
       }
 
@@ -160,24 +166,24 @@ class CSSBuilder {
           cssRules.push(`}`);
         }
         
-        return cssRules.join('\\n');
+        return cssRules.join('\n');
       };
 
       // Mock Tailwind plugin API to capture CSS
       const mockAddUtilities = (utilities) => {
-        cssOutput += '\\n/* === Utilities === */\\n';
+        cssOutput += '\n/* === Utilities === */\n';
         
         const processUtilityObject = (obj, parentKey = '') => {
           Object.entries(obj).forEach(([key, value]) => {
             if (key.startsWith('.')) {
               // This is a CSS class
-              cssOutput += generateCSS(key, value, false) + '\\n\\n';
+              cssOutput += generateCSS(key, value, false) + '\n\n';
             } else if (typeof value === 'object' && value !== null && !key.startsWith('@')) {
               // This might be a nested structure like layers
               processUtilityObject(value, key);
             } else if (key.startsWith('@')) {
               // This is a media query or similar
-              cssOutput += generateCSS(key, value, false) + '\\n\\n';
+              cssOutput += generateCSS(key, value, false) + '\n\n';
             }
           });
         };
@@ -186,16 +192,16 @@ class CSSBuilder {
       };
       
       const mockAddComponents = (components) => {
-        cssOutput += '\\n/* === Components === */\\n';
+        cssOutput += '\n/* === Components === */\n';
         
         const processComponentObject = (obj) => {
           Object.entries(obj).forEach(([key, value]) => {
             if (key.startsWith('.')) {
-              cssOutput += generateCSS(key, value, true) + '\\n\\n';
+              cssOutput += generateCSS(key, value, true) + '\n\n';
             } else if (typeof value === 'object' && value !== null && !key.startsWith('@')) {
               processComponentObject(value);
             } else if (key.startsWith('@')) {
-              cssOutput += generateCSS(key, value, true) + '\\n\\n';
+              cssOutput += generateCSS(key, value, true) + '\n\n';
             }
           });
         };
@@ -204,29 +210,89 @@ class CSSBuilder {
       };
       
       const mockAddBase = (base) => {
-        cssOutput += '\\n/* === Base Styles === */\\n';
+        cssOutput += '\n/* === Base Styles === */\n';
         Object.entries(base).forEach(([selector, styles]) => {
           if (typeof styles === 'object') {
-            cssOutput += generateCSS(selector, styles, false) + '\\n\\n';
+            cssOutput += generateCSS(selector, styles, false) + '\n\n';
           }
         });
       };
       
-      // Execute the plugin
+      // Execute the plugin based on its type
       try {
-        const pluginConfig = plugin();
-        if (pluginConfig && pluginConfig.handler) {
-          pluginConfig.handler({
-            addUtilities: mockAddUtilities,
-            addComponents: mockAddComponents,
-            addBase: mockAddBase,
-            addKeyframes: () => {}, // Mock for keyframes
-            theme: () => ({}),
-            variants: () => [],
-            e: (str) => str,
-            prefix: (str) => str,
-            addVariant: () => {}
-          });
+        if (isV4CSSObject) {
+          // Handle pure CSS object (like utilities plugin)
+          console.log(`${colors.cyan}  📄 ${packageName}: Processing pure CSS object${colors.reset}`);
+          if (plugin['@layer utilities']) {
+            mockAddUtilities(plugin['@layer utilities']);
+          }
+          if (plugin['@layer components']) {
+            mockAddComponents(plugin['@layer components']);
+          }
+          if (plugin['@layer base']) {
+            mockAddBase(plugin['@layer base']);
+          }
+        } else if (isV4Array) {
+          // Handle plugin array (like effects meta-package)
+          console.log(`${colors.cyan}  📁 ${packageName}: Processing plugin array with ${plugin.length} plugins${colors.reset}`);
+          for (const subPlugin of plugin) {
+            // Recursively process each plugin in the array
+            await this.processIndividualPlugin(subPlugin, mockAddUtilities, mockAddComponents, mockAddBase);
+          }
+        } else if (isV4Plugin) {
+          // Handle v4 plugin objects - use handler for actual CSS generation
+          console.log(`${colors.cyan}  🔧 ${packageName}: Processing v4 plugin object${colors.reset}`);
+          if (plugin.handler && typeof plugin.handler === 'function') {
+            plugin.handler({
+              addUtilities: mockAddUtilities,
+              addComponents: mockAddComponents,
+              addBase: mockAddBase,
+              theme: () => ({}),
+              variants: () => [],
+              e: (str) => str,
+              prefix: (str) => str,
+              addVariant: () => {}
+            });
+          } else {
+            console.log(`${colors.yellow}  ⚠️  No handler found in plugin object${colors.reset}`);
+          }
+        } else if (isFunction) {
+          // Handle v4 plugin functions (direct call) or v3 functions
+          console.log(`${colors.cyan}  🔧 ${packageName}: Processing plugin function${colors.reset}`);
+          
+          try {
+            // Try calling directly as v4 plugin function
+            plugin({
+              addUtilities: mockAddUtilities,
+              addComponents: mockAddComponents,
+              addBase: mockAddBase,
+              theme: () => ({}),
+              variants: () => [],
+              e: (str) => str,
+              prefix: (str) => str,
+              addVariant: () => {}
+            });
+          } catch (directCallError) {
+            // If that fails, try as v3-style plugin
+            try {
+              const pluginConfig = plugin();
+              if (pluginConfig && pluginConfig.handler) {
+                pluginConfig.handler({
+                  addUtilities: mockAddUtilities,
+                  addComponents: mockAddComponents,
+                  addBase: mockAddBase,
+                  addKeyframes: () => {}, // Mock for keyframes
+                  theme: () => ({}),
+                  variants: () => [],
+                  e: (str) => str,
+                  prefix: (str) => str,
+                  addVariant: () => {}
+                });
+              }
+            } catch (v3Error) {
+              throw new Error(`Could not execute plugin: ${directCallError.message}`);
+            }
+          }
         }
       } catch (pluginError) {
         console.log(`${colors.yellow}⚠️  ${packageName}: Error executing plugin - ${pluginError.message}${colors.reset}`);
@@ -241,17 +307,79 @@ class CSSBuilder {
   }
 
   /**
+   * Process individual v4 plugin for arrays (like effects meta-package)
+   */
+  async processIndividualPlugin(plugin, mockAddUtilities, mockAddComponents, mockAddBase) {
+    if (!plugin) return;
+    
+    // Check if it's a v4 plugin object with handler
+    if (typeof plugin === 'object' && plugin !== null && plugin.handler) {
+      plugin.handler({
+        addUtilities: mockAddUtilities,
+        addComponents: mockAddComponents,
+        addBase: mockAddBase,
+        theme: () => ({}),
+        variants: () => [],
+        e: (str) => str,
+        prefix: (str) => str,
+        addVariant: () => {}
+      });
+    } else if (typeof plugin === 'function') {
+      // Try calling as function (might be v4 plugin function)
+      try {
+        plugin({
+          addUtilities: mockAddUtilities,
+          addComponents: mockAddComponents,
+          addBase: mockAddBase,
+          theme: () => ({}),
+          variants: () => [],
+          e: (str) => str,
+          prefix: (str) => str,
+          addVariant: () => {}
+        });
+      } catch (error) {
+        // If direct call fails, try as v3-style plugin
+        const pluginResult = plugin();
+        if (pluginResult && pluginResult.handler) {
+          pluginResult.handler({
+            addUtilities: mockAddUtilities,
+            addComponents: mockAddComponents,
+            addBase: mockAddBase,
+            addKeyframes: () => {},
+            theme: () => ({}),
+            variants: () => [],
+            e: (str) => str,
+            prefix: (str) => str,
+            addVariant: () => {}
+          });
+        }
+      }
+    } else if (typeof plugin === 'object' && plugin !== null) {
+      // Handle CSS object
+      if (plugin['@layer utilities']) {
+        mockAddUtilities(plugin['@layer utilities']);
+      }
+      if (plugin['@layer components']) {
+        mockAddComponents(plugin['@layer components']);
+      }
+      if (plugin['@layer base']) {
+        mockAddBase(plugin['@layer base']);
+      }
+    }
+  }
+
+  /**
    * Build CSS files for all packages
    */
   async buildAllCSS() {
-    console.log(`${colors.cyan}${colors.bright}🏗️  Building CSS files from Tailwind plugins...${colors.reset}\\n`);
+    console.log(`${colors.cyan}${colors.bright}🏗️  Building CSS files from Tailwind plugins...${colors.reset}\n`);
     
     // Create output directory
     await fs.mkdir(this.outputDir, { recursive: true });
     
     // Discover packages
     const packages = await this.discoverPackages();
-    console.log(`${colors.blue}📦 Found ${packages.length} packages to build${colors.reset}\\n`);
+    console.log(`${colors.blue}📦 Found ${packages.length} packages to build${colors.reset}\n`);
     
     for (const packageName of packages) {
       const packageInfo = this.packageData.get(packageName);
@@ -272,17 +400,17 @@ class CSSBuilder {
  * 
  * Generated from Tailwind CSS plugin
  * Build date: ${new Date().toISOString()}
- */\\n\\n`;
+ */\n\n`;
         
         await fs.writeFile(cssPath, header + css);
         console.log(`${colors.green}✅ Generated: ${cssPath}${colors.reset}`);
         
         // Also create minified version (simple minification)
         const minifiedCSS = css
-          .replace(/\\/\\*[\\s\\S]*?\\*\\//g, '') // Remove comments
-          .replace(/\\s+/g, ' ') // Collapse whitespace
-          .replace(/;\\s*}/g, '}') // Clean up semicolons before closing braces
-          .replace(/\\{\\s+/g, '{') // Clean up opening braces
+          .replace(/\/\*[\s\S]*?\*\//g, '') // Remove comments
+          .replace(/\s+/g, ' ') // Collapse whitespace
+          .replace(/;\s*}/g, '}') // Clean up semicolons before closing braces
+          .replace(/\{\s+/g, '{') // Clean up opening braces
           .trim();
           
         const minCssPath = path.join(packageOutputDir, 'index.min.css');

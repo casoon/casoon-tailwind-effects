@@ -30,7 +30,8 @@ class CatalogGenerator {
   constructor() {
     this.rootDir = rootDir;
     this.packagesDir = path.join(rootDir, 'packages');
-    this.catalogPath = path.join(rootDir, 'catalog.md');
+    this.effectsPackagePath = path.join(this.packagesDir, 'tailwindcss-effects');
+    this.catalogPath = path.join(this.effectsPackagePath, 'catalog.md');
     this.packageData = new Map();
   }
 
@@ -66,67 +67,54 @@ class CatalogGenerator {
 
   async extractDataFromPlugin(pluginPath, packageName) {
     try {
-      const { default: plugin } = await import(pluginPath);
+      // Use static analysis instead of dynamic plugin execution
+      const sourceCode = await fs.readFile(pluginPath, 'utf-8');
+      const { classes, variables } = this.extractCSSFromSource(sourceCode, packageName);
       
-      if (typeof plugin !== 'function') {
-        return { classes: new Set(), variables: new Set() };
-      }
-
-      const classes = new Set();
-      const variables = new Set();
-
-      // Mock Tailwind plugin API to capture data
-      const mockAddUtilities = (utilities) => {
-        this.extractFromObj(utilities, classes, variables);
-      };
-
-      const mockAddComponents = (components) => {
-        this.extractFromObj(components, classes, variables);
-      };
-
-      const mockAddBase = (base) => {
-        this.extractFromObj(base, classes, variables);
-      };
-
-      const mockApi = {
-        addUtilities: mockAddUtilities,
-        addComponents: mockAddComponents,
-        addBase: mockAddBase,
-        addKeyframes: () => {},
-        theme: () => ({}),
-        variants: () => [],
-        e: (str) => str,
-        prefix: (str) => str,
-        addVariant: () => {}
-      };
-
-      try {
-        const pluginResult = plugin();
-        
-        // Handle meta-bundle plugins that return arrays of plugins
-        if (Array.isArray(pluginResult)) {
-          console.log(`${colors.cyan}  📁 ${packageName}: Meta-bundle with ${pluginResult.length} plugins${colors.reset}`);
-          
-          // Process each plugin in the array
-          for (const subPlugin of pluginResult) {
-            if (subPlugin && typeof subPlugin === 'object' && subPlugin.handler) {
-              subPlugin.handler(mockApi);
-            }
-          }
-        }
-        // Handle regular plugins that return a plugin config object
-        else if (pluginResult && pluginResult.handler) {
-          pluginResult.handler(mockApi);
-        }
-      } catch (pluginError) {
-        console.log(`${colors.yellow}⚠️  ${packageName}: Error executing plugin - ${pluginError.message}${colors.reset}`);
-      }
-
-      return { classes, variables };
+      console.log(`${colors.cyan}  📄 ${packageName}: Static analysis complete${colors.reset}`);
+      
+      return { classes: new Set(classes), variables: new Set(variables) };
     } catch (error) {
       console.error(`${colors.red}Error extracting from ${packageName}:${colors.reset}`, error.message);
       return { classes: new Set(), variables: new Set() };
     }
+  }
+  
+  extractCSSFromSource(sourceCode, packageName) {
+    const classes = new Set();
+    const variables = new Set();
+    const keyframes = new Set();
+    
+    // Extract CSS classes (looking for strings that start with '.')
+    const classMatches = sourceCode.match(/['"`]\.[-\w]+['"`]/g) || [];
+    classMatches.forEach(match => {
+      const className = match.slice(1, -1); // Remove quotes
+      if (className.startsWith('.cs-') || className.startsWith('.glass') || className.startsWith('.sr-only') || className.startsWith('.container-fluid')) {
+        classes.add(className);
+      }
+    });
+    
+    // Extract CSS variables (looking for --cs- prefixed variables)
+    const variableMatches = sourceCode.match(/--cs-[-\w]+/g) || [];
+    variableMatches.forEach(variable => {
+      variables.add(variable);
+    });
+    
+    // Extract keyframe names
+    const keyframeMatches = sourceCode.match(/@keyframes\s+([-\w]+)/g) || [];
+    keyframeMatches.forEach(match => {
+      const keyframeName = match.replace('@keyframes ', '').trim();
+      keyframes.add(keyframeName);
+    });
+    
+    // Also look for animation names in strings
+    const animationMatches = sourceCode.match(/['"`](anim-[-\w]+)['"`]/g) || [];
+    animationMatches.forEach(match => {
+      const animationName = match.slice(1, -1);
+      keyframes.add(animationName);
+    });
+    
+    return { classes: Array.from(classes).sort(), variables: Array.from(variables).sort(), keyframes: Array.from(keyframes).sort() };
   }
 
   extractFromObj(obj, classes, variables, depth = 0) {
@@ -158,6 +146,7 @@ class CatalogGenerator {
     });
   }
 
+
   async generateCatalog() {
     console.log(`${colors.cyan}${colors.bright}📝 Generating CSS Classes Catalog...${colors.reset}\n`);
 
@@ -182,47 +171,67 @@ class CatalogGenerator {
       console.log(`${colors.green}  ✅ Found ${classes.size} classes, ${variables.size} variables${colors.reset}`);
     }
 
-    // Generate global markdown content
-    const globalCatalogContent = await this.generateMarkdownContent(catalogData);
+    // Generate aggregated markdown content for effects package
+    const aggregatedCatalogContent = await this.generateAggregatedCatalog(catalogData);
     
-    // Write global catalog file
-    await fs.writeFile(this.catalogPath, globalCatalogContent);
-    console.log(`\n${colors.green}✅ Global catalog generated: ${this.catalogPath}${colors.reset}`);
+    // Write aggregated catalog to effects package
+    await fs.writeFile(this.catalogPath, aggregatedCatalogContent);
+    console.log(`\n${colors.green}✅ Aggregated catalog generated: ${this.catalogPath}${colors.reset}`);
 
     // Generate individual package catalogs
     await this.generateIndividualCatalogs(catalogData);
   }
 
-  async generateMarkdownContent(catalogData) {
-    const header = `# Casoon Tailwind Effects - CSS Classes Catalog
+  async generateAggregatedCatalog(catalogData) {
+    // Filter out the effects package itself to avoid recursion
+    const filteredData = new Map();
+    for (const [packageName, data] of catalogData) {
+      if (!packageName.includes('tailwindcss-effects')) {
+        filteredData.set(packageName, data);
+      }
+    }
+    
+    const header = `# @casoon/tailwindcss-effects - Complete CSS Effects Library
 
-> **For AI Assistants**: This catalog provides a comprehensive list of all available CSS classes in the @casoon/tailwindcss-effects library. All CSS custom properties use the consistent \`--cs-\` prefix for easy identification.
+> **Meta-package containing all @casoon CSS effects and utilities for Tailwind CSS v4**
+
+> **For AI Assistants**: This is the complete collection of CSS classes and utilities from all @casoon packages. All CSS custom properties use the consistent \`--cs-\` prefix for easy identification.
 
 ## Package Overview
 
-All packages use consistent \`--cs-{package}-*\` naming for CSS custom properties:
+This meta-package includes all individual packages with consistent \`--cs-{package}-*\` naming for CSS custom properties:
 
-- **Animations**: \`--cs-anim-*\` (duration, easing, etc.)
-- **Glass**: \`--cs-glass-*\` (colors, backgrounds, borders)  
-- **Loading**: \`--cs-loading-*\` (spinner colors)
+- **Animations**: \`--cs-anim-*\` (duration, easing, keyframes)
+- **Glass**: \`--cs-glass-*\` (colors, backgrounds, borders, glassmorphism)  
+- **Loading**: \`--cs-loading-*\` (spinner colors, states)
 - **Navigation**: \`--cs-nav-*\` (primary, text, border colors)
-- **Orbs**: \`--cs-orbs-*\` (gradients, sizes)
-- **Gradients**: \`--cs-gradients-*\` (color stops)
-- **Scroll**: \`--cs-scroll-*\` (thumb, track colors)
-- **Micro-interactions**: \`--cs-micro-*\` (button states)
+- **Orbs**: \`--cs-orb-*\` (gradients, sizes, animations)
+- **Gradients**: \`--cs-gradient-*\` (color stops, directions)
+- **Scroll**: \`--cs-scroll-*\` (thumb, track colors, behavior)
+- **Micro-interactions**: \`--cs-micro-*\` (focus, hover, button states)
+- **Utilities**: Core utilities (screen readers, containers)
+
+## Complete Class & Variable Reference
 
 `;
 
     let content = header;
     let packageIndex = 1;
 
-    for (const [packageName, data] of catalogData) {
-      content += `## ${packageIndex}. ${data.fullName}\n\n`;
+    // Collect all classes and variables from all packages
+    const allClasses = new Set();
+    const allVariables = new Set();
+    
+    for (const [packageName, data] of filteredData) {
+      data.classes.forEach(cls => allClasses.add(cls));
+      data.variables.forEach(variable => allVariables.add(variable));
+      
+      content += `### ${packageIndex}. ${data.fullName}\n\n`;
       content += `> ${data.description}\n\n`;
 
       // Add classes section
       if (data.classes.length > 0) {
-        content += `### CSS Classes\n`;
+        content += `**CSS Classes (${data.classes.length}):**\n`;
         data.classes.forEach(className => {
           content += `- \`${className}\`\n`;
         });
@@ -231,7 +240,7 @@ All packages use consistent \`--cs-{package}-*\` naming for CSS custom propertie
 
       // Add variables section  
       if (data.variables.length > 0) {
-        content += `### CSS Variables\n\`\`\`css\n`;
+        content += `**CSS Variables (${data.variables.length}):**\n\`\`\`css\n`;
         data.variables.forEach(variable => {
           content += `${variable}: /* value */\n`;
         });
@@ -240,6 +249,12 @@ All packages use consistent \`--cs-{package}-*\` naming for CSS custom propertie
 
       packageIndex++;
     }
+    
+    // Add summary section
+    content += `## Summary\n\n`;
+    content += `**Total CSS Classes:** ${allClasses.size}\n`;
+    content += `**Total CSS Variables:** ${allVariables.size}\n`;
+    content += `**Individual Packages:** ${filteredData.size}\n\n`;
 
     // Add usage examples footer
     content += `## Usage Examples
@@ -288,10 +303,136 @@ Override any CSS variable to customize the design:
     return content;
   }
 
+  async generateAggregatedCatalog(catalogData) {
+    // Filter out the effects package itself to avoid recursion
+    const filteredData = new Map();
+    for (const [packageName, data] of catalogData) {
+      if (!packageName.includes('tailwindcss-effects')) {
+        filteredData.set(packageName, data);
+      }
+    }
+    
+    const header = `# @casoon/tailwindcss-effects - Complete CSS Effects Library
+
+> **Meta-package containing all @casoon CSS effects and utilities for Tailwind CSS v4**
+
+> **For AI Assistants**: This is the complete collection of CSS classes and utilities from all @casoon packages. All CSS custom properties use the consistent \`--cs-\` prefix for easy identification.
+
+## Package Overview
+
+This meta-package includes all individual packages with consistent \`--cs-{package}-*\` naming for CSS custom properties:
+
+- **Animations**: \`--cs-anim-*\` (duration, easing, keyframes)
+- **Glass**: \`--cs-glass-*\` (colors, backgrounds, borders, glassmorphism)  
+- **Loading**: \`--cs-loading-*\` (spinner colors, states)
+- **Navigation**: \`--cs-nav-*\` (primary, text, border colors)
+- **Orbs**: \`--cs-orb-*\` (gradients, sizes, animations)
+- **Gradients**: \`--cs-gradient-*\` (color stops, directions)
+- **Scroll**: \`--cs-scroll-*\` (thumb, track colors, behavior)
+- **Micro-interactions**: \`--cs-micro-*\` (focus, hover, button states)
+- **Utilities**: Core utilities (screen readers, containers)
+
+## Complete Class & Variable Reference
+
+`;
+
+    let content = header;
+    let packageIndex = 1;
+
+    // Collect all classes and variables from all packages
+    const allClasses = new Set();
+    const allVariables = new Set();
+    
+    for (const [packageName, data] of filteredData) {
+      data.classes.forEach(cls => allClasses.add(cls));
+      data.variables.forEach(variable => allVariables.add(variable));
+      
+      content += `### ${packageIndex}. ${data.fullName}\n\n`;
+      content += `> ${data.description}\n\n`;
+
+      // Add classes section
+      if (data.classes.length > 0) {
+        content += `**CSS Classes (${data.classes.length}):**\n`;
+        data.classes.forEach(className => {
+          content += `- \`${className}\`\n`;
+        });
+        content += '\n';
+      }
+
+      // Add variables section  
+      if (data.variables.length > 0) {
+        content += `**CSS Variables (${data.variables.length}):**\n\`\`\`css\n`;
+        data.variables.forEach(variable => {
+          content += `${variable}: /* value */\n`;
+        });
+        content += '```\n\n';
+      }
+
+      packageIndex++;
+    }
+    
+    // Add summary section
+    content += `## Summary\n\n`;
+    content += `**Total CSS Classes:** ${allClasses.size}\n`;
+    content += `**Total CSS Variables:** ${allVariables.size}\n`;
+    content += `**Individual Packages:** ${filteredData.size}\n\n`;
+    
+    // Add usage examples footer
+    content += `## Usage Examples
+
+### As Tailwind Plugin (All Effects)
+\`\`\`js
+import effects from '@casoon/tailwindcss-effects';
+
+export default {
+  plugins: [effects]
+}
+\`\`\`
+
+### Direct CSS Import (All Effects)
+\`\`\`css
+@import "@casoon/tailwindcss-effects/dist.css";
+\`\`\`
+
+### Individual Package Import
+\`\`\`js
+import animations from '@casoon/tailwindcss-animations';
+import glass from '@casoon/tailwindcss-glass';
+
+export default {
+  plugins: [animations, glass]
+}
+\`\`\`
+
+## CSS Variable Customization
+
+Override any CSS variable to customize the design:
+
+\`\`\`css
+:root {
+  --cs-anim-duration-md: 400ms;
+  --cs-glass-bg-light: rgba(255, 255, 255, 0.15);
+  --cs-nav-primary: #6366f1;
+}
+\`\`\`
+
+---
+
+> **Note for AI Assistants**: This catalog is automatically generated and updated. When suggesting classes, prioritize the documented classes above and mention the consistent \`--cs-\` prefix for CSS variables. All animations respect \`prefers-reduced-motion\` for accessibility.
+`;
+
+    return content;
+  }
+
   async generateIndividualCatalogs(catalogData) {
     console.log(`\n${colors.cyan}📦 Generating individual package catalogs...${colors.reset}`);
 
     for (const [packageName, data] of catalogData) {
+      // Skip the effects package since we already generated its aggregated catalog
+      if (packageName.includes('tailwindcss-effects')) {
+        continue;
+      }
+      
       const packageCatalogPath = path.join(this.packagesDir, packageName, 'catalog.md');
       
       // Create package-specific catalog content

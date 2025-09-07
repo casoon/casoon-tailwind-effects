@@ -7,23 +7,16 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-navigation`
-- **Version**: `0.6.4`
+- **Version**: `0.7.0`
 - **Type**: Tailwind CSS v4 Plugin
 
-## CSS Classes (12)
+## CSS Classes (5)
 
 - `.cs-nav`
 - `.cs-nav-item`
 - `.cs-nav-link`
-- `.cs-nav-link.active`
-- `.cs-nav-link:hover`
-- `.cs-nav-pills .cs-nav-item .cs-nav-link`
-- `.cs-nav-pills .cs-nav-item .cs-nav-link.active`
-- `.cs-nav-tabs .cs-nav-item .cs-nav-link`
-- `.cs-nav-tabs .cs-nav-item .cs-nav-link.active`
 - `.cs-navbar-brand`
 - `.cs-navbar-nav`
-- `.cs-navbar-nav .cs-nav-link`
 
 ## CSS Variables (4)
 
