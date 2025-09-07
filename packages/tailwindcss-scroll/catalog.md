@@ -7,43 +7,43 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-scroll`
-- **Version**: `0.6.2`
+- **Version**: `0.6.3`
 - **Type**: Tailwind CSS v4 Plugin
 
 ## CSS Classes (32)
 
-- `.scroll-auto`
-- `.scroll-m-0`
-- `.scroll-m-1`
-- `.scroll-m-16`
-- `.scroll-m-2`
-- `.scroll-m-4`
-- `.scroll-m-8`
-- `.scroll-p-0`
-- `.scroll-p-1`
-- `.scroll-p-16`
-- `.scroll-p-2`
-- `.scroll-p-4`
-- `.scroll-p-8`
-- `.scroll-smooth`
-- `.scroll-snap-both`
-- `.scroll-snap-none`
-- `.scroll-snap-proximity`
-- `.scroll-snap-x`
-- `.scroll-snap-y`
-- `.scrollbar-auto`
-- `.scrollbar-none`
-- `.scrollbar-none::-webkit-scrollbar`
-- `.scrollbar-thin`
-- `.scrollbar-thumb-blue`
-- `.scrollbar-thumb-gray`
-- `.scrollbar-track-transparent`
-- `.snap-align-none`
-- `.snap-always`
-- `.snap-center`
-- `.snap-end`
-- `.snap-normal`
-- `.snap-start`
+- `.cs-scroll-auto`
+- `.cs-scroll-m-0`
+- `.cs-scroll-m-1`
+- `.cs-scroll-m-16`
+- `.cs-scroll-m-2`
+- `.cs-scroll-m-4`
+- `.cs-scroll-m-8`
+- `.cs-scroll-p-0`
+- `.cs-scroll-p-1`
+- `.cs-scroll-p-16`
+- `.cs-scroll-p-2`
+- `.cs-scroll-p-4`
+- `.cs-scroll-p-8`
+- `.cs-scroll-smooth`
+- `.cs-scroll-snap-both`
+- `.cs-scroll-snap-none`
+- `.cs-scroll-snap-proximity`
+- `.cs-scroll-snap-x`
+- `.cs-scroll-snap-y`
+- `.cs-scrollbar-auto`
+- `.cs-scrollbar-none`
+- `.cs-scrollbar-none::-webkit-scrollbar`
+- `.cs-scrollbar-thin`
+- `.cs-scrollbar-thumb-blue`
+- `.cs-scrollbar-thumb-gray`
+- `.cs-scrollbar-track-transparent`
+- `.cs-snap-align-none`
+- `.cs-snap-always`
+- `.cs-snap-center`
+- `.cs-snap-end`
+- `.cs-snap-normal`
+- `.cs-snap-start`
 
 ## CSS Variables (2)
 

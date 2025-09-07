@@ -166,7 +166,7 @@ export default function animationsPlugin(options = {}) {
 
       // Add base animation components
       addComponents({
-        '.anim': {
+        '.cs-anim': {
           'animation-duration': 'var(--cs-anim-duration, var(--cs-anim-duration-md))',
           'animation-timing-function': 'var(--cs-anim-ease, var(--cs-anim-ease-standard))',
           'animation-iteration-count': '1',
@@ -176,106 +176,106 @@ export default function animationsPlugin(options = {}) {
         },
         
         // Animation Control Utilities
-        '.anim-infinite': { 'animation-iteration-count': 'infinite' },
-        '.anim-reverse': { 'animation-direction': 'reverse' },
-        '.anim-alternate': { 'animation-direction': 'alternate' },
-        '.anim-both': { 'animation-fill-mode': 'both' },
-        '.anim-forwards': { 'animation-fill-mode': 'forwards' },
+        '.cs-anim-infinite': { 'animation-iteration-count': 'infinite' },
+        '.cs-anim-reverse': { 'animation-direction': 'reverse' },
+        '.cs-anim-alternate': { 'animation-direction': 'alternate' },
+        '.cs-anim-both': { 'animation-fill-mode': 'both' },
+        '.cs-anim-forwards': { 'animation-fill-mode': 'forwards' },
         
         // Performance Hints
-        '.will-transform': { 'will-change': 'transform' },
-        '.will-opacity': { 'will-change': 'opacity' },
-        '.will-filter': { 'will-change': 'filter' },
+        '.cs-will-transform': { 'will-change': 'transform' },
+        '.cs-will-opacity': { 'will-change': 'opacity' },
+        '.cs-will-filter': { 'will-change': 'filter' },
         
         // Transform Origins
-        '.t-origin-top': { 'transform-origin': 'top' },
-        '.t-origin-center': { 'transform-origin': 'center' },
-        '.t-origin-bottom': { 'transform-origin': 'bottom' },
-        '.t-preserve-3d': { 'transform-style': 'preserve-3d' }
+        '.cs-t-origin-top': { 'transform-origin': 'top' },
+        '.cs-t-origin-center': { 'transform-origin': 'center' },
+        '.cs-t-origin-bottom': { 'transform-origin': 'bottom' },
+        '.cs-t-preserve-3d': { 'transform-style': 'preserve-3d' }
       });
 
       // Add animation utilities
       addUtilities({
         // Duration utilities
-        '.anim-xxs': { '--cs-anim-duration': 'var(--cs-anim-duration-xxs)' },
-        '.anim-xs': { '--cs-anim-duration': 'var(--cs-anim-duration-xs)' },
-        '.anim-sm': { '--cs-anim-duration': 'var(--cs-anim-duration-sm)' },
-        '.anim-md': { '--cs-anim-duration': 'var(--cs-anim-duration-md)' },
-        '.anim-lg': { '--cs-anim-duration': 'var(--cs-anim-duration-lg)' },
-        '.anim-xl': { '--cs-anim-duration': 'var(--cs-anim-duration-xl)' },
-        '.anim-2xl': { '--cs-anim-duration': 'var(--cs-anim-duration-2xl)' },
+        '.cs-anim-xxs': { '--cs-anim-duration': 'var(--cs-anim-duration-xxs)' },
+        '.cs-anim-xs': { '--cs-anim-duration': 'var(--cs-anim-duration-xs)' },
+        '.cs-anim-sm': { '--cs-anim-duration': 'var(--cs-anim-duration-sm)' },
+        '.cs-anim-md': { '--cs-anim-duration': 'var(--cs-anim-duration-md)' },
+        '.cs-anim-lg': { '--cs-anim-duration': 'var(--cs-anim-duration-lg)' },
+        '.cs-anim-xl': { '--cs-anim-duration': 'var(--cs-anim-duration-xl)' },
+        '.cs-anim-2xl': { '--cs-anim-duration': 'var(--cs-anim-duration-2xl)' },
         
         // Easing utilities
-        '.ease-standard': { '--cs-anim-ease': 'var(--cs-anim-ease-standard)' },
-        '.ease-emphasized': { '--cs-anim-ease': 'var(--cs-anim-ease-emphasized)' },
-        '.ease-decelerate': { '--cs-anim-ease': 'var(--cs-anim-ease-decelerate)' },
-        '.ease-accelerate': { '--cs-anim-ease': 'var(--cs-anim-ease-accelerate)' },
-        '.ease-spring': { '--cs-anim-ease': 'var(--cs-anim-ease-spring)' },
-        '.ease-soft-spring': { '--cs-anim-ease': 'var(--cs-anim-ease-soft-spring)' },
+        '.cs-ease-standard': { '--cs-anim-ease': 'var(--cs-anim-ease-standard)' },
+        '.cs-ease-emphasized': { '--cs-anim-ease': 'var(--cs-anim-ease-emphasized)' },
+        '.cs-ease-decelerate': { '--cs-anim-ease': 'var(--cs-anim-ease-decelerate)' },
+        '.cs-ease-accelerate': { '--cs-anim-ease': 'var(--cs-anim-ease-accelerate)' },
+        '.cs-ease-spring': { '--cs-anim-ease': 'var(--cs-anim-ease-spring)' },
+        '.cs-ease-soft-spring': { '--cs-anim-ease': 'var(--cs-anim-ease-soft-spring)' },
         
         // Animation name utilities
-        '.fade-in': { 'animation-name': 'anim-fade-in' },
-        '.fade-out': { 'animation-name': 'anim-fade-out' },
-        '.scale-in': { 'animation-name': 'anim-scale-in' },
-        '.scale-out': { 'animation-name': 'anim-scale-out' },
-        '.slide-up': { 'animation-name': 'anim-slide-up' },
-        '.slide-down': { 'animation-name': 'anim-slide-down' },
-        '.slide-left': { 'animation-name': 'anim-slide-left' },
-        '.slide-right': { 'animation-name': 'anim-slide-right' },
-        '.blur-in': { 'animation-name': 'anim-blur-in' },
-        '.blur-out': { 'animation-name': 'anim-blur-out' },
-        '.rotate-in': { 'animation-name': 'anim-rotate-in' },
-        '.rotate': { 'animation-name': 'anim-rotate' },
-        '.pulse': { 'animation-name': 'anim-pulse' },
-        '.bounce': { 'animation-name': 'anim-bounce' },
-        '.wiggle': { 'animation-name': 'anim-wiggle' },
-        '.reveal-3d-up': { 'animation-name': 'anim-reveal-3d-up' },
-        '.reveal-3d-right': { 'animation-name': 'anim-reveal-3d-right' },
+        '.cs-fade-in': { 'animation-name': 'anim-fade-in' },
+        '.cs-fade-out': { 'animation-name': 'anim-fade-out' },
+        '.cs-scale-in': { 'animation-name': 'anim-scale-in' },
+        '.cs-scale-out': { 'animation-name': 'anim-scale-out' },
+        '.cs-slide-up': { 'animation-name': 'anim-slide-up' },
+        '.cs-slide-down': { 'animation-name': 'anim-slide-down' },
+        '.cs-slide-left': { 'animation-name': 'anim-slide-left' },
+        '.cs-slide-right': { 'animation-name': 'anim-slide-right' },
+        '.cs-blur-in': { 'animation-name': 'anim-blur-in' },
+        '.cs-blur-out': { 'animation-name': 'anim-blur-out' },
+        '.cs-rotate-in': { 'animation-name': 'anim-rotate-in' },
+        '.cs-rotate': { 'animation-name': 'anim-rotate' },
+        '.cs-pulse': { 'animation-name': 'anim-pulse' },
+        '.cs-bounce': { 'animation-name': 'anim-bounce' },
+        '.cs-wiggle': { 'animation-name': 'anim-wiggle' },
+        '.cs-reveal-3d-up': { 'animation-name': 'anim-reveal-3d-up' },
+        '.cs-reveal-3d-right': { 'animation-name': 'anim-reveal-3d-right' },
         
         // Hover effects
-        '.hover-lift-sm': {
+        '.cs-hover-lift-sm': {
           'transition': 'transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard)',
           '&:hover': {
             'transform': 'translateY(-2px)',
             'box-shadow': '0 6px 12px color-mix(in oklab, var(--cs-anim-shadow-ink) 10%, transparent)'
           }
         },
-        '.hover-lift-md': {
+        '.cs-hover-lift-md': {
           'transition': 'transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard), box-shadow var(--cs-anim-duration-sm) var(--cs-anim-ease-standard)',
           '&:hover': {
             'transform': 'translateY(-4px)',
             'box-shadow': '0 10px 18px color-mix(in oklab, var(--cs-anim-shadow-ink) 14%, transparent)'
           }
         },
-        '.hover-scale-105': {
+        '.cs-hover-scale-105': {
           'transition': 'transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard)',
           '&:hover': { 'transform': 'scale(1.05)' }
         },
-        '.hover-scale-110': {
+        '.cs-hover-scale-110': {
           'transition': 'transform var(--cs-anim-duration-sm) var(--cs-anim-ease-standard)',
           '&:hover': { 'transform': 'scale(1.10)' }
         },
         
         // Composed animations
-        '.enter-card': { 
+        '.cs-enter-card': { 
           'animation': 'anim-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-decelerate) both'
         },
-        '.enter-modal': { 
+        '.cs-enter-modal': { 
           'animation': 'anim-scale-in var(--cs-anim-duration-md) var(--cs-anim-ease-emphasized) both'
         },
-        '.exit-modal': { 
+        '.cs-exit-modal': { 
           'animation': 'anim-scale-out var(--cs-anim-duration-md) var(--cs-anim-ease-accelerate) both'
         },
         
         // Motion safety
         '@media (prefers-reduced-motion: reduce)': {
-          '.anim, .fade-in, .fade-out, .scale-in, .scale-out, .slide-up, .slide-down, .slide-left, .slide-right, .blur-in, .blur-out, .rotate-in, .rotate, .pulse, .bounce, .wiggle, .reveal-3d-up, .reveal-3d-right, .enter-card, .enter-modal, .exit-modal': {
+          '.cs-anim, .cs-fade-in, .cs-fade-out, .cs-scale-in, .cs-scale-out, .cs-slide-up, .cs-slide-down, .cs-slide-left, .cs-slide-right, .cs-blur-in, .cs-blur-out, .cs-rotate-in, .cs-rotate, .cs-pulse, .cs-bounce, .cs-wiggle, .cs-reveal-3d-up, .cs-reveal-3d-right, .cs-enter-card, .cs-enter-modal, .cs-exit-modal': {
             'animation-duration': 'var(--cs-anim-reduced-motion-duration) !important',
             'animation-iteration-count': '1 !important',
             'animation-timing-function': 'var(--cs-anim-reduced-motion-ease) !important',
             'transition': 'none !important'
           },
-          '.cs-hover-lift-sm:hover, .cs-hover-lift-md:hover, .hover-scale-105:hover, .hover-scale-110:hover': {
+          '.cs-hover-lift-sm:hover, .cs-hover-lift-md:hover, .cs-hover-scale-105:hover, .cs-hover-scale-110:hover': {
             'transform': 'none !important'
           }
         }

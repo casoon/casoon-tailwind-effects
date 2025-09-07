@@ -7,63 +7,63 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-animations`
-- **Version**: `0.6.2`
+- **Version**: `0.6.3`
 - **Type**: Tailwind CSS v4 Plugin
 
 ## CSS Classes (52)
 
-- `.anim`
-- `.anim, .fade-in, .fade-out, .scale-in, .scale-out, .slide-up, .slide-down, .slide-left, .slide-right, .blur-in, .blur-out, .rotate-in, .rotate, .pulse, .bounce, .wiggle, .reveal-3d-up, .reveal-3d-right, .enter-card, .enter-modal, .exit-modal`
-- `.anim-2xl`
-- `.anim-alternate`
-- `.anim-both`
-- `.anim-forwards`
-- `.anim-infinite`
-- `.anim-lg`
-- `.anim-md`
-- `.anim-reverse`
-- `.anim-sm`
-- `.anim-xl`
-- `.anim-xs`
-- `.anim-xxs`
-- `.blur-in`
-- `.blur-out`
-- `.bounce`
-- `.ease-accelerate`
-- `.ease-decelerate`
-- `.ease-emphasized`
-- `.ease-soft-spring`
-- `.ease-spring`
-- `.ease-standard`
-- `.enter-card`
-- `.enter-modal`
-- `.exit-modal`
-- `.fade-in`
-- `.fade-out`
-- `.hover-lift-md`
-- `.hover-lift-sm`
-- `.hover-lift-sm:hover, .hover-lift-md:hover, .hover-scale-105:hover, .hover-scale-110:hover`
-- `.hover-scale-105`
-- `.hover-scale-110`
-- `.pulse`
-- `.reveal-3d-right`
-- `.reveal-3d-up`
-- `.rotate`
-- `.rotate-in`
-- `.scale-in`
-- `.scale-out`
-- `.slide-down`
-- `.slide-left`
-- `.slide-right`
-- `.slide-up`
-- `.t-origin-bottom`
-- `.t-origin-center`
-- `.t-origin-top`
-- `.t-preserve-3d`
-- `.wiggle`
-- `.will-filter`
-- `.will-opacity`
-- `.will-transform`
+- `.cs-anim`
+- `.cs-anim, .cs-fade-in, .cs-fade-out, .cs-scale-in, .cs-scale-out, .cs-slide-up, .cs-slide-down, .cs-slide-left, .cs-slide-right, .cs-blur-in, .cs-blur-out, .cs-rotate-in, .cs-rotate, .cs-pulse, .cs-bounce, .cs-wiggle, .cs-reveal-3d-up, .cs-reveal-3d-right, .cs-enter-card, .cs-enter-modal, .cs-exit-modal`
+- `.cs-anim-2xl`
+- `.cs-anim-alternate`
+- `.cs-anim-both`
+- `.cs-anim-forwards`
+- `.cs-anim-infinite`
+- `.cs-anim-lg`
+- `.cs-anim-md`
+- `.cs-anim-reverse`
+- `.cs-anim-sm`
+- `.cs-anim-xl`
+- `.cs-anim-xs`
+- `.cs-anim-xxs`
+- `.cs-blur-in`
+- `.cs-blur-out`
+- `.cs-bounce`
+- `.cs-ease-accelerate`
+- `.cs-ease-decelerate`
+- `.cs-ease-emphasized`
+- `.cs-ease-soft-spring`
+- `.cs-ease-spring`
+- `.cs-ease-standard`
+- `.cs-enter-card`
+- `.cs-enter-modal`
+- `.cs-exit-modal`
+- `.cs-fade-in`
+- `.cs-fade-out`
+- `.cs-hover-lift-md`
+- `.cs-hover-lift-sm`
+- `.cs-hover-lift-sm:hover, .cs-hover-lift-md:hover, .cs-hover-scale-105:hover, .cs-hover-scale-110:hover`
+- `.cs-hover-scale-105`
+- `.cs-hover-scale-110`
+- `.cs-pulse`
+- `.cs-reveal-3d-right`
+- `.cs-reveal-3d-up`
+- `.cs-rotate`
+- `.cs-rotate-in`
+- `.cs-scale-in`
+- `.cs-scale-out`
+- `.cs-slide-down`
+- `.cs-slide-left`
+- `.cs-slide-right`
+- `.cs-slide-up`
+- `.cs-t-origin-bottom`
+- `.cs-t-origin-center`
+- `.cs-t-origin-top`
+- `.cs-t-preserve-3d`
+- `.cs-wiggle`
+- `.cs-will-filter`
+- `.cs-will-opacity`
+- `.cs-will-transform`
 
 ## CSS Variables (21)
 

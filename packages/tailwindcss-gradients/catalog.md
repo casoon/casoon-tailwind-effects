@@ -7,33 +7,33 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-gradients`
-- **Version**: `0.6.2`
+- **Version**: `0.6.3`
 - **Type**: Tailwind CSS v4 Plugin
 
 ## CSS Classes (22)
 
-- `.gradient-animate`
-- `.gradient-blue`
-- `.gradient-border`
-- `.gradient-border::before`
-- `.gradient-conic`
-- `.gradient-conic-center`
-- `.gradient-custom`
-- `.gradient-fire`
-- `.gradient-mint`
-- `.gradient-ocean`
-- `.gradient-orange`
-- `.gradient-pink`
-- `.gradient-purple`
-- `.gradient-radial-bottom`
-- `.gradient-radial-center`
-- `.gradient-radial-top`
-- `.gradient-sunset`
-- `.gradient-text`
-- `.gradient-text-custom`
-- `.gradient-text-fire`
-- `.gradient-text-ocean`
-- `.gradient-text-sunset`
+- `.cs-gradient-animate`
+- `.cs-gradient-blue`
+- `.cs-gradient-border`
+- `.cs-gradient-border::before`
+- `.cs-gradient-conic`
+- `.cs-gradient-conic-center`
+- `.cs-gradient-custom`
+- `.cs-gradient-fire`
+- `.cs-gradient-mint`
+- `.cs-gradient-ocean`
+- `.cs-gradient-orange`
+- `.cs-gradient-pink`
+- `.cs-gradient-purple`
+- `.cs-gradient-radial-bottom`
+- `.cs-gradient-radial-center`
+- `.cs-gradient-radial-top`
+- `.cs-gradient-sunset`
+- `.cs-gradient-text`
+- `.cs-gradient-text-custom`
+- `.cs-gradient-text-fire`
+- `.cs-gradient-text-ocean`
+- `.cs-gradient-text-sunset`
 
 ## CSS Variables (22)
 

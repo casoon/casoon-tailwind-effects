@@ -88,20 +88,35 @@ class CatalogGenerator {
         this.extractFromObj(base, classes, variables);
       };
 
+      const mockApi = {
+        addUtilities: mockAddUtilities,
+        addComponents: mockAddComponents,
+        addBase: mockAddBase,
+        addKeyframes: () => {},
+        theme: () => ({}),
+        variants: () => [],
+        e: (str) => str,
+        prefix: (str) => str,
+        addVariant: () => {}
+      };
+
       try {
-        const pluginConfig = plugin();
-        if (pluginConfig && pluginConfig.handler) {
-          pluginConfig.handler({
-            addUtilities: mockAddUtilities,
-            addComponents: mockAddComponents,
-            addBase: mockAddBase,
-            addKeyframes: () => {},
-            theme: () => ({}),
-            variants: () => [],
-            e: (str) => str,
-            prefix: (str) => str,
-            addVariant: () => {}
-          });
+        const pluginResult = plugin();
+        
+        // Handle meta-bundle plugins that return arrays of plugins
+        if (Array.isArray(pluginResult)) {
+          console.log(`${colors.cyan}  📁 ${packageName}: Meta-bundle with ${pluginResult.length} plugins${colors.reset}`);
+          
+          // Process each plugin in the array
+          for (const subPlugin of pluginResult) {
+            if (subPlugin && typeof subPlugin === 'object' && subPlugin.handler) {
+              subPlugin.handler(mockApi);
+            }
+          }
+        }
+        // Handle regular plugins that return a plugin config object
+        else if (pluginResult && pluginResult.handler) {
+          pluginResult.handler(mockApi);
         }
       } catch (pluginError) {
         console.log(`${colors.yellow}⚠️  ${packageName}: Error executing plugin - ${pluginError.message}${colors.reset}`);

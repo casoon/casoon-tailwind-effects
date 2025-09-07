@@ -29,91 +29,91 @@ export default function scrollPlugin(options = {}) {
       // Scroll behavior utilities
       addUtilities({
         // Scroll behavior
-        '.scroll-smooth': {
+        '.cs-scroll-smooth': {
           'scroll-behavior': 'smooth'
         },
-        '.scroll-auto': {
+        '.cs-scroll-auto': {
           'scroll-behavior': 'auto'
         },
         
         // Scroll snap utilities
-        '.scroll-snap-none': {
+        '.cs-scroll-snap-none': {
           'scroll-snap-type': 'none'
         },
-        '.scroll-snap-x': {
+        '.cs-scroll-snap-x': {
           'scroll-snap-type': 'x mandatory'
         },
-        '.scroll-snap-y': {
+        '.cs-scroll-snap-y': {
           'scroll-snap-type': 'y mandatory'
         },
-        '.scroll-snap-both': {
+        '.cs-scroll-snap-both': {
           'scroll-snap-type': 'both mandatory'
         },
-        '.scroll-snap-proximity': {
+        '.cs-scroll-snap-proximity': {
           'scroll-snap-type': 'y proximity'
         },
         
         // Scroll snap alignment
-        '.snap-start': {
+        '.cs-snap-start': {
           'scroll-snap-align': 'start'
         },
-        '.snap-end': {
+        '.cs-snap-end': {
           'scroll-snap-align': 'end'
         },
-        '.snap-center': {
+        '.cs-snap-center': {
           'scroll-snap-align': 'center'
         },
-        '.snap-align-none': {
+        '.cs-snap-align-none': {
           'scroll-snap-align': 'none'
         },
         
         // Scroll snap stop
-        '.snap-normal': {
+        '.cs-snap-normal': {
           'scroll-snap-stop': 'normal'
         },
-        '.snap-always': {
+        '.cs-snap-always': {
           'scroll-snap-stop': 'always'
         },
         
         // Scroll margin utilities
-        '.scroll-m-0': { 'scroll-margin': '0px' },
-        '.scroll-m-1': { 'scroll-margin': '0.25rem' },
-        '.scroll-m-2': { 'scroll-margin': '0.5rem' },
-        '.scroll-m-4': { 'scroll-margin': '1rem' },
-        '.scroll-m-8': { 'scroll-margin': '2rem' },
-        '.scroll-m-16': { 'scroll-margin': '4rem' },
+        '.cs-scroll-m-0': { 'scroll-margin': '0px' },
+        '.cs-scroll-m-1': { 'scroll-margin': '0.25rem' },
+        '.cs-scroll-m-2': { 'scroll-margin': '0.5rem' },
+        '.cs-scroll-m-4': { 'scroll-margin': '1rem' },
+        '.cs-scroll-m-8': { 'scroll-margin': '2rem' },
+        '.cs-scroll-m-16': { 'scroll-margin': '4rem' },
         
         // Scroll padding utilities
-        '.scroll-p-0': { 'scroll-padding': '0px' },
-        '.scroll-p-1': { 'scroll-padding': '0.25rem' },
-        '.scroll-p-2': { 'scroll-padding': '0.5rem' },
-        '.scroll-p-4': { 'scroll-padding': '1rem' },
-        '.scroll-p-8': { 'scroll-padding': '2rem' },
-        '.scroll-p-16': { 'scroll-padding': '4rem' },
+        '.cs-scroll-p-0': { 'scroll-padding': '0px' },
+        '.cs-scroll-p-1': { 'scroll-padding': '0.25rem' },
+        '.cs-scroll-p-2': { 'scroll-padding': '0.5rem' },
+        '.cs-scroll-p-4': { 'scroll-padding': '1rem' },
+        '.cs-scroll-p-8': { 'scroll-padding': '2rem' },
+        '.cs-scroll-p-16': { 'scroll-padding': '4rem' },
         
         // Scrollbar utilities (WebKit)
-        '.scrollbar-none': {
+        '.cs-scrollbar-none': {
           'scrollbar-width': 'none',
           '-ms-overflow-style': 'none'
         },
         '.cs-scrollbar-none::-webkit-scrollbar': {
           'display': 'none'
         },
-        '.scrollbar-thin': {
+        '.cs-scrollbar-thin': {
           'scrollbar-width': 'thin'
         },
-        '.scrollbar-auto': {
+        '.cs-scrollbar-auto': {
           'scrollbar-width': 'auto'
         },
         
         // Custom scrollbar styling (WebKit)
-        '.scrollbar-thumb-gray': {
+        '.cs-scrollbar-thumb-gray': {
           'scrollbar-color': 'var(--cs-scroll-thumb-gray) transparent'
         },
-        '.scrollbar-thumb-blue': {
+        '.cs-scrollbar-thumb-blue': {
           'scrollbar-color': 'var(--cs-scroll-thumb-blue) transparent'
         },
-        '.scrollbar-track-transparent': {
+        '.cs-scrollbar-track-transparent': {
           'scrollbar-color': 'inherit transparent'
         }
       });

@@ -7,13 +7,13 @@
 ## Package Information
 
 - **Package**: `@casoon/tailwindcss-utilities`
-- **Version**: `0.6.2`
+- **Version**: `0.6.3`
 - **Type**: Tailwind CSS v4 Plugin
 
 ## CSS Classes (2)
 
-- `.container-fluid`
-- `.sr-only`
+- `.cs-container-fluid`
+- `.cs-sr-only`
 
 ## Usage Examples
 

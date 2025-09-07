@@ -6,15 +6,15 @@
  */
 
 // Import all individual plugins
-import animationsPlugin from '@casoon/tailwindcss-animations';
-import glassPlugin from '@casoon/tailwindcss-glass';
-import orbsPlugin from '@casoon/tailwindcss-orbs';
-import gradientsPlugin from '@casoon/tailwindcss-gradients';
-import scrollPlugin from '@casoon/tailwindcss-scroll';
-import navigationPlugin from '@casoon/tailwindcss-navigation';
-import utilitiesPlugin from '@casoon/tailwindcss-utilities';
-import loadingPlugin from '@casoon/tailwindcss-loading';
-import microInteractionsPlugin from '@casoon/tailwindcss-micro-interactions';
+import animationsPlugin from '../tailwindcss-animations/plugin.js';
+import glassPlugin from '../tailwindcss-glass/plugin.js';
+import orbsPlugin from '../tailwindcss-orbs/plugin.js';
+import gradientsPlugin from '../tailwindcss-gradients/plugin.js';
+import scrollPlugin from '../tailwindcss-scroll/plugin.js';
+import navigationPlugin from '../tailwindcss-navigation/plugin.js';
+import utilitiesPlugin from '../tailwindcss-utilities/plugin.js';
+import loadingPlugin from '../tailwindcss-loading/plugin.js';
+import microInteractionsPlugin from '../tailwindcss-micro-interactions/plugin.js';
 
 export default function effectsPlugin(options = {}) {
   // Return array of plugins instead of single plugin with handler
