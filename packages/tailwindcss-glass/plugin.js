@@ -399,13 +399,88 @@ export default function glassPlugin(options = {}) {
         }
       });
 
-      // Fallback for legacy classes
+      // Legacy class aliases for backward compatibility
       addComponents({
+        // Basic glass effects
+        '.glass': {
+          'backdrop-filter': 'blur(16px)',
+          '-webkit-backdrop-filter': 'blur(16px)',
+          'background': 'var(--cs-glass-bg-light)',
+          'border': '1px solid var(--cs-glass-border-medium)'
+        },
+        '.glass-dark': {
+          'backdrop-filter': 'blur(16px)',
+          '-webkit-backdrop-filter': 'blur(16px)',
+          'background': 'var(--cs-glass-bg-dark)',
+          'border': '1px solid var(--cs-glass-border-light)'
+        },
+        
+        // Size variants
+        '.glass-sm': {
+          'backdrop-filter': 'blur(8px)',
+          '-webkit-backdrop-filter': 'blur(8px)'
+        },
+        '.glass-lg': {
+          'backdrop-filter': 'blur(24px)',
+          '-webkit-backdrop-filter': 'blur(24px)'
+        },
+        
+        // Component variants
+        '.glass-card': {
+          'backdrop-filter': 'blur(16px)',
+          '-webkit-backdrop-filter': 'blur(16px)',
+          'background': 'var(--cs-glass-bg-light)',
+          'border': '1px solid var(--cs-glass-border-medium)',
+          'border-radius': '20px',
+          'padding': '2rem',
+          'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
+          'transition': 'all 0.3s ease'
+        },
+        '.glass-card-light': {
+          'backdrop-filter': 'blur(16px)',
+          '-webkit-backdrop-filter': 'blur(16px)',
+          'background': 'var(--cs-glass-bg-medium)',
+          'border': '1px solid var(--cs-glass-border-strong)',
+          'border-radius': '20px',
+          'padding': '2rem',
+          'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
+          'transition': 'all 0.3s ease'
+        },
+        '.glass-nav': {
+          'backdrop-filter': 'blur(16px)',
+          '-webkit-backdrop-filter': 'blur(16px)',
+          'background': 'var(--cs-glass-bg-light)',
+          'border': '1px solid var(--cs-glass-border-medium)',
+          'border-radius': '12px',
+          'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
+          'transition': 'all 0.3s ease'
+        },
+        '.glass-nav-light': {
+          'backdrop-filter': 'blur(16px)',
+          '-webkit-backdrop-filter': 'blur(16px)',
+          'background': 'var(--cs-glass-bg-medium)',
+          'border': '1px solid var(--cs-glass-border-strong)',
+          'border-radius': '12px',
+          'box-shadow': '0 8px 32px var(--cs-glass-shadow-medium)',
+          'transition': 'all 0.3s ease'
+        },
+        '.glass-button': {
+          'backdrop-filter': 'blur(16px)',
+          '-webkit-backdrop-filter': 'blur(16px)',
+          'background': 'var(--cs-glass-bg-light)',
+          'border': '1px solid var(--cs-glass-border-medium)',
+          'border-radius': '12px',
+          'padding': '0.75rem 1.5rem',
+          'transition': 'all 0.3s ease',
+          'cursor': 'pointer'
+        },
+        
+        // Fallback for browsers without backdrop-filter support
         '@supports not (backdrop-filter: blur(16px))': {
-          '.glass, .glass-card, .glass-nav, .glass-button': {
+          '.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button, .glass, .glass-card, .glass-nav, .glass-button': {
             'background': 'var(--cs-glass-bg-contrast)'
           },
-          '.glass-dark': {
+          '.cs-glass-dark, .glass-dark': {
             'background': 'var(--cs-glass-bg-dark-contrast)'
           }
         }

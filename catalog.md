@@ -20,8 +20,10 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 > Utility CSS classes for Tailwind CSS v4
 
 ### CSS Classes
+- `.container-fluid`
 - `.cs-container-fluid`
 - `.cs-sr-only`
+- `.sr-only`
 
 ## 2. @casoon/tailwindcss-scroll
 
@@ -252,6 +254,7 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 ### CSS Classes
 - `.cs-glass`
 - `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button`
+- `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button, .glass, .glass-card, .glass-nav, .glass-button`
 - `.cs-glass-amber`
 - `.cs-glass-blue`
 - `.cs-glass-button`
@@ -259,6 +262,7 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 - `.cs-glass-card, .cs-glass-card-light, .cs-glass-button, .cs-glass-toast`
 - `.cs-glass-card-light`
 - `.cs-glass-dark`
+- `.cs-glass-dark, .glass-dark`
 - `.cs-glass-dropdown`
 - `.cs-glass-green`
 - `.cs-glass-lg`
@@ -283,8 +287,15 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 - `.cs-glass-toast`
 - `.cs-glass-tooltip`
 - `.cs-glass-weak`
-- `.glass, .glass-card, .glass-nav, .glass-button`
+- `.glass`
+- `.glass-button`
+- `.glass-card`
+- `.glass-card-light`
 - `.glass-dark`
+- `.glass-lg`
+- `.glass-nav`
+- `.glass-nav-light`
+- `.glass-sm`
 
 ### CSS Variables
 ```css
@@ -338,6 +349,7 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 > Complete collection of animation and UI effects for Tailwind CSS v4
 
 ### CSS Classes
+- `.container-fluid`
 - `.cs-active-scale-95`
 - `.cs-active-scale-98`
 - `.cs-anim`
@@ -374,6 +386,7 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 - `.cs-focus-scale-105`
 - `.cs-glass`
 - `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button`
+- `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button, .glass, .glass-card, .glass-nav, .glass-button`
 - `.cs-glass-amber`
 - `.cs-glass-blue`
 - `.cs-glass-button`
@@ -381,6 +394,7 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 - `.cs-glass-card, .cs-glass-card-light, .cs-glass-button, .cs-glass-toast`
 - `.cs-glass-card-light`
 - `.cs-glass-dark`
+- `.cs-glass-dark, .glass-dark`
 - `.cs-glass-dropdown`
 - `.cs-glass-green`
 - `.cs-glass-lg`
@@ -534,8 +548,16 @@ All packages use consistent `--cs-{package}-*` naming for CSS custom properties:
 - `.cs-will-filter`
 - `.cs-will-opacity`
 - `.cs-will-transform`
-- `.glass, .glass-card, .glass-nav, .glass-button`
+- `.glass`
+- `.glass-button`
+- `.glass-card`
+- `.glass-card-light`
 - `.glass-dark`
+- `.glass-lg`
+- `.glass-nav`
+- `.glass-nav-light`
+- `.glass-sm`
+- `.sr-only`
 
 ### CSS Variables
 ```css

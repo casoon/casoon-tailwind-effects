@@ -10,10 +10,12 @@
 - **Version**: `0.6.3`
 - **Type**: Tailwind CSS v4 Plugin
 
-## CSS Classes (2)
+## CSS Classes (4)
 
+- `.container-fluid`
 - `.cs-container-fluid`
 - `.cs-sr-only`
+- `.sr-only`
 
 ## Usage Examples
 

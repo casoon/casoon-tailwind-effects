@@ -10,10 +10,11 @@
 - **Version**: `0.6.3`
 - **Type**: Tailwind CSS v4 Plugin
 
-## CSS Classes (35)
+## CSS Classes (44)
 
 - `.cs-glass`
 - `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button`
+- `.cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button, .glass, .glass-card, .glass-nav, .glass-button`
 - `.cs-glass-amber`
 - `.cs-glass-blue`
 - `.cs-glass-button`
@@ -21,6 +22,7 @@
 - `.cs-glass-card, .cs-glass-card-light, .cs-glass-button, .cs-glass-toast`
 - `.cs-glass-card-light`
 - `.cs-glass-dark`
+- `.cs-glass-dark, .glass-dark`
 - `.cs-glass-dropdown`
 - `.cs-glass-green`
 - `.cs-glass-lg`
@@ -45,8 +47,15 @@
 - `.cs-glass-toast`
 - `.cs-glass-tooltip`
 - `.cs-glass-weak`
-- `.glass, .glass-card, .glass-nav, .glass-button`
+- `.glass`
+- `.glass-button`
+- `.glass-card`
+- `.glass-card-light`
 - `.glass-dark`
+- `.glass-lg`
+- `.glass-nav`
+- `.glass-nav-light`
+- `.glass-sm`
 
 ## CSS Variables (43)
 

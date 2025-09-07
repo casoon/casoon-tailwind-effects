@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-animations",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Animation utilities and keyframes for Tailwind CSS v4",
   "type": "module",
   "exports": {
