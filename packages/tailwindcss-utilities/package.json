@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-utilities",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Utility CSS classes for Tailwind CSS v4",
   "type": "module",
   "exports": {

@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-gradients",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Beautiful gradient utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
