@@ -1,28 +1,27 @@
 # Repository Guidelines
 
 ## Project Structure & Modules
-- `packages/*`: Publishable CSS modules for Tailwind v4:
+- `packages/*`: Publishable CSS modules for Tailwind v4 (pure CSS architecture):
   - `tailwindcss-utilities`, `tailwindcss-animations`, `tailwindcss-glass`, `tailwindcss-gradients`, `tailwindcss-navigation`, `tailwindcss-orbs`, `tailwindcss-scroll`, `tailwindcss-effects` (meta bundle).
-- `scripts/`: Release and version tooling (`release.mjs`, `check-versions.mjs`).
-- Root `package.json`: PNPM workspaces, shared scripts; no separate build step.
+- `scripts/`: CSS validation, minification, and utility scripts.
+- Root `package.json`: PNPM workspaces, shared scripts for validation and minification.
 
 ## Build, Test, and Development
 - Install deps: `pnpm install` (workspace root).
-- **Full Test Suite**: `npm test` — runs class compatibility, syntax, and verification tests.
-- **Class Testing**: `npm run test:classes` — validates all CSS classes across packages.
-- Check versions: `npm run version:check` — verifies all package versions match root + syncs class definitions.
+- **CSS Validation**: `npm test` or `npm run validate` — comprehensive CSS validation (syntax, prefixes, file sizes).
+- **CSS Minification**: `npm run minify` — creates production-optimized dist.min.css files.
+- **Combined Build**: `npm run build:all` — minifies all packages for production.
+- Check versions: `npm run version:check` — verifies all package versions match root.
 - Bump versions: `npm run version:patch|minor|major` — bumps all workspaces.
-- **Validation**: `npm run validate` — comprehensive validation before publishing.
-- Dry-run publish: `npm run release:dry` — simulates publish order.
-- Publish all: `npm run release:all` — publishes packages in dependency order.
+- Publish all: `npm run release:all` — runs validation + minification + publishing.
   - Optional env: `NPM_TAG=next NPM_PROVENANCE=1 npm run release:all`.
 
 ## Coding Style & Naming
-- CSS only (ESM used in scripts). Prefer focused, composable utilities.
-- Class prefixes: use `cs-` (e.g., `cs-card`, `cs-grid-cards`) - **Note**: Glass package uses `.glass` prefix for legacy compatibility.
-- Tokens: define with CSS custom properties using `--cs-*` in `tokens.css`.
-- Kebab-case for class names; two-space indentation; group related utilities.
-- Keep cross-package APIs consistent; avoid breaking renames without a deprecation note in the package README.
+- **Pure CSS Architecture**: No plugins, only CSS files. ESM used in utility scripts.
+- Class prefixes: use `cs-` (e.g., `cs-card`, `cs-grid-cards`) for all utilities.
+- Tokens: define with CSS custom properties using `--cs-*` in CSS files.
+- Kebab-case for class names; clean formatting; group related utilities.
+- Keep cross-package APIs consistent; avoid breaking renames without deprecation.
 
 ## Class Management & Backwards Compatibility
 - **Global Class Registry**: All CSS classes are tracked in `class-definitions.json`

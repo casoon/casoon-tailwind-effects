@@ -143,7 +143,9 @@ class CSSValidator {
           !cls.match(/^(:root|html|body|\*|::?[a-z-]+|\[[a-z-]+\]|@[a-z-]+)$/i)
         );
         if (allowedExceptions.length > 0) {
-          issues.push(`Non-prefixed classes found: ${allowedExceptions.slice(0, 5).join(', ')}${allowedExceptions.length > 5 ? '...' : ''}`);
+          const classList = allowedExceptions.slice(0, 10).map(cls => `.${cls}`).join(', ');
+          const remaining = allowedExceptions.length > 10 ? ` (and ${allowedExceptions.length - 10} more)` : '';
+          issues.push(`Non-prefixed classes found: ${classList}${remaining}`);
         }
       }
       
@@ -167,11 +169,8 @@ class CSSValidator {
         }
       }
       
-      // Check if CSS is minified (good practice check)
+      // Check if CSS is minified (for statistics only)
       const isMinified = this.isMinified(content);
-      if (!isMinified) {
-        warnings.push('CSS appears to be unminified (may impact performance)');
-      }
       
       // Check for common CSS issues
       const cssIssues = this.checkCSSIssues(content);
@@ -196,18 +195,21 @@ class CSSValidator {
   }
   
   extractCSSClasses(content) {
+    // Remove CSS comments first to avoid false matches
+    const cssWithoutComments = content.replace(/\/\*[\s\S]*?\*\//g, '');
+    
     // Extract CSS class selectors
     const classPattern = /\.([a-zA-Z_-][a-zA-Z0-9_-]*)/g;
     const matches = [];
     let match;
     
-    while ((match = classPattern.exec(content)) !== null) {
+    while ((match = classPattern.exec(cssWithoutComments)) !== null) {
       matches.push(match[1]);
     }
     
     // Also extract :root and other pseudo selectors for validation
     const rootPattern = /(:root|html|body|\*|::?[a-z-]+)/g;
-    while ((match = rootPattern.exec(content)) !== null) {
+    while ((match = rootPattern.exec(cssWithoutComments)) !== null) {
       matches.push(match[1]);
     }
     
@@ -234,11 +236,19 @@ class CSSValidator {
       }
     }
     
-    // Check for very long selectors
-    const longSelectors = content.match(/[^{]+\{[^}]*\}/g) || [];
-    const veryLongSelectors = longSelectors.filter(selector => selector.length > 200);
+    // Check for very long selectors (exclude comments)
+    const cssWithoutComments = content.replace(/\/\*[\s\S]*?\*\//g, '');
+    const longSelectors = cssWithoutComments.match(/[^{]+\{[^}]*\}/g) || [];
+    const veryLongSelectors = longSelectors.filter(selector => {
+      const selectorPart = selector.split('{')[0].trim();
+      return selector.length > 200 && !selectorPart.startsWith('/*') && selectorPart.length > 100;
+    });
     if (veryLongSelectors.length > 0) {
-      issues.push(`Very long CSS selectors found (${veryLongSelectors.length}), may impact performance`);
+      const examples = veryLongSelectors.slice(0, 3).map(selector => {
+        const selectorPart = selector.split('{')[0].trim();
+        return selectorPart.length > 80 ? selectorPart.substring(0, 80) + '...' : selectorPart;
+      });
+      issues.push(`Very long CSS selectors found (${veryLongSelectors.length}): ${examples.join(' | ')}`);
     }
     
     return issues;
