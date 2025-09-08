@@ -1,55 +1,276 @@
 /*!
- * @casoon/tailwindcss-scroll v0.7.0
- * undefined
- * 
- * CSS Classes Distribution File
- * Generated: 2025-09-07T12:46:55.914Z
+ * @casoon/scroll (dist.css)
+ * Version: 1.0.0 • Build: 2025-09-08
+ *
+ * Scope
+ * - Production-ready utilities for scroll behavior, scroll snapping, scroll margins/paddings, and accessible cross-browser scrollbar styling.
+ * - Also includes optional helpers (sticky, will-change), light animation recipes, responsive/container-aware tweaks, and a11y media-query fallbacks.
+ *
+ * What's included
+ * - Utilities: .cs-scroll-* (behavior, snap, margins, padding, bar width/color), .cs-snap-*, .cs-sticky*, .cs-will-change-*
+ * - Recipes: .cs-modal-in, .cs-toast-out (motion-reduced aware)
+ * - Containers: .cs-container (container queries opt-in)
+ *
+ * Theming
+ * - Attach variables on a wrapper (recommended: <html class="cs-root"> or <body data-cs-theme>).
+ * - Override any --cs-* custom property at any scope to theme.
+ *   Core tokens (defaults shown):
+ *     --cs-density: 1
+ *     --cs-transition: 220ms cubic-bezier(.2,.8,.2,1)
+ *     --cs-anim-duration: 240ms
+ *     --cs-anim-ease: cubic-bezier(.2,.8,.2,1)
+ *     --cs-scroll-thumb-gray: #6b7280
+ *     --cs-scroll-thumb-blue: #3b82f6
+ *     --cs-scroll-track: rgba(0,0,0,.08)
+ *     --cs-scroll-thumb-radius: 8px
+ *     --cs-scrollbar-size: 10px
+ *
+ * Optional add-ons
+ * - Sticky helpers (.cs-sticky, .cs-sticky-x, .cs-sticky-y), performance hints (.cs-will-change-*)
+ *
+ * Accessibility notes
+ * - Uses :focus-visible in example recipes; browser fallback is natural focus ring.
+ * - @media (prefers-reduced-motion: reduce): smooth scrolling → auto; animations minimize.
+ * - @media (prefers-contrast: more) & (forced-colors: active): ensures visible scrollbar parts and outlines.
+ *
+ * Browser support & fallbacks
+ * - Firefox: scrollbar-width/scrollbar-color
+ * - WebKit/Blink: ::-webkit-scrollbar* rules
+ * - Legacy/unsupported: rules degrade safely; sizes/colors fallback via hard values (#6b7280 / #3b82f6).
+ *
+ * Quick usage
+ *   <html class="cs-root">
+ *     <div class="cs-scroll-smooth cs-scroll-snap-x cs-scroll-p-4 cs-scrollbar-thin cs-scrollbar-thumb-blue">
+ *       <section class="cs-snap-start">…</section>
+ *       <section class="cs-snap-center">…</section>
+ *     </div>
+ *   </html>
+ *
+ * Notes
+ * - All selectors are prefixed with "cs-" to avoid collisions.
  */
 
-/* CSS Variables Available:
- * --cs-scroll-thumb-blue
- * --cs-scroll-thumb-gray
- */
+/* -----------------------------------------------------------------------------
+   TOKENS (scope with .cs-root or [data-cs-theme])
+----------------------------------------------------------------------------- */
 
-/* Available CSS Classes:
- * .cs-scroll-auto
- * .cs-scroll-m-0
- * .cs-scroll-m-1
- * .cs-scroll-m-16
- * .cs-scroll-m-2
- * .cs-scroll-m-4
- * .cs-scroll-m-8
- * .cs-scroll-p-0
- * .cs-scroll-p-1
- * .cs-scroll-p-16
- * .cs-scroll-p-2
- * .cs-scroll-p-4
- * .cs-scroll-p-8
- * .cs-scroll-smooth
- * .cs-scroll-snap-both
- * .cs-scroll-snap-none
- * .cs-scroll-snap-proximity
- * .cs-scroll-snap-x
- * .cs-scroll-snap-y
- * .cs-scrollbar-auto
- * .cs-scrollbar-none
- * .cs-scrollbar-thin
- * .cs-scrollbar-thumb-blue
- * .cs-scrollbar-thumb-gray
- * .cs-scrollbar-track-transparent
- * .cs-snap-align-none
- * .cs-snap-always
- * .cs-snap-center
- * .cs-snap-end
- * .cs-snap-normal
- * .cs-snap-start
- */
+.cs-root,
+[data-cs-theme]{
+  /* Density & motion */
+  --cs-density: 1;
+  --cs-transition: 220ms cubic-bezier(.2,.8,.2,1);
+  --cs-anim-duration: 240ms;
+  --cs-anim-ease: cubic-bezier(.2,.8,.2,1);
 
-/* 
- * For full functionality, use this package as a Tailwind CSS plugin:
- * import plugin from '@casoon/tailwindcss-scroll';
- * 
- * export default {
- *   plugins: [plugin]
- * }
- */
+  /* Scrollbar tokens */
+  --cs-scroll-thumb-gray: #6b7280;
+  --cs-scroll-thumb-blue: #3b82f6;
+  --cs-scroll-track: rgba(0,0,0,.08);
+  --cs-scroll-thumb-radius: 8px;
+  --cs-scrollbar-size: 10px;
+
+  /* Z-index scale for overlays (recipes) */
+  --cs-z-tooltip: 60;
+  --cs-z-dropdown: 70;
+  --cs-z-toast: 80;
+  --cs-z-modal: 90;
+}
+
+/* -----------------------------------------------------------------------------
+   CONTAINER QUERIES (opt-in)
+----------------------------------------------------------------------------- */
+
+.cs-container{ container-type:inline-size; container-name:cs; }
+
+/* -----------------------------------------------------------------------------
+   SCROLL BEHAVIOR
+----------------------------------------------------------------------------- */
+
+.cs-scroll-smooth{ scroll-behavior:smooth; }
+.cs-scroll-auto{ scroll-behavior:auto; }
+
+/* -----------------------------------------------------------------------------
+   SCROLL SNAP TYPE
+----------------------------------------------------------------------------- */
+
+.cs-scroll-snap-none{ scroll-snap-type:none; }
+.cs-scroll-snap-x{ scroll-snap-type:x mandatory; }
+.cs-scroll-snap-y{ scroll-snap-type:y mandatory; }
+.cs-scroll-snap-both{ scroll-snap-type:both mandatory; }
+.cs-scroll-snap-proximity{ scroll-snap-type:y proximity; }
+
+/* -----------------------------------------------------------------------------
+   SCROLL SNAP ALIGN & STOP
+----------------------------------------------------------------------------- */
+
+.cs-snap-start{ scroll-snap-align:start; }
+.cs-snap-end{ scroll-snap-align:end; }
+.cs-snap-center{ scroll-snap-align:center; }
+.cs-snap-align-none{ scroll-snap-align:none; }
+
+.cs-snap-normal{ scroll-snap-stop:normal; }
+.cs-snap-always{ scroll-snap-stop:always; }
+
+/* -----------------------------------------------------------------------------
+   SCROLL MARGIN
+----------------------------------------------------------------------------- */
+
+.cs-scroll-m-0{ scroll-margin:0px; }
+.cs-scroll-m-1{ scroll-margin:0.25rem; }
+.cs-scroll-m-2{ scroll-margin:0.5rem; }
+.cs-scroll-m-4{ scroll-margin:1rem; }
+.cs-scroll-m-8{ scroll-margin:2rem; }
+.cs-scroll-m-16{ scroll-margin:4rem; }
+
+/* -----------------------------------------------------------------------------
+   SCROLL PADDING
+----------------------------------------------------------------------------- */
+
+.cs-scroll-p-0{ scroll-padding:0px; }
+.cs-scroll-p-1{ scroll-padding:0.25rem; }
+.cs-scroll-p-2{ scroll-padding:0.5rem; }
+.cs-scroll-p-4{ scroll-padding:1rem; }
+.cs-scroll-p-8{ scroll-padding:2rem; }
+.cs-scroll-p-16{ scroll-padding:4rem; }
+
+/* -----------------------------------------------------------------------------
+   SCROLLBAR WIDTH (cross-browser)
+----------------------------------------------------------------------------- */
+
+.cs-scrollbar-none{ scrollbar-width:none; -ms-overflow-style:none; }
+.cs-scrollbar-none::-webkit-scrollbar{ display:none; }
+
+.cs-scrollbar-thin{ scrollbar-width:thin; }
+.cs-scrollbar-auto{ scrollbar-width:auto; }
+
+/* -----------------------------------------------------------------------------
+   SCROLLBAR COLOR (Firefox) + WEBKIT STYLING
+   Apply to the scrollable element.
+----------------------------------------------------------------------------- */
+
+.cs-scrollbar-thumb-gray{ scrollbar-color: var(--cs-scroll-thumb-gray, #6b7280) transparent; }
+.cs-scrollbar-thumb-blue{ scrollbar-color: var(--cs-scroll-thumb-blue, #3b82f6) transparent; }
+.cs-scrollbar-track-transparent{ scrollbar-color: currentColor transparent; }
+
+/* WebKit/Blink detailed styling */
+.cs-scrollbar-thumb-gray::-webkit-scrollbar,
+.cs-scrollbar-thumb-blue::-webkit-scrollbar,
+.cs-scrollbar-track-transparent::-webkit-scrollbar{
+  width: var(--cs-scrollbar-size, 10px);
+  height: var(--cs-scrollbar-size, 10px);
+}
+
+.cs-scrollbar-thumb-gray::-webkit-scrollbar-track,
+.cs-scrollbar-thumb-blue::-webkit-scrollbar-track,
+.cs-scrollbar-track-transparent::-webkit-scrollbar-track{
+  background: var(--cs-scroll-track, rgba(0,0,0,.08));
+}
+
+.cs-scrollbar-track-transparent::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+.cs-scrollbar-thumb-gray::-webkit-scrollbar-thumb{
+  background-color: var(--cs-scroll-thumb-gray, #6b7280);
+  border-radius: var(--cs-scroll-thumb-radius, 8px);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.cs-scrollbar-thumb-blue::-webkit-scrollbar-thumb{
+  background-color: var(--cs-scroll-thumb-blue, #3b82f6);
+  border-radius: var(--cs-scroll-thumb-radius, 8px);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* Hover/active affordance (with safe fallback) */
+.cs-scrollbar-thumb-gray:hover::-webkit-scrollbar-thumb,
+.cs-scrollbar-thumb-blue:hover::-webkit-scrollbar-thumb{
+  filter: brightness(0.9);
+}
+.cs-scrollbar-thumb-gray:active::-webkit-scrollbar-thumb,
+.cs-scrollbar-thumb-blue:active::-webkit-scrollbar-thumb{
+  filter: brightness(0.8);
+}
+
+/* -----------------------------------------------------------------------------
+   OPTIONAL HELPERS
+----------------------------------------------------------------------------- */
+
+.cs-sticky{ position: sticky; top: 0; }
+.cs-sticky-x{ position: sticky; left: 0; }
+.cs-sticky-y{ position: sticky; top: 0; }
+.cs-will-change-scroll{ will-change: scroll-position; }
+.cs-will-change-transform{ will-change: transform; }
+
+/* -----------------------------------------------------------------------------
+   RECIPES (lightweight, motion-aware)
+----------------------------------------------------------------------------- */
+
+@keyframes cs-fade-in{ from{opacity:0} to{opacity:1} }
+@keyframes cs-slide-up{ from{ transform: translateY(8px); } to{ transform: translateY(0); } }
+
+.cs-modal-in{
+  animation: cs-fade-in var(--cs-anim-duration,240ms) var(--cs-anim-ease,cubic-bezier(.2,.8,.2,1)) both,
+             cs-slide-up calc(var(--cs-anim-duration,240ms) * 1.1) var(--cs-anim-ease,cubic-bezier(.2,.8,.2,1)) both;
+  z-index: var(--cs-z-modal, 90);
+}
+
+.cs-toast-out{
+  animation: cs-fade-in reverse var(--cs-anim-duration,240ms) linear both;
+  z-index: var(--cs-z-toast, 80);
+}
+
+/* -----------------------------------------------------------------------------
+   RESPONSIVE / CONTAINER-AWARE TWEAKS
+----------------------------------------------------------------------------- */
+
+/* Reduce motion/blur intensity on very small screens */
+@media (max-width:480px){
+  .cs-modal-in{ animation-duration: calc(var(--cs-anim-duration,240ms) * .8); }
+}
+
+/* Example container refinement: on medium containers, make snap less strict */
+@container cs (min-width:48rem){
+  .cs-scroll-snap-proximity{ scroll-snap-type: both proximity; }
+}
+
+/* -----------------------------------------------------------------------------
+   ACCESSIBILITY MEDIA QUERIES
+----------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce){
+  .cs-scroll-smooth{ scroll-behavior:auto; }
+  .cs-modal-in,
+  .cs-toast-out{ animation:none; }
+}
+
+@media (prefers-contrast: more){
+  .cs-scrollbar-thumb-gray,
+  .cs-scrollbar-thumb-blue{
+    scrollbar-color: currentColor transparent;
+  }
+  .cs-scrollbar-thumb-gray::-webkit-scrollbar-thumb,
+  .cs-scrollbar-thumb-blue::-webkit-scrollbar-thumb{
+    background-color: currentColor;
+  }
+}
+
+@media (forced-colors: active){
+  .cs-scrollbar-none{ scrollbar-color: ButtonText ButtonFace; }
+  .cs-scrollbar-thin{ scrollbar-width: thin; }
+  .cs-scrollbar-thumb-gray,
+  .cs-scrollbar-thumb-blue{
+    scrollbar-color: ButtonText ButtonFace;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   PRINT STYLES
+----------------------------------------------------------------------------- */
+
+@media print{
+  .cs-scroll-smooth{ scroll-behavior:auto; }
+  .cs-scrollbar-none::-webkit-scrollbar{ display:block; }
+}

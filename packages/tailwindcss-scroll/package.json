@@ -3,26 +3,16 @@
   "version": "0.7.1",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./plugin.js",
-      "require": "./plugin.cjs"
-    },
+    ".": "./dist.css",
     "./dist.css": "./dist.css",
-    "./plugin": {
-      "import": "./plugin.js",
-      "require": "./plugin.cjs"
-    },
-    "./tokens.css": "./tokens.css"
+    "./scroll.js": "./scroll.js"
   },
-  "main": "./plugin.cjs",
-  "module": "./plugin.js",
+  "main": "./dist.css",
   "files": [
     "dist.css",
-    "tokens.css",
-    "plugin.js",
-    "plugin.cjs",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "scroll.js"
   ],
   "dependencies": {
     "@casoon/tailwindcss-animations": "^0.5.6"

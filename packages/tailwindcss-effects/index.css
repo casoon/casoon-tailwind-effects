@@ -1,0 +1,14 @@
+/*! 
+ * @casoon/tailwindcss-effects
+ * Complete collection of CSS effects for Tailwind CSS v4
+ */
+
+@import '../tailwindcss-utilities/dist.css';
+@import '../tailwindcss-animations/dist.css'; 
+@import '../tailwindcss-glass/dist.css';
+@import '../tailwindcss-gradients/dist.css';
+@import '../tailwindcss-loading/dist.css';
+@import '../tailwindcss-micro-interactions/dist.css';
+@import '../tailwindcss-navigation/dist.css';
+@import '../tailwindcss-orbs/dist.css';
+@import '../tailwindcss-scroll/dist.css';

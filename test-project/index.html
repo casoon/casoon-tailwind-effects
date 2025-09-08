@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🚀 Casoon Tailwind Effects - Complete Test</title>
+  </head>
+  <body class="bg-gray-50 text-gray-900 min-h-screen">
+    <div class="cs-container-fluid py-8">
+      <header class="text-center mb-12">
+        <h1 class="text-5xl font-bold mb-4 cs-slide-up cs-anim-lg bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          🚀 Casoon Tailwind Effects
+        </h1>
+        <p class="text-xl text-gray-600 cs-fade-in cs-anim-md" style="animation-delay: 0.3s;">
+          Complete test suite for all CSS effects packages
+        </p>
+      </header>
+
+      <!-- Animations Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 cs-slide-right cs-anim-md flex items-center">
+          🎬 <span class="ml-2">Animation Effects</span>
+        </h2>
+        
+        <!-- Basic Animations Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div class="bg-white p-6 rounded-xl shadow-lg cs-fade-in cs-anim-sm" style="animation-delay: 0.1s;">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-3 cs-bounce cs-anim-infinite"></div>
+              <h3 class="font-semibold">Bounce</h3>
+              <p class="text-sm text-gray-600">cs-bounce</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg cs-fade-in cs-anim-sm" style="animation-delay: 0.2s;">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-green-500 rounded-full mx-auto mb-3 cs-pulse cs-anim-infinite"></div>
+              <h3 class="font-semibold">Pulse</h3>
+              <p class="text-sm text-gray-600">cs-pulse</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg cs-fade-in cs-anim-sm" style="animation-delay: 0.3s;">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-red-500 rounded-full mx-auto mb-3 cs-wiggle cs-anim-infinite"></div>
+              <h3 class="font-semibold">Wiggle</h3>
+              <p class="text-sm text-gray-600">cs-wiggle</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg cs-fade-in cs-anim-sm" style="animation-delay: 0.4s;">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-purple-500 rounded-full mx-auto mb-3 cs-rotate cs-anim-infinite cs-anim-2xl"></div>
+              <h3 class="font-semibold">Rotate</h3>
+              <p class="text-sm text-gray-600">cs-rotate</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entrance Effects -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-lg cs-scale-in cs-anim-lg cs-ease-emphasized">
+            <h3 class="font-semibold text-lg mb-2">Scale In</h3>
+            <p class="text-gray-600">cs-scale-in with emphasized easing</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg cs-slide-left cs-anim-lg cs-ease-spring" style="animation-delay: 0.2s;">
+            <h3 class="font-semibold text-lg mb-2">Slide Left</h3>
+            <p class="text-gray-600">cs-slide-left with spring easing</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Glass Morphism Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 cs-slide-left cs-anim-md flex items-center">
+          🫧 <span class="ml-2">Glass Morphism</span>
+        </h2>
+        
+        <div class="relative bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 p-8 rounded-2xl">
+          <div class="cs-glass p-8 rounded-xl max-w-2xl">
+            <h3 class="text-2xl font-bold text-white mb-4">Glass Effect Card</h3>
+            <p class="text-white/90 mb-4">
+              This demonstrates the glass morphism effect with backdrop blur and subtle transparency.
+              Perfect for modern UI elements that need to feel light and airy.
+            </p>
+            <button class="cs-glass px-6 py-3 rounded-lg text-white font-semibold hover:bg-white/20 transition-colors">
+              Glass Button
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hover Effects Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 cs-slide-up cs-anim-md flex items-center">
+          👆 <span class="ml-2">Hover Effects</span>
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-8 rounded-xl shadow-lg cs-hover-scale-105 transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-blue-200">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-blue-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span class="text-xl">📏</span>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Scale Hover</h3>
+              <p class="text-gray-600">cs-hover-scale-105</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-lg cs-hover-lift-sm transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-green-200">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span class="text-xl">⬆️</span>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Lift Hover</h3>
+              <p class="text-gray-600">cs-hover-lift-sm</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-lg cs-hover-scale-110 cs-hover-lift-md transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-purple-200">
+            <div class="text-center">
+              <div class="w-12 h-12 bg-purple-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <span class="text-xl">🚀</span>
+              </div>
+              <h3 class="font-semibold text-lg mb-2">Combined</h3>
+              <p class="text-gray-600">Scale + Lift</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3D Effects Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 cs-blur-in cs-anim-md flex items-center">
+          🎲 <span class="ml-2">3D Effects</span>
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-xl cs-reveal-3d-up cs-anim-lg cs-t-preserve-3d">
+            <h3 class="font-semibold text-xl mb-4">3D Reveal Up</h3>
+            <p class="text-gray-600 mb-4">
+              This card reveals with a 3D rotation effect from the top, creating depth and dimension.
+            </p>
+            <div class="text-sm text-blue-600 font-mono">cs-reveal-3d-up</div>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-xl cs-reveal-3d-right cs-anim-lg cs-t-preserve-3d" style="animation-delay: 0.3s;">
+            <h3 class="font-semibold text-xl mb-4">3D Reveal Right</h3>
+            <p class="text-gray-600 mb-4">
+              This card reveals with a 3D rotation effect from the right side, adding visual interest.
+            </p>
+            <div class="text-sm text-green-600 font-mono">cs-reveal-3d-right</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Timing and Easing Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 cs-rotate-in cs-anim-lg flex items-center">
+          ⏱️ <span class="ml-2">Timing & Easing</span>
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white p-6 rounded-lg shadow-md cs-scale-in cs-anim-xxs cs-ease-standard">
+            <div class="text-center">
+              <div class="text-2xl mb-2">⚡</div>
+              <h4 class="font-semibold">XXS + Standard</h4>
+              <p class="text-xs text-gray-600">0.1s duration</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-md cs-scale-in cs-anim-sm cs-ease-emphasized" style="animation-delay: 0.1s;">
+            <div class="text-center">
+              <div class="text-2xl mb-2">🎯</div>
+              <h4 class="font-semibold">SM + Emphasized</h4>
+              <p class="text-xs text-gray-600">0.2s duration</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-md cs-scale-in cs-anim-lg cs-ease-spring" style="animation-delay: 0.2s;">
+            <div class="text-center">
+              <div class="text-2xl mb-2">🌸</div>
+              <h4 class="font-semibold">LG + Spring</h4>
+              <p class="text-xs text-gray-600">0.5s duration</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-md cs-scale-in cs-anim-2xl cs-ease-soft-spring" style="animation-delay: 0.3s;">
+            <div class="text-center">
+              <div class="text-2xl mb-2">🎈</div>
+              <h4 class="font-semibold">2XL + Soft Spring</h4>
+              <p class="text-xs text-gray-600">1.0s duration</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Utility Classes Section -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 cs-slide-right cs-anim-md flex items-center">
+          🛠️ <span class="ml-2">Utility Classes</span>
+        </h2>
+        
+        <div class="space-y-6">
+          <!-- Container Fluid Example -->
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-1">
+            <div class="cs-container-fluid bg-white p-6 rounded-lg">
+              <h3 class="font-semibold mb-2">Container Fluid</h3>
+              <p class="text-gray-600">Full width container with consistent padding using <code class="bg-gray-100 px-2 py-1 rounded text-sm">cs-container-fluid</code></p>
+            </div>
+          </div>
+          
+          <!-- Screen Reader Only -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="font-semibold mb-4">Screen Reader Accessibility</h3>
+            <p>This text is visible to everyone.</p>
+            <p class="cs-sr-only">This text is hidden visually but available to screen readers for accessibility.</p>
+            <p>The hidden content is between these two visible paragraphs.</p>
+            <div class="text-sm text-blue-600 font-mono mt-2">Uses: cs-sr-only</div>
+          </div>
+          
+          <!-- Performance Optimizations -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-6 rounded-lg shadow-md cs-will-transform">
+              <h4 class="font-semibold mb-2">Will Change Transform</h4>
+              <p class="text-sm text-gray-600 mb-2">Optimized for transform animations</p>
+              <div class="text-xs text-green-600 font-mono">cs-will-transform</div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md cs-will-opacity">
+              <h4 class="font-semibold mb-2">Will Change Opacity</h4>
+              <p class="text-sm text-gray-600 mb-2">Optimized for opacity animations</p>
+              <div class="text-xs text-green-600 font-mono">cs-will-opacity</div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md cs-will-filter">
+              <h4 class="font-semibold mb-2">Will Change Filter</h4>
+              <p class="text-sm text-gray-600 mb-2">Optimized for filter animations</p>
+              <div class="text-xs text-green-600 font-mono">cs-will-filter</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal/Card Entrance Effects -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 cs-slide-left cs-anim-md flex items-center">
+          🎭 <span class="ml-2">Entrance Patterns</span>
+        </h2>
+        
+        <div class="space-y-6">
+          <div class="bg-white p-8 rounded-xl shadow-lg cs-enter-card">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                <span class="text-xl">📋</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">Card Entrance</h3>
+                <p class="text-sm text-gray-600">Perfect for content cards and panels</p>
+              </div>
+            </div>
+            <p class="text-gray-700 mb-4">
+              This uses the <code class="bg-gray-100 px-2 py-1 rounded text-sm">cs-enter-card</code> animation,
+              which combines scaling and fading with emphasized easing for a polished feel.
+            </p>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-xl cs-enter-modal border-2 border-purple-100" style="animation-delay: 0.5s;">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                <span class="text-xl">🎪</span>
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg">Modal Entrance</h3>
+                <p class="text-sm text-gray-600">Great for dialogs and modals</p>
+              </div>
+            </div>
+            <p class="text-gray-700">
+              This uses the <code class="bg-gray-100 px-2 py-1 rounded text-sm">cs-enter-modal</code> animation,
+              featuring spring easing for a more dynamic, attention-grabbing entrance effect.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Success Footer -->
+      <footer class="text-center py-12 border-t border-gray-200 mt-16">
+        <div class="cs-fade-in cs-anim-xl">
+          <div class="text-6xl mb-4">✅</div>
+          <h2 class="text-2xl font-bold text-green-700 mb-2">All Effects Working!</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            🎉 Congratulations! All Casoon Tailwind Effects packages have been successfully integrated 
+            and are functioning correctly with Tailwind CSS v4. Ready for production use!
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

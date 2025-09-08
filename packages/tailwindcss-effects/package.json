@@ -4,24 +4,13 @@
   "description": "Complete collection of animation and UI effects for Tailwind CSS v4",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./plugin.js",
-      "require": "./plugin.cjs"
-    },
-    "./dist.css": "./dist.css",
-    "./plugin": {
-      "import": "./plugin.js",
-      "require": "./plugin.cjs"
-    },
-    "./tokens.css": "./tokens.css"
+    ".": "./index.css",
+    "./nav.js": "@casoon/tailwindcss-navigation/nav.js", 
+    "./scroll.js": "@casoon/tailwindcss-scroll/scroll.js"
   },
-  "main": "./plugin.cjs",
-  "module": "./plugin.js",
+  "main": "./index.css",
   "files": [
-    "dist.css",
-    "tokens.css",
-    "plugin.js",
-    "plugin.cjs",
+    "index.css",
     "README.md",
     "LICENSE"
   ],

@@ -4,24 +4,13 @@
   "description": "Animation utilities and keyframes for Tailwind CSS v4",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./plugin.js",
-      "require": "./plugin.cjs"
-    },
-    "./dist.css": "./dist.css",
-    "./plugin": {
-      "import": "./plugin.js",
-      "require": "./plugin.cjs"
-    },
-    "./tokens.css": "./tokens.css"
+    ".": "./dist.css",
+    "./dist.css": "./dist.css"
   },
-  "main": "./plugin.cjs",
-  "module": "./plugin.js",
+  "main": "./dist.css",
   "files": [
+
     "dist.css",
-    "tokens.css",
-    "plugin.js",
-    "plugin.cjs",
     "README.md",
     "LICENSE"
   ],

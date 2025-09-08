@@ -1,50 +1,368 @@
 /*!
- * @casoon/tailwindcss-micro-interactions v0.7.0
- *  for Tailwind CSS v4
- * 
- * CSS Classes Distribution File
- * Generated: 2025-09-07T12:46:55.916Z
+ * Casoon CSS — Micro Interactions (dist.css)
+ * Version: 1.0.0 • Build: 2025-09-08
+ *
+ * Scope
+ * - Utilities for subtle micro-interactions (hover, focus-visible, active, tap)
+ * - Motion recipes (modal/toast), elevation & glow helpers, container-query responsiveness
+ *
+ * What's Included
+ * - Tokens via CSS variables: colors, opacity, elevation, timing, density, animation
+ * - Interaction utilities: scale/rotate/translate/brightness/fade
+ * - Focus-visible rings with hard fallbacks + modern color-mix upgrades
+ * - Interactive “lift” effect and smooth interaction shorthands
+ * - Tap highlight helpers
+ * - Motion recipes: .cs-modal-in, .cs-toast-out
+ * - Container-query helpers: .cs-cq + responsive adjustments (mobile/tablet/desktop)
+ * - Accessibility media queries (reduced-motion, prefers-contrast, forced-colors)
+ * - Mobile motion intensity reduction and print-safe tweaks
+ *
+ * Theming / Tokens
+ * - Attach `.cs-root` to <html> (preferred) or any wrapper. Override any `--cs-*` var to theme.
+ * - Core tokens:
+ *    --cs-color-focus            (base focus color)
+ *    --cs-color-shadow           (base shadow color)
+ *    --cs-opacity-focus-strong   (e.g. 50%)
+ *    --cs-opacity-focus-medium   (e.g. 30%)
+ *    --cs-opacity-shadow-light   (e.g. 10%)
+ *    --cs-ease                   (default easing)
+ *    --cs-transition             (default transition, e.g. 0.2s var(--cs-ease))
+ *    --cs-density                (1 = default, <1 compact, >1 comfy)
+ * - Focus ring fallback tokens (precomputed rgba):
+ *    --cs-focus-ring-strong-fallback
+ *    --cs-focus-ring-medium-fallback
+ *
+ * Optional Add-ons
+ * - Acrylic: .cs-acrylic, .cs-acrylic-edge, .cs-noise
+ * - Glow: .cs-glow-[sm|md|lg]
+ * - Elevation: .cs-elev-[1..5]
+ * - Sticky & will-change helpers
+ *
+ * Accessibility Notes
+ * - Uses :focus-visible (with fallback to :focus when :focus-visible unsupported)
+ * - Respects `prefers-reduced-motion` to minimize transforms/animations
+ * - Honors `prefers-contrast: more` and `forced-colors: active`
+ *
+ * Browser Support & Fallbacks
+ * - Modern evergreen browsers. Focus ring uses rgba fallback; upgrades to color-mix where supported.
+ * - Box-shadow/transform/filter widely supported; `@supports selector(:focus-visible)` gates modern focus styles.
+ *
+ * Quick Usage
+ *   <html class="cs-root">
+ *     <button class="cs-interactive cs-hover-scale-105 cs-focus-ring-2">Click me</button>
+ *   </html>
+ *
+ *   Override theme:
+ *   .cs-root { --cs-color-focus:#6d28d9; --cs-opacity-focus-strong:60%; }
  */
 
-/* CSS Variables Available:
- * --cs-micro-focus-ring
- * --cs-micro-focus-ring-medium
- * --cs-micro-focus-ring-strong
- * --cs-micro-shadow
- * --cs-micro-shadow-light
- */
+/*--------------------------------------*
+  TOKENS (attach to a root element)
+ *--------------------------------------*/
+.cs-root {
+  /* Core colors */
+  --cs-color-focus: #3b82f6;          /* base focus color */
+  --cs-color-shadow: #000000;         /* base shadow color */
 
-/* Available CSS Classes:
- * .cs-active-scale-95
- * .cs-active-scale-98
- * .cs-focus-ring-2
- * .cs-focus-ring-4
- * .cs-focus-scale-105
- * .cs-hover-brighten
- * .cs-hover-darken
- * .cs-hover-fade-in
- * .cs-hover-fade-out
- * .cs-hover-rotate-1
- * .cs-hover-rotate-3
- * .cs-hover-rotate-6
- * .cs-hover-scale-105
- * .cs-hover-scale-110
- * .cs-hover-scale-95
- * .cs-hover-translate-y-1
- * .cs-hover-translate-y-2
- * .cs-interactive
- * .cs-smooth-interaction
- * .cs-smooth-interaction-fast
- * .cs-smooth-interaction-slow
- * .cs-tap-highlight-none
- * .cs-tap-scale-95
- */
+  /* Opacity tokens */
+  --cs-opacity-focus-strong: 50%;
+  --cs-opacity-focus-medium: 30%;
+  --cs-opacity-shadow-light: 10%;
 
-/* 
- * For full functionality, use this package as a Tailwind CSS plugin:
- * import plugin from '@casoon/tailwindcss-micro-interactions';
- * 
- * export default {
- *   plugins: [plugin]
- * }
- */
+  /* Computed fallbacks (no color-mix) */
+  --cs-focus-ring-strong-fallback: rgba(59,130,246,0.5);
+  --cs-focus-ring-medium-fallback: rgba(59,130,246,0.3);
+  --cs-shadow-light-fallback: rgba(0,0,0,0.10);
+
+  /* Timing & motion */
+  --cs-ease: cubic-bezier(.2,.8,.2,1);
+  --cs-transition: 0.2s var(--cs-ease);
+  --cs-anim-duration: 240ms;
+  --cs-anim-duration-fast: 140ms;
+  --cs-anim-duration-slow: 360ms;
+  --cs-anim-delay: 0ms;
+
+  /* Density scaling (1 = default). Consumers may tweak to compact/comfy layouts. */
+  --cs-density: 1;
+}
+
+/* Upgrade to color-mix where supported */
+@supports (color: color-mix(in srgb, red 50%, white)) {
+  .cs-root {
+    --cs-focus-ring-strong: color-mix(in srgb, var(--cs-color-focus) var(--cs-opacity-focus-strong), transparent);
+    --cs-focus-ring-medium: color-mix(in srgb, var(--cs-color-focus) var(--cs-opacity-focus-medium), transparent);
+    --cs-shadow-light: color-mix(in srgb, var(--cs-color-shadow) var(--cs-opacity-shadow-light), transparent);
+  }
+}
+
+/*--------------------------------------*
+  CONTAINER QUERY HELPER
+ *--------------------------------------*/
+.cs-cq {
+  container-type: inline-size;
+  container-name: cs;
+}
+
+/*--------------------------------------*
+  INTERACTION UTILITIES
+ *--------------------------------------*/
+
+/* Hover scale effects */
+.cs-hover-scale-95 { transition: transform var(--cs-transition); }
+.cs-hover-scale-95:hover { transform: scale(0.95); }
+
+.cs-hover-scale-105 { transition: transform var(--cs-transition); }
+.cs-hover-scale-105:hover { transform: scale(1.05); }
+
+.cs-hover-scale-110 { transition: transform var(--cs-transition); }
+.cs-hover-scale-110:hover { transform: scale(1.10); }
+
+/* Hover fade effects */
+.cs-hover-fade-in { opacity: 0.7; transition: opacity var(--cs-transition); }
+.cs-hover-fade-in:hover { opacity: 1; }
+
+.cs-hover-fade-out { opacity: 1; transition: opacity var(--cs-transition); }
+.cs-hover-fade-out:hover { opacity: 0.7; }
+
+/* Hover brightness effects */
+.cs-hover-brighten { transition: filter var(--cs-transition); }
+.cs-hover-brighten:hover { filter: brightness(1.1); }
+
+.cs-hover-darken { transition: filter var(--cs-transition); }
+.cs-hover-darken:hover { filter: brightness(0.9); }
+
+/* Hover rotation effects */
+.cs-hover-rotate-1 { transition: transform var(--cs-transition); }
+.cs-hover-rotate-1:hover { transform: rotate(1deg); }
+
+.cs-hover-rotate-3 { transition: transform var(--cs-transition); }
+.cs-hover-rotate-3:hover { transform: rotate(3deg); }
+
+.cs-hover-rotate-6 { transition: transform var(--cs-transition); }
+.cs-hover-rotate-6:hover { transform: rotate(6deg); }
+
+/* Hover translate effects */
+.cs-hover-translate-y-1 { transition: transform var(--cs-transition); }
+.cs-hover-translate-y-1:hover { transform: translateY(calc(-0.25rem * var(--cs-density))); }
+
+.cs-hover-translate-y-2 { transition: transform var(--cs-transition); }
+.cs-hover-translate-y-2:hover { transform: translateY(calc(-0.5rem * var(--cs-density))); }
+
+/* Active (press) effects */
+.cs-active-scale-95:active { transform: scale(0.95); }
+.cs-active-scale-98:active { transform: scale(0.98); }
+
+/* Tap effects (mobile) */
+.cs-tap-highlight-none { -webkit-tap-highlight-color: transparent; }
+.cs-tap-scale-95 { transition: transform 0.1s var(--cs-ease); }
+.cs-tap-scale-95:active { transform: scale(0.95); }
+
+/* Smooth interaction shorthands */
+.cs-smooth-interaction { transition: all var(--cs-transition); }
+.cs-smooth-interaction-fast { transition: all var(--cs-anim-duration-fast) var(--cs-ease); }
+.cs-smooth-interaction-slow { transition: all var(--cs-anim-duration-slow) var(--cs-ease); }
+
+/* Button-like interactive lift */
+.cs-interactive {
+  cursor: pointer;
+  transition: transform 0.1s var(--cs-ease), box-shadow 0.1s var(--cs-ease);
+}
+.cs-interactive:hover {
+  transform: translateY(calc(-1px * var(--cs-density)));
+  box-shadow: 0 4px 8px var(--cs-shadow-light, var(--cs-shadow-light-fallback));
+}
+.cs-interactive:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--cs-shadow-light, var(--cs-shadow-light-fallback));
+}
+
+/*--------------------------------------*
+  FOCUS RINGS (focus-visible first-class)
+ *--------------------------------------*/
+
+/* Fallback when :focus-visible unsupported -> use :focus */
+@supports not selector(:focus-visible) {
+  .cs-focus-scale-105 { transition: transform var(--cs-transition); }
+  .cs-focus-scale-105:focus { transform: scale(1.05); }
+
+  .cs-focus-ring-2:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback));
+  }
+  .cs-focus-ring-4:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback));
+  }
+}
+
+/* Preferred modern path */
+@supports selector(:focus-visible) {
+  .cs-focus-scale-105 { transition: transform var(--cs-transition); }
+  .cs-focus-scale-105:focus-visible { transform: scale(1.05); }
+
+  .cs-focus-ring-2:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback));
+  }
+  .cs-focus-ring-4:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback));
+  }
+}
+
+/* High-contrast / forced colors support */
+@media (prefers-contrast: more) {
+  .cs-focus-ring-2:focus-visible,
+  .cs-focus-ring-2:focus {
+    box-shadow: 0 0 0 2px CanvasText;
+  }
+  .cs-focus-ring-4:focus-visible,
+  .cs-focus-ring-4:focus {
+    box-shadow: 0 0 0 3px CanvasText, 0 0 0 5px Canvas;
+  }
+}
+@media (forced-colors: active) {
+  .cs-focus-ring-2:focus-visible,
+  .cs-focus-ring-2:focus {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+  .cs-focus-ring-4:focus-visible,
+  .cs-focus-ring-4:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+}
+
+/*--------------------------------------*
+  OPTIONAL ADD-ONS
+ *--------------------------------------*/
+
+/* Elevation levels (use color variable fallback if no color-mix) */
+.cs-elev-1 { box-shadow: 0 1px 2px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+.cs-elev-2 { box-shadow: 0 4px 8px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+.cs-elev-3 { box-shadow: 0 8px 16px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+.cs-elev-4 { box-shadow: 0 12px 24px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+.cs-elev-5 { box-shadow: 0 24px 40px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+
+/* Glow utilities (soft outer glows) */
+.cs-glow-sm { filter: drop-shadow(0 0 6px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback))); }
+.cs-glow-md { filter: drop-shadow(0 0 12px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback))); }
+.cs-glow-lg { filter: drop-shadow(0 0 20px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback))); }
+
+/* Acrylic / frosted helpers */
+.cs-acrylic {
+  background-color: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+}
+@supports not (backdrop-filter: blur(10px)) {
+  .cs-acrylic { background-color: rgba(255,255,255,0.85); }
+}
+.cs-acrylic-edge { mask-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1) 16%); }
+.cs-noise { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.04'/></svg>"); }
+
+/* Sticky & will-change helpers */
+.cs-sticky-top { position: sticky; top: 0; }
+.cs-will-transform { will-change: transform; }
+.cs-will-filter { will-change: filter; }
+
+/*--------------------------------------*
+  MOTION RECIPES
+ *--------------------------------------*/
+@keyframes cs-modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes cs-toast-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(8px); }
+}
+
+.cs-modal-in {
+  animation: cs-modal-in var(--cs-anim-duration) var(--cs-ease) var(--cs-anim-delay) both;
+}
+.cs-toast-out {
+  animation: cs-toast-out var(--cs-anim-duration) var(--cs-ease) var(--cs-anim-delay) both;
+}
+
+/*--------------------------------------*
+  RESPONSIVE VIA CONTAINER QUERIES
+  Use `.cs-cq` on a parent to activate.
+ *--------------------------------------*/
+@container cs (max-width: 480px) {
+  .cs-hover-translate-y-1:hover { transform: translateY(calc(-0.2rem * var(--cs-density))); }
+  .cs-hover-translate-y-2:hover { transform: translateY(calc(-0.35rem * var(--cs-density))); }
+  .cs-hover-rotate-6:hover { transform: rotate(3deg); }
+  .cs-interactive:hover { transform: translateY(calc(-0.5px * var(--cs-density))); }
+}
+@container cs (min-width: 481px) and (max-width: 900px) {
+  .cs-hover-translate-y-2:hover { transform: translateY(calc(-0.45rem * var(--cs-density))); }
+}
+@container cs (min-width: 901px) {
+  /* keep defaults; no overrides needed */
+}
+
+/*--------------------------------------*
+  ACCESSIBILITY: REDUCED MOTION
+ *--------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  .cs-hover-scale-95,
+  .cs-hover-scale-105,
+  .cs-hover-scale-110,
+  .cs-hover-rotate-1,
+  .cs-hover-rotate-3,
+  .cs-hover-rotate-6,
+  .cs-hover-translate-y-1,
+  .cs-hover-translate-y-2,
+  .cs-tap-scale-95,
+  .cs-modal-in,
+  .cs-toast-out {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .cs-hover-scale-95:hover,
+  .cs-hover-scale-105:hover,
+  .cs-hover-scale-110:hover,
+  .cs-hover-rotate-1:hover,
+  .cs-hover-rotate-3:hover,
+  .cs-hover-rotate-6:hover,
+  .cs-hover-translate-y-1:hover,
+  .cs-hover-translate-y-2:hover,
+  .cs-tap-scale-95:active {
+    transform: none !important;
+  }
+}
+
+/*--------------------------------------*
+  SMALL SCREEN INTENSITY TUNING
+ *--------------------------------------*/
+@media (max-width: 480px) {
+  .cs-hover-rotate-6:hover { transform: rotate(2deg); }
+  .cs-hover-scale-110:hover { transform: scale(1.06); }
+}
+
+/*--------------------------------------*
+  PRINT STYLES
+ *--------------------------------------*/
+@media print {
+  .cs-acrylic { backdrop-filter: none; background-color: #fff; }
+  .cs-glow-sm, .cs-glow-md, .cs-glow-lg { filter: none; }
+  .cs-interactive { box-shadow: none !important; transform: none !important; }
+}
+
+/*--------------------------------------*
+  QUICK HTML EXAMPLES (commented)
+ *--------------------------------------
+  <html class="cs-root">
+    <div class="cs-cq">
+      <button class="cs-interactive cs-hover-scale-105 cs-focus-ring-2">Primary</button>
+      <a href="#" class="cs-hover-translate-y-1 cs-focus-ring-4 cs-smooth-interaction">Link</a>
+      <div class="cs-acrylic cs-elev-3 cs-noise cs-hover-brighten">Frosted Panel</div>
+      <dialog class="cs-modal-in cs-elev-4">Hello</dialog>
+      <div class="cs-toast-out">Toast closing…</div>
+    </div>
+  </html>
+ *--------------------------------------*/

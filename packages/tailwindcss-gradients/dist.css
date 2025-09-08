@@ -1,67 +1,476 @@
 /*!
- * @casoon/tailwindcss-gradients v0.7.0
- * Beautiful gradient utilities for Tailwind CSS v4
- * 
- * CSS Classes Distribution File
- * Generated: 2025-09-07T12:46:55.917Z
- */
+  Casoon Gradients CSS (dist.css)
+  Version: 1.0.0 • 2025-09-08
 
-/* CSS Variables Available:
- * --cs-gradient-blue-end
- * --cs-gradient-blue-start
- * --cs-gradient-custom-end
- * --cs-gradient-custom-mid
- * --cs-gradient-custom-start
- * --cs-gradient-fire-end
- * --cs-gradient-fire-start
- * --cs-gradient-mint-end
- * --cs-gradient-mint-start
- * --cs-gradient-ocean-end
- * --cs-gradient-ocean-start
- * --cs-gradient-orange-end
- * --cs-gradient-orange-start
- * --cs-gradient-pink-end
- * --cs-gradient-pink-start
- * --cs-gradient-purple-end
- * --cs-gradient-purple-start
- * --cs-gradient-stops
- * --cs-gradient-sunset-end
- * --cs-gradient-sunset-mid
- * --cs-gradient-sunset-start
- * --cs-gradient-white
- */
+  Scope
+  - Utilities: linear/radial/conic gradients, gradient text, animated gradients, gradient borders, overlay helpers.
+  - Recipes: in/out animation combos, gradient masks, acrylic surfaces.
+  - Tokens: color stops, easing, durations, density, z-index scale.
 
-/* Keyframes */
-/* @keyframes gradient-shift - see plugin source for details */
-/* Available CSS Classes:
- * .cs-gradient-animate
- * .cs-gradient-blue
- * .cs-gradient-border
- * .cs-gradient-conic
- * .cs-gradient-conic-center
- * .cs-gradient-custom
- * .cs-gradient-fire
- * .cs-gradient-mint
- * .cs-gradient-ocean
- * .cs-gradient-orange
- * .cs-gradient-pink
- * .cs-gradient-purple
- * .cs-gradient-radial-bottom
- * .cs-gradient-radial-center
- * .cs-gradient-radial-top
- * .cs-gradient-sunset
- * .cs-gradient-text
- * .cs-gradient-text-custom
- * .cs-gradient-text-fire
- * .cs-gradient-text-ocean
- * .cs-gradient-text-sunset
- */
+  What's Included
+  - Prefixed utility classes for backgrounds, text fills, borders, overlays, elevation glow, and motion.
+  - Keyframes for subtle gradient movement.
+  - Container query helpers (mobile/tablet/desktop).
+  - Accessibility-aware fallbacks and media queries.
 
-/* 
- * For full functionality, use this package as a Tailwind CSS plugin:
- * import plugin from '@casoon/tailwindcss-gradients';
- * 
- * export default {
- *   plugins: [plugin]
- * }
- */
+  Theming
+  - Attach the variables by placing `cs-root` on a high wrapper (e.g., `<html class="cs-root">` or `<body class="cs-root">`).
+  - Override any `--cs-*` custom property on `.cs-root` or a nested theme scope such as `.cs-theme-dark`.
+    Example:
+      .cs-theme-dark{
+        --cs-gradient-ocean-start:#1b2a4a;
+        --cs-gradient-ocean-end:#312a6c;
+      }
+  - Density scale: set `--cs-density` to -1 (compact), 0 (standard), 1 (cozy). Some blurs/anim intensities respond.
+
+  Optional Add-ons
+  - Acrylic surfaces (`.cs-acrylic`), glow (`.cs-glow-*`), and noise overlay (`.cs-noise-*`).
+
+  Accessibility Notes
+  - Uses `:focus-visible` for focusable helpers.
+  - `prefers-reduced-motion`: disables non-essential animation & heavy shimmer.
+  - `prefers-contrast`/`forced-colors`: strengthens borders and text-fills; avoids relying solely on transparency.
+
+  Browser Support & Fallbacks
+  - Modern evergreen browsers. Text gradients use `background-clip:text` with `-webkit-` fallback.
+  - Where advanced features exist (`color-mix`, `backdrop-filter`), they progressively enhance via `@supports`.
+  - Print styles reduce blur and ensure solid borders.
+
+  Quick Usage
+  - Linear background:  <div class="cs-gradient-ocean"></div>
+  - Text fill:          <h1 class="cs-gradient-text cs-gradient-text-sunset">Hello</h1>
+  - Animated surface:   <section class="cs-gradient-mint cs-gradient-animate"></section>
+  - Border ring:        <div class="cs-gradient-border"></div>
+  - Acrylic card:       <div class="cs-acrylic cs-gradient-ocean"></div>
+*/
+
+/* -------------------------------------------------------
+   0) Root Tokens (scope with .cs-root)
+------------------------------------------------------- */
+.cs-root{
+  /* Color stop tokens */
+  --cs-gradient-sunset-start:#ff6b6b;
+  --cs-gradient-sunset-mid:#ffd93d;
+  --cs-gradient-sunset-end:#6bcf7f;
+
+  --cs-gradient-ocean-start:#667eea;
+  --cs-gradient-ocean-end:#764ba2;
+
+  --cs-gradient-fire-start:#f093fb;
+  --cs-gradient-fire-end:#f5576c;
+
+  --cs-gradient-mint-start:#4facfe;
+  --cs-gradient-mint-end:#00f2fe;
+
+  --cs-gradient-purple-start:#a8edea;
+  --cs-gradient-purple-end:#fed6e3;
+
+  --cs-gradient-orange-start:#ffeaa7;
+  --cs-gradient-orange-end:#fab1a0;
+
+  --cs-gradient-blue-start:#74b9ff;
+  --cs-gradient-blue-end:#0984e3;
+
+  --cs-gradient-pink-start:#fd79a8;
+  --cs-gradient-pink-end:#fdcb6e;
+
+  /* Custom set (supply mid optionally on a wrapper) */
+  --cs-gradient-custom-start:#667eea;
+  --cs-gradient-custom-mid: ;
+  --cs-gradient-custom-end:#764ba2;
+
+  --cs-gradient-white:#ffffff;
+
+  /* Shared stops list fallback (for radial/conic) */
+  --cs-gradient-stops: var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end);
+
+  /* Motion & easing */
+  --cs-ease-standard:cubic-bezier(.2,.8,.2,1);
+  --cs-ease-accelerate:cubic-bezier(.3,0,1,1);
+  --cs-ease-decelerate:cubic-bezier(0,0,.2,1);
+
+  --cs-dur-quick:150ms;
+  --cs-dur-standard:300ms;
+  --cs-dur-slow:600ms;
+
+  --cs-transition: all var(--cs-dur-standard) var(--cs-ease-standard);
+
+  /* Animation defaults (used by animated gradients) */
+  --cs-anim-gradient-duration:4s;
+  --cs-anim-gradient-ease:var(--cs-ease-standard);
+  --cs-anim-gradient-iteration:infinite;
+
+  /* Density (–1 compact, 0 standard, 1 cozy) */
+  --cs-density:0;
+
+  /* Backdrop/acrylic intensity knobs */
+  --cs-blur-strong:24px;
+  --cs-blur-medium:16px;
+  --cs-blur-light:8px;
+  --cs-backdrop-opacity:.6;
+
+  /* Z-index scale */
+  --cs-z-tooltip:1000;
+  --cs-z-dropdown:1100;
+  --cs-z-toast:1200;
+  --cs-z-modal:1300;
+  --cs-z-overlay:1400;
+
+  /* Glow */
+  --cs-glow-size:24px;
+  --cs-glow-alpha:.5;
+
+  /* Print tuning */
+  --cs-print-border-color: #000;
+}
+
+/* Optional dark theme scope example */
+.cs-theme-dark{
+  --cs-gradient-white:#0b0b0b;
+}
+
+/* -------------------------------------------------------
+   1) Gradient Background Utilities
+------------------------------------------------------- */
+.cs-gradient-sunset{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-sunset-start),
+    var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
+    var(--cs-gradient-sunset-end)
+  );
+}
+.cs-gradient-ocean{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+}
+.cs-gradient-fire{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-fire-start),
+    var(--cs-gradient-fire-end)
+  );
+}
+.cs-gradient-mint{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-mint-start),
+    var(--cs-gradient-mint-end)
+  );
+}
+.cs-gradient-purple{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-purple-start),
+    var(--cs-gradient-purple-end)
+  );
+}
+.cs-gradient-orange{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-orange-start),
+    var(--cs-gradient-orange-end)
+  );
+}
+.cs-gradient-blue{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-blue-start),
+    var(--cs-gradient-blue-end)
+  );
+}
+.cs-gradient-pink{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-pink-start),
+    var(--cs-gradient-pink-end)
+  );
+}
+
+/* Custom: choose 2-stop or 3-stop */
+.cs-gradient-custom-2{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-end)
+  );
+}
+.cs-gradient-custom,
+.cs-gradient-custom-3{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+}
+
+/* Progressive enhancement with color-mix when available */
+@supports (color: color-mix(in srgb, red 10%, blue)){
+  .cs-gradient-ocean{
+    /* subtly mix for smoother mid tones */
+    background:
+      linear-gradient(135deg,
+        color-mix(in oklab, var(--cs-gradient-ocean-start) 90%, var(--cs-gradient-ocean-end)),
+        var(--cs-gradient-ocean-end)
+      );
+  }
+}
+
+/* -------------------------------------------------------
+   2) Gradient Text Utilities
+------------------------------------------------------- */
+.cs-gradient-text{
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-sunset{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-sunset-start),
+    var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
+    var(--cs-gradient-sunset-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-ocean{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-fire{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-fire-start),
+    var(--cs-gradient-fire-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-custom-2{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-custom,
+.cs-gradient-text-custom-3{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* -------------------------------------------------------
+   3) Radial & Conic Gradient Utilities
+------------------------------------------------------- */
+.cs-gradient-radial-center{
+  background:radial-gradient(circle at center, var(--cs-gradient-stops));
+}
+.cs-gradient-radial-top{
+  background:radial-gradient(circle at top, var(--cs-gradient-stops));
+}
+.cs-gradient-radial-bottom{
+  background:radial-gradient(circle at bottom, var(--cs-gradient-stops));
+}
+.cs-gradient-conic{
+  background:conic-gradient(var(--cs-gradient-stops));
+}
+.cs-gradient-conic-center{
+  background:conic-gradient(from 0deg at 50% 50%, var(--cs-gradient-stops));
+}
+
+/* -------------------------------------------------------
+   4) Gradient Borders (pseudo overlay)
+------------------------------------------------------- */
+.cs-gradient-border{
+  position:relative;
+  border-radius:.5rem;
+  background:linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+}
+.cs-gradient-border::before{
+  content:"";
+  position:absolute;
+  inset:1px;
+  background:var(--cs-gradient-white);
+  border-radius:calc(.5rem - 1px);
+  z-index:0;
+}
+.cs-gradient-border > *{
+  position:relative;
+  z-index:1;
+}
+
+/* High-contrast/forced colors: ensure visible interior */
+@media (prefers-contrast: more){
+  .cs-gradient-border::before{
+    outline:1px solid currentColor;
+    outline-offset:-1px;
+  }
+}
+@media (forced-colors: active){
+  .cs-gradient-border{
+    forced-color-adjust:none;
+    background:CanvasText;
+  }
+  .cs-gradient-border::before{
+    background:Canvas;
+    border:1px solid CanvasText;
+  }
+}
+
+/* -------------------------------------------------------
+   5) Animated Gradient
+------------------------------------------------------- */
+@keyframes cs-gradient-shift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.cs-gradient-animate{
+  background-size:400% 400%;
+  animation:cs-gradient-shift var(--cs-anim-gradient-duration) var(--cs-anim-gradient-ease) var(--cs-anim-gradient-iteration);
+}
+
+/* Reduced motion: shut off shifting */
+@media (prefers-reduced-motion: reduce){
+  .cs-gradient-animate{ animation:none !important; }
+}
+
+/* -------------------------------------------------------
+   6) Overlay, Acrylic, Glow (optional add-ons)
+------------------------------------------------------- */
+/* Generic overlay that pairs well with gradient surfaces */
+.cs-overlay{
+  position:relative;
+  isolation:isolate;
+}
+.cs-overlay::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.0) 35%, rgba(0,0,0,.35));
+  pointer-events:none;
+  z-index:var(--cs-z-overlay);
+}
+
+/* Acrylic (frosted) surface */
+.cs-acrylic{
+  background:color-mix(in srgb, var(--cs-gradient-white) 60%, transparent);
+  background:rgba(255,255,255,.6); /* fallback */
+  -webkit-backdrop-filter:saturate(120%) blur(var(--cs-blur-medium));
+  backdrop-filter:saturate(120%) blur(var(--cs-blur-medium));
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:12px;
+}
+@supports not ((backdrop-filter: blur(1px))){
+  .cs-acrylic{ background:rgba(255,255,255,.85); }
+}
+
+/* Glow utilities (use with dark backgrounds) */
+.cs-glow{
+  box-shadow:0 0 var(--cs-glow-size) 0 rgba(255,255,255,var(--cs-glow-alpha));
+}
+.cs-glow-ocean{
+  box-shadow:0 0 var(--cs-glow-size) 0 rgba(102,126,234,var(--cs-glow-alpha));
+}
+.cs-glow-fire{
+  box-shadow:0 0 var(--cs-glow-size) 0 rgba(245,87,108,var(--cs-glow-alpha));
+}
+
+/* -------------------------------------------------------
+   7) Container Queries (helpers)
+------------------------------------------------------- */
+.cs-cq{ container-type:inline-size; }
+/* mobile/tablet/desktop breakpoints using container query */
+@container (min-width:480px){
+  .cs-cq\:up-sm{ --_cq:sm; }
+}
+@container (min-width:768px){
+  .cs-cq\:up-md{ --_cq:md; }
+}
+@container (min-width:1024px){
+  .cs-cq\:up-lg{ --_cq:lg; }
+}
+
+/* Example responsive intensity (smaller screens = lighter blur/motion) */
+@media (max-width:480px){
+  .cs-acrylic{
+    -webkit-backdrop-filter:blur(calc(var(--cs-blur-light)));
+    backdrop-filter:blur(calc(var(--cs-blur-light)));
+  }
+  .cs-gradient-animate{ animation-duration: calc(var(--cs-anim-gradient-duration) * 1.25); }
+}
+
+/* -------------------------------------------------------
+   8) Utility Helpers
+------------------------------------------------------- */
+.cs-transition{ transition:var(--cs-transition); }
+.cs-will-change-bg{ will-change:background-position, background-size; }
+.cs-sticky{ position:sticky; top:0; }
+.cs-focus-ring:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:2px;
+}
+.cs-blend-screen{ mix-blend-mode:screen; }
+.cs-blend-overlay{ mix-blend-mode:overlay; }
+
+/* Z-index scale */
+.cs-z-tooltip{ z-index:var(--cs-z-tooltip); }
+.cs-z-dropdown{ z-index:var(--cs-z-dropdown); }
+.cs-z-toast{ z-index:var(--cs-z-toast); }
+.cs-z-modal{ z-index:var(--cs-z-modal); }
+.cs-z-overlay{ z-index:var(--cs-z-overlay); }
+
+/* -------------------------------------------------------
+   9) Recipes (common patterns)
+------------------------------------------------------- */
+/* Modals sliding on with gradient shimmer */
+.cs-modal-in{
+  opacity:0; transform:translateY(8px);
+  animation: cs-modal-in-key var(--cs-dur-standard) var(--cs-ease-decelerate) forwards;
+}
+@keyframes cs-modal-in-key{
+  to{ opacity:1; transform:translateY(0); }
+}
+/* Toasts fading out with gradient shift halt */
+.cs-toast-out{
+  animation: cs-toast-out-key var(--cs-dur-standard) var(--cs-ease-accelerate) forwards;
+}
+@keyframes cs-toast-out-key{
+  to{ opacity:0; transform:translateY(-4px); }
+}
+
+/* Gradient mask (use with images) */
+.cs-mask-gradient-bottom{
+  -webkit-mask-image:linear-gradient(to bottom, #000 60%, transparent);
+  mask-image:linear-gradient(to bottom, #000 60%, transparent);
+}
+
+/* -------------------------------------------------------
+   10) Print Styles
+------------------------------------------------------- */
+@media print{
+  .cs-acrylic{
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+    background:#fff !important;
+    border:1px solid var(--cs-print-border-color);
+    box-shadow:none !important;
+  }
+  .cs-gradient-animate{ animation:none !important; }
+}
+
+/* -------------------------------------------------------
+   11) Safety & Dedup Optimizations
+------------------------------------------------------- */
+/* Grouped background-clip text utilities */
+.cs-gradient-text:is(.cs-gradient-text-sunset, .cs-gradient-text-ocean, .cs-gradient-text-fire, .cs-gradient-text-custom-2, .cs-gradient-text-custom-3){}

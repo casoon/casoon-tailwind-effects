@@ -1,31 +1,441 @@
 /*!
- * @casoon/tailwindcss-navigation v0.7.0
- * Navigation components and utilities for Tailwind CSS v4
- * 
- * CSS Classes Distribution File
- * Generated: 2025-09-07T12:46:55.915Z
+ * Casoon Navigation CSS (dist.css)
+ * Version: 1.0.0 • Build: 2025-09-08
+ *
+ * Scope
+ * - Components: navigation primitives (nav, tabs, pills, navbar, brand), responsive navbar collapse
+ * - Utilities: focus ring, sticky, density scaling, high-contrast tweaks, reduced-motion safety, z-index scale
+ * - Recipes: show/hide collapse states, active/current states
+ *
+ * What’s Included
+ * - Token system via CSS variables (--cs-*) for color, spacing, radius, typography, timing, z-index
+ * - Production-ready, prefixed classes (cs-*) only
+ * - Accessible defaults (:focus-visible, ARIA current)
+ *
+ * Theming
+ * - Override tokens on :root or a theme scope (e.g., .my-theme)
+ *   Example:
+ *     :root {
+ *       --cs-color-primary: #0a7cff;
+ *       --cs-radius-md: 0.375rem;
+ *     }
+ * - Prefer changing tokens over editing component rules.
+ * - Usage: components consume tokens with safe fallbacks; modern features upgrade inside @supports.
+ *
+ * Optional add-ons
+ * - Acrylic nav (backdrop blur) via .cs-navbar--acrylic (auto-falls back without blur support)
+ *
+ * Accessibility Notes
+ * - Focus: uses :focus-visible (keyboard-only) with tokenized outline; no focus trapping in CSS.
+ * - Motion: transitions & animations are minimized under prefers-reduced-motion.
+ * - Contrast: tweaks for prefers-contrast: more; Windows High Contrast via forced-colors.
+ *
+ * Browser Support & Fallbacks
+ * - Modern evergreen browsers. Degrades gracefully in older UAs:
+ *   - No backdrop-filter → falls back to semi-opaque background.
+ *   - No color-mix → uses solid token colors.
+ *
+ * Quick HTML Examples
+ *   <ul class="cs-nav">
+ *     <li class="cs-nav-item"><a class="cs-nav-link cs-active" href="#">Home</a></li>
+ *     <li class="cs-nav-item"><a class="cs-nav-link" href="#">Docs</a></li>
+ *   </ul>
+ *
+ *   <ul class="cs-nav cs-nav-tabs">
+ *     <li class="cs-nav-item"><a class="cs-nav-link cs-active" href="#">Tab A</a></li>
+ *     <li class="cs-nav-item"><a class="cs-nav-link" href="#">Tab B</a></li>
+ *   </ul>
+ *
+ *   <nav class="cs-navbar">
+ *     <a class="cs-navbar-brand" href="#">Brand</a>
+ *     <button class="cs-navbar-toggle" aria-expanded="false" aria-controls="nav1">Menu</button>
+ *     <div class="cs-navbar-collapse cs-collapsed" id="nav1">
+ *       <ul class="cs-navbar-nav">
+ *         <li class="cs-nav-item"><a class="cs-nav-link" href="#">Item</a></li>
+ *       </ul>
+ *     </div>
+ *   </nav>
  */
 
-/* CSS Variables Available:
- * --cs-nav-border
- * --cs-nav-primary
- * --cs-nav-text-muted
- * --cs-nav-white
- */
+/* ----------------------------------------------
+   TOKENS
+---------------------------------------------- */
 
-/* Available CSS Classes:
- * .cs-nav
- * .cs-nav-item
- * .cs-nav-link
- * .cs-navbar-brand
- * .cs-navbar-nav
- */
+:root {
+  /* Palette */
+  --cs-color-primary: #007bff;
+  --cs-color-white: #ffffff;
+  --cs-color-text: #0f172a;       /* slate-900-ish */
+  --cs-color-text-muted: #495057;
+  --cs-color-border: #dee2e6;
+  --cs-color-bg: #ffffff;
+  --cs-color-bg-subtle: #f8f9fa;
 
-/* 
- * For full functionality, use this package as a Tailwind CSS plugin:
- * import plugin from '@casoon/tailwindcss-navigation';
- * 
- * export default {
- *   plugins: [plugin]
- * }
- */
+  /* Elevation / Shadows */
+  --cs-shadow-0: none;
+  --cs-shadow-1: 0 1px 2px rgba(0,0,0,.06);
+  --cs-shadow-2: 0 2px 8px rgba(0,0,0,.12);
+
+  /* Radii */
+  --cs-radius-sm: 0.25rem;
+  --cs-radius-md: 0.375rem;
+  --cs-radius-lg: 0.5rem;
+
+  /* Spacing & Density */
+  --cs-density: 1; /* 1 = default, <1 compact, >1 comfy */
+  --cs-space-1: calc(0.25rem * var(--cs-density));
+  --cs-space-2: calc(0.5rem * var(--cs-density));
+  --cs-space-3: calc(0.75rem * var(--cs-density));
+  --cs-space-4: calc(1rem * var(--cs-density));
+  --cs-space-6: calc(1.5rem * var(--cs-density));
+
+  /* Typography */
+  --cs-font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --cs-font-size-sm: 0.875rem;
+  --cs-font-size-base: 1rem;
+  --cs-font-weight-reg: 400;
+  --cs-font-weight-med: 500;
+  --cs-font-weight-bold: 600;
+  --cs-line: 1.5;
+
+  /* Transitions & Easing */
+  --cs-ease: cubic-bezier(.2,.8,.2,1);
+  --cs-transition: 160ms var(--cs-ease);
+  --cs-transition-fast: 120ms var(--cs-ease);
+  --cs-transition-slow: 220ms var(--cs-ease);
+
+  /* Z-index scale for nav-related overlays */
+  --cs-z-nav: 10;
+  --cs-z-dropdown: 1000;
+  --cs-z-sticky: 1020;
+
+  /* Backdrop (for optional acrylic) */
+  --cs-acrylic-bg: rgba(255,255,255,.7);
+  --cs-acrylic-border: rgba(0,0,0,.06);
+}
+
+/* Compatibility aliases from the input plugin (kept prefixed) */
+:root {
+  --cs-nav-primary: var(--cs-color-primary);
+  --cs-nav-white: var(--cs-color-white);
+  --cs-nav-text-muted: var(--cs-color-text-muted);
+  --cs-nav-border: var(--cs-color-border);
+}
+
+/* ----------------------------------------------
+   BASE / RESETS (scoped)
+---------------------------------------------- */
+
+.cs-nav, .cs-navbar, .cs-navbar-nav {
+  font-family: var(--cs-font-sans);
+  font-size: var(--cs-font-size-base);
+  line-height: var(--cs-line);
+  color: var(--cs-color-text);
+}
+
+/* ----------------------------------------------
+   NAVIGATION PRIMITIVES (from input, refined)
+---------------------------------------------- */
+
+.cs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cs-space-1);
+  padding-left: 0;
+  margin: 0 0 var(--cs-space-2) 0;
+  list-style: none;
+}
+
+.cs-nav-item {
+  display: block;
+  position: relative;
+}
+
+.cs-nav-link {
+  display: block;
+  padding: calc(0.5rem * var(--cs-density)) calc(1rem * var(--cs-density));
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--cs-radius-sm);
+  transition: color var(--cs-transition), background-color var(--cs-transition), border-color var(--cs-transition);
+  outline: none;
+}
+
+.cs-nav-link:hover {
+  text-decoration: none;
+  background-color: var(--cs-color-bg-subtle);
+}
+
+.cs-nav-link.cs-active,
+.cs-nav-link[aria-current="page"],
+.cs-nav-link[aria-current="true"] {
+  font-weight: var(--cs-font-weight-bold);
+}
+
+/* Pills */
+.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link {
+  border-radius: var(--cs-radius-sm);
+}
+
+.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link.cs-active,
+.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link[aria-current="page"],
+.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link[aria-current="true"] {
+  background-color: var(--cs-nav-primary);
+  color: var(--cs-nav-white);
+}
+
+/* Tabs */
+.cs-nav.cs-nav-tabs {
+  gap: 0;
+  border-bottom: 1px solid var(--cs-nav-border);
+}
+
+.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: var(--cs-radius-sm);
+  border-top-right-radius: var(--cs-radius-sm);
+  margin-bottom: -1px;
+}
+
+.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link.cs-active,
+.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link[aria-current="page"],
+.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link[aria-current="true"] {
+  color: var(--cs-nav-text-muted);
+  background-color: var(--cs-nav-white);
+  border-color: var(--cs-nav-border) var(--cs-nav-border) var(--cs-nav-white);
+}
+
+/* ----------------------------------------------
+   NAVBAR
+---------------------------------------------- */
+
+.cs-navbar {
+  position: relative;
+  z-index: var(--cs-z-nav);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cs-space-2);
+  padding: var(--cs-space-2) var(--cs-space-4);
+  background-color: var(--cs-color-bg);
+  border-bottom: 1px solid var(--cs-color-border);
+}
+
+.cs-navbar.cs-navbar--acrylic {
+  background-color: var(--cs-acrylic-bg);
+  border-bottom: 1px solid var(--cs-acrylic-border);
+}
+@supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+  .cs-navbar.cs-navbar--acrylic {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+}
+
+.cs-navbar-brand {
+  display: inline-block;
+  padding-top: calc(0.3125rem * var(--cs-density));
+  padding-bottom: calc(0.3125rem * var(--cs-density));
+  margin-right: var(--cs-space-4);
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+}
+
+.cs-navbar-toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5ch;
+  padding: var(--cs-space-2) var(--cs-space-3);
+  border: 1px solid var(--cs-color-border);
+  border-radius: var(--cs-radius-sm);
+  background: var(--cs-color-white);
+  box-shadow: var(--cs-shadow-1);
+  cursor: pointer;
+  transition: background-color var(--cs-transition), border-color var(--cs-transition), box-shadow var(--cs-transition);
+}
+.cs-navbar-toggle:hover { background: color-mix(in oklab, var(--cs-color-white), black 5%); }
+@supports not (color: color-mix(in oklab, white, black)) {
+  .cs-navbar-toggle:hover { background: #f3f4f6; }
+}
+
+.cs-navbar-collapse {
+  width: 100%;
+}
+
+.cs-navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  gap: var(--cs-space-1);
+}
+
+.cs-navbar-nav .cs-nav-link {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* Responsive: stack → row at 768px */
+@media (min-width: 768px) {
+  .cs-navbar { gap: var(--cs-space-4); }
+  .cs-navbar-collapse { display: flex !important; width: auto; }
+  .cs-navbar-nav { flex-direction: row; align-items: center; gap: var(--cs-space-3); }
+  .cs-navbar-toggle { display: none; }
+}
+
+/* Collapse recipe */
+.cs-collapsed { display: none; }
+.cs-expanded { display: block; }
+
+/* ----------------------------------------------
+   ACCESSIBILITY UTILITIES
+---------------------------------------------- */
+
+.cs-focus-ring:focus-visible,
+.cs-nav-link:focus-visible,
+.cs-navbar-toggle:focus-visible,
+.cs-navbar-brand:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--cs-color-primary), white 15%);
+  outline-offset: 2px;
+}
+@supports not (color: color-mix(in oklab, white, black)) {
+  .cs-focus-ring:focus-visible,
+  .cs-nav-link:focus-visible,
+  .cs-navbar-toggle:focus-visible,
+  .cs-navbar-brand:focus-visible {
+    outline: 2px solid #66a3ff;
+    outline-offset: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cs-nav-link,
+  .cs-navbar-toggle,
+  .cs-navbar {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast preferences */
+@media (prefers-contrast: more) {
+  .cs-navbar { border-bottom-width: 2px; }
+  .cs-nav.cs-nav-tabs { border-bottom-width: 2px; }
+  .cs-navbar-toggle { border-width: 2px; }
+}
+
+/* Forced colors (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-navbar,
+  .cs-navbar-toggle,
+  .cs-nav-link {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+  .cs-nav.cs-nav-tabs { border-bottom-color: CanvasText; }
+  .cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link.cs-active {
+    background: Canvas;
+    border-color: CanvasText;
+  }
+  .cs-focus-ring:focus-visible { outline-color: Highlight; }
+}
+
+/* ----------------------------------------------
+   OPTIONAL HELPERS
+---------------------------------------------- */
+
+.cs-sticky-top { position: sticky; top: 0; z-index: var(--cs-z-sticky); background: var(--cs-color-bg); }
+
+/* Will-change hint for heavy menus (use sparingly) */
+.cs-will-change-transform { will-change: transform; }
+
+/* Glow utility for selected nav link (subtle) */
+.cs-glow {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--cs-color-primary), white 75%);
+}
+@supports not (color: color-mix(in oklab, white, black)) {
+  .cs-glow { box-shadow: 0 0 0 3px rgba(0,123,255,.25); }
+}
+
+/* Elevation helpers for dropdowns under navbar context */
+.cs-elev-1 { box-shadow: var(--cs-shadow-1); }
+.cs-elev-2 { box-shadow: var(--cs-shadow-2); }
+
+/* Z-index helpers */
+.cs-z-dropdown { z-index: var(--cs-z-dropdown); }
+
+/* ----------------------------------------------
+   PRINT
+---------------------------------------------- */
+@media print {
+  .cs-navbar,
+  .cs-navbar-toggle { box-shadow: none !important; }
+  .cs-navbar { border-bottom: 1px solid #000 !important; }
+  .cs-nav-link { background: transparent !important; }
+}
+
+/* ----------------------------------------------
+   SMALL-SCREEN TUNING
+---------------------------------------------- */
+@media (max-width: 480px) {
+  .cs-nav-link { padding: calc(0.5rem * var(--cs-density)) var(--cs-space-2); }
+  .cs-navbar { padding: var(--cs-space-2) var(--cs-space-3); }
+}
+
+/* ----------------------------------------------
+   RECIPES
+---------------------------------------------- */
+
+/* Active/current helpers if you prefer utility over aria/current classes */
+.cs-active { font-weight: var(--cs-font-weight-bold); }
+
+/* Navbar acrylic toggle: combine with .cs-navbar--acrylic */
+.cs-navbar--frosted-edge {
+  box-shadow: inset 0 -1px 0 var(--cs-acrylic-border);
+}
+
+/* Basic dropdown pattern (structure only; JS needed to toggle) */
+.cs-dropdown { position: relative; }
+.cs-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 12rem;
+  margin-top: .25rem;
+  padding: .25rem;
+  background: var(--cs-color-white);
+  border: 1px solid var(--cs-color-border);
+  border-radius: var(--cs-radius-sm);
+  box-shadow: var(--cs-shadow-2);
+  display: none;
+}
+.cs-dropdown.cs-expanded .cs-dropdown-menu { display: block; }
+
+/* ----------------------------------------------
+   LEGACY INPUT PARITY (exact mappings)
+---------------------------------------------- */
+
+/* From addComponents */
+.cs-nav { /* already defined and extended above */ }
+.cs-nav-item { /* already defined above */ }
+.cs-nav-link { /* already defined above */ }
+.cs-nav-link:hover { /* already defined above */ }
+.cs-nav-link.cs-active { /* already defined above */ }
+
+/* From addUtilities */
+.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link { /* already defined above */ }
+.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link.cs-active { /* already defined above */ }
+.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link { /* already defined above */ }
+.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link.cs-active { /* already defined above */ }
+.cs-navbar-brand { /* already defined above */ }
+.cs-navbar-nav { /* already defined above */ }
+.cs-navbar-nav .cs-nav-link { /* already defined above */ }

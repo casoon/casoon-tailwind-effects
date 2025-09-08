@@ -1,32 +1,347 @@
 /*!
- * @casoon/tailwindcss-loading v0.7.0
- *  for Tailwind CSS v4
- * 
- * CSS Classes Distribution File
- * Generated: 2025-09-07T12:46:55.917Z
+ * Casoon Loading CSS (dist.css)
+ * Version: 1.0.0 • Build: 2025-09-08
+ * Scope: Utilities & Components for loading states (spinners, overlays, helpers)
+ *
+ * What’s included:
+ * - Utilities: .cs-loading (disable interactions), .cs-visually-hidden, .cs-will-change, .cs-sticky
+ * - Components: .cs-spinner (ring spinner + size variants), .cs-spinner-dots (3-dot), .cs-loading-overlay
+ * - Recipes: .cs-spinner-inset, .cs-overlay-center
+ *
+ * Theming:
+ * - Customize via CSS variables prefixed --cs-*. Set globally on :root or locally on a container/component.
+ *   Core tokens:
+ *     Colors: --cs-color-spinner-base, --cs-color-spinner-active, --cs-overlay-bg, --cs-overlay-fg
+ *     Size:   --cs-size-spinner, --cs-border-spinner
+ *     Motion: --cs-anim-duration, --cs-anim-ease, --cs-anim-delay, --cs-transition
+ *     Density scaling: --cs-density (multiplies sizes; default 1)
+ * - Example:
+ *     :root {
+ *       --cs-color-spinner-active: #7c3aed;
+ *       --cs-size-spinner: 48px;
+ *     }
+ *     .dark-surface { --cs-color-spinner-active: color-mix(in oklab, #7c3aed 90%, black); }
+ *
+ * Optional add-ons:
+ * - Acrylic overlay (backdrop blur) is auto-enabled if supported; falls back to solid/semi-transparent.
+ * - Elevation & z-index scale for overlays (tooltips, toasts, modals) aligned via --cs-z-* tokens.
+ *
+ * Accessibility:
+ * - Focus styles use :focus-visible (no focus trap on mouse).
+ * - Reduced motion: honors prefers-reduced-motion (spinners pause; overlays fade with no motion).
+ * - High contrast: honors prefers-contrast and forced-colors for visibility.
+ * - Screen reader utility: .cs-visually-hidden to hide decoration dots from AT, or add aria-hidden="true".
+ *
+ * Browser support & fallbacks:
+ * - Works in modern evergreen browsers. Uses CSS variables with sensible fallbacks via var(--token, fallback).
+ * - @supports gates advanced effects (e.g., backdrop-filter, color-mix).
+ *
+ * Quick usage:
+ *   <div class="cs-spinner" aria-label="Loading" role="status"></div>
+ *   <div class="cs-spinner cs-spinner--sm"></div>
+ *   <div class="cs-spinner-dots" role="status" aria-label="Loading"><span></span><span></span><span></span></div>
+ *   <div class="cs-loading-overlay cs-overlay-center">
+ *     <div class="cs-spinner cs-spinner--lg"></div>
+ *     <p>Loading…</p>
+ *   </div>
  */
 
-/* CSS Variables Available:
- * --cs-loading-spinner-active
- * --cs-loading-spinner-base
- */
+/* =========================================================
+   TOKENS (with sensible defaults & dark-mode refinements)
+   ========================================================= */
+:root {
+  /* Colors */
+  --cs-color-spinner-base: #f3f3f3;
+  --cs-color-spinner-active: #3498db;
+  --cs-overlay-bg: rgba(0, 0, 0, 0.4);
+  --cs-overlay-fg: #0b0b0b;
 
-/* Keyframes */
-@keyframes spin {
+  /* Size & layout */
+  --cs-size-spinner: 40px;
+  --cs-border-spinner: 4px;
+  --cs-density: 1;
+
+  /* Motion */
+  --cs-anim-duration: 2s;
+  --cs-anim-ease: linear;
+  --cs-anim-delay: 0s;
+  --cs-transition: 150ms cubic-bezier(.2, .6, .2, 1);
+
+  /* Z-index scale */
+  --cs-z-overlay: 1000;
+  --cs-z-tooltip: 1200;
+  --cs-z-toast: 1300;
+  --cs-z-modal: 1400;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cs-color-spinner-base: rgba(255, 255, 255, 0.18);
+    --cs-color-spinner-active: #6ab8ff;
+    --cs-overlay-bg: rgba(0, 0, 0, 0.5);
+    --cs-overlay-fg: #f5f5f5;
+  }
+}
+
+/* Optional: use color-mix to adapt the base ring in capable browsers */
+@supports (color: color-mix(in oklab, white, black)) {
+  :root {
+    --cs-color-spinner-base: color-mix(in oklab, var(--cs-overlay-fg, #0b0b0b) 12%, white);
+  }
+}
+
+/* =========================================================
+   KEYFRAMES (namespaced)
+   ========================================================= */
+@keyframes cs-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Available CSS Classes:
- * .cs-loading
- * .cs-spinner
- */
+@keyframes cs-bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
 
-/* 
- * For full functionality, use this package as a Tailwind CSS plugin:
- * import plugin from '@casoon/tailwindcss-loading';
- * 
- * export default {
- *   plugins: [plugin]
- * }
- */
+@keyframes cs-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =========================================================
+   UTILITIES
+   ========================================================= */
+
+/* Disable interactions / indicate loading on a region */
+.cs-loading {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity var(--cs-transition, 150ms ease);
+}
+
+/* Visually hidden but accessible to screen readers */
+.cs-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Performance helpers */
+.cs-will-change { will-change: transform, opacity; }
+.cs-sticky { position: sticky; top: 0; }
+
+/* =========================================================
+   COMPONENT: Ring Spinner
+   ========================================================= */
+
+.cs-spinner {
+  display: inline-block;
+  box-sizing: border-box;
+  width: calc(var(--cs-size-spinner, 40px) * var(--cs-density, 1));
+  height: calc(var(--cs-size-spinner, 40px) * var(--cs-density, 1));
+  border-radius: 50%;
+  border: var(--cs-border-spinner, 4px) solid var(--cs-color-spinner-base, #f3f3f3);
+  border-top-color: var(--cs-color-spinner-active, #3498db);
+  animation: cs-spin var(--cs-anim-duration, 2s) var(--cs-anim-ease, linear) var(--cs-anim-delay, 0s) infinite;
+}
+
+/* Size variants (override tokens locally) */
+.cs-spinner--xs { --cs-size-spinner: 16px; --cs-border-spinner: 2px; --cs-anim-duration: 1s; }
+.cs-spinner--sm { --cs-size-spinner: 24px; --cs-border-spinner: 3px; --cs-anim-duration: 1.4s; }
+.cs-spinner--md { --cs-size-spinner: 40px; --cs-border-spinner: 4px; --cs-anim-duration: 2s; }
+.cs-spinner--lg { --cs-size-spinner: 56px; --cs-border-spinner: 6px; --cs-anim-duration: 2.2s; }
+.cs-spinner--xl { --cs-size-spinner: 72px; --cs-border-spinner: 8px; --cs-anim-duration: 2.4s; }
+
+/* Contrast variant for light surfaces */
+.cs-spinner--contrast {
+  --cs-color-spinner-base: rgba(0, 0, 0, .08);
+  --cs-color-spinner-active: #111827;
+}
+
+/* Accent helpers (set color only) */
+.cs-spinner--primary   { --cs-color-spinner-active: var(--cs-accent, var(--cs-color-spinner-active, #3498db)); }
+.cs-spinner--success   { --cs-color-spinner-active: #16a34a; }
+.cs-spinner--warning   { --cs-color-spinner-active: #f59e0b; }
+.cs-spinner--danger    { --cs-color-spinner-active: #ef4444; }
+
+/* Inset recipe: centers within relatively positioned container */
+.cs-spinner-inset {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+/* =========================================================
+   COMPONENT: Three Dots Spinner
+   ========================================================= */
+
+.cs-spinner-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(0.25 * var(--cs-size-spinner, 40px));
+  /* use the same color token for consistency */
+  --cs-dot-size: calc(0.25 * var(--cs-size-spinner, 40px));
+  --cs-dot-color: var(--cs-color-spinner-active, #3498db);
+}
+
+.cs-spinner-dots > span {
+  width: var(--cs-dot-size);
+  height: var(--cs-dot-size);
+  border-radius: 50%;
+  background: var(--cs-dot-color);
+  display: inline-block;
+  animation: cs-bounce 1.4s ease-in-out infinite both;
+}
+
+.cs-spinner-dots > span:nth-child(1) { animation-delay: -0.32s; }
+.cs-spinner-dots > span:nth-child(2) { animation-delay: -0.16s; }
+.cs-spinner-dots > span:nth-child(3) { animation-delay: 0s; }
+
+/* =========================================================
+   COMPONENT: Loading Overlay (full-screen or container)
+   ========================================================= */
+
+.cs-loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--cs-z-overlay, 1000);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 2rem;
+  background: var(--cs-overlay-bg, rgba(0,0,0,.4));
+  color: var(--cs-overlay-fg, #0b0b0b);
+  animation: cs-fade 120ms ease-out;
+}
+
+/* Centering helper for overlay content */
+.cs-overlay-center > * {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Container-scoped overlay (make parent position:relative) */
+.cs-loading-overlay.cs-overlay--inset {
+  position: absolute;
+}
+
+/* Acrylic enhancement when supported */
+@supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+  .cs-loading-overlay {
+    background: color-mix(in srgb, black 40%, transparent);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    backdrop-filter: blur(6px) saturate(120%);
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY & ENVIRONMENT QUERIES
+   ========================================================= */
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cs-spinner,
+  .cs-spinner-dots > span {
+    animation: none !important;
+  }
+  .cs-loading-overlay {
+    animation: none !important;
+  }
+}
+
+/* High contrast preference */
+@media (prefers-contrast: more) {
+  .cs-spinner {
+    border-color: var(--cs-color-spinner-base, #f3f3f3);
+    border-top-color: var(--cs-color-spinner-active, #3498db);
+  }
+  .cs-loading-overlay {
+    background: rgba(0,0,0,0.6);
+  }
+}
+
+/* Forced colors (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-spinner {
+    border-color: CanvasText;
+    border-top-color: Highlight;
+  }
+  .cs-spinner-dots > span {
+    background: Highlight;
+  }
+  .cs-loading-overlay {
+    background: Canvas !important;
+    color: CanvasText !important;
+    outline: 1px solid CanvasText;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE / SMALL-SCREEN TUNING
+   ========================================================= */
+@media (max-width: 480px) {
+  .cs-spinner:is(.cs-spinner--lg, .cs-spinner--xl) {
+    --cs-size-spinner: 48px;
+    --cs-border-spinner: 4px;
+  }
+  .cs-loading-overlay {
+    padding: 1rem;
+  }
+  @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+    .cs-loading-overlay {
+      -webkit-backdrop-filter: blur(4px) saturate(110%);
+      backdrop-filter: blur(4px) saturate(110%);
+    }
+  }
+}
+
+/* =========================================================
+   INTERACTION / FOCUS (use :focus-visible only)
+   ========================================================= */
+.cs-loading-overlay :is(button, [role="button"], a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--cs-color-spinner-active, #3498db);
+  outline-offset: 2px;
+  transition: box-shadow var(--cs-transition, 150ms ease);
+}
+
+/* =========================================================
+   PRINT STYLES (no blur/motion; solid borders)
+   ========================================================= */
+@media print {
+  .cs-loading-overlay {
+    position: static;
+    inset: auto;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    animation: none !important;
+  }
+  .cs-spinner {
+    animation: none !important;
+    border-color: #999 !important;
+    border-top-color: #000 !important;
+  }
+}
+
+/* =========================================================
+   RECIPES (handy combos)
+   ========================================================= */
+
+/* Modal-like overlay with centered content */
+.cs-modal-in { animation: cs-fade 160ms ease-out; }
+.cs-toast-out { animation: cs-fade 160ms ease-in reverse; }
+
+/* =========================================================
+   SOURCE COMPAT (Tailwind v4 plugin parity)
+   - Matches original plugin utilities with namespacing and tokens
+   ========================================================= */
+
+/* Original equivalents (ensuring strict cs- prefix already applied above) */
+/* .cs-spinner → ring spinner */
+/* .cs-loading → interaction disable */
