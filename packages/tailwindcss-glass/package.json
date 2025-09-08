@@ -5,13 +5,14 @@
   "type": "module",
   "exports": {
     ".": "./dist.css",
-    "./dist.css": "./dist.css"
+    "./dist.css": "./dist.css",
+    "./dist.min.css": "./dist.min.css"
   },
   "main": "./dist.css",
   "module": "./plugin.js",
   "files": [
-    
     "dist.css",
+    "dist.min.css",
     "README.md",
     "LICENSE"
   ],
@@ -19,9 +20,10 @@
     "test": "node scripts/test-classes.mjs",
     "test:classes": "node scripts/extract-classes.mjs",
     "test:compatibility": "node scripts/test-classes.mjs",
-    "prepublishOnly": "npm run test:compatibility",
+    "prepublishOnly": "npm run minify && npm run validate",
     "preversion": "npm run test:compatibility",
-    "validate": "npm run test:compatibility"
+    "validate": "npm run test:compatibility",
+    "minify": "node ../../scripts/minify-css.mjs"
   },
   "peerDependencies": {
     "tailwindcss": "^4.0.0"

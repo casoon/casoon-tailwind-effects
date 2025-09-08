@@ -4,12 +4,22 @@
   "description": "Complete collection of animation and UI effects for Tailwind CSS v4",
   "type": "module",
   "exports": {
-    ".": "./index.css",
-    "./nav.js": "@casoon/tailwindcss-navigation/nav.js", 
-    "./scroll.js": "@casoon/tailwindcss-scroll/scroll.js"
+    ".": "./dist.css",
+    "./nav.js": "@casoon/tailwindcss-navigation/nav.js",
+    "./scroll.js": "@casoon/tailwindcss-scroll/scroll.js",
+    "./dist.min.css": "./dist.min.css"
   },
-  "main": "./index.css",
+  "main": "./dist.css",
+  "scripts": {
+    "build": "postcss index.css -o dist.css && node ../../scripts/minify-css.mjs tailwindcss-effects",
+    "build:dev": "postcss index.css -o dist.css",
+    "minify": "node ../../scripts/minify-css.mjs tailwindcss-effects",
+    "validate": "node ../../scripts/validate-css.mjs",
+    "prepublishOnly": "npm run minify && npm run validate"
+  },
   "files": [
+    "dist.css",
+    "dist.min.css",
     "index.css",
     "README.md",
     "LICENSE"
@@ -17,13 +27,13 @@
   "dependencies": {
     "@casoon/tailwindcss-animations": "^0.7.1",
     "@casoon/tailwindcss-glass": "^0.7.1",
-    "@casoon/tailwindcss-orbs": "^0.7.1",
     "@casoon/tailwindcss-gradients": "^0.7.1",
-    "@casoon/tailwindcss-scroll": "^0.7.1",
-    "@casoon/tailwindcss-navigation": "^0.7.1",
-    "@casoon/tailwindcss-utilities": "^0.7.1",
     "@casoon/tailwindcss-loading": "^0.7.1",
-    "@casoon/tailwindcss-micro-interactions": "^0.7.1"
+    "@casoon/tailwindcss-micro-interactions": "^0.7.1",
+    "@casoon/tailwindcss-navigation": "^0.7.1",
+    "@casoon/tailwindcss-orbs": "^0.7.1",
+    "@casoon/tailwindcss-scroll": "^0.7.1",
+    "@casoon/tailwindcss-utilities": "^0.7.1"
   },
   "peerDependencies": {
     "tailwindcss": "^4.0.0"
@@ -31,5 +41,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.1",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1"
+  }
 }

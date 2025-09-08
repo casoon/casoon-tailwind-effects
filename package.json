@@ -9,8 +9,13 @@
   "packageManager": "pnpm@9.0.0",
   "license": "MIT",
   "scripts": {
-    "test": "echo 'All packages use pure CSS - no tests needed'",
-    "release:all": "echo 'Use pnpm publish -r for publishing all packages'",
+    "test": "node scripts/validate-css.mjs",
+    "validate": "node scripts/validate-css.mjs",
+    "validate:pre-publish": "node scripts/validate-css.mjs",
+    "minify": "node scripts/minify-css.mjs",
+    "minify:all": "node scripts/minify-css.mjs",
+    "build:all": "pnpm run minify:all",
+    "release:all": "pnpm run validate:pre-publish && pnpm run minify:all && echo 'Use pnpm publish -r for publishing all packages'",
     "dev": "cd test-project && npm run dev",
     "build:test": "cd test-project && npm run build"
   },

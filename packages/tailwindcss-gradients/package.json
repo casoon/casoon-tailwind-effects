@@ -5,13 +5,14 @@
   "type": "module",
   "exports": {
     ".": "./dist.css",
-    "./dist.css": "./dist.css"
+    "./dist.css": "./dist.css",
+    "./dist.min.css": "./dist.min.css"
   },
   "main": "./dist.css",
   "module": "./plugin.js",
   "files": [
-    
     "dist.css",
+    "dist.min.css",
     "README.md",
     "LICENSE"
   ],
@@ -21,5 +22,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "validate": "node ../../scripts/validate-css.mjs",
+    "prepublishOnly": "npm run minify && npm run validate",
+    "minify": "node ../../scripts/minify-css.mjs"
+  }
 }

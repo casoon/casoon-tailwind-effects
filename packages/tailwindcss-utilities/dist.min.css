@@ -1,0 +1,46 @@
+/*!
+ * Casoon CSS Utilities (dist.css)
+ * Version: 1.0.0 — 2025-09-08
+ * Scope: Utilities (layout, a11y, motion), small recipes, optional visual effects
+ *
+ * WHAT'S INCLUDED
+ * - Tokens (CSS vars under `.cs-theme`)
+ * - Core utilities: `.cs-sr-only`, `.cs-container-fluid`, focus ring, z-index helpers, sticky/will-change helpers
+ * - Animation tokens + keyframes + recipes (`.cs-modal-in`, `.cs-toast-out`)
+ * - Optional add-ons: acrylic surface (`.cs-acrylic`)
+ * - Responsive refinements (media + container queries)
+ *
+ * HOW TO THEME
+ * 1) Wrap your app root with `.cs-theme` (e.g., `<html class="cs-theme">`).
+ * 2) Override tokens via inline style or an additional theme class (e.g., `.cs-theme-dark`).
+ * 3) Density scaling: set `--cs-density` on `.cs-theme` (1=default, <1=roomier, >1=denser).
+ * Example:
+ *   <html class="cs-theme cs-theme-dark" style="--cs-brand: #6b5bff; --cs-radius: 12px;">
+ *
+ * OPTIONAL ADD-ONS
+ * - `.cs-acrylic` for frosted surfaces; auto scales blur on small screens and honors reduced motion/contrast.
+ *
+ * ACCESSIBILITY NOTES
+ * - Uses `:focus-visible` (not `:focus`) for focus treatments (`.cs-focus-ring`).
+ * - Respects `prefers-reduced-motion`, `prefers-contrast`, and `forced-colors: active`.
+ * - `.cs-sr-only` is provided for screen-reader only content; add `.cs-focus-ring` to the interactive element itself.
+ *
+ * BROWSER SUPPORT & FALLBACKS
+ * - Modern evergreen browsers. Acrylic backs off when `backdrop-filter` unsupported.
+ * - Forced colors/High contrast fallbacks included.
+ * - No reliance on custom properties outside `.cs-theme` scope; provide hard color fallbacks in rules.
+ *
+ * QUICK USAGE
+ *   <html class="cs-theme">
+ *     <body class="cs-cq"> <!-- enables container queries within -->
+ *       <header class="cs-container-fluid">
+ *         <button class="cs-focus-ring">Action</button>
+ *       </header>
+ *       <p class="cs-sr-only">Assistive text only</p>
+ *       <div class="cs-acrylic">Frosted panel</div>
+ *     </body>
+ *   </html>
+ *
+ * IMPORTANT
+ * - Strict prefix: all classes start with `cs-`. Legacy aliases (e.g., `.sr-only`, `.container-fluid`) are intentionally not included. Migrate to `.cs-sr-only` and `.cs-container-fluid`.
+ */.cs-theme{--cs-bg:#0b0c0f;--cs-surface:#14161a;--cs-elev1:#1b1e24;--cs-elev2:#21252d;--cs-text:#eef1f6;--cs-text-muted:#b6bfcc;--cs-border:#2a2f39;--cs-brand:#4f7cff;--cs-brand-contrast:#0b0d12;--cs-success:#22c55e;--cs-warning:#f59e0b;--cs-danger:#ef4444;--cs-info:#06b6d4;--cs-font-sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;--cs-font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--cs-font-size:16px;--cs-line:1.5;--cs-radius:10px;--cs-shadow-1:0 1px 2px rgba(0,0,0,.25),0 1px 1px rgba(0,0,0,.1);--cs-shadow-2:0 8px 24px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.18);--cs-density:1;--cs-space-1:calc(4px*var(--cs-density));--cs-space-2:calc(8px*var(--cs-density));--cs-space-3:calc(12px*var(--cs-density));--cs-space-4:calc(16px*var(--cs-density));--cs-space-6:calc(24px*var(--cs-density));--cs-space-8:calc(32px*var(--cs-density));--cs-transition:180ms cubic-bezier(.2,.6,.2,1);--cs-anim-duration-sm:160ms;--cs-anim-duration-md:280ms;--cs-anim-duration-lg:420ms;--cs-anim-ease-out:cubic-bezier(.16,1,.3,1);--cs-anim-ease-in:cubic-bezier(.32,0,.67,0);--cs-anim-ease-in-out:cubic-bezier(.65,0,.35,1);--cs-z-base:1;--cs-z-popover:30;--cs-z-tooltip:40;--cs-z-toast:50;--cs-z-modal:60;--cs-z-max:2147483647;--cs-page-max:1200px;--cs-page-pad:var(--cs-space-4);--cs-acrylic-blur:14px;--cs-acrylic-tint:rgba(20,22,26,.55);--cs-acrylic-border:hsla(0,0%,100%,.06)}.cs-theme.cs-theme-light{--cs-bg:#fff;--cs-surface:#f7f8fa;--cs-elev1:#fff;--cs-elev2:#fff;--cs-text:#101217;--cs-text-muted:#475066;--cs-border:#dfe3ea;--cs-brand:#375dfb;--cs-brand-contrast:#fff;--cs-shadow-1:0 1px 2px rgba(18,24,40,.06),0 1px 1px rgba(18,24,40,.04);--cs-shadow-2:0 10px 24px rgba(18,24,40,.1),0 2px 8px rgba(18,24,40,.06);--cs-acrylic-tint:hsla(0,0%,100%,.65);--cs-acrylic-border:rgba(0,0,0,.06)}.cs-cq{container-type:inline-size}.cs-sr-only{height:1px!important;margin:-1px!important;overflow:hidden!important;padding:0!important;position:absolute!important;width:1px!important;clip:rect(0,0,0,0)!important;border:0!important;white-space:nowrap!important}.cs-container-fluid{background-color:var(--cs-surface,#14161a);color:var(--cs-text,#eef1f6);margin-left:auto;margin-right:auto;max-width:none;padding-left:var(--cs-page-pad);padding-right:var(--cs-page-pad);width:100%}@media (min-width:768px){.cs-container-fluid{padding-left:calc(var(--cs-page-pad) + var(--cs-space-2));padding-right:calc(var(--cs-page-pad) + var(--cs-space-2))}}@media (min-width:1200px){.cs-container-fluid{max-width:var(--cs-page-max)}}.cs-focus-ring{outline:none}.cs-focus-ring:focus-visible{box-shadow:0 0 0 2px var(--cs-brand,#4f7cff),0 0 0 4px color-mix(in srgb,var(--cs-brand,#4f7cff) 20%,transparent);transition:box-shadow var(--cs-transition)}@supports not (color-mix(in srgb,red 50%,white)){.cs-focus-ring:focus-visible{box-shadow:0 0 0 2px var(--cs-brand,#4f7cff),0 0 0 6px rgba(79,124,255,.25)}}.cs-z-popover{position:relative;z-index:var(--cs-z-popover)}.cs-z-tooltip{position:relative;z-index:var(--cs-z-tooltip)}.cs-z-toast{position:relative;z-index:var(--cs-z-toast)}.cs-z-modal{position:relative;z-index:var(--cs-z-modal)}.cs-z-max{position:relative;z-index:var(--cs-z-max)}.cs-sticky{position:sticky;top:0}.cs-will-change-transform{will-change:transform}.cs-will-change-opacity{will-change:opacity}@keyframes cs-fade-in{0%{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}@keyframes cs-slide-down{0%{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}@keyframes cs-toast-out{to{opacity:0;transform:translateY(8px)}}.cs-modal-in{animation:cs-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-out)}.cs-modal-in,.cs-popover-in{will-change:opacity,transform}.cs-popover-in{animation:cs-slide-down var(--cs-anim-duration-sm) var(--cs-anim-ease-out)}.cs-toast-out{animation:cs-toast-out var(--cs-anim-duration-md) var(--cs-anim-ease-in);will-change:opacity,transform}@media (prefers-reduced-motion:reduce){.cs-modal-in,.cs-popover-in,.cs-toast-out{animation-duration:.12s;transform:none!important}}.cs-acrylic{-webkit-backdrop-filter:saturate(140%) blur(10px);backdrop-filter:saturate(140%) blur(10px);background:var(--cs-acrylic-tint,rgba(20,22,26,.55));background-clip:padding-box;border:1px solid var(--cs-acrylic-border,hsla(0,0%,100%,.06));border-radius:var(--cs-radius,10px);box-shadow:var(--cs-shadow-2,0 8px 24px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.18))}@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.cs-acrylic{-webkit-backdrop-filter:saturate(160%) blur(var(--cs-acrylic-blur,14px));backdrop-filter:saturate(160%) blur(var(--cs-acrylic-blur,14px))}}@media (max-width:480px){.cs-acrylic{--cs-acrylic-blur:8px;box-shadow:var(--cs-shadow-1,0 1px 2px rgba(0,0,0,.25),0 1px 1px rgba(0,0,0,.1))}}@container (min-width: 640px){.cs-container-fluid{padding-left:calc(var(--cs-page-pad) + var(--cs-space-1));padding-right:calc(var(--cs-page-pad) + var(--cs-space-1))}}@container (min-width: 960px){.cs-container-fluid{padding-left:calc(var(--cs-page-pad) + var(--cs-space-3));padding-right:calc(var(--cs-page-pad) + var(--cs-space-3))}}@container (min-width: 1200px){.cs-container-fluid{max-width:var(--cs-page-max)}}@media (prefers-contrast:more){.cs-focus-ring:focus-visible{box-shadow:0 0 0 3px var(--cs-brand,#4f7cff),0 0 0 6px rgba(0,0,0,.75)}.cs-acrylic{border-width:2px}}@media (forced-colors:active){.cs-focus-ring:focus-visible{box-shadow:none;outline:2px solid ButtonText}.cs-acrylic{background:Canvas;border:1px solid CanvasText}.cs-container-fluid{background:Canvas;color:CanvasText}}@media print{.cs-acrylic{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#fff!important;border:1px solid #000!important;box-shadow:none!important}.cs-focus-ring:focus-visible{box-shadow:none!important;outline:1px solid #000!important}.cs-container-fluid{max-width:100%!important;padding-left:12mm!important;padding-right:12mm!important}}:is(.cs-focus-ring):is(:hover,:focus-visible){transition:box-shadow var(--cs-transition)}.cs-bg-brand{background-color:var(--cs-brand,#4f7cff);color:var(--cs-brand-contrast,#0b0d12)}
