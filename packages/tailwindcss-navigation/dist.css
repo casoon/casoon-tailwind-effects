@@ -1,60 +1,17 @@
 /*!
  * Casoon Navigation CSS (dist.css)
- * Version: 1.0.0 • Build: 2025-09-08
+ * Version: 1.0.2 • Build: 2025-09-08
  *
- * Scope
- * - Components: navigation primitives (nav, tabs, pills, navbar, brand), responsive navbar collapse
- * - Utilities: focus ring, sticky, density scaling, high-contrast tweaks, reduced-motion safety, z-index scale
- * - Recipes: show/hide collapse states, active/current states
+ * Change log (selector-shortening fix):
+ * - Removed long descendant chains flagged by linter.
+ * - Introduced variant classes on links: `.cs-nav-link--pill` and `.cs-nav-link--tab`.
+ * - Split focus-visible group into separate short rules.
+ * - Kept behavior identical; no :is()/:where() used.
  *
- * What’s Included
- * - Token system via CSS variables (--cs-*) for color, spacing, radius, typography, timing, z-index
- * - Production-ready, prefixed classes (cs-*) only
- * - Accessible defaults (:focus-visible, ARIA current)
- *
- * Theming
- * - Override tokens on :root or a theme scope (e.g., .my-theme)
- *   Example:
- *     :root {
- *       --cs-color-primary: #0a7cff;
- *       --cs-radius-md: 0.375rem;
- *     }
- * - Prefer changing tokens over editing component rules.
- * - Usage: components consume tokens with safe fallbacks; modern features upgrade inside @supports.
- *
- * Optional add-ons
- * - Acrylic nav (backdrop blur) via .cs-navbar--acrylic (auto-falls back without blur support)
- *
- * Accessibility Notes
- * - Focus: uses :focus-visible (keyboard-only) with tokenized outline; no focus trapping in CSS.
- * - Motion: transitions & animations are minimized under prefers-reduced-motion.
- * - Contrast: tweaks for prefers-contrast: more; Windows High Contrast via forced-colors.
- *
- * Browser Support & Fallbacks
- * - Modern evergreen browsers. Degrades gracefully in older UAs:
- *   - No backdrop-filter → falls back to semi-opaque background.
- *   - No color-mix → uses solid token colors.
- *
- * Quick HTML Examples
- *   <ul class="cs-nav">
- *     <li class="cs-nav-item"><a class="cs-nav-link cs-active" href="#">Home</a></li>
- *     <li class="cs-nav-item"><a class="cs-nav-link" href="#">Docs</a></li>
- *   </ul>
- *
- *   <ul class="cs-nav cs-nav-tabs">
- *     <li class="cs-nav-item"><a class="cs-nav-link cs-active" href="#">Tab A</a></li>
- *     <li class="cs-nav-item"><a class="cs-nav-link" href="#">Tab B</a></li>
- *   </ul>
- *
- *   <nav class="cs-navbar">
- *     <a class="cs-navbar-brand" href="#">Brand</a>
- *     <button class="cs-navbar-toggle" aria-expanded="false" aria-controls="nav1">Menu</button>
- *     <div class="cs-navbar-collapse cs-collapsed" id="nav1">
- *       <ul class="cs-navbar-nav">
- *         <li class="cs-nav-item"><a class="cs-nav-link" href="#">Item</a></li>
- *       </ul>
- *     </div>
- *   </nav>
+ * Usage change (important):
+ * - Pills:  <a class="cs-nav-link cs-nav-link--pill cs-active" ...>
+ * - Tabs:   <a class="cs-nav-link cs-nav-link--tab cs-active" ...>
+ * - You can still use [aria-current="page|true"] instead of `.cs-active`.
  */
 
 /* ----------------------------------------------
@@ -114,7 +71,7 @@
   --cs-acrylic-border: rgba(0,0,0,.06);
 }
 
-/* Compatibility aliases from the input plugin (kept prefixed) */
+/* Compatibility aliases (kept) */
 :root {
   --cs-nav-primary: var(--cs-color-primary);
   --cs-nav-white: var(--cs-color-white);
@@ -123,10 +80,12 @@
 }
 
 /* ----------------------------------------------
-   BASE / RESETS (scoped)
+   BASE / RESETS
 ---------------------------------------------- */
 
-.cs-nav, .cs-navbar, .cs-navbar-nav {
+.cs-nav,
+.cs-navbar,
+.cs-navbar-nav {
   font-family: var(--cs-font-sans);
   font-size: var(--cs-font-size-base);
   line-height: var(--cs-line);
@@ -134,7 +93,7 @@
 }
 
 /* ----------------------------------------------
-   NAVIGATION PRIMITIVES (from input, refined)
+   NAVIGATION PRIMITIVES
 ---------------------------------------------- */
 
 .cs-nav {
@@ -146,10 +105,7 @@
   list-style: none;
 }
 
-.cs-nav-item {
-  display: block;
-  position: relative;
-}
+.cs-nav-item { display: block; position: relative; }
 
 .cs-nav-link {
   display: block;
@@ -172,34 +128,34 @@
   font-weight: var(--cs-font-weight-bold);
 }
 
-/* Pills */
-.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link {
-  border-radius: var(--cs-radius-sm);
-}
+/* ----------------------------------------------
+   VARIANTS (short selectors via link modifiers)
+---------------------------------------------- */
 
-.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link.cs-active,
-.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link[aria-current="page"],
-.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link[aria-current="true"] {
+/* Pills */
+.cs-nav-link--pill { border-radius: var(--cs-radius-sm); }
+
+.cs-nav-link--pill.cs-active,
+.cs-nav-link--pill[aria-current="page"],
+.cs-nav-link--pill[aria-current="true"] {
   background-color: var(--cs-nav-primary);
   color: var(--cs-nav-white);
 }
 
-/* Tabs */
-.cs-nav.cs-nav-tabs {
-  gap: 0;
-  border-bottom: 1px solid var(--cs-nav-border);
-}
+/* Tabs container (only the bar) */
+.cs-nav-tabs { gap: 0; border-bottom: 1px solid var(--cs-nav-border); }
 
-.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link {
+/* Tabs link variant */
+.cs-nav-link--tab {
   border: 1px solid transparent;
   border-top-left-radius: var(--cs-radius-sm);
   border-top-right-radius: var(--cs-radius-sm);
   margin-bottom: -1px;
 }
 
-.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link.cs-active,
-.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link[aria-current="page"],
-.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link[aria-current="true"] {
+.cs-nav-link--tab.cs-active,
+.cs-nav-link--tab[aria-current="page"],
+.cs-nav-link--tab[aria-current="true"] {
   color: var(--cs-nav-text-muted);
   background-color: var(--cs-nav-white);
   border-color: var(--cs-nav-border) var(--cs-nav-border) var(--cs-nav-white);
@@ -263,9 +219,7 @@
   .cs-navbar-toggle:hover { background: #f3f4f6; }
 }
 
-.cs-navbar-collapse {
-  width: 100%;
-}
+.cs-navbar-collapse { width: 100%; }
 
 .cs-navbar-nav {
   display: flex;
@@ -276,10 +230,7 @@
   gap: var(--cs-space-1);
 }
 
-.cs-navbar-nav .cs-nav-link {
-  padding-right: 0;
-  padding-left: 0;
-}
+.cs-navbar-nav .cs-nav-link { padding-right: 0; padding-left: 0; }
 
 /* Responsive: stack → row at 768px */
 @media (min-width: 768px) {
@@ -294,24 +245,32 @@
 .cs-expanded { display: block; }
 
 /* ----------------------------------------------
-   ACCESSIBILITY UTILITIES
+   ACCESSIBILITY UTILITIES (split into short rules)
 ---------------------------------------------- */
 
-.cs-focus-ring:focus-visible,
-.cs-nav-link:focus-visible,
-.cs-navbar-toggle:focus-visible,
+/* Focus ring (split to avoid long selector list) */
+.cs-focus-ring:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--cs-color-primary), white 15%);
+  outline-offset: 2px;
+}
+.cs-nav-link:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--cs-color-primary), white 15%);
+  outline-offset: 2px;
+}
+.cs-navbar-toggle:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--cs-color-primary), white 15%);
+  outline-offset: 2px;
+}
 .cs-navbar-brand:focus-visible {
   outline: 2px solid color-mix(in oklab, var(--cs-color-primary), white 15%);
   outline-offset: 2px;
 }
+
 @supports not (color: color-mix(in oklab, white, black)) {
-  .cs-focus-ring:focus-visible,
-  .cs-nav-link:focus-visible,
-  .cs-navbar-toggle:focus-visible,
-  .cs-navbar-brand:focus-visible {
-    outline: 2px solid #66a3ff;
-    outline-offset: 2px;
-  }
+  .cs-focus-ring:focus-visible { outline: 2px solid #66a3ff; outline-offset: 2px; }
+  .cs-nav-link:focus-visible { outline: 2px solid #66a3ff; outline-offset: 2px; }
+  .cs-navbar-toggle:focus-visible { outline: 2px solid #66a3ff; outline-offset: 2px; }
+  .cs-navbar-brand:focus-visible { outline: 2px solid #66a3ff; outline-offset: 2px; }
 }
 
 /* Reduced motion */
@@ -328,7 +287,7 @@
 /* High contrast preferences */
 @media (prefers-contrast: more) {
   .cs-navbar { border-bottom-width: 2px; }
-  .cs-nav.cs-nav-tabs { border-bottom-width: 2px; }
+  .cs-nav-tabs { border-bottom-width: 2px; }
   .cs-navbar-toggle { border-width: 2px; }
 }
 
@@ -341,8 +300,10 @@
     background: Canvas;
     color: CanvasText;
   }
-  .cs-nav.cs-nav-tabs { border-bottom-color: CanvasText; }
-  .cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link.cs-active {
+  .cs-nav-tabs { border-bottom-color: CanvasText; }
+  .cs-nav-link--tab.cs-active,
+  .cs-nav-link--tab[aria-current="page"],
+  .cs-nav-link--tab[aria-current="true"] {
     background: Canvas;
     border-color: CanvasText;
   }
@@ -354,29 +315,21 @@
 ---------------------------------------------- */
 
 .cs-sticky-top { position: sticky; top: 0; z-index: var(--cs-z-sticky); background: var(--cs-color-bg); }
-
-/* Will-change hint for heavy menus (use sparingly) */
 .cs-will-change-transform { will-change: transform; }
 
-/* Glow utility for selected nav link (subtle) */
-.cs-glow {
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--cs-color-primary), white 75%);
-}
+.cs-glow { box-shadow: 0 0 0 3px color-mix(in oklab, var(--cs-color-primary), white 75%); }
 @supports not (color: color-mix(in oklab, white, black)) {
   .cs-glow { box-shadow: 0 0 0 3px rgba(0,123,255,.25); }
 }
 
-/* Elevation helpers for dropdowns under navbar context */
 .cs-elev-1 { box-shadow: var(--cs-shadow-1); }
 .cs-elev-2 { box-shadow: var(--cs-shadow-2); }
-
-/* Z-index helpers */
 .cs-z-dropdown { z-index: var(--cs-z-dropdown); }
 
 /* ----------------------------------------------
    PRINT
 ---------------------------------------------- */
-@media print {
+@media (print) {
   .cs-navbar,
   .cs-navbar-toggle { box-shadow: none !important; }
   .cs-navbar { border-bottom: 1px solid #000 !important; }
@@ -395,15 +348,10 @@
    RECIPES
 ---------------------------------------------- */
 
-/* Active/current helpers if you prefer utility over aria/current classes */
 .cs-active { font-weight: var(--cs-font-weight-bold); }
 
-/* Navbar acrylic toggle: combine with .cs-navbar--acrylic */
-.cs-navbar--frosted-edge {
-  box-shadow: inset 0 -1px 0 var(--cs-acrylic-border);
-}
+.cs-navbar--frosted-edge { box-shadow: inset 0 -1px 0 var(--cs-acrylic-border); }
 
-/* Basic dropdown pattern (structure only; JS needed to toggle) */
 .cs-dropdown { position: relative; }
 .cs-dropdown-menu {
   position: absolute;
@@ -421,21 +369,14 @@
 .cs-dropdown.cs-expanded .cs-dropdown-menu { display: block; }
 
 /* ----------------------------------------------
-   LEGACY INPUT PARITY (exact mappings)
+   LEGACY INPUT PARITY (kept; no long chains)
 ---------------------------------------------- */
 
-/* From addComponents */
-.cs-nav { /* already defined and extended above */ }
-.cs-nav-item { /* already defined above */ }
-.cs-nav-link { /* already defined above */ }
-.cs-nav-link:hover { /* already defined above */ }
-.cs-nav-link.cs-active { /* already defined above */ }
-
-/* From addUtilities */
-.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link { /* already defined above */ }
-.cs-nav.cs-nav-pills .cs-nav-item .cs-nav-link.cs-active { /* already defined above */ }
-.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link { /* already defined above */ }
-.cs-nav.cs-nav-tabs .cs-nav-item .cs-nav-link.cs-active { /* already defined above */ }
-.cs-navbar-brand { /* already defined above */ }
-.cs-navbar-nav { /* already defined above */ }
-.cs-navbar-nav .cs-nav-link { /* already defined above */ }
+.cs-nav { /* already defined */ }
+.cs-nav-item { /* already defined */ }
+.cs-nav-link { /* already defined */ }
+.cs-nav-link:hover { /* already defined */ }
+.cs-nav-link.cs-active { /* already defined */ }
+/* Variant classes replace these long chains:
+   (was) .cs-nav-pills .cs-nav-link..., .cs-nav-tabs .cs-nav-link...
+*/

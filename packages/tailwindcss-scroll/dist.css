@@ -40,7 +40,7 @@
  *
  * Quick usage
  *   <html class="cs-root">
- *     <div class="cs-scroll-smooth cs-scroll-snap-x cs-scroll-p-4 cs-scrollbar-thin cs-scrollbar-thumb-blue">
+ *     <div class="cs-scrollbar cs-scrollbar-thin cs-scrollbar-thumb-blue cs-scroll-snap-x cs-scroll-p-4">
  *       <section class="cs-snap-start">…</section>
  *       <section class="cs-snap-center">…</section>
  *     </div>
@@ -134,65 +134,61 @@
 .cs-scroll-p-16{ scroll-padding:4rem; }
 
 /* -----------------------------------------------------------------------------
-   SCROLLBAR WIDTH (cross-browser)
+   SCROLLBAR BASE + VARIABLES (Option B)
 ----------------------------------------------------------------------------- */
 
-.cs-scrollbar-none{ scrollbar-width:none; -ms-overflow-style:none; }
-.cs-scrollbar-none::-webkit-scrollbar{ display:none; }
+/* Base hook for all custom scrollbar styling */
+.cs-scrollbar{
+  /* Firefox colors (use variables, fallback safe) */
+  scrollbar-color: var(--cs-scroll-thumb, var(--cs-scroll-thumb-gray, #6b7280))
+                   var(--cs-scroll-track, rgba(0,0,0,.08));
+}
 
-.cs-scrollbar-thin{ scrollbar-width:thin; }
-.cs-scrollbar-auto{ scrollbar-width:auto; }
-
-/* -----------------------------------------------------------------------------
-   SCROLLBAR COLOR (Firefox) + WEBKIT STYLING
-   Apply to the scrollable element.
------------------------------------------------------------------------------ */
-
-.cs-scrollbar-thumb-gray{ scrollbar-color: var(--cs-scroll-thumb-gray, #6b7280) transparent; }
-.cs-scrollbar-thumb-blue{ scrollbar-color: var(--cs-scroll-thumb-blue, #3b82f6) transparent; }
-.cs-scrollbar-track-transparent{ scrollbar-color: currentColor transparent; }
-
-/* WebKit/Blink detailed styling */
-.cs-scrollbar-thumb-gray::-webkit-scrollbar,
-.cs-scrollbar-thumb-blue::-webkit-scrollbar,
-.cs-scrollbar-track-transparent::-webkit-scrollbar{
+/* WebKit/Blink scrollbar box */
+.cs-scrollbar::-webkit-scrollbar{
   width: var(--cs-scrollbar-size, 10px);
   height: var(--cs-scrollbar-size, 10px);
 }
 
-.cs-scrollbar-thumb-gray::-webkit-scrollbar-track,
-.cs-scrollbar-thumb-blue::-webkit-scrollbar-track,
-.cs-scrollbar-track-transparent::-webkit-scrollbar-track{
+/* Track styling */
+.cs-scrollbar::-webkit-scrollbar-track{
   background: var(--cs-scroll-track, rgba(0,0,0,.08));
 }
 
-.cs-scrollbar-track-transparent::-webkit-scrollbar-track{
+/* Transparent track variant */
+.cs-scrollbar[data-cs-track="transparent"]::-webkit-scrollbar-track,
+.cs-scrollbar.cs-scrollbar-track-transparent::-webkit-scrollbar-track{
   background: transparent;
 }
 
-.cs-scrollbar-thumb-gray::-webkit-scrollbar-thumb{
-  background-color: var(--cs-scroll-thumb-gray, #6b7280);
+/* Thumb styling (default uses variable) */
+.cs-scrollbar::-webkit-scrollbar-thumb{
+  background-color: var(--cs-scroll-thumb, var(--cs-scroll-thumb-gray, #6b7280));
   border-radius: var(--cs-scroll-thumb-radius, 8px);
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
-.cs-scrollbar-thumb-blue::-webkit-scrollbar-thumb{
-  background-color: var(--cs-scroll-thumb-blue, #3b82f6);
-  border-radius: var(--cs-scroll-thumb-radius, 8px);
-  border: 2px solid transparent;
-  background-clip: content-box;
-}
+/* Hover/active affordance */
+.cs-scrollbar:hover::-webkit-scrollbar-thumb{ filter: brightness(0.9); }
+.cs-scrollbar:active::-webkit-scrollbar-thumb{ filter: brightness(0.8); }
 
-/* Hover/active affordance (with safe fallback) */
-.cs-scrollbar-thumb-gray:hover::-webkit-scrollbar-thumb,
-.cs-scrollbar-thumb-blue:hover::-webkit-scrollbar-thumb{
-  filter: brightness(0.9);
-}
-.cs-scrollbar-thumb-gray:active::-webkit-scrollbar-thumb,
-.cs-scrollbar-thumb-blue:active::-webkit-scrollbar-thumb{
-  filter: brightness(0.8);
-}
+/* -----------------------------------------------------------------------------
+   SCROLLBAR UTILITIES (color + track overrides)
+----------------------------------------------------------------------------- */
+
+/* Set thumb color */
+.cs-scrollbar-thumb-gray{ --cs-scroll-thumb: var(--cs-scroll-thumb-gray, #6b7280); }
+.cs-scrollbar-thumb-blue{ --cs-scroll-thumb: var(--cs-scroll-thumb-blue, #3b82f6); }
+
+/* Set track color */
+.cs-scrollbar-track-transparent{ --cs-scroll-track: transparent; }
+
+/* Width utilities (Firefox + WebKit/Blink base class) */
+.cs-scrollbar-none{ scrollbar-width: none; -ms-overflow-style: none; }
+.cs-scrollbar-none::-webkit-scrollbar{ display: none; }
+.cs-scrollbar-thin{ scrollbar-width: thin; }
+.cs-scrollbar-auto{ scrollbar-width: auto; }
 
 /* -----------------------------------------------------------------------------
    OPTIONAL HELPERS
@@ -247,12 +243,10 @@
 }
 
 @media (prefers-contrast: more){
-  .cs-scrollbar-thumb-gray,
-  .cs-scrollbar-thumb-blue{
+  .cs-scrollbar{
     scrollbar-color: currentColor transparent;
   }
-  .cs-scrollbar-thumb-gray::-webkit-scrollbar-thumb,
-  .cs-scrollbar-thumb-blue::-webkit-scrollbar-thumb{
+  .cs-scrollbar::-webkit-scrollbar-thumb{
     background-color: currentColor;
   }
 }
@@ -260,8 +254,7 @@
 @media (forced-colors: active){
   .cs-scrollbar-none{ scrollbar-color: ButtonText ButtonFace; }
   .cs-scrollbar-thin{ scrollbar-width: thin; }
-  .cs-scrollbar-thumb-gray,
-  .cs-scrollbar-thumb-blue{
+  .cs-scrollbar{
     scrollbar-color: ButtonText ButtonFace;
   }
 }

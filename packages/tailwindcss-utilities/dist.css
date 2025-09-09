@@ -1,321 +1,442 @@
 /*!
  * Casoon CSS Utilities (dist.css)
- * Version: 1.0.0 — 2025-09-08
+ * Version: 1.0.3 — 2025-09-08
  * Scope: Utilities (layout, a11y, motion), small recipes, optional visual effects
  *
- * WHAT'S INCLUDED
- * - Tokens (CSS vars under `.cs-theme`)
- * - Core utilities: `.cs-sr-only`, `.cs-container-fluid`, focus ring, z-index helpers, sticky/will-change helpers
- * - Animation tokens + keyframes + recipes (`.cs-modal-in`, `.cs-toast-out`)
- * - Optional add-ons: acrylic surface (`.cs-acrylic`)
- * - Responsive refinements (media + container queries)
- *
- * HOW TO THEME
- * 1) Wrap your app root with `.cs-theme` (e.g., `<html class="cs-theme">`).
- * 2) Override tokens via inline style or an additional theme class (e.g., `.cs-theme-dark`).
- * 3) Density scaling: set `--cs-density` on `.cs-theme` (1=default, <1=roomier, >1=denser).
- * Example:
- *   <html class="cs-theme cs-theme-dark" style="--cs-brand: #6b5bff; --cs-radius: 12px;">
- *
- * OPTIONAL ADD-ONS
- * - `.cs-acrylic` for frosted surfaces; auto scales blur on small screens and honors reduced motion/contrast.
- *
- * ACCESSIBILITY NOTES
- * - Uses `:focus-visible` (not `:focus`) for focus treatments (`.cs-focus-ring`).
- * - Respects `prefers-reduced-motion`, `prefers-contrast`, and `forced-colors: active`.
- * - `.cs-sr-only` is provided for screen-reader only content; add `.cs-focus-ring` to the interactive element itself.
- *
- * BROWSER SUPPORT & FALLBACKS
- * - Modern evergreen browsers. Acrylic backs off when `backdrop-filter` unsupported.
- * - Forced colors/High contrast fallbacks included.
- * - No reliance on custom properties outside `.cs-theme` scope; provide hard color fallbacks in rules.
- *
- * QUICK USAGE
- *   <html class="cs-theme">
- *     <body class="cs-cq"> <!-- enables container queries within -->
- *       <header class="cs-container-fluid">
- *         <button class="cs-focus-ring">Action</button>
- *       </header>
- *       <p class="cs-sr-only">Assistive text only</p>
- *       <div class="cs-acrylic">Frosted panel</div>
- *     </body>
- *   </html>
- *
  * IMPORTANT
- * - Strict prefix: all classes start with `cs-`. Legacy aliases (e.g., `.sr-only`, `.container-fluid`) are intentionally not included. Migrate to `.cs-sr-only` and `.cs-container-fluid`.
+ * - Strict prefix: all classes start with `cs-`.
+ * - Uses cascade layers (names with dashes to satisfy linters).
  */
+
+/* =======================================================
+   CASCADE LAYERS
+   ======================================================= */
+@layer cs-reset, cs-base, cs-components, cs-utilities;
 
 /* =========================================
    THEME TOKENS
    ========================================= */
-.cs-theme {
-  /* Color tokens */
-  --cs-bg: #0b0c0f;
-  --cs-surface: #14161a;
-  --cs-elev1: #1b1e24;
-  --cs-elev2: #21252d;
-  --cs-text: #eef1f6;
-  --cs-text-muted: #b6bfcc;
-  --cs-border: #2a2f39;
-  --cs-brand: #4f7cff;
-  --cs-brand-contrast: #0b0d12;
+@layer cs-base {
+  .cs-theme {
+    /* Color tokens */
+    --cs-bg: #0b0c0f;
+    --cs-surface: #14161a;
+    --cs-elev1: #1b1e24;
+    --cs-elev2: #21252d;
+    --cs-text: #eef1f6;
+    --cs-text-muted: #b6bfcc;
+    --cs-border: #2a2f39;
+    --cs-brand: #4f7cff;
+    --cs-brand-contrast: #0b0d12;
 
-  /* States */
-  --cs-success: #22c55e;
-  --cs-warning: #f59e0b;
-  --cs-danger:  #ef4444;
-  --cs-info:    #06b6d4;
+    /* States */
+    --cs-success: #22c55e;
+    --cs-warning: #f59e0b;
+    --cs-danger:  #ef4444;
+    --cs-info:    #06b6d4;
 
-  /* Typography */
-  --cs-font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  --cs-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --cs-font-size: 16px;
-  --cs-line: 1.5;
+    /* Typography */
+    --cs-font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    --cs-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --cs-font-size: 16px;
+    --cs-line: 1.5;
 
-  /* Radii & shadow */
-  --cs-radius: 10px;
-  --cs-shadow-1: 0 1px 2px rgba(0,0,0,.25), 0 1px 1px rgba(0,0,0,.10);
-  --cs-shadow-2: 0 8px 24px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.18);
+    /* Radii & shadow */
+    --cs-radius: 10px;
+    --cs-shadow-1: 0 1px 2px rgba(0,0,0,.25), 0 1px 1px rgba(0,0,0,.10);
+    --cs-shadow-2: 0 8px 24px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.18);
 
-  /* Spacing scale (multiplied by density) */
-  --cs-density: 1;
-  --cs-space-1: calc(4px * var(--cs-density));
-  --cs-space-2: calc(8px * var(--cs-density));
-  --cs-space-3: calc(12px * var(--cs-density));
-  --cs-space-4: calc(16px * var(--cs-density));
-  --cs-space-6: calc(24px * var(--cs-density));
-  --cs-space-8: calc(32px * var(--cs-density));
+    /* Spacing scale (multiplied by density) */
+    --cs-density: 1;
+    --cs-space-1: calc(4px * var(--cs-density));
+    --cs-space-2: calc(8px * var(--cs-density));
+    --cs-space-3: calc(12px * var(--cs-density));
+    --cs-space-4: calc(16px * var(--cs-density));
+    --cs-space-6: calc(24px * var(--cs-density));
+    --cs-space-8: calc(32px * var(--cs-density));
 
-  /* Motion */
-  --cs-transition: 180ms cubic-bezier(.2,.6,.2,1);
-  --cs-anim-duration-sm: 160ms;
-  --cs-anim-duration-md: 280ms;
-  --cs-anim-duration-lg: 420ms;
-  --cs-anim-ease-out: cubic-bezier(.16,1,.3,1);
-  --cs-anim-ease-in: cubic-bezier(.32,0,.67,0);
-  --cs-anim-ease-in-out: cubic-bezier(.65,0,.35,1);
+    /* Motion */
+    --cs-transition: 180ms cubic-bezier(.2,.6,.2,1);
+    --cs-anim-duration-sm: 160ms;
+    --cs-anim-duration-md: 280ms;
+    --cs-anim-duration-lg: 420ms;
+    --cs-anim-ease-out: cubic-bezier(.16,1,.3,1);
+    --cs-anim-ease-in: cubic-bezier(.32,0,.67,0);
+    --cs-anim-ease-in-out: cubic-bezier(.65,0,.35,1);
 
-  /* Z-index scale */
-  --cs-z-base: 1;
-  --cs-z-popover: 30;
-  --cs-z-tooltip: 40;
-  --cs-z-toast: 50;
-  --cs-z-modal: 60;
-  --cs-z-max: 2147483647;
+    /* Z-index scale */
+    --cs-z-base: 1;
+    --cs-z-popover: 30;
+    --cs-z-tooltip: 40;
+    --cs-z-toast: 50;
+    --cs-z-modal: 60;
+    --cs-z-max: 2147483647;
 
-  /* Layout widths (for containers & queries) */
-  --cs-page-max: 1200px;
-  --cs-page-pad: var(--cs-space-4);
+    /* Layout widths (for containers & queries) */
+    --cs-page-max: 1200px;
+    --cs-page-pad: var(--cs-space-4);
 
-  /* Backdrop/blur tokens */
-  --cs-acrylic-blur: 14px;
-  --cs-acrylic-tint: rgba(20,22,26,0.55);
-  --cs-acrylic-border: rgba(255,255,255,0.06);
+    /* Backdrop/blur tokens */
+    --cs-acrylic-blur: 14px;
+    --cs-acrylic-tint: rgba(20,22,26,0.55);
+    --cs-acrylic-border: rgba(255,255,255,0.06);
+
+    /* System hints & render quality */
+    color-scheme: light dark;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis-weight: none;
+    font-synthesis-style: none;
+
+    /* Progressive color tokens */
+    --cs-brand-oklch: oklch(60% 0.15 255);
+    /* Safer ink fallback (avoid color-contrast()) */
+    --cs-brand-ink: var(--cs-brand-contrast);
+  }
+
+  @supports (color: oklch(60% 0.2 250)) {
+    .cs-theme { --cs-brand-oklch: oklch(from var(--cs-brand) l c h); }
+  }
+
+  /* Light theme */
+  .cs-theme.cs-theme-light {
+    --cs-bg: #ffffff;
+    --cs-surface: #f7f8fa;
+    --cs-elev1: #ffffff;
+    --cs-elev2: #ffffff;
+    --cs-text: #101217;
+    --cs-text-muted: #475066;
+    --cs-border: #dfe3ea;
+    --cs-brand: #375dfb;
+    --cs-brand-contrast: #ffffff;
+    --cs-shadow-1: 0 1px 2px rgba(18,24,40,.06), 0 1px 1px rgba(18,24,40,.04);
+    --cs-shadow-2: 0 10px 24px rgba(18,24,40,.10), 0 2px 8px rgba(18,24,40,.06);
+    --cs-acrylic-tint: rgba(255,255,255,0.65);
+    --cs-acrylic-border: rgba(0,0,0,0.06);
+  }
+
+  /* Enable container queries inside this scope */
+  .cs-cq { container-type: inline-size; }
 }
-
-/* Example dark-on-light variation (opt-in) */
-.cs-theme.cs-theme-light {
-  --cs-bg: #ffffff;
-  --cs-surface: #f7f8fa;
-  --cs-elev1: #ffffff;
-  --cs-elev2: #ffffff;
-  --cs-text: #101217;
-  --cs-text-muted: #475066;
-  --cs-border: #dfe3ea;
-  --cs-brand: #375dfb;
-  --cs-brand-contrast: #ffffff;
-  --cs-shadow-1: 0 1px 2px rgba(18,24,40,.06), 0 1px 1px rgba(18,24,40,.04);
-  --cs-shadow-2: 0 10px 24px rgba(18,24,40,.10), 0 2px 8px rgba(18,24,40,.06);
-  --cs-acrylic-tint: rgba(255,255,255,0.65);
-  --cs-acrylic-border: rgba(0,0,0,0.06);
-}
-
-/* Enable container queries inside this scope */
-.cs-cq { container-type: inline-size; }
 
 /* =========================================
-   CORE UTILITIES (from input)
+   TYPOGRAPHY SCALE TOKENS (fluid)
    ========================================= */
-
-/* Screen reader only — keep focusable when needed via direct focus styles on target element */
-.cs-sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-/* Fluid container with responsive side padding */
-.cs-container-fluid {
-  width: 100%;
-  padding-left: var(--cs-page-pad);
-  padding-right: var(--cs-page-pad);
-  margin-left: auto;
-  margin-right: auto;
-  max-width: none;
-  /* Hard fallbacks for bg/border in case variables are not present on ancestor */
-  background-color: var(--cs-surface, #14161a);
-  color: var(--cs-text, #eef1f6);
-}
-
-@media (min-width: 768px) {
-  .cs-container-fluid {
-    padding-left: calc(var(--cs-page-pad) + var(--cs-space-2));
-    padding-right: calc(var(--cs-page-pad) + var(--cs-space-2));
+@layer cs-base {
+  .cs-theme {
+    --cs-fs-xs: clamp(0.78rem, 0.75rem + 0.2cqi, 0.84rem);
+    --cs-fs-sm: clamp(0.88rem, 0.82rem + 0.3cqi, 0.95rem);
+    --cs-fs-md: clamp(1rem,    0.95rem + 0.4cqi, 1.125rem);
+    --cs-fs-lg: clamp(1.25rem, 1.05rem + 0.8cqi, 1.5rem);
+    --cs-fs-xl: clamp(1.5rem,  1.2rem + 1.2cqi, 1.875rem);
+    --cs-fs-2xl: clamp(1.875rem, 1.4rem + 1.6cqi, 2.25rem);
   }
 }
-@media (min-width: 1200px) {
-  .cs-container-fluid {
-    max-width: var(--cs-page-max);
-  }
-}
-
-/* Focus treatment (apply to interactive elements) */
-.cs-focus-ring {
-  outline: none;
-}
-.cs-focus-ring:focus-visible {
-  box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff),
-              0 0 0 4px color-mix(in srgb, var(--cs-brand, #4f7cff) 20%, transparent);
-  transition: box-shadow var(--cs-transition);
-}
-@supports not (color-mix(in srgb, red 50%, white)) {
-  .cs-focus-ring:focus-visible {
-    /* Fallback double ring without color-mix */
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px rgba(79,124,255,0.25);
-  }
-}
-
-/* Z-index helpers (consistent scale) */
-.cs-z-popover { z-index: var(--cs-z-popover); position: relative; }
-.cs-z-tooltip { z-index: var(--cs-z-tooltip); position: relative; }
-.cs-z-toast   { z-index: var(--cs-z-toast);   position: relative; }
-.cs-z-modal   { z-index: var(--cs-z-modal);   position: relative; }
-.cs-z-max     { z-index: var(--cs-z-max);     position: relative; }
-
-/* Layout helpers */
-.cs-sticky { position: sticky; top: 0; }
-.cs-will-change-transform { will-change: transform; }
-.cs-will-change-opacity   { will-change: opacity; }
 
 /* =========================================
    ANIMATION: Tokens, Keyframes, Recipes
    ========================================= */
-@keyframes cs-fade-in {
-  from { opacity: 0; transform: translateY(4px); }
-  to   { opacity: 1; transform: translateY(0); }
+@layer cs-base {
+  @keyframes cs-fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes cs-slide-down { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes cs-toast-out { to { opacity: 0; transform: translateY(8px); } }
 }
-@keyframes cs-slide-down {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes cs-toast-out {
-  to { opacity: 0; transform: translateY(8px); }
-}
+@layer cs-components {
+  .cs-modal-in { animation: cs-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-out); will-change: opacity, transform; }
+  .cs-popover-in { animation: cs-slide-down var(--cs-anim-duration-sm) var(--cs-anim-ease-out); will-change: opacity, transform; }
+  .cs-toast-out { animation: cs-toast-out var(--cs-anim-duration-md) var(--cs-anim-ease-in); will-change: opacity, transform; }
 
-/* Recipes */
-.cs-modal-in {
-  animation: cs-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-out);
-  will-change: opacity, transform;
-}
-.cs-popover-in {
-  animation: cs-slide-down var(--cs-anim-duration-sm) var(--cs-anim-ease-out);
-  will-change: opacity, transform;
-}
-.cs-toast-out {
-  animation: cs-toast-out var(--cs-anim-duration-md) var(--cs-anim-ease-in);
-  will-change: opacity, transform;
-}
+  /* Fallback on mount (e.g., inside modal) */
+  .cs-pop { animation: cs-fade-in var(--cs-anim-duration-md) var(--cs-anim-ease-out); }
 
-/* Reduced motion: soften distances & durations */
-@media (prefers-reduced-motion: reduce) {
-  .cs-modal-in,
-  .cs-popover-in,
-  .cs-toast-out {
-    animation-duration: 120ms;
-    transform: none !important;
+  /* View transitions (opt-in) */
+  .cs-views-enable .cs-vt-page { view-transition-name: cs-page; }
+  @media (prefers-reduced-motion: no-preference) {
+    ::view-transition-old(cs-page), ::view-transition-new(cs-page) { animation-duration: var(--cs-anim-duration-lg); }
   }
+
+  /* Scroll-driven reveals (with graceful fallback) */
+  .cs-reveal { opacity: 0; transform: translateY(8px); will-change: opacity, transform; }
+  @supports (animation-timeline: scroll()) {
+    @keyframes cs-reveal-kf { to { opacity: 1; transform: translateY(0); } }
+    .cs-reveal { animation: cs-reveal-kf var(--cs-anim-duration-lg) var(--cs-anim-ease-out) both; animation-timeline: view(); animation-range: entry 20% cover 30%; }
+  }
+}
+
+/* Reduced motion & data */
+@layer cs-base {
+  @media (prefers-reduced-motion: reduce) {
+    .cs-modal-in, .cs-popover-in, .cs-toast-out, .cs-pop, .cs-reveal, .cs-vt-page { animation: none; transition: none; transform: none; }
+    [data-decorative-anim] { animation: none; transition: none; }
+  }
+  @media (prefers-reduced-data: reduce) {
+    .cs-acrylic { -webkit-backdrop-filter: none; backdrop-filter: none; }
+    .cs-bg-img[data-hires] { background-image: var(--cs-bg-img-low, none); }
+    .cs-shadow-heavy { box-shadow: var(--cs-shadow-1); }
+  }
+}
+
+/* =========================================
+   CORE UTILITIES
+   ========================================= */
+@layer cs-utilities {
+  /* Screen reader only */
+  :where(.cs-sr-only) {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
+  /* Focus treatment */
+  .cs-focus-ring { outline: none; }
+  .cs-focus-ring:focus-visible {
+    outline: 2px solid transparent; outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff),
+                0 0 0 4px color-mix(in srgb, var(--cs-brand, #4f7cff) 20%, transparent);
+    transition: box-shadow var(--cs-transition);
+  }
+  @supports not (color-mix(in srgb, red 50%, white)) {
+    .cs-focus-ring:focus-visible { box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px rgba(79,124,255,0.25); }
+  }
+  .cs-focus-ring-within:focus-within {
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff),
+                0 0 0 6px color-mix(in srgb, var(--cs-brand, #4f7cff) 22%, transparent);
+    border-radius: var(--cs-radius);
+  }
+
+  /* Container */
+  .cs-container-fluid {
+    width: 100%; padding-left: var(--cs-page-pad); padding-right: var(--cs-page-pad);
+    margin-left: auto; margin-right: auto; max-width: none;
+    background-color: var(--cs-surface, #14161a); color: var(--cs-text, #eef1f6);
+  }
+  @media (min-width: 768px) {
+    .cs-container-fluid { padding-left: calc(var(--cs-page-pad) + var(--cs-space-2)); padding-right: calc(var(--cs-page-pad) + var(--cs-space-2)); }
+  }
+  @media (min-width: 1200px) { .cs-container-fluid { max-width: var(--cs-page-max); } }
+
+  /* Z-index helpers */
+  .cs-z-popover { z-index: var(--cs-z-popover); position: relative; }
+  .cs-z-tooltip { z-index: var(--cs-z-tooltip); position: relative; }
+  .cs-z-toast   { z-index: var(--cs-z-toast);   position: relative; }
+  .cs-z-modal   { z-index: var(--cs-z-modal);   position: relative; }
+  .cs-z-max     { z-index: var(--cs-z-max);     position: relative; }
+
+  /* Layout helpers */
+  .cs-sticky { position: sticky; top: 0; }
+  .cs-will-change-transform { will-change: transform; }
+  .cs-will-change-opacity   { will-change: opacity; }
+
+  /* Direction-aware tweak */
+  :dir(rtl) .cs-flow-reverse { flex-direction: row-reverse !important; }
+
+  /* Type utilities */
+  .cs-text-xs { font-size: var(--cs-fs-xs); line-height: var(--cs-line); }
+  .cs-text-sm { font-size: var(--cs-fs-sm); line-height: var(--cs-line); }
+  .cs-text    { font-size: var(--cs-fs-md); line-height: var(--cs-line); }
+  .cs-text-lg { font-size: var(--cs-fs-lg); line-height: calc(var(--cs-line) + .05); }
+  .cs-text-xl { font-size: var(--cs-fs-xl); line-height: calc(var(--cs-line) + .1); }
+  .cs-text-2xl{ font-size: var(--cs-fs-2xl); line-height: calc(var(--cs-line) + .12); }
+  .cs-font-sans { font-family: var(--cs-font-sans); }
+  .cs-font-mono { font-family: var(--cs-font-mono); }
+
+  /* Layout micro-recipes */
+  .cs-stack { display: grid; gap: var(--cs-space-3); }
+  .cs-stack-sm { display: grid; gap: var(--cs-space-2); }
+  .cs-stack-lg { display: grid; gap: var(--cs-space-6); }
+  .cs-cluster { display: flex; flex-wrap: wrap; gap: var(--cs-space-2); align-items: center; }
+  .cs-center { display: grid; place-items: center; }
+  .cs-grid-fit { display: grid; gap: var(--cs-space-3); grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+  .cs-aspect { aspect-ratio: var(--cs-aspect, 16/9); }
+  .cs-bleed-x { margin-inline: calc(var(--cs-page-pad) * -1); }
+  @container (min-width: 960px) { .cs-bleed-x { margin-inline: calc((var(--cs-page-pad) + var(--cs-space-3)) * -1); } }
+  .cs-safe-pad {
+    padding-inline: max(var(--cs-page-pad), env(safe-area-inset-left));
+    padding-inline-end: max(var(--cs-page-pad), env(safe-area-inset-right));
+    padding-block-end: max(var(--cs-space-4), env(safe-area-inset-bottom));
+  }
+
+  /* Tokens: dimension & radius utilities */
+  .cs-radius-sm { border-radius: calc(var(--cs-radius) - 4px); }
+  .cs-radius-lg { border-radius: calc(var(--cs-radius) + 6px); }
+  .cs-shadow    { box-shadow: var(--cs-shadow-1); }
+  .cs-shadow-lg { box-shadow: var(--cs-shadow-2); }
+  .cs-pad-1 { padding: var(--cs-space-1); }
+  .cs-pad-2 { padding: var(--cs-space-2); }
+  .cs-pad-3 { padding: var(--cs-space-3); }
+  .cs-gap-1 { gap: var(--cs-space-1); }
+  .cs-gap-2 { gap: var(--cs-space-2); }
+  .cs-gap-3 { gap: var(--cs-space-3); }
+
+  /* Responsive / container visibility utils */
+  @container (max-width: 639px) { .cs-show-sm { display: initial !important; } .cs-hide-sm { display: none !important; } }
+  @container (min-width: 640px) and (max-width: 959px) { .cs-show-md { display: initial !important; } .cs-hide-md { display: none !important; } }
+  @container (min-width: 960px) { .cs-show-lg { display: initial !important; } .cs-hide-lg { display: none !important; } }
+
+  /* Example brand background utility */
+  .cs-bg-brand { background-color: var(--cs-brand, #4f7cff); color: var(--cs-brand-ink, #0b0d12); }
+
+  /* Hover/Focus transition dedup */
+  :is(.cs-focus-ring):is(:hover, :focus-visible) { transition: box-shadow var(--cs-transition); }
 }
 
 /* =========================================
    OPTIONAL ADD-ON: Acrylic surface
    ========================================= */
-.cs-acrylic {
-  background: var(--cs-acrylic-tint, rgba(20,22,26,0.55));
-  border: 1px solid var(--cs-acrylic-border, rgba(255,255,255,0.06));
-  border-radius: var(--cs-radius, 10px);
-  box-shadow: var(--cs-shadow-2, 0 8px 24px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.18));
-  -webkit-backdrop-filter: saturate(140%) blur(10px);
-  backdrop-filter: saturate(140%) blur(10px);
-  /* Fallback visual if backdrop-filter unsupported */
-  background-clip: padding-box;
-}
-@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+@layer cs-components {
   .cs-acrylic {
-    -webkit-backdrop-filter: saturate(160%) blur(var(--cs-acrylic-blur, 14px));
-    backdrop-filter: saturate(160%) blur(var(--cs-acrylic-blur, 14px));
+    background: var(--cs-acrylic-tint, rgba(20,22,26,0.55));
+    border: 1px solid var(--cs-acrylic-border, rgba(255,255,255,0.06));
+    border-radius: var(--cs-radius, 10px);
+    box-shadow: var(--cs-shadow-2, 0 8px 24px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.18));
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    backdrop-filter: saturate(140%) blur(10px);
+    background-clip: padding-box;
   }
-}
-/* Lessen intensity on very small screens */
-@media (max-width: 480px) {
-  .cs-acrylic {
-    --cs-acrylic-blur: 8px;
-    box-shadow: var(--cs-shadow-1, 0 1px 2px rgba(0,0,0,.25), 0 1px 1px rgba(0,0,0,.10));
+  @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .cs-acrylic { -webkit-backdrop-filter: saturate(160%) blur(var(--cs-acrylic-blur, 14px)); backdrop-filter: saturate(160%) blur(var(--cs-acrylic-blur, 14px)); }
   }
+  @media (max-width: 480px) {
+    .cs-acrylic { --cs-acrylic-blur: 8px; box-shadow: var(--cs-shadow-1, 0 1px 2px rgba(0,0,0,.25), 0 1px 1px rgba(0,0,0,.10)); }
+  }
+  .cs-acrylic[data-deferred] { content-visibility: auto; contain-intrinsic-size: 300px 200px; }
 }
 
 /* =========================================
    RESPONSIVE / CONTAINER QUERIES
    ========================================= */
-/* Provide responsive padding recipe via container queries when inside `.cs-cq` */
-@container (min-width: 640px) {
-  .cs-container-fluid { padding-left: calc(var(--cs-page-pad) + var(--cs-space-1));
-                         padding-right: calc(var(--cs-page-pad) + var(--cs-space-1)); }
+@layer cs-components {
+  @container (min-width: 640px) {
+    .cs-container-fluid { padding-left: calc(var(--cs-page-pad) + var(--cs-space-1)); padding-right: calc(var(--cs-page-pad) + var(--cs-space-1)); }
+  }
+  @container (min-width: 960px) {
+    .cs-container-fluid { padding-left: calc(var(--cs-page-pad) + var(--cs-space-3)); padding-right: calc(var(--cs-page-pad) + var(--cs-space-3)); }
+  }
+  @container (min-width: 1200px) { .cs-container-fluid { max-width: var(--cs-page-max); } }
 }
-@container (min-width: 960px) {
-  .cs-container-fluid { padding-left: calc(var(--cs-page-pad) + var(--cs-space-3));
-                         padding-right: calc(var(--cs-page-pad) + var(--cs-space-3)); }
+
+/* =========================================
+   ACCESSIBILITY POWER-UPS
+   ========================================= */
+@layer cs-utilities {
+  /* Skip link */
+  .cs-skip {
+    position: fixed; inset-inline-start: var(--cs-space-4); inset-block-start: var(--cs-space-4);
+    padding: var(--cs-space-2) var(--cs-space-3);
+    background: var(--cs-bg, #0b0c0f); color: var(--cs-text, #eef1f6);
+    border: 1px solid var(--cs-border, #2a2f39);
+    border-radius: calc(var(--cs-radius) - 4px); box-shadow: var(--cs-shadow-1);
+    transform: translateY(-120%); transition: transform var(--cs-transition);
+    z-index: var(--cs-z-tooltip);
+  }
+  .cs-skip:focus-visible { transform: translateY(0); }
+
+  /* Focusable sr-only variant */
+  .cs-sr-only-focusable:focus,
+  .cs-sr-only-focusable:active {
+    position: static; width: auto; height: auto; margin: 0;
+    overflow: visible; clip: auto; white-space: normal; border: 0;
+  }
 }
-@container (min-width: 1200px) {
-  .cs-container-fluid { max-width: var(--cs-page-max); }
+
+/* =========================================
+   SEMANTIC FEEDBACK BANNERS
+   ========================================= */
+@layer cs-components {
+  .cs-banner {
+    border-radius: var(--cs-radius);
+    padding: var(--cs-space-3) var(--cs-space-4);
+    display: grid; gap: var(--cs-space-2);
+    border: 1px solid var(--cs-border);
+    background: linear-gradient(0deg, color-mix(in srgb, var(--_tone) 12%, transparent), transparent) var(--cs-elev1);
+  }
+  .cs-banner strong { font-weight: 600; }
+  .cs-banner[data-tone="info"]    { --_tone: var(--cs-info); }
+  .cs-banner[data-tone="success"] { --_tone: var(--cs-success); }
+  .cs-banner[data-tone="warning"] { --_tone: var(--cs-warning); }
+  .cs-banner[data-tone="danger"]  { --_tone: var(--cs-danger); }
+}
+
+/* =========================================
+   DIALOG/OVERLAY PRIMITIVES (no JS required)
+   ========================================= */
+@layer cs-components {
+  .cs-backdrop {
+    position: fixed; inset: 0; background: color-mix(in srgb, #000 55%, transparent);
+    backdrop-filter: blur(2px);
+    z-index: var(--cs-z-modal);
+  }
+  .cs-modal {
+    margin: auto; max-inline-size: min(680px, 92cqi);
+    background: var(--cs-elev1); color: var(--cs-text);
+    border: 1px solid var(--cs-border); border-radius: var(--cs-radius);
+    box-shadow: var(--cs-shadow-2); padding: var(--cs-space-6);
+  }
+  .cs-modal header { display:flex; align-items:center; justify-content:space-between; gap: var(--cs-space-2); }
+  .cs-modal [data-close].cs-focus-ring { inline-size: 40px; block-size: 40px; border-radius: 999px; }
+
+  /* :target-based modal pattern (progressive, hash navigation) */
+  .cs-modal-target { display: none; }
+  .cs-modal-target:target { display: grid; place-items: center; }
+}
+
+/* =========================================
+   HAS()-POWER: stateful recipes without JS
+   ========================================= */
+@layer cs-components {
+  @supports selector(:has(+ *)) {
+    .cs-disclosure { border: 1px solid var(--cs-border); border-radius: var(--cs-radius); background: var(--cs-elev1); }
+    .cs-disclosure > summary { list-style: none; padding: var(--cs-space-3) var(--cs-space-4); cursor: pointer; }
+    .cs-disclosure > summary::-webkit-details-marker { display: none; }
+
+    /* Formfeld mit Fehlerzustand, wenn folgendes .cs-error angezeigt wird */
+    .cs-field:has(+ .cs-error) { border-color: var(--cs-danger); }
+  }
+  /* Correct open state (does not rely on :has) */
+  details.cs-disclosure[open] { box-shadow: var(--cs-shadow-1); }
+}
+
+/* =========================================
+   TOKENS: EMPHASIS & CONTRAST BUMP
+   ========================================= */
+@layer cs-components {
+  .cs-contrast-bump {
+    --cs-text: #fff; --cs-text-muted: #d6dbe6;
+    --cs-border: color-mix(in srgb, var(--cs-text) 12%, transparent);
+    filter: saturate(1.05) contrast(1.05);
+  }
 }
 
 /* =========================================
    HIGH CONTRAST / FORCED COLORS
    ========================================= */
-@media (prefers-contrast: more) {
-  .cs-focus-ring:focus-visible {
-    box-shadow: 0 0 0 3px var(--cs-brand, #4f7cff), 0 0 0 6px rgba(0,0,0,0.75);
+@layer cs-base {
+  @media (prefers-contrast: more) {
+    .cs-focus-ring:focus-visible { box-shadow: 0 0 0 3px var(--cs-brand, #4f7cff), 0 0 0 6px rgba(0,0,0,0.75); }
+    .cs-acrylic { border-width: 2px; }
+    .cs-skip { border-width: 2px; }
+    .cs-banner { border-color: currentColor; }
   }
-  .cs-acrylic { border-width: 2px; }
-}
-@media (forced-colors: active) {
-  .cs-focus-ring:focus-visible { outline: 2px solid ButtonText; box-shadow: none; }
-  .cs-acrylic { background: Canvas; border: 1px solid CanvasText; }
-  .cs-container-fluid { background: Canvas; color: CanvasText; }
+  @media (forced-colors: active) {
+    .cs-focus-ring:focus-visible { outline: 2px solid ButtonText; box-shadow: none; }
+    .cs-acrylic { background: Canvas; border: 1px solid CanvasText; }
+    .cs-container-fluid { background: Canvas; color: CanvasText; }
+    .cs-skip { background: Canvas; color: CanvasText; border: 1px solid CanvasText; }
+    .cs-backdrop { background: rgba(0,0,0,0.6); }
+    .cs-modal { background: Canvas; color: CanvasText; border-color: CanvasText; }
+  }
 }
 
 /* =========================================
    PRINT
    ========================================= */
-@media print {
-  .cs-acrylic { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; background: white !important; border: 1px solid #000 !important; box-shadow: none !important; }
-  .cs-focus-ring:focus-visible { box-shadow: none !important; outline: 1px solid #000 !important; }
-  .cs-container-fluid { max-width: 100% !important; padding-left: 12mm !important; padding-right: 12mm !important; }
+@layer cs-base {
+  @media print {
+    .cs-acrylic { -webkit-backdrop-filter: none; backdrop-filter: none; background: white; border: 1px solid #000; box-shadow: none; }
+    .cs-focus-ring:focus-visible { box-shadow: none; outline: 1px solid #000; }
+    .cs-container-fluid { max-width: 100%; padding-left: 12mm; padding-right: 12mm; }
+    .cs-banner, .cs-shadow, .cs-shadow-lg { box-shadow: none; }
+    .cs-bleed-x { margin-inline: 0; }
+    .cs-hide-print { display: none !important; }
+    .cs-only-print { display: block !important; }
+  }
 }
-
-/* =========================================
-   SMALL OPTIMIZATIONS
-   ========================================= */
-/* Deduplicate focusable states via :is selector */
-:is(.cs-focus-ring):is(:hover,:focus-visible) {
-  transition: box-shadow var(--cs-transition);
-}
-
-/* Example brand background utility (tiny but handy) */
-.cs-bg-brand { background-color: var(--cs-brand, #4f7cff); color: var(--cs-brand-contrast, #0b0d12); }
