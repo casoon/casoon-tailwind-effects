@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casoon Tailwind Effects v0.7.2 Test</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Glass Effects -->
+      <div class="cs-glass-card mb-8 max-w-md">
+        <h1 class="text-3xl font-bold mb-4">Glass Effect Card</h1>
+        <p class="mb-4">This demonstrates the glass morphism effects from @casoon/tailwindcss-effects.</p>
+        <button class="cs-glass-button cs-hover-scale-105">Interactive Button</button>
+      </div>
+      
+      <!-- Gradient Text -->
+      <div class="cs-glass-card-light mb-8 max-w-md">
+        <h2 class="cs-gradient-text cs-gradient-text-sunset text-2xl font-bold mb-4">Gradient Text</h2>
+        <p class="mb-4">Beautiful gradient text effects with various color schemes.</p>
+        <div class="cs-loading-spinner cs-loading-primary mb-4"></div>
+        <p class="cs-gradient-text cs-gradient-text-ocean">Ocean themed gradient</p>
+      </div>
+      
+      <!-- Orb Effects -->
+      <div class="relative cs-glass-nav p-6 mb-8 max-w-md">
+        <div class="cs-orb cs-orb-blue cs-orb-lg absolute -top-4 -right-4 opacity-60"></div>
+        <div class="cs-orb cs-orb-purple cs-orb-md absolute -bottom-2 -left-2 opacity-40"></div>
+        <h3 class="text-xl font-semibold mb-4">Navigation with Orbs</h3>
+        <nav class="space-y-2">
+          <a href="#" class="cs-glass-button block text-left">Home</a>
+          <a href="#" class="cs-glass-button block text-left cs-micro-bounce">About</a>
+          <a href="#" class="cs-glass-button block text-left">Contact</a>
+        </nav>
+      </div>
+      
+      <!-- Micro Interactions -->
+      <div class="flex gap-4 mb-8">
+        <button class="cs-glass-button cs-hover-lift">Hover Lift</button>
+        <button class="cs-glass-button cs-hover-rotate-3">Hover Rotate</button>
+        <button class="cs-glass-button cs-hover-shake">Hover Shake</button>
+      </div>
+      
+      <!-- Utilities -->
+      <div class="cs-glass-toast cs-blur-sm max-w-md">
+        <p class="cs-text-glow">Toast notification with blur and text glow utilities.</p>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

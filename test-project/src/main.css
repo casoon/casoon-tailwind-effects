@@ -1,8 +1,0 @@
-@import 'tailwindcss';
-@import '@casoon/tailwindcss-effects';
-
-/* Custom CSS variables for testing */
-:root {
-  --cs-anim-duration: 800ms;
-  --cs-anim-ease: cubic-bezier(0.4, 0, 0.2, 1);
-}

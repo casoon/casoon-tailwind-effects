@@ -19,8 +19,8 @@
     "version:minor": "node scripts/bump-version.mjs minor",
     "version:major": "node scripts/bump-version.mjs major",
     "release:all": "pnpm run validate:pre-publish && pnpm run minify:all && echo 'Use pnpm publish -r for publishing all packages'",
-    "dev": "cd test-project && npm run dev",
-    "build:test": "cd test-project && npm run build"
+    "dev": "cd test-project-v4 && npm run dev",
+    "build:test": "cd test-project-v4 && npm run build"
   },
   "devDependencies": {
     "tailwindcss": "^4.1.13"

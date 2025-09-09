@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@import "@casoon/tailwindcss-effects";
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,6 +14,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Custom theme overrides for glass effects */
+  --cs-glass-blue: #646cff;
+  --cs-glass-purple: #535bf2;
 }
 
 a {
@@ -28,6 +35,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 h1 {
