@@ -352,3 +352,88 @@
 @media (max-width: 480px){
   .cs-anim:not(.cs-anim-lg,.cs-anim-xl,.cs-anim-2xl){ animation-duration: var(--cs-anim-duration-sm) }
 }
+
+
+
+
+/* 1. Float / Hover-Bounce */
+@keyframes cs-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.cs-float {
+  animation: cs-float 3s ease-in-out infinite;
+}
+
+/* 2. Pop-In Backdrop Effect */
+@keyframes cs-pop-in {
+  0%   { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.cs-pop-in {
+  animation: cs-pop-in var(--cs-anim-duration-sm, 200ms) var(--cs-anim-ease-standard) both;
+}
+
+/* 3. Flip-In 3D (Y-axis) */
+@keyframes cs-flip-in {
+  0%   { transform: rotateY(-90deg); opacity: 0; }
+  100% { transform: rotateY(0deg); opacity: 1; }
+}
+.cs-flip-in {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  animation: cs-flip-in 500ms var(--cs-anim-ease-emphasized) both;
+}
+
+/* 4. Blur + Fade Reveal */
+@keyframes cs-blur-fade-in {
+  0%   { opacity: 0; filter: blur(12px); }
+  100% { opacity: 1; filter: blur(0); }
+}
+.cs-blur-fade-in {
+  animation: cs-blur-fade-in 600ms ease-out both;
+}
+
+/* 5. Ping Pulse Indicator */
+@keyframes cs-ping-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+.cs-ping-pulse {
+  position: relative;
+  animation: cs-ping-pulse 2s ease-out infinite;
+}
+
+/* 6. Sheen Swipe (optional trigger via JS or :hover) */
+@keyframes cs-sheen-swipe {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+.cs-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.cs-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: skewX(-20deg);
+  animation: cs-sheen-swipe 2.5s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 7. Scroll Reveal State Helpers (optional JS can toggle these) */
+.cs-out-view {
+  opacity: 0.001;
+  transform: translateY(16px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.cs-in-view {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}

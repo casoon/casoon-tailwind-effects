@@ -9,7 +9,6 @@
     "./dist.min.css": "./dist.min.css"
   },
   "main": "./dist.css",
-  "module": "./plugin.js",
   "files": [
     "dist.css",
     "dist.min.css",

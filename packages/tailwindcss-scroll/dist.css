@@ -267,3 +267,101 @@
   .cs-scroll-smooth{ scroll-behavior:auto; }
   .cs-scrollbar-none::-webkit-scrollbar{ display:block; }
 }
+
+
+
+/* ========================
+   SCROLL REVEAL ANIMATIONS
+========================= */
+
+@keyframes cs-scroll-reveal-fade-up {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cs-scroll-reveal-scale-in {
+  0% { opacity: 0; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.cs-scroll-reveal-fade-up {
+  opacity: 0;
+  transform: translateY(16px);
+  will-change: opacity, transform;
+}
+
+.cs-scroll-reveal-scale-in {
+  opacity: 0;
+  transform: scale(0.96);
+  will-change: opacity, transform;
+}
+
+/* Apply .cs-scroll-in class via JS when intersecting */
+.cs-scroll-in.cs-scroll-reveal-fade-up {
+  animation: cs-scroll-reveal-fade-up 600ms var(--cs-anim-ease, ease-out) forwards;
+}
+
+.cs-scroll-in.cs-scroll-reveal-scale-in {
+  animation: cs-scroll-reveal-scale-in 520ms var(--cs-anim-ease, ease-out) forwards;
+}
+
+/* ========================
+   SCROLL PULSE CUE (sticky headers etc.)
+========================= */
+@keyframes cs-scroll-pulse {
+  0% { box-shadow: none; }
+  50% { box-shadow: 0 0 0 4px rgba(59,130,246,0.15); }
+  100% { box-shadow: none; }
+}
+
+.cs-scroll-pulse {
+  animation: cs-scroll-pulse 1.2s ease-out;
+}
+
+/* ========================
+   SHADOW ON SCROLL START (helper for edge cues)
+========================= */
+.cs-scroll-shadow-top {
+  position: relative;
+  z-index: 1;
+}
+.cs-scroll-shadow-top::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 12px;
+  background: linear-gradient(to bottom, rgba(0,0,0,.08), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+.cs-scroll-shadow-top.cs-has-scroll::before {
+  opacity: 1;
+}
+
+/* ========================
+   ACCESSIBILITY FALLBACKS
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  .cs-scroll-reveal-fade-up,
+  .cs-scroll-reveal-scale-in,
+  .cs-scroll-pulse {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+.cs-scroll-pulse.cs-pulse-active {
+  animation: cs-pulse-fade 0.4s ease;
+}
+
+@keyframes cs-pulse-fade {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+.cs-scroll-shadow-top.cs-has-shadow {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: box-shadow 0.25s ease;
+}

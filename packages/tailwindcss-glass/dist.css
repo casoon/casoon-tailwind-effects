@@ -523,3 +523,166 @@
 /* 7.8 Layout helpers for sticky bars & performance hints */
 .cs-glass-sticky { position: sticky; top: 0; }
 .cs-glass-will-change { will-change: transform, backdrop-filter; }
+
+
+
+
+
+/*!
+ * @casoon/tailwindcss-glass-pro
+ * Advanced Glassmorphism Utilities & Components for Tailwind CSS v4
+ * Includes: animated blur, interactive effects, gloss, skeletons, pro themes
+ * Build date: 2025-09-09
+ *
+ * ====================== What’s New in PRO =======================
+ * - 3D hover effects, depth modulation, perspective helpers
+ * - Directional gloss overlays (top/left/right/bottom)
+ * - Skeleton loading glass blocks with shimmer animation
+ * - Morphing glass animations (enter/leave)
+ * - Interactive container components with internal state tokens
+ * - Pro theme presets (neon, carbon, pastel)
+ * - Optional JS hook support via data-glass API (e.g. data-glass="card strong blue")
+ * =================================================================
+ */
+
+/* ------------------------
+   1) Animated morph effects
+   ------------------------ */
+.cs-glass-morph-in {
+  animation: glassMorphIn 0.4s ease-out both;
+}
+.cs-glass-morph-out {
+  animation: glassMorphOut 0.3s ease-in both;
+}
+
+@keyframes glassMorphIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    backdrop-filter: var(--cs-glass-blur);
+  }
+}
+
+@keyframes glassMorphOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* ------------------------
+   2) 3D hover glass effect
+   ------------------------ */
+.cs-glass-3d-hover {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cs-glass-3d-hover:hover {
+  transform: rotateX(6deg) rotateY(-4deg) scale(1.02);
+  box-shadow: 0 24px 48px var(--cs-glass-shadow-xl);
+}
+
+/* -----------------------------
+   3) Glossy highlight overlays
+   ----------------------------- */
+.cs-glass-gloss-top::before,
+.cs-glass-gloss-left::before,
+.cs-glass-gloss-right::before,
+.cs-glass-gloss-bottom::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: soft-light;
+}
+
+.cs-glass-gloss-top::before {
+  top: 0; left: 0; right: 0; height: 20%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.cs-glass-gloss-left::before {
+  top: 0; bottom: 0; left: 0; width: 15%;
+  background: linear-gradient(to right, rgba(255,255,255,0.35), transparent);
+}
+.cs-glass-gloss-right::before {
+  top: 0; bottom: 0; right: 0; width: 15%;
+  background: linear-gradient(to left, rgba(255,255,255,0.35), transparent);
+}
+.cs-glass-gloss-bottom::before {
+  bottom: 0; left: 0; right: 0; height: 20%;
+  background: linear-gradient(to top, rgba(255,255,255,0.3), transparent);
+}
+
+/* ------------------------
+   4) Skeleton glass blocks
+   ------------------------ */
+.cs-glass-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: var(--cs-glass-radius);
+  min-height: 2rem;
+  isolation: isolate;
+}
+.cs-glass-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: glassSkeletonShimmer 1.2s infinite;
+}
+
+@keyframes glassSkeletonShimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ------------------------
+   5) Pro theme presets
+   ------------------------ */
+.cs-glass-theme-neon {
+  --cs-glass-bg-light: rgba(58, 227, 255, 0.1);
+  --cs-glass-border-medium: rgba(58, 227, 255, 0.25);
+  --cs-glass-shadow-def: 0 8px 32px rgba(58, 227, 255, 0.25);
+  --cs-glass-focus-ring: rgba(58, 227, 255, 0.6);
+}
+
+.cs-glass-theme-carbon {
+  --cs-glass-bg-light: rgba(30, 30, 30, 0.25);
+  --cs-glass-border-medium: rgba(255, 255, 255, 0.08);
+  --cs-glass-shadow-def: 0 8px 32px rgba(0,0,0,0.4);
+  --cs-glass-focus-ring: rgba(255, 255, 255, 0.3);
+}
+
+.cs-glass-theme-pastel {
+  --cs-glass-bg-light: rgba(255, 230, 250, 0.12);
+  --cs-glass-border-medium: rgba(255, 230, 250, 0.25);
+  --cs-glass-shadow-def: 0 8px 32px rgba(255, 230, 250, 0.25);
+  --cs-glass-focus-ring: rgba(255, 230, 250, 0.6);
+}
+
+/* ------------------------
+   6) Optional JS API support
+   ------------------------ */
+[data-glass] {
+  display: block;
+}
+
+[data-glass~="card"] { @apply cs-glass-card; }
+[data-glass~="strong"] { @apply cs-glass-strong; }
+[data-glass~="blue"] { @apply cs-glass-blue; }
+[data-glass~="morph-in"] { @apply cs-glass-morph-in; }
+[data-glass~="3d"] { @apply cs-glass-3d-hover; }
+[data-glass~="skeleton"] { @apply cs-glass-skeleton; }

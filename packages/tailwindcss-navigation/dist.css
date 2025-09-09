@@ -380,3 +380,97 @@
 /* Variant classes replace these long chains:
    (was) .cs-nav-pills .cs-nav-link..., .cs-nav-tabs .cs-nav-link...
 */
+
+
+
+/* ----------------------------------------------
+   ACTIVE INDICATOR: Animated underline on tab
+---------------------------------------------- */
+.cs-nav-link--tab.cs-active {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.cs-nav-link--tab.cs-active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background-color: var(--cs-nav-primary);
+  animation: cs-nav-underline-in 240ms var(--cs-ease) forwards;
+}
+
+@keyframes cs-nav-underline-in {
+  from { transform: translateX(-50%) scaleX(0); }
+  to   { transform: translateX(-50%) scaleX(1); }
+}
+
+/* ----------------------------------------------
+   DROPDOWN MENU: Fade + slide
+---------------------------------------------- */
+.cs-dropdown-menu {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 200ms var(--cs-ease), transform 200ms var(--cs-ease);
+}
+.cs-dropdown.cs-expanded .cs-dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----------------------------------------------
+   HOVER REVEAL: Delayed fade-in effect
+---------------------------------------------- */
+.cs-nav-link--pill {
+  opacity: 0.85;
+  transition: opacity 160ms ease-in-out 80ms;
+}
+.cs-nav-link--pill:hover {
+  opacity: 1;
+  transition-delay: 0ms;
+}
+
+/* ----------------------------------------------
+   TAB RIPPLE (on click) — optional JS trigger
+---------------------------------------------- */
+.cs-nav-link--tab[data-ripple] {
+  position: relative;
+  overflow: hidden;
+}
+.cs-nav-link--tab[data-ripple]::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: var(--cs-nav-primary);
+  opacity: 0.15;
+  transform: scale(0);
+  pointer-events: none;
+  animation: none;
+}
+.cs-nav-link--tab[data-ripple].cs-ripple-anim::after {
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: cs-tab-ripple 400ms ease-out forwards;
+}
+
+@keyframes cs-tab-ripple {
+  to { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* ----------------------------------------------
+   ACCESSIBILITY + REDUCED MOTION
+---------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cs-nav-link--tab.cs-active::after,
+  .cs-dropdown-menu,
+  .cs-nav-link--tab[data-ripple].cs-ripple-anim::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

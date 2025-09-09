@@ -336,4 +336,48 @@
   if (doc.readyState !== 'loading') API.init();
   else doc.addEventListener('DOMContentLoaded', () => API.init());
 
+
+  // -------- Erweiterung: Scroll Pulse + Shadow
+  function scrollEffectsExtras() {
+    const headerEls = doc.querySelectorAll('.cs-scroll-shadow-top');
+    const pulseEls = doc.querySelectorAll('.cs-scroll-pulse');
+
+    const hasScrolled = () => window.scrollY > 10;
+
+    // Top-Shadow anzeigen, wenn Content über dem Element existiert
+    const updateShadows = () => {
+      headerEls.forEach(el => {
+        if (el.offsetTop > 0 || hasScrolled()) {
+          el.classList.add('cs-has-shadow');
+        } else {
+          el.classList.remove('cs-has-shadow');
+        }
+      });
+    };
+
+    // Pulse-Animation bei Scroll
+    const triggerPulse = () => {
+      pulseEls.forEach(el => {
+        el.classList.remove('cs-pulse-active'); // Reset
+        // retrigger animation
+        void el.offsetWidth;
+        el.classList.add('cs-pulse-active');
+      });
+    };
+
+    // Events binden
+    window.addEventListener('scroll', () => {
+      updateShadows();
+      triggerPulse();
+    }, { passive: true });
+
+    updateShadows(); // Initialzustand setzen
+  }
+
+  // Auto-init Zusatz-Effekte nach Haupt-Init
+  setTimeout(scrollEffectsExtras, 50);
+
+
+
+
 })();

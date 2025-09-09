@@ -383,15 +383,150 @@
 .cs-shadow-2 { box-shadow: var(--cs-shadow-2); }
 .cs-shadow-3 { box-shadow: var(--cs-shadow-3); }
 
-/* =========================================================
-   CHANGELOG & NOTES
-   - v1.0.0 (2025-09-08)
-     • Compiled Tailwind v4 orbs plugin into prefix-safe CSS (cs-*)
-     • Introduced .cs-root token scope with color, opacity, motion, elevation
-     • Shipped rgba() gradient fallbacks + color-mix upgrades via @supports
-     • Added a11y media queries (reduced-motion, contrast, forced-colors)
-     • Added container query sizing for responsive orbs (opt-in: .cs-cq + [data-size~="responsive"])
-     • Provided acrylic, glow, sticky, will-change, and print helpers
-     • Normalized z-index tiers and focus-visible styling
-     • Added simple components (card, button) and motion recipes
-*/
+
+
+
+
+
+/* ============================
+   NEW ANIMATIONS
+============================ */
+
+/* Morphing shape – soft blob effect */
+@keyframes cs-orb-morph {
+  0%   { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+  25%  { border-radius: 55% 45% 60% 40% / 60% 40% 55% 45%; }
+  50%  { border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%; }
+  75%  { border-radius: 45% 55% 50% 50% / 50% 50% 45% 55%; }
+  100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+}
+
+/* Expand-retract pulse (for hover/focus) */
+@keyframes cs-orb-bloom {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+/* Orb shimmer (moving light gradient) */
+@keyframes cs-orb-shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================
+   ORB PRO CLASSES
+============================ */
+
+/* Morphing orb (animated shape blob) */
+.cs-orb-morph {
+  animation: cs-orb-morph 12s ease-in-out infinite;
+}
+
+/* Orb shimmer gradient (on hover only) */
+.cs-orb-shimmer {
+  background: linear-gradient(270deg, var(--cs-orb-blue), var(--cs-orb-blue-light), var(--cs-orb-blue));
+  background-size: 600% 600%;
+  animation: cs-orb-shimmer 10s ease infinite;
+}
+
+/* Orb bloom effect on hover/focus (pulse-like) */
+.cs-orb-bloom:hover,
+.cs-orb-bloom:focus-visible {
+  animation: cs-orb-bloom 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Combine multiple (morph + pulse) */
+.cs-orb-zen {
+  animation:
+    cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite,
+    cs-orb-morph 14s ease-in-out infinite;
+}
+
+/* ============================
+   CARD HOVER WITH ORB REVEAL
+============================ */
+.cs-card-hover-orb {
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-card-hover-orb::before {
+  content: "";
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 200%;
+  height: 200%;
+  background: var(--cs-orb-fallback-blue);
+  opacity: 0;
+  filter: blur(32px);
+  transition: opacity 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cs-card-hover-orb:hover::before {
+  opacity: 0.6;
+}
+
+/* Optional modifier for shimmer orb reveal */
+.cs-card-hover-orb-shimmer::before {
+  background: linear-gradient(135deg, #3b82f6, #93c5fd, #3b82f6);
+  background-size: 300% 300%;
+  animation: cs-orb-shimmer 6s linear infinite;
+}
+
+/* ============================
+   ORB BUTTON ENHANCEMENT
+============================ */
+.cs-btn-orb {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cs-btn-orb::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle at center, var(--cs-orb-blue-light), transparent 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 0;
+}
+
+.cs-btn-orb:hover::after {
+  opacity: 0.4;
+  transform: scale(1.2);
+}
+
+/* ============================
+   OPTIONAL MODAL-ORBS SETUP
+============================ */
+.cs-orb-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--cs-orb-fallback-purple);
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: var(--cs-z-modal);
+}
+
+/* ============================
+   A11Y / FALLBACKS
+============================ */
+@media (prefers-reduced-motion: reduce) {
+  .cs-orb-bloom,
+  .cs-orb-shimmer,
+  .cs-orb-morph,
+  .cs-orb-zen,
+  .cs-card-hover-orb::before,
+  .cs-btn-orb::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
