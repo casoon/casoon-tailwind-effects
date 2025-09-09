@@ -17,12 +17,12 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node scripts/test-classes.mjs",
-    "test:classes": "node scripts/extract-classes.mjs",
-    "test:compatibility": "node scripts/test-classes.mjs",
+    "test": "node ../../scripts/validate-css.mjs",
+    "test:classes": "echo 'Classes extracted during CSS validation'",
+    "test:compatibility": "node ../../scripts/validate-css.mjs",
     "prepublishOnly": "npm run minify && npm run validate",
     "preversion": "npm run test:compatibility",
-    "validate": "npm run test:compatibility",
+    "validate": "node ../../scripts/validate-css.mjs",
     "minify": "node ../../scripts/minify-css.mjs"
   },
   "peerDependencies": {
