@@ -1,28 +1,40 @@
 {
   "name": "@casoon/tailwindcss-glass",
-  "version": "0.7.3",
-  "description": "Glass morphism components and utilities for Tailwind CSS v4",
+  "version": "0.7.4",
+  "description": "Glassmorphism components and utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
-    ".": "./dist.css",
+    ".": "./dist.js",
+    "./plugin": "./plugin.js",
     "./dist.css": "./dist.css",
-    "./dist.min.css": "./dist.min.css"
+    "./dist.min.css": "./dist.min.css",
+    "./styles.css": "./dist.css",
+    "./styles.min.css": "./dist.min.css"
   },
-  "main": "./dist.css",
+  "main": "./dist.js",
+  "module": "./dist.js",
+  "style": "./dist.css",
+  "sideEffects": [
+    "./dist.js",
+    "./dist.css",
+    "./dist.min.css"
+  ],
   "files": [
     "dist.css",
     "dist.min.css",
+    "dist.js",
+    "plugin.js",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "test": "node ../../scripts/validate-css.mjs",
-    "test:classes": "echo 'Classes extracted during CSS validation'",
-    "test:compatibility": "node ../../scripts/validate-css.mjs",
-    "prepublishOnly": "npm run minify && npm run validate",
-    "preversion": "npm run test:compatibility",
+    "build": "postcss src/index.css -o dist.css && node ../../scripts/minify-css.mjs tailwindcss-glass && node ./scripts/make-dist-js.mjs",
+    "build:dev": "postcss src/index.css -o dist.css && node ./scripts/make-dist-js.mjs",
+    "minify": "node ../../scripts/minify-css.mjs tailwindcss-glass",
     "validate": "node ../../scripts/validate-css.mjs",
-    "minify": "node ../../scripts/minify-css.mjs"
+    "test": "npm run validate",
+    "test:compatibility": "npm run validate",
+    "prepublishOnly": "npm run minify && npm run validate"
   },
   "peerDependencies": {
     "tailwindcss": "^4.0.0"

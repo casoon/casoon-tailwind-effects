@@ -683,17 +683,3 @@
   --cs-glass-shadow-def: 0 8px 32px rgba(255, 230, 250, 0.25);
   --cs-glass-focus-ring: rgba(255, 230, 250, 0.6);
 }
-
-/* ------------------------
-   6) Optional JS API support
-   ------------------------ */
-[data-glass] {
-  display: block;
-}
-
-[data-glass~="card"] { @apply cs-glass-card; }
-[data-glass~="strong"] { @apply cs-glass-strong; }
-[data-glass~="blue"] { @apply cs-glass-blue; }
-[data-glass~="morph-in"] { @apply cs-glass-morph-in; }
-[data-glass~="3d"] { @apply cs-glass-3d-hover; }
-[data-glass~="skeleton"] { @apply cs-glass-skeleton; }

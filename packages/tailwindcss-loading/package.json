@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-loading",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": " for Tailwind CSS v4",
   "type": "module",
   "exports": {
