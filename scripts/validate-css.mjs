@@ -196,7 +196,10 @@ class CSSValidator {
   
   extractCSSClasses(content) {
     // Remove CSS comments first to avoid false matches
-    const cssWithoutComments = content.replace(/\/\*[\s\S]*?\*\//g, '');
+    let cssWithoutComments = content.replace(/\/\*[\s\S]*?\*\//g, '');
+    
+    // Remove data URLs to avoid false matches (e.g., xmlns='http://www.w3.org' -> .w3, .org)
+    cssWithoutComments = cssWithoutComments.replace(/url\([^)]*\)/g, '');
     
     // Extract CSS class selectors
     const classPattern = /\.([a-zA-Z_-][a-zA-Z0-9_-]*)/g;

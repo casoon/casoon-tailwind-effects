@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-scroll",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "type": "module",
   "exports": {
     ".": "./dist.css",
@@ -17,7 +17,7 @@
     "scroll.js"
   ],
   "dependencies": {
-    "@casoon/tailwindcss-animations": "^0.5.6"
+    "@casoon/tailwindcss-animations": "^0.7.2"
   },
   "peerDependencies": {
     "tailwindcss": "^4.0.0"

@@ -473,4 +473,9 @@
    11) Safety & Dedup Optimizations
 ------------------------------------------------------- */
 /* Grouped background-clip text utilities */
-.cs-gradient-text:is(.cs-gradient-text-sunset, .cs-gradient-text-ocean, .cs-gradient-text-fire, .cs-gradient-text-custom-2, .cs-gradient-text-custom-3){}
+.cs-gradient-text:is(.cs-gradient-text-sunset, .cs-gradient-text-ocean, .cs-gradient-text-fire, .cs-gradient-text-custom-2, .cs-gradient-text-custom-3){
+  /* Ensure proper text gradient inheritance */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

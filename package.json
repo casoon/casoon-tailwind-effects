@@ -1,7 +1,7 @@
 {
   "name": "casoon-tailwind-effects",
   "private": true,
-  "version": "0.7.1",
+  "version": "0.7.2",
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -15,6 +15,9 @@
     "minify": "node scripts/minify-css.mjs",
     "minify:all": "node scripts/minify-css.mjs",
     "build:all": "pnpm run minify:all",
+    "version:patch": "node scripts/bump-version.mjs patch",
+    "version:minor": "node scripts/bump-version.mjs minor",
+    "version:major": "node scripts/bump-version.mjs major",
     "release:all": "pnpm run validate:pre-publish && pnpm run minify:all && echo 'Use pnpm publish -r for publishing all packages'",
     "dev": "cd test-project && npm run dev",
     "build:test": "cd test-project && npm run build"
