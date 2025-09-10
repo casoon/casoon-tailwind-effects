@@ -43,29 +43,60 @@
         <!-- Glass Effects Demo -->
         <section class="mb-12">
           <h2 class="text-center mb-8">Glass Morphism Effects</h2>
-          <div class="grid md:grid-cols-3 gap-6">
-            <div class="cs-glass cs-hover-scale-105 p-6" style="border-radius: 12px;">
-              <h3>Standard Glass</h3>
-              <p class="text-white-80">
-                Leichter Glasmorphismus-Effekt mit subtiler Transparenz.
+          <div class="grid md:grid-cols-4 gap-4">
+            <div class="cs-glass-weak cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Weak</h3>
+              <p class="text-white-80 text-xs">
+                Sehr subtile Transparenz
               </p>
-              <button class="btn btn-primary">Interact</button>
+              <button class="cs-glass-button text-xs mt-2">Weak</button>
             </div>
             
-            <div class="cs-glass-medium cs-hover-scale-105 p-6" style="border-radius: 12px;">
-              <h3>Glass Medium</h3>
-              <p class="text-white-80">
-                Mittlere Glasstärke für ausgeglichene Sichtbarkeit.
+            <div class="cs-glass cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Standard</h3>
+              <p class="text-white-80 text-xs">
+                Standard Glaseffekt
               </p>
-              <button class="btn btn-secondary">Try It</button>
+              <button class="cs-glass-button text-xs mt-2">Standard</button>
             </div>
             
-            <div class="cs-glass-strong cs-hover-scale-105 p-6" style="border-radius: 12px;">
-              <h3>Glass Strong</h3>
-              <p class="text-white-80">
-                Starker Glaseffekt für maximale Tiefe.
+            <div class="cs-glass-card-light cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Light</h3>
+              <p class="text-white-80 text-xs">
+                Heller Glaseffekt
               </p>
-              <button class="btn btn-primary">Explore</button>
+              <button class="cs-glass-button text-xs mt-2">Light</button>
+            </div>
+            
+            <div class="cs-glass-strong cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Strong</h3>
+              <p class="text-white-80 text-xs">
+                Starker Blur-Effekt
+              </p>
+              <button class="cs-glass-button text-xs mt-2">Strong</button>
+            </div>
+          </div>
+          
+          <!-- Colored Glass variants -->
+          <div class="grid md:grid-cols-4 gap-4 mt-6">
+            <div class="cs-glass-blue cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Blue</h3>
+              <p class="text-white-80 text-xs">Blauer Glaston</p>
+            </div>
+            
+            <div class="cs-glass-purple cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Purple</h3>
+              <p class="text-white-80 text-xs">Violetter Glaston</p>
+            </div>
+            
+            <div class="cs-glass-green cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Green</h3>
+              <p class="text-white-80 text-xs">Grüner Glaston</p>
+            </div>
+            
+            <div class="cs-glass-pink cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Pink</h3>
+              <p class="text-white-80 text-xs">Rosaner Glaston</p>
             </div>
           </div>
         </section>
@@ -133,11 +164,11 @@
             <div class="cs-glass-card text-center p-6">
               <h3 class="mb-6">Animations</h3>
               <div class="space-y-4 mb-6">
-                <div class="cs-anim cs-fade-in">Fade In</div>
-                <div class="cs-anim cs-slide-up">Slide Up</div>
-                <div class="cs-anim cs-scale-in">Scale In</div>
+                <div class="cs-anim cs-fade-in p-4 bg-opacity-10 bg-white rounded">Fade In Animation</div>
+                <div class="cs-anim cs-slide-up p-4 bg-opacity-10 bg-blue-500 rounded">Slide Up Animation</div>
+                <div class="cs-anim cs-scale-in p-4 bg-opacity-10 bg-purple-500 rounded">Scale In Animation</div>
               </div>
-              <p class="text-white-80">Verschiedene Animationen</p>
+              <p class="text-white-80">Verschiedene CSS-Animationen</p>
             </div>
           </div>
         </section>
@@ -162,22 +193,25 @@
         <!-- Text Effects -->
         <section class="mb-12">
           <h2 class="text-center mb-8">Text Effects</h2>
-          <div class="cs-glass-card p-8" style="border-radius: 12px;">
+          <div class="cs-glass-card p-8">
             <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 class="cs-text-glow mb-4">Glowing Text</h3>
-                <p class="cs-text-shadow mb-4">Text with shadow effect</p>
-                <p class="cs-text-blur-sm mb-4">Slightly blurred text</p>
-                <p class="cs-gradient-text cs-gradient-text-rainbow">Rainbow gradient text</p>
+                <h3 class="cs-glow-lg mb-4" style="color: #60a5fa;">Glowing Text Effect</h3>
+                <p class="cs-gradient-text-ocean mb-4">Ocean Gradient Text</p>
+                <p class="cs-gradient-text-fire mb-4">Fire Gradient Text</p>
+                <p class="cs-gradient-text-sunset mb-4">Sunset Gradient Text</p>
               </div>
               <div>
-                <h3 class="mb-4">Badge Examples</h3>
-                <div class="space-x-2 mb-4">
-                  <span class="cs-badge cs-badge-primary">Primary</span>
-                  <span class="cs-badge cs-badge-secondary">Secondary</span>
-                  <span class="cs-badge cs-badge-success">Success</span>
-                  <span class="cs-badge cs-badge-warning">Warning</span>
-                  <span class="cs-badge cs-badge-error">Error</span>
+                <h3 class="mb-4">Typography & Effects</h3>
+                <div class="space-y-3 mb-4">
+                  <p class="cs-text-xl">Extra Large Text</p>
+                  <p class="cs-text-lg">Large Text</p>
+                  <p class="cs-text">Standard Text</p>
+                  <p class="cs-text-sm">Small Text</p>
+                </div>
+                <div class="flex gap-2">
+                  <span class="cs-glass-button text-sm">Glass Button</span>
+                  <span class="cs-glass-button cs-glass-blue text-sm">Blue Glass</span>
                 </div>
               </div>
             </div>
