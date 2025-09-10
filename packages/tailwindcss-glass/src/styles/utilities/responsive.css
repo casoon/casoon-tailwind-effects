@@ -1,0 +1,13 @@
+/* =========================================================
+   Container Query Responsive (cs- only)
+   - Progressive blur as container grows.
+   ========================================================= */
+@container (min-width: 320px) {
+  .cs-glass-responsive { --cs-glass-blur: var(--cs-glass-blur-sm); }
+}
+@container (min-width: 640px) {
+  .cs-glass-responsive { --cs-glass-blur: var(--cs-glass-blur); }
+}
+@container (min-width: 1024px) {
+  .cs-glass-responsive { --cs-glass-blur: var(--cs-glass-blur-lg); }
+}

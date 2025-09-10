@@ -20,9 +20,16 @@
     "version:major": "node scripts/bump-version.mjs major",
     "release:all": "pnpm run validate:pre-publish && pnpm run minify:all && echo 'Use pnpm publish -r for publishing all packages'",
     "dev": "cd test-project-v4 && npm run dev",
-    "build:test": "cd test-project-v4 && npm run build"
+    "build:test": "cd test-project-v4 && npm run build",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write ."
   },
   "devDependencies": {
-    "tailwindcss": "^4.1.13"
+    "@tailwindcss/cli": "4.1.13",
+    "tailwindcss": "4.1.13"
   }
 }

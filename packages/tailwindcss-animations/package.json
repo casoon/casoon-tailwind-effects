@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-animations",
-  "version": "0.7.5",
+  "version": "0.8.0",
   "description": "Animation utilities and keyframes for Tailwind CSS v4",
   "type": "module",
   "exports": {
@@ -23,8 +23,9 @@
   },
   "license": "MIT",
   "scripts": {
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist.css && node ../../scripts/make-dist-js.mjs && npm run minify",
     "validate": "node ../../scripts/validate-css.mjs",
-    "prepublishOnly": "npm run minify && npm run validate",
+    "prepublishOnly": "npm run build && npm run validate",
     "minify": "node ../../scripts/minify-css.mjs"
   }
 }

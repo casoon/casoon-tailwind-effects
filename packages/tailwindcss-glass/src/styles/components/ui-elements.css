@@ -1,0 +1,114 @@
+/* =========================================================
+   Components (existing selectors preserved)
+   ========================================================= */
+
+.cs-glass-card {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--cs-glass-shadow-def);
+  transition: all var(--cs-glass-transition) ease;
+}
+.cs-glass-card:hover {
+  background: var(--cs-glass-bg-hover);
+  box-shadow: 0 20px 40px var(--cs-glass-shadow-strong);
+  transform: translateY(-2px);
+  border: 1px solid var(--cs-glass-border-strong);
+}
+.cs-glass-card:focus-within {
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+}
+
+.cs-glass-card-light {
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--cs-glass-shadow-def);
+  transition: all var(--cs-glass-transition) ease;
+}
+.cs-glass-card-light:hover {
+  background: var(--cs-glass-bg-light-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px var(--cs-glass-shadow-strong);
+}
+.cs-glass-card-light:focus-within {
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+}
+
+.cs-glass-nav {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 12px;
+  box-shadow: var(--cs-glass-shadow-def);
+  transition: all var(--cs-glass-transition) ease;
+}
+.cs-glass-nav-light {
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  border-radius: 12px;
+  box-shadow: var(--cs-glass-shadow-def);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-button {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  transition: all var(--cs-glass-transition) ease;
+  cursor: pointer;
+  min-height: 2.5rem; /* touch target */
+  min-width: 2.5rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.cs-glass-button:hover {
+  background: var(--cs-glass-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px var(--cs-glass-shadow-medium);
+}
+/* Both mouse and keyboard focus are styled */
+.cs-glass-button:focus,
+.cs-glass-button:focus-visible {
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+}
+.cs-glass-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px var(--cs-glass-shadow-medium);
+}
+
+.cs-glass-toast {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 32px var(--cs-glass-shadow-strong);
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-glass-tooltip {
+  background: var(--cs-glass-tooltip-bg);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  box-shadow: 0 4px 16px var(--cs-glass-shadow-xl);
+  font-size: 0.875rem;
+  color: white;
+  white-space: nowrap;
+  z-index: 50;
+}
+
+.cs-glass-dropdown {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 0.75rem;
+  box-shadow: var(--cs-glass-shadow-def);
+  padding: 0.5rem;
+  min-width: 12rem;
+  z-index: 50;
+}

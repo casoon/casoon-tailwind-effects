@@ -1,0 +1,41 @@
+/* =========================================================
+   Base glass effects – deduplicated (cs- only)
+   - Avoids repeating -webkit-backdrop-filter/backdrop-filter everywhere.
+   ========================================================= */
+/* Base glass backdrop filter for all glass components */
+.cs-glass,
+.cs-glass-dark,
+.cs-glass-sm,
+.cs-glass-lg,
+.cs-glass-weak,
+.cs-glass-medium,
+.cs-glass-strong {
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
+}
+
+/* Colored glass variants */
+.cs-glass-blue,
+.cs-glass-purple,
+.cs-glass-green,
+.cs-glass-pink,
+.cs-glass-amber {
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
+}
+
+/* Glass components */
+.cs-glass-card,
+.cs-glass-card-light,
+.cs-glass-nav,
+.cs-glass-nav-light,
+.cs-glass-button,
+.cs-glass-toast,
+.cs-glass-tooltip,
+.cs-glass-dropdown {
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box; /* prevent border bleed */
+}

@@ -1,0 +1,20 @@
+/* Casoon Tailwind Effects - Navigation Package */
+/* A comprehensive navigation component library for modern web applications */
+
+/* Base Styles */
+@import "./base/tokens.css";
+
+/* Components */
+@import "./components/nav.css";
+@import "./components/nav-pills.css";
+@import "./components/nav-tabs.css";
+@import "./components/navbar.css";
+@import "./components/drawer.css";
+@import "./components/breadcrumbs.css";
+
+/* Utilities */
+@import "./utilities/navigation.css";
+@import "./utilities/accessibility.css";
+
+/* Effects */
+@import "./effects/animations.css";

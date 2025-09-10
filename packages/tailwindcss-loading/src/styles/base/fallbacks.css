@@ -1,0 +1,102 @@
+/* =========================================================
+   ACCESSIBILITY & ENVIRONMENT QUERIES
+   ========================================================= */
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cs-spinner,
+  .cs-spinner-dots > span {
+    animation-name: none;
+    animation-duration: 0s;
+  }
+  .cs-loading-overlay {
+    animation-name: none;
+    animation-duration: 0s;
+  }
+}
+
+/* High contrast preference */
+@media (prefers-contrast: more) {
+  .cs-spinner {
+    border-color: var(--cs-color-spinner-base, #f3f3f3);
+    border-top-color: var(--cs-color-spinner-active, #3498db);
+  }
+  .cs-loading-overlay {
+    background: rgba(0,0,0,0.6);
+  }
+}
+
+/* Forced colors (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-spinner {
+    border-color: CanvasText;
+    border-top-color: Highlight;
+  }
+  .cs-spinner-dots > span {
+    background: Highlight;
+  }
+  .cs-loading-overlay {
+    background: Canvas;
+    color: CanvasText;
+    outline: 1px solid CanvasText;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE / SMALL-SCREEN TUNING
+   ========================================================= */
+@media (max-width: 480px) {
+  .cs-spinner:is(.cs-spinner--lg, .cs-spinner--xl) {
+    --cs-size-spinner: 48px;
+    --cs-border-spinner: 4px;
+  }
+  .cs-loading-overlay {
+    padding: 1rem;
+  }
+  @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+    .cs-loading-overlay {
+      -webkit-backdrop-filter: blur(4px) saturate(110%);
+      backdrop-filter: blur(4px) saturate(110%);
+    }
+  }
+}
+
+/* =========================================================
+   INTERACTION / FOCUS (use :focus-visible only)
+   ========================================================= */
+.cs-loading-overlay :is(button, [role="button"], a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--cs-color-spinner-active, #3498db);
+  outline-offset: 2px;
+  transition: box-shadow var(--cs-transition, 150ms ease);
+}
+
+/* =========================================================
+   PRINT STYLES (no blur/motion; solid borders)
+   ========================================================= */
+@media print {
+  .cs-loading-overlay {
+    position: static;
+    inset: auto;
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    animation: none;
+  }
+  .cs-spinner {
+    animation: none;
+    border-color: #999;
+    border-top-color: #000;
+  }
+}
+
+/* Accessibility-aware: reduced motion for pro effects */
+@media (prefers-reduced-motion: reduce) {
+  .cs-spinner--glow,
+  .cs-spinner--gradient,
+  .cs-spinner--in,
+  .cs-spinner-dots--reveal > span,
+  .cs-loading-overlay--shimmer {
+    animation-name: none;
+    animation-duration: 0s;
+  }
+}

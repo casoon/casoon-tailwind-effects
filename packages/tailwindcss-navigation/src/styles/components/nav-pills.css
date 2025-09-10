@@ -1,0 +1,100 @@
+/* NAVIGATION PILLS */
+.cs-nav-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cs-space-1);
+  padding: var(--cs-space-1);
+  background-color: var(--cs-color-bg-secondary);
+  border-radius: var(--cs-radius-lg);
+}
+
+.cs-nav-pills .cs-nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cs-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cs-nav-pills .cs-nav-item {
+  display: flex;
+}
+
+.cs-nav-pills .cs-nav-link {
+  display: inline-block;
+  padding: var(--cs-space-2) var(--cs-space-4);
+  color: var(--cs-color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--cs-radius-md);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all var(--cs-transition-fast) var(--cs-ease-out);
+  white-space: nowrap;
+}
+
+.cs-nav-pills .cs-nav-link:hover {
+  color: var(--cs-color-text);
+  background-color: var(--cs-color-bg-hover);
+}
+
+.cs-nav-pills .cs-nav-item.cs-nav-item--active .cs-nav-link {
+  color: white;
+  background-color: var(--cs-color-primary);
+  box-shadow: var(--cs-shadow-sm);
+}
+
+.cs-nav-pills .cs-nav-item.cs-nav-item--active .cs-nav-link:hover {
+  background-color: var(--cs-color-primary-hover);
+}
+
+/* Pills Variants */
+.cs-nav-pills.cs-nav-pills--sm .cs-nav-link {
+  padding: calc(var(--cs-space-1) * 0.75) var(--cs-space-3);
+  font-size: 0.8125rem;
+}
+
+.cs-nav-pills.cs-nav-pills--lg .cs-nav-link {
+  padding: var(--cs-space-3) var(--cs-space-5);
+  font-size: 0.9375rem;
+}
+
+/* Vertical Pills */
+.cs-nav-pills.cs-nav-pills--vertical {
+  flex-direction: column;
+  width: fit-content;
+}
+
+.cs-nav-pills.cs-nav-pills--vertical .cs-nav-list {
+  flex-direction: column;
+}
+
+.cs-nav-pills.cs-nav-pills--vertical .cs-nav-item {
+  width: 100%;
+}
+
+.cs-nav-pills.cs-nav-pills--vertical .cs-nav-link {
+  width: 100%;
+  text-align: left;
+}
+
+/* Pills with Icons */
+.cs-nav-pills .cs-nav-link .cs-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: var(--cs-space-2);
+  vertical-align: -0.125em;
+}
+
+.cs-nav-pills .cs-nav-link .cs-icon:last-child {
+  margin-right: 0;
+  margin-left: var(--cs-space-2);
+}
+
+/* Disabled State */
+.cs-nav-pills .cs-nav-item.cs-nav-item--disabled .cs-nav-link {
+  color: var(--cs-color-text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}

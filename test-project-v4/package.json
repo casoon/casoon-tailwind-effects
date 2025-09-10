@@ -12,7 +12,7 @@
     "vite": "^7.1.2"
   },
   "dependencies": {
-    "@casoon/tailwindcss-effects": "file:../packages/tailwindcss-effects",
-    "@tailwindcss/cli": "^4.0.0"
+    "@casoon/tailwindcss-effects": "workspace:*",
+    "tailwindcss": "4.2.1"
   }
 }

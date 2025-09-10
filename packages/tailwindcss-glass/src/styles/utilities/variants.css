@@ -1,0 +1,55 @@
+/* =========================================================
+   Utilities (existing selectors preserved)
+   ========================================================= */
+
+/* Base Glass Effects */
+.cs-glass {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+}
+.cs-glass-dark {
+  background: var(--cs-glass-bg-dark);
+  border: 1px solid var(--cs-glass-border-light);
+}
+
+/* Size Variants */
+.cs-glass-sm { --cs-glass-blur: var(--cs-glass-blur-sm); }
+.cs-glass-lg { --cs-glass-blur: var(--cs-glass-blur-lg); }
+
+/* Intensity Variants */
+.cs-glass-weak {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-weak);
+  border: 1px solid var(--cs-glass-border-light);
+}
+.cs-glass-medium {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+}
+.cs-glass-strong {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+}
+
+/* Colored Glass Variants */
+.cs-glass-blue   { background: var(--cs-glass-bg-blue);   border: 1px solid var(--cs-glass-border-blue); }
+.cs-glass-purple { background: var(--cs-glass-bg-purple); border: 1px solid var(--cs-glass-border-purple); }
+.cs-glass-green  { background: var(--cs-glass-bg-green);  border: 1px solid var(--cs-glass-border-green); }
+.cs-glass-pink   { background: var(--cs-glass-bg-pink);   border: 1px solid var(--cs-glass-border-pink); }
+.cs-glass-amber  { background: var(--cs-glass-bg-amber);  border: 1px solid var(--cs-glass-border-amber); }
+
+/* Border Radius Variants */
+.cs-glass-rounded-sm { border-radius: var(--cs-glass-radius-sm); }
+.cs-glass-rounded    { border-radius: var(--cs-glass-radius); }
+.cs-glass-rounded-lg { border-radius: var(--cs-glass-radius-lg); }
+.cs-glass-rounded-xl { border-radius: var(--cs-glass-radius-xl); }
+.cs-glass-rounded-2xl{ border-radius: var(--cs-glass-radius-2xl); }
+.cs-glass-rounded-3xl{ border-radius: var(--cs-glass-radius-3xl); }
+
+/* Shadow Variants */
+.cs-glass-shadow-sm { box-shadow: var(--cs-glass-shadow-sm-def); }
+.cs-glass-shadow    { box-shadow: var(--cs-glass-shadow-def); }
+.cs-glass-shadow-lg { box-shadow: var(--cs-glass-shadow-lg-def); }
+.cs-glass-shadow-xl { box-shadow: var(--cs-glass-shadow-xl-def); }

@@ -1,0 +1,249 @@
+@import "tailwindcss";
+@import "@casoon/tailwindcss-effects/styles.css";
+
+:root {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegidity;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Enhanced theme tokens */
+  --cs-brand-primary: #646cff;
+  --cs-brand-secondary: #535bf2;
+  --cs-accent-purple: #a855f7;
+  --cs-accent-blue: #3b82f6;
+  --cs-accent-emerald: #10b981;
+  
+  /* Improved spacing and sizing */
+  --cs-density: 1.1;
+  --cs-radius: 12px;
+  
+  /* Animation preferences */
+  --cs-transition-speed: 0.3s;
+}
+
+/* Enhanced body styling for better showcase */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: inherit;
+  background: linear-gradient(135deg, 
+    #0f172a 0%, 
+    #1e1b4b 25%, 
+    #312e81 50%, 
+    #1e1b4b 75%, 
+    #0f172a 100%
+  );
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Remove default Vite centering for full showcase */
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus improvements */
+*:focus-visible {
+  outline: 2px solid var(--cs-brand-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(100, 108, 255, 0.3);
+  color: white;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Reduced motion preferences - temporarily disabled for debugging
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+*/
+
+/* Fix transition conflicts between Casoon and Tailwind classes */
+[class*="cs-hover-"].transition-colors,
+[class*="cs-hover-"].transition-all,
+[class*="cs-hover-"].transition {
+  /* Override Tailwind transitions to prevent conflicts with Casoon hover effects */
+  transition: transform var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
+              background-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
+              border-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
+              color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
+              opacity var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              box-shadow var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              filter var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)) !important;
+}
+
+[class*="cs-hover-fade-"].transition-colors,
+[class*="cs-hover-fade-"].transition-all,
+[class*="cs-hover-fade-"].transition {
+  /* For fade effects, also include opacity */
+  transition: transform var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
+              background-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
+              border-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
+              color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
+              opacity var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              box-shadow var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              filter var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)) !important;
+}
+
+/* Global normalization to avoid transition conflicts on all cs-hover-* elements */
+[class*="cs-hover-"] {
+  transition: transform var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              background-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              border-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              opacity var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              box-shadow var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
+              filter var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)) !important;
+}
+
+/* Harden glass on sticky headers to avoid repaint/flicker */
+.sticky.cs-glass, .sticky .cs-glass {
+  isolation: isolate;
+  contain: paint;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: backdrop-filter, transform;
+}
+
+/* COMPLETE DISABLE: Remove all blur/backdrop effects to fix flickering */
+* {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* Replace glass effects with solid backgrounds */
+[class*="cs-glass"] {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Disable all transform effects that cause flicker on hover */
+[class*="cs-hover-scale"],
+[class*="cs-hover-lift"],
+[class*="cs-hover-fade"] {
+  transform: none !important;
+}
+
+[class*="cs-hover-scale"]:hover,
+[class*="cs-hover-lift"]:hover,
+[class*="cs-hover-fade"]:hover {
+  transform: none !important;
+  /* Only allow safe color/opacity changes */
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Disable problematic orb effects */
+[class*="cs-orb"] {
+  filter: none !important;
+  backdrop-filter: none !important;
+  animation: none !important;
+  transform: none !important;
+  opacity: 0.1 !important;
+}
+
+/* Reduced motion preferences - configurable for better accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .cs-glass-card,
+  .cs-glass-nav,
+  .cs-glass-toast {
+    border: 2px solid white;
+  }
+}
+
+/* GPU optimization for smooth animations */
+.gpu {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimize glass effects */
+.cs-glass {
+  will-change: backdrop-filter, transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Prevent flicker during animations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .cs-orb,
+  .cs-loading-spinner,
+  .cs-loading-dots,
+  .cs-loading-bars {
+    display: none !important;
+  }
+}

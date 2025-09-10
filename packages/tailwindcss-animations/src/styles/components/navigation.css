@@ -1,0 +1,60 @@
+/*
+ * Navigation Component Animations
+ * Underlines, pills, and tab animations
+ */
+
+/* Nav underline animations */
+@keyframes cs-underline-in-kf { 
+  0% { --cs-underline-w: 0% }
+  100% { --cs-underline-w: 100% }
+}
+
+@keyframes cs-underline-out-kf {
+  0% { --cs-underline-w: 100% }
+  100% { --cs-underline-w: 0% }
+}
+
+.cs-nav-underline-in,
+.cs-tab-underline-grow {
+  position: relative;
+}
+
+.cs-nav-underline-in::after,
+.cs-tab-underline-grow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  translate: -50% 0;
+  width: var(--cs-underline-w);
+  height: var(--cs-underline-h);
+  background: currentColor;
+  border-radius: 999px;
+}
+
+.cs-nav-underline-in {
+  animation: cs-underline-in-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-decelerate) both;
+}
+
+.cs-nav-underline-out {
+  animation: cs-underline-out-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-accelerate) both;
+}
+
+/* Pills for tabs (opacity/scale entrance/exit) */
+@keyframes cs-pill-in-kf {
+  0% { opacity: 0; transform: scale(.92) }
+  100% { opacity: 1; transform: scale(1) }
+}
+
+@keyframes cs-pill-out-kf {
+  0% { opacity: 1; transform: scale(1) }
+  100% { opacity: 0; transform: scale(.92) }
+}
+
+.cs-pill-in {
+  animation: cs-pill-in-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-decelerate) both;
+}
+
+.cs-pill-out {
+  animation: cs-pill-out-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-accelerate) both;
+}

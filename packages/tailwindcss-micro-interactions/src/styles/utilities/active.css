@@ -1,0 +1,31 @@
+/*--------------------------------------*
+  ACTIVE & TOUCH INTERACTION UTILITIES
+ *--------------------------------------*/
+
+/* Active (press) effects */
+.cs-active-scale-95:active { transform: scale(0.95); }
+.cs-active-scale-98:active { transform: scale(0.98); }
+
+/* Tap effects (mobile) */
+.cs-tap-highlight-none { -webkit-tap-highlight-color: transparent; }
+.cs-tap-scale-95 { transition: transform 0.1s var(--cs-ease); }
+.cs-tap-scale-95:active { transform: scale(0.95); }
+
+/* Smooth interaction shorthands */
+.cs-smooth-interaction { transition: all var(--cs-transition); }
+.cs-smooth-interaction-fast { transition: all var(--cs-anim-duration-fast) var(--cs-ease); }
+.cs-smooth-interaction-slow { transition: all var(--cs-anim-duration-slow) var(--cs-ease); }
+
+/* Button-like interactive lift */
+.cs-interactive {
+  cursor: pointer;
+  transition: transform 0.1s var(--cs-ease), box-shadow 0.1s var(--cs-ease);
+}
+.cs-interactive:hover {
+  transform: translateY(calc(-1px * var(--cs-density)));
+  box-shadow: 0 4px 8px var(--cs-shadow-light, var(--cs-shadow-light-fallback));
+}
+.cs-interactive:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--cs-shadow-light, var(--cs-shadow-light-fallback));
+}

@@ -1,0 +1,110 @@
+/* ORB ANIMATION KEYFRAMES */
+
+/* Basic orb animations */
+@keyframes cs-orb-float-kf {
+  0%, 100% { 
+    transform: translateY(0); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+}
+
+@keyframes cs-orb-pulse-kf {
+  0%, 100% { 
+    opacity: .7; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.05); 
+  }
+}
+
+@keyframes cs-orb-drift-kf {
+  0% { 
+    transform: translateX(0); 
+  }
+  33% { 
+    transform: translateX(30px); 
+  }
+  66% { 
+    transform: translateX(-20px); 
+  }
+  100% { 
+    transform: translateX(0); 
+  }
+}
+
+/* Morphing shape – soft blob effect */
+@keyframes cs-orb-morph {
+  0%   { 
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; 
+  }
+  25%  { 
+    border-radius: 55% 45% 60% 40% / 60% 40% 55% 45%; 
+  }
+  50%  { 
+    border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%; 
+  }
+  75%  { 
+    border-radius: 45% 55% 50% 50% / 50% 50% 45% 55%; 
+  }
+  100% { 
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; 
+  }
+}
+
+/* Expand-retract pulse (for hover/focus) */
+@keyframes cs-orb-bloom {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.7; 
+  }
+  50% { 
+    transform: scale(1.12); 
+    opacity: 1; 
+  }
+}
+
+/* Orb shimmer (moving light gradient) */
+@keyframes cs-orb-shimmer {
+  0%   { 
+    background-position: 0% 50%; 
+  }
+  50%  { 
+    background-position: 100% 50%; 
+  }
+  100% { 
+    background-position: 0% 50%; 
+  }
+}
+
+/* Generic utility keyframes */
+@keyframes cs-in-kf { 
+  from { 
+    opacity: 0; 
+    transform: translateY(6px); 
+  } 
+  to { 
+    opacity: 1; 
+    transform: none; 
+  } 
+}
+
+@keyframes cs-out-kf { 
+  from { 
+    opacity: 1; 
+    transform: none; 
+  } 
+  to { 
+    opacity: 0; 
+    transform: translateY(6px); 
+  } 
+}
+
+@keyframes cs-spin-kf { 
+  to { 
+    transform: rotate(360deg); 
+  } 
+}

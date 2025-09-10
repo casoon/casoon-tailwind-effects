@@ -1,6 +1,7 @@
 {
   "name": "@casoon/tailwindcss-scroll",
-  "version": "0.7.5",
+  "version": "0.8.0",
+  "description": "Scroll behavior, snap, and scrollbar styling for Tailwind CSS v4",
   "type": "module",
   "exports": {
     ".": "./dist.css",
@@ -27,8 +28,10 @@
   },
   "license": "MIT",
   "scripts": {
+    "build": "tailwindcss -i src/styles/index.css -o dist.css --minify",
+    "build:dev": "tailwindcss -i src/styles/index.css -o dist.css --watch",
     "validate": "node ../../scripts/validate-css.mjs",
-    "prepublishOnly": "npm run minify && npm run validate",
+    "prepublishOnly": "npm run build && npm run minify && npm run validate",
     "minify": "node ../../scripts/minify-css.mjs"
   }
 }

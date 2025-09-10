@@ -1,0 +1,43 @@
+/*
+ * Stagger Utilities
+ * Orchestration and sequencing of animations
+ */
+
+/* Stagger orchestration */
+[class*="cs-stagger-"] > .cs-anim {
+  animation-delay: var(--cs-anim-delay);
+}
+
+.cs-stagger-75 > .cs-anim:nth-child(n) {
+  --cs-anim-delay: calc((var(--cs-stagger-i, 0)) * 75ms);
+}
+
+.cs-stagger-100 > .cs-anim:nth-child(n) {
+  --cs-anim-delay: calc((var(--cs-stagger-i, 0)) * 100ms);
+}
+
+.cs-stagger-150 > .cs-anim:nth-child(n) {
+  --cs-anim-delay: calc((var(--cs-stagger-i, 0)) * 150ms);
+}
+
+/* Priming first 6 indices (extend as needed) */
+.cs-stagger-75 > .cs-anim:nth-child(1) { --cs-stagger-i: 0; }
+.cs-stagger-75 > .cs-anim:nth-child(2) { --cs-stagger-i: 1; }
+.cs-stagger-75 > .cs-anim:nth-child(3) { --cs-stagger-i: 2; }
+.cs-stagger-75 > .cs-anim:nth-child(4) { --cs-stagger-i: 3; }
+.cs-stagger-75 > .cs-anim:nth-child(5) { --cs-stagger-i: 4; }
+.cs-stagger-75 > .cs-anim:nth-child(6) { --cs-stagger-i: 5; }
+
+.cs-stagger-100 > .cs-anim:nth-child(1) { --cs-stagger-i: 0; }
+.cs-stagger-100 > .cs-anim:nth-child(2) { --cs-stagger-i: 1; }
+.cs-stagger-100 > .cs-anim:nth-child(3) { --cs-stagger-i: 2; }
+.cs-stagger-100 > .cs-anim:nth-child(4) { --cs-stagger-i: 3; }
+.cs-stagger-100 > .cs-anim:nth-child(5) { --cs-stagger-i: 4; }
+.cs-stagger-100 > .cs-anim:nth-child(6) { --cs-stagger-i: 5; }
+
+.cs-stagger-150 > .cs-anim:nth-child(1) { --cs-stagger-i: 0; }
+.cs-stagger-150 > .cs-anim:nth-child(2) { --cs-stagger-i: 1; }
+.cs-stagger-150 > .cs-anim:nth-child(3) { --cs-stagger-i: 2; }
+.cs-stagger-150 > .cs-anim:nth-child(4) { --cs-stagger-i: 3; }
+.cs-stagger-150 > .cs-anim:nth-child(5) { --cs-stagger-i: 4; }
+.cs-stagger-150 > .cs-anim:nth-child(6) { --cs-stagger-i: 5; }

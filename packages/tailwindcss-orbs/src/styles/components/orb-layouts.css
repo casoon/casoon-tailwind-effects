@@ -1,0 +1,23 @@
+/* ORB LAYOUT COMPONENTS */
+
+/* Prebuilt orb-backed section */
+.cs-section-orb {
+  position: relative; 
+  overflow: clip;
+}
+
+.cs-section-orb > .cs-orb { 
+  position: absolute; 
+  inset: auto; 
+}
+
+/* Modal orb backdrop */
+.cs-orb-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--cs-orb-fallback-purple);
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: var(--cs-z-modal);
+}

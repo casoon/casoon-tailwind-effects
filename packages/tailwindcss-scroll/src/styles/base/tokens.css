@@ -1,0 +1,29 @@
+/* SCROLL DESIGN TOKENS */
+
+.cs-root,
+[data-cs-theme] {
+  /* Density & motion */
+  --cs-density: 1;
+  --cs-transition: 220ms cubic-bezier(.2,.8,.2,1);
+  --cs-anim-duration: 240ms;
+  --cs-anim-ease: cubic-bezier(.2,.8,.2,1);
+
+  /* Scrollbar tokens */
+  --cs-scroll-thumb-gray: #6b7280;
+  --cs-scroll-thumb-blue: #3b82f6;
+  --cs-scroll-track: rgba(0,0,0,.08);
+  --cs-scroll-thumb-radius: 8px;
+  --cs-scrollbar-size: 10px;
+
+  /* Z-index scale for overlays (recipes) */
+  --cs-z-tooltip: 60;
+  --cs-z-dropdown: 70;
+  --cs-z-toast: 80;
+  --cs-z-modal: 90;
+}
+
+/* Container queries (opt-in) */
+.cs-container { 
+  container-type: inline-size; 
+  container-name: cs; 
+}

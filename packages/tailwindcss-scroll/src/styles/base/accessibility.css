@@ -1,0 +1,68 @@
+/* ACCESSIBILITY & RESPONSIVE BEHAVIOR */
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .cs-scroll-smooth { 
+    scroll-behavior: auto; 
+  }
+  
+  .cs-modal-in,
+  .cs-toast-out,
+  .cs-scroll-reveal-fade-up,
+  .cs-scroll-reveal-scale-in,
+  .cs-scroll-pulse {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  .cs-scrollbar {
+    scrollbar-color: currentColor transparent;
+  }
+  
+  .cs-scrollbar::-webkit-scrollbar-thumb {
+    background-color: currentColor;
+  }
+}
+
+/* Forced Colors (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-scrollbar-none { 
+    scrollbar-color: ButtonText ButtonFace; 
+  }
+  
+  .cs-scrollbar-thin { 
+    scrollbar-width: thin; 
+  }
+  
+  .cs-scrollbar {
+    scrollbar-color: ButtonText ButtonFace;
+  }
+}
+
+/* Small screen optimizations */
+@media (max-width: 480px) {
+  .cs-modal-in { 
+    animation-duration: calc(var(--cs-anim-duration,240ms) * .8); 
+  }
+}
+
+/* Container-based refinements */
+@container cs (min-width: 48rem) {
+  .cs-scroll-snap-proximity { 
+    scroll-snap-type: both proximity; 
+  }
+}
+
+/* Print styles */
+@media print {
+  .cs-scroll-smooth { 
+    scroll-behavior: auto; 
+  }
+  
+  .cs-scrollbar-none::-webkit-scrollbar { 
+    display: block; 
+  }
+}

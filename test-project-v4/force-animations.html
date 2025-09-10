@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" class="cs-theme cs-root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casoon Effects - Forced Animations</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      /* FORCE animations by overriding reduced motion rules */
+      
+      /* Enhanced Glass Effects - manually applied */
+      .cs-glass {
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      .cs-glass-strong {
+        background: rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+      }
+      
+      .cs-glass-medium {
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cs-orb-float, .cs-orb-pulse, .cs-orb-drift, 
+        .cs-anim-spin, .cs-anim-in, .cs-anim-out,
+        .cs-hover-scale-95, .cs-hover-scale-105, .cs-hover-scale-110,
+        .cs-hover-fade-in, .cs-hover-fade-out,
+        .cs-glass-card, .cs-glass-button {
+          animation-duration: initial !important;
+          animation-iteration-count: initial !important;
+          transition: initial !important;
+        }
+        
+        /* Restore original animations */
+        .cs-orb-float {
+          animation: cs-orb-float-kf var(--cs-anim-duration-float, 6s) ease-in-out infinite !important;
+        }
+        
+        .cs-orb-pulse {
+          animation: cs-orb-pulse-kf var(--cs-anim-duration-pulse, 4s) ease-in-out infinite !important;
+        }
+        
+        .cs-hover-scale-105 {
+          transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+        }
+        
+        .cs-hover-scale-105:hover {
+          transform: scale(1.05) !important;
+        }
+        
+        .cs-hover-scale-95 {
+          transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+        }
+        
+        .cs-hover-scale-95:hover {
+          transform: scale(0.95) !important;
+        }
+        
+        .cs-hover-fade-in {
+          opacity: 0.7 !important;
+          transition: opacity 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+        }
+        
+        .cs-hover-fade-in:hover {
+          opacity: 1 !important;
+        }
+        
+        .cs-glass-card, .cs-glass-button {
+          transition: all 0.3s ease !important;
+        }
+        
+        .cs-glass-card:hover, .cs-glass-button:hover {
+          transform: translateY(-2px) !important;
+        }
+      }
+      
+      /* Define keyframes for orb animations */
+      @keyframes cs-orb-float-kf {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+      
+      @keyframes cs-orb-pulse-kf {
+        0%, 100% { opacity: 0.7; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.05); }
+      }
+      
+      body { 
+        background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81); 
+        min-height: 100vh; 
+        font-family: system-ui, sans-serif;
+        color: white;
+      }
+      
+      /* Improved readability */
+      h1, h2, h3, h4, h5, h6 {
+        color: white !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      p {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      
+      /* Debug info */
+      .debug {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body class="text-white p-8">
+    <div class="debug" id="debug">
+      Animation Status: Loading...
+    </div>
+
+    <!-- Hero Section -->
+    <section class="text-center mb-20 relative min-h-screen flex items-center justify-center">
+      <!-- Colorful background for glass effect demonstration -->
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full filter blur-3xl"></div>
+        <div class="absolute top-20 right-0 w-80 h-80 bg-gradient-to-br from-purple-500 to-purple-700 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-0 left-1/3 w-72 h-72 bg-gradient-to-br from-green-500 to-green-700 rounded-full filter blur-3xl"></div>
+        <div class="absolute bottom-20 right-1/4 w-64 h-64 bg-gradient-to-br from-red-500 to-red-700 rounded-full filter blur-3xl"></div>
+      </div>
+      
+      <!-- Force animated orbs -->
+      <div class="cs-orb cs-orb-xl cs-orb-float absolute top-10 left-10 opacity-30 bg-blue-500 rounded-full gpu" style="width: 200px; height: 200px; animation: cs-orb-float-kf 6s ease-in-out infinite !important;"></div>
+      <div class="cs-orb cs-orb-lg cs-orb-pulse absolute top-20 right-20 opacity-20 bg-purple-500 rounded-full gpu" style="width: 150px; height: 150px; animation: cs-orb-pulse-kf 4s ease-in-out infinite !important;"></div>
+      <div class="cs-orb cs-orb-md cs-orb-float absolute bottom-10 left-1/4 opacity-25 bg-green-500 rounded-full gpu" style="width: 100px; height: 100px; animation: cs-orb-float-kf 7s ease-in-out infinite !important;"></div>
+      
+      <div class="cs-glass max-w-4xl mx-auto p-12 mb-12 relative z-10 rounded-lg" style="background: rgba(255, 255, 255, 0.1) !important; backdrop-filter: blur(10px) !important;">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white">
+          Casoon Effects Test
+        </h1>
+        <p class="text-xl text-white/80 mb-8 leading-relaxed">
+          Diese Seite erzwingt Animationen auch bei aktivierter "Reduce Motion" Einstellung
+        </p>
+        <div class="flex flex-wrap justify-center gap-6">
+          <button class="cs-hover-scale-105 bg-blue-500 hover:bg-blue-600 px-8 py-3 text-lg rounded text-white font-semibold transition-all">
+            Hover Scale 105%
+          </button>
+          <button class="cs-hover-scale-95 bg-purple-500 hover:bg-purple-600 px-8 py-3 text-lg rounded text-white transition-all">
+            Hover Scale 95%
+          </button>
+          <button class="cs-hover-fade-in bg-red-500 px-8 py-3 text-lg rounded text-white opacity-70">
+            Hover Fade In
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Glass Effects Test -->
+    <section class="mb-20 relative">
+      <!-- Background elements for glass effect demo -->
+      <div class="absolute inset-0 opacity-15 pointer-events-none">
+        <div class="absolute top-10 left-10 w-48 h-48 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl transform rotate-12"></div>
+        <div class="absolute top-32 right-20 w-40 h-40 bg-gradient-to-br from-pink-400 to-purple-600 rounded-full"></div>
+        <div class="absolute bottom-20 left-1/3 w-56 h-32 bg-gradient-to-r from-yellow-400 to-orange-600 rounded-2xl transform -rotate-6"></div>
+      </div>
+      
+      <h2 class="text-4xl font-bold text-center mb-12 text-white relative z-10">
+        Glass Effects (Forced)
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8 relative z-10">
+        <div class="cs-glass p-8 rounded-lg" style="transition: all 0.3s ease !important; background: rgba(255, 255, 255, 0.1) !important; backdrop-filter: blur(10px) !important;">
+          <h3 class="text-2xl font-bold mb-4 text-white">cs-glass</h3>
+          <p class="mb-6 text-white/80 leading-relaxed">
+            Glaseffekt mit backdrop-filter blur
+          </p>
+          <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded transition-colors text-white">Hover Test</button>
+        </div>
+        
+        <div class="cs-glass-strong p-8 rounded-lg" style="transition: all 0.3s ease !important; background: rgba(255, 255, 255, 0.15) !important; backdrop-filter: blur(20px) !important;">
+          <h3 class="text-2xl font-bold mb-4 text-white">cs-glass-strong</h3>
+          <p class="mb-6 text-white/80 leading-relaxed">
+            Starker Glaseffekt mit mehr Blur
+          </p>
+          <button class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded transition-colors text-white">Hover Test</button>
+        </div>
+        
+        <div class="cs-glass-medium p-8 rounded-lg" style="transition: all 0.3s ease !important; background: rgba(255, 255, 255, 0.08) !important; backdrop-filter: blur(8px) !important;">
+          <h3 class="text-2xl font-bold mb-4 text-white">cs-glass-medium</h3>
+          <p class="mb-6 text-white/80 leading-relaxed">
+            Mittlerer Glaseffekt
+          </p>
+          <button class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded transition-colors text-white">Hover Test</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const debugEl = document.getElementById('debug');
+        
+        // Check reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        // Check backdrop-filter support  
+        const supportsBackdrop = CSS.supports('backdrop-filter', 'blur(1px)');
+        
+        // Update debug info
+        debugEl.innerHTML = `
+          <div><strong>System Preferences:</strong></div>
+          <div>Reduced Motion: ${prefersReducedMotion ? '✅ ACTIVE' : '❌ Disabled'}</div>
+          <div>Backdrop Filter: ${supportsBackdrop ? '✅ Supported' : '❌ Not Supported'}</div>
+          <div>Animations: <span style="color: ${prefersReducedMotion ? 'orange' : 'lime'}">FORCED</span></div>
+          <div><small>This page overrides system settings</small></div>
+        `;
+        
+        console.log('=== Animation Debug ===');
+        console.log('Prefers Reduced Motion:', prefersReducedMotion);
+        console.log('Backdrop Filter Support:', supportsBackdrop);
+        console.log('CSS Classes loaded:', document.querySelectorAll('[class*="cs-"]').length);
+        
+        // Test animation on orbs
+        const orbs = document.querySelectorAll('.cs-orb');
+        orbs.forEach((orb, index) => {
+          console.log(`Orb ${index + 1}:`, {
+            classes: orb.className,
+            computedStyle: getComputedStyle(orb).animation
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

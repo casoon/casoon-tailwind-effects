@@ -1,0 +1,84 @@
+/* -------------------------------------------------------
+   Root Tokens (scope with .cs-root)
+------------------------------------------------------- */
+.cs-root{
+  /* Color stop tokens */
+  --cs-gradient-sunset-start:#ff6b6b;
+  --cs-gradient-sunset-mid:#ffd93d;
+  --cs-gradient-sunset-end:#6bcf7f;
+
+  --cs-gradient-ocean-start:#667eea;
+  --cs-gradient-ocean-end:#764ba2;
+
+  --cs-gradient-fire-start:#f093fb;
+  --cs-gradient-fire-end:#f5576c;
+
+  --cs-gradient-mint-start:#4facfe;
+  --cs-gradient-mint-end:#00f2fe;
+
+  --cs-gradient-purple-start:#a8edea;
+  --cs-gradient-purple-end:#fed6e3;
+
+  --cs-gradient-orange-start:#ffeaa7;
+  --cs-gradient-orange-end:#fab1a0;
+
+  --cs-gradient-blue-start:#74b9ff;
+  --cs-gradient-blue-end:#0984e3;
+
+  --cs-gradient-pink-start:#fd79a8;
+  --cs-gradient-pink-end:#fdcb6e;
+
+  /* Custom set (supply mid optionally on a wrapper) */
+  --cs-gradient-custom-start:#667eea;
+  --cs-gradient-custom-mid: ;
+  --cs-gradient-custom-end:#764ba2;
+
+  --cs-gradient-white:#ffffff;
+
+  /* Shared stops list fallback (for radial/conic) */
+  --cs-gradient-stops: var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end);
+
+  /* Motion & easing */
+  --cs-ease-standard:cubic-bezier(.2,.8,.2,1);
+  --cs-ease-accelerate:cubic-bezier(.3,0,1,1);
+  --cs-ease-decelerate:cubic-bezier(0,0,.2,1);
+
+  --cs-dur-quick:150ms;
+  --cs-dur-standard:300ms;
+  --cs-dur-slow:600ms;
+
+  --cs-transition: all var(--cs-dur-standard) var(--cs-ease-standard);
+
+  /* Animation defaults (used by animated gradients) */
+  --cs-anim-gradient-duration:4s;
+  --cs-anim-gradient-ease:var(--cs-ease-standard);
+  --cs-anim-gradient-iteration:infinite;
+
+  /* Density (–1 compact, 0 standard, 1 cozy) */
+  --cs-density:0;
+
+  /* Backdrop/acrylic intensity knobs */
+  --cs-blur-strong:24px;
+  --cs-blur-medium:16px;
+  --cs-blur-light:8px;
+  --cs-backdrop-opacity:.6;
+
+  /* Z-index scale */
+  --cs-z-tooltip:1000;
+  --cs-z-dropdown:1100;
+  --cs-z-toast:1200;
+  --cs-z-modal:1300;
+  --cs-z-overlay:1400;
+
+  /* Glow */
+  --cs-glow-size:24px;
+  --cs-glow-alpha:.5;
+
+  /* Print tuning */
+  --cs-print-border-color: #000;
+}
+
+/* Optional dark theme scope example */
+.cs-theme-dark{
+  --cs-gradient-white:#0b0b0b;
+}

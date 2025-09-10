@@ -1,0 +1,117 @@
+/* GENERAL UTILITIES */
+
+/* Visibility */
+.cs-hidden { 
+  display: none !important; 
+}
+
+.cs-sr-only {
+  position: absolute; 
+  width: 1px; 
+  height: 1px; 
+  padding: 0; 
+  margin: -1px;
+  overflow: hidden; 
+  clip: rect(0,0,0,0); 
+  white-space: nowrap; 
+  border: 0;
+}
+
+/* Display */
+.cs-flex { 
+  display: flex; 
+}
+
+.cs-grid { 
+  display: grid; 
+}
+
+.cs-center { 
+  display: grid; 
+  place-items: center; 
+}
+
+/* Sizing */
+.cs-w-full { 
+  width: 100%; 
+}
+
+.cs-h-full { 
+  height: 100%; 
+}
+
+/* Border and Shadow */
+.cs-rounded { 
+  border-radius: 12px; 
+}
+
+.cs-border { 
+  border: 1px solid var(--cs-border); 
+}
+
+.cs-shadow-1 { 
+  box-shadow: var(--cs-shadow-1); 
+}
+
+.cs-shadow-2 { 
+  box-shadow: var(--cs-shadow-2); 
+}
+
+.cs-shadow-3 { 
+  box-shadow: var(--cs-shadow-3); 
+}
+
+/* Glow utilities */
+.cs-glow { 
+  box-shadow: 0 0 0 0 rgba(0,0,0,0); 
+}
+
+.cs-glow-blue { 
+  box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-blue) 35%, transparent); 
+}
+
+.cs-glow-pink { 
+  box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-pink) 35%, transparent); 
+}
+
+/* Glow fallbacks for browsers without color-mix */
+@supports not (color: color-mix(in srgb, red 50%, white)) {
+  .cs-glow-blue { 
+    box-shadow: 0 0 24px 8px rgba(59,130,246,.35); 
+  }
+  
+  .cs-glow-pink { 
+    box-shadow: 0 0 24px 8px rgba(236,72,153,.35); 
+  }
+}
+
+/* Sticky & performance helpers */
+.cs-sticky-top { 
+  position: sticky; 
+  top: 0; 
+}
+
+.cs-will-transform { 
+  will-change: transform; 
+}
+
+.cs-will-filter { 
+  will-change: filter; 
+}
+
+/* Z-index consistency */
+.cs-z-tooltip { 
+  z-index: var(--cs-z-tooltip); 
+}
+
+.cs-z-dropdown { 
+  z-index: var(--cs-z-dropdown); 
+}
+
+.cs-z-toast { 
+  z-index: var(--cs-z-toast); 
+}
+
+.cs-z-modal { 
+  z-index: var(--cs-z-modal); 
+}

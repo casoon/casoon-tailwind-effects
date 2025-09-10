@@ -1,0 +1,87 @@
+/* ACCESSIBILITY UTILITIES */
+
+/* Skip to Content Link */
+.cs-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  z-index: var(--cs-z-modal);
+  background-color: var(--cs-color-primary);
+  color: white;
+  padding: var(--cs-space-2) var(--cs-space-4);
+  text-decoration: none;
+  border-radius: var(--cs-radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: top var(--cs-transition-fast) var(--cs-ease-out);
+}
+
+.cs-skip-link:focus {
+  top: 6px;
+}
+
+/* Screen Reader Only */
+.cs-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Focus Visible */
+.cs-nav-link:focus-visible,
+.cs-navbar-brand:focus-visible,
+.cs-breadcrumb-link:focus-visible,
+.cs-menu-toggle:focus-visible {
+  outline: 2px solid var(--cs-color-focus);
+  outline-offset: 2px;
+  border-radius: var(--cs-radius-sm);
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .cs-nav-link,
+  .cs-navbar-brand,
+  .cs-breadcrumb-link {
+    text-decoration: underline;
+  }
+  
+  .cs-nav-item.cs-nav-item--active .cs-nav-link {
+    background-color: ButtonText;
+    color: ButtonFace;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .cs-nav,
+  .cs-nav-pills,
+  .cs-nav-tabs,
+  .cs-drawer,
+  .cs-nav-collapse {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Keyboard Navigation */
+.cs-nav-link[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+/* ARIA States */
+.cs-nav-item[aria-current="page"] .cs-nav-link {
+  color: var(--cs-color-primary);
+  font-weight: 600;
+}
+
+.cs-nav-item[aria-disabled="true"] .cs-nav-link {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

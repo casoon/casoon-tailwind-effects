@@ -1,7 +1,7 @@
 {
   "name": "@casoon/tailwindcss-loading",
-  "version": "0.7.5",
-  "description": " for Tailwind CSS v4",
+  "version": "0.8.0",
+  "description": "Loading spinners and states for Tailwind CSS v4",
   "type": "module",
   "exports": {
     ".": "./dist.css",
@@ -23,8 +23,9 @@
   },
   "license": "MIT",
   "scripts": {
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist.css && node ../../scripts/make-dist-js.mjs && npm run minify",
     "validate": "node ../../scripts/validate-css.mjs",
-    "prepublishOnly": "npm run minify && npm run validate",
+    "prepublishOnly": "npm run build && npm run validate",
     "minify": "node ../../scripts/minify-css.mjs"
   }
 }

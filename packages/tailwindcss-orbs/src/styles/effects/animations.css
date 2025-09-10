@@ -1,0 +1,55 @@
+/* ORB ANIMATIONS */
+
+/* Basic orb animations */
+.cs-orb-float { 
+  animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite; 
+}
+
+.cs-orb-pulse { 
+  animation: cs-orb-pulse-kf var(--cs-anim-duration-pulse) var(--cs-anim-ease-inout) infinite; 
+}
+
+.cs-orb-drift { 
+  animation: cs-orb-drift-kf var(--cs-anim-duration-drift) var(--cs-anim-ease-inout) infinite; 
+}
+
+/* Advanced orb animations */
+
+/* Morphing orb (animated shape blob) */
+.cs-orb-morph {
+  animation: cs-orb-morph 12s ease-in-out infinite;
+}
+
+/* Orb shimmer gradient (on hover only) */
+.cs-orb-shimmer {
+  background: linear-gradient(270deg, var(--cs-orb-blue), var(--cs-orb-blue-light), var(--cs-orb-blue));
+  background-size: 600% 600%;
+  animation: cs-orb-shimmer 10s ease infinite;
+}
+
+/* Orb bloom effect on hover/focus (pulse-like) */
+.cs-orb-bloom:hover,
+.cs-orb-bloom:focus-visible {
+  animation: cs-orb-bloom 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Combine multiple animations (morph + float) */
+.cs-orb-zen {
+  animation:
+    cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite,
+    cs-orb-morph 14s ease-in-out infinite;
+}
+
+/* Generic animation helpers */
+.cs-anim-in { 
+  animation: cs-in-kf .24s var(--cs-anim-ease-emph) both; 
+}
+
+.cs-anim-out { 
+  animation: cs-out-kf .20s var(--cs-anim-ease-emph) both; 
+}
+
+.cs-anim-spin { 
+  animation: cs-spin-kf 1.2s linear infinite; 
+}

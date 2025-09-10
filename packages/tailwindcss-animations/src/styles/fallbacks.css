@@ -1,0 +1,30 @@
+/*
+ * Fallbacks & Accessibility
+ * Reduced motion, responsive, and print styles
+ */
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .cs-anim, .cs-fade-in, .cs-fade-out, .cs-scale-in, .cs-scale-out, .cs-slide-up, .cs-slide-down, .cs-slide-left, .cs-slide-right, .cs-blur-in, .cs-blur-out, .cs-rotate-in, .cs-rotate, .cs-pulse, .cs-bounce, .cs-wiggle, .cs-reveal-3d-up, .cs-reveal-3d-right, .cs-marquee, .cs-parallax-y,
+  .cs-btn-press, .cs-btn-ripple, .cs-nav-underline-in, .cs-nav-underline-out, .cs-tab-underline-grow, .cs-pill-in, .cs-pill-out,
+  .cs-dropdown-in, .cs-dropdown-out, .cs-tooltip-in, .cs-tooltip-out, .cs-modal-in, .cs-modal-out, .cs-backdrop-in, .cs-backdrop-out,
+  .cs-drawer-in-left, .cs-drawer-out-left, .cs-drawer-in-right, .cs-drawer-out-right, .cs-drawer-in-top, .cs-drawer-out-top, .cs-drawer-in-bottom, .cs-drawer-out-bottom,
+  .cs-accordion-in, .cs-accordion-out, .cs-accordion-fade,
+  .cs-toast-in, .cs-toast-out, .cs-chip-in, .cs-chip-out, .cs-badge-pop, .cs-skeleton, .cs-progress-indeterminate, .cs-spinner, .cs-carousel-slide, .cs-carousel-fade {
+    animation-duration: var(--cs-anim-reduced-motion-duration) !important;
+    animation-iteration-count: 1 !important;
+    animation-timing-function: var(--cs-anim-reduced-motion-ease) !important;
+    transition: none !important;
+  }
+  
+  .cs-marquee, .cs-parallax-y {
+    animation-play-state: paused !important;
+  }
+}
+
+/* Small-screen safety */
+@media (max-width: 480px) {
+  .cs-anim:not(.cs-anim-lg, .cs-anim-xl, .cs-anim-2xl) {
+    animation-duration: var(--cs-anim-duration-sm);
+  }
+}

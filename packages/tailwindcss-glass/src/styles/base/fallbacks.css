@@ -1,0 +1,61 @@
+/* =========================================================
+   Motion Safety & Contrast (cs- only)
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .cs-glass-card,
+  .cs-glass-card-light,
+  .cs-glass-button,
+  .cs-glass-toast {
+    transition: none;
+  }
+  .cs-glass-card:hover,
+  .cs-glass-card-light:hover,
+  .cs-glass-button:hover,
+  .cs-glass-toast:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button {
+    border-width: 2px;
+    background: var(--cs-glass-bg-contrast);
+  }
+  .cs-glass-dark {
+    background: var(--cs-glass-bg-dark-contrast);
+    border-color: var(--cs-glass-border-strong);
+  }
+}
+
+/* Windows High Contrast (forced colors) */
+@media (forced-colors: active) {
+  .cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+  .cs-glass-tooltip {
+    background: CanvasText;
+    color: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+}
+
+/* =========================================================
+   Fallbacks (no backdrop-filter) – cs- only
+   - Ensures usable, non-blurred styling on unsupported browsers.
+   ========================================================= */
+@supports not (backdrop-filter: blur(16px)) {
+  .cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button {
+    background: var(--cs-glass-bg-fallback);
+    box-shadow: 0 4px 16px var(--cs-glass-shadow-medium);
+  }
+  .cs-glass-dark { background: var(--cs-glass-bg-dark-fallback); }
+
+  .cs-glass-blue  { background: var(--cs-glass-bg-blue-fallback); }
+  .cs-glass-purple{ background: var(--cs-glass-bg-purple-fallback); }
+  .cs-glass-green { background: var(--cs-glass-bg-green-fallback); }
+  .cs-glass-pink  { background: var(--cs-glass-bg-pink-fallback); }
+  .cs-glass-amber { background: var(--cs-glass-bg-amber-fallback); }
+}

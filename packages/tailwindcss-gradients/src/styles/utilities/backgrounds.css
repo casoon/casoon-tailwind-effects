@@ -1,0 +1,80 @@
+/* -------------------------------------------------------
+   Gradient Background Utilities
+------------------------------------------------------- */
+.cs-gradient-sunset{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-sunset-start),
+    var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
+    var(--cs-gradient-sunset-end)
+  );
+}
+.cs-gradient-ocean{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+}
+.cs-gradient-fire{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-fire-start),
+    var(--cs-gradient-fire-end)
+  );
+}
+.cs-gradient-mint{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-mint-start),
+    var(--cs-gradient-mint-end)
+  );
+}
+.cs-gradient-purple{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-purple-start),
+    var(--cs-gradient-purple-end)
+  );
+}
+.cs-gradient-orange{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-orange-start),
+    var(--cs-gradient-orange-end)
+  );
+}
+.cs-gradient-blue{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-blue-start),
+    var(--cs-gradient-blue-end)
+  );
+}
+.cs-gradient-pink{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-pink-start),
+    var(--cs-gradient-pink-end)
+  );
+}
+
+/* Custom: choose 2-stop or 3-stop */
+.cs-gradient-custom-2{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-end)
+  );
+}
+.cs-gradient-custom,
+.cs-gradient-custom-3{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+}
+
+/* Progressive enhancement with color-mix when available */
+@supports (color: color-mix(in srgb, red 10%, blue)){
+  .cs-gradient-ocean{
+    /* subtly mix for smoother mid tones */
+    background:
+      linear-gradient(135deg,
+        color-mix(in oklab, var(--cs-gradient-ocean-start) 90%, var(--cs-gradient-ocean-end)),
+        var(--cs-gradient-ocean-end)
+      );
+  }
+}

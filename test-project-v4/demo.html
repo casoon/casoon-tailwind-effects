@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" class="cs-theme cs-root">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casoon Effects Debug</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      body { background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81); min-height: 100vh; }
+    </style>
+  </head>
+  <body class="text-white p-8">
+    <!-- Debug Information -->
+    <div class="mb-8 bg-black/50 p-4 rounded">
+      <h2 class="text-xl font-bold mb-2">Debug Info</h2>
+      <p>Testing Casoon Effects classes...</p>
+      <p>Look for: Glass effects, Orbs, Hover interactions</p>
+    </div>
+
+    <!-- Simple Glass Effect Test -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">Glass Effects Test</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="cs-glass p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-3">Standard Glass (.cs-glass)</h3>
+          <p class="mb-4">Dies sollte einen Glaseffekt mit Unschärfe zeigen.</p>
+          <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded transition-colors">Test Button</button>
+        </div>
+        <div class="cs-glass-strong p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-3">Strong Glass (.cs-glass-strong)</h3>
+          <p class="mb-4">Stärkerer Glaseffekt mit mehr Unschärfe.</p>
+          <button class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded transition-colors">Test Button</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Orb Effects Test -->
+    <section class="mb-12 relative">
+      <h2 class="text-2xl font-bold mb-6">Orb Effects Test</h2>
+      <div class="cs-glass p-8 rounded-lg relative overflow-hidden min-h-[300px]">
+        <!-- Orbs with different sizes -->
+        <div class="cs-orb cs-orb-xl cs-orb-float absolute top-10 right-10 opacity-30 bg-blue-500/50 rounded-full gpu"></div>
+        <div class="cs-orb cs-orb-lg cs-orb-pulse absolute bottom-10 left-10 opacity-40 bg-purple-500/50 rounded-full gpu"></div>
+        <div class="cs-orb cs-orb-md absolute top-20 left-1/2 opacity-35 bg-green-500/50 rounded-full gpu"></div>
+        
+        <div class="relative z-10">
+          <h3 class="text-xl font-semibold mb-4">Floating Orbs Background</h3>
+          <p class="text-white/80 mb-4">Diese Orbs sollten sich sanft bewegen (.cs-orb-float, .cs-orb-pulse).</p>
+          <p class="text-sm text-white/60">Größen: .cs-orb-xl, .cs-orb-lg, .cs-orb-md</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hover Effects Test -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">Hover Interactions Test</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <button class="cs-hover-scale-105 bg-blue-600 p-4 rounded-lg text-white transition-all">
+          Scale 105% on Hover
+        </button>
+        <button class="cs-hover-scale-95 bg-green-600 p-4 rounded-lg text-white transition-all">
+          Scale 95% on Hover
+        </button>
+        <button class="cs-hover-fade-in bg-red-600 p-4 rounded-lg text-white opacity-70 transition-all">
+          Fade In on Hover
+        </button>
+      </div>
+    </section>
+
+    <!-- Loading States -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">Loading States</h2>
+      <div class="cs-glass p-6 rounded-lg">
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div>
+            <h4 class="mb-3">Loading Overlay</h4>
+            <div class="cs-loading-overlay h-20 rounded bg-black/20 relative">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 class="mb-3">Custom Spinner</h4>
+            <div class="flex justify-center">
+              <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+            </div>
+          </div>
+          <div>
+            <h4 class="mb-3">Pulse Effect</h4>
+            <div class="flex justify-center">
+              <div class="animate-pulse bg-purple-500 h-8 w-16 rounded"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CSS Variables Debug -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">CSS Variables Debug</h2>
+      <div class="cs-glass p-6 rounded-lg">
+        <p class="mb-2">Background should use glass effect variables</p>
+        <p class="text-sm text-white/70">Check developer tools to see if CSS custom properties are loading</p>
+        <div class="mt-4 p-3 bg-white/10 rounded border border-white/20">
+          <p class="text-xs font-mono">backdrop-filter should be active here</p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Debug script to check if classes are applied
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('=== Casoon Effects Debug ===');
+        
+        const glassElements = document.querySelectorAll('.cs-glass, .cs-glass-strong');
+        console.log('Glass elements found:', glassElements.length);
+        
+        const orbElements = document.querySelectorAll('.cs-orb');
+        console.log('Orb elements found:', orbElements.length);
+        
+        const hoverElements = document.querySelectorAll('[class*="cs-hover"]');
+        console.log('Hover elements found:', hoverElements.length);
+        
+        // Check if backdrop-filter is supported
+        const testEl = document.createElement('div');
+        testEl.style.backdropFilter = 'blur(1px)';
+        if (testEl.style.backdropFilter) {
+          console.log('✅ backdrop-filter is supported');
+        } else {
+          console.log('❌ backdrop-filter NOT supported');
+        }
+        
+        // Check CSS custom properties
+        const computedStyle = getComputedStyle(document.documentElement);
+        const glassBlur = computedStyle.getPropertyValue('--cs-glass-blur');
+        console.log('CSS Variable --cs-glass-blur:', glassBlur || 'NOT FOUND');
+      });
+    </script>
+  </body>
+</html>

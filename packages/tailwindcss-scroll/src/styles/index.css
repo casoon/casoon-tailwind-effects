@@ -1,0 +1,18 @@
+/* Casoon Tailwind Effects - Scroll Package */
+/* Comprehensive scroll behavior, snap, and scrollbar styling utilities */
+
+/* Base Styles */
+@import "./base/tokens.css";
+@import "./base/accessibility.css";
+
+/* Utilities */
+@import "./utilities/scroll-behavior.css";
+@import "./utilities/scrollbar.css";
+@import "./utilities/helpers.css";
+
+/* Components */
+@import "./components/scroll-shadow.css";
+
+/* Effects */
+@import "./effects/keyframes.css";
+@import "./effects/animations.css";

@@ -1,0 +1,118 @@
+/* Reduced motion & data */
+@layer cs-base {
+  @media (prefers-reduced-motion: reduce) {
+    .cs-modal-in,
+    .cs-popover-in,
+    .cs-toast-out,
+    .cs-pop,
+    .cs-reveal,
+    .cs-vt-page {
+      animation: none;
+      transition: none;
+      transform: none;
+    }
+    [data-decorative-anim] {
+      animation: none;
+      transition: none;
+    }
+  }
+  @media (prefers-reduced-data: reduce) {
+    .cs-acrylic {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+    .cs-bg-img[data-hires] {
+      background-image: var(--cs-bg-img-low, none);
+    }
+    .cs-shadow-heavy {
+      box-shadow: var(--cs-shadow-1);
+    }
+  }
+}
+
+/* =========================================
+   HIGH CONTRAST / FORCED COLORS
+   ========================================= */
+@layer cs-base {
+  @media (prefers-contrast: more) {
+    .cs-focus-ring:focus-visible {
+      box-shadow:
+        0 0 0 3px var(--cs-brand, #4f7cff),
+        0 0 0 6px rgba(0, 0, 0, 0.75);
+    }
+    .cs-acrylic {
+      border-width: 2px;
+    }
+    .cs-skip {
+      border-width: 2px;
+    }
+    .cs-banner {
+      border-color: currentColor;
+    }
+  }
+  @media (forced-colors: active) {
+    .cs-focus-ring:focus-visible {
+      outline: 2px solid ButtonText;
+      box-shadow: none;
+    }
+    .cs-acrylic {
+      background: Canvas;
+      border: 1px solid CanvasText;
+    }
+    .cs-container-fluid {
+      background: Canvas;
+      color: CanvasText;
+    }
+    .cs-skip {
+      background: Canvas;
+      color: CanvasText;
+      border: 1px solid CanvasText;
+    }
+    .cs-backdrop {
+      background: rgba(0, 0, 0, 0.6);
+    }
+    .cs-modal {
+      background: Canvas;
+      color: CanvasText;
+      border-color: CanvasText;
+    }
+  }
+}
+
+/* =========================================
+   PRINT
+   ========================================= */
+@layer cs-base {
+  @media print {
+    .cs-acrylic {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background: white;
+      border: 1px solid #000;
+      box-shadow: none;
+    }
+    .cs-focus-ring:focus-visible {
+      box-shadow: none;
+      outline: 1px solid #000;
+    }
+    .cs-container-fluid {
+      max-width: 100%;
+      padding-left: 12mm;
+      padding-right: 12mm;
+    }
+    .cs-banner,
+    .cs-shadow,
+    .cs-shadow-lg {
+      box-shadow: none;
+    }
+    .cs-bleed-x {
+      margin-inline: 0;
+    }
+    .cs-hide-print {
+      display: none !important;
+    }
+    .cs-only-print {
+      display: block !important;
+    }
+  }
+}

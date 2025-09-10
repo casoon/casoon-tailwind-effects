@@ -1,0 +1,35 @@
+/* NAVBAR */
+.cs-navbar {
+  position: relative;
+  z-index: var(--cs-z-nav);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--cs-space-2);
+  padding: var(--cs-space-2) var(--cs-space-4);
+  background-color: var(--cs-color-bg);
+  border-bottom: 1px solid var(--cs-color-border);
+}
+
+.cs-navbar.cs-navbar--acrylic {
+  background-color: var(--cs-acrylic-bg);
+  border-bottom: 1px solid var(--cs-acrylic-border);
+}
+@supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+  .cs-navbar.cs-navbar--acrylic {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+}
+
+.cs-navbar-brand {
+  display: inline-block;
+  padding-top: calc(0.3125rem * var(--cs-density));
+  padding-bottom: calc(0.3125rem * var(--cs-density));
+  margin-right: var(--cs-space-4);
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+}

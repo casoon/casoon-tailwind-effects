@@ -1,0 +1,31 @@
+/*--------------------------------------*
+  OPTIONAL ADD-ONS
+ *--------------------------------------*/
+
+/* Elevation levels (use color variable fallback if no color-mix) */
+.cs-elev-1 { box-shadow: 0 1px 2px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+.cs-elev-2 { box-shadow: 0 4px 8px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+.cs-elev-3 { box-shadow: 0 8px 16px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+.cs-elev-4 { box-shadow: 0 12px 24px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+.cs-elev-5 { box-shadow: 0 24px 40px var(--cs-shadow-light, var(--cs-shadow-light-fallback)); }
+
+/* Glow utilities (soft outer glows) */
+.cs-glow-sm { filter: drop-shadow(0 0 6px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback))); }
+.cs-glow-md { filter: drop-shadow(0 0 12px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback))); }
+.cs-glow-lg { filter: drop-shadow(0 0 20px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback))); }
+
+/* Acrylic / frosted helpers */
+.cs-acrylic {
+  background-color: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+}
+@supports not (backdrop-filter: blur(10px)) {
+  .cs-acrylic { background-color: rgba(255,255,255,0.85); }
+}
+.cs-acrylic-edge { mask-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1) 16%); }
+.cs-noise { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.04'/></svg>"); }
+
+/* Sticky & will-change helpers */
+.cs-sticky-top { position: sticky; top: 0; }
+.cs-will-transform { will-change: transform; }
+.cs-will-filter { will-change: filter; }

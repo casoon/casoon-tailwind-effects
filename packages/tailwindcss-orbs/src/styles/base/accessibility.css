@@ -1,0 +1,90 @@
+/* ACCESSIBILITY & RESPONSIVE BEHAVIOR */
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .cs-orb-float,
+  .cs-orb-pulse,
+  .cs-orb-drift,
+  .cs-orb-bloom,
+  .cs-orb-shimmer,
+  .cs-orb-morph,
+  .cs-orb-zen,
+  .cs-anim-spin,
+  .cs-anim-in,
+  .cs-anim-out,
+  .cs-card-hover-orb::before,
+  .cs-btn-orb::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: more) {
+  .cs-orb { 
+    filter: none; 
+    opacity: 0.9; 
+  }
+  
+  .cs-card, 
+  .cs-btn { 
+    box-shadow: var(--cs-shadow-1); 
+  }
+}
+
+/* Forced Colors (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-orb { 
+    background: CanvasText; 
+    opacity: 0.15; 
+  }
+  
+  .cs-btn { 
+    border: 1px solid ButtonText; 
+  }
+}
+
+/* Small-screen safety: tone down blur/motion */
+@media (max-width: 480px) {
+  .cs-orb:is(.cs-orb-blur-lg, .cs-orb-blur-md) { 
+    filter: blur(2px); 
+  }
+  
+  .cs-orb-float { 
+    animation-duration: calc(var(--cs-anim-duration-float) * 1.25); 
+  }
+}
+
+/* Focus visibility */
+.cs-focus-ring:focus-visible,
+.cs-btn:focus-visible,
+.cs-card:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--cs-orb-blue) 60%, transparent);
+  outline-offset: 2px;
+}
+
+/* Focus visibility fallback for browsers without color-mix */
+@supports not (color: color-mix(in srgb, red 50%, white)) {
+  .cs-focus-ring:focus-visible,
+  .cs-btn:focus-visible,
+  .cs-card:focus-visible { 
+    outline: 2px solid #3b82f6; 
+  }
+}
+
+/* Print safety (remove heavy blur / solid borders) */
+@media print {
+  .cs-orb { 
+    filter: none !important; 
+    opacity: 0.15 !important; 
+  }
+  
+  .cs-card, 
+  .cs-btn, 
+  .cs-surface-pop { 
+    box-shadow: none !important; 
+    border: 1px solid #000 !important; 
+  }
+}

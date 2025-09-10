@@ -1,29 +1,18 @@
 {
   "name": "@casoon/tailwindcss-gradients",
-  "version": "0.7.5",
+  "version": "0.8.0",
   "description": "Beautiful gradient utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
-    ".": "./dist.js",
-    "./plugin": "./plugin.js",
+    ".": "./dist.css",
     "./dist.css": "./dist.css",
-    "./dist.min.css": "./dist.min.css",
-    "./styles.css": "./dist.css",
-    "./styles.min.css": "./dist.min.css"
+    "./dist.min.css": "./dist.min.css"
   },
-  "main": "./dist.js",
-  "module": "./dist.js",
+  "main": "./dist.css",
   "style": "./dist.css",
-  "sideEffects": [
-    "./dist.js",
-    "./dist.css",
-    "./dist.min.css"
-  ],
   "files": [
     "dist.css",
     "dist.min.css",
-    "dist.js",
-    "plugin.js",
     "README.md",
     "LICENSE"
   ],
@@ -35,8 +24,9 @@
   },
   "license": "MIT",
   "scripts": {
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist.css && node ../../scripts/make-dist-js.mjs && npm run minify",
     "validate": "node ../../scripts/validate-css.mjs",
-    "prepublishOnly": "npm run minify && npm run validate",
+    "prepublishOnly": "npm run build && npm run validate",
     "minify": "node ../../scripts/minify-css.mjs"
   }
 }

@@ -1,0 +1,77 @@
+/* CARD COMPONENTS */
+
+.cs-card {
+  position: relative;
+  border-radius: calc(12px * var(--cs-density));
+  background: var(--cs-surface);
+  box-shadow: var(--cs-shadow-2);
+  border: 1px solid var(--cs-border);
+  padding: calc(16px * var(--cs-density));
+  transition: box-shadow var(--cs-transition), transform var(--cs-transition);
+}
+
+.cs-card:hover { 
+  box-shadow: var(--cs-shadow-3); 
+  transform: translateY(-1px); 
+}
+
+.cs-card-title { 
+  font-weight: 600; 
+  color: var(--cs-text); 
+  margin-bottom: 0.5em; 
+}
+
+/* Card with orb reveal on hover */
+.cs-card-hover-orb {
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-card-hover-orb::before {
+  content: "";
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 200%;
+  height: 200%;
+  background: var(--cs-orb-fallback-blue);
+  opacity: 0;
+  filter: blur(32px);
+  transition: opacity 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.cs-card-hover-orb:hover::before {
+  opacity: 0.6;
+}
+
+/* Optional modifier for shimmer orb reveal */
+.cs-card-hover-orb-shimmer::before {
+  background: linear-gradient(135deg, #3b82f6, #93c5fd, #3b82f6);
+  background-size: 300% 300%;
+  animation: cs-orb-shimmer 6s linear infinite;
+}
+
+/* High-elevation pop surfaces (dropdown/tooltip/modal) */
+.cs-surface-pop { 
+  background: var(--cs-surface); 
+  border: 1px solid var(--cs-border); 
+  box-shadow: var(--cs-shadow-4); 
+  border-radius: 12px; 
+}
+
+/* Acrylic / frosted effect */
+.cs-acrylic {
+  background: color-mix(in srgb, var(--cs-surface) 70%, transparent);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  backdrop-filter: saturate(140%) blur(10px);
+  border: 1px solid color-mix(in srgb, var(--cs-border) 70%, transparent);
+}
+
+/* Acrylic fallback for browsers without backdrop-filter */
+@supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .cs-acrylic { 
+    background: rgba(255,255,255,.75); 
+  }
+}

@@ -1,0 +1,71 @@
+/*--------------------------------------*
+  ACCESSIBILITY: REDUCED MOTION
+ *--------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  .cs-hover-scale-95,
+  .cs-hover-scale-105,
+  .cs-hover-scale-110,
+  .cs-hover-rotate-1,
+  .cs-hover-rotate-3,
+  .cs-hover-rotate-6,
+  .cs-hover-translate-y-1,
+  .cs-hover-translate-y-2,
+  .cs-tap-scale-95,
+  .cs-modal-in,
+  .cs-toast-out {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .cs-hover-scale-95:hover,
+  .cs-hover-scale-105:hover,
+  .cs-hover-scale-110:hover,
+  .cs-hover-rotate-1:hover,
+  .cs-hover-rotate-3:hover,
+  .cs-hover-rotate-6:hover,
+  .cs-hover-translate-y-1:hover,
+  .cs-hover-translate-y-2:hover,
+  .cs-tap-scale-95:active {
+    transform: none !important;
+  }
+}
+
+/*--------------------------------------*
+  SMALL SCREEN INTENSITY TUNING
+ *--------------------------------------*/
+@media (max-width: 480px) {
+  .cs-hover-rotate-6:hover { transform: rotate(2deg); }
+  .cs-hover-scale-110:hover { transform: scale(1.06); }
+}
+
+/*--------------------------------------*
+  PRINT STYLES
+ *--------------------------------------*/
+@media print {
+  .cs-acrylic { backdrop-filter: none; background-color: #fff; }
+  .cs-glow-sm, .cs-glow-md, .cs-glow-lg { filter: none; }
+  .cs-interactive { box-shadow: none !important; transform: none !important; }
+}
+
+/* Motion-safe Fallback for Pro Effects */
+@media (prefers-reduced-motion: reduce) {
+  .cs-reveal-fade-up,
+  .cs-reveal-scale-in,
+  .cs-focus-pop,
+  .cs-hover-pulse,
+  .cs-tap-bounce {
+    animation: none !important;
+  }
+}
+
+/* Print-safe Removal for Pro Effects */
+@media print {
+  .cs-glow-ring,
+  .cs-hover-pulse,
+  .cs-reveal-fade-up,
+  .cs-reveal-scale-in,
+  .cs-focus-pop {
+    animation: none !important;
+    box-shadow: none !important;
+  }
+}

@@ -1,0 +1,43 @@
+/* -------------------------------------------------------
+   Container Queries (helpers)
+------------------------------------------------------- */
+.cs-cq{ container-type:inline-size; }
+/* mobile/tablet/desktop breakpoints using container query */
+@container (min-width:480px){
+  .cs-cq\:up-sm{ --_cq:sm; }
+}
+@container (min-width:768px){
+  .cs-cq\:up-md{ --_cq:md; }
+}
+@container (min-width:1024px){
+  .cs-cq\:up-lg{ --_cq:lg; }
+}
+
+/* Example responsive intensity (smaller screens = lighter blur/motion) */
+@media (max-width:480px){
+  .cs-acrylic{
+    -webkit-backdrop-filter:blur(calc(var(--cs-blur-light)));
+    backdrop-filter:blur(calc(var(--cs-blur-light)));
+  }
+  .cs-gradient-animate{ animation-duration: calc(var(--cs-anim-gradient-duration) * 1.25); }
+}
+
+/* -------------------------------------------------------
+   Utility Helpers
+------------------------------------------------------- */
+.cs-transition{ transition:var(--cs-transition); }
+.cs-will-change-bg{ will-change:background-position, background-size; }
+.cs-sticky{ position:sticky; top:0; }
+.cs-focus-ring:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:2px;
+}
+.cs-blend-screen{ mix-blend-mode:screen; }
+.cs-blend-overlay{ mix-blend-mode:overlay; }
+
+/* Z-index scale */
+.cs-z-tooltip{ z-index:var(--cs-z-tooltip); }
+.cs-z-dropdown{ z-index:var(--cs-z-dropdown); }
+.cs-z-toast{ z-index:var(--cs-z-toast); }
+.cs-z-modal{ z-index:var(--cs-z-modal); }
+.cs-z-overlay{ z-index:var(--cs-z-overlay); }

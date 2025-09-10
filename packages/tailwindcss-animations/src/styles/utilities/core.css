@@ -1,0 +1,101 @@
+/*
+ * Core Animation Utilities
+ * Keyframes, engine, and control classes
+ */
+
+/* Base keyframes */
+@keyframes anim-fade-in { 0%{opacity:0} 100%{opacity:1} }
+@keyframes anim-fade-out { 0%{opacity:1} 100%{opacity:0} }
+@keyframes anim-scale-in { 0%{opacity:0;transform:scale(.9)} 100%{opacity:1;transform:scale(1)} }
+@keyframes anim-scale-out { 0%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(.9)} }
+@keyframes anim-slide-up { 0%{opacity:0;transform:translateY(20px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes anim-slide-down { 0%{opacity:0;transform:translateY(-20px)} 100%{opacity:1;transform:translateY(0)} }
+@keyframes anim-slide-left { 0%{opacity:0;transform:translateX(20px)} 100%{opacity:1;transform:translateX(0)} }
+@keyframes anim-slide-right { 0%{opacity:0;transform:translateX(-20px)} 100%{opacity:1;transform:translateX(0)} }
+@keyframes anim-blur-in { 0%{opacity:0;filter:blur(4px)} 100%{opacity:1;filter:blur(0)} }
+@keyframes anim-blur-out { 0%{opacity:1;filter:blur(0)} 100%{opacity:0;filter:blur(4px)} }
+@keyframes anim-rotate-in { 0%{opacity:0;transform:rotate(-5deg)} 100%{opacity:1;transform:rotate(0)} }
+@keyframes anim-rotate { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+@keyframes anim-pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+@keyframes anim-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-25%)} }
+@keyframes anim-wiggle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-3deg)} 75%{transform:rotate(3deg)} }
+@keyframes anim-reveal-3d-up { 0%{opacity:0;transform:rotateX(-90deg)} 100%{opacity:1;transform:rotateX(0)} }
+@keyframes anim-reveal-3d-right { 0%{opacity:0;transform:rotateY(90deg)} 100%{opacity:1;transform:rotateY(0)} }
+@keyframes anim-marquee { 0%{transform:translateX(100%)} 100%{transform:translateX(-100%)} }
+@keyframes anim-parallax-y { 0%{transform:translateY(-10px)} 100%{transform:translateY(10px)} }
+@keyframes anim-progress-grow { 0%{width:0%} 100%{width:100%} }
+
+/* Core engine */
+.cs-anim {
+  animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
+  animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
+  animation-iteration-count: 1;
+  animation-direction: var(--cs-anim-direction, normal);
+  animation-fill-mode: var(--cs-anim-fill, both);
+  animation-delay: var(--cs-anim-delay, 0ms);
+}
+
+/* Duration utilities */
+.cs-anim-xxs { --cs-anim-duration: var(--cs-anim-duration-xxs) }
+.cs-anim-xs { --cs-anim-duration: var(--cs-anim-duration-xs) }
+.cs-anim-sm { --cs-anim-duration: var(--cs-anim-duration-sm) }
+.cs-anim-md { --cs-anim-duration: var(--cs-anim-duration-md) }
+.cs-anim-lg { --cs-anim-duration: var(--cs-anim-duration-lg) }
+.cs-anim-xl { --cs-anim-duration: var(--cs-anim-duration-xl) }
+.cs-anim-2xl { --cs-anim-duration: var(--cs-anim-duration-2xl) }
+
+/* Easing utilities */
+.cs-ease-standard { --cs-anim-ease: var(--cs-anim-ease-standard) }
+.cs-ease-emphasized { --cs-anim-ease: var(--cs-anim-ease-emphasized) }
+.cs-ease-decelerate { --cs-anim-ease: var(--cs-anim-ease-decelerate) }
+.cs-ease-accelerate { --cs-anim-ease: var(--cs-anim-ease-accelerate) }
+.cs-ease-spring { --cs-anim-ease: var(--cs-anim-ease-spring) }
+.cs-ease-soft-spring { --cs-anim-ease: var(--cs-anim-ease-soft-spring) }
+
+/* Delay utilities */
+.cs-delay-0 { --cs-anim-delay: 0ms }
+.cs-delay-75 { --cs-anim-delay: 75ms }
+.cs-delay-100 { --cs-anim-delay: 100ms }
+.cs-delay-150 { --cs-anim-delay: 150ms }
+.cs-delay-200 { --cs-anim-delay: 200ms }
+.cs-delay-300 { --cs-anim-delay: 300ms }
+.cs-delay-500 { --cs-anim-delay: 500ms }
+.cs-delay-700 { --cs-anim-delay: 700ms }
+.cs-delay-1000 { --cs-anim-delay: 1000ms }
+
+/* Control utilities */
+.cs-anim-infinite { animation-iteration-count: infinite }
+.cs-anim-reverse { animation-direction: reverse }
+.cs-anim-alternate { animation-direction: alternate }
+.cs-anim-both { animation-fill-mode: both }
+.cs-anim-forwards { animation-fill-mode: forwards }
+
+/* Performance utilities */
+.cs-will-transform { will-change: transform }
+.cs-will-opacity { will-change: opacity }
+.cs-will-filter { will-change: filter }
+.cs-t-origin-top { transform-origin: top }
+.cs-t-origin-center { transform-origin: center }
+.cs-t-origin-bottom { transform-origin: bottom }
+.cs-t-preserve-3d { transform-style: preserve-3d }
+
+/* Name utilities */
+.cs-fade-in { animation-name: anim-fade-in }
+.cs-fade-out { animation-name: anim-fade-out }
+.cs-scale-in { animation-name: anim-scale-in }
+.cs-scale-out { animation-name: anim-scale-out }
+.cs-slide-up { animation-name: anim-slide-up }
+.cs-slide-down { animation-name: anim-slide-down }
+.cs-slide-left { animation-name: anim-slide-left }
+.cs-slide-right { animation-name: anim-slide-right }
+.cs-blur-in { animation-name: anim-blur-in }
+.cs-blur-out { animation-name: anim-blur-out }
+.cs-rotate-in { animation-name: anim-rotate-in }
+.cs-rotate { animation-name: anim-rotate }
+.cs-pulse { animation-name: anim-pulse }
+.cs-bounce { animation-name: anim-bounce }
+.cs-wiggle { animation-name: anim-wiggle }
+.cs-reveal-3d-up { animation-name: anim-reveal-3d-up }
+.cs-reveal-3d-right { animation-name: anim-reveal-3d-right }
+.cs-marquee { animation-name: anim-marquee; animation-timing-function: linear; animation-iteration-count: infinite }
+.cs-parallax-y { animation-name: anim-parallax-y; animation-direction: alternate; animation-iteration-count: infinite }

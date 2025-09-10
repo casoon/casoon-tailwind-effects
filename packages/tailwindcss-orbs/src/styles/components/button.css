@@ -1,0 +1,65 @@
+/* BUTTON COMPONENTS */
+
+.cs-btn {
+  --_pad-y: calc(8px * var(--cs-density));
+  --_pad-x: calc(14px * var(--cs-density));
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: .5rem;
+  border-radius: calc(10px * var(--cs-density));
+  padding: var(--_pad-y) var(--_pad-x);
+  font-weight: 600; 
+  line-height: 1.2;
+  border: 1px solid var(--cs-border);
+  background: var(--cs-surface-2);
+  color: var(--cs-text);
+  box-shadow: var(--cs-shadow-1);
+  transition: background var(--cs-transition), box-shadow var(--cs-transition), transform var(--cs-transition);
+}
+
+.cs-btn:hover { 
+  box-shadow: var(--cs-shadow-2); 
+  transform: translateY(-1px); 
+}
+
+.cs-btn:active { 
+  transform: translateY(0); 
+}
+
+.cs-btn-primary {
+  background: color-mix(in srgb, var(--cs-orb-blue) 12%, var(--cs-surface));
+  border-color: color-mix(in srgb, var(--cs-orb-blue) 35%, var(--cs-border));
+  color: var(--cs-text);
+}
+
+/* Primary button fallback for browsers without color-mix */
+@supports not (color: color-mix(in srgb, red 50%, white)) {
+  .cs-btn-primary { 
+    background: #eef5ff; 
+    border-color: #b8d1ff; 
+  }
+}
+
+/* Button with orb enhancement */
+.cs-btn-orb {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cs-btn-orb::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: radial-gradient(circle at center, var(--cs-orb-blue-light), transparent 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 0;
+}
+
+.cs-btn-orb:hover::after {
+  opacity: 0.4;
+  transform: scale(1.2);
+}

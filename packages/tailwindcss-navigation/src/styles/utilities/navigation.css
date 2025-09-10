@@ -1,0 +1,89 @@
+/* NAVIGATION UTILITIES */
+
+/* Sticky Navigation */
+.cs-nav-sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--cs-z-sticky);
+}
+
+/* Fixed Navigation */
+.cs-nav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--cs-z-fixed);
+}
+
+/* Navigation Spacer (for fixed nav layouts) */
+.cs-nav-spacer {
+  height: var(--cs-nav-height, 64px);
+}
+
+/* Mobile Menu Toggle */
+.cs-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: var(--cs-space-2);
+  cursor: pointer;
+  color: var(--cs-color-text);
+}
+
+@media (max-width: 768px) {
+  .cs-menu-toggle {
+    display: block;
+  }
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .cs-nav-mobile-hidden {
+    display: none;
+  }
+  
+  .cs-nav-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--cs-color-bg);
+    border-top: 1px solid var(--cs-color-border);
+    box-shadow: var(--cs-shadow-lg);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--cs-transition-base) var(--cs-ease-out);
+  }
+  
+  .cs-nav-collapse.cs-is-open {
+    max-height: 400px;
+  }
+  
+  .cs-nav-collapse .cs-nav-list {
+    flex-direction: column;
+    padding: var(--cs-space-4);
+  }
+  
+  .cs-nav-collapse .cs-nav-item {
+    width: 100%;
+  }
+  
+  .cs-nav-collapse .cs-nav-link {
+    padding: var(--cs-space-3) 0;
+    border-bottom: 1px solid var(--cs-color-border-light);
+  }
+  
+  .cs-nav-collapse .cs-nav-item:last-child .cs-nav-link {
+    border-bottom: none;
+  }
+}
+
+/* Navigation Animations */
+.cs-nav-slide-in {
+  animation: cs-nav-slide-in var(--cs-transition-base) var(--cs-ease-out);
+}
+
+.cs-nav-fade-in {
+  animation: cs-nav-fade-in var(--cs-transition-base) var(--cs-ease-out);
+}

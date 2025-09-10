@@ -1,0 +1,64 @@
+/* -------------------------------------------------------
+   Gradient Text Utilities
+------------------------------------------------------- */
+.cs-gradient-text{
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-sunset{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-sunset-start),
+    var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
+    var(--cs-gradient-sunset-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-ocean{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-fire{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-fire-start),
+    var(--cs-gradient-fire-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-custom-2{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.cs-gradient-text-custom,
+.cs-gradient-text-custom-3{
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* Grouped background-clip text utilities */
+.cs-gradient-text:is(.cs-gradient-text-sunset, .cs-gradient-text-ocean, .cs-gradient-text-fire, .cs-gradient-text-custom-2, .cs-gradient-text-custom-3){
+  /* Ensure proper text gradient inheritance */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
