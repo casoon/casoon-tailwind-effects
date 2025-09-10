@@ -25,10 +25,10 @@
         <!-- Hero Section with Orbs -->
         <section class="text-center mb-12 p-8" style="position: relative;">
           <!-- Background Orbs using Casoon classes -->
-          <div class="cs-orb cs-orb-xl cs-orb-float" style="position: absolute; top: 0; left: 25%; opacity: 0.2;"></div>
-          <div class="cs-orb cs-orb-lg cs-orb-pulse" style="position: absolute; top: 80px; right: 30%; opacity: 0.15;"></div>
+          <div class="cs-orb-xl cs-orb-float cs-orb-gradient-blue" style="position: absolute; top: 0; left: 25%; opacity: 0.3;"></div>
+          <div class="cs-orb-lg cs-pulse cs-orb-gradient-purple" style="position: absolute; top: 80px; right: 30%; opacity: 0.2;"></div>
           
-          <div class="cs-glass p-8 mb-8" style="position: relative; z-index: 10; border-radius: 12px;">
+          <div class="cs-glass p-8 mb-8" style="position: relative; z-index: 10;">
             <h1 class="md:text-5xl mb-6">Casoon Tailwind Effects</h1>
             <p class="text-white-80 mb-8">
               Moderne CSS-Effekte für Tailwind CSS - Glasmorphismus, Animationen, Micro-Interactions
@@ -72,32 +72,32 @@
 
         <!-- Gradient Effects -->
         <section class="mb-12">
-          <h2 class="cs-gradient-text cs-gradient-text-rainbow text-center mb-8">Gradient Effects</h2>
+          <h2 class="cs-gradient-text-ocean text-center mb-8">Gradient Effects</h2>
           <div class="grid md:grid-cols-2 gap-6">
-            <div class="cs-glass-card p-6" style="border-radius: 12px;">
-              <h3 class="cs-gradient-text cs-gradient-text-ocean mb-4">Ocean Gradient</h3>
-              <h3 class="cs-gradient-text cs-gradient-text-sunset mb-4">Sunset Gradient</h3>
-              <h3 class="cs-gradient-text cs-gradient-text-forest mb-4">Forest Gradient</h3>
-              <h3 class="cs-gradient-text cs-gradient-text-cosmic mb-4">Cosmic Gradient</h3>
+            <div class="cs-glass-card p-6">
+              <h3 class="cs-gradient-text-ocean mb-4">Ocean Gradient</h3>
+              <h3 class="cs-gradient-text-sunset mb-4">Sunset Gradient</h3>
+              <h3 class="cs-gradient-text-fire mb-4">Fire Gradient</h3>
+              <h3 class="cs-gradient-text-custom mb-4">Custom Gradient</h3>
               <p class="text-white-80">
                 Verschiedene Gradient-Text-Varianten.
               </p>
             </div>
             
-            <div class="cs-glass-card p-6" style="border-radius: 12px;">
+            <div class="cs-glass-card p-6">
               <h3 class="mb-4">Gradient Backgrounds</h3>
               <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="cs-bg-gradient-sunset p-4 text-center" style="border-radius: 8px;">
-                  <span class="cs-text-shadow" style="color: white; font-weight: bold;">Sunset</span>
+                <div class="cs-gradient-sunset p-4 text-center" style="border-radius: 8px;">
+                  <span style="color: white; font-weight: bold;">Sunset</span>
                 </div>
-                <div class="cs-bg-gradient-ocean p-4 text-center" style="border-radius: 8px;">
-                  <span class="cs-text-shadow" style="color: white; font-weight: bold;">Ocean</span>
+                <div class="cs-gradient-ocean p-4 text-center" style="border-radius: 8px;">
+                  <span style="color: white; font-weight: bold;">Ocean</span>
                 </div>
-                <div class="cs-bg-gradient-forest p-4 text-center" style="border-radius: 8px;">
-                  <span class="cs-text-shadow" style="color: white; font-weight: bold;">Forest</span>
+                <div class="cs-gradient-fire p-4 text-center" style="border-radius: 8px;">
+                  <span style="color: white; font-weight: bold;">Fire</span>
                 </div>
-                <div class="cs-bg-gradient-cosmic p-4 text-center" style="border-radius: 8px;">
-                  <span class="cs-text-shadow" style="color: white; font-weight: bold;">Cosmic</span>
+                <div class="cs-gradient-custom p-4 text-center" style="border-radius: 8px;">
+                  <span style="color: white; font-weight: bold;">Custom</span>
                 </div>
               </div>
               <p class="text-white-80">
@@ -111,34 +111,33 @@
         <section class="mb-12">
           <h2 class="text-center mb-8">Loading States & Animations</h2>
           <div class="grid md:grid-cols-3 gap-6">
-            <div class="cs-glass-card text-center p-6" style="border-radius: 12px;">
+            <div class="cs-glass-card text-center p-6">
               <h3 class="mb-6">Loading Spinners</h3>
               <div class="space-y-4 mb-6">
-                <div class="cs-loading-spinner cs-loading-primary"></div>
-                <div class="cs-loading-spinner cs-loading-secondary"></div>
-                <div class="cs-loading-spinner cs-loading-success"></div>
+                <div class="cs-spinner cs-spinner--primary"></div>
+                <div class="cs-spinner cs-spinner--success"></div>
+                <div class="cs-spinner cs-spinner--warning"></div>
               </div>
               <p class="text-white-80">Verschiedene Spinner-Animationen</p>
             </div>
             
-            <div class="cs-glass-card text-center p-6" style="border-radius: 12px;">
+            <div class="cs-glass-card text-center p-6">
               <h3 class="mb-6">Loading Dots</h3>
               <div class="space-y-4 mb-6">
-                <div class="cs-loading-dots cs-loading-primary"></div>
-                <div class="cs-loading-dots cs-loading-warning"></div>
-                <div class="cs-loading-dots cs-loading-error"></div>
+                <div class="cs-spinner-dots"><span></span><span></span><span></span></div>
+                <div class="cs-spinner-dots cs-spinner-dots--reveal"><span></span><span></span><span></span></div>
               </div>
               <p class="text-white-80">Punkt-basierte Loading-Animationen</p>
             </div>
             
-            <div class="cs-glass-card text-center p-6" style="border-radius: 12px;">
-              <h3 class="mb-6">Loading Bars</h3>
+            <div class="cs-glass-card text-center p-6">
+              <h3 class="mb-6">Animations</h3>
               <div class="space-y-4 mb-6">
-                <div class="cs-loading-bars cs-loading-primary"></div>
-                <div class="cs-loading-bars cs-loading-secondary"></div>
-                <div class="cs-loading-bars cs-loading-success"></div>
+                <div class="cs-anim cs-fade-in">Fade In</div>
+                <div class="cs-anim cs-slide-up">Slide Up</div>
+                <div class="cs-anim cs-scale-in">Scale In</div>
               </div>
-              <p class="text-white-80">Balken-Loading-Animationen</p>
+              <p class="text-white-80">Verschiedene Animationen</p>
             </div>
           </div>
         </section>
