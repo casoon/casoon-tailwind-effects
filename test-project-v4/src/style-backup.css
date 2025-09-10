@@ -2,7 +2,8 @@
 @import "@casoon/tailwindcss-effects/styles.css";
 
 :root {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
@@ -10,18 +11,18 @@
   text-rendering: optimizeLegidity;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   /* Enhanced theme tokens */
   --cs-brand-primary: #646cff;
   --cs-brand-secondary: #535bf2;
   --cs-accent-purple: #a855f7;
   --cs-accent-blue: #3b82f6;
   --cs-accent-emerald: #10b981;
-  
+
   /* Improved spacing and sizing */
   --cs-density: 1.1;
   --cs-radius: 12px;
-  
+
   /* Animation preferences */
   --cs-transition-speed: 0.3s;
 }
@@ -32,11 +33,12 @@ body {
   padding: 0;
   min-height: 100vh;
   font-family: inherit;
-  background: linear-gradient(135deg, 
-    #0f172a 0%, 
-    #1e1b4b 25%, 
-    #312e81 50%, 
-    #1e1b4b 75%, 
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #1e1b4b 25%,
+    #312e81 50%,
+    #1e1b4b 75%,
     #0f172a 100%
   );
   background-attachment: fixed;
@@ -104,41 +106,45 @@ html {
 [class*="cs-hover-"].transition-all,
 [class*="cs-hover-"].transition {
   /* Override Tailwind transitions to prevent conflicts with Casoon hover effects */
-  transition: transform var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
-              background-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
-              border-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
-              color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
-              opacity var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              box-shadow var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              filter var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)) !important;
+  transition:
+    transform var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    background-color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    border-color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    opacity var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    box-shadow var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    filter var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)) !important;
 }
 
 [class*="cs-hover-fade-"].transition-colors,
 [class*="cs-hover-fade-"].transition-all,
 [class*="cs-hover-fade-"].transition {
   /* For fade effects, also include opacity */
-  transition: transform var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
-              background-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
-              border-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
-              color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)), 
-              opacity var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              box-shadow var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              filter var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)) !important;
+  transition:
+    transform var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    background-color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    border-color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    opacity var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    box-shadow var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    filter var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)) !important;
 }
 
 /* Global normalization to avoid transition conflicts on all cs-hover-* elements */
 [class*="cs-hover-"] {
-  transition: transform var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              background-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              border-color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              color var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              opacity var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              box-shadow var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)),
-              filter var(--cs-transition, 0.2s cubic-bezier(.2,.8,.2,1)) !important;
+  transition:
+    transform var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    background-color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    border-color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    color var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    opacity var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    box-shadow var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)),
+    filter var(--cs-transition, 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)) !important;
 }
 
 /* Harden glass on sticky headers to avoid repaint/flicker */
-.sticky.cs-glass, .sticky .cs-glass {
+.sticky.cs-glass,
+.sticky .cs-glass {
   isolation: isolate;
   contain: paint;
   backface-visibility: hidden;
@@ -239,7 +245,7 @@ html {
     background: white !important;
     color: black !important;
   }
-  
+
   .cs-orb,
   .cs-loading-spinner,
   .cs-loading-dots,
