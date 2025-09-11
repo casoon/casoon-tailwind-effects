@@ -1,0 +1,362 @@
+/*!
+ * Casoon Gradients - Performance Optimizations (Optional Extension)
+ * GPU acceleration, will-change optimization, intersection observer ready
+ * 
+ * Usage: Import nach dem Haupt-Package:
+ * @import "@casoon/tailwindcss-gradients";
+ * @import "@casoon/tailwindcss-gradients/src/optional/performance.css";
+ */
+
+/* -------------------------------------------------------
+   GPU Acceleration Classes
+------------------------------------------------------- */
+
+/* Force GPU acceleration */
+.cs-gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+/* GPU acceleration for animations */
+.cs-gpu-animate {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* GPU acceleration for specific properties */
+.cs-gpu-transform {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.cs-gpu-opacity {
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+.cs-gpu-filter {
+  will-change: filter;
+  transform: translateZ(0);
+}
+
+/* -------------------------------------------------------
+   Will-Change Optimizations
+------------------------------------------------------- */
+
+/* Animation-specific will-change */
+.cs-will-change-transform {
+  will-change: transform;
+}
+
+.cs-will-change-opacity {
+  will-change: opacity;
+}
+
+.cs-will-change-filter {
+  will-change: filter;
+}
+
+.cs-will-change-background {
+  will-change: background-position, background-size;
+}
+
+.cs-will-change-colors {
+  will-change: background-color, color, border-color;
+}
+
+/* Combined will-change for common scenarios */
+.cs-will-change-animate {
+  will-change: transform, opacity, filter;
+}
+
+.cs-will-change-hover {
+  will-change: transform, filter, background-color;
+}
+
+/* Reset will-change after animation */
+.cs-will-change-auto {
+  will-change: auto;
+}
+
+/* -------------------------------------------------------
+   Performance-Optimized Animation Classes
+------------------------------------------------------- */
+
+/* High performance animations (transform + opacity only) */
+.cs-perf-fade-in {
+  opacity: 0;
+  animation: cs-perf-fade-in 0.3s ease-out forwards;
+}
+
+.cs-perf-slide-up {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: cs-perf-slide-up 0.4s ease-out forwards;
+}
+
+.cs-perf-scale-in {
+  transform: scale(0.9);
+  opacity: 0;
+  animation: cs-perf-scale-in 0.3s ease-out forwards;
+}
+
+.cs-perf-rotate-in {
+  transform: rotate(-5deg) scale(0.95);
+  opacity: 0;
+  animation: cs-perf-rotate-in 0.5s ease-out forwards;
+}
+
+/* -------------------------------------------------------
+   Intersection Observer Ready Classes
+------------------------------------------------------- */
+
+/* Base class for intersection observer animations */
+.cs-observe-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Active state when in viewport */
+.cs-observe-animate.cs-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Different entrance animations */
+.cs-observe-slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.cs-observe-slide-left.cs-in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cs-observe-slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.cs-observe-slide-right.cs-in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cs-observe-scale {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.cs-observe-scale.cs-in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cs-observe-rotate {
+  opacity: 0;
+  transform: rotate(10deg) scale(0.9);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.cs-observe-rotate.cs-in-view {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* -------------------------------------------------------
+   Performance Modes
+------------------------------------------------------- */
+
+/* Low performance mode (reduced animations) */
+.cs-performance-low {
+  animation-duration: calc(var(--cs-duration, 1s) * 2) !important;
+  animation-iteration-count: 1 !important;
+  will-change: auto !important;
+}
+
+.cs-performance-low * {
+  animation-duration: calc(var(--cs-duration, 1s) * 2) !important;
+  will-change: auto !important;
+}
+
+/* High performance mode (optimized animations) */
+.cs-performance-high {
+  will-change: transform, opacity;
+  animation-duration: calc(var(--cs-duration, 1s) * 0.7) !important;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.cs-performance-high * {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Ultra performance mode (minimal animations) */
+.cs-performance-ultra {
+  animation-duration: 0.1s !important;
+  transition-duration: 0.1s !important;
+}
+
+/* -------------------------------------------------------
+   Device-Specific Optimizations
+------------------------------------------------------- */
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .cs-mobile-optimized {
+    animation-duration: calc(var(--cs-duration, 1s) * 1.5);
+    will-change: auto;
+  }
+  
+  .cs-mobile-optimized * {
+    animation-iteration-count: 1;
+    transform: translateZ(0);
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cs-tablet-optimized {
+    animation-duration: var(--cs-duration, 1s);
+    will-change: transform, opacity;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  .cs-desktop-optimized {
+    animation-duration: calc(var(--cs-duration, 1s) * 0.8);
+    will-change: transform, opacity, filter;
+  }
+}
+
+/* -------------------------------------------------------
+   Battery & Data Saving Optimizations
+------------------------------------------------------- */
+
+/* Reduced animations for battery saving */
+@media (prefers-reduced-motion: reduce) {
+  .cs-perf-fade-in,
+  .cs-perf-slide-up,
+  .cs-perf-scale-in,
+  .cs-perf-rotate-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .cs-observe-animate,
+  .cs-observe-slide-left,
+  .cs-observe-slide-right,
+  .cs-observe-scale,
+  .cs-observe-rotate {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Data saver mode */
+@media (prefers-reduced-data: reduce) {
+  .cs-gpu-accelerated,
+  .cs-gpu-animate,
+  .cs-performance-high {
+    will-change: auto !important;
+    transform: none !important;
+    backface-visibility: visible !important;
+  }
+}
+
+/* -------------------------------------------------------
+   Memory Management
+------------------------------------------------------- */
+
+/* Clean up will-change after animations */
+.cs-cleanup-will-change {
+  animation-fill-mode: forwards;
+}
+
+.cs-cleanup-will-change:not(:hover):not(:focus):not(:active) {
+  will-change: auto;
+}
+
+/* Lazy loading preparation */
+.cs-lazy-load {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  will-change: transform, opacity;
+}
+
+.cs-lazy-load.cs-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------------------------------------
+   Performance Monitoring Classes
+------------------------------------------------------- */
+
+/* Classes for performance monitoring */
+.cs-perf-monitor {
+  /* These classes can be used by JavaScript to monitor performance */
+  --cs-perf-start: 0;
+  --cs-perf-end: 0;
+}
+
+.cs-perf-critical {
+  /* Critical performance path - highest priority */
+  will-change: transform, opacity;
+  contain: layout style paint;
+}
+
+.cs-perf-deferred {
+  /* Deferred animations - can be delayed */
+  animation-delay: 0.5s;
+  will-change: auto;
+}
+
+/* -------------------------------------------------------
+   CSS Containment for Performance
+------------------------------------------------------- */
+
+/* Layout containment */
+.cs-contain-layout {
+  contain: layout;
+}
+
+/* Style containment */
+.cs-contain-style {
+  contain: style;
+}
+
+/* Paint containment */
+.cs-contain-paint {
+  contain: paint;
+}
+
+/* Size containment */
+.cs-contain-size {
+  contain: size;
+}
+
+/* Strict containment */
+.cs-contain-strict {
+  contain: strict;
+}
+
+/* Content containment */
+.cs-contain-content {
+  contain: content;
+}
