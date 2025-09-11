@@ -162,6 +162,81 @@ This class provides the CSS variables needed for gradient backgrounds and text e
 </div>
 ```
 
+### Advanced Patterns
+
+```html
+<!-- Complex glass card with hover effects -->
+<div class="cs-glass-card-complex">
+  <div class="cs-card-header">
+    <h3>Advanced Card</h3>
+  </div>
+  <div class="cs-card-content">
+    <p>Enhanced glass morphism with structured layout</p>
+  </div>
+  <div class="cs-card-actions">
+    <button>Action</button>
+  </div>
+</div>
+
+<!-- Enhanced disclosure with animations -->
+<details class="cs-disclosure-pattern">
+  <summary>Click to expand</summary>
+  <div class="cs-disclosure-content">
+    <p>Content with smooth animations</p>
+  </div>
+</details>
+
+<!-- Responsive layout with container queries -->
+<div class="cs-responsive-layout-pattern">
+  <header class="cs-layout-header">Header</header>
+  <nav class="cs-layout-sidebar">Sidebar</nav>
+  <main class="cs-layout-main">Main content</main>
+  <aside class="cs-layout-aside">Aside</aside>
+  <footer class="cs-layout-footer">Footer</footer>
+</div>
+```
+
+### Theme System
+
+```html
+<!-- Theme switching -->
+<body data-theme="dark">
+  <!-- Dark theme applied -->
+</body>
+
+<body data-theme="high-contrast">
+  <!-- High contrast theme for accessibility -->
+</body>
+
+<!-- Density controls -->
+<div data-density="compact">
+  <!-- Tighter spacing and smaller components -->
+</div>
+
+<div data-density="comfortable">
+  <!-- More spacious layout -->
+</div>
+```
+
+### Debug Utilities
+
+```html
+<!-- Debug outlines -->
+<div data-debug="outlines">
+  <!-- All elements get red outlines -->
+</div>
+
+<!-- Debug grid -->
+<div data-debug="grid">
+  <!-- Shows alignment grid overlay -->
+</div>
+
+<!-- Debug spacing -->
+<div data-debug="spacing">
+  <!-- Highlights element spacing -->
+</div>
+```
+
 ### Utilities
 
 ```html
@@ -174,6 +249,15 @@ This class provides the CSS variables needed for gradient backgrounds and text e
 <p class="cs-sr-only">
   Hidden from visual users, available to screen readers
 </p>
+
+<!-- Responsive visibility -->
+<div class="cs-hide-mobile">
+  Hidden on mobile devices
+</div>
+
+<div class="cs-hide-desktop">
+  Hidden on desktop devices
+</div>
 ```
 
 ## 🔧 JavaScript Helpers (Optional)
@@ -231,7 +315,34 @@ All effects use CSS custom properties for easy customization:
 
 ## 🏗️ Architecture
 
-This project has been completely rewritten for Tailwind CSS v4:
+This project has been completely rewritten for Tailwind CSS v4 with a sophisticated **7-layer CSS architecture**:
+
+### 🔧 **New 7-Layer CSS System**
+
+```css
+@layer cs-reset, cs-tokens, cs-base, cs-components, cs-patterns, cs-utilities, cs-overrides;
+```
+
+**Layer Structure:**
+
+1. **`cs-reset`** - CSS resets & normalization
+2. **`cs-tokens`** - Design tokens & CSS custom properties  
+3. **`cs-base`** - Base elements, keyframes, system styles
+4. **`cs-components`** - Simple UI components
+5. **`cs-patterns`** - Complex composed patterns
+6. **`cs-utilities`** - Atomic utility classes
+7. **`cs-overrides`** - Theme overrides, debug utils
+
+### 🎯 **Benefits of This Architecture**
+
+- **Better Organization**: Clear separation of concerns across layers
+- **Enhanced Theming**: Robust dark/light/high-contrast theme system
+- **Improved Performance**: Strategic layer ordering for optimal CSS cascade
+- **Developer Experience**: Debug utilities and maintainable structure
+- **Accessibility First**: Built-in reduced motion and high contrast support
+- **Future-Proof**: Scalable architecture for continued growth
+
+### 🛠️ **Technical Features**
 
 - **Pure CSS**: Each package exports a `dist.css` file with all CSS classes
 - **No Plugins**: CSS files are directly imported, no JavaScript build step needed  

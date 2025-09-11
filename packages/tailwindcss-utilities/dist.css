@@ -3,9 +3,18 @@
  * Casoon CSS Utilities (modular build)
  * Version: 0.8.0 — Tailwind CSS v4 compatible
  * Scope: Utilities, layout, a11y, motion, effects, components
+ * 
+ * NEW 7-LAYER ARCHITECTURE:
+ * 1. cs-reset    - CSS resets & normalization
+ * 2. cs-tokens   - Design tokens & CSS custom properties  
+ * 3. cs-base     - Base elements, keyframes, system styles
+ * 4. cs-components - Simple UI components
+ * 5. cs-patterns - Complex composed patterns
+ * 6. cs-utilities - Atomic utility classes
+ * 7. cs-overrides - Theme overrides, debug utils
  */
-@layer cs-reset, cs-base, cs-components, cs-utilities;
-@layer cs-base {
+@layer cs-reset, cs-tokens, cs-base, cs-components, cs-patterns, cs-utilities, cs-overrides;
+@layer cs-tokens {
   .cs-theme {
     --cs-bg: #0b0c0f;
     --cs-surface: #14161a;
@@ -26,9 +35,6 @@
       "Courier New", monospace;
     --cs-font-size: 16px;
     --cs-line: 1.5;
-    --cs-radius: 10px;
-    --cs-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(0, 0, 0, 0.1);
-    --cs-shadow-2: 0 8px 24px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.18);
     --cs-density: 1;
     --cs-space-1: calc(4px * var(--cs-density));
     --cs-space-2: calc(8px * var(--cs-density));
@@ -36,6 +42,9 @@
     --cs-space-4: calc(16px * var(--cs-density));
     --cs-space-6: calc(24px * var(--cs-density));
     --cs-space-8: calc(32px * var(--cs-density));
+    --cs-radius: 10px;
+    --cs-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(0, 0, 0, 0.1);
+    --cs-shadow-2: 0 8px 24px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.18);
     --cs-transition: 180ms cubic-bezier(0.2, 0.6, 0.2, 1);
     --cs-anim-duration-sm: 160ms;
     --cs-anim-duration-md: 280ms;
@@ -76,18 +85,14 @@
     --cs-acrylic-blur: 14px;
     --cs-acrylic-tint: rgba(20, 22, 26, 0.55);
     --cs-acrylic-border: rgba(255, 255, 255, 0.06);
-    color-scheme: light dark;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    font-synthesis-weight: none;
-    font-synthesis-style: none;
     --cs-brand-oklch: oklch(60% 0.15 255);
     --cs-brand-ink: var(--cs-brand-contrast);
-  }
-  @supports (color: oklch(60% 0.2 250)) {
-    .cs-theme {
-      --cs-brand-oklch: oklch(from var(--cs-brand) l c h);
-    }
+    --cs-fs-xs: clamp(0.78rem, 0.75rem + 0.2cqi, 0.84rem);
+    --cs-fs-sm: clamp(0.88rem, 0.82rem + 0.3cqi, 0.95rem);
+    --cs-fs-md: clamp(1rem, 0.95rem + 0.4cqi, 1.125rem);
+    --cs-fs-lg: clamp(1.25rem, 1.05rem + 0.8cqi, 1.5rem);
+    --cs-fs-xl: clamp(1.5rem, 1.2rem + 1.2cqi, 1.875rem);
+    --cs-fs-2xl: clamp(1.875rem, 1.4rem + 1.6cqi, 2.25rem);
   }
   .cs-theme.cs-theme-light {
     --cs-bg: #ffffff;
@@ -104,18 +109,22 @@
     --cs-acrylic-tint: rgba(255, 255, 255, 0.65);
     --cs-acrylic-border: rgba(0, 0, 0, 0.06);
   }
-  .cs-cq {
-    container-type: inline-size;
+  @supports (color: oklch(60% 0.2 250)) {
+    .cs-theme {
+      --cs-brand-oklch: oklch(from var(--cs-brand) l c h);
+    }
   }
 }
 @layer cs-base {
   .cs-theme {
-    --cs-fs-xs: clamp(0.78rem, 0.75rem + 0.2cqi, 0.84rem);
-    --cs-fs-sm: clamp(0.88rem, 0.82rem + 0.3cqi, 0.95rem);
-    --cs-fs-md: clamp(1rem, 0.95rem + 0.4cqi, 1.125rem);
-    --cs-fs-lg: clamp(1.25rem, 1.05rem + 0.8cqi, 1.5rem);
-    --cs-fs-xl: clamp(1.5rem, 1.2rem + 1.2cqi, 1.875rem);
-    --cs-fs-2xl: clamp(1.875rem, 1.4rem + 1.6cqi, 2.25rem);
+    color-scheme: light dark;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis-weight: none;
+    font-synthesis-style: none;
+  }
+  .cs-cq {
+    container-type: inline-size;
   }
 }
 @layer cs-base {
@@ -835,5 +844,370 @@
       --cs-border: color-mix(in srgb, var(--cs-text) 12%, transparent);
     }
     filter: saturate(1.05) contrast(1.05);
+  }
+}
+@layer cs-patterns {
+  .cs-modal-system {
+    position: fixed;
+    inset: 0;
+    background: color-mix(in srgb, #000 55%, transparent);
+    backdrop-filter: blur(2px);
+    z-index: var(--cs-z-modal);
+    display: grid;
+    place-items: center;
+    > .cs-modal-dialog {
+      margin: auto;
+      max-inline-size: min(680px, 92cqi);
+      background: var(--cs-elev1);
+      color: var(--cs-text);
+      border: 1px solid var(--cs-border);
+      border-radius: var(--cs-radius);
+      box-shadow: var(--cs-shadow-2);
+      padding: var(--cs-space-6);
+      > header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--cs-space-2);
+      }
+      [data-close].cs-focus-ring {
+        inline-size: 40px;
+        block-size: 40px;
+        border-radius: 999px;
+      }
+    }
+  }
+  .cs-modal-target-pattern {
+    display: none;
+    &:target {
+      display: grid;
+      place-items: center;
+      position: fixed;
+      inset: 0;
+      background: color-mix(in srgb, #000 55%, transparent);
+      backdrop-filter: blur(2px);
+      z-index: var(--cs-z-modal);
+    }
+  }
+  @supports selector(:has(+ *)) {
+    .cs-disclosure-pattern {
+      border: 1px solid var(--cs-border);
+      border-radius: var(--cs-radius);
+      background: var(--cs-elev1);
+      > summary {
+        list-style: none;
+        padding: var(--cs-space-3) var(--cs-space-4);
+        cursor: pointer;
+        position: relative;
+        &::after {
+          content: '▼';
+          position: absolute;
+          right: var(--cs-space-4);
+          transition: transform var(--cs-transition);
+        }
+        &::-webkit-details-marker {
+          display: none;
+        }
+      }
+      > .cs-disclosure-content {
+        padding: 0 var(--cs-space-4) var(--cs-space-4);
+        border-top: 1px solid var(--cs-border);
+      }
+      &[open] {
+        box-shadow: var(--cs-shadow-1);
+        > summary::after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  .cs-glass-card-complex {
+    background: var(--cs-glass-bg-light, var(--cs-surface));
+    border: 1px solid var(--cs-glass-border-medium, var(--cs-border));
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--cs-glass-shadow-def, var(--cs-shadow-2));
+    backdrop-filter: blur(16px);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--cs-transition) ease;
+    &:hover {
+      background: var(--cs-glass-bg-hover, var(--cs-elev1));
+      border-color: var(--cs-glass-border-strong, var(--cs-border));
+      box-shadow: 0 20px 40px var(--cs-glass-shadow-strong, rgba(0,0,0,0.15));
+      transform: translateY(-2px);
+    }
+    &:focus-within {
+      outline: 2px solid var(--cs-glass-focus-ring, var(--cs-brand));
+      outline-offset: 2px;
+    }
+    > .cs-card-header {
+      display: flex;
+      align-items: center;
+      gap: var(--cs-space-3);
+      margin-bottom: var(--cs-space-4);
+    }
+    > .cs-card-content {
+      display: grid;
+      gap: var(--cs-space-3);
+    }
+    > .cs-card-actions {
+      display: flex;
+      gap: var(--cs-space-2);
+      justify-content: flex-end;
+      margin-top: var(--cs-space-4);
+      padding-top: var(--cs-space-4);
+      border-top: 1px solid var(--cs-border);
+    }
+  }
+  @supports selector(:has(+ *)) {
+    .cs-field-pattern {
+      display: grid;
+      gap: var(--cs-space-2);
+      > .cs-field-wrapper {
+        position: relative;
+        > .cs-field {
+          width: 100%;
+          padding: var(--cs-space-3);
+          border: 1px solid var(--cs-border);
+          border-radius: var(--cs-radius);
+          background: var(--cs-surface);
+          color: var(--cs-text);
+          transition: border-color var(--cs-transition);
+          &:focus {
+            outline: 2px solid var(--cs-brand);
+            outline-offset: -2px;
+            border-color: var(--cs-brand);
+          }
+        }
+        &:has(+ .cs-error) .cs-field {
+          border-color: var(--cs-danger);
+        }
+      }
+      > .cs-error {
+        color: var(--cs-danger);
+        font-size: var(--cs-fs-sm);
+        display: flex;
+        align-items: center;
+        gap: var(--cs-space-2);
+        &::before {
+          content: '⚠️';
+          font-size: 0.875em;
+        }
+      }
+      &[data-valid] {
+        > .cs-field-wrapper > .cs-field {
+          border-color: var(--cs-success);
+        }
+        > .cs-success {
+          color: var(--cs-success);
+          font-size: var(--cs-fs-sm);
+          &::before {
+            content: '✅';
+            font-size: 0.875em;
+          }
+        }
+      }
+    }
+  }
+  .cs-responsive-layout-pattern {
+    container-type: inline-size;
+    display: grid;
+    gap: var(--cs-space-4);
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "sidebar" "main" "footer";
+    @container (min-width: 640px) {
+      grid-template-columns: 250px 1fr;
+      grid-template-areas: "header header" "sidebar main" "footer footer";
+    }
+    @container (min-width: 960px) {
+      grid-template-columns: 250px 1fr 200px;
+      grid-template-areas: "header header header" "sidebar main aside" "footer footer footer";
+    }
+    > .cs-layout-header {
+      grid-area: header;
+    }
+    > .cs-layout-sidebar {
+      grid-area: sidebar;
+    }
+    > .cs-layout-main {
+      grid-area: main;
+    }
+    > .cs-layout-aside {
+      grid-area: aside;
+    }
+    > .cs-layout-footer {
+      grid-area: footer;
+    }
+  }
+}
+@layer cs-overrides {
+  [data-theme="dark"] {
+    --cs-bg: #0a0a0a;
+    --cs-surface: #111111;
+    --cs-elev1: #1a1a1a;
+    --cs-elev2: #222222;
+    --cs-text: #ffffff;
+    --cs-text-muted: #a0a0a0;
+    --cs-border: #333333;
+    --cs-brand: #5c7cff;
+    --cs-acrylic-tint: rgba(10, 10, 10, 0.8);
+    --cs-acrylic-border: rgba(255, 255, 255, 0.1);
+  }
+  [data-theme="light"] {
+    --cs-bg: #ffffff;
+    --cs-surface: #fafafa;
+    --cs-elev1: #ffffff;
+    --cs-elev2: #f5f5f5;
+    --cs-text: #000000;
+    --cs-text-muted: #666666;
+    --cs-border: #e0e0e0;
+    --cs-brand: #2563eb;
+    --cs-acrylic-tint: rgba(255, 255, 255, 0.8);
+    --cs-acrylic-border: rgba(0, 0, 0, 0.1);
+  }
+  [data-theme="high-contrast"] {
+    --cs-bg: #ffffff;
+    --cs-surface: #ffffff;
+    --cs-elev1: #ffffff;
+    --cs-text: #000000;
+    --cs-border: #000000;
+    --cs-brand: #0000ff;
+    --cs-shadow-1: 0 2px 4px rgba(0, 0, 0, 0.8);
+    --cs-shadow-2: 0 4px 8px rgba(0, 0, 0, 0.8);
+  }
+  [data-density="compact"] {
+    --cs-density: 0.75;
+    --cs-radius: 6px;
+    --cs-space-4: 12px;
+  }
+  [data-density="comfortable"] {
+    --cs-density: 1.25;
+    --cs-radius: 12px;
+  }
+  @media (max-width: 640px) {
+    .cs-hide-mobile {
+      display: none !important;
+    }
+    .cs-full-width-mobile {
+      width: 100% !important;
+      margin-inline: 0 !important;
+    }
+    .cs-glass-card, .cs-acrylic {
+      backdrop-filter: blur(4px) !important;
+    }
+    .cs-glass-button, .cs-focus-ring {
+      min-height: 44px !important;
+      min-width: 44px !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .cs-hide-desktop {
+      display: none !important;
+    }
+    .cs-glass-card:hover {
+      backdrop-filter: blur(20px) saturate(150%) !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .cs-glass-card:hover, .cs-modal-in, .cs-toast-out, .cs-fade-in {
+      transform: none !important;
+      animation: none !important;
+    }
+  }
+  @media (prefers-contrast: more) {
+    .cs-glass-card, .cs-acrylic {
+      backdrop-filter: none !important;
+      background: var(--cs-surface) !important;
+      border-width: 2px !important;
+      border-color: var(--cs-text) !important;
+    }
+    .cs-focus-ring:focus-visible {
+      outline: 3px solid var(--cs-brand) !important;
+      outline-offset: 2px !important;
+    }
+  }
+  [data-debug="outlines"] * {
+    outline: 1px solid red !important;
+    outline-offset: -1px !important;
+  }
+  [data-debug="grid"] {
+    background-image: linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px) !important;
+    background-size: 20px 20px !important;
+  }
+  [data-debug="spacing"] * {
+    background-color: rgba(0, 255, 0, 0.1) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 0, 0, 0.2) !important;
+  }
+  [data-debug="z-index"] * {
+    position: relative !important;
+  }
+  [data-debug="z-index"] *::before {
+    content: attr(class) " z:" attr(style) !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    font-size: 10px !important;
+    background: rgba(255, 255, 0, 0.8) !important;
+    color: black !important;
+    padding: 2px !important;
+    z-index: 999999 !important;
+    pointer-events: none !important;
+  }
+  .cs-force-hide {
+    display: none !important;
+  }
+  .cs-force-show {
+    display: block !important;
+  }
+  .cs-force-full-width {
+    width: 100% !important;
+  }
+  .cs-force-center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .cs-force-text-center {
+    text-align: center !important;
+  }
+  .cs-force-no-pointer {
+    pointer-events: none !important;
+  }
+  [data-experiment="new-glass"] .cs-glass-card {
+    background: var(--cs-surface) !important;
+    @supports (color: color-mix(in lab, red, red)) {
+      background: color-mix(in oklab, var(--cs-surface) 60%, transparent) !important;
+    }
+    backdrop-filter: blur(20px) saturate(180%) !important;
+  }
+  [data-experiment="enhanced-focus"] .cs-focus-ring:focus-visible {
+    box-shadow: 0 0 0 2px var(--cs-brand), 0 0 0 4px var(--cs-brand), 0 0 12px var(--cs-brand) !important;
+    @supports (color: color-mix(in lab, red, red)) {
+      box-shadow: 0 0 0 2px var(--cs-brand), 0 0 0 4px color-mix(in srgb, var(--cs-brand) 30%, transparent), 0 0 12px color-mix(in srgb, var(--cs-brand) 50%, transparent) !important;
+    }
+  }
+  @media print {
+    * {
+      backdrop-filter: none !important;
+      box-shadow: none !important;
+      animation: none !important;
+      transition: none !important;
+    }
+    .cs-glass-card, .cs-acrylic {
+      background: white !important;
+      border: 1px solid black !important;
+    }
+    .cs-hide-print {
+      display: none !important;
+    }
+    .cs-show-print {
+      display: block !important;
+    }
   }
 }

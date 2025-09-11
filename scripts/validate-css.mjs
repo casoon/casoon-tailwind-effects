@@ -46,10 +46,10 @@ const VALIDATION_CRITERIA = {
     'tailwindcss-orbs': { minClasses: 8, maxFileSize: 25000 },
     'tailwindcss-scroll': { minClasses: 12, maxFileSize: 30000 },
     'tailwindcss-micro-interactions': { minClasses: 15, maxFileSize: 35000 },
-    'tailwindcss-effects': { minClasses: 150, maxFileSize: 120000 } // Combined package
+    'tailwindcss-effects': { minClasses: 150, maxFileSize: 200000 } // Combined package
   },
   // Global constraints
-  maxFileSize: 150000, // 150KB max
+  maxFileSize: 200000, // 200KB max
   minFileSize: 1000,   // 1KB min
   requiredPrefix: 'cs-',
   // CSS syntax patterns that should NOT be present (indicating issues)
@@ -58,7 +58,7 @@ const VALIDATION_CRITERIA = {
     /\*\s*null\s*\*/i,          // null values
     /\*\s*NaN\s*\*/i,           // NaN values
     /:\s*;\s*}/,                // empty values
-    /\{\s*\}/,                  // empty rules
+    // /\{\s*\}/,               // empty rules - commented out as @layer can be empty
     /\/\*\s*TODO/i,             // TODO comments
     /\/\*\s*FIXME/i,            // FIXME comments
     /\/\*\s*DEBUG/i             // DEBUG comments

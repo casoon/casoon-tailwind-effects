@@ -1,14 +1,18 @@
 # @casoon/tailwindcss-utilities
 
-A comprehensive utility library for Tailwind CSS v4, providing practical layout components, responsive grids, typography helpers, and form utilities. Built with a neutral design system that adapts to any project.
+A comprehensive utility library for Tailwind CSS v4, built with a **7-layer CSS architecture** and providing practical layout components, responsive grids, typography helpers, advanced UI patterns, and form utilities. Features a complete theme system with dark mode, accessibility, and debug utilities.
 
 ## ✨ Features
 
+- **7-Layer CSS Architecture** - Organized into tokens, base, components, patterns, utilities, and overrides
+- **Advanced UI Patterns** - Complex modal systems, disclosure widgets, glass cards, responsive layouts
+- **Complete Theme System** - Dark/light/high-contrast themes with density controls
 - **Layout Components** - Container, sections, hero areas, and grid systems
 - **Responsive Design** - Mobile-first responsive utilities with CSS Container Queries
 - **Typography Helpers** - Text utilities, balance, truncation, and line clamping
 - **Form Components** - Inputs, buttons, and form layouts with consistent styling
 - **Card System** - Flexible card components with hover effects and variants
+- **Debug Utilities** - Visual debugging tools for development
 - **Accessibility First** - Focus management, screen reader support, and motion safety
 - **Design Token System** - CSS custom properties for consistent spacing and colors
 
@@ -75,6 +79,31 @@ A comprehensive utility library for Tailwind CSS v4, providing practical layout 
 - **`.cs-card-pad`** - Standard card padding
 - **`.cs-card-pad-lg`** - Large card padding
 - **`.cs-card-inset`** - Inset border variant
+
+### Advanced Patterns (cs-patterns layer)
+- **`.cs-glass-card-complex`** - Advanced glass card with structured layout and hover effects
+- **`.cs-disclosure-pattern`** - Enhanced disclosure widget with animations
+- **`.cs-modal-system`** - Complete modal system with backdrop
+- **`.cs-modal-target-pattern`** - URL hash-based modal pattern
+- **`.cs-field-pattern`** - Advanced form field with validation states
+- **`.cs-responsive-layout-pattern`** - Responsive layout with container queries
+
+### Theme System (cs-overrides layer)
+- **`[data-theme="dark"]`** - Dark theme variables override
+- **`[data-theme="light"]`** - Light theme variables override
+- **`[data-theme="high-contrast"]`** - High contrast accessibility theme
+- **`[data-density="compact"]`** - Compact spacing density
+- **`[data-density="comfortable"]`** - Comfortable spacing density
+
+### Debug Utilities
+- **`[data-debug="outlines"]`** - Show red outlines on all elements
+- **`[data-debug="grid"]`** - Display alignment grid overlay
+- **`[data-debug="spacing"]`** - Highlight element spacing
+
+### Responsive Utilities
+- **`.cs-hide-mobile`** - Hidden on mobile devices
+- **`.cs-hide-desktop`** - Hidden on desktop devices
+- **`.cs-full-width-mobile`** - Full width on mobile
 
 ### Typography
 - **`.cs-text-primary`** - Primary text color
@@ -197,6 +226,59 @@ Vertical group (stacked inputs merged):
     <h3>Another Article</h3>
     <p class="cs-text-secondary">More content here</p>
   </article>
+</div>
+```
+
+### Advanced Glass Card Pattern
+```html
+<div class="cs-glass-card-complex">
+  <div class="cs-card-header">
+    <h3>Advanced Features</h3>
+    <span class="cs-badge">New</span>
+  </div>
+  <div class="cs-card-content">
+    <p>This card uses the advanced pattern with structured layout, hover effects, and focus management.</p>
+  </div>
+  <div class="cs-card-actions">
+    <button class="cs-btn">Learn More</button>
+    <button class="cs-btn cs-btn-secondary">Dismiss</button>
+  </div>
+</div>
+```
+
+### Theme System Usage
+```html
+<!-- Apply theme to entire page -->
+<body data-theme="dark" data-density="comfortable">
+  <div class="cs-page">
+    <h1>Dark theme with comfortable spacing</h1>
+  </div>
+</body>
+
+<!-- High contrast for accessibility -->
+<div data-theme="high-contrast">
+  <div class="cs-card cs-card-pad">
+    <h2>High Contrast Mode</h2>
+    <p>Enhanced contrast for better accessibility</p>
+  </div>
+</div>
+```
+
+### Debug Utilities
+```html
+<!-- Debug layout issues -->
+<div data-debug="outlines">
+  <div class="cs-grid-cards">
+    <div class="cs-card">Card 1</div>
+    <div class="cs-card">Card 2</div>
+  </div>
+</div>
+
+<!-- Show spacing grid -->
+<div data-debug="grid" class="cs-container">
+  <div class="cs-section">
+    <h1>Content with grid overlay</h1>
+  </div>
 </div>
 ```
 

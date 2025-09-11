@@ -1,0 +1,144 @@
+/* =========================================
+   DESIGN TOKENS - CS-TOKENS LAYER
+   ========================================= */
+   
+/*
+ * All CSS custom properties and design tokens.
+ * This layer has low specificity and contains only token definitions.
+ * No selectors or functional styles - only token declarations.
+ */
+
+@layer cs-tokens {
+  .cs-theme {
+    /* ===== COLOR TOKENS ===== */
+    --cs-bg: #0b0c0f;
+    --cs-surface: #14161a;
+    --cs-elev1: #1b1e24;
+    --cs-elev2: #21252d;
+    --cs-text: #eef1f6;
+    --cs-text-muted: #b6bfcc;
+    --cs-border: #2a2f39;
+    --cs-brand: #4f7cff;
+    --cs-brand-contrast: #0b0d12;
+
+    /* ===== STATE COLORS ===== */
+    --cs-success: #22c55e;
+    --cs-warning: #f59e0b;
+    --cs-danger: #ef4444;
+    --cs-info: #06b6d4;
+
+    /* ===== TYPOGRAPHY TOKENS ===== */
+    --cs-font-sans:
+      ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter,
+      "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    --cs-font-mono:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --cs-font-size: 16px;
+    --cs-line: 1.5;
+
+    /* ===== SPACING TOKENS ===== */
+    /* Spacing scale (multiplied by density) */
+    --cs-density: 1;
+    --cs-space-1: calc(4px * var(--cs-density));
+    --cs-space-2: calc(8px * var(--cs-density));
+    --cs-space-3: calc(12px * var(--cs-density));
+    --cs-space-4: calc(16px * var(--cs-density));
+    --cs-space-6: calc(24px * var(--cs-density));
+    --cs-space-8: calc(32px * var(--cs-density));
+
+    /* ===== RADII & SHADOW TOKENS ===== */
+    --cs-radius: 10px;
+    --cs-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(0, 0, 0, 0.1);
+    --cs-shadow-2:
+      0 8px 24px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(0, 0, 0, 0.18);
+
+    /* ===== MOTION TOKENS ===== */
+    --cs-transition: 180ms cubic-bezier(0.2, 0.6, 0.2, 1);
+    --cs-anim-duration-sm: 160ms;
+    --cs-anim-duration-md: 280ms;
+    --cs-anim-duration-lg: 420ms;
+    --cs-anim-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --cs-anim-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+    --cs-anim-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+    /* ===== Z-INDEX TOKENS ===== */
+    /* Extended z-index scale for modern UI layering */
+    --cs-z-0: 0;
+    --cs-z-1: 1;
+    --cs-z-base: 1;
+    --cs-z-10: 10;
+    --cs-z-20: 20;
+    --cs-z-30: 30;
+    --cs-z-popover: 30;
+    --cs-z-40: 40;
+    --cs-z-tooltip: 40;
+    --cs-z-50: 50;
+    --cs-z-toast: 50;
+    --cs-z-60: 60;
+    --cs-z-modal: 60;
+    --cs-z-70: 70;
+    --cs-z-80: 80;
+    --cs-z-90: 90;
+    --cs-z-100: 100;
+    --cs-z-200: 200;
+    --cs-z-300: 300;
+    --cs-z-400: 400;
+    --cs-z-500: 500;
+    --cs-z-600: 600;
+    --cs-z-700: 700;
+    --cs-z-800: 800;
+    --cs-z-900: 900;
+    --cs-z-999: 999;
+    --cs-z-9999: 9999;
+    --cs-z-max: 2147483647;
+
+    /* ===== LAYOUT TOKENS ===== */
+    /* Layout widths (for containers & queries) */
+    --cs-page-max: 1200px;
+    --cs-page-pad: var(--cs-space-4);
+
+    /* ===== BACKDROP/BLUR TOKENS ===== */
+    --cs-acrylic-blur: 14px;
+    --cs-acrylic-tint: rgba(20, 22, 26, 0.55);
+    --cs-acrylic-border: rgba(255, 255, 255, 0.06);
+
+    /* ===== PROGRESSIVE COLOR TOKENS ===== */
+    --cs-brand-oklch: oklch(60% 0.15 255);
+    --cs-brand-ink: var(--cs-brand-contrast);
+
+    /* ===== FLUID TYPOGRAPHY TOKENS ===== */
+    --cs-fs-xs: clamp(0.78rem, 0.75rem + 0.2cqi, 0.84rem);
+    --cs-fs-sm: clamp(0.88rem, 0.82rem + 0.3cqi, 0.95rem);
+    --cs-fs-md: clamp(1rem, 0.95rem + 0.4cqi, 1.125rem);
+    --cs-fs-lg: clamp(1.25rem, 1.05rem + 0.8cqi, 1.5rem);
+    --cs-fs-xl: clamp(1.5rem, 1.2rem + 1.2cqi, 1.875rem);
+    --cs-fs-2xl: clamp(1.875rem, 1.4rem + 1.6cqi, 2.25rem);
+  }
+
+  /* ===== LIGHT THEME TOKEN OVERRIDES ===== */
+  .cs-theme.cs-theme-light {
+    --cs-bg: #ffffff;
+    --cs-surface: #f7f8fa;
+    --cs-elev1: #ffffff;
+    --cs-elev2: #ffffff;
+    --cs-text: #101217;
+    --cs-text-muted: #475066;
+    --cs-border: #dfe3ea;
+    --cs-brand: #375dfb;
+    --cs-brand-contrast: #ffffff;
+    --cs-shadow-1:
+      0 1px 2px rgba(18, 24, 40, 0.06), 0 1px 1px rgba(18, 24, 40, 0.04);
+    --cs-shadow-2:
+      0 10px 24px rgba(18, 24, 40, 0.1), 0 2px 8px rgba(18, 24, 40, 0.06);
+    --cs-acrylic-tint: rgba(255, 255, 255, 0.65);
+    --cs-acrylic-border: rgba(0, 0, 0, 0.06);
+  }
+
+  /* ===== PROGRESSIVE ENHANCEMENT TOKENS ===== */
+  @supports (color: oklch(60% 0.2 250)) {
+    .cs-theme {
+      --cs-brand-oklch: oklch(from var(--cs-brand) l c h);
+    }
+  }
+}

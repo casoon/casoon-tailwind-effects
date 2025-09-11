@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-loading",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Loading spinners and states for Tailwind CSS v4",
   "type": "module",
   "exports": {

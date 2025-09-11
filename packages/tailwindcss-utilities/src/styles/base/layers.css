@@ -1,0 +1,27 @@
+/* =======================================================
+   CASCADE LAYERS - NEW 7-LAYER ARCHITECTURE
+   ======================================================= */
+
+/*
+ * Layer Hierarchy (Specificity: Low → High):
+ * 1. cs-reset    - CSS resets & normalization
+ * 2. cs-tokens   - Design tokens & CSS custom properties
+ * 3. cs-base     - Base elements, keyframes, system styles
+ * 4. cs-components - Simple UI components (buttons, cards, modals)
+ * 5. cs-patterns - Complex composed patterns (hero sections, navigation)
+ * 6. cs-utilities - Atomic utility classes (highest specificity for overrides)
+ * 7. cs-overrides - Theme overrides, debug utils, force overrides
+ */
+
+@layer cs-reset, cs-tokens, cs-base, cs-components, cs-patterns, cs-utilities, cs-overrides;
+
+/* 
+ * Migration Notes:
+ * - cs-reset: New layer for CSS resets (previously in cs-base)
+ * - cs-tokens: New layer - all design tokens moved from cs-base
+ * - cs-base: Refactored - only keyframes and base element styles
+ * - cs-components: Unchanged - simple UI components
+ * - cs-patterns: New layer - complex composed components
+ * - cs-utilities: Unchanged - atomic utility classes  
+ * - cs-overrides: New layer - theme overrides and debug utilities
+ */
