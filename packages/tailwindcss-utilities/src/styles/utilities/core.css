@@ -64,21 +64,113 @@
     }
   }
 
-  /* Z-index helpers */
+  /* Z-index helpers - Extended scale for precise layering control */
+  .cs-z-0 {
+    z-index: var(--cs-z-0);
+    position: relative;
+  }
+  .cs-z-1 {
+    z-index: var(--cs-z-1);
+    position: relative;
+  }
+  .cs-z-base {
+    z-index: var(--cs-z-base);
+    position: relative;
+  }
+  .cs-z-10 {
+    z-index: var(--cs-z-10);
+    position: relative;
+  }
+  .cs-z-20 {
+    z-index: var(--cs-z-20);
+    position: relative;
+  }
+  .cs-z-30 {
+    z-index: var(--cs-z-30);
+    position: relative;
+  }
   .cs-z-popover {
     z-index: var(--cs-z-popover);
+    position: relative;
+  }
+  .cs-z-40 {
+    z-index: var(--cs-z-40);
     position: relative;
   }
   .cs-z-tooltip {
     z-index: var(--cs-z-tooltip);
     position: relative;
   }
+  .cs-z-50 {
+    z-index: var(--cs-z-50);
+    position: relative;
+  }
   .cs-z-toast {
     z-index: var(--cs-z-toast);
     position: relative;
   }
+  .cs-z-60 {
+    z-index: var(--cs-z-60);
+    position: relative;
+  }
   .cs-z-modal {
     z-index: var(--cs-z-modal);
+    position: relative;
+  }
+  .cs-z-70 {
+    z-index: var(--cs-z-70);
+    position: relative;
+  }
+  .cs-z-80 {
+    z-index: var(--cs-z-80);
+    position: relative;
+  }
+  .cs-z-90 {
+    z-index: var(--cs-z-90);
+    position: relative;
+  }
+  .cs-z-100 {
+    z-index: var(--cs-z-100);
+    position: relative;
+  }
+  .cs-z-200 {
+    z-index: var(--cs-z-200);
+    position: relative;
+  }
+  .cs-z-300 {
+    z-index: var(--cs-z-300);
+    position: relative;
+  }
+  .cs-z-400 {
+    z-index: var(--cs-z-400);
+    position: relative;
+  }
+  .cs-z-500 {
+    z-index: var(--cs-z-500);
+    position: relative;
+  }
+  .cs-z-600 {
+    z-index: var(--cs-z-600);
+    position: relative;
+  }
+  .cs-z-700 {
+    z-index: var(--cs-z-700);
+    position: relative;
+  }
+  .cs-z-800 {
+    z-index: var(--cs-z-800);
+    position: relative;
+  }
+  .cs-z-900 {
+    z-index: var(--cs-z-900);
+    position: relative;
+  }
+  .cs-z-999 {
+    z-index: var(--cs-z-999);
+    position: relative;
+  }
+  .cs-z-9999 {
+    z-index: var(--cs-z-9999);
     position: relative;
   }
   .cs-z-max {

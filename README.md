@@ -30,6 +30,26 @@ npm install @casoon/tailwindcss-effects
 
 **That's it!** All CSS classes are ready to use with `cs-` prefix.
 
+### ⚠️ Important Setup Note
+
+For **gradient effects** to work properly, you need to add the `cs-root` class to your HTML:
+
+```html
+<body class="cs-root">
+  <!-- Your content here -->
+</body>
+```
+
+Or alternatively to your root element:
+
+```html
+<html class="cs-root">
+  <!-- Your content here -->
+</html>
+```
+
+This class provides the CSS variables needed for gradient backgrounds and text effects like `cs-gradient-sunset`, `cs-gradient-ocean`, `cs-gradient-fire`, etc.
+
 ## ✨ What You Get
 
 - **🎯 Pure CSS Architecture** - No JavaScript plugins needed
@@ -95,6 +115,32 @@ npm install @casoon/tailwindcss-effects
 <button class="cs-glass-button cs-glass-green">
   Click me
 </button>
+```
+
+### Gradients
+
+```html
+<!-- Gradient backgrounds -->
+<div class="cs-gradient-sunset p-6">
+  Beautiful sunset gradient
+</div>
+
+<div class="cs-gradient-ocean p-6">
+  Ocean gradient background
+</div>
+
+<div class="cs-gradient-fire p-6">
+  Fire gradient effect
+</div>
+
+<!-- Gradient text -->
+<h1 class="cs-gradient-text-sunset">
+  Gradient text effect
+</h1>
+
+<p class="cs-gradient-text-ocean">
+  Ocean colored text
+</p>
 ```
 
 ### Hover Effects

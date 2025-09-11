@@ -12,25 +12,117 @@
   border: 1px solid var(--cs-glass-border-light);
 }
 
+/* Dark Glass Extended Opacity Scale */
+.cs-glass-dark-xs {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-dark-xs);
+  border: 1px solid var(--cs-glass-border-xs);
+}
+.cs-glass-dark-sm {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-dark-sm);
+  border: 1px solid var(--cs-glass-border-sm);
+}
+.cs-glass-dark-md {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-dark-md);
+  border: 1px solid var(--cs-glass-border-md);
+}
+.cs-glass-dark-lg {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-dark-lg);
+  border: 1px solid var(--cs-glass-border-lg);
+}
+.cs-glass-dark-xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-xl);
+  border: 1px solid var(--cs-glass-border-xl);
+}
+.cs-glass-dark-2xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-2xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+}
+.cs-glass-dark-3xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-3xl);
+  border: 1px solid var(--cs-glass-border-3xl);
+}
+.cs-glass-dark-4xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-4xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+}
+.cs-glass-dark-5xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-5xl);
+  border: 1px solid var(--cs-glass-border-3xl);
+}
+
 /* Size Variants */
 .cs-glass-sm { --cs-glass-blur: var(--cs-glass-blur-sm); }
 .cs-glass-lg { --cs-glass-blur: var(--cs-glass-blur-lg); }
 
-/* Intensity Variants */
+/* Extended Opacity Scale - Fine-grained control from 2% to 75% */
+.cs-glass-xs {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-xs);
+  border: 1px solid var(--cs-glass-border-xs);
+}
+.cs-glass-sm {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-sm);
+  border: 1px solid var(--cs-glass-border-sm);
+}
 .cs-glass-weak {
   --cs-glass-blur: var(--cs-glass-blur-sm);
   background: var(--cs-glass-bg-weak);
   border: 1px solid var(--cs-glass-border-light);
+}
+.cs-glass-md {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-md);
+  border: 1px solid var(--cs-glass-border-md);
 }
 .cs-glass-medium {
   --cs-glass-blur: var(--cs-glass-blur);
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
 }
+.cs-glass-lg {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-lg);
+  border: 1px solid var(--cs-glass-border-lg);
+}
 .cs-glass-strong {
   --cs-glass-blur: var(--cs-glass-blur-xl);
   background: var(--cs-glass-bg-medium);
   border: 1px solid var(--cs-glass-border-strong);
+}
+.cs-glass-xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-xl);
+  border: 1px solid var(--cs-glass-border-xl);
+}
+.cs-glass-2xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-2xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+}
+.cs-glass-3xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-3xl);
+  border: 1px solid var(--cs-glass-border-3xl);
+}
+.cs-glass-4xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-4xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+}
+.cs-glass-5xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-5xl);
+  border: 1px solid var(--cs-glass-border-3xl);
 }
 
 /* Colored Glass Variants */

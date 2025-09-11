@@ -59,12 +59,34 @@
     --cs-anim-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
     --cs-anim-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
-    /* Z-index scale */
+    /* Z-index scale - Extended for modern UI layering */
+    --cs-z-0: 0;
+    --cs-z-1: 1;
     --cs-z-base: 1;
+    --cs-z-10: 10;
+    --cs-z-20: 20;
+    --cs-z-30: 30;
     --cs-z-popover: 30;
+    --cs-z-40: 40;
     --cs-z-tooltip: 40;
+    --cs-z-50: 50;
     --cs-z-toast: 50;
+    --cs-z-60: 60;
     --cs-z-modal: 60;
+    --cs-z-70: 70;
+    --cs-z-80: 80;
+    --cs-z-90: 90;
+    --cs-z-100: 100;
+    --cs-z-200: 200;
+    --cs-z-300: 300;
+    --cs-z-400: 400;
+    --cs-z-500: 500;
+    --cs-z-600: 600;
+    --cs-z-700: 700;
+    --cs-z-800: 800;
+    --cs-z-900: 900;
+    --cs-z-999: 999;
+    --cs-z-9999: 9999;
     --cs-z-max: 2147483647;
 
     /* Layout widths (for containers & queries) */

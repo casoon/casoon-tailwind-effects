@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Casoon Tailwind Effects — Showcase</title>
   </head>
-  <body>
+  <body class="cs-root cs-theme">
     <!-- Standard Header -->
     <header class="header">
       <div class="container">
@@ -23,10 +23,11 @@
     <div id="app">
       <div class="container">
         <!-- Hero Section with Orbs -->
-        <section class="text-center mb-12 p-8" style="position: relative;">
+        <section class="text-center mb-12 p-8 cs-section-orb" style="overflow: visible; padding-bottom: 100px;">
           <!-- Background Orbs using Casoon classes -->
-          <div class="cs-orb-xl cs-orb-float cs-orb-gradient-blue" style="position: absolute; top: 0; left: 25%; opacity: 0.3;"></div>
-          <div class="cs-orb-lg cs-pulse cs-orb-gradient-purple" style="position: absolute; top: 80px; right: 30%; opacity: 0.2;"></div>
+          <div class="cs-orb cs-orb-xl cs-orb-float cs-orb-gradient-blue cs-orb-blur-md" style="position: absolute; top: -50px; left: 15%; opacity: 0.4;"></div>
+          <div class="cs-orb cs-orb-lg cs-orb-pulse cs-orb-gradient-purple cs-orb-blur-lg" style="position: absolute; top: 100px; right: 20%; opacity: 0.3;"></div>
+          <div class="cs-orb cs-orb-md cs-orb-drift cs-orb-gradient-pink cs-orb-blur-sm" style="position: absolute; top: 250px; left: 70%; opacity: 0.25;"></div>
           
           <div class="cs-glass p-8 mb-8" style="position: relative; z-index: 10;">
             <h1 class="md:text-5xl mb-6">Casoon Tailwind Effects</h1>
@@ -47,7 +48,7 @@
             <div class="cs-glass-weak cs-hover-scale-105 p-4">
               <h3 class="text-sm font-bold mb-2">Glass Weak</h3>
               <p class="text-white-80 text-xs">
-                Sehr subtile Transparenz
+                Sehr subtile Transparenz (5% Weiß, 8px blur)
               </p>
               <button class="cs-glass-button text-xs mt-2">Weak</button>
             </div>
@@ -55,23 +56,23 @@
             <div class="cs-glass cs-hover-scale-105 p-4">
               <h3 class="text-sm font-bold mb-2">Glass Standard</h3>
               <p class="text-white-80 text-xs">
-                Standard Glaseffekt
+                Standard Glaseffekt (10% Weiß, 16px blur)
               </p>
               <button class="cs-glass-button text-xs mt-2">Standard</button>
             </div>
             
-            <div class="cs-glass-card-light cs-hover-scale-105 p-4">
-              <h3 class="text-sm font-bold mb-2">Glass Light</h3>
+            <div class="cs-glass-medium cs-hover-scale-105 p-4">
+              <h3 class="text-sm font-bold mb-2">Glass Medium</h3>
               <p class="text-white-80 text-xs">
-                Heller Glaseffekt
+                Mittlerer Glaseffekt (10% Weiß, 16px blur)
               </p>
-              <button class="cs-glass-button text-xs mt-2">Light</button>
+              <button class="cs-glass-button text-xs mt-2">Medium</button>
             </div>
             
             <div class="cs-glass-strong cs-hover-scale-105 p-4">
               <h3 class="text-sm font-bold mb-2">Glass Strong</h3>
               <p class="text-white-80 text-xs">
-                Starker Blur-Effekt
+                Starker Blur-Effekt (15% Weiß, 32px blur)
               </p>
               <button class="cs-glass-button text-xs mt-2">Strong</button>
             </div>
@@ -118,17 +119,17 @@
             <div class="cs-glass-card p-6">
               <h3 class="mb-4">Gradient Backgrounds</h3>
               <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="cs-gradient-sunset p-4 text-center" style="border-radius: 8px;">
-                  <span style="color: white; font-weight: bold;">Sunset</span>
+                <div class="cs-gradient-sunset cs-glass-rounded p-4 text-center">
+                  <span style="color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Sunset</span>
                 </div>
-                <div class="cs-gradient-ocean p-4 text-center" style="border-radius: 8px;">
-                  <span style="color: white; font-weight: bold;">Ocean</span>
+                <div class="cs-gradient-ocean cs-glass-rounded p-4 text-center">
+                  <span style="color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Ocean</span>
                 </div>
-                <div class="cs-gradient-fire p-4 text-center" style="border-radius: 8px;">
-                  <span style="color: white; font-weight: bold;">Fire</span>
+                <div class="cs-gradient-fire cs-glass-rounded p-4 text-center">
+                  <span style="color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Fire</span>
                 </div>
-                <div class="cs-gradient-custom p-4 text-center" style="border-radius: 8px;">
-                  <span style="color: white; font-weight: bold;">Custom</span>
+                <div class="cs-gradient-custom cs-glass-rounded p-4 text-center">
+                  <span style="color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.5);">Custom</span>
                 </div>
               </div>
               <p class="text-white-80">
@@ -145,9 +146,9 @@
             <div class="cs-glass-card text-center p-6">
               <h3 class="mb-6">Loading Spinners</h3>
               <div class="space-y-4 mb-6">
-                <div class="cs-spinner cs-spinner--primary"></div>
-                <div class="cs-spinner cs-spinner--success"></div>
-                <div class="cs-spinner cs-spinner--warning"></div>
+                <div class="cs-spinner cs-spinner--primary" style="--cs-anim-duration: 3s;"></div>
+                <div class="cs-spinner cs-spinner--success" style="--cs-anim-duration: 3.5s;"></div>
+                <div class="cs-spinner cs-spinner--warning" style="--cs-anim-duration: 4s;"></div>
               </div>
               <p class="text-white-80">Verschiedene Spinner-Animationen</p>
             </div>
@@ -155,8 +156,8 @@
             <div class="cs-glass-card text-center p-6">
               <h3 class="mb-6">Loading Dots</h3>
               <div class="space-y-4 mb-6">
-                <div class="cs-spinner-dots"><span></span><span></span><span></span></div>
-                <div class="cs-spinner-dots cs-spinner-dots--reveal"><span></span><span></span><span></span></div>
+                <div class="cs-spinner-dots" style="animation-duration: 2.5s;"><span></span><span></span><span></span></div>
+                <div class="cs-spinner-dots cs-spinner-dots--reveal" style="animation-duration: 3s;"><span></span><span></span><span></span></div>
               </div>
               <p class="text-white-80">Punkt-basierte Loading-Animationen</p>
             </div>
@@ -164,9 +165,9 @@
             <div class="cs-glass-card text-center p-6">
               <h3 class="mb-6">Animations</h3>
               <div class="space-y-4 mb-6">
-                <div class="cs-anim cs-fade-in p-4 bg-opacity-10 bg-white rounded">Fade In Animation</div>
-                <div class="cs-anim cs-slide-up p-4 bg-opacity-10 bg-blue-500 rounded">Slide Up Animation</div>
-                <div class="cs-anim cs-scale-in p-4 bg-opacity-10 bg-purple-500 rounded">Scale In Animation</div>
+                <div class="cs-anim cs-fade-in cs-anim-infinite cs-anim-alternate p-4 bg-opacity-10 bg-white rounded" style="animation-duration: 2s;">Fade In Loop</div>
+                <div class="cs-anim cs-slide-up cs-anim-infinite cs-anim-alternate p-4 bg-opacity-10 bg-blue-500 rounded" style="animation-duration: 3s;">Slide Up Loop</div>
+                <div class="cs-anim cs-scale-in cs-anim-infinite cs-anim-alternate p-4 bg-opacity-10 bg-purple-500 rounded" style="animation-duration: 2.5s;">Scale In Loop</div>
               </div>
               <p class="text-white-80">Verschiedene CSS-Animationen</p>
             </div>
@@ -209,9 +210,13 @@
                   <p class="cs-text">Standard Text</p>
                   <p class="cs-text-sm">Small Text</p>
                 </div>
-                <div class="flex gap-2">
-                  <span class="cs-glass-button text-sm">Glass Button</span>
-                  <span class="cs-glass-button cs-glass-blue text-sm">Blue Glass</span>
+                <div class="grid grid-cols-2 gap-3">
+                  <button class="cs-glass-button text-sm px-4 py-2">Glass Default</button>
+                  <button class="cs-glass-button text-sm px-4 py-2" style="background: var(--cs-glass-bg-blue); border-color: var(--cs-glass-border-blue);">Glass Blue</button>
+                  <button class="cs-glass-button text-sm px-4 py-2" style="background: var(--cs-glass-bg-purple); border-color: var(--cs-glass-border-purple);">Glass Purple</button>
+                  <button class="cs-glass-button text-sm px-4 py-2" style="background: var(--cs-glass-bg-green); border-color: var(--cs-glass-border-green);">Glass Green</button>
+                  <button class="cs-glass-button text-sm px-4 py-2" style="background: var(--cs-glass-bg-pink); border-color: var(--cs-glass-border-pink);">Glass Pink</button>
+                  <button class="cs-glass-button text-sm px-4 py-2" style="background: var(--cs-glass-bg-amber); border-color: var(--cs-glass-border-amber);">Glass Amber</button>
                 </div>
               </div>
             </div>

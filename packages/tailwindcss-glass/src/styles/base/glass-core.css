@@ -2,11 +2,27 @@
    Base glass effects – deduplicated (cs- only)
    - Avoids repeating -webkit-backdrop-filter/backdrop-filter everywhere.
    ========================================================= */
-/* Base glass backdrop filter for all glass components */
+/* Base glass backdrop filter for all glass components - Extended opacity scale */
 .cs-glass,
 .cs-glass-dark,
+.cs-glass-xs,
 .cs-glass-sm,
+.cs-glass-md,
 .cs-glass-lg,
+.cs-glass-xl,
+.cs-glass-2xl,
+.cs-glass-3xl,
+.cs-glass-4xl,
+.cs-glass-5xl,
+.cs-glass-dark-xs,
+.cs-glass-dark-sm,
+.cs-glass-dark-md,
+.cs-glass-dark-lg,
+.cs-glass-dark-xl,
+.cs-glass-dark-2xl,
+.cs-glass-dark-3xl,
+.cs-glass-dark-4xl,
+.cs-glass-dark-5xl,
 .cs-glass-weak,
 .cs-glass-medium,
 .cs-glass-strong {

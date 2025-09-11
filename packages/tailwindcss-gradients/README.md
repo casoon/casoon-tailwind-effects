@@ -19,6 +19,26 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 @import "@casoon/tailwindcss-gradients/index.css";
 ```
 
+### ⚠️ Important Setup Note
+
+For gradients to work properly, you need to add the `cs-root` class to your HTML:
+
+```html
+<body class="cs-root">
+  <!-- Your content here -->
+</body>
+```
+
+Or alternatively to your root element:
+
+```html
+<html class="cs-root">
+  <!-- Your content here -->
+</html>
+```
+
+This class provides the CSS variables needed for all gradient effects like `cs-gradient-sunset`, `cs-gradient-ocean`, `cs-gradient-fire`, etc.
+
 ## 🌓 Dark Mode
 
 - Works with Tailwind `.dark` and OS fallback. Tune text and neutral stops per mode:
@@ -38,7 +58,7 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 
 ### 1. Background Gradients
 ```html
-<div class="gradient-bg">
+<div class="cs-gradient-sunset">
   <h2>Gradient Background</h2>
   <p>Beautiful gradient background</p>
 </div>
@@ -46,14 +66,14 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 
 ### 2. Text Gradients
 ```html
-<h1 class="gradient-text gradient-text-sunset">
+<h1 class="cs-gradient-text-sunset">
   Beautiful Gradient Text
 </h1>
 ```
 
 ### 3. Animated Gradients
 ```html
-<div class="gradient-bg-animated">
+<div class="cs-gradient-ocean cs-gradient-animate">
   <h2>Animated Gradient</h2>
   <p>Moving gradient background</p>
 </div>
@@ -62,22 +82,22 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 ## 🎨 Available Classes
 
 ### Preset Background Gradients
-- **`.gradient-sunset`** - Sunset colors (red → yellow → green)
-- **`.gradient-ocean`** - Ocean colors (blue → purple) 
-- **`.gradient-fire`** - Fire colors (pink → red)
-- **`.gradient-mint`** - Mint colors (light blue → turquoise)
-- **`.gradient-purple`** - Purple tones (mint → pink)
-- **`.gradient-orange`** - Orange tones (yellow → orange)
-- **`.gradient-blue`** - Blue tones (light → dark blue)
-- **`.gradient-pink`** - Pink tones (pink → yellow)
-- **`.gradient-custom`** - ✨ **NEW**: Fully customizable gradient
+- **`.cs-gradient-sunset`** - Sunset colors (red → yellow → green)
+- **`.cs-gradient-ocean`** - Ocean colors (blue → purple) 
+- **`.cs-gradient-fire`** - Fire colors (pink → red)
+- **`.cs-gradient-mint`** - Mint colors (light blue → turquoise)
+- **`.cs-gradient-purple`** - Purple tones (mint → pink)
+- **`.cs-gradient-orange`** - Orange tones (yellow → orange)
+- **`.cs-gradient-blue`** - Blue tones (light → dark blue)
+- **`.cs-gradient-pink`** - Pink tones (pink → yellow)
+- **`.cs-gradient-custom`** - ✨ **NEW**: Fully customizable gradient
 
 ### Preset Text Gradients
-- **`.gradient-text`** - Base gradient text (transparent color)
-- **`.gradient-text-sunset`** - Sunset gradient text
-- **`.gradient-text-ocean`** - Ocean gradient text
-- **`.gradient-text-fire`** - Fire gradient text
-- **`.gradient-text-custom`** - ✨ **NEW**: Custom gradient text
+- **`.cs-gradient-text`** - Base gradient text (transparent color)
+- **`.cs-gradient-text-sunset`** - Sunset gradient text
+- **`.cs-gradient-text-ocean`** - Ocean gradient text
+- **`.cs-gradient-text-fire`** - Fire gradient text
+- **`.cs-gradient-text-custom`** - ✨ **NEW**: Custom gradient text
 
 ### Advanced Gradients
 - **`.gradient-radial-center`** - Radial gradient from center

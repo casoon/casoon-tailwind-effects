@@ -13,20 +13,45 @@
   --cs-glass-green: #22c55e;
   --cs-glass-pink: #ec4899;
   --cs-glass-amber: #f59e0b;
+  --cs-glass-bg-xs: rgba(255,255,255,0.02);
+  --cs-glass-bg-sm: rgba(255,255,255,0.07);
   --cs-glass-bg-light: rgba(255,255,255,0.10);
   --cs-glass-bg-weak: rgba(255,255,255,0.05);
+  --cs-glass-bg-md: rgba(255,255,255,0.12);
   --cs-glass-bg-medium: rgba(255,255,255,0.15);
+  --cs-glass-bg-lg: rgba(255,255,255,0.18);
   --cs-glass-bg-strong: rgba(255,255,255,0.20);
+  --cs-glass-bg-xl: rgba(255,255,255,0.25);
+  --cs-glass-bg-2xl: rgba(255,255,255,0.35);
+  --cs-glass-bg-3xl: rgba(255,255,255,0.45);
+  --cs-glass-bg-4xl: rgba(255,255,255,0.60);
+  --cs-glass-bg-5xl: rgba(255,255,255,0.75);
   --cs-glass-bg-dark: rgba(0,0,0,0.10);
+  --cs-glass-bg-dark-xs: rgba(0,0,0,0.02);
+  --cs-glass-bg-dark-sm: rgba(0,0,0,0.07);
+  --cs-glass-bg-dark-md: rgba(0,0,0,0.12);
+  --cs-glass-bg-dark-lg: rgba(0,0,0,0.18);
   --cs-glass-bg-dark-strong: rgba(0,0,0,0.20);
+  --cs-glass-bg-dark-xl: rgba(0,0,0,0.25);
+  --cs-glass-bg-dark-2xl: rgba(0,0,0,0.35);
+  --cs-glass-bg-dark-3xl: rgba(0,0,0,0.45);
+  --cs-glass-bg-dark-4xl: rgba(0,0,0,0.60);
+  --cs-glass-bg-dark-5xl: rgba(0,0,0,0.75);
   --cs-glass-bg-blue: rgba(59,130,246,0.10);
   --cs-glass-bg-purple: rgba(147,51,234,0.10);
   --cs-glass-bg-green: rgba(34,197,94,0.10);
   --cs-glass-bg-pink: rgba(236,72,153,0.10);
   --cs-glass-bg-amber: rgba(245,158,11,0.10);
+  --cs-glass-border-xs: rgba(255,255,255,0.05);
+  --cs-glass-border-sm: rgba(255,255,255,0.08);
   --cs-glass-border-light: rgba(255,255,255,0.10);
+  --cs-glass-border-md: rgba(255,255,255,0.15);
   --cs-glass-border-medium: rgba(255,255,255,0.20);
+  --cs-glass-border-lg: rgba(255,255,255,0.25);
   --cs-glass-border-strong: rgba(255,255,255,0.30);
+  --cs-glass-border-xl: rgba(255,255,255,0.40);
+  --cs-glass-border-2xl: rgba(255,255,255,0.50);
+  --cs-glass-border-3xl: rgba(255,255,255,0.65);
   --cs-glass-border-blue: rgba(59,130,246,0.20);
   --cs-glass-border-purple: rgba(147,51,234,0.20);
   --cs-glass-border-green: rgba(34,197,94,0.20);
@@ -68,6 +93,14 @@
 }
 @supports (color: color-mix(in srgb, white 10%, transparent)) {
   :root {
+    --cs-glass-bg-xs: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-xs: color-mix(in srgb, var(--cs-glass-white) 2%, transparent);
+    }
+    --cs-glass-bg-sm: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-sm: color-mix(in srgb, var(--cs-glass-white) 7%, transparent);
+    }
     --cs-glass-bg-light: var(--cs-glass-white);
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-bg-light: color-mix(in srgb, var(--cs-glass-white) 10%, transparent);
@@ -76,21 +109,85 @@
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-bg-weak: color-mix(in srgb, var(--cs-glass-white) 5%, transparent);
     }
+    --cs-glass-bg-md: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-md: color-mix(in srgb, var(--cs-glass-white) 12%, transparent);
+    }
     --cs-glass-bg-medium: var(--cs-glass-white);
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-bg-medium: color-mix(in srgb, var(--cs-glass-white) 15%, transparent);
+    }
+    --cs-glass-bg-lg: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-lg: color-mix(in srgb, var(--cs-glass-white) 18%, transparent);
     }
     --cs-glass-bg-strong: var(--cs-glass-white);
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-bg-strong: color-mix(in srgb, var(--cs-glass-white) 20%, transparent);
     }
+    --cs-glass-bg-xl: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-xl: color-mix(in srgb, var(--cs-glass-white) 25%, transparent);
+    }
+    --cs-glass-bg-2xl: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-2xl: color-mix(in srgb, var(--cs-glass-white) 35%, transparent);
+    }
+    --cs-glass-bg-3xl: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-3xl: color-mix(in srgb, var(--cs-glass-white) 45%, transparent);
+    }
+    --cs-glass-bg-4xl: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-4xl: color-mix(in srgb, var(--cs-glass-white) 60%, transparent);
+    }
+    --cs-glass-bg-5xl: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-5xl: color-mix(in srgb, var(--cs-glass-white) 75%, transparent);
+    }
     --cs-glass-bg-dark: var(--cs-glass-black);
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-bg-dark: color-mix(in srgb, var(--cs-glass-black) 10%, transparent);
     }
+    --cs-glass-bg-dark-xs: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-xs: color-mix(in srgb, var(--cs-glass-black) 2%, transparent);
+    }
+    --cs-glass-bg-dark-sm: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-sm: color-mix(in srgb, var(--cs-glass-black) 7%, transparent);
+    }
+    --cs-glass-bg-dark-md: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-md: color-mix(in srgb, var(--cs-glass-black) 12%, transparent);
+    }
+    --cs-glass-bg-dark-lg: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-lg: color-mix(in srgb, var(--cs-glass-black) 18%, transparent);
+    }
     --cs-glass-bg-dark-strong: var(--cs-glass-black);
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-bg-dark-strong: color-mix(in srgb, var(--cs-glass-black) 20%, transparent);
+    }
+    --cs-glass-bg-dark-xl: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-xl: color-mix(in srgb, var(--cs-glass-black) 25%, transparent);
+    }
+    --cs-glass-bg-dark-2xl: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-2xl: color-mix(in srgb, var(--cs-glass-black) 35%, transparent);
+    }
+    --cs-glass-bg-dark-3xl: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-3xl: color-mix(in srgb, var(--cs-glass-black) 45%, transparent);
+    }
+    --cs-glass-bg-dark-4xl: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-4xl: color-mix(in srgb, var(--cs-glass-black) 60%, transparent);
+    }
+    --cs-glass-bg-dark-5xl: var(--cs-glass-black);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-bg-dark-5xl: color-mix(in srgb, var(--cs-glass-black) 75%, transparent);
     }
     --cs-glass-bg-blue: var(--cs-glass-blue);
     @supports (color: color-mix(in lab, red, red)) {
@@ -112,17 +209,45 @@
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-bg-amber: color-mix(in srgb, var(--cs-glass-amber) 10%, transparent);
     }
+    --cs-glass-border-xs: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-border-xs: color-mix(in srgb, var(--cs-glass-white) 5%, transparent);
+    }
+    --cs-glass-border-sm: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-border-sm: color-mix(in srgb, var(--cs-glass-white) 8%, transparent);
+    }
     --cs-glass-border-light: var(--cs-glass-white);
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-border-light: color-mix(in srgb, var(--cs-glass-white) 10%, transparent);
+    }
+    --cs-glass-border-md: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-border-md: color-mix(in srgb, var(--cs-glass-white) 15%, transparent);
     }
     --cs-glass-border-medium: var(--cs-glass-white);
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-border-medium: color-mix(in srgb, var(--cs-glass-white) 20%, transparent);
     }
+    --cs-glass-border-lg: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-border-lg: color-mix(in srgb, var(--cs-glass-white) 25%, transparent);
+    }
     --cs-glass-border-strong: var(--cs-glass-white);
     @supports (color: color-mix(in lab, red, red)) {
       --cs-glass-border-strong: color-mix(in srgb, var(--cs-glass-white) 30%, transparent);
+    }
+    --cs-glass-border-xl: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-border-xl: color-mix(in srgb, var(--cs-glass-white) 40%, transparent);
+    }
+    --cs-glass-border-2xl: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-border-2xl: color-mix(in srgb, var(--cs-glass-white) 50%, transparent);
+    }
+    --cs-glass-border-3xl: var(--cs-glass-white);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-glass-border-3xl: color-mix(in srgb, var(--cs-glass-white) 65%, transparent);
     }
     --cs-glass-border-blue: var(--cs-glass-blue);
     @supports (color: color-mix(in lab, red, red)) {
@@ -231,7 +356,7 @@
     --cs-glass-blur: var(--cs-glass-blur-sm);
   }
 }
-.cs-glass, .cs-glass-dark, .cs-glass-sm, .cs-glass-lg, .cs-glass-weak, .cs-glass-medium, .cs-glass-strong {
+.cs-glass, .cs-glass-dark, .cs-glass-xs, .cs-glass-sm, .cs-glass-md, .cs-glass-lg, .cs-glass-xl, .cs-glass-2xl, .cs-glass-3xl, .cs-glass-4xl, .cs-glass-5xl, .cs-glass-dark-xs, .cs-glass-dark-sm, .cs-glass-dark-md, .cs-glass-dark-lg, .cs-glass-dark-xl, .cs-glass-dark-2xl, .cs-glass-dark-3xl, .cs-glass-dark-4xl, .cs-glass-dark-5xl, .cs-glass-weak, .cs-glass-medium, .cs-glass-strong {
   -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
   backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
   background-clip: padding-box;
@@ -309,26 +434,116 @@
   background: var(--cs-glass-bg-dark);
   border: 1px solid var(--cs-glass-border-light);
 }
+.cs-glass-dark-xs {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-dark-xs);
+  border: 1px solid var(--cs-glass-border-xs);
+}
+.cs-glass-dark-sm {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-dark-sm);
+  border: 1px solid var(--cs-glass-border-sm);
+}
+.cs-glass-dark-md {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-dark-md);
+  border: 1px solid var(--cs-glass-border-md);
+}
+.cs-glass-dark-lg {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-dark-lg);
+  border: 1px solid var(--cs-glass-border-lg);
+}
+.cs-glass-dark-xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-xl);
+  border: 1px solid var(--cs-glass-border-xl);
+}
+.cs-glass-dark-2xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-2xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+}
+.cs-glass-dark-3xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-3xl);
+  border: 1px solid var(--cs-glass-border-3xl);
+}
+.cs-glass-dark-4xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-4xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+}
+.cs-glass-dark-5xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-dark-5xl);
+  border: 1px solid var(--cs-glass-border-3xl);
+}
 .cs-glass-sm {
   --cs-glass-blur: var(--cs-glass-blur-sm);
 }
 .cs-glass-lg {
   --cs-glass-blur: var(--cs-glass-blur-lg);
 }
+.cs-glass-xs {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-xs);
+  border: 1px solid var(--cs-glass-border-xs);
+}
+.cs-glass-sm {
+  --cs-glass-blur: var(--cs-glass-blur-sm);
+  background: var(--cs-glass-bg-sm);
+  border: 1px solid var(--cs-glass-border-sm);
+}
 .cs-glass-weak {
   --cs-glass-blur: var(--cs-glass-blur-sm);
   background: var(--cs-glass-bg-weak);
   border: 1px solid var(--cs-glass-border-light);
+}
+.cs-glass-md {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-md);
+  border: 1px solid var(--cs-glass-border-md);
 }
 .cs-glass-medium {
   --cs-glass-blur: var(--cs-glass-blur);
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
 }
+.cs-glass-lg {
+  --cs-glass-blur: var(--cs-glass-blur);
+  background: var(--cs-glass-bg-lg);
+  border: 1px solid var(--cs-glass-border-lg);
+}
 .cs-glass-strong {
   --cs-glass-blur: var(--cs-glass-blur-xl);
   background: var(--cs-glass-bg-medium);
   border: 1px solid var(--cs-glass-border-strong);
+}
+.cs-glass-xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-xl);
+  border: 1px solid var(--cs-glass-border-xl);
+}
+.cs-glass-2xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-2xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+}
+.cs-glass-3xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-3xl);
+  border: 1px solid var(--cs-glass-border-3xl);
+}
+.cs-glass-4xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-4xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+}
+.cs-glass-5xl {
+  --cs-glass-blur: var(--cs-glass-blur-xl);
+  background: var(--cs-glass-bg-5xl);
+  border: 1px solid var(--cs-glass-border-3xl);
 }
 .cs-glass-blue {
   background: var(--cs-glass-bg-blue);

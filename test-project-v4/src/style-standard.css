@@ -1,5 +1,12 @@
 @import "tailwindcss";
-@import "@casoon/tailwindcss-effects/styles.css";
+@import "@casoon/tailwindcss-effects/dist.css";
+
+/* Modern system font stack - cleaner than default */
+body, * {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 /* Standard web project base styles */
 :root {
