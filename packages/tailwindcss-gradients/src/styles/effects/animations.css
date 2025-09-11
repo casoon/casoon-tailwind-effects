@@ -1,6 +1,8 @@
 /* -------------------------------------------------------
-   Animated Gradient
+   Animated Gradients - Extended Collection
 ------------------------------------------------------- */
+
+/* Classic shifting gradient */
 @keyframes cs-gradient-shift{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
@@ -9,6 +11,121 @@
 .cs-gradient-animate{
   background-size:400% 400%;
   animation:cs-gradient-shift var(--cs-anim-gradient-duration) var(--cs-anim-gradient-ease) var(--cs-anim-gradient-iteration);
+}
+
+/* Multi-directional shifting */
+@keyframes cs-gradient-shift-x{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+@keyframes cs-gradient-shift-y{
+  0%{background-position:50% 0%}
+  100%{background-position:50% 100%}
+}
+@keyframes cs-gradient-rotate{
+  0%{background-position:0% 0%}
+  25%{background-position:100% 0%}
+  50%{background-position:100% 100%}
+  75%{background-position:0% 100%}
+  100%{background-position:0% 0%}
+}
+
+.cs-gradient-shift-x{
+  background-size:200% 100%;
+  animation:cs-gradient-shift-x 3s linear infinite;
+}
+.cs-gradient-shift-y{
+  background-size:100% 200%;
+  animation:cs-gradient-shift-y 3s linear infinite;
+}
+.cs-gradient-rotate{
+  background-size:200% 200%;
+  animation:cs-gradient-rotate 8s linear infinite;
+}
+
+/* Pulsing effects */
+@keyframes cs-gradient-pulse{
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+@keyframes cs-gradient-pulse-slow{
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.cs-gradient-pulse{
+  animation: cs-gradient-pulse 2s ease-in-out infinite;
+  transform-origin: center;
+}
+.cs-gradient-pulse-slow{
+  animation: cs-gradient-pulse-slow 4s ease-in-out infinite;
+}
+
+/* Breathing effect */
+@keyframes cs-gradient-breathe{
+  0%, 100% { 
+    filter: brightness(0.8) saturate(1.2);
+    transform: scale(1);
+  }
+  50% { 
+    filter: brightness(1.2) saturate(1.8);
+    transform: scale(1.02);
+  }
+}
+
+.cs-gradient-breathe{
+  animation: cs-gradient-breathe 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Wave effect */
+@keyframes cs-gradient-wave{
+  0% { background-position: 0% 50%, 100% 50%; }
+  25% { background-position: 50% 0%, 50% 100%; }
+  50% { background-position: 100% 50%, 0% 50%; }
+  75% { background-position: 50% 100%, 50% 0%; }
+  100% { background-position: 0% 50%, 100% 50%; }
+}
+
+.cs-gradient-wave{
+  background-size: 300% 300%, 300% 300%;
+  animation: cs-gradient-wave 6s ease-in-out infinite;
+}
+
+/* Shimmer effect */
+@keyframes cs-gradient-shimmer{
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.cs-gradient-shimmer{
+  background-size: 200% 100%;
+  animation: cs-gradient-shimmer 2s linear infinite;
+}
+
+/* Speed variants */
+.cs-gradient-animate-slow{
+  animation-duration: 8s;
+}
+.cs-gradient-animate-fast{
+  animation-duration: 1.5s;
+}
+
+/* Direction variants */
+.cs-gradient-animate-reverse{
+  animation-direction: reverse;
+}
+.cs-gradient-animate-alternate{
+  animation-direction: alternate;
+}
+
+/* Pause on hover */
+.cs-gradient-animate-hover-pause:hover{
+  animation-play-state: paused;
 }
 
 /* Modal and toast animations */

@@ -21,3 +21,7 @@
 /* Effects: Animations and advanced features */
 @import "./styles/effects/animations.css";
 @import "./styles/effects/pro-effects.css";
+@import "./styles/effects/canvas-effects.css";
+@import "./styles/effects/canvas-keyframes.css";
+@import "./styles/effects/interactive-effects.css";
+@import "./styles/effects/material-compact.css";

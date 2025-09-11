@@ -1,0 +1,24 @@
+/* Advanced Particle Systems - Essential Effects Only */
+
+/* Rain */
+.cs-particles-rain-light { background: linear-gradient(180deg, rgba(173,216,230,0.6) 0, rgba(173,216,230,0.6) 2px, transparent 2px); background-size: 20px 30px; background-position: 10px 0; animation: cs-rain-fall 1.5s linear infinite; }
+.cs-particles-rain-heavy { background: linear-gradient(180deg, rgba(70,130,180,0.8) 0, rgba(70,130,180,0.8) 3px, transparent 3px); background-size: 15px 25px; background-position: 5px 0; animation: cs-rain-fall 0.8s linear infinite; }
+
+/* Snow */
+.cs-particles-snow-light { background: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px); background-size: 50px 50px; background-position: 0 0; animation: cs-snow-fall 8s linear infinite; }
+
+/* Fire & Smoke */
+.cs-particles-fire { background: radial-gradient(ellipse at bottom, rgba(255,69,0,0.8) 0%, transparent 70%); background-size: 20px 40px; background-position: 10px bottom; animation: cs-fire-dance 1.2s ease-in-out infinite alternate; }
+.cs-particles-smoke { background: radial-gradient(ellipse at bottom, rgba(105,105,105,0.4) 0%, transparent 80%); background-size: 30px 60px; background-position: 15px bottom; animation: cs-smoke-rise 4s ease-out infinite; }
+
+/* Sparkles */
+.cs-particles-sparkles { background: radial-gradient(circle, rgba(255,215,0,1) 0px, rgba(255,215,0,0.6) 1px, transparent 1px); background-size: 30px 30px; background-position: 0 0; animation: cs-sparkles-twinkle 2s ease-in-out infinite; }
+
+/* Controls */
+.cs-particles-subtle { opacity: 0.6; animation-duration: calc(var(--particle-duration, 4s) * 1.5); }
+.cs-particles-intense { opacity: 1; animation-duration: calc(var(--particle-duration, 4s) * 0.7); filter: brightness(1.2); }
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .cs-particles-rain-light, .cs-particles-rain-heavy, .cs-particles-snow-light, .cs-particles-fire, .cs-particles-smoke, .cs-particles-sparkles { animation: none !important; opacity: 0.3; }
+}

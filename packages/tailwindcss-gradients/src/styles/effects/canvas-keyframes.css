@@ -1,0 +1,362 @@
+/* -------------------------------------------------------
+   Canvas Effect Keyframes
+   - Animation definitions for canvas-like patterns
+------------------------------------------------------- */
+
+/* -------------------------------------------------------
+   Particle System Keyframes
+------------------------------------------------------- */
+
+/* Floating dots movement */
+@keyframes cs-canvas-float {
+  0% { 
+    background-position: 0 0, 0 0, 0 0, 0 0; 
+    transform: scale(1);
+  }
+  25% { 
+    background-position: 10px -5px, -5px 10px, 8px 3px, -3px -8px;
+    transform: scale(1.02);
+  }
+  50% { 
+    background-position: 0 -10px, -10px 0, 5px -5px, 8px 5px;
+    transform: scale(1);
+  }
+  75% { 
+    background-position: -10px -5px, -15px -5px, -3px -8px, 12px -3px;
+    transform: scale(0.98);
+  }
+  100% { 
+    background-position: 0 0, 0 0, 0 0, 0 0;
+    transform: scale(1);
+  }
+}
+
+/* Grid shifting */
+@keyframes cs-canvas-grid-shift {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+/* Circuit flow animation */
+@keyframes cs-canvas-circuit-flow {
+  0% { 
+    background-position: 0 0;
+    opacity: 0.5;
+  }
+  50% { 
+    background-position: 100px 100px;
+    opacity: 0.8;
+  }
+  100% { 
+    background-position: 200px 200px;
+    opacity: 0.5;
+  }
+}
+
+/* Stars twinkling */
+@keyframes cs-canvas-stars-twinkle {
+  0%, 100% { 
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  20% { 
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  40% { 
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  60% { 
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  80% { 
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+}
+
+/* -------------------------------------------------------
+   Geometric Pattern Keyframes
+------------------------------------------------------- */
+
+/* Hexagon pulsing */
+@keyframes cs-canvas-hexagon-pulse {
+  0%, 100% { 
+    background-size: 60px 60px;
+    opacity: 0.6;
+  }
+  50% { 
+    background-size: 80px 80px;
+    opacity: 1;
+  }
+}
+
+/* Triangle mesh shifting */
+@keyframes cs-canvas-triangles-shift {
+  0% { background-position: 0 0; }
+  33% { background-position: 20px 10px; }
+  66% { background-position: -10px 20px; }
+  100% { background-position: 0 0; }
+}
+
+/* -------------------------------------------------------
+   Organic Pattern Keyframes
+------------------------------------------------------- */
+
+/* Noise texture shifting */
+@keyframes cs-canvas-noise-shift {
+  0% { 
+    background-position: 0 0, 0 0;
+    filter: blur(0.5px) contrast(1);
+  }
+  25% { 
+    background-position: 10px 5px, -5px 10px;
+    filter: blur(0.3px) contrast(1.1);
+  }
+  50% { 
+    background-position: 5px 15px, 15px -5px;
+    filter: blur(0.7px) contrast(0.9);
+  }
+  75% { 
+    background-position: -5px 10px, 10px 15px;
+    filter: blur(0.4px) contrast(1.05);
+  }
+  100% { 
+    background-position: 0 0, 0 0;
+    filter: blur(0.5px) contrast(1);
+  }
+}
+
+/* Bubble floating */
+@keyframes cs-canvas-bubbles-float {
+  0% { 
+    background-position: 0 0, 0 0, 0 0;
+    transform: translateY(0);
+  }
+  25% { 
+    background-position: 10px -15px, -10px 20px, 15px -10px;
+    transform: translateY(-5px);
+  }
+  50% { 
+    background-position: 20px -30px, -20px 40px, 30px -20px;
+    transform: translateY(-10px);
+  }
+  75% { 
+    background-position: 30px -45px, -30px 60px, 45px -30px;
+    transform: translateY(-5px);
+  }
+  100% { 
+    background-position: 40px -60px, -40px 80px, 60px -40px;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------------------------
+   Advanced Effect Keyframes
+------------------------------------------------------- */
+
+/* Ripple effect */
+@keyframes cs-canvas-ripple {
+  0% {
+    background-position: center;
+    background-size: 0 0;
+    opacity: 1;
+  }
+  50% {
+    background-size: 200px 200px;
+    opacity: 0.5;
+  }
+  100% {
+    background-size: 400px 400px;
+    opacity: 0;
+  }
+}
+
+/* Wave propagation */
+@keyframes cs-canvas-wave {
+  0% { 
+    background-position: 0 0;
+    transform: rotate(0deg) scale(1);
+  }
+  25% { 
+    background-position: 50px 25px;
+    transform: rotate(90deg) scale(1.05);
+  }
+  50% { 
+    background-position: 100px 50px;
+    transform: rotate(180deg) scale(1);
+  }
+  75% { 
+    background-position: 150px 75px;
+    transform: rotate(270deg) scale(0.95);
+  }
+  100% { 
+    background-position: 200px 100px;
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Spiral animation */
+@keyframes cs-canvas-spiral {
+  0% { 
+    background-position: center;
+    transform: rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    background-position: center;
+    transform: rotate(180deg) scale(1.2);
+    opacity: 1;
+  }
+  100% { 
+    background-position: center;
+    transform: rotate(360deg) scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* Plasma-like color shifting */
+@keyframes cs-canvas-plasma {
+  0% { 
+    filter: hue-rotate(0deg) saturate(1) brightness(1);
+  }
+  25% { 
+    filter: hue-rotate(90deg) saturate(1.2) brightness(1.1);
+  }
+  50% { 
+    filter: hue-rotate(180deg) saturate(1.5) brightness(0.9);
+  }
+  75% { 
+    filter: hue-rotate(270deg) saturate(1.2) brightness(1.1);
+  }
+  100% { 
+    filter: hue-rotate(360deg) saturate(1) brightness(1);
+  }
+}
+
+/* Matrix-like digital rain */
+@keyframes cs-canvas-matrix {
+  0% { 
+    background-position: 0 -100%;
+    opacity: 0;
+  }
+  10% { 
+    opacity: 1;
+  }
+  90% { 
+    opacity: 1;
+  }
+  100% { 
+    background-position: 0 100%;
+    opacity: 0;
+  }
+}
+
+/* Lightning effect */
+@keyframes cs-canvas-lightning {
+  0%, 90%, 100% { 
+    opacity: 0;
+    filter: brightness(1);
+  }
+  92%, 94% { 
+    opacity: 1;
+    filter: brightness(3) contrast(2);
+  }
+}
+
+/* Pulsing glow */
+@keyframes cs-canvas-glow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 20px rgba(79, 124, 255, 0.2),
+      inset 0 0 20px rgba(79, 124, 255, 0.1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 40px rgba(79, 124, 255, 0.4),
+      0 0 80px rgba(79, 124, 255, 0.2),
+      inset 0 0 40px rgba(79, 124, 255, 0.2);
+  }
+}
+
+/* -------------------------------------------------------
+   Interactive Effect Keyframes
+------------------------------------------------------- */
+
+/* Ripple expansion on click */
+@keyframes cs-ripple-expand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    margin: -150px 0 0 -150px;
+    opacity: 0;
+  }
+}
+
+/* Focus pulse animation */
+@keyframes cs-focus-pulse {
+  0%, 100% {
+    background-size: 150% 150%;
+    opacity: 0.6;
+  }
+  50% {
+    background-size: 200% 200%;
+    opacity: 1;
+  }
+}
+
+/* Focus color cascade */
+@keyframes cs-focus-cascade {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Gentle breathing for inactive state */
+@keyframes cs-gentle-breathe {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+/* Active breathing for hover state */
+@keyframes cs-active-breathe {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Border pulse effect */
+@keyframes cs-border-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}

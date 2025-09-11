@@ -41,6 +41,26 @@
   height: 300px; 
 }
 
+.cs-orb-3xl { 
+  width: 400px; 
+  height: 400px; 
+}
+
+.cs-orb-4xl { 
+  width: 500px; 
+  height: 500px; 
+}
+
+.cs-orb-5xl { 
+  width: 600px; 
+  height: 600px; 
+}
+
+.cs-orb-massive { 
+  width: 800px; 
+  height: 800px; 
+}
+
 /* Blur Levels */
 .cs-orb-blur-none { 
   filter: blur(0); 

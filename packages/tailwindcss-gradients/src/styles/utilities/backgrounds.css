@@ -67,6 +67,113 @@
   );
 }
 
+/* -------------------------------------------------------
+   Smooth Transition Gradients (Fade-Out Effects)
+------------------------------------------------------- */
+
+/* Subtle fade variants - 4 directions */
+.cs-gradient-fade-r {
+  background: linear-gradient(to right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+.cs-gradient-fade-l {
+  background: linear-gradient(to left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+.cs-gradient-fade-b {
+  background: linear-gradient(to bottom, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+.cs-gradient-fade-t {
+  background: linear-gradient(to top, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+/* Diagonal fade variants */
+.cs-gradient-fade-br {
+  background: linear-gradient(to bottom right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+.cs-gradient-fade-bl {
+  background: linear-gradient(to bottom left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+.cs-gradient-fade-tr {
+  background: linear-gradient(to top right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+.cs-gradient-fade-tl {
+  background: linear-gradient(to top left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+/* Radial fade variants */
+.cs-gradient-radial-fade {
+  background: radial-gradient(circle at center, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.2)) 40%,
+    transparent 70%
+  );
+}
+.cs-gradient-radial-fade-tl {
+  background: radial-gradient(circle at top left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+.cs-gradient-radial-fade-tr {
+  background: radial-gradient(circle at top right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+.cs-gradient-radial-fade-bl {
+  background: radial-gradient(circle at bottom left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+.cs-gradient-radial-fade-br {
+  background: radial-gradient(circle at bottom right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+/* Intensity variants */
+.cs-gradient-fade-subtle {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.3);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.1);
+}
+.cs-gradient-fade-medium {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.6);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.3);
+}
+.cs-gradient-fade-strong {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.8);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.5);
+}
+
 /* Progressive enhancement with color-mix when available */
 @supports (color: color-mix(in srgb, red 10%, blue)){
   .cs-gradient-ocean{
@@ -76,5 +183,14 @@
         color-mix(in oklab, var(--cs-gradient-ocean-start) 90%, var(--cs-gradient-ocean-end)),
         var(--cs-gradient-ocean-end)
       );
+  }
+  
+  /* Enhanced fade gradients with color-mix */
+  .cs-gradient-fade-smooth {
+    background: linear-gradient(135deg, 
+      var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+      color-mix(in srgb, var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 30%, transparent) 60%,
+      transparent 100%
+    );
   }
 }

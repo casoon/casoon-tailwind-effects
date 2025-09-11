@@ -1,0 +1,216 @@
+/* Material Texture Effects - Essential Only */
+
+/* Fabric */
+.cs-texture-fabric { background: linear-gradient(0deg, transparent 48%, rgba(255,255,255,0.05) 48%, rgba(255,255,255,0.05) 52%, transparent 52%), linear-gradient(90deg, transparent 48%, rgba(255,255,255,0.05) 48%, rgba(255,255,255,0.05) 52%, transparent 52%); background-size: 8px 8px; background-color: var(--fabric-base, #2c3e50); }
+
+.cs-texture-wood { background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, transparent 5%, transparent 95%, rgba(0,0,0,0.1) 100%), linear-gradient(0deg, transparent 48%, rgba(139,69,19,0.1) 49%, rgba(139,69,19,0.2) 50%, rgba(139,69,19,0.1) 51%, transparent 52%); background-size: 80px 100%, 100% 8px; background-color: var(--wood-base, #deb887); }
+
+/* Metal */
+.cs-texture-metal { background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 55%, transparent 100%); background-size: 4px 100%; background-color: var(--metal-base, #708090); filter: contrast(1.2) brightness(1.1); }
+
+/* Paper */
+.cs-texture-paper { background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.02) 1px, transparent 1px), radial-gradient(circle at 80% 80%, rgba(0,0,0,0.02) 0.5px, transparent 0.5px); background-size: 15px 15px, 8px 8px; background-color: var(--paper-base, #f8f8ff); }
+
+/* Glass */
+.cs-texture-glass { background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 1px, transparent 1px), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0.5px, transparent 0.5px); background-size: 8px 8px, 6px 6px; background-color: var(--glass-base, rgba(255,255,255,0.1)); backdrop-filter: blur(2px); }
+
+/* Interactive States */
+.cs-texture-fabric:hover, .cs-texture-wood:hover, .cs-texture-metal:hover { filter: brightness(1.1) contrast(1.05); }
+.cs-texture-paper:hover, .cs-texture-glass:hover { filter: brightness(1.05) saturate(1.1); }
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) { .cs-texture-fabric:hover, .cs-texture-wood:hover, .cs-texture-metal:hover, .cs-texture-paper:hover, .cs-texture-glass:hover { filter: none !important; } }
+
+/* -------------------------------------------------------
+   Metal Textures
+------------------------------------------------------- */
+
+/* Brushed steel */
+.cs-texture-steel {
+  background-image:
+    linear-gradient(90deg, 
+      transparent 0%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 55%, transparent 100%);
+  background-size: 4px 100%;
+  background-color: var(--steel-base, #708090);
+  filter: contrast(1.2) brightness(1.1);
+}
+
+/* Brushed aluminum */
+.cs-texture-aluminum {
+  background-image:
+    linear-gradient(90deg, 
+      rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.1) 100%),
+    linear-gradient(0deg, 
+      transparent 48%, rgba(255,255,255,0.1) 50%, transparent 52%);
+  background-size: 3px 100%, 100% 1px;
+  background-color: var(--aluminum-base, #c0c0c0);
+}
+
+/* Copper patina */
+.cs-texture-copper {
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(0,128,0,0.3) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(0,100,0,0.2) 0%, transparent 40%),
+    linear-gradient(45deg, rgba(184,115,51,0.8) 25%, transparent 25%);
+  background-size: 50px 50px, 30px 30px, 20px 20px;
+  background-color: var(--copper-base, #b87333);
+  filter: contrast(1.1) saturate(1.2);
+}
+
+/* -------------------------------------------------------
+   Paper & Cardboard Textures
+------------------------------------------------------- */
+
+/* Paper texture */
+.cs-texture-paper {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0,0,0,0.02) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(0,0,0,0.02) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 40% 60%, rgba(0,0,0,0.01) 1px, transparent 1px);
+  background-size: 15px 15px, 8px 8px, 25px 25px;
+  background-color: var(--paper-base, #f8f8ff);
+  filter: contrast(0.98) brightness(1.02);
+}
+
+/* Cardboard */
+.cs-texture-cardboard {
+  background-image:
+    linear-gradient(0deg, transparent 48%, rgba(139,69,19,0.1) 50%, transparent 52%),
+    linear-gradient(90deg, rgba(160,82,45,0.1) 0%, transparent 25%, transparent 75%, rgba(160,82,45,0.1) 100%),
+    radial-gradient(circle at 25% 75%, rgba(0,0,0,0.03) 2px, transparent 2px);
+  background-size: 100% 8px, 30px 100%, 20px 20px;
+  background-color: var(--cardboard-base, #daa520);
+}
+
+/* Parchment */
+.cs-texture-parchment {
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(139,69,19,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(160,82,45,0.08) 0%, transparent 60%),
+    linear-gradient(45deg, rgba(218,165,32,0.05) 25%, transparent 25%);
+  background-size: 100px 100px, 80px 80px, 40px 40px;
+  background-color: var(--parchment-base, #f5f5dc);
+  filter: sepia(0.2) contrast(0.9);
+}
+
+/* -------------------------------------------------------
+   Stone & Concrete Textures
+------------------------------------------------------- */
+
+/* Concrete */
+.cs-texture-concrete {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(0,0,0,0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(0,0,0,0.05) 3px, transparent 3px);
+  background-size: 40px 40px, 30px 30px, 60px 60px;
+  background-color: var(--concrete-base, #a9a9a9);
+  filter: contrast(1.05);
+}
+
+/* Marble */
+.cs-texture-marble {
+  background-image:
+    linear-gradient(45deg, 
+      rgba(255,255,255,0.3) 0%, transparent 25%, transparent 75%, rgba(255,255,255,0.2) 100%),
+    linear-gradient(-45deg, 
+      rgba(128,128,128,0.1) 0%, transparent 30%, transparent 70%, rgba(128,128,128,0.1) 100%),
+    radial-gradient(circle at 30% 70%, rgba(169,169,169,0.2) 0%, transparent 50%);
+  background-size: 80px 80px, 100px 100px, 150px 150px;
+  background-color: var(--marble-base, #f0f8ff);
+}
+
+/* -------------------------------------------------------
+   Glass & Crystal Effects
+------------------------------------------------------- */
+
+/* Frosted glass */
+.cs-texture-frosted {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 40% 60%, rgba(255,255,255,0.1) 2px, transparent 2px);
+  background-size: 8px 8px, 6px 6px, 12px 12px;
+  background-color: var(--frosted-base, rgba(255,255,255,0.1));
+  backdrop-filter: blur(2px) saturate(1.2);
+}
+
+/* Crystal texture */
+.cs-texture-crystal {
+  background-image:
+    linear-gradient(60deg, rgba(255,255,255,0.4) 25%, transparent 25%),
+    linear-gradient(-60deg, rgba(255,255,255,0.4) 25%, transparent 25%),
+    linear-gradient(30deg, rgba(173,216,230,0.2) 25%, transparent 25%);
+  background-size: 20px 35px, 20px 35px, 40px 70px;
+  background-color: var(--crystal-base, rgba(173,216,230,0.3));
+  filter: brightness(1.2) contrast(1.1);
+}
+
+/* -------------------------------------------------------
+   Interactive Material States
+------------------------------------------------------- */
+
+/* Hover effects for materials */
+.cs-texture-interactive {
+  transition: filter 0.3s ease, transform 0.2s ease;
+}
+
+.cs-texture-interactive:hover {
+  filter: brightness(1.1) contrast(1.05);
+  transform: translateY(-1px);
+}
+
+/* Worn/aged material effects */
+.cs-texture-aged {
+  position: relative;
+}
+
+.cs-texture-aged::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 75%, rgba(139,69,19,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 25%, rgba(160,82,45,0.08) 0%, transparent 40%);
+  background-size: 100px 100px, 80px 80px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Material depth with shadows */
+.cs-texture-depth {
+  box-shadow: 
+    inset 2px 2px 4px rgba(0,0,0,0.1),
+    inset -2px -2px 4px rgba(255,255,255,0.1);
+}
+
+/* -------------------------------------------------------
+   Accessibility & Performance
+------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-texture-interactive {
+    transition: none !important;
+  }
+  .cs-texture-interactive:hover {
+    transform: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .cs-texture-paper,
+  .cs-texture-canvas,
+  .cs-texture-parchment {
+    filter: contrast(1.5) !important;
+  }
+}
+
+/* Reduced complexity for low-end devices */
+@media (max-width: 480px) {
+  .cs-texture-wood,
+  .cs-texture-marble,
+  .cs-texture-leather {
+    background-image: none;
+    filter: none;
+  }
+}
