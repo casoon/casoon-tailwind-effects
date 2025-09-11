@@ -4,13 +4,22 @@ A comprehensive gradient library for Tailwind CSS v4, providing beautiful gradie
 
 ## ✨ Features
 
+### Core Gradients
 - **Multiple Gradient Types** - Linear, radial, and conic gradients
 - **Text Gradients** - Beautiful gradient text effects
 - **Interactive Gradients** - Hover effects and animations
 - **Preset Themes** - Pre-built gradient combinations
 - **Customizable Tokens** - CSS custom properties for easy theming
-- **Performance Optimized** - Efficient CSS with minimal repaints
-- **Accessibility First** - High contrast support and motion safety
+
+### 🆕 v0.8.1 - Advanced Background System
+- **🎨 Canvas Backgrounds** - Particle systems, geometric patterns, organic textures
+- **✨ Glow/Schimmer Effects** - CSS-based glow effects in multiple colors
+- **🌈 Dynamic Color Systems** - Theme-aware, time-based, and seasonal color shifting
+- **🎭 3D Background Effects** - Depth layers, parallax, perspective transforms
+- **🎯 Advanced Particles** - Rain, snow, fire, smoke effects (optional)
+- **📱 Material Textures** - Fabric, wood, metal, paper, glass textures
+- **⚡ Performance Optimized** - GPU acceleration, will-change optimization
+- **♿ Accessibility First** - Motion safety, high contrast, reduced transparency
 
 ## 🚀 Quick Start
 
@@ -509,7 +518,130 @@ const GradientContainer = styled.div`
 - **CSS Gradients**: Required for gradient effects
 - **CSS Mask/Clip**: Optional enhancement for mask effects
 
-## 📚 Related Packages
+## 🔥 Optional Extensions (v0.8.1)
+
+Extend your gradient system with powerful optional modules:
+
+### 🎨 Canvas Background Effects
+```css
+@import "@casoon/tailwindcss-gradients";
+@import "@casoon/tailwindcss-gradients/src/optional/glow-effects.css";
+```
+
+Available classes:
+- `cs-canvas-dots` - Floating particle dots
+- `cs-canvas-grid` - Animated grid pattern
+- `cs-canvas-circuit` - Circuit-like patterns
+- `cs-canvas-stars` - Twinkling star field
+- `cs-canvas-hexagons` - Hexagonal patterns
+- `cs-canvas-bubbles` - Floating bubbles
+
+### ✨ Glow/Schimmer Effects
+```css
+@import "@casoon/tailwindcss-gradients/src/optional/glow-effects.css";
+```
+
+CSS-based glow effects as alternative to Canvas JavaScript:
+- `cs-glow-red` - Red glow/schimmer
+- `cs-glow-blue` - Blue glow
+- `cs-glow-green` - Green glow  
+- `cs-glow-gold` - Golden glow
+- `cs-glow-purple` - Purple glow
+- `cs-glow-white` - White glow
+- `cs-glow-subtle/intense` - Intensity modifiers
+- `cs-glow-pulse/wave/rotate` - Animation variants
+
+### 🎭 3D Background Effects
+```css
+@import "@casoon/tailwindcss-gradients/src/optional/3d-effects.css";
+```
+
+Räumliche Tiefe mit CSS 3D transforms:
+- `cs-3d-scene` - 3D container with perspective
+- `cs-3d-parallax-far/mid/near/front` - Parallax layers
+- `cs-3d-cubes` - 3D cube patterns
+- `cs-3d-tunnel` - Tunnel zoom effect
+- `cs-3d-spotlight` - Moving spotlight
+- `cs-3d-orbital` - Orbital movement
+- `cs-3d-rotate-x/y-15/30/45` - Rotation utilities
+- `cs-3d-perspective-500/800/1200` - Perspective utilities
+
+### 🌈 Dynamic Color Systems
+```css
+@import "@casoon/tailwindcss-gradients/src/optional/dynamic-colors.css";
+```
+
+Intelligent, adaptive color systems:
+- `cs-theme-light/dark/auto` - Theme-aware colors
+- `cs-time-morning/noon/evening/night` - Time-based colors
+- `cs-season-spring/summer/autumn/winter` - Seasonal colors
+- `cs-ambient-warm/cool/neutral` - Ambient light simulation
+- `cs-mood-energetic/calm/focus` - Mood-based colors
+- `cs-color-responsive` - Interactive color changes
+
+### 🎯 Advanced Particles (Optional)
+```css
+@import "@casoon/tailwindcss-gradients/src/optional/particles.css";
+```
+
+Natural weather and particle effects:
+- `cs-particles-rain-light/heavy` - Rain effects
+- `cs-particles-snow-light` - Snow effects
+- `cs-particles-fire` - Fire effects
+- `cs-particles-smoke` - Smoke effects
+- `cs-particles-sparkles` - Sparkle effects
+- `cs-particles-subtle/intense` - Intensity controls
+
+### ⚡ Performance Optimizations
+```css
+@import "@casoon/tailwindcss-gradients/src/optional/performance.css";
+```
+
+GPU acceleration and optimization:
+- `cs-gpu-accelerated` - Force GPU acceleration
+- `cs-perf-fade-in/slide-up/scale-in` - Optimized animations
+- `cs-observe-animate` - Intersection Observer ready
+- `cs-performance-low/high/ultra` - Performance modes
+- `cs-will-change-transform/opacity` - Will-change optimization
+- `cs-contain-layout/style/paint` - CSS containment
+
+### 📏 Material Textures
+Realistic material simulations:
+- `cs-texture-fabric` - Woven fabric
+- `cs-texture-wood` - Wood grain
+- `cs-texture-metal` - Brushed metal
+- `cs-texture-paper` - Paper texture
+- `cs-texture-glass` - Frosted glass
+
+## 🎆 Complete Usage Example
+
+```html
+<!-- Advanced 3D scene with particles and glow -->
+<div class="cs-3d-scene cs-glow-base cs-glow-blue cs-performance-high">
+  <!-- Far parallax layer with canvas pattern -->
+  <div class="cs-3d-parallax-far cs-canvas-stars"></div>
+  
+  <!-- Mid layer with particles -->
+  <div class="cs-3d-parallax-mid cs-particles-snow-light"></div>
+  
+  <!-- Near layer with 3D cubes -->
+  <div class="cs-3d-parallax-near cs-3d-cubes"></div>
+  
+  <!-- Content layer with dynamic colors -->
+  <div class="cs-3d-parallax-front cs-theme-auto cs-time-cycle">
+    <div class="cs-texture-glass p-8 rounded-xl">
+      <h1 class="gradient-text text-4xl font-bold mb-4">
+        Advanced Background System
+      </h1>
+      <p class="text-white/80">
+        Experience the power of layered backgrounds
+      </p>
+    </div>
+  </div>
+</div>
+```
+
+## 📏 Related Packages
 
 - **`@casoon/tailwindcss-effects`** - Meta package with all effects
 - **`@casoon/tailwindcss-utilities`** - Layout and utility components

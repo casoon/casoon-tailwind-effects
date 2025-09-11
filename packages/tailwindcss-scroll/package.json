@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-scroll",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Scroll behavior, snap, and scrollbar styling for Tailwind CSS v4",
   "type": "module",
   "exports": {
@@ -18,7 +18,7 @@
     "scroll.js"
   ],
   "dependencies": {
-    "@casoon/tailwindcss-animations": "^0.8.0"
+    "@casoon/tailwindcss-animations": "^0.8.1"
   },
   "peerDependencies": {
     "tailwindcss": "^4.0.0"
