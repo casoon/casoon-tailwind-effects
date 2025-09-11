@@ -12,11 +12,18 @@ npm install @casoon/tailwindcss-effects
 
 ### Usage with Tailwind CSS v4
 
-**Import all effects (recommended):**
+**🎯 Core Version (70KB - Recommended):**
 
 ```css
 @import "tailwindcss";
-@import "@casoon/tailwindcss-effects";
+@import "@casoon/tailwindcss-effects/core.css";
+```
+
+**🎨 Full Version (144KB):**
+
+```css
+@import "tailwindcss";
+@import "@casoon/tailwindcss-effects/styles.css";
 ```
 
 **Or import individual packages:**
@@ -63,7 +70,8 @@ This class provides the CSS variables needed for gradient backgrounds and text e
 
 | Package | CSS Classes | JavaScript | Size |
 |---------|------------|------------|------|
-| `@casoon/tailwindcss-effects` | All packages combined | ✅ nav.js, scroll.js | ~32KB |
+| `@casoon/tailwindcss-effects` **(Core)** | Essential utilities + effects | ✅ nav.js, scroll.js | **70KB** |
+| `@casoon/tailwindcss-effects` **(Full)** | All packages combined | ✅ nav.js, scroll.js | 144KB |
 | `@casoon/tailwindcss-animations` | 51 animation classes | ❌ | ~9KB |
 | `@casoon/tailwindcss-glass` | 51 glass effect classes | ❌ | ~14KB |
 | `@casoon/tailwindcss-utilities` | Essential utilities | ❌ | ~140B |

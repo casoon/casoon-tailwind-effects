@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-orbs",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "Orb/blob visual effects for Tailwind CSS v4",
   "type": "module",
   "exports": {

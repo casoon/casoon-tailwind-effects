@@ -1,14 +1,66 @@
-# @casoon/tailwindcss-effects (CSS-only)
+# @casoon/tailwindcss-effects
 
-Meta CSS that imports tokens + all effect modules.
+Complete collection of CSS effects for Tailwind CSS v4 - Available in **70KB Core** and **144KB Full** variants.
 
-## Usage
+## 🎯 **Why Use the Core Version?**
 
-### CSS Import (Recommended)
+- **51% smaller** - Perfect for production apps
+- **All essential effects** - Utilities, animations, navigation, interactions
+- **Zero breaking changes** - Drop-in replacement
+- **Better performance** - Faster load times
+
+## Variants
+
+### 🎯 **Core Version** (70KB - Recommended)
+Essential effects without decorative elements - **51% smaller**:
+
 ```css
 @import "tailwindcss";
-@import "@casoon/tailwindcss-effects/index.css";
+@import "@casoon/tailwindcss-effects/core.css";
 ```
+
+**✅ Included (70KB):**
+- **Utilities** - Layout, accessibility, 7-layer architecture (32KB)
+- **Animations** - Fade, slide, bounce, 3D effects (12KB) 
+- **Loading** - Spinners, progress bars, skeleton states (8KB)
+- **Micro-interactions** - Hover, focus, press effects (11KB)
+- **Navigation** - Nav bars, breadcrumbs, drawers (14KB)
+- **Scroll** - Smooth scrolling, snap points, custom scrollbars (5KB)
+
+**❌ Decorative Effects (use separately if needed):**
+- **Glass effects** (32KB) → `@casoon/tailwindcss-glass`
+- **Gradients** (36KB) → `@casoon/tailwindcss-gradients`
+- **Orbs** (18KB) → `@casoon/tailwindcss-orbs`
+
+**Perfect for:** Production apps, SaaS dashboards, e-commerce sites
+
+### 🎨 **Full Version** (144KB)
+Complete package with all effects including decorative elements:
+
+```css
+@import "tailwindcss";
+@import "@casoon/tailwindcss-effects/styles.css";
+```
+
+**✅ Everything from Core +**
+- **Glass effects** - Glassmorphism, backdrop blur, tinted glass
+- **Gradients** - Linear, radial, conic, animated gradients
+- **Orbs** - Floating blob effects, animated backgrounds
+
+**Perfect for:** Design systems, marketing sites, portfolios
+
+## 📊 **Quick Comparison**
+
+| Feature | Core (70KB) | Full (144KB) |
+|---------|-------------|-------------|
+| **Utilities & Layout** | ✅ | ✅ |
+| **Animations & Loading** | ✅ | ✅ |
+| **Navigation & Interactions** | ✅ | ✅ |
+| **Glass Effects** | ❌ | ✅ |
+| **Gradients** | ❌ | ✅ |
+| **Orbs** | ❌ | ✅ |
+| **Size Reduction** | **51% smaller** | - |
+| **Best for** | Production apps | Design systems |
 
 ### Tailwind Plugin
 ```js

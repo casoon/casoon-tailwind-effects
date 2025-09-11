@@ -1,14 +1,16 @@
 {
   "name": "@casoon/tailwindcss-effects",
-  "version": "0.8.2",
-  "description": "Complete collection of animation and UI effects for Tailwind CSS v4",
+  "version": "0.8.3",
+  "description": "Complete collection of animation and UI effects for Tailwind CSS v4 - Available in 70KB Core and 144KB Full variants",
   "type": "module",
   "exports": {
     ".": {
       "default": "./index.js"
     },
     "./styles.css": "./dist.css",
-    "./styles.min.css": "./dist.min.css"
+    "./styles.min.css": "./dist.min.css",
+    "./core.css": "./core.css",
+    "./core.min.css": "./dist.core.min.css"
   },
   "main": "./index.js",
   "module": "./index.js",
@@ -20,15 +22,21 @@
   ],
   "scripts": {
     "build": "postcss src/styles/index.css -o dist.css",
+    "build:core": "postcss src/styles/core.css -o dist.core.css",
+    "build:all": "npm run build && npm run build:core",
     "build:dev": "postcss src/styles/index.css -o dist.css --watch",
     "minify": "node ../../scripts/minify-css.mjs",
+    "minify:core": "cat dist.core.css | tr -d '\n' | sed 's/  */ /g' > dist.core.min.css",
     "validate": "node ../../scripts/validate-css.mjs",
-    "prepublishOnly": "npm run build && npm run minify && npm run validate"
+    "prepublishOnly": "npm run build:all && npm run minify && npm run minify:core && npm run validate"
   },
   "files": [
     "dist.css",
     "dist.min.css",
+    "dist.core.css",
+    "dist.core.min.css",
     "index.css",
+    "core.css",
     "index.js",
     "README.md",
     "LICENSE"
@@ -37,15 +45,15 @@
     "tailwindcss": "^4.0.0"
   },
   "dependencies": {
-    "@casoon/tailwindcss-animations": "^0.8.2",
-    "@casoon/tailwindcss-glass": "^0.8.2",
-    "@casoon/tailwindcss-gradients": "^0.8.2",
-    "@casoon/tailwindcss-loading": "^0.8.2",
-    "@casoon/tailwindcss-micro-interactions": "^0.8.2",
-    "@casoon/tailwindcss-navigation": "^0.8.2",
-    "@casoon/tailwindcss-orbs": "^0.8.2",
-    "@casoon/tailwindcss-scroll": "^0.8.2",
-    "@casoon/tailwindcss-utilities": "^0.8.2"
+    "@casoon/tailwindcss-animations": "^0.8.3",
+    "@casoon/tailwindcss-glass": "^0.8.3",
+    "@casoon/tailwindcss-gradients": "^0.8.3",
+    "@casoon/tailwindcss-loading": "^0.8.3",
+    "@casoon/tailwindcss-micro-interactions": "^0.8.3",
+    "@casoon/tailwindcss-navigation": "^0.8.3",
+    "@casoon/tailwindcss-orbs": "^0.8.3",
+    "@casoon/tailwindcss-scroll": "^0.8.3",
+    "@casoon/tailwindcss-utilities": "^0.8.3"
   },
   "publishConfig": {
     "access": "public"
