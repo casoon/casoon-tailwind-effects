@@ -1,0 +1,334 @@
+/*!
+ * Casoon Gradients - 3D Background Effects (Optional Extension)
+ * Räumliche Tiefe und Perspektive mit CSS 3D transforms
+ * 
+ * Usage: Import nach dem Haupt-Package:
+ * @import "@casoon/tailwindcss-gradients";
+ * @import "@casoon/tailwindcss-gradients/src/optional/3d-effects.css";
+ */
+
+/* -------------------------------------------------------
+   3D Base System
+------------------------------------------------------- */
+
+.cs-3d-scene {
+  perspective: var(--cs-3d-perspective, 1000px);
+  perspective-origin: var(--cs-3d-origin-x, 50%) var(--cs-3d-origin-y, 50%);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-3d-layer {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* -------------------------------------------------------
+   Parallax Layer System
+------------------------------------------------------- */
+
+/* Parallax Schichten mit unterschiedlichen Z-Werten */
+.cs-3d-parallax-far {
+  transform: translateZ(-200px) scale(1.2);
+  opacity: 0.3;
+}
+
+.cs-3d-parallax-mid {
+  transform: translateZ(-100px) scale(1.1);
+  opacity: 0.6;
+}
+
+.cs-3d-parallax-near {
+  transform: translateZ(-50px) scale(1.05);
+  opacity: 0.8;
+}
+
+.cs-3d-parallax-front {
+  transform: translateZ(0px);
+  opacity: 1;
+}
+
+/* -------------------------------------------------------
+   3D Depth Backgrounds
+------------------------------------------------------- */
+
+/* Tiefenebenen mit Gradients */
+.cs-3d-depth {
+  background: 
+    linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.1) 100%),
+    radial-gradient(ellipse at 30% 70%, rgba(79, 124, 255, 0.2) 0%, transparent 70%);
+  transform: rotateX(5deg) rotateY(-2deg);
+  animation: cs-3d-float 8s ease-in-out infinite;
+}
+
+.cs-3d-depth-layers::before,
+.cs-3d-depth-layers::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cs-3d-depth-layers::before {
+  background: linear-gradient(45deg, rgba(255,0,150,0.1) 0%, rgba(0,234,255,0.1) 100%);
+  transform: translateZ(-80px) rotateX(-5deg);
+  animation: cs-3d-rotate-slow 20s linear infinite;
+}
+
+.cs-3d-depth-layers::after {
+  background: radial-gradient(circle at 60% 40%, rgba(57,255,20,0.15) 0%, transparent 60%);
+  transform: translateZ(-40px) rotateY(3deg);
+  animation: cs-3d-rotate-reverse 15s linear infinite reverse;
+}
+
+/* -------------------------------------------------------
+   3D Geometric Shapes
+------------------------------------------------------- */
+
+/* 3D Cube Pattern */
+.cs-3d-cubes {
+  background-image: 
+    linear-gradient(30deg, rgba(79, 124, 255, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(79, 124, 255, 0.1) 87.5%, rgba(79, 124, 255, 0.1)),
+    linear-gradient(150deg, rgba(79, 124, 255, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(79, 124, 255, 0.1) 87.5%, rgba(79, 124, 255, 0.1)),
+    linear-gradient(30deg, rgba(79, 124, 255, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(79, 124, 255, 0.1) 87.5%, rgba(79, 124, 255, 0.1)),
+    linear-gradient(150deg, rgba(79, 124, 255, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(79, 124, 255, 0.1) 87.5%, rgba(79, 124, 255, 0.1));
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+  transform: rotateX(15deg) rotateY(-10deg);
+  animation: cs-3d-cubes-rotate 12s linear infinite;
+}
+
+/* 3D Hexagon Grid */
+.cs-3d-hexagons {
+  background-image:
+    linear-gradient(60deg, rgba(79, 124, 255, 0.1) 50%, transparent 50%),
+    linear-gradient(-60deg, rgba(79, 124, 255, 0.1) 50%, transparent 50%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  transform: rotateX(10deg) rotateZ(5deg);
+  animation: cs-3d-hexagon-wave 10s ease-in-out infinite;
+}
+
+/* -------------------------------------------------------
+   3D Tunnel/Perspective Effects
+------------------------------------------------------- */
+
+/* Tunnel-Effekt */
+.cs-3d-tunnel {
+  background: 
+    radial-gradient(circle at center, transparent 10%, rgba(79, 124, 255, 0.1) 20%, transparent 30%),
+    radial-gradient(circle at center, transparent 20%, rgba(79, 124, 255, 0.08) 40%, transparent 50%),
+    radial-gradient(circle at center, transparent 30%, rgba(79, 124, 255, 0.05) 60%, transparent 70%);
+  background-size: 100px 100px, 200px 200px, 300px 300px;
+  transform: rotateX(45deg);
+  animation: cs-3d-tunnel-zoom 6s linear infinite;
+}
+
+/* Perspektivische Raster */
+.cs-3d-grid-perspective {
+  background-image:
+    linear-gradient(rgba(79, 124, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 124, 255, 0.2) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: rotateX(60deg) translateZ(-100px);
+  transform-origin: bottom;
+  animation: cs-3d-grid-flow 8s linear infinite;
+}
+
+/* -------------------------------------------------------
+   3D Card/Panel Effects
+------------------------------------------------------- */
+
+/* Schwebende 3D Panels */
+.cs-3d-floating-panels::before,
+.cs-3d-floating-panels::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  background: linear-gradient(135deg, rgba(79, 124, 255, 0.1), rgba(255, 107, 107, 0.1));
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.cs-3d-floating-panels::before {
+  top: 20%;
+  left: 10%;
+  transform: rotateX(-10deg) rotateY(15deg) translateZ(50px);
+  animation: cs-3d-panel-float 7s ease-in-out infinite;
+}
+
+.cs-3d-floating-panels::after {
+  top: 60%;
+  right: 15%;
+  transform: rotateX(10deg) rotateY(-20deg) translateZ(80px);
+  animation: cs-3d-panel-float-reverse 9s ease-in-out infinite reverse;
+}
+
+/* -------------------------------------------------------
+   3D Lighting Effects
+------------------------------------------------------- */
+
+/* Spot Light Effekt */
+.cs-3d-spotlight {
+  background: 
+    radial-gradient(ellipse at var(--light-x, 30%) var(--light-y, 30%), 
+      rgba(255, 255, 255, 0.2) 0%, 
+      rgba(255, 255, 255, 0.1) 30%, 
+      transparent 70%
+    );
+  transform: rotateX(20deg) rotateY(10deg);
+  animation: cs-3d-spotlight-move 10s ease-in-out infinite;
+}
+
+/* Volumetrische Beleuchtung */
+.cs-3d-volumetric {
+  background: 
+    conic-gradient(from 45deg at 50% 0%, 
+      transparent 0deg, 
+      rgba(79, 124, 255, 0.1) 90deg, 
+      transparent 180deg, 
+      rgba(79, 124, 255, 0.05) 270deg, 
+      transparent 360deg
+    );
+  transform: rotateX(30deg);
+  animation: cs-3d-volumetric-sweep 12s linear infinite;
+}
+
+/* -------------------------------------------------------
+   3D Interactive States
+------------------------------------------------------- */
+
+/* Hover 3D Transform */
+.cs-3d-interactive {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cs-3d-interactive:hover {
+  transform: rotateX(10deg) rotateY(-5deg) translateZ(20px);
+}
+
+/* Mouse-responsive 3D */
+.cs-3d-mouse-responsive[data-3d-enhanced] {
+  transition: transform 0.1s ease-out;
+}
+
+/* -------------------------------------------------------
+   3D Performance Modes
+------------------------------------------------------- */
+
+.cs-3d-performance-low {
+  animation-duration: calc(var(--cs-3d-duration, 8s) * 2);
+  will-change: auto;
+}
+
+.cs-3d-performance-high {
+  animation-duration: calc(var(--cs-3d-duration, 8s) * 0.7);
+  will-change: transform;
+}
+
+/* GPU Acceleration erzwingen */
+.cs-3d-gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* -------------------------------------------------------
+   Extended 3D Animation Classes
+------------------------------------------------------- */
+
+/* Orbital Animation */
+.cs-3d-orbital {
+  animation: cs-3d-orbital 16s linear infinite;
+}
+
+/* 3D Pulse with Perspective */
+.cs-3d-pulse-perspective {
+  animation: cs-3d-pulse-perspective 4s ease-in-out infinite;
+}
+
+/* 3D Morphing Animation */
+.cs-3d-morph {
+  animation: cs-3d-morph 8s ease-in-out infinite;
+}
+
+/* -------------------------------------------------------
+   3D Utility Classes
+------------------------------------------------------- */
+
+/* 3D Transform Utilities */
+.cs-3d-rotate-x-15 { transform: rotateX(15deg); }
+.cs-3d-rotate-x-30 { transform: rotateX(30deg); }
+.cs-3d-rotate-x-45 { transform: rotateX(45deg); }
+
+.cs-3d-rotate-y-15 { transform: rotateY(15deg); }
+.cs-3d-rotate-y-30 { transform: rotateY(30deg); }
+.cs-3d-rotate-y-45 { transform: rotateY(45deg); }
+
+.cs-3d-translate-z-10 { transform: translateZ(10px); }
+.cs-3d-translate-z-20 { transform: translateZ(20px); }
+.cs-3d-translate-z-50 { transform: translateZ(50px); }
+.cs-3d-translate-z-100 { transform: translateZ(100px); }
+
+/* 3D Perspective Utilities */
+.cs-3d-perspective-500 { perspective: 500px; }
+.cs-3d-perspective-800 { perspective: 800px; }
+.cs-3d-perspective-1200 { perspective: 1200px; }
+.cs-3d-perspective-1500 { perspective: 1500px; }
+
+/* -------------------------------------------------------
+   Responsive 3D
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .cs-3d-scene {
+    --cs-3d-perspective: 600px;
+  }
+  
+  .cs-3d-cubes,
+  .cs-3d-hexagons,
+  .cs-3d-tunnel {
+    transform: scale(0.8) rotateX(5deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .cs-3d-scene {
+    --cs-3d-perspective: 400px;
+  }
+  
+  .cs-3d-depth-layers::before,
+  .cs-3d-depth-layers::after {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------
+   Accessibility & Performance
+------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-3d-scene * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .cs-3d-interactive:hover {
+    transform: none !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .cs-3d-cubes,
+  .cs-3d-hexagons,
+  .cs-3d-grid-perspective {
+    filter: contrast(1.5) brightness(1.2);
+  }
+}
+
+/* Import 3D Keyframes */
+@import "./3d-keyframes.css";
