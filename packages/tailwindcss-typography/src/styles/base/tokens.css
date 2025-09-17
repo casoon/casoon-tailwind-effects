@@ -1,0 +1,82 @@
+/* TYPOGRAPHY TOKENS */
+
+:root {
+  /* Typography scale */
+  --cs-type-scale-sm: 0.875rem;
+  --cs-type-scale-base: 1rem;
+  --cs-type-scale-lg: 1.125rem;
+  --cs-type-scale-xl: 1.25rem;
+  --cs-type-scale-2xl: 1.5rem;
+  --cs-type-scale-3xl: 1.875rem;
+  --cs-type-scale-4xl: 2.25rem;
+  
+  /* Line heights */
+  --cs-type-leading-tight: 1.25;
+  --cs-type-leading-snug: 1.375;
+  --cs-type-leading-normal: 1.5;
+  --cs-type-leading-relaxed: 1.625;
+  --cs-type-leading-loose: 2;
+  
+  /* Letter spacing */
+  --cs-type-tracking-tighter: -0.05em;
+  --cs-type-tracking-tight: -0.025em;
+  --cs-type-tracking-normal: 0em;
+  --cs-type-tracking-wide: 0.025em;
+  --cs-type-tracking-wider: 0.05em;
+  --cs-type-tracking-widest: 0.1em;
+  
+  /* Font weights */
+  --cs-type-weight-thin: 100;
+  --cs-type-weight-light: 300;
+  --cs-type-weight-normal: 400;
+  --cs-type-weight-medium: 500;
+  --cs-type-weight-semibold: 600;
+  --cs-type-weight-bold: 700;
+  --cs-type-weight-extrabold: 800;
+  --cs-type-weight-black: 900;
+  
+  /* Font families */
+  --cs-type-font-sans: var(--cs-font-sans, system-ui, -apple-system, sans-serif);
+  --cs-type-font-serif: var(--cs-font-serif, Georgia, serif);
+  --cs-type-font-mono: var(--cs-font-mono, 'SF Mono', Monaco, monospace);
+  
+  /* Content widths */
+  --cs-prose-width-sm: 60ch;
+  --cs-prose-width-base: 65ch;
+  --cs-prose-width-lg: 70ch;
+  --cs-prose-width-xl: 75ch;
+  
+  /* Content spacing */
+  --cs-prose-space-sm: 0.875rem;
+  --cs-prose-space-base: 1rem;
+  --cs-prose-space-lg: 1.25rem;
+  --cs-prose-space-xl: 1.5rem;
+  --cs-prose-space-2xl: 2rem;
+  --cs-prose-space-3xl: 2.5rem;
+  
+  /* Prose colors */
+  --cs-prose-text: var(--cs-text, #111827);
+  --cs-prose-text-muted: var(--cs-text-muted, #6b7280);
+  --cs-prose-text-light: var(--cs-text-light, #9ca3af);
+  --cs-prose-link: var(--cs-brand, #4f7cff);
+  --cs-prose-link-hover: var(--cs-brand-dark, #3b5fd1);
+  --cs-prose-border: var(--cs-border, #e5e7eb);
+  --cs-prose-surface: var(--cs-surface, #f9fafb);
+  
+  /* Code styling */
+  --cs-prose-code-bg: var(--cs-surface, #f9fafb);
+  --cs-prose-code-text: var(--cs-brand, #4f7cff);
+  --cs-prose-code-border: var(--cs-border, #e5e7eb);
+  --cs-prose-pre-bg: var(--cs-surface, #f9fafb);
+  --cs-prose-pre-text: var(--cs-text, #111827);
+  
+  /* Callout colors */
+  --cs-prose-info: var(--cs-info, #0ea5e9);
+  --cs-prose-success: var(--cs-success, #22c55e);
+  --cs-prose-warning: var(--cs-warning, #f59e0b);
+  --cs-prose-danger: var(--cs-danger, #ef4444);
+  
+  /* Typography transitions */
+  --cs-prose-transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cs-prose-transition-fast: all 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+}

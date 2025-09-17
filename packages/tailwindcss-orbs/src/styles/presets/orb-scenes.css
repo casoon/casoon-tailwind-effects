@@ -1,0 +1,372 @@
+/* ORB SCENE PRESETS - Complete Background Compositions */
+
+/* Galaxy Scene - Multiple cosmic orbs */
+.cs-orb-scene-galaxy {
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-orb-scene-galaxy::before,
+.cs-orb-scene-galaxy::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Main galaxy orb */
+.cs-orb-scene-galaxy::before {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, 
+    color-mix(in srgb, var(--cs-orb-purple) 40%, transparent) 0%,
+    color-mix(in srgb, var(--cs-orb-blue) 25%, transparent) 40%,
+    color-mix(in srgb, var(--cs-orb-pink) 15%, transparent) 70%,
+    transparent 100%
+  );
+  filter: blur(60px);
+  top: -150px;
+  right: -150px;
+  animation: cs-orb-float-kf 8s ease-in-out infinite;
+}
+
+/* Secondary galaxy orb */
+.cs-orb-scene-galaxy::after {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--cs-orb-blue) 35%, transparent) 0%,
+    color-mix(in srgb, var(--cs-orb-purple) 20%, transparent) 50%,
+    transparent 100%
+  );
+  filter: blur(40px);
+  bottom: -100px;
+  left: -100px;
+  animation: cs-orb-pulse-kf 6s ease-in-out infinite;
+}
+
+/* Underwater Scene - Blue/turquoise composition */
+.cs-orb-scene-underwater {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--cs-orb-blue) 8%, var(--cs-bg)) 0%,
+    color-mix(in srgb, var(--cs-orb-blue-light) 5%, var(--cs-bg)) 100%
+  );
+}
+
+.cs-orb-scene-underwater::before,
+.cs-orb-scene-underwater::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Large underwater orb */
+.cs-orb-scene-underwater::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, #00bcd4 30%, transparent) 0%,
+    color-mix(in srgb, #4dd0e1 20%, transparent) 40%,
+    color-mix(in srgb, #80deea 10%, transparent) 70%,
+    transparent 100%
+  );
+  filter: blur(80px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: cs-orb-drift-kf 12s ease-in-out infinite;
+}
+
+/* Floating bubbles effect */
+.cs-orb-scene-underwater::after {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, #b2ebf2 25%, transparent) 0%,
+    color-mix(in srgb, #e0f2f1 15%, transparent) 60%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  top: 20%;
+  right: 20%;
+  animation: cs-orb-wander 15s ease-in-out infinite;
+}
+
+/* Aurora Scene - Northern lights effect */
+.cs-orb-scene-aurora {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg,
+    color-mix(in srgb, #1a237e 15%, var(--cs-bg)) 0%,
+    color-mix(in srgb, #283593 10%, var(--cs-bg)) 50%,
+    color-mix(in srgb, #1a237e 15%, var(--cs-bg)) 100%
+  );
+}
+
+.cs-orb-scene-aurora::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, #4fc3f7 20%, transparent) 0%,
+    color-mix(in srgb, #81c784 15%, transparent) 30%,
+    color-mix(in srgb, #ffb74d 10%, transparent) 60%,
+    transparent 100%
+  );
+  filter: blur(60px);
+  animation: cs-aurora-wave 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+@keyframes cs-aurora-wave {
+  0%, 100% { 
+    opacity: 0.6;
+    transform: translateY(0) scaleY(1);
+  }
+  25% { 
+    opacity: 0.8;
+    transform: translateY(-20px) scaleY(1.1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: translateY(-10px) scaleY(0.9);
+  }
+  75% { 
+    opacity: 0.9;
+    transform: translateY(-30px) scaleY(1.2);
+  }
+}
+
+/* Nebula Scene - Space dust and gas clouds */
+.cs-orb-scene-nebula {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center,
+    color-mix(in srgb, var(--cs-orb-purple) 12%, var(--cs-bg)) 0%,
+    color-mix(in srgb, var(--cs-orb-pink) 8%, var(--cs-bg)) 40%,
+    var(--cs-bg) 100%
+  );
+}
+
+.cs-orb-scene-nebula::before,
+.cs-orb-scene-nebula::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Main nebula cloud */
+.cs-orb-scene-nebula::before {
+  width: 500px;
+  height: 300px;
+  background: linear-gradient(45deg,
+    color-mix(in srgb, var(--cs-orb-purple) 25%, transparent) 0%,
+    color-mix(in srgb, var(--cs-orb-pink) 20%, transparent) 30%,
+    color-mix(in srgb, var(--cs-orb-custom-primary) 15%, transparent) 60%,
+    transparent 100%
+  );
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  filter: blur(100px);
+  top: 10%;
+  left: 20%;
+  animation: cs-orb-morph 25s ease-in-out infinite,
+             cs-orb-drift-kf 30s ease-in-out infinite;
+}
+
+/* Secondary nebula dust */
+.cs-orb-scene-nebula::after {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(ellipse,
+    color-mix(in srgb, var(--cs-orb-blue) 20%, transparent) 0%,
+    color-mix(in srgb, var(--cs-orb-purple-light) 15%, transparent) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(60px);
+  bottom: 20%;
+  right: 15%;
+  animation: cs-orb-shimmer 18s ease-in-out infinite;
+}
+
+/* Forest Scene - Natural, organic orbs */
+.cs-orb-scene-forest {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, #2e7d32 8%, var(--cs-bg)) 0%,
+    color-mix(in srgb, #388e3c 6%, var(--cs-bg)) 50%,
+    color-mix(in srgb, #1b5e20 10%, var(--cs-bg)) 100%
+  );
+}
+
+.cs-orb-scene-forest::before,
+.cs-orb-scene-forest::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Sunlight filtering through trees */
+.cs-orb-scene-forest::before {
+  width: 200px;
+  height: 400px;
+  background: linear-gradient(0deg,
+    transparent 0%,
+    color-mix(in srgb, #ffeb3b 15%, transparent) 20%,
+    color-mix(in srgb, #ffc107 20%, transparent) 50%,
+    color-mix(in srgb, #ff9800 10%, transparent) 80%,
+    transparent 100%
+  );
+  border-radius: 50% 50% 80% 20% / 60% 40% 60% 40%;
+  filter: blur(40px);
+  top: -100px;
+  right: 30%;
+  animation: cs-forest-light 15s ease-in-out infinite;
+  transform: rotate(15deg);
+}
+
+/* Forest fireflies/magic */
+.cs-orb-scene-forest::after {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, #76ff03 30%, transparent) 0%,
+    color-mix(in srgb, #8bc34a 20%, transparent) 40%,
+    color-mix(in srgb, #4caf50 10%, transparent) 70%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  bottom: 30%;
+  left: 25%;
+  animation: cs-orb-flicker 3s ease-in-out infinite,
+             cs-orb-wander 20s ease-in-out infinite;
+}
+
+@keyframes cs-forest-light {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: rotate(15deg) translateY(0);
+  }
+  25% { 
+    opacity: 0.6;
+    transform: rotate(12deg) translateY(-10px);
+  }
+  50% { 
+    opacity: 0.4;
+    transform: rotate(18deg) translateY(-5px);
+  }
+  75% { 
+    opacity: 0.7;
+    transform: rotate(10deg) translateY(-15px);
+  }
+}
+
+/* Sunset Scene - Warm, golden orbs */
+.cs-orb-scene-sunset {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg,
+    color-mix(in srgb, #ff6f00 12%, var(--cs-bg)) 0%,
+    color-mix(in srgb, #ff8f00 8%, var(--cs-bg)) 30%,
+    color-mix(in srgb, #ffc107 6%, var(--cs-bg)) 70%,
+    var(--cs-bg) 100%
+  );
+}
+
+.cs-orb-scene-sunset::before,
+.cs-orb-scene-sunset::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Main sun orb */
+.cs-orb-scene-sunset::before {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, #ffeb3b 35%, transparent) 0%,
+    color-mix(in srgb, #ff9800 25%, transparent) 30%,
+    color-mix(in srgb, #ff5722 15%, transparent) 60%,
+    transparent 100%
+  );
+  filter: blur(80px);
+  top: -175px;
+  left: 70%;
+  animation: cs-orb-color-breathe 8s ease-in-out infinite;
+}
+
+/* Warm atmospheric glow */
+.cs-orb-scene-sunset::after {
+  width: 250px;
+  height: 150px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, #ffab40 20%, transparent) 0%,
+    color-mix(in srgb, #ff7043 15%, transparent) 50%,
+    transparent 100%
+  );
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  filter: blur(60px);
+  bottom: 20%;
+  left: 10%;
+  animation: cs-orb-drift-kf 12s ease-in-out infinite;
+}
+
+/* Responsive adjustments for scenes */
+@container (max-width: 768px) {
+  .cs-orb-scene-galaxy::before {
+    width: 200px;
+    height: 200px;
+    filter: blur(40px);
+  }
+  
+  .cs-orb-scene-galaxy::after {
+    width: 150px;
+    height: 150px;
+    filter: blur(30px);
+  }
+  
+  .cs-orb-scene-underwater::before {
+    width: 250px;
+    height: 250px;
+    filter: blur(50px);
+  }
+  
+  .cs-orb-scene-nebula::before {
+    width: 300px;
+    height: 200px;
+    filter: blur(60px);
+  }
+}
+
+/* Accessibility - respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cs-orb-scene-galaxy::before,
+  .cs-orb-scene-galaxy::after,
+  .cs-orb-scene-underwater::before,
+  .cs-orb-scene-underwater::after,
+  .cs-orb-scene-aurora::before,
+  .cs-orb-scene-nebula::before,
+  .cs-orb-scene-nebula::after,
+  .cs-orb-scene-forest::before,
+  .cs-orb-scene-forest::after,
+  .cs-orb-scene-sunset::before,
+  .cs-orb-scene-sunset::after {
+    animation: none !important;
+  }
+}

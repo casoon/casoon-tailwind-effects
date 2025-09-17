@@ -35,6 +35,7 @@
 
 /* cs-patterns: Complex composed UI patterns */
 @import "./styles/patterns/complex-ui.css";
+@import "./styles/patterns/component-presets.css";
 
 /* cs-overrides: Theme overrides, debug utilities, force overrides */
 @import "./styles/overrides/theme-overrides.css";

@@ -1,0 +1,48 @@
+/* FORMS TOKENS */
+
+:root {
+  /* Form specific spacing */
+  --cs-form-space-sm: calc(0.75rem * var(--cs-density, 1));
+  --cs-form-space-md: calc(1rem * var(--cs-density, 1));
+  --cs-form-space-lg: calc(1.5rem * var(--cs-density, 1));
+  
+  /* Form colors */
+  --cs-form-bg: var(--cs-bg, #ffffff);
+  --cs-form-surface: var(--cs-surface, #f8f9fa);
+  --cs-form-border: var(--cs-border, #dee2e6);
+  --cs-form-text: var(--cs-text, #212529);
+  --cs-form-text-muted: var(--cs-text-muted, #6c757d);
+  --cs-form-focus: var(--cs-brand, #4f7cff);
+  
+  /* Form states */
+  --cs-form-success: var(--cs-success, #22c55e);
+  --cs-form-warning: var(--cs-warning, #f59e0b);
+  --cs-form-danger: var(--cs-danger, #ef4444);
+  --cs-form-info: var(--cs-info, #0ea5e9);
+  
+  /* Form transitions */
+  --cs-form-transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cs-form-transition-fast: all 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+  
+  /* Form typography */
+  --cs-form-font-family: var(--cs-font-sans, system-ui, -apple-system, sans-serif);
+  --cs-form-font-size: var(--cs-fs-md, 1rem);
+  --cs-form-font-size-sm: var(--cs-fs-sm, 0.875rem);
+  --cs-form-line-height: var(--cs-line, 1.5);
+  
+  /* Form borders & radius */
+  --cs-form-border-width: 1px;
+  --cs-form-border-width-focus: 2px;
+  --cs-form-radius: var(--cs-radius, 8px);
+  --cs-form-radius-sm: var(--cs-radius-sm, 4px);
+  --cs-form-radius-lg: var(--cs-radius-lg, 12px);
+  
+  /* Form shadows */
+  --cs-form-shadow: var(--cs-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.1));
+  --cs-form-shadow-focus: 0 0 0 3px var(--cs-form-focus);
+  
+  /* Glass form specific */
+  --cs-form-glass-bg: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
+  --cs-form-glass-border: var(--cs-acrylic-border, rgba(255, 255, 255, 0.2));
+  --cs-form-glass-blur: saturate(140%) blur(12px);
+}

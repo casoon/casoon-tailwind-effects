@@ -1,0 +1,208 @@
+/*!
+ * @casoon/tailwindcss-cards v0.8.4
+ * Card layouts & interactive effects for Tailwind CSS v4
+ * https://github.com/casoon/tailwindcss-effects
+ */
+
+@layer cs-tokens, cs-base, cs-components, cs-patterns;
+
+/* Card Tokens */
+@layer cs-tokens {
+  :root {
+    --cs-card-border-radius: 1rem;
+    --cs-card-shadow: 0 4px 6px color-mix(in srgb, #000000 10%, transparent);
+    --cs-card-shadow-hover: 0 10px 25px color-mix(in srgb, #000000 15%, transparent);
+    --cs-card-bg: #ffffff;
+    --cs-card-padding: 1.5rem;
+    --cs-card-spacing: 1rem;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --cs-card-bg: color-mix(in srgb, #ffffff 5%, #1a1a1a);
+      --cs-card-shadow: 0 4px 6px color-mix(in srgb, #000000 25%, transparent);
+      --cs-card-shadow-hover: 0 10px 25px color-mix(in srgb, #000000 35%, transparent);
+    }
+  }
+}
+
+/* Card Base Styles */
+@layer cs-base {
+  .cs-card-base {
+    background: var(--cs-card-bg);
+    border-radius: var(--cs-card-border-radius);
+    box-shadow: var(--cs-card-shadow);
+    transition: all 300ms ease;
+    overflow: hidden;
+  }
+  
+  .cs-card-base:hover {
+    box-shadow: var(--cs-card-shadow-hover);
+    transform: translateY(-4px);
+  }
+}
+
+/* Card Components */
+@layer cs-components {
+  /* Product Card */
+  .cs-card-product {
+    @extend .cs-card-base;
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cs-card-image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    background: color-mix(in srgb, currentColor 5%, transparent);
+  }
+  
+  .cs-card-content {
+    padding: var(--cs-card-padding);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .cs-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: color-mix(in srgb, currentColor 95%, transparent);
+    margin: 0;
+    line-height: 1.3;
+  }
+  
+  .cs-card-description {
+    color: color-mix(in srgb, currentColor 70%, transparent);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+  
+  .cs-card-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #059669;
+    margin: 0;
+  }
+  
+  .cs-card-actions {
+    padding: 0 var(--cs-card-padding) var(--cs-card-padding);
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .cs-button-primary-card {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 200ms ease;
+    flex: 1;
+  }
+  
+  .cs-button-primary-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, #3b82f6 40%, transparent);
+  }
+  
+  /* Testimonial Card */
+  .cs-card-testimonial {
+    @extend .cs-card-base;
+    padding: var(--cs-card-padding);
+    max-width: 24rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .cs-testimonial-quote {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: color-mix(in srgb, currentColor 85%, transparent);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .cs-testimonial-quote::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    font-size: 3rem;
+    color: color-mix(in srgb, currentColor 20%, transparent);
+    line-height: 1;
+  }
+  
+  .cs-testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .cs-testimonial-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+  }
+  
+  .cs-testimonial-info {
+    text-align: left;
+  }
+  
+  .cs-testimonial-name {
+    font-weight: 600;
+    color: color-mix(in srgb, currentColor 90%, transparent);
+    margin: 0;
+  }
+  
+  .cs-testimonial-role {
+    font-size: 0.875rem;
+    color: color-mix(in srgb, currentColor 60%, transparent);
+    margin: 0;
+  }
+  
+  /* Testimonial with Orbs */
+  .cs-card-testimonial-orb {
+    @extend .cs-card-testimonial;
+    background: linear-gradient(135deg, 
+      color-mix(in srgb, #3b82f6 10%, transparent) 0%,
+      color-mix(in srgb, #8b5cf6 15%, transparent) 50%,
+      color-mix(in srgb, #06b6d4 10%, transparent) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid color-mix(in srgb, #ffffff 20%, transparent);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cs-card-testimonial-orb::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+      color-mix(in srgb, #3b82f6 30%, transparent) 0%,
+      transparent 70%
+    );
+    animation: cs-orb-float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes cs-orb-float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(30px, -30px) rotate(120deg); }
+    66% { transform: translate(-20px, 20px) rotate(240deg); }
+  }
+}

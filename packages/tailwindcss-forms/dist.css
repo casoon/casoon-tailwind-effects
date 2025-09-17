@@ -1,0 +1,170 @@
+/*!
+ * @casoon/tailwindcss-forms v0.8.4
+ * Complete form components & validation presets for Tailwind CSS v4
+ * https://github.com/casoon/tailwindcss-effects
+ */
+
+@layer cs-tokens, cs-base, cs-components, cs-patterns;
+
+/* Form Tokens */
+@layer cs-tokens {
+  :root {
+    --cs-form-border-radius: 0.5rem;
+    --cs-form-border-color: color-mix(in srgb, currentColor 20%, transparent);
+    --cs-form-focus-color: #3b82f6;
+    --cs-form-error-color: #ef4444;
+    --cs-form-success-color: #10b981;
+    --cs-form-spacing: 1rem;
+  }
+}
+
+/* Form Base Styles */
+@layer cs-base {
+  .cs-form-base {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cs-form-spacing);
+  }
+  
+  .cs-input-base {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--cs-form-border-color);
+    border-radius: var(--cs-form-border-radius);
+    transition: all 200ms ease;
+  }
+  
+  .cs-input-base:focus {
+    outline: none;
+    border-color: var(--cs-form-focus-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-form-focus-color) 20%, transparent);
+  }
+}
+
+/* Form Presets */
+@layer cs-components {
+  /* Modern Form */
+  .cs-form-modern {
+    @extend .cs-form-base;
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: 2rem;
+    background: color-mix(in srgb, #ffffff 95%, transparent);
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px color-mix(in srgb, #000000 10%, transparent);
+  }
+  
+  .cs-input-modern {
+    @extend .cs-input-base;
+    background: #ffffff;
+    border: 2px solid color-mix(in srgb, currentColor 10%, transparent);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .cs-input-modern::placeholder {
+    color: color-mix(in srgb, currentColor 60%, transparent);
+  }
+  
+  .cs-label-modern {
+    font-weight: 600;
+    color: color-mix(in srgb, currentColor 90%, transparent);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .cs-button-primary-modern {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--cs-form-border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 200ms ease;
+  }
+  
+  .cs-button-primary-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px color-mix(in srgb, #3b82f6 30%, transparent);
+  }
+  
+  /* Glass Form */
+  .cs-form-glass {
+    @extend .cs-form-base;
+    backdrop-filter: blur(20px) saturate(180%);
+    background: color-mix(in srgb, #ffffff 10%, transparent);
+    border: 1px solid color-mix(in srgb, #ffffff 20%, transparent);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+  
+  .cs-input-glass {
+    @extend .cs-input-base;
+    background: color-mix(in srgb, #ffffff 15%, transparent);
+    border: 1px solid color-mix(in srgb, #ffffff 30%, transparent);
+    color: inherit;
+    backdrop-filter: blur(10px);
+  }
+  
+  .cs-button-primary-glass {
+    background: color-mix(in srgb, #ffffff 20%, transparent);
+    border: 1px solid color-mix(in srgb, #ffffff 30%, transparent);
+    backdrop-filter: blur(10px);
+    color: inherit;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--cs-form-border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 200ms ease;
+  }
+  
+  .cs-button-primary-glass:hover {
+    background: color-mix(in srgb, #ffffff 30%, transparent);
+    transform: translateY(-1px);
+  }
+}
+
+/* Form Validation */
+@layer cs-patterns {
+  .cs-form-group {
+    position: relative;
+    margin-bottom: var(--cs-form-spacing);
+  }
+  
+  .cs-input-validation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .cs-validation-error {
+    display: flex;
+    color: var(--cs-form-error-color);
+  }
+  
+  .cs-validation-success {
+    display: flex;
+    color: var(--cs-form-success-color);
+  }
+  
+  .cs-validation-icon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+  
+  .cs-input-error {
+    border-color: var(--cs-form-error-color) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-form-error-color) 20%, transparent) !important;
+  }
+  
+  .cs-input-success {
+    border-color: var(--cs-form-success-color) !important;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-form-success-color) 20%, transparent) !important;
+  }
+}

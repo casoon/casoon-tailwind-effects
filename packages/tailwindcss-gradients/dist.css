@@ -161,6 +161,78 @@
     }
   }
 }
+.cs-bg-casoon-original {
+  background: radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), linear-gradient(135deg, #0f172a, #1e293b);
+}
+.cs-bg-casoon-warm {
+  background: radial-gradient(circle at 25% 75%, #dc2626 0%, transparent 55%), radial-gradient(circle at 75% 25%, #f59e0b 0%, transparent 45%), radial-gradient(circle at 50% 50%, #ea580c 0%, transparent 60%), linear-gradient(135deg, #1f2937, #374151);
+}
+.cs-bg-casoon-cool {
+  background: radial-gradient(circle at 30% 70%, #3b82f6 0%, transparent 50%), radial-gradient(circle at 70% 30%, #06b6d4 0%, transparent 55%), radial-gradient(circle at 45% 45%, #8b5cf6 0%, transparent 45%), linear-gradient(135deg, #111827, #1f2937);
+}
+.cs-bg-casoon-forest {
+  background: radial-gradient(circle at 15% 85%, #059669 0%, transparent 50%), radial-gradient(circle at 85% 15%, #10b981 0%, transparent 60%), radial-gradient(circle at 55% 35%, #065f46 0%, transparent 40%), linear-gradient(135deg, #064e3b, #134e4a);
+}
+.cs-bg-nebula-purple {
+  background: radial-gradient(circle at 20% 20%, #8b5cf6 0%, transparent 70%), radial-gradient(circle at 80% 80%, #ec4899 0%, transparent 60%), radial-gradient(circle at 40% 60%, #3b82f6 0%, transparent 80%), linear-gradient(135deg, #0c0a1d, #1e1b3b);
+}
+.cs-bg-deep-ocean {
+  background: radial-gradient(circle at 25% 25%, #1e40af 0%, transparent 65%), radial-gradient(circle at 75% 75%, #0891b2 0%, transparent 55%), radial-gradient(circle at 50% 80%, #0e7490 0%, transparent 70%), linear-gradient(135deg, #0c1e3d, #164e63);
+}
+.cs-bg-corporate-blue {
+  background: radial-gradient(circle at 30% 30%, #1e40af 0%, transparent 70%), radial-gradient(circle at 70% 70%, #3b82f6 0%, transparent 60%), radial-gradient(circle at 50% 50%, #1d4ed8 0%, transparent 80%), linear-gradient(135deg, #1e3a8a, #1e40af);
+}
+.cs-bg-preset-subtle {
+  filter: brightness(0.8) saturate(0.7) opacity(0.9);
+}
+.cs-bg-preset-intense {
+  filter: brightness(1.2) saturate(1.3) contrast(1.1);
+}
+.cs-bg-casoon-animated {
+  background: radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), linear-gradient(135deg, #0f172a, #1e293b);
+  background-size: 400% 400%;
+  animation: cs-gradient-shift 8s ease-in-out infinite;
+}
+.cs-bg-casoon-subtle {
+  background: radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), linear-gradient(135deg, #0f172a, #1e293b);
+  filter: brightness(0.8) saturate(0.7) opacity(0.9);
+}
+.cs-bg-casoon-intense {
+  background: radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), linear-gradient(135deg, #0f172a, #1e293b);
+  filter: brightness(1.2) saturate(1.3) contrast(1.1);
+}
+.cs-bg-grain-fine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.02) 1px, transparent 1px), radial-gradient(circle at 75% 75%, rgba(0,0,0,0.02) 0.5px, transparent 0.5px);
+  background-size: 8px 8px, 6px 6px;
+  pointer-events: none;
+  z-index: 1;
+}
+.cs-bg-grain-positioned {
+  position: relative;
+}
+.cs-bg-preset-gpu-optimized {
+  transform: translateZ(0);
+  will-change: background-position, background-size;
+  backface-visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-bg-casoon-animated, .cs-bg-preset-animated {
+    animation: none !important;
+  }
+}
+@media (prefers-contrast: high) {
+  .cs-bg-casoon-original, .cs-bg-casoon-warm, .cs-bg-casoon-cool, .cs-bg-casoon-forest {
+    filter: contrast(1.5) brightness(1.2);
+  }
+}
+@media (max-width: 768px) {
+  .cs-bg-grain-fine::after {
+    display: none;
+  }
+}
 .cs-gradient-text {
   -webkit-background-clip: text;
   background-clip: text;

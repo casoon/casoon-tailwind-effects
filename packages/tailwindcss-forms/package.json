@@ -1,0 +1,42 @@
+{
+  "name": "@casoon/tailwindcss-forms",
+  "version": "0.8.4",
+  "description": "Modern form presets and components for Tailwind CSS v4 - Glass morphism, validation states, and accessibility-first design",
+  "keywords": [
+    "tailwindcss",
+    "css",
+    "forms",
+    "ui",
+    "components",
+    "glass",
+    "validation",
+    "accessibility",
+    "presets"
+  ],
+  "homepage": "https://github.com/jseidel/casoon-tailwind-effects#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jseidel/casoon-tailwind-effects.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jseidel/casoon-tailwind-effects/issues"
+  },
+  "author": "Julian Seidel <info@casoon.com> (https://casoon.com)",
+  "license": "MIT",
+  "main": "src/index.css",
+  "files": [
+    "src/",
+    "*.css",
+    "*.js",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=4.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.13"
+  }
+}

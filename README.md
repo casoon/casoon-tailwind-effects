@@ -60,8 +60,9 @@ This class provides the CSS variables needed for gradient backgrounds and text e
 ## ✨ What You Get
 
 - **🎯 Pure CSS Architecture** - No JavaScript plugins needed
-- **📦 9 Specialized Packages** - Import only what you need
-- **🎨 Complete Effect Library** - Animations, glass effects, gradients, utilities
+- **📦 12 Specialized Packages** - Import only what you need
+- **🎨 100+ Ready-to-Use Presets** - Complete UI components, layouts & effects
+- **🎯 Modern Component Library** - Forms, cards, typography, navigation & more
 - **⚡ CSS Variables** - Fully customizable design system
 - **♿ Accessibility First** - Motion-safe variants, focus management
 - **🔧 Optional JavaScript** - Enhanced navigation and scroll functionality
@@ -71,12 +72,15 @@ This class provides the CSS variables needed for gradient backgrounds and text e
 | Package | CSS Classes | JavaScript | Size |
 |---------|------------|------------|------|
 | `@casoon/tailwindcss-effects` **(Core)** | Essential utilities + effects | ✅ nav.js, scroll.js | **70KB** |
-| `@casoon/tailwindcss-effects` **(Full)** | All packages combined | ✅ nav.js, scroll.js | 144KB |
+| `@casoon/tailwindcss-effects` **(Full)** | All packages combined | ✅ nav.js, scroll.js | 200KB+ |
 | `@casoon/tailwindcss-animations` | 51 animation classes | ❌ | ~9KB |
 | `@casoon/tailwindcss-glass` | 51 glass effect classes | ❌ | ~14KB |
-| `@casoon/tailwindcss-utilities` | Essential utilities | ❌ | ~140B |
+| `@casoon/tailwindcss-utilities` | Enhanced utilities + component presets | ❌ | ~8KB |
 | `@casoon/tailwindcss-gradients` | Gradient utilities | ❌ | ~4.5KB |
-| `@casoon/tailwindcss-orbs` | Floating orb backgrounds | ❌ | ~3.5KB |
+| `@casoon/tailwindcss-orbs` | Floating orb backgrounds + scenes | ❌ | ~12KB |
+| `@casoon/tailwindcss-forms` | Complete form components & validation | ❌ | ~15KB |
+| `@casoon/tailwindcss-cards` | Card layouts & interactive effects | ❌ | ~18KB |
+| `@casoon/tailwindcss-typography` | Content-focused text styling | ❌ | ~10KB |
 | `@casoon/tailwindcss-loading` | Loading states & spinners | ❌ | ~660B |
 | `@casoon/tailwindcss-scroll` | Scroll animations | ✅ scroll.js | ~2KB |
 | `@casoon/tailwindcss-navigation` | Navigation components | ✅ nav.js | ~1.7KB |
@@ -168,6 +172,93 @@ This class provides the CSS variables needed for gradient backgrounds and text e
 <div class="cs-hover-scale-110 cs-hover-lift-md transition-all duration-300">
   Scale and lift together
 </div>
+```
+
+### Preset Components
+
+**Forms:**
+
+```html
+<!-- Modern contact form -->
+<form class="cs-form-modern">
+  <div class="cs-form-group">
+    <label for="email" class="cs-label-modern">Email</label>
+    <input type="email" id="email" class="cs-input-modern" placeholder="your@email.com">
+    <div class="cs-input-validation cs-validation-error">
+      <span class="cs-validation-icon">⚠</span>
+      Please enter a valid email
+    </div>
+  </div>
+  
+  <button type="submit" class="cs-button-primary-modern">
+    Send Message
+  </button>
+</form>
+
+<!-- Glass form variant -->
+<form class="cs-form-glass">
+  <input type="text" class="cs-input-glass" placeholder="Username">
+  <input type="password" class="cs-input-glass" placeholder="Password">
+  <button class="cs-button-primary-glass">Sign In</button>
+</form>
+```
+
+**Cards:**
+
+```html
+<!-- Product card -->
+<div class="cs-card-product">
+  <img src="product.jpg" alt="Product" class="cs-card-image">
+  <div class="cs-card-content">
+    <h3 class="cs-card-title">Premium Product</h3>
+    <p class="cs-card-description">High-quality product with excellent features</p>
+    <div class="cs-card-price">$99.99</div>
+  </div>
+  <div class="cs-card-actions">
+    <button class="cs-button-primary-card">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Testimonial card with orbs -->
+<div class="cs-card-testimonial-orb">
+  <div class="cs-testimonial-quote">
+    "This product changed everything for our team."
+  </div>
+  <div class="cs-testimonial-author">
+    <img src="avatar.jpg" alt="Author" class="cs-testimonial-avatar">
+    <div class="cs-testimonial-info">
+      <div class="cs-testimonial-name">Sarah Chen</div>
+      <div class="cs-testimonial-role">CTO, TechCorp</div>
+    </div>
+  </div>
+</div>
+```
+
+**Typography:**
+
+```html
+<!-- Blog content -->
+<article class="cs-prose-blog">
+  <h1 class="cs-heading-blog">Amazing Blog Post Title</h1>
+  <div class="cs-blog-meta">
+    <span class="cs-blog-author">By John Doe</span>
+    <span class="cs-blog-date">March 15, 2024</span>
+  </div>
+  <p class="cs-blog-lead">This is the engaging introduction to the blog post...</p>
+  <p>Regular blog content with perfect spacing and readability...</p>
+</article>
+
+<!-- Marketing content -->
+<section class="cs-prose-marketing">
+  <h1 class="cs-heading-hero">Transform Your Business</h1>
+  <p class="cs-marketing-subtitle">Powerful tools for modern teams</p>
+  <div class="cs-features-grid">
+    <div class="cs-feature-item">
+      <h3 class="cs-feature-title">Fast Setup</h3>
+      <p class="cs-feature-description">Get started in minutes</p>
+    </div>
+  </div>
+</section>
 ```
 
 ### Advanced Patterns

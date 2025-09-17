@@ -1,0 +1,309 @@
+/* FEATURE CARD PRESETS */
+
+/* Standard feature card */
+.cs-card-feature {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: var(--cs-card-space-lg);
+  background: var(--cs-card-bg);
+  border: 1px solid var(--cs-card-border);
+  border-radius: var(--cs-card-radius-lg);
+  box-shadow: var(--cs-card-shadow-sm);
+  padding: var(--cs-card-space-xl);
+  text-align: center;
+  position: relative;
+  transition: var(--cs-card-transition);
+}
+
+.cs-card-feature:hover {
+  transform: translateY(var(--cs-card-hover-lift));
+  box-shadow: var(--cs-card-shadow-md);
+}
+
+/* Feature icon */
+.cs-card-feature .cs-feature-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--cs-card-brand);
+  color: var(--cs-card-brand-ink);
+  border-radius: var(--cs-card-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--cs-card-space-md);
+  font-size: 1.5rem;
+  transition: var(--cs-card-transition);
+}
+
+.cs-card-feature:hover .cs-feature-icon {
+  transform: scale(1.1);
+  background: var(--cs-card-brand);
+  @supports (color: color-mix(in srgb, var(--cs-card-brand) 85%, black)) {
+    background: color-mix(in srgb, var(--cs-card-brand) 85%, black);
+  }
+}
+
+/* Large icon variant */
+.cs-card-feature-icon-lg .cs-feature-icon {
+  width: 64px;
+  height: 64px;
+  font-size: 2rem;
+  border-radius: var(--cs-card-radius-lg);
+}
+
+/* Feature header */
+.cs-card-feature .cs-feature-header {
+  display: grid;
+  gap: var(--cs-card-space-md);
+}
+
+.cs-card-feature .cs-feature-title {
+  font-size: var(--cs-card-font-size-lg);
+  font-weight: 600;
+  color: var(--cs-card-text);
+  margin: 0;
+}
+
+.cs-card-feature .cs-feature-subtitle {
+  font-size: var(--cs-card-font-size);
+  color: var(--cs-card-text-muted);
+  line-height: var(--cs-card-line-height);
+  margin: 0;
+}
+
+/* Feature content */
+.cs-card-feature .cs-feature-content {
+  display: grid;
+  gap: var(--cs-card-space-md);
+}
+
+.cs-card-feature .cs-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--cs-card-space-sm);
+  text-align: left;
+}
+
+.cs-card-feature .cs-feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--cs-card-space-sm);
+  font-size: var(--cs-card-font-size-sm);
+  color: var(--cs-card-text-muted);
+}
+
+.cs-card-feature .cs-feature-item::before {
+  content: "✓";
+  color: var(--cs-card-brand);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* Feature action */
+.cs-card-feature .cs-feature-action {
+  margin-top: var(--cs-card-space-lg);
+}
+
+.cs-card-feature .cs-feature-button {
+  background: transparent;
+  color: var(--cs-card-brand);
+  border: 1px solid var(--cs-card-brand);
+  padding: var(--cs-card-space-md) var(--cs-card-space-lg);
+  border-radius: var(--cs-card-radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--cs-card-transition);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cs-card-space-sm);
+}
+
+.cs-card-feature .cs-feature-button:hover {
+  background: var(--cs-card-brand);
+  color: var(--cs-card-brand-ink);
+  transform: translateY(-1px);
+}
+
+/* Horizontal feature card */
+.cs-card-feature-horizontal {
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: none;
+  text-align: left;
+  align-items: center;
+  gap: var(--cs-card-space-lg);
+  padding: var(--cs-card-space-lg);
+}
+
+.cs-card-feature-horizontal .cs-feature-icon {
+  margin: 0;
+}
+
+.cs-card-feature-horizontal .cs-feature-content {
+  gap: var(--cs-card-space-sm);
+}
+
+.cs-card-feature-horizontal .cs-feature-action {
+  margin-top: 0;
+}
+
+/* Minimal feature card */
+.cs-card-feature-minimal {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: var(--cs-card-space-lg);
+}
+
+.cs-card-feature-minimal:hover {
+  transform: none;
+  background: var(--cs-card-bg);
+  border-radius: var(--cs-card-radius-lg);
+  box-shadow: var(--cs-card-shadow-sm);
+}
+
+.cs-card-feature-minimal .cs-feature-icon {
+  background: transparent;
+  color: var(--cs-card-brand);
+  border: 2px solid var(--cs-card-brand);
+}
+
+.cs-card-feature-minimal:hover .cs-feature-icon {
+  background: var(--cs-card-brand);
+  color: var(--cs-card-brand-ink);
+}
+
+/* Feature card with image */
+.cs-card-feature-image .cs-feature-image {
+  aspect-ratio: 16/9;
+  background: var(--cs-card-border);
+  border-radius: var(--cs-card-radius);
+  margin-bottom: var(--cs-card-space-lg);
+  overflow: hidden;
+}
+
+.cs-card-feature-image .cs-feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--cs-card-transition);
+}
+
+.cs-card-feature-image:hover .cs-feature-image img {
+  transform: scale(1.05);
+}
+
+/* Feature card with orb effect */
+.cs-card-feature-orb {
+  overflow: hidden;
+}
+
+.cs-card-feature-orb::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--cs-card-brand) 20%, transparent) 0%,
+    color-mix(in srgb, var(--cs-card-brand) 10%, transparent) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(30px);
+  top: -75px;
+  right: -75px;
+  opacity: 0;
+  transition: opacity var(--cs-card-transition);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cs-card-feature-orb:hover::before {
+  opacity: 1;
+}
+
+.cs-card-feature-orb > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Glass feature variant */
+.cs-card-feature-glass {
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
+  backdrop-filter: saturate(140%) blur(12px);
+  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.2));
+}
+
+.cs-card-feature-glass .cs-feature-icon {
+  background: var(--cs-card-brand);
+  @supports (color: color-mix(in srgb, var(--cs-card-brand) 80%, transparent)) {
+    background: color-mix(in srgb, var(--cs-card-brand) 80%, transparent);
+  }
+  backdrop-filter: blur(8px);
+}
+
+/* Feature grid layouts */
+.cs-feature-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--cs-card-space-xl);
+}
+
+.cs-feature-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--cs-card-space-lg);
+}
+
+.cs-feature-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--cs-card-space-lg);
+}
+
+/* Coming soon feature */
+.cs-card-feature-coming-soon {
+  opacity: 0.7;
+  position: relative;
+}
+
+.cs-card-feature-coming-soon::after {
+  content: "Coming Soon";
+  position: absolute;
+  top: var(--cs-card-space-md);
+  right: var(--cs-card-space-md);
+  background: var(--cs-card-text-muted);
+  color: var(--cs-card-bg);
+  padding: var(--cs-card-space-sm);
+  border-radius: var(--cs-card-radius-sm);
+  font-size: var(--cs-card-font-size-sm);
+  font-weight: 600;
+}
+
+.cs-card-feature-coming-soon .cs-feature-button {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile optimizations */
+@container (max-width: 640px) {
+  .cs-feature-grid-2,
+  .cs-feature-grid-3,
+  .cs-feature-grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--cs-card-space-lg);
+  }
+  
+  .cs-card-feature-horizontal {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    text-align: center;
+    gap: var(--cs-card-space-md);
+  }
+  
+  .cs-card-feature-horizontal .cs-feature-icon {
+    margin: 0 auto;
+  }
+}

@@ -60,3 +60,10 @@
 /* 7.8 Layout helpers for sticky bars & performance hints */
 .cs-glass-sticky { position: sticky; top: 0; }
 .cs-glass-will-change { will-change: transform, backdrop-filter; }
+
+/* 7.9 Isolation utility for Canvas/Background-Layering issues
+   Usage: add `.cs-glass-isolate` to fix stacking context problems
+   Tip: helps resolve backdrop-filter rendering issues with complex layouts */
+.cs-glass-isolate {
+  isolation: isolate;
+}

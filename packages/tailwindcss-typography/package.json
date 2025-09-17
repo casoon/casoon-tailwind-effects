@@ -1,0 +1,42 @@
+{
+  "name": "@casoon/tailwindcss-typography",
+  "version": "0.8.4",
+  "description": "Content-specific typography presets for Tailwind CSS v4 - Blog prose, documentation, marketing copy, and reading optimizations",
+  "keywords": [
+    "tailwindcss",
+    "css",
+    "typography",
+    "prose",
+    "blog",
+    "documentation",
+    "content",
+    "reading",
+    "presets"
+  ],
+  "homepage": "https://github.com/jseidel/casoon-tailwind-effects#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jseidel/casoon-tailwind-effects.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jseidel/casoon-tailwind-effects/issues"
+  },
+  "author": "Julian Seidel <info@casoon.com> (https://casoon.com)",
+  "license": "MIT",
+  "main": "src/index.css",
+  "files": [
+    "src/",
+    "*.css",
+    "*.js",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=4.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.13"
+  }
+}

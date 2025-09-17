@@ -1,0 +1,211 @@
+/*!
+ * @casoon/tailwindcss-typography v0.8.4
+ * Content-focused text styling for Tailwind CSS v4
+ * https://github.com/casoon/tailwindcss-effects
+ */
+
+@layer cs-tokens, cs-base, cs-components, cs-patterns;
+
+/* Typography Tokens */
+@layer cs-tokens {
+  :root {
+    --cs-prose-font-size: 1rem;
+    --cs-prose-line-height: 1.75;
+    --cs-prose-color: color-mix(in srgb, currentColor 85%, transparent);
+    --cs-prose-headings-color: color-mix(in srgb, currentColor 95%, transparent);
+    --cs-prose-links-color: #3b82f6;
+    --cs-prose-spacing: 1.5rem;
+    --cs-prose-max-width: 65ch;
+  }
+}
+
+/* Typography Base Styles */
+@layer cs-base {
+  .cs-prose-base {
+    max-width: var(--cs-prose-max-width);
+    color: var(--cs-prose-color);
+    line-height: var(--cs-prose-line-height);
+    font-size: var(--cs-prose-font-size);
+  }
+  
+  .cs-prose-base h1,
+  .cs-prose-base h2,
+  .cs-prose-base h3,
+  .cs-prose-base h4,
+  .cs-prose-base h5,
+  .cs-prose-base h6 {
+    color: var(--cs-prose-headings-color);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cs-prose-base p {
+    margin-bottom: var(--cs-prose-spacing);
+    line-height: inherit;
+  }
+  
+  .cs-prose-base a {
+    color: var(--cs-prose-links-color);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--cs-prose-links-color) 30%, transparent);
+    transition: all 200ms ease;
+  }
+  
+  .cs-prose-base a:hover {
+    text-decoration-color: var(--cs-prose-links-color);
+    color: color-mix(in srgb, var(--cs-prose-links-color) 80%, transparent);
+  }
+}
+
+/* Prose Presets */
+@layer cs-components {
+  /* Blog Prose */
+  .cs-prose-blog {
+    @extend .cs-prose-base;
+    font-family: Georgia, 'Times New Roman', serif;
+    --cs-prose-font-size: 1.125rem;
+    --cs-prose-line-height: 1.8;
+    --cs-prose-spacing: 1.75rem;
+  }
+  
+  .cs-heading-blog {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--cs-prose-headings-color);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    letter-spacing: -0.025em;
+  }
+  
+  .cs-blog-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: color-mix(in srgb, currentColor 60%, transparent);
+  }
+  
+  .cs-blog-author,
+  .cs-blog-date {
+    margin: 0;
+  }
+  
+  .cs-blog-lead {
+    font-size: 1.25rem;
+    color: var(--cs-prose-headings-color);
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  
+  /* Marketing Prose */
+  .cs-prose-marketing {
+    @extend .cs-prose-base;
+    font-family: system-ui, -apple-system, sans-serif;
+    text-align: center;
+    --cs-prose-spacing: 2rem;
+  }
+  
+  .cs-heading-hero {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--cs-prose-headings-color);
+    line-height: 1;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: cs-gradient-shift 6s ease-in-out infinite;
+  }
+  
+  .cs-marketing-subtitle {
+    font-size: 1.25rem;
+    color: color-mix(in srgb, currentColor 70%, transparent);
+    font-weight: 400;
+    margin-bottom: 2rem;
+    max-width: 40ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cs-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: left;
+  }
+  
+  .cs-feature-item {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: color-mix(in srgb, currentColor 3%, transparent);
+    border: 1px solid color-mix(in srgb, currentColor 8%, transparent);
+  }
+  
+  .cs-feature-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--cs-prose-headings-color);
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .cs-feature-description {
+    color: var(--cs-prose-color);
+    margin: 0;
+    line-height: 1.6;
+  }
+  
+  @keyframes cs-gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  /* Documentation Prose */
+  .cs-prose-docs {
+    @extend .cs-prose-base;
+    font-family: system-ui, -apple-system, sans-serif;
+    --cs-prose-font-size: 0.9375rem;
+    --cs-prose-line-height: 1.7;
+    --cs-prose-max-width: 75ch;
+  }
+  
+  .cs-prose-docs h1 { font-size: 2.25rem; }
+  .cs-prose-docs h2 { font-size: 1.875rem; }
+  .cs-prose-docs h3 { font-size: 1.5rem; }
+  .cs-prose-docs h4 { font-size: 1.25rem; }
+  .cs-prose-docs h5 { font-size: 1.125rem; }
+  .cs-prose-docs h6 { font-size: 1rem; }
+  
+  .cs-prose-docs code {
+    background: color-mix(in srgb, currentColor 8%, transparent);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+  }
+  
+  .cs-prose-docs pre {
+    background: color-mix(in srgb, currentColor 5%, transparent);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: var(--cs-prose-spacing) 0;
+    border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+  }
+  
+  .cs-prose-docs pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+}

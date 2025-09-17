@@ -10,10 +10,10 @@
 
 /* Utilities: Core gradient classes */
 @import "./styles/utilities/backgrounds.css";
+@import "./styles/utilities/gradient-presets-core.css";
 @import "./styles/utilities/text.css";
 @import "./styles/utilities/shapes.css";
 @import "./styles/utilities/helpers.css";
-
 /* Components: UI patterns and surfaces */
 @import "./styles/components/borders.css";
 @import "./styles/components/surfaces.css";

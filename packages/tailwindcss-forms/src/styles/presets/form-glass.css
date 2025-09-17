@@ -1,0 +1,213 @@
+/* GLASS MORPHISM FORM PRESETS */
+
+/* Glass form container */
+.cs-form-glass {
+  display: grid;
+  gap: var(--cs-space-6);
+  padding: var(--cs-space-8);
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
+  backdrop-filter: saturate(140%) blur(12px);
+  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.2));
+  border-radius: var(--cs-radius-lg);
+  box-shadow: var(--cs-shadow-2);
+  position: relative;
+}
+
+@supports not (backdrop-filter: blur(12px)) {
+  .cs-form-glass {
+    background: var(--cs-surface);
+    border: 1px solid var(--cs-border);
+  }
+}
+
+/* Glass form field */
+.cs-field-glass {
+  display: grid;
+  gap: var(--cs-space-2);
+}
+
+.cs-field-glass .cs-label {
+  font-weight: 500;
+  color: var(--cs-text);
+  font-size: var(--cs-fs-sm);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cs-field-glass .cs-input {
+  padding: var(--cs-space-4) var(--cs-space-4);
+  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.3));
+  border-radius: var(--cs-radius);
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(8px);
+  color: var(--cs-text);
+  font-size: var(--cs-fs-md);
+  transition: all var(--cs-transition);
+}
+
+.cs-field-glass .cs-input:focus {
+  border-color: var(--cs-brand);
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.15));
+  box-shadow: 0 0 0 2px var(--cs-brand);
+  @supports (color: color-mix(in srgb, var(--cs-brand) 25%, transparent)) {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--cs-brand) 25%, transparent);
+  }
+  outline: none;
+}
+
+.cs-field-glass .cs-input::placeholder {
+  color: var(--cs-text-muted);
+  opacity: 0.8;
+}
+
+/* Glass button preset */
+.cs-btn-glass {
+  padding: var(--cs-space-4) var(--cs-space-6);
+  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.3));
+  border-radius: var(--cs-radius);
+  background: var(--cs-brand);
+  @supports (color: color-mix(in srgb, var(--cs-brand) 80%, transparent)) {
+    background: color-mix(in srgb, var(--cs-brand) 80%, transparent);
+  }
+  backdrop-filter: blur(10px);
+  color: var(--cs-brand-ink);
+  font-weight: 600;
+  font-size: var(--cs-fs-md);
+  cursor: pointer;
+  transition: all var(--cs-transition);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cs-space-2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cs-btn-glass:hover {
+  background: var(--cs-brand);
+  @supports (color: color-mix(in srgb, var(--cs-brand) 90%, transparent)) {
+    background: color-mix(in srgb, var(--cs-brand) 90%, transparent);
+  }
+  transform: translateY(-1px);
+  box-shadow: var(--cs-shadow-2);
+  border-color: var(--cs-brand);
+  @supports (color: color-mix(in srgb, var(--cs-brand) 60%, transparent)) {
+    border-color: color-mix(in srgb, var(--cs-brand) 60%, transparent);
+  }
+}
+
+.cs-btn-glass:active {
+  transform: translateY(0);
+}
+
+/* Glass select */
+.cs-select-glass {
+  position: relative;
+}
+
+.cs-select-glass select {
+  appearance: none;
+  padding: var(--cs-space-4) var(--cs-space-4);
+  padding-right: var(--cs-space-8);
+  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.3));
+  border-radius: var(--cs-radius);
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(8px);
+  color: var(--cs-text);
+  font-size: var(--cs-fs-md);
+  cursor: pointer;
+  transition: all var(--cs-transition);
+  width: 100%;
+}
+
+.cs-select-glass::after {
+  content: "▼";
+  position: absolute;
+  right: var(--cs-space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--cs-text);
+  font-size: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cs-select-glass select:focus {
+  border-color: var(--cs-brand);
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.15));
+  box-shadow: 0 0 0 2px var(--cs-brand);
+  @supports (color: color-mix(in srgb, var(--cs-brand) 25%, transparent)) {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--cs-brand) 25%, transparent);
+  }
+  outline: none;
+}
+
+/* Glass checkbox/radio */
+.cs-checkbox-glass,
+.cs-radio-glass {
+  display: flex;
+  align-items: center;
+  gap: var(--cs-space-3);
+  cursor: pointer;
+  padding: var(--cs-space-2);
+  border-radius: var(--cs-radius);
+  transition: background-color var(--cs-transition);
+}
+
+.cs-checkbox-glass:hover,
+.cs-radio-glass:hover {
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.05));
+}
+
+.cs-checkbox-glass input,
+.cs-radio-glass input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--cs-brand);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Glass form overlay effects */
+.cs-form-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--cs-acrylic-border, rgba(255, 255, 255, 0.5)), 
+    transparent
+  );
+  border-radius: var(--cs-radius-lg) var(--cs-radius-lg) 0 0;
+}
+
+/* Glass form group */
+.cs-form-group-glass {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--cs-space-6);
+}
+
+/* Glass textarea */
+.cs-field-glass .cs-textarea {
+  padding: var(--cs-space-4);
+  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.3));
+  border-radius: var(--cs-radius);
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(8px);
+  color: var(--cs-text);
+  font-size: var(--cs-fs-md);
+  font-family: inherit;
+  resize: vertical;
+  min-height: 120px;
+  transition: all var(--cs-transition);
+}
+
+.cs-field-glass .cs-textarea:focus {
+  border-color: var(--cs-brand);
+  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.15));
+  box-shadow: 0 0 0 2px var(--cs-brand);
+  @supports (color: color-mix(in srgb, var(--cs-brand) 25%, transparent)) {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--cs-brand) 25%, transparent);
+  }
+  outline: none;
+}
