@@ -103,3 +103,20 @@ Use per‑package overrides to brand the bundle. Example minimal set:
 ## Dark Mode
 
 - All included packages support Tailwind `.dark` and OS fallback. Add `.dark` to your root element to switch themes across the bundle; override tokens per package in `.dark` as needed.
+
+## Custom Variants & Media Behavior
+
+All sub‑packages expose common `@custom-variant`s so you can prefix any utility:
+
+- `motion-safe`, `motion-reduce`, `contrast-more`, `forced-colors`, `dark`, `light`
+
+Examples
+
+```
+<div class="cs-anim cs-fade-in motion-reduce:cs-anim">…</div>
+<nav class="cs-navbar contrast-more:cs-nav-fade-in">…</nav>
+```
+
+Keyframes & Media
+- Keyframes are co‑located with their utilities and only ship when referenced (tree‑shake friendly).
+- Media/supports/container rules are nested inside utilities across packages for optimal output.

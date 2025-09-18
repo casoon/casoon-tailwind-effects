@@ -1,66 +1,24 @@
-# @casoon/tailwindcss-micro-interactions
+@casoon/tailwindcss-micro-interactions
+=====================================
 
-Compact, accessible micro‑interaction utilities for Tailwind CSS v4: click effects, hover affordances, focus treatments, and simple state helpers. Motion‑safe and token‑driven.
+CSS-first Tailwind v4 micro-interactions (`hover`, `focus`, `active`) and subtle effects as `@utility` classes.
 
-## Classes
+- Import
 
-- Click: `.click-ripple`, `.click-bounce`, `.click-squish`
-- Hover: `.hover-magnetic`, `.hover-tilt`, `.hover-float`
-- Focus: `.focus-glow`, `.focus-scale`, `.focus-rotate`
-- State: `.state-loading`, `.state-success`, `.state-error`
-
-## Import
-
-```css
+```
 @import "tailwindcss";
-@import "@casoon/tailwindcss-micro-interactions/index.css";
+@import "@casoon/tailwindcss-micro-interactions";
 ```
 
-## Dark Mode
+- Use
 
-- Utilities derive visuals from `currentColor` and tokens. Enabling `.dark` on the root integrates with your theme; override `--mi-*` tokens as needed in `.dark`.
-
-## Notes
-
-- Respects `prefers-reduced-motion` by softening or disabling animations.
-- Customize timing, distances, and colors via `tokens.css`.
-
-## Tokens
-
-Customize timing, distances, and feedback styling via CSS variables:
-
-- `--mi-duration-xs|sm|md|lg`: timing presets for transitions/animations
-- `--mi-ease-standard`, `--mi-ease-bounce`: easing curves
-- `--mi-translate-sm|md`: small/medium translate distances
-- `--mi-rotate`: rotation used by `.focus-rotate`
-- `--mi-tilt-3d`: perspective depth used by `.hover-tilt`
-- `--mi-focus-color`: outer focus glow color (mixed with currentColor)
-- `--mi-success`, `--mi-error`: ring colors for `.state-success|error`
-
-## Guidelines
-
-- Reserved naming: the classes in this package are the canonical `click-*/hover-*/focus-*/state-*` utilities. Do not duplicate them in other packages.
-- Keep interactions subtle (scale/translate within a few px/percent) to avoid layout jank.
-- Use `:focus-visible` patterns to preserve keyboard accessibility.
-
-## Accessibility & Motion
-
-- Honors `prefers-reduced-motion: reduce` by toning down or disabling transforms.
-- Do not remove outlines on focusable elements; `.focus-*` utilities provide additive affordances.
-- Provide semantic states (ARIA) alongside visual `state-*` classes when relevant.
-
-## 🎨 Theme Overrides
-
-Define ring colors and shadow ink per mode:
-
-```css
-:root {
-  --cs-mi-focus-color: color-mix(in oklab, currentColor 55%, transparent);
-  --cs-mi-success: oklch(62% 0.15 150);
-  --cs-mi-error: oklch(62% 0.2 25);
-  --cs-mi-shadow-ink:#000;
-}
-:where(.dark){
-  --cs-mi-shadow-ink:#000;
-}
 ```
+<button class="cs-focus-scale-105 cs-elev-2 forced-colors:cs-focus-ring-2">Click</button>
+```
+
+- Variants
+  - `motion-safe`, `motion-reduce`, `contrast-more`, `forced-colors`, `dark`, `light`
+
+Notes
+- Fallbacks for `:focus-visible` are included via @supports.
+- Effects and media guards are scoped per utility for optimal tree‑shaking.

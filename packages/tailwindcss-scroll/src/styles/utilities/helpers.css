@@ -1,26 +1,13 @@
 /* HELPER UTILITIES */
 
 /* Sticky positioning */
-.cs-sticky { 
-  position: sticky; 
-  top: 0; 
-}
+@utility cs-sticky { position: sticky; top: 0; }
 
-.cs-sticky-x { 
-  position: sticky; 
-  left: 0; 
-}
+@utility cs-sticky-x { position: sticky; left: 0; }
 
-.cs-sticky-y { 
-  position: sticky; 
-  top: 0; 
-}
+@utility cs-sticky-y { position: sticky; top: 0; }
 
 /* Performance optimization */
-.cs-will-change-scroll { 
-  will-change: scroll-position; 
-}
+@utility cs-will-change-scroll { will-change: scroll-position; }
 
-.cs-will-change-transform { 
-  will-change: transform; 
-}
+@utility cs-will-change-transform { will-change: transform; }

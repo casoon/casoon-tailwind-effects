@@ -1,5 +1,5 @@
 /* DRAWER */
-.cs-drawer {
+@utility cs-drawer {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,41 +13,15 @@
   box-shadow: var(--cs-shadow-xl);
   transform: translateX(-100%);
   transition: transform var(--cs-transition-fast) var(--cs-ease-out);
+  &[open], &.cs-is-open { transform: translateX(0); }
+  &.cs-drawer--right { left: auto; right: 0; transform: translateX(100%); &[open], &.cs-is-open { transform: translateX(0); } }
 }
 
-.cs-drawer[open],
-.cs-drawer.cs-is-open {
-  transform: translateX(0);
-}
+@utility cs-drawer-header { padding: var(--cs-space-4); border-bottom: 1px solid var(--cs-color-border); }
+@utility cs-drawer-body { flex: 1; padding: var(--cs-space-4); overflow-y: auto; }
+@utility cs-drawer-footer { padding: var(--cs-space-4); border-top: 1px solid var(--cs-color-border); }
 
-.cs-drawer.cs-drawer--right {
-  left: auto;
-  right: 0;
-  transform: translateX(100%);
-}
-
-.cs-drawer.cs-drawer--right[open],
-.cs-drawer.cs-drawer--right.cs-is-open {
-  transform: translateX(0);
-}
-
-.cs-drawer-header {
-  padding: var(--cs-space-4);
-  border-bottom: 1px solid var(--cs-color-border);
-}
-
-.cs-drawer-body {
-  flex: 1;
-  padding: var(--cs-space-4);
-  overflow-y: auto;
-}
-
-.cs-drawer-footer {
-  padding: var(--cs-space-4);
-  border-top: 1px solid var(--cs-color-border);
-}
-
-.cs-drawer-backdrop {
+@utility cs-drawer-backdrop {
   position: fixed;
   top: 0;
   left: 0;
@@ -60,8 +34,5 @@
   transition: opacity var(--cs-transition-fast) var(--cs-ease-out), visibility var(--cs-transition-fast) var(--cs-ease-out);
 }
 
-.cs-drawer[open] ~ .cs-drawer-backdrop,
-.cs-drawer.cs-is-open ~ .cs-drawer-backdrop {
-  opacity: 1;
-  visibility: visible;
-}
+/* open state sibling backdrop */
+@utility cs-drawer { &[open] ~ .cs-drawer-backdrop, &.cs-is-open ~ .cs-drawer-backdrop { opacity: 1; visibility: visible; } }

@@ -11,12 +11,12 @@
    Base Glow/Schimmer System
 ------------------------------------------------------- */
 
-.cs-glow-base {
+@utility cs-glow-base {
   position: relative;
   overflow: hidden;
 }
 
-.cs-glow-base::before {
+@utility cs-glow-base::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -24,7 +24,7 @@
   z-index: 1;
 }
 
-.cs-glow-base::after {
+@utility cs-glow-base::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -37,11 +37,11 @@
 ------------------------------------------------------- */
 
 /* Roter Schimmer (wie im Canvas-Beispiel) */
-.cs-glow-red::before {
+@utility cs-glow-red::before {
   background: rgba(255, 0, 0, 0.1);
 }
 
-.cs-glow-red::after {
+@utility cs-glow-red::after {
   background: radial-gradient(
     circle at 50% 50%,
     rgba(255, 0, 0, 0.15) 0%,
@@ -52,11 +52,11 @@
 }
 
 /* Blauer Schimmer */
-.cs-glow-blue::before {
+@utility cs-glow-blue::before {
   background: rgba(0, 123, 255, 0.1);
 }
 
-.cs-glow-blue::after {
+@utility cs-glow-blue::after {
   background: radial-gradient(
     circle at 50% 50%,
     rgba(0, 123, 255, 0.15) 0%,
@@ -67,11 +67,11 @@
 }
 
 /* Grüner Schimmer */
-.cs-glow-green::before {
+@utility cs-glow-green::before {
   background: rgba(40, 167, 69, 0.1);
 }
 
-.cs-glow-green::after {
+@utility cs-glow-green::after {
   background: radial-gradient(
     circle at 50% 50%,
     rgba(40, 167, 69, 0.15) 0%,
@@ -82,11 +82,11 @@
 }
 
 /* Goldener Schimmer */
-.cs-glow-gold::before {
+@utility cs-glow-gold::before {
   background: rgba(255, 193, 7, 0.1);
 }
 
-.cs-glow-gold::after {
+@utility cs-glow-gold::after {
   background: radial-gradient(
     circle at 50% 50%,
     rgba(255, 193, 7, 0.15) 0%,
@@ -97,11 +97,11 @@
 }
 
 /* Violetter Schimmer */
-.cs-glow-purple::before {
+@utility cs-glow-purple::before {
   background: rgba(128, 0, 128, 0.1);
 }
 
-.cs-glow-purple::after {
+@utility cs-glow-purple::after {
   background: radial-gradient(
     circle at 50% 50%,
     rgba(128, 0, 128, 0.15) 0%,
@@ -112,11 +112,11 @@
 }
 
 /* Weißer Schimmer */
-.cs-glow-white::before {
+@utility cs-glow-white::before {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.cs-glow-white::after {
+@utility cs-glow-white::after {
   background: radial-gradient(
     circle at 50% 50%,
     rgba(255, 255, 255, 0.15) 0%,
@@ -130,18 +130,18 @@
    Intensitäts-Varianten
 ------------------------------------------------------- */
 
-.cs-glow-subtle::before { opacity: 0.5; }
-.cs-glow-subtle::after { opacity: 0.5; }
+@utility cs-glow-subtle::before { opacity: 0.5; }
+@utility cs-glow-subtle::after { opacity: 0.5; }
 
-.cs-glow-intense::before { opacity: 1.5; }
-.cs-glow-intense::after { opacity: 1.5; }
+@utility cs-glow-intense::before { opacity: 1.5; }
+@utility cs-glow-intense::after { opacity: 1.5; }
 
 /* -------------------------------------------------------
    Bewegungs-Varianten
 ------------------------------------------------------- */
 
 /* Wellenbewegung */
-.cs-glow-wave::after {
+@utility cs-glow-wave::after {
   background: radial-gradient(
     ellipse at var(--glow-x, 50%) var(--glow-y, 50%),
     var(--glow-color-start, rgba(255, 0, 0, 0.2)) 0%,
@@ -152,12 +152,12 @@
 }
 
 /* Pulsierung */
-.cs-glow-pulse::after {
+@utility cs-glow-pulse::after {
   animation: cs-glow-pulse-generic 3s ease-in-out infinite;
 }
 
 /* Rotation */
-.cs-glow-rotate::after {
+@utility cs-glow-rotate::after {
   background: conic-gradient(
     from 0deg at 50% 50%,
     var(--glow-color-start, rgba(255, 0, 0, 0.1)),
@@ -171,7 +171,7 @@
    Responsive Schimmer (Position basierend)
 ------------------------------------------------------- */
 
-.cs-glow-top::after {
+@utility cs-glow-top::after {
   background: linear-gradient(
     180deg,
     var(--glow-color-start, rgba(255, 0, 0, 0.15)) 0%,
@@ -180,7 +180,7 @@
   );
 }
 
-.cs-glow-bottom::after {
+@utility cs-glow-bottom::after {
   background: linear-gradient(
     0deg,
     var(--glow-color-start, rgba(255, 0, 0, 0.15)) 0%,
@@ -189,7 +189,7 @@
   );
 }
 
-.cs-glow-left::after {
+@utility cs-glow-left::after {
   background: linear-gradient(
     90deg,
     var(--glow-color-start, rgba(255, 0, 0, 0.15)) 0%,
@@ -198,7 +198,7 @@
   );
 }
 
-.cs-glow-right::after {
+@utility cs-glow-right::after {
   background: linear-gradient(
     270deg,
     var(--glow-color-start, rgba(255, 0, 0, 0.15)) 0%,
@@ -212,24 +212,20 @@
 ------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
-  .cs-glow-red::after,
-  .cs-glow-blue::after,
-  .cs-glow-green::after,
-  .cs-glow-gold::after,
-  .cs-glow-purple::after,
-  .cs-glow-white::after,
-  .cs-glow-wave::after,
-  .cs-glow-pulse::after,
-  .cs-glow-rotate::after {
-    animation: none !important;
-  }
+  @utility cs-glow-red::after { animation: none !important; }
+  @utility cs-glow-blue::after { animation: none !important; }
+  @utility cs-glow-green::after { animation: none !important; }
+  @utility cs-glow-gold::after { animation: none !important; }
+  @utility cs-glow-purple::after { animation: none !important; }
+  @utility cs-glow-white::after { animation: none !important; }
+  @utility cs-glow-wave::after { animation: none !important; }
+  @utility cs-glow-pulse::after { animation: none !important; }
+  @utility cs-glow-rotate::after { animation: none !important; }
 }
 
 @media (prefers-contrast: high) {
-  .cs-glow-base::before,
-  .cs-glow-base::after {
-    opacity: 0.3 !important;
-  }
+  @utility cs-glow-base::before { opacity: 0.3 !important; }
+  @utility cs-glow-base::after { opacity: 0.3 !important; }
 }
 
 /* Import Keyframes */

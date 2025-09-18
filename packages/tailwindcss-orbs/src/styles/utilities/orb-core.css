@@ -1,146 +1,61 @@
 /* CORE ORB UTILITIES */
 
 /* Base orb styles */
-.cs-orb {
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: .7;
-  pointer-events: none;
-  position: relative;
-  z-index: var(--cs-z-orb);
-}
+@utility cs-orb { border-radius: 50%; filter: blur(1px); opacity: .7; pointer-events: none; position: relative; z-index: var(--cs-z-orb); }
 
 /* Orb Sizes */
-.cs-orb-xs { 
-  width: 50px; 
-  height: 50px; 
-}
+@utility cs-orb-xs { width: 50px; height: 50px; }
 
-.cs-orb-sm { 
-  width: 75px; 
-  height: 75px; 
-}
+@utility cs-orb-sm { width: 75px; height: 75px; }
 
-.cs-orb-md { 
-  width: 100px; 
-  height: 100px; 
-}
+@utility cs-orb-md { width: 100px; height: 100px; }
 
-.cs-orb-lg { 
-  width: 150px; 
-  height: 150px; 
-}
+@utility cs-orb-lg { width: 150px; height: 150px; }
 
-.cs-orb-xl { 
-  width: 200px; 
-  height: 200px; 
-}
+@utility cs-orb-xl { width: 200px; height: 200px; }
 
-.cs-orb-2xl { 
-  width: 300px; 
-  height: 300px; 
-}
+@utility cs-orb-2xl { width: 300px; height: 300px; }
 
-.cs-orb-3xl { 
-  width: 400px; 
-  height: 400px; 
-}
+@utility cs-orb-3xl { width: 400px; height: 400px; }
 
-.cs-orb-4xl { 
-  width: 500px; 
-  height: 500px; 
-}
+@utility cs-orb-4xl { width: 500px; height: 500px; }
 
-.cs-orb-5xl { 
-  width: 600px; 
-  height: 600px; 
-}
+@utility cs-orb-5xl { width: 600px; height: 600px; }
 
-.cs-orb-massive { 
-  width: 800px; 
-  height: 800px; 
-}
+@utility cs-orb-massive { width: 800px; height: 800px; }
 
 /* Blur Levels */
-.cs-orb-blur-none { 
-  filter: blur(0); 
-}
+@utility cs-orb-blur-none { filter: blur(0); }
 
-.cs-orb-blur-sm { 
-  filter: blur(2px); 
-}
+@utility cs-orb-blur-sm { filter: blur(2px); }
 
-.cs-orb-blur-md { 
-  filter: blur(4px); 
-}
+@utility cs-orb-blur-md { filter: blur(4px); }
 
-.cs-orb-blur-lg { 
-  filter: blur(8px); 
-}
+@utility cs-orb-blur-lg { filter: blur(8px); }
 
 /* Positioning Helpers */
-.cs-orb-absolute { 
-  position: absolute; 
-}
+@utility cs-orb-absolute { position: absolute; }
 
-.cs-orb-fixed { 
-  position: fixed; 
-}
+@utility cs-orb-fixed { position: fixed; }
 
 /* Color Backgrounds with Fallbacks */
-.cs-orb-gradient-blue { 
-  background: var(--cs-orb-fallback-blue); 
-}
+@utility cs-orb-gradient-blue { background: var(--cs-orb-fallback-blue); }
 
-.cs-orb-gradient-purple { 
-  background: var(--cs-orb-fallback-purple); 
-}
+@utility cs-orb-gradient-purple { background: var(--cs-orb-fallback-purple); }
 
-.cs-orb-gradient-pink { 
-  background: var(--cs-orb-fallback-pink); 
-}
+@utility cs-orb-gradient-pink { background: var(--cs-orb-fallback-pink); }
 
-.cs-orb-gradient-custom { 
-  background: var(--cs-orb-fallback-custom); 
-}
+@utility cs-orb-gradient-custom { background: var(--cs-orb-fallback-custom); }
 
 /* Progressive enhancement with color-mix */
 @supports (background: color-mix(in srgb, red 50%, transparent)) {
-  .cs-orb-gradient-blue { 
-    background: var(--cs-orb-gradient-blue); 
-  }
-  
-  .cs-orb-gradient-purple { 
-    background: var(--cs-orb-gradient-purple); 
-  }
-  
-  .cs-orb-gradient-pink { 
-    background: var(--cs-orb-gradient-pink); 
-  }
-  
-  .cs-orb-gradient-custom { 
-    background: var(--cs-orb-gradient-custom); 
-  }
+  @utility cs-orb-gradient-blue { background: var(--cs-orb-gradient-blue); }
+  @utility cs-orb-gradient-purple { background: var(--cs-orb-gradient-purple); }
+  @utility cs-orb-gradient-pink { background: var(--cs-orb-gradient-pink); }
+  @utility cs-orb-gradient-custom { background: var(--cs-orb-gradient-custom); }
 }
 
 /* Container-based Responsive Orb Sizing (opt-in via .cs-cq) */
-@container (min-width: 480px) {
-  .cs-orb[data-size~="responsive"] { 
-    width: 120px; 
-    height: 120px; 
-  }
-}
-
-@container (min-width: 768px) {
-  .cs-orb[data-size~="responsive"] { 
-    width: 180px; 
-    height: 180px; 
-  }
-}
-
-@container (min-width: 1024px) {
-  .cs-orb[data-size~="responsive"] { 
-    width: 240px; 
-    height: 240px; 
-  }
-}
+@container (min-width: 480px) { @utility cs-orb { &[data-size~="responsive"] { width: 120px; height: 120px; } } }
+@container (min-width: 768px) { @utility cs-orb { &[data-size~="responsive"] { width: 180px; height: 180px; } } }
+@container (min-width: 1024px) { @utility cs-orb { &[data-size~="responsive"] { width: 240px; height: 240px; } } }

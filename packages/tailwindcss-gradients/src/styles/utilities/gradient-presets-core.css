@@ -3,7 +3,7 @@
 /* CASOON Original & Core Variations */
 
 /* Your CASOON gradient - the inspiration and main feature */
-.cs-bg-casoon-original {
+@utility cs-bg-casoon-original {
   background: 
     radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
     radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
@@ -11,7 +11,7 @@
     linear-gradient(135deg, #0f172a, #1e293b);
 }
 
-.cs-bg-casoon-warm {
+@utility cs-bg-casoon-warm {
   background: 
     radial-gradient(circle at 25% 75%, #dc2626 0%, transparent 55%), 
     radial-gradient(circle at 75% 25%, #f59e0b 0%, transparent 45%), 
@@ -19,7 +19,7 @@
     linear-gradient(135deg, #1f2937, #374151);
 }
 
-.cs-bg-casoon-cool {
+@utility cs-bg-casoon-cool {
   background: 
     radial-gradient(circle at 30% 70%, #3b82f6 0%, transparent 50%), 
     radial-gradient(circle at 70% 30%, #06b6d4 0%, transparent 55%), 
@@ -27,7 +27,7 @@
     linear-gradient(135deg, #111827, #1f2937);
 }
 
-.cs-bg-casoon-forest {
+@utility cs-bg-casoon-forest {
   background: 
     radial-gradient(circle at 15% 85%, #059669 0%, transparent 50%), 
     radial-gradient(circle at 85% 15%, #10b981 0%, transparent 60%), 
@@ -37,7 +37,7 @@
 
 /* Essential Core Themes */
 
-.cs-bg-nebula-purple {
+@utility cs-bg-nebula-purple {
   background: 
     radial-gradient(circle at 20% 20%, #8b5cf6 0%, transparent 70%), 
     radial-gradient(circle at 80% 80%, #ec4899 0%, transparent 60%), 
@@ -45,7 +45,7 @@
     linear-gradient(135deg, #0c0a1d, #1e1b3b);
 }
 
-.cs-bg-deep-ocean {
+@utility cs-bg-deep-ocean {
   background: 
     radial-gradient(circle at 25% 25%, #1e40af 0%, transparent 65%), 
     radial-gradient(circle at 75% 75%, #0891b2 0%, transparent 55%), 
@@ -54,7 +54,7 @@
 }
 
 
-.cs-bg-corporate-blue {
+@utility cs-bg-corporate-blue {
   background: 
     radial-gradient(circle at 30% 30%, #1e40af 0%, transparent 70%), 
     radial-gradient(circle at 70% 70%, #3b82f6 0%, transparent 60%), 
@@ -65,16 +65,16 @@
 /* Essential Utility Variants & Combinations */
 
 /* Intensity variants for all presets */
-.cs-bg-preset-subtle {
+@utility cs-bg-preset-subtle {
   filter: brightness(0.8) saturate(0.7) opacity(0.9);
 }
 
-.cs-bg-preset-intense {
+@utility cs-bg-preset-intense {
   filter: brightness(1.2) saturate(1.3) contrast(1.1);
 }
 
 /* Popular CASOON combinations */
-.cs-bg-casoon-animated {
+@utility cs-bg-casoon-animated {
   background: 
     radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
     radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
@@ -84,7 +84,7 @@
   animation: cs-gradient-shift 8s ease-in-out infinite;
 }
 
-.cs-bg-casoon-subtle {
+@utility cs-bg-casoon-subtle {
   background: 
     radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
     radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
@@ -93,7 +93,7 @@
   filter: brightness(0.8) saturate(0.7) opacity(0.9);
 }
 
-.cs-bg-casoon-intense {
+@utility cs-bg-casoon-intense {
   background: 
     radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
     radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
@@ -103,7 +103,8 @@
 }
 
 /* Granularity/grain texture overlays */
-.cs-bg-grain-fine::after {
+@utility cs-bg-grain-fine {
+  &::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -113,14 +114,15 @@
   background-size: 8px 8px, 6px 6px;
   pointer-events: none;
   z-index: 1;
+  }
 }
 
-.cs-bg-grain-positioned {
+@utility cs-bg-grain-positioned {
   position: relative;
 }
 
 /* Performance optimization */
-.cs-bg-preset-gpu-optimized {
+@utility cs-bg-preset-gpu-optimized {
   transform: translateZ(0);
   will-change: background-position, background-size;
   backface-visibility: hidden;

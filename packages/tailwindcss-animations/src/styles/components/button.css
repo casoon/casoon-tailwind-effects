@@ -10,7 +10,7 @@
   100% { transform: scale(1) }
 }
 
-.cs-btn-press {
+@utility cs-btn-press {
   animation-name: cs-btn-press-kf;
   animation-duration: var(--cs-anim-duration-xxs);
   animation-timing-function: var(--cs-anim-ease-soft-spring);
@@ -30,7 +30,7 @@
   }
 }
 
-.cs-btn-ripple {
+@utility cs-btn-ripple {
   --cs-ripple-color: currentColor;
   background-image: radial-gradient(circle, color-mix(in oklab, var(--cs-ripple-color) 20%, transparent) 0%, transparent 60%);
   animation-name: cs-ripple-kf;

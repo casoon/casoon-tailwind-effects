@@ -3,6 +3,7 @@
 
 /* Base Styles */
 @import "./base/tokens.css";
+@import "./variants.css";
 
 /* Components */
 @import "./components/nav.css";

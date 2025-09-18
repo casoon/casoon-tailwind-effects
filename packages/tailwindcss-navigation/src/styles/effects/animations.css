@@ -101,41 +101,11 @@
 }
 
 /* Hover Effects */
-.cs-nav-hover-lift {
-  transition: transform var(--cs-transition-fast) var(--cs-ease-out);
-}
-
-.cs-nav-hover-lift:hover {
-  transform: translateY(-2px);
-}
-
-.cs-nav-hover-scale {
-  transition: transform var(--cs-transition-fast) var(--cs-ease-out);
-}
-
-.cs-nav-hover-scale:hover {
-  transform: scale(1.05);
-}
+@utility cs-nav-hover-lift { transition: transform var(--cs-transition-fast) var(--cs-ease-out); &:hover { transform: translateY(-2px); } }
+@utility cs-nav-hover-scale { transition: transform var(--cs-transition-fast) var(--cs-ease-out); &:hover { transform: scale(1.05); } }
 
 /* Interactive States */
-.cs-nav-item--loading {
-  position: relative;
-  pointer-events: none;
-}
-
-.cs-nav-item--loading::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  width: 12px;
-  height: 12px;
-  border: 2px solid var(--cs-color-border);
-  border-top: 2px solid var(--cs-color-primary);
-  border-radius: 50%;
-  transform: translateY(-50%);
-  animation: cs-spin 1s linear infinite;
-}
+@utility cs-nav-item--loading { position: relative; pointer-events: none; &::after { content: ''; position: absolute; top: 50%; right: 8px; width: 12px; height: 12px; border: 2px solid var(--cs-color-border); border-top: 2px solid var(--cs-color-primary); border-radius: 50%; transform: translateY(-50%); animation: cs-spin 1s linear infinite; } }
 
 @keyframes cs-spin {
   to {

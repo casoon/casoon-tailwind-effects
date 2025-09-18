@@ -37,6 +37,48 @@ npm install @casoon/tailwindcss-effects
 
 **That's it!** All CSS classes are ready to use with `cs-` prefix.
 
+### Meta Package: `@casoon/tailwindcss-effects`
+
+Import-based bundle that brings together all individual modules (animations, gradients, glass, navigation, orbs, scroll, micro-interactions, forms, utilities, typography).
+
+```
+@import "tailwindcss";
+@import "@casoon/tailwindcss-effects";
+```
+
+Variants & Media
+- Common `@custom-variant`s are available across packages: `motion-safe`, `motion-reduce`, `contrast-more`, `forced-colors`, `dark`, `light` (e.g. `motion-reduce:cs-anim`).
+- Keyframes live next to their utilities and ship only when referenced.
+- Media/supports/container rules are nested inside utilities for optimal tree‑shaking.
+
+## Common Variants & Usage Patterns
+
+Utilities
+- Focus rings and accessibility helpers:
+
+```
+<button class="cs-focus-ring cs-focus-scale-105 contrast-more:cs-focus-ring">Click me</button>
+```
+
+- Layout and presets from `@casoon/tailwindcss-utilities` can be mixed with effect utilities:
+
+```
+<section class="cs-surface cs-grid-cards dark:cs-surface-contrast motion-reduce:cs-transition-none">…</section>
+```
+
+Typography
+- Prose presets are additive; combine with effects and variants:
+
+```
+<article class="cs-prose-base cs-prose-blog dark:cs-prose-invert forced-colors:cs-prose-high-contrast">…</article>
+```
+
+- Inline emphasis and code blocks integrate with theme tokens; you can layer interactions:
+
+```
+<code class="cs-code cs-hover-highlight motion-safe:cs-pulse">npm run build</code>
+```
+
 ### ⚠️ Important Setup Note
 
 For **gradient effects** to work properly, you need to add the `cs-root` class to your HTML:

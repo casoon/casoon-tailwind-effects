@@ -1,0 +1,8 @@
+/* Custom variants for animations */
+@custom-variant motion-safe (prefers-reduced-motion: no-preference);
+@custom-variant motion-reduce (prefers-reduced-motion: reduce);
+@custom-variant contrast-more (prefers-contrast: more);
+@custom-variant forced-colors (forced-colors: active);
+@custom-variant dark (prefers-color-scheme: dark);
+@custom-variant light (prefers-color-scheme: light);
+

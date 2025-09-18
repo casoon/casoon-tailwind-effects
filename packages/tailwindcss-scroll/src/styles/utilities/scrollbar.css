@@ -1,31 +1,31 @@
 /* SCROLLBAR STYLING UTILITIES */
 
 /* Base scrollbar styles */
-.cs-scrollbar {
+@utility cs-scrollbar {
   /* Firefox colors (use variables, fallback safe) */
   scrollbar-color: var(--cs-scroll-thumb, var(--cs-scroll-thumb-gray, #6b7280))
                    var(--cs-scroll-track, rgba(0,0,0,.08));
 }
 
 /* WebKit/Blink scrollbar box */
-.cs-scrollbar::-webkit-scrollbar {
+@utility cs-scrollbar::-webkit-scrollbar {
   width: var(--cs-scrollbar-size, 10px);
   height: var(--cs-scrollbar-size, 10px);
 }
 
 /* Track styling */
-.cs-scrollbar::-webkit-scrollbar-track {
+@utility cs-scrollbar::-webkit-scrollbar-track {
   background: var(--cs-scroll-track, rgba(0,0,0,.08));
 }
 
 /* Transparent track variant */
-.cs-scrollbar[data-cs-track="transparent"]::-webkit-scrollbar-track,
-.cs-scrollbar.cs-scrollbar-track-transparent::-webkit-scrollbar-track {
+@utility cs-scrollbar[data-cs-track="transparent"]::-webkit-scrollbar-track,
+@utility cs-scrollbar.cs-scrollbar-track-transparent::-webkit-scrollbar-track {
   background: transparent;
 }
 
 /* Thumb styling (default uses variable) */
-.cs-scrollbar::-webkit-scrollbar-thumb {
+@utility cs-scrollbar::-webkit-scrollbar-thumb {
   background-color: var(--cs-scroll-thumb, var(--cs-scroll-thumb-gray, #6b7280));
   border-radius: var(--cs-scroll-thumb-radius, 8px);
   border: 2px solid transparent;
@@ -33,44 +33,44 @@
 }
 
 /* Hover/active affordance */
-.cs-scrollbar:hover::-webkit-scrollbar-thumb { 
+@utility cs-scrollbar:hover::-webkit-scrollbar-thumb { 
   filter: brightness(0.9); 
 }
 
-.cs-scrollbar:active::-webkit-scrollbar-thumb { 
+@utility cs-scrollbar:active::-webkit-scrollbar-thumb { 
   filter: brightness(0.8); 
 }
 
 /* Color utilities */
 
 /* Set thumb color */
-.cs-scrollbar-thumb-gray { 
+@utility cs-scrollbar-thumb-gray { 
   --cs-scroll-thumb: var(--cs-scroll-thumb-gray, #6b7280); 
 }
 
-.cs-scrollbar-thumb-blue { 
+@utility cs-scrollbar-thumb-blue { 
   --cs-scroll-thumb: var(--cs-scroll-thumb-blue, #3b82f6); 
 }
 
 /* Set track color */
-.cs-scrollbar-track-transparent { 
+@utility cs-scrollbar-track-transparent { 
   --cs-scroll-track: transparent; 
 }
 
 /* Width utilities (Firefox + WebKit/Blink base class) */
-.cs-scrollbar-none { 
+@utility cs-scrollbar-none { 
   scrollbar-width: none; 
   -ms-overflow-style: none; 
 }
 
-.cs-scrollbar-none::-webkit-scrollbar { 
+@utility cs-scrollbar-none::-webkit-scrollbar { 
   display: none; 
 }
 
-.cs-scrollbar-thin { 
+@utility cs-scrollbar-thin { 
   scrollbar-width: thin; 
 }
 
-.cs-scrollbar-auto { 
+@utility cs-scrollbar-auto { 
   scrollbar-width: auto; 
 }

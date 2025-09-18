@@ -1,32 +1,35 @@
 /* Material Texture Effects - Essential Only */
 
 /* Fabric */
-.cs-texture-fabric { background: linear-gradient(0deg, transparent 48%, rgba(255,255,255,0.05) 48%, rgba(255,255,255,0.05) 52%, transparent 52%), linear-gradient(90deg, transparent 48%, rgba(255,255,255,0.05) 48%, rgba(255,255,255,0.05) 52%, transparent 52%); background-size: 8px 8px; background-color: var(--fabric-base, #2c3e50); }
+@utility cs-texture-fabric { background: linear-gradient(0deg, transparent 48%, rgba(255,255,255,0.05) 48%, rgba(255,255,255,0.05) 52%, transparent 52%), linear-gradient(90deg, transparent 48%, rgba(255,255,255,0.05) 48%, rgba(255,255,255,0.05) 52%, transparent 52%); background-size: 8px 8px; background-color: var(--fabric-base, #2c3e50); }
 
-.cs-texture-wood { background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, transparent 5%, transparent 95%, rgba(0,0,0,0.1) 100%), linear-gradient(0deg, transparent 48%, rgba(139,69,19,0.1) 49%, rgba(139,69,19,0.2) 50%, rgba(139,69,19,0.1) 51%, transparent 52%); background-size: 80px 100%, 100% 8px; background-color: var(--wood-base, #deb887); }
+@utility cs-texture-wood { background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, transparent 5%, transparent 95%, rgba(0,0,0,0.1) 100%), linear-gradient(0deg, transparent 48%, rgba(139,69,19,0.1) 49%, rgba(139,69,19,0.2) 50%, rgba(139,69,19,0.1) 51%, transparent 52%); background-size: 80px 100%, 100% 8px; background-color: var(--wood-base, #deb887); }
 
 /* Metal */
-.cs-texture-metal { background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 55%, transparent 100%); background-size: 4px 100%; background-color: var(--metal-base, #708090); filter: contrast(1.2) brightness(1.1); }
+@utility cs-texture-metal { background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 55%, transparent 100%); background-size: 4px 100%; background-color: var(--metal-base, #708090); filter: contrast(1.2) brightness(1.1); }
 
 /* Paper */
-.cs-texture-paper { background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.02) 1px, transparent 1px), radial-gradient(circle at 80% 80%, rgba(0,0,0,0.02) 0.5px, transparent 0.5px); background-size: 15px 15px, 8px 8px; background-color: var(--paper-base, #f8f8ff); }
+@utility cs-texture-paper { background: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.02) 1px, transparent 1px), radial-gradient(circle at 80% 80%, rgba(0,0,0,0.02) 0.5px, transparent 0.5px); background-size: 15px 15px, 8px 8px; background-color: var(--paper-base, #f8f8ff); }
 
 /* Glass */
-.cs-texture-glass { background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 1px, transparent 1px), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0.5px, transparent 0.5px); background-size: 8px 8px, 6px 6px; background-color: var(--glass-base, rgba(255,255,255,0.1)); backdrop-filter: blur(2px); }
+@utility cs-texture-glass { background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 1px, transparent 1px), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0.5px, transparent 0.5px); background-size: 8px 8px, 6px 6px; background-color: var(--glass-base, rgba(255,255,255,0.1)); backdrop-filter: blur(2px); }
 
 /* Interactive States */
-.cs-texture-fabric:hover, .cs-texture-wood:hover, .cs-texture-metal:hover { filter: brightness(1.1) contrast(1.05); }
-.cs-texture-paper:hover, .cs-texture-glass:hover { filter: brightness(1.05) saturate(1.1); }
+@utility cs-texture-fabric { &:hover { filter: brightness(1.1) contrast(1.05); } }
+@utility cs-texture-wood { &:hover { filter: brightness(1.1) contrast(1.05); } }
+@utility cs-texture-metal { &:hover { filter: brightness(1.1) contrast(1.05); } }
+@utility cs-texture-paper { &:hover { filter: brightness(1.05) saturate(1.1); } }
+@utility cs-texture-glass { &:hover { filter: brightness(1.05) saturate(1.1); } }
 
 /* Accessibility */
-@media (prefers-reduced-motion: reduce) { .cs-texture-fabric:hover, .cs-texture-wood:hover, .cs-texture-metal:hover, .cs-texture-paper:hover, .cs-texture-glass:hover { filter: none !important; } }
+@media (prefers-reduced-motion: reduce) { @utility cs-texture-fabric { &:hover { filter: none !important; } } @utility cs-texture-wood { &:hover { filter: none !important; } } @utility cs-texture-metal { &:hover { filter: none !important; } } @utility cs-texture-paper { &:hover { filter: none !important; } } @utility cs-texture-glass { &:hover { filter: none !important; } } }
 
 /* -------------------------------------------------------
    Metal Textures
 ------------------------------------------------------- */
 
 /* Brushed steel */
-.cs-texture-steel {
+@utility cs-texture-steel {
   background-image:
     linear-gradient(90deg, 
       transparent 0%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.1) 55%, transparent 100%);
@@ -36,7 +39,7 @@
 }
 
 /* Brushed aluminum */
-.cs-texture-aluminum {
+@utility cs-texture-aluminum {
   background-image:
     linear-gradient(90deg, 
       rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.1) 100%),
@@ -47,7 +50,7 @@
 }
 
 /* Copper patina */
-.cs-texture-copper {
+@utility cs-texture-copper {
   background-image:
     radial-gradient(circle at 30% 40%, rgba(0,128,0,0.3) 0%, transparent 50%),
     radial-gradient(circle at 70% 60%, rgba(0,100,0,0.2) 0%, transparent 40%),
@@ -62,7 +65,7 @@
 ------------------------------------------------------- */
 
 /* Paper texture */
-.cs-texture-paper {
+@utility cs-texture-paper {
   background-image:
     radial-gradient(circle at 20% 20%, rgba(0,0,0,0.02) 1px, transparent 1px),
     radial-gradient(circle at 80% 80%, rgba(0,0,0,0.02) 0.5px, transparent 0.5px),
@@ -73,7 +76,7 @@
 }
 
 /* Cardboard */
-.cs-texture-cardboard {
+@utility cs-texture-cardboard {
   background-image:
     linear-gradient(0deg, transparent 48%, rgba(139,69,19,0.1) 50%, transparent 52%),
     linear-gradient(90deg, rgba(160,82,45,0.1) 0%, transparent 25%, transparent 75%, rgba(160,82,45,0.1) 100%),
@@ -83,7 +86,7 @@
 }
 
 /* Parchment */
-.cs-texture-parchment {
+@utility cs-texture-parchment {
   background-image:
     radial-gradient(circle at 30% 20%, rgba(139,69,19,0.1) 0%, transparent 50%),
     radial-gradient(circle at 70% 80%, rgba(160,82,45,0.08) 0%, transparent 60%),
@@ -98,7 +101,7 @@
 ------------------------------------------------------- */
 
 /* Concrete */
-.cs-texture-concrete {
+@utility cs-texture-concrete {
   background-image:
     radial-gradient(circle at 25% 25%, rgba(0,0,0,0.1) 2px, transparent 2px),
     radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 1px, transparent 1px),
@@ -109,7 +112,7 @@
 }
 
 /* Marble */
-.cs-texture-marble {
+@utility cs-texture-marble {
   background-image:
     linear-gradient(45deg, 
       rgba(255,255,255,0.3) 0%, transparent 25%, transparent 75%, rgba(255,255,255,0.2) 100%),
@@ -125,7 +128,7 @@
 ------------------------------------------------------- */
 
 /* Frosted glass */
-.cs-texture-frosted {
+@utility cs-texture-frosted {
   background-image:
     radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 1px, transparent 1px),
     radial-gradient(circle at 80% 80%, rgba(255,255,255,0.2) 0.5px, transparent 0.5px),
@@ -136,7 +139,7 @@
 }
 
 /* Crystal texture */
-.cs-texture-crystal {
+@utility cs-texture-crystal {
   background-image:
     linear-gradient(60deg, rgba(255,255,255,0.4) 25%, transparent 25%),
     linear-gradient(-60deg, rgba(255,255,255,0.4) 25%, transparent 25%),
@@ -151,21 +154,21 @@
 ------------------------------------------------------- */
 
 /* Hover effects for materials */
-.cs-texture-interactive {
+@utility cs-texture-interactive {
   transition: filter 0.3s ease, transform 0.2s ease;
 }
 
-.cs-texture-interactive:hover {
+@utility cs-texture-interactive { &:hover {
   filter: brightness(1.1) contrast(1.05);
   transform: translateY(-1px);
-}
+} }
 
 /* Worn/aged material effects */
-.cs-texture-aged {
+@utility cs-texture-aged {
   position: relative;
 }
 
-.cs-texture-aged::before {
+@utility cs-texture-aged::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -178,7 +181,7 @@
 }
 
 /* Material depth with shadows */
-.cs-texture-depth {
+@utility cs-texture-depth {
   box-shadow: 
     inset 2px 2px 4px rgba(0,0,0,0.1),
     inset -2px -2px 4px rgba(255,255,255,0.1);
@@ -188,29 +191,9 @@
    Accessibility & Performance
 ------------------------------------------------------- */
 
-@media (prefers-reduced-motion: reduce) {
-  .cs-texture-interactive {
-    transition: none !important;
-  }
-  .cs-texture-interactive:hover {
-    transform: none !important;
-  }
-}
+@media (prefers-reduced-motion: reduce) { @utility cs-texture-interactive { transition: none !important; &:hover { transform: none !important; } } }
 
-@media (prefers-contrast: high) {
-  .cs-texture-paper,
-  .cs-texture-canvas,
-  .cs-texture-parchment {
-    filter: contrast(1.5) !important;
-  }
-}
+@media (prefers-contrast: high) { @utility cs-texture-paper { filter: contrast(1.5) !important; } @utility cs-texture-canvas { filter: contrast(1.5) !important; } @utility cs-texture-parchment { filter: contrast(1.5) !important; } }
 
 /* Reduced complexity for low-end devices */
-@media (max-width: 480px) {
-  .cs-texture-wood,
-  .cs-texture-marble,
-  .cs-texture-leather {
-    background-image: none;
-    filter: none;
-  }
-}
+@media (max-width: 480px) { @utility cs-texture-wood { background-image: none; filter: none; } @utility cs-texture-marble { background-image: none; filter: none; } @utility cs-texture-leather { background-image: none; filter: none; } }

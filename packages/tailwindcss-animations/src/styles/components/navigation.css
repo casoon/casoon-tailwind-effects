@@ -14,30 +14,39 @@
   100% { --cs-underline-w: 0% }
 }
 
-.cs-nav-underline-in,
-.cs-tab-underline-grow {
+@utility cs-nav-underline-in {
   position: relative;
-}
-
-.cs-nav-underline-in::after,
-.cs-tab-underline-grow::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -2px;
-  translate: -50% 0;
-  width: var(--cs-underline-w);
-  height: var(--cs-underline-h);
-  background: currentColor;
-  border-radius: 999px;
-}
-
-.cs-nav-underline-in {
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    translate: -50% 0;
+    width: var(--cs-underline-w);
+    height: var(--cs-underline-h);
+    background: currentColor;
+    border-radius: 999px;
+  }
   animation: cs-underline-in-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-decelerate) both;
 }
 
-.cs-nav-underline-out {
+@utility cs-nav-underline-out {
   animation: cs-underline-out-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-accelerate) both;
+}
+
+@utility cs-tab-underline-grow {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    translate: -50% 0;
+    width: var(--cs-underline-w);
+    height: var(--cs-underline-h);
+    background: currentColor;
+    border-radius: 999px;
+  }
 }
 
 /* Pills for tabs (opacity/scale entrance/exit) */
@@ -51,10 +60,10 @@
   100% { opacity: 0; transform: scale(.92) }
 }
 
-.cs-pill-in {
+@utility cs-pill-in {
   animation: cs-pill-in-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-decelerate) both;
 }
 
-.cs-pill-out {
+@utility cs-pill-out {
   animation: cs-pill-out-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-accelerate) both;
 }

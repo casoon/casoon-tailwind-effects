@@ -1,50 +1,50 @@
 /* -------------------------------------------------------
    Gradient Background Utilities
 ------------------------------------------------------- */
-.cs-gradient-sunset{
+@utility cs-gradient-sunset {
   background:linear-gradient(135deg,
     var(--cs-gradient-sunset-start),
     var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
     var(--cs-gradient-sunset-end)
   );
 }
-.cs-gradient-ocean{
+@utility cs-gradient-ocean {
   background:linear-gradient(135deg,
     var(--cs-gradient-ocean-start),
     var(--cs-gradient-ocean-end)
   );
 }
-.cs-gradient-fire{
+@utility cs-gradient-fire {
   background:linear-gradient(135deg,
     var(--cs-gradient-fire-start),
     var(--cs-gradient-fire-end)
   );
 }
-.cs-gradient-mint{
+@utility cs-gradient-mint {
   background:linear-gradient(135deg,
     var(--cs-gradient-mint-start),
     var(--cs-gradient-mint-end)
   );
 }
-.cs-gradient-purple{
+@utility cs-gradient-purple {
   background:linear-gradient(135deg,
     var(--cs-gradient-purple-start),
     var(--cs-gradient-purple-end)
   );
 }
-.cs-gradient-orange{
+@utility cs-gradient-orange {
   background:linear-gradient(135deg,
     var(--cs-gradient-orange-start),
     var(--cs-gradient-orange-end)
   );
 }
-.cs-gradient-blue{
+@utility cs-gradient-blue {
   background:linear-gradient(135deg,
     var(--cs-gradient-blue-start),
     var(--cs-gradient-blue-end)
   );
 }
-.cs-gradient-pink{
+@utility cs-gradient-pink {
   background:linear-gradient(135deg,
     var(--cs-gradient-pink-start),
     var(--cs-gradient-pink-end)
@@ -52,14 +52,20 @@
 }
 
 /* Custom: choose 2-stop or 3-stop */
-.cs-gradient-custom-2{
+@utility cs-gradient-custom-2 {
   background:linear-gradient(135deg,
     var(--cs-gradient-custom-start),
     var(--cs-gradient-custom-end)
   );
 }
-.cs-gradient-custom,
-.cs-gradient-custom-3{
+@utility cs-gradient-custom {
+  background:linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+}
+@utility cs-gradient-custom-3 {
   background:linear-gradient(135deg,
     var(--cs-gradient-custom-start),
     var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
@@ -72,28 +78,28 @@
 ------------------------------------------------------- */
 
 /* Subtle fade variants - 4 directions */
-.cs-gradient-fade-r {
+@utility cs-gradient-fade-r {
   background: linear-gradient(to right, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
     transparent 100%
   );
 }
-.cs-gradient-fade-l {
+@utility cs-gradient-fade-l {
   background: linear-gradient(to left, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
     transparent 100%
   );
 }
-.cs-gradient-fade-b {
+@utility cs-gradient-fade-b {
   background: linear-gradient(to bottom, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
     transparent 100%
   );
 }
-.cs-gradient-fade-t {
+@utility cs-gradient-fade-t {
   background: linear-gradient(to top, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
@@ -102,25 +108,25 @@
 }
 
 /* Diagonal fade variants */
-.cs-gradient-fade-br {
+@utility cs-gradient-fade-br {
   background: linear-gradient(to bottom right, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     transparent 100%
   );
 }
-.cs-gradient-fade-bl {
+@utility cs-gradient-fade-bl {
   background: linear-gradient(to bottom left, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     transparent 100%
   );
 }
-.cs-gradient-fade-tr {
+@utility cs-gradient-fade-tr {
   background: linear-gradient(to top right, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     transparent 100%
   );
 }
-.cs-gradient-fade-tl {
+@utility cs-gradient-fade-tl {
   background: linear-gradient(to top left, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     transparent 100%
@@ -128,32 +134,32 @@
 }
 
 /* Radial fade variants */
-.cs-gradient-radial-fade {
+@utility cs-gradient-radial-fade {
   background: radial-gradient(circle at center, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.2)) 40%,
     transparent 70%
   );
 }
-.cs-gradient-radial-fade-tl {
+@utility cs-gradient-radial-fade-tl {
   background: radial-gradient(circle at top left, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     transparent 60%
   );
 }
-.cs-gradient-radial-fade-tr {
+@utility cs-gradient-radial-fade-tr {
   background: radial-gradient(circle at top right, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     transparent 60%
   );
 }
-.cs-gradient-radial-fade-bl {
+@utility cs-gradient-radial-fade-bl {
   background: radial-gradient(circle at bottom left, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     transparent 60%
   );
 }
-.cs-gradient-radial-fade-br {
+@utility cs-gradient-radial-fade-br {
   background: radial-gradient(circle at bottom right, 
     var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
     transparent 60%

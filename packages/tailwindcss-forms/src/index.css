@@ -7,6 +7,7 @@
 /* Base: Tokens, design system, and fallbacks */
 @import "./styles/base/tokens.css";
 @import "./styles/base/keyframes.css";
+@import "./styles/variants.css";
 
 /* Components: Core form elements */
 @import "./styles/components/inputs.css";

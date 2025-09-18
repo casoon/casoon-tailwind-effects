@@ -10,9 +10,5 @@
   to   { opacity: 0; transform: translateY(8px); }
 }
 
-.cs-modal-in {
-  animation: cs-modal-in var(--cs-anim-duration) var(--cs-ease) var(--cs-anim-delay) both;
-}
-.cs-toast-out {
-  animation: cs-toast-out var(--cs-anim-duration) var(--cs-ease) var(--cs-anim-delay) both;
-}
+@utility cs-modal-in { animation: cs-modal-in var(--cs-anim-duration) var(--cs-ease) var(--cs-anim-delay) both; }
+@utility cs-toast-out { animation: cs-toast-out var(--cs-anim-duration) var(--cs-ease) var(--cs-anim-delay) both; }

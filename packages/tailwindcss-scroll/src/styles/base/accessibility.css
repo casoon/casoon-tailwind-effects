@@ -2,67 +2,40 @@
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  .cs-scroll-smooth { 
-    scroll-behavior: auto; 
-  }
+  @utility cs-scroll-smooth { scroll-behavior: auto; }
   
-  .cs-modal-in,
-  .cs-toast-out,
-  .cs-scroll-reveal-fade-up,
-  .cs-scroll-reveal-scale-in,
-  .cs-scroll-pulse {
-    animation: none !important;
-    transition: none !important;
-  }
+  @utility cs-modal-in { animation: none !important; transition: none !important; }
+  @utility cs-toast-out { animation: none !important; transition: none !important; }
+  @utility cs-scroll-reveal-fade-up { animation: none !important; transition: none !important; }
+  @utility cs-scroll-reveal-scale-in { animation: none !important; transition: none !important; }
+  @utility cs-scroll-pulse { animation: none !important; transition: none !important; }
 }
 
 /* High Contrast Mode */
 @media (prefers-contrast: more) {
-  .cs-scrollbar {
-    scrollbar-color: currentColor transparent;
-  }
-  
-  .cs-scrollbar::-webkit-scrollbar-thumb {
-    background-color: currentColor;
-  }
+  @utility cs-scrollbar { scrollbar-color: currentColor transparent; }
+  @utility cs-scrollbar::-webkit-scrollbar-thumb { background-color: currentColor; }
 }
 
 /* Forced Colors (Windows High Contrast) */
 @media (forced-colors: active) {
-  .cs-scrollbar-none { 
-    scrollbar-color: ButtonText ButtonFace; 
-  }
-  
-  .cs-scrollbar-thin { 
-    scrollbar-width: thin; 
-  }
-  
-  .cs-scrollbar {
-    scrollbar-color: ButtonText ButtonFace;
-  }
+  @utility cs-scrollbar-none { scrollbar-color: ButtonText ButtonFace; }
+  @utility cs-scrollbar-thin { scrollbar-width: thin; }
+  @utility cs-scrollbar { scrollbar-color: ButtonText ButtonFace; }
 }
 
 /* Small screen optimizations */
 @media (max-width: 480px) {
-  .cs-modal-in { 
-    animation-duration: calc(var(--cs-anim-duration,240ms) * .8); 
-  }
+  @utility cs-modal-in { animation-duration: calc(var(--cs-anim-duration,240ms) * .8); }
 }
 
 /* Container-based refinements */
 @container cs (min-width: 48rem) {
-  .cs-scroll-snap-proximity { 
-    scroll-snap-type: both proximity; 
-  }
+  @utility cs-scroll-snap-proximity { scroll-snap-type: both proximity; }
 }
 
 /* Print styles */
 @media print {
-  .cs-scroll-smooth { 
-    scroll-behavior: auto; 
-  }
-  
-  .cs-scrollbar-none::-webkit-scrollbar { 
-    display: block; 
-  }
+  @utility cs-scroll-smooth { scroll-behavior: auto; }
+  @utility cs-scrollbar-none::-webkit-scrollbar { display: block; }
 }

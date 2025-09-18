@@ -8,7 +8,7 @@
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
-.cs-gradient-animate{
+@utility cs-gradient-animate{
   background-size:400% 400%;
   animation:cs-gradient-shift var(--cs-anim-gradient-duration) var(--cs-anim-gradient-ease) var(--cs-anim-gradient-iteration);
 }
@@ -30,15 +30,15 @@
   100%{background-position:0% 0%}
 }
 
-.cs-gradient-shift-x{
+@utility cs-gradient-shift-x{
   background-size:200% 100%;
   animation:cs-gradient-shift-x 3s linear infinite;
 }
-.cs-gradient-shift-y{
+@utility cs-gradient-shift-y{
   background-size:100% 200%;
   animation:cs-gradient-shift-y 3s linear infinite;
 }
-.cs-gradient-rotate{
+@utility cs-gradient-rotate{
   background-size:200% 200%;
   animation:cs-gradient-rotate 8s linear infinite;
 }
@@ -53,11 +53,11 @@
   50% { opacity: 0.9; }
 }
 
-.cs-gradient-pulse{
+@utility cs-gradient-pulse{
   animation: cs-gradient-pulse 2s ease-in-out infinite;
   transform-origin: center;
 }
-.cs-gradient-pulse-slow{
+@utility cs-gradient-pulse-slow{
   animation: cs-gradient-pulse-slow 4s ease-in-out infinite;
 }
 
@@ -73,7 +73,7 @@
   }
 }
 
-.cs-gradient-breathe{
+@utility cs-gradient-breathe{
   animation: cs-gradient-breathe 3s ease-in-out infinite;
   transform-origin: center;
 }
@@ -87,7 +87,7 @@
   100% { background-position: 0% 50%, 100% 50%; }
 }
 
-.cs-gradient-wave{
+@utility cs-gradient-wave{
   background-size: 300% 300%, 300% 300%;
   animation: cs-gradient-wave 6s ease-in-out infinite;
 }
@@ -102,34 +102,32 @@
   }
 }
 
-.cs-gradient-shimmer{
+@utility cs-gradient-shimmer{
   background-size: 200% 100%;
   animation: cs-gradient-shimmer 2s linear infinite;
 }
 
 /* Speed variants */
-.cs-gradient-animate-slow{
+@utility cs-gradient-animate-slow{
   animation-duration: 8s;
 }
-.cs-gradient-animate-fast{
+@utility cs-gradient-animate-fast{
   animation-duration: 1.5s;
 }
 
 /* Direction variants */
-.cs-gradient-animate-reverse{
+@utility cs-gradient-animate-reverse{
   animation-direction: reverse;
 }
-.cs-gradient-animate-alternate{
+@utility cs-gradient-animate-alternate{
   animation-direction: alternate;
 }
 
 /* Pause on hover */
-.cs-gradient-animate-hover-pause:hover{
-  animation-play-state: paused;
-}
+@utility cs-gradient-animate-hover-pause{ &:hover{ animation-play-state: paused; } }
 
 /* Modal and toast animations */
-.cs-modal-in{
+@utility cs-modal-in{
   opacity:0; transform:translateY(8px);
   animation: cs-modal-in-key var(--cs-dur-standard) var(--cs-ease-decelerate) forwards;
 }
@@ -137,7 +135,7 @@
   to{ opacity:1; transform:translateY(0); }
 }
 
-.cs-toast-out{
+@utility cs-toast-out{
   animation: cs-toast-out-key var(--cs-dur-standard) var(--cs-ease-accelerate) forwards;
 }
 @keyframes cs-toast-out-key{
@@ -145,6 +143,4 @@
 }
 
 /* Reduced motion: shut off shifting */
-@media (prefers-reduced-motion: reduce){
-  .cs-gradient-animate{ animation:none !important; }
-}
+@media (prefers-reduced-motion: reduce){ @utility cs-gradient-animate{ animation:none !important; } }

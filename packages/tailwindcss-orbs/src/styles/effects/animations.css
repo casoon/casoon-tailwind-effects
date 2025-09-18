@@ -1,200 +1,112 @@
 /* ORB ANIMATIONS */
 
 /* Basic orb animations */
-.cs-orb-float { 
-  animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite; 
-}
+@utility cs-orb-float { animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite; }
 
-.cs-orb-pulse { 
-  animation: cs-orb-pulse-kf var(--cs-anim-duration-pulse) var(--cs-anim-ease-inout) infinite; 
-}
+@utility cs-orb-pulse { animation: cs-orb-pulse-kf var(--cs-anim-duration-pulse) var(--cs-anim-ease-inout) infinite; }
 
-.cs-orb-drift { 
-  animation: cs-orb-drift-kf var(--cs-anim-duration-drift) var(--cs-anim-ease-inout) infinite; 
-}
+@utility cs-orb-drift { animation: cs-orb-drift-kf var(--cs-anim-duration-drift) var(--cs-anim-ease-inout) infinite; }
 
 /* Advanced orb animations */
 
 /* Morphing orb (animated shape blob) */
-.cs-orb-morph {
-  animation: cs-orb-morph 12s ease-in-out infinite;
-}
+@utility cs-orb-morph { animation: cs-orb-morph 12s ease-in-out infinite; }
 
 /* Orb shimmer gradient (on hover only) */
-.cs-orb-shimmer {
-  background: linear-gradient(270deg, var(--cs-orb-blue), var(--cs-orb-blue-light), var(--cs-orb-blue));
-  background-size: 600% 600%;
-  animation: cs-orb-shimmer 10s ease infinite;
-}
+@utility cs-orb-shimmer { background: linear-gradient(270deg, var(--cs-orb-blue), var(--cs-orb-blue-light), var(--cs-orb-blue)); background-size: 600% 600%; animation: cs-orb-shimmer 10s ease infinite; }
 
 /* Orb bloom effect on hover/focus (pulse-like) */
-.cs-orb-bloom:hover,
-.cs-orb-bloom:focus-visible {
-  animation: cs-orb-bloom 2s ease-in-out infinite;
-  transform-origin: center;
-}
+@utility cs-orb-bloom { &:hover, &:focus-visible { animation: cs-orb-bloom 2s ease-in-out infinite; transform-origin: center; } }
 
 /* Combine multiple animations (morph + float) */
-.cs-orb-zen {
-  animation:
-    cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite,
-    cs-orb-morph 14s ease-in-out infinite;
-}
+@utility cs-orb-zen { animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite, cs-orb-morph 14s ease-in-out infinite; }
 
 /* -------------------------------------------------------
    Extended Orb Movement Animations
 ------------------------------------------------------- */
 
 /* Circular movement */
-.cs-orb-orbit {
-  animation: cs-orb-orbit 20s linear infinite;
-}
-.cs-orb-orbit-reverse {
-  animation: cs-orb-orbit 20s linear infinite reverse;
-}
+@utility cs-orb-orbit { animation: cs-orb-orbit 20s linear infinite; }
+@utility cs-orb-orbit-reverse { animation: cs-orb-orbit 20s linear infinite reverse; }
 
 /* Figure-8 movement */
-.cs-orb-figure-8 {
-  animation: cs-orb-figure-8 16s ease-in-out infinite;
-}
+@utility cs-orb-figure-8 { animation: cs-orb-figure-8 16s ease-in-out infinite; }
 
 /* Wandering movement */
-.cs-orb-wander {
-  animation: cs-orb-wander 25s ease-in-out infinite;
-}
+@utility cs-orb-wander { animation: cs-orb-wander 25s ease-in-out infinite; }
 
 /* Pendulum swing */
-.cs-orb-swing {
-  animation: cs-orb-swing 8s ease-in-out infinite;
-}
+@utility cs-orb-swing { animation: cs-orb-swing 8s ease-in-out infinite; }
 
 /* Bouncing movement */
-.cs-orb-bounce {
-  animation: cs-orb-bounce 3s ease-in-out infinite;
-}
+@utility cs-orb-bounce { animation: cs-orb-bounce 3s ease-in-out infinite; }
 
 /* Magnetic attraction simulation */
-.cs-orb-magnetic {
-  animation: cs-orb-magnetic 12s ease-in-out infinite;
-}
+@utility cs-orb-magnetic { animation: cs-orb-magnetic 12s ease-in-out infinite; }
 
 /* -------------------------------------------------------
    Color Animation Effects
 ------------------------------------------------------- */
 
 /* Hue rotation */
-.cs-orb-hue-shift {
-  animation: cs-orb-hue-shift 10s linear infinite;
-}
+@utility cs-orb-hue-shift { animation: cs-orb-hue-shift 10s linear infinite; }
 
 /* Color cycling through spectrum */
-.cs-orb-rainbow {
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b, #6c5ce7);
-  background-size: 400% 400%;
-  animation: cs-orb-rainbow 8s ease infinite;
-}
+@utility cs-orb-rainbow { background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b, #6c5ce7); background-size: 400% 400%; animation: cs-orb-rainbow 8s ease infinite; }
 
 /* Pulsing color intensity */
-.cs-orb-color-pulse {
-  animation: cs-orb-color-pulse 4s ease-in-out infinite;
-}
+@utility cs-orb-color-pulse { animation: cs-orb-color-pulse 4s ease-in-out infinite; }
 
 /* Breathing color effect */
-.cs-orb-color-breathe {
-  animation: cs-orb-color-breathe 6s ease-in-out infinite;
-}
+@utility cs-orb-color-breathe { animation: cs-orb-color-breathe 6s ease-in-out infinite; }
 
 /* Glowing effect */
-.cs-orb-glow {
-  animation: cs-orb-glow 3s ease-in-out infinite;
-}
+@utility cs-orb-glow { animation: cs-orb-glow 3s ease-in-out infinite; }
 
 /* Flickering like fire */
-.cs-orb-flicker {
-  animation: cs-orb-flicker 2s ease-in-out infinite;
-}
+@utility cs-orb-flicker { animation: cs-orb-flicker 2s ease-in-out infinite; }
 
 /* -------------------------------------------------------
    Size Animation Effects
 ------------------------------------------------------- */
 
 /* Growing and shrinking */
-.cs-orb-scale-pulse {
-  animation: cs-orb-scale-pulse 4s ease-in-out infinite;
-}
+@utility cs-orb-scale-pulse { animation: cs-orb-scale-pulse 4s ease-in-out infinite; }
 
 /* Elastic scaling */
-.cs-orb-elastic {
-  animation: cs-orb-elastic 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-}
+@utility cs-orb-elastic { animation: cs-orb-elastic 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
 
 /* -------------------------------------------------------
    Complex Combined Effects
 ------------------------------------------------------- */
 
 /* Floating with color shift */
-.cs-orb-dream {
-  animation: 
-    cs-orb-float-kf 12s ease-in-out infinite,
-    cs-orb-hue-shift 15s linear infinite,
-    cs-orb-scale-pulse 8s ease-in-out infinite;
-}
+@utility cs-orb-dream { animation: cs-orb-float-kf 12s ease-in-out infinite, cs-orb-hue-shift 15s linear infinite, cs-orb-scale-pulse 8s ease-in-out infinite; }
 
 /* Orbiting with rainbow colors */
-.cs-orb-cosmic {
-  animation:
-    cs-orb-orbit 30s linear infinite,
-    cs-orb-rainbow 10s ease infinite,
-    cs-orb-glow 4s ease-in-out infinite;
-}
+@utility cs-orb-cosmic { animation: cs-orb-orbit 30s linear infinite, cs-orb-rainbow 10s ease infinite, cs-orb-glow 4s ease-in-out infinite; }
 
 /* Chaotic movement with flickering */
-.cs-orb-chaos {
-  animation:
-    cs-orb-wander 20s ease-in-out infinite,
-    cs-orb-flicker 1.5s ease-in-out infinite,
-    cs-orb-elastic 5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
-}
+@utility cs-orb-chaos { animation: cs-orb-wander 20s ease-in-out infinite, cs-orb-flicker 1.5s ease-in-out infinite, cs-orb-elastic 5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
 
 /* -------------------------------------------------------
    Control Variants
 ------------------------------------------------------- */
 
 /* Speed variants */
-.cs-orb-slow {
-  animation-duration: calc(var(--cs-orb-speed, 1) * 2);
-}
-.cs-orb-fast {
-  animation-duration: calc(var(--cs-orb-speed, 1) * 0.5);
-}
+@utility cs-orb-slow { animation-duration: calc(var(--cs-orb-speed, 1) * 2); }
+@utility cs-orb-fast { animation-duration: calc(var(--cs-orb-speed, 1) * 0.5); }
 
 /* Pause on hover */
-.cs-orb-pause-hover:hover {
-  animation-play-state: paused;
-}
+@utility cs-orb-pause-hover { &:hover { animation-play-state: paused; } }
 
 /* Reverse on hover */
-.cs-orb-reverse-hover:hover {
-  animation-direction: reverse;
-}
+@utility cs-orb-reverse-hover { &:hover { animation-direction: reverse; } }
 
 /* Start animation on hover */
-.cs-orb-trigger-hover {
-  animation-play-state: paused;
-}
-.cs-orb-trigger-hover:hover {
-  animation-play-state: running;
-}
+@utility cs-orb-trigger-hover { animation-play-state: paused; &:hover { animation-play-state: running; } }
 
 /* Generic animation helpers */
-.cs-anim-in { 
-  animation: cs-in-kf .24s var(--cs-anim-ease-emph) both; 
-}
-
-.cs-anim-out { 
-  animation: cs-out-kf .20s var(--cs-anim-ease-emph) both; 
-}
-
-.cs-anim-spin { 
-  animation: cs-spin-kf 1.2s linear infinite; 
-}
+@utility cs-anim-in { animation: cs-in-kf .24s var(--cs-anim-ease-emph) both; }
+@utility cs-anim-out { animation: cs-out-kf .20s var(--cs-anim-ease-emph) both; }
+@utility cs-anim-spin { animation: cs-spin-kf 1.2s linear infinite; }

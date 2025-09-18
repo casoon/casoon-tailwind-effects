@@ -11,7 +11,7 @@
 ------------------------------------------------------- */
 
 /* Magnetic hover effect - background follows cursor area */
-.cs-bg-magnetic {
+@utility cs-bg-magnetic {
   background: radial-gradient(circle at 50% 50%, 
     var(--cs-magnetic-color, rgba(79, 124, 255, 0.3)) 0%,
     var(--cs-magnetic-mid, rgba(79, 124, 255, 0.1)) 40%,
@@ -23,13 +23,13 @@
 }
 
 /* Hover positions - simulate cursor tracking */
-.cs-bg-magnetic:hover {
+@utility cs-bg-magnetic { &:hover {
   background-position: var(--mouse-x, 50%) var(--mouse-y, 50%);
   background-size: 400px 400px;
-}
+} }
 
 /* Spotlight effect */
-.cs-bg-spotlight {
+@utility cs-bg-spotlight {
   background: 
     radial-gradient(circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), 
       rgba(255, 255, 255, 0.1) 0%,
@@ -43,19 +43,19 @@
   transition: all 0.2s ease;
 }
 
-.cs-bg-spotlight:hover {
+@utility cs-bg-spotlight { &:hover {
   --spotlight-x: var(--mouse-x, 70%);
   --spotlight-y: var(--mouse-y, 30%);
-}
+} }
 
 /* Ripple effect on click */
-.cs-bg-ripple {
+@utility cs-bg-ripple {
   background: var(--bg-base, #1a1a2e);
   position: relative;
   overflow: hidden;
 }
 
-.cs-bg-ripple:active::before {
+@utility cs-bg-ripple:active::before {
   content: '';
   position: absolute;
   top: var(--ripple-y, 50%);
@@ -74,7 +74,7 @@
 }
 
 /* Gradient shift on hover */
-.cs-bg-shift {
+@utility cs-bg-shift {
   background: linear-gradient(135deg, 
     var(--shift-color-1, #667eea) 0%,
     var(--shift-color-2, #764ba2) 100%
@@ -84,12 +84,12 @@
   transition: background-position 0.5s ease;
 }
 
-.cs-bg-shift:hover {
+@utility cs-bg-shift { &:hover {
   background-position: 100% 100%;
-}
+} }
 
 /* Color temperature shift */
-.cs-bg-warm-cool {
+@utility cs-bg-warm-cool {
   background: linear-gradient(45deg,
     var(--temp-color, #4facfe) 0%,
     var(--temp-color-2, #00f2fe) 100%
@@ -97,17 +97,17 @@
   transition: filter 0.4s ease;
 }
 
-.cs-bg-warm-cool:hover {
+@utility cs-bg-warm-cool { &:hover {
   filter: hue-rotate(45deg) saturate(1.2);
-}
+} }
 
 /* -------------------------------------------------------
    Focus-Triggered Effects
 ------------------------------------------------------- */
 
 /* Focus glow expansion */
-.cs-bg-focus-glow:focus-visible,
-.cs-bg-focus-glow:focus-within {
+@utility cs-bg-focus-glow { &:focus-visible,
+&:focus-within {
   background: radial-gradient(circle,
     rgba(79, 124, 255, 0.2) 0%,
     rgba(79, 124, 255, 0.1) 50%,
@@ -116,11 +116,11 @@
   background-size: 150% 150%;
   background-position: center;
   animation: cs-focus-pulse 2s ease-in-out infinite;
-}
+} }
 
 /* Focus color cascade */
-.cs-bg-focus-cascade:focus-visible,
-.cs-bg-focus-cascade:focus-within {
+@utility cs-bg-focus-cascade { &:focus-visible,
+&:focus-within {
   background: linear-gradient(45deg,
     rgba(79, 124, 255, 0.8) 0%,
     rgba(162, 155, 254, 0.6) 25%,
@@ -130,35 +130,35 @@
   );
   background-size: 300% 300%;
   animation: cs-focus-cascade 3s linear infinite;
-}
+} }
 
 /* -------------------------------------------------------
    Multi-State Interactive Effects
 ------------------------------------------------------- */
 
 /* Progressive interaction states */
-.cs-bg-progressive {
+@utility cs-bg-progressive {
   background: var(--base-bg, #1a1a2e);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.cs-bg-progressive:hover {
+@utility cs-bg-progressive { &:hover {
   background: radial-gradient(circle at 50% 50%,
     rgba(79, 124, 255, 0.1) 0%,
     var(--base-bg, #1a1a2e) 60%
   );
-}
+} }
 
-.cs-bg-progressive:active {
+@utility cs-bg-progressive { &:active {
   background: radial-gradient(circle at 50% 50%,
     rgba(79, 124, 255, 0.3) 0%,
     rgba(79, 124, 255, 0.1) 40%,
     var(--base-bg, #1a1a2e) 70%
   );
   transform: scale(0.98);
-}
+} }
 
-.cs-bg-progressive:focus-visible {
+@utility cs-bg-progressive { &:focus-visible {
   background: linear-gradient(135deg,
     rgba(79, 124, 255, 0.2) 0%,
     rgba(162, 155, 254, 0.1) 50%,
@@ -166,14 +166,14 @@
   );
   outline: 2px solid rgba(79, 124, 255, 0.5);
   outline-offset: 4px;
-}
+} }
 
 /* -------------------------------------------------------
    Dynamic Color Zones
 ------------------------------------------------------- */
 
 /* Color follows interaction zones */
-.cs-bg-zones {
+@utility cs-bg-zones {
   background: 
     radial-gradient(circle at 20% 20%, var(--zone-1, rgba(255, 107, 107, 0.2)) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, var(--zone-2, rgba(79, 124, 255, 0.2)) 0%, transparent 50%),
@@ -182,19 +182,19 @@
   transition: all 0.4s ease;
 }
 
-.cs-bg-zones:hover {
+@utility cs-bg-zones { &:hover {
   --zone-1: rgba(255, 107, 107, 0.4);
   --zone-2: rgba(79, 124, 255, 0.4);
   --zone-3: rgba(34, 197, 94, 0.4);
   filter: brightness(1.1) contrast(1.05);
-}
+} }
 
 /* -------------------------------------------------------
    Animated Interaction Feedback
 ------------------------------------------------------- */
 
 /* Breathing interaction */
-.cs-bg-breathe-interaction {
+@utility cs-bg-breathe-interaction {
   background: radial-gradient(circle,
     rgba(79, 124, 255, 0.1) 0%,
     transparent 70%
@@ -202,17 +202,17 @@
   animation: cs-gentle-breathe 4s ease-in-out infinite;
 }
 
-.cs-bg-breathe-interaction:hover {
+@utility cs-bg-breathe-interaction { &:hover {
   animation: cs-active-breathe 1.5s ease-in-out infinite;
-}
+} }
 
 /* Pulsing border effect */
-.cs-bg-pulse-border {
+@utility cs-bg-pulse-border {
   background: var(--pulse-bg, #1a1a2e);
   position: relative;
 }
 
-.cs-bg-pulse-border::before {
+@utility cs-bg-pulse-border::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -229,7 +229,7 @@
   transition: opacity 0.3s ease;
 }
 
-.cs-bg-pulse-border:hover::before {
+@utility cs-bg-pulse-border:hover::before {
   opacity: 1;
   animation: cs-border-pulse 2s ease-in-out infinite;
 }
@@ -239,7 +239,7 @@
 ------------------------------------------------------- */
 
 /* GPU acceleration for smooth interactions */
-.cs-bg-gpu-optimized {
+@utility cs-bg-gpu-optimized {
   transform: translateZ(0);
   will-change: background-position, background-size, filter;
   backface-visibility: hidden;
@@ -247,40 +247,28 @@
 
 /* Reduced motion alternatives */
 @media (prefers-reduced-motion: reduce) {
-  .cs-bg-magnetic,
-  .cs-bg-spotlight,
-  .cs-bg-shift,
-  .cs-bg-warm-cool,
-  .cs-bg-progressive,
-  .cs-bg-zones,
-  .cs-bg-breathe-interaction {
-    transition: opacity 0.2s ease !important;
-    animation: none !important;
-  }
-  
-  .cs-bg-magnetic:hover,
-  .cs-bg-spotlight:hover,
-  .cs-bg-shift:hover,
-  .cs-bg-warm-cool:hover,
-  .cs-bg-progressive:hover,
-  .cs-bg-zones:hover {
-    opacity: 0.8;
-  }
+  @utility cs-bg-magnetic { transition: opacity 0.2s ease !important; animation: none !important; }
+  @utility cs-bg-spotlight { transition: opacity 0.2s ease !important; animation: none !important; }
+  @utility cs-bg-shift { transition: opacity 0.2s ease !important; animation: none !important; }
+  @utility cs-bg-warm-cool { transition: opacity 0.2s ease !important; animation: none !important; }
+  @utility cs-bg-progressive { transition: opacity 0.2s ease !important; animation: none !important; }
+  @utility cs-bg-zones { transition: opacity 0.2s ease !important; animation: none !important; }
+  @utility cs-bg-breathe-interaction { transition: opacity 0.2s ease !important; animation: none !important; }
+  @utility cs-bg-magnetic { &:hover { opacity: 0.8; } }
+  @utility cs-bg-spotlight { &:hover { opacity: 0.8; } }
+  @utility cs-bg-shift { &:hover { opacity: 0.8; } }
+  @utility cs-bg-warm-cool { &:hover { opacity: 0.8; } }
+  @utility cs-bg-progressive { &:hover { opacity: 0.8; } }
+  @utility cs-bg-zones { &:hover { opacity: 0.8; } }
 }
 
 /* High contrast mode adjustments */
 @media (prefers-contrast: high) {
-  .cs-bg-magnetic,
-  .cs-bg-spotlight,
-  .cs-bg-progressive {
-    filter: contrast(1.5);
-  }
-  
-  .cs-bg-focus-glow:focus-visible,
-  .cs-bg-focus-cascade:focus-within {
-    outline: 3px solid currentColor;
-    outline-offset: 2px;
-  }
+  @utility cs-bg-magnetic { filter: contrast(1.5); }
+  @utility cs-bg-spotlight { filter: contrast(1.5); }
+  @utility cs-bg-progressive { filter: contrast(1.5); }
+  @utility cs-bg-focus-glow { &:focus-visible, &:focus-within { outline: 3px solid currentColor; outline-offset: 2px; } }
+  @utility cs-bg-focus-cascade { &:focus-visible, &:focus-within { outline: 3px solid currentColor; outline-offset: 2px; } }
 }
 
 /* -------------------------------------------------------
@@ -288,18 +276,18 @@
 ------------------------------------------------------- */
 
 /* Enhanced when JavaScript mouse tracking is available */
-.cs-bg-js-enhanced[data-mouse-tracking] {
+@utility cs-bg-js-enhanced { &[data-mouse-tracking] {
   --mouse-x: var(--cursor-x, 50%);
   --mouse-y: var(--cursor-y, 50%);
-}
+} }
 
 /* Performance mode controls */
-.cs-bg-performance-mode[data-performance="low"] {
+@utility cs-bg-performance-mode { &[data-performance="low"] {
   transition-duration: 0.1s !important;
   animation-duration: 2s !important;
-}
+} }
 
-.cs-bg-performance-mode[data-performance="high"] {
+@utility cs-bg-performance-mode { &[data-performance="high"] {
   transition-duration: 0.05s !important;
   animation-duration: 0.8s !important;
-}
+} }

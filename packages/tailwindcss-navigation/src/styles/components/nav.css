@@ -1,26 +1,14 @@
 /* BASE / RESETS */
-.cs-nav,
-.cs-navbar,
-.cs-navbar-nav {
-  font-family: var(--cs-font-sans);
-  font-size: var(--cs-font-size-base);
-  line-height: var(--cs-line);
-  color: var(--cs-color-text);
-}
+@utility cs-nav { font-family: var(--cs-font-sans); font-size: var(--cs-font-size-base); line-height: var(--cs-line); color: var(--cs-color-text); }
+@utility cs-navbar { font-family: var(--cs-font-sans); font-size: var(--cs-font-size-base); line-height: var(--cs-line); color: var(--cs-color-text); }
+@utility cs-navbar-nav { font-family: var(--cs-font-sans); font-size: var(--cs-font-size-base); line-height: var(--cs-line); color: var(--cs-color-text); }
 
 /* NAVIGATION PRIMITIVES */
-.cs-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--cs-space-1);
-  padding-left: 0;
-  margin: 0 0 var(--cs-space-2) 0;
-  list-style: none;
-}
+@utility cs-nav { display: flex; flex-wrap: wrap; gap: var(--cs-space-1); padding-left: 0; margin: 0 0 var(--cs-space-2) 0; list-style: none; }
 
-.cs-nav-item { display: block; position: relative; }
+@utility cs-nav-item { display: block; position: relative; }
 
-.cs-nav-link {
+@utility cs-nav-link {
   display: block;
   padding: calc(0.5rem * var(--cs-density)) calc(1rem * var(--cs-density));
   color: inherit;
@@ -28,15 +16,8 @@
   border-radius: var(--cs-radius-sm);
   transition: color var(--cs-transition), background-color var(--cs-transition), border-color var(--cs-transition);
   outline: none;
-}
-
-.cs-nav-link:hover {
-  text-decoration: none;
-  background-color: var(--cs-color-bg-subtle);
-}
-
-.cs-nav-link.cs-active,
-.cs-nav-link[aria-current="page"],
-.cs-nav-link[aria-current="true"] {
-  font-weight: var(--cs-font-weight-bold);
+  &:hover { text-decoration: none; background-color: var(--cs-color-bg-subtle); }
+  &.cs-active,
+  &[aria-current="page"],
+  &[aria-current="true"] { font-weight: var(--cs-font-weight-bold); }
 }

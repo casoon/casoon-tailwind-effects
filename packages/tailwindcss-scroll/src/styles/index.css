@@ -4,6 +4,7 @@
 /* Base Styles */
 @import "./base/tokens.css";
 @import "./base/accessibility.css";
+@import "./variants.css";
 
 /* Utilities */
 @import "./utilities/scroll-behavior.css";

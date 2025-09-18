@@ -1,12 +1,9 @@
 /* SCROLL SHADOW COMPONENTS */
 
 /* Shadow on scroll start (helper for edge cues) */
-.cs-scroll-shadow-top {
-  position: relative;
-  z-index: 1;
-}
+@utility cs-scroll-shadow-top { position: relative; z-index: 1; }
 
-.cs-scroll-shadow-top::before {
+@utility cs-scroll-shadow-top::before {
   content: "";
   position: absolute;
   top: 0; 
@@ -19,11 +16,11 @@
   transition: opacity 200ms ease-in;
 }
 
-.cs-scroll-shadow-top.cs-has-scroll::before {
+@utility cs-scroll-shadow-top.cs-has-scroll::before {
   opacity: 1;
 }
 
-.cs-scroll-shadow-top.cs-has-shadow {
+@utility cs-scroll-shadow-top.cs-has-shadow {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   transition: box-shadow 0.25s ease;
 }

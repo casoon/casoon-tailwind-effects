@@ -26,7 +26,7 @@
 @keyframes anim-progress-grow { 0%{width:0%} 100%{width:100%} }
 
 /* Core engine */
-.cs-anim {
+@utility cs-anim {
   animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
   animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
   animation-iteration-count: 1;
@@ -36,66 +36,66 @@
 }
 
 /* Duration utilities */
-.cs-anim-xxs { --cs-anim-duration: var(--cs-anim-duration-xxs) }
-.cs-anim-xs { --cs-anim-duration: var(--cs-anim-duration-xs) }
-.cs-anim-sm { --cs-anim-duration: var(--cs-anim-duration-sm) }
-.cs-anim-md { --cs-anim-duration: var(--cs-anim-duration-md) }
-.cs-anim-lg { --cs-anim-duration: var(--cs-anim-duration-lg) }
-.cs-anim-xl { --cs-anim-duration: var(--cs-anim-duration-xl) }
-.cs-anim-2xl { --cs-anim-duration: var(--cs-anim-duration-2xl) }
+@utility cs-anim-xxs { --cs-anim-duration: var(--cs-anim-duration-xxs) }
+@utility cs-anim-xs { --cs-anim-duration: var(--cs-anim-duration-xs) }
+@utility cs-anim-sm { --cs-anim-duration: var(--cs-anim-duration-sm) }
+@utility cs-anim-md { --cs-anim-duration: var(--cs-anim-duration-md) }
+@utility cs-anim-lg { --cs-anim-duration: var(--cs-anim-duration-lg) }
+@utility cs-anim-xl { --cs-anim-duration: var(--cs-anim-duration-xl) }
+@utility cs-anim-2xl { --cs-anim-duration: var(--cs-anim-duration-2xl) }
 
 /* Easing utilities */
-.cs-ease-standard { --cs-anim-ease: var(--cs-anim-ease-standard) }
-.cs-ease-emphasized { --cs-anim-ease: var(--cs-anim-ease-emphasized) }
-.cs-ease-decelerate { --cs-anim-ease: var(--cs-anim-ease-decelerate) }
-.cs-ease-accelerate { --cs-anim-ease: var(--cs-anim-ease-accelerate) }
-.cs-ease-spring { --cs-anim-ease: var(--cs-anim-ease-spring) }
-.cs-ease-soft-spring { --cs-anim-ease: var(--cs-anim-ease-soft-spring) }
+@utility cs-ease-standard { --cs-anim-ease: var(--cs-anim-ease-standard) }
+@utility cs-ease-emphasized { --cs-anim-ease: var(--cs-anim-ease-emphasized) }
+@utility cs-ease-decelerate { --cs-anim-ease: var(--cs-anim-ease-decelerate) }
+@utility cs-ease-accelerate { --cs-anim-ease: var(--cs-anim-ease-accelerate) }
+@utility cs-ease-spring { --cs-anim-ease: var(--cs-anim-ease-spring) }
+@utility cs-ease-soft-spring { --cs-anim-ease: var(--cs-anim-ease-soft-spring) }
 
 /* Delay utilities */
-.cs-delay-0 { --cs-anim-delay: 0ms }
-.cs-delay-75 { --cs-anim-delay: 75ms }
-.cs-delay-100 { --cs-anim-delay: 100ms }
-.cs-delay-150 { --cs-anim-delay: 150ms }
-.cs-delay-200 { --cs-anim-delay: 200ms }
-.cs-delay-300 { --cs-anim-delay: 300ms }
-.cs-delay-500 { --cs-anim-delay: 500ms }
-.cs-delay-700 { --cs-anim-delay: 700ms }
-.cs-delay-1000 { --cs-anim-delay: 1000ms }
+@utility cs-delay-0 { --cs-anim-delay: 0ms }
+@utility cs-delay-75 { --cs-anim-delay: 75ms }
+@utility cs-delay-100 { --cs-anim-delay: 100ms }
+@utility cs-delay-150 { --cs-anim-delay: 150ms }
+@utility cs-delay-200 { --cs-anim-delay: 200ms }
+@utility cs-delay-300 { --cs-anim-delay: 300ms }
+@utility cs-delay-500 { --cs-anim-delay: 500ms }
+@utility cs-delay-700 { --cs-anim-delay: 700ms }
+@utility cs-delay-1000 { --cs-anim-delay: 1000ms }
 
 /* Control utilities */
-.cs-anim-infinite { animation-iteration-count: infinite }
-.cs-anim-reverse { animation-direction: reverse }
-.cs-anim-alternate { animation-direction: alternate }
-.cs-anim-both { animation-fill-mode: both }
-.cs-anim-forwards { animation-fill-mode: forwards }
+@utility cs-anim-infinite { animation-iteration-count: infinite }
+@utility cs-anim-reverse { animation-direction: reverse }
+@utility cs-anim-alternate { animation-direction: alternate }
+@utility cs-anim-both { animation-fill-mode: both }
+@utility cs-anim-forwards { animation-fill-mode: forwards }
 
 /* Performance utilities */
-.cs-will-transform { will-change: transform }
-.cs-will-opacity { will-change: opacity }
-.cs-will-filter { will-change: filter }
-.cs-t-origin-top { transform-origin: top }
-.cs-t-origin-center { transform-origin: center }
-.cs-t-origin-bottom { transform-origin: bottom }
-.cs-t-preserve-3d { transform-style: preserve-3d }
+@utility cs-will-transform { will-change: transform }
+@utility cs-will-opacity { will-change: opacity }
+@utility cs-will-filter { will-change: filter }
+@utility cs-t-origin-top { transform-origin: top }
+@utility cs-t-origin-center { transform-origin: center }
+@utility cs-t-origin-bottom { transform-origin: bottom }
+@utility cs-t-preserve-3d { transform-style: preserve-3d }
 
 /* Name utilities */
-.cs-fade-in { animation-name: anim-fade-in }
-.cs-fade-out { animation-name: anim-fade-out }
-.cs-scale-in { animation-name: anim-scale-in }
-.cs-scale-out { animation-name: anim-scale-out }
-.cs-slide-up { animation-name: anim-slide-up }
-.cs-slide-down { animation-name: anim-slide-down }
-.cs-slide-left { animation-name: anim-slide-left }
-.cs-slide-right { animation-name: anim-slide-right }
-.cs-blur-in { animation-name: anim-blur-in }
-.cs-blur-out { animation-name: anim-blur-out }
-.cs-rotate-in { animation-name: anim-rotate-in }
-.cs-rotate { animation-name: anim-rotate }
-.cs-pulse { animation-name: anim-pulse }
-.cs-bounce { animation-name: anim-bounce }
-.cs-wiggle { animation-name: anim-wiggle }
-.cs-reveal-3d-up { animation-name: anim-reveal-3d-up }
-.cs-reveal-3d-right { animation-name: anim-reveal-3d-right }
-.cs-marquee { animation-name: anim-marquee; animation-timing-function: linear; animation-iteration-count: infinite }
-.cs-parallax-y { animation-name: anim-parallax-y; animation-direction: alternate; animation-iteration-count: infinite }
+@utility cs-fade-in { animation-name: anim-fade-in }
+@utility cs-fade-out { animation-name: anim-fade-out }
+@utility cs-scale-in { animation-name: anim-scale-in }
+@utility cs-scale-out { animation-name: anim-scale-out }
+@utility cs-slide-up { animation-name: anim-slide-up }
+@utility cs-slide-down { animation-name: anim-slide-down }
+@utility cs-slide-left { animation-name: anim-slide-left }
+@utility cs-slide-right { animation-name: anim-slide-right }
+@utility cs-blur-in { animation-name: anim-blur-in }
+@utility cs-blur-out { animation-name: anim-blur-out }
+@utility cs-rotate-in { animation-name: anim-rotate-in }
+@utility cs-rotate { animation-name: anim-rotate }
+@utility cs-pulse { animation-name: anim-pulse }
+@utility cs-bounce { animation-name: anim-bounce }
+@utility cs-wiggle { animation-name: anim-wiggle }
+@utility cs-reveal-3d-up { animation-name: anim-reveal-3d-up }
+@utility cs-reveal-3d-right { animation-name: anim-reveal-3d-right }
+@utility cs-marquee { animation-name: anim-marquee; animation-timing-function: linear; animation-iteration-count: infinite }
+@utility cs-parallax-y { animation-name: anim-parallax-y; animation-direction: alternate; animation-iteration-count: infinite }

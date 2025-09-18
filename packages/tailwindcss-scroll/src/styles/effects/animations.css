@@ -1,44 +1,44 @@
 /* SCROLL ANIMATIONS */
 
 /* Modal and toast animations */
-.cs-modal-in {
+@utility cs-modal-in {
   animation: cs-fade-in var(--cs-anim-duration,240ms) var(--cs-anim-ease,cubic-bezier(.2,.8,.2,1)) both,
              cs-slide-up calc(var(--cs-anim-duration,240ms) * 1.1) var(--cs-anim-ease,cubic-bezier(.2,.8,.2,1)) both;
   z-index: var(--cs-z-modal, 90);
 }
 
-.cs-toast-out {
+@utility cs-toast-out {
   animation: cs-fade-in reverse var(--cs-anim-duration,240ms) linear both;
   z-index: var(--cs-z-toast, 80);
 }
 
 /* Scroll reveal effects */
-.cs-scroll-reveal-fade-up {
+@utility cs-scroll-reveal-fade-up {
   opacity: 0;
   transform: translateY(16px);
   will-change: opacity, transform;
 }
 
-.cs-scroll-reveal-scale-in {
+@utility cs-scroll-reveal-scale-in {
   opacity: 0;
   transform: scale(0.96);
   will-change: opacity, transform;
 }
 
 /* Apply .cs-scroll-in class via JS when intersecting */
-.cs-scroll-in.cs-scroll-reveal-fade-up {
+@utility cs-scroll-in.cs-scroll-reveal-fade-up {
   animation: cs-scroll-reveal-fade-up 600ms var(--cs-anim-ease, ease-out) forwards;
 }
 
-.cs-scroll-in.cs-scroll-reveal-scale-in {
+@utility cs-scroll-in.cs-scroll-reveal-scale-in {
   animation: cs-scroll-reveal-scale-in 520ms var(--cs-anim-ease, ease-out) forwards;
 }
 
 /* Pulse cue animation */
-.cs-scroll-pulse {
+@utility cs-scroll-pulse {
   animation: cs-scroll-pulse 1.2s ease-out;
 }
 
-.cs-scroll-pulse.cs-pulse-active {
+@utility cs-scroll-pulse.cs-pulse-active {
   animation: cs-pulse-fade 0.4s ease;
 }

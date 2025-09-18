@@ -1,5 +1,5 @@
 /* NAVBAR */
-.cs-navbar {
+@utility cs-navbar {
   position: relative;
   z-index: var(--cs-z-nav);
   display: flex;
@@ -9,20 +9,16 @@
   padding: var(--cs-space-2) var(--cs-space-4);
   background-color: var(--cs-color-bg);
   border-bottom: 1px solid var(--cs-color-border);
-}
-
-.cs-navbar.cs-navbar--acrylic {
-  background-color: var(--cs-acrylic-bg);
-  border-bottom: 1px solid var(--cs-acrylic-border);
-}
-@supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
-  .cs-navbar.cs-navbar--acrylic {
-    -webkit-backdrop-filter: blur(6px);
-    backdrop-filter: blur(6px);
+  &.cs-navbar--acrylic {
+    background-color: var(--cs-acrylic-bg);
+    border-bottom: 1px solid var(--cs-acrylic-border);
+  }
+  @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+    &.cs-navbar--acrylic { -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
   }
 }
 
-.cs-navbar-brand {
+@utility cs-navbar-brand {
   display: inline-block;
   padding-top: calc(0.3125rem * var(--cs-density));
   padding-bottom: calc(0.3125rem * var(--cs-density));
