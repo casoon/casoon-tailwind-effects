@@ -143,4 +143,12 @@
 }
 
 /* Reduced motion: shut off shifting */
-@media (prefers-reduced-motion: reduce){ @utility cs-gradient-animate{ animation:none !important; } }
+/* Moved nested utilities to top-level - see end of file */ }
+
+
+/* Utilities extracted from @media queries */
+@utility cs-gradient-animate {
+  @media (prefers-reduced-motion: reduce) {
+    animation:none !important;
+  }
+}

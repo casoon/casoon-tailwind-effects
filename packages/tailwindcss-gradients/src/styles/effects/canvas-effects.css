@@ -149,8 +149,7 @@
 ------------------------------------------------------- */
 
 /* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  @utility cs-canvas-dots { animation: none !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-canvas-grid { animation: none !important; }
   @utility cs-canvas-circuit { animation: none !important; }
   @utility cs-canvas-stars { animation: none !important; }
@@ -161,15 +160,13 @@
 }
 
 /* High contrast mode */
-@media (prefers-contrast: high) {
-  @utility cs-canvas-dots { opacity: 0.8; filter: contrast(1.5); }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-canvas-grid { opacity: 0.8; filter: contrast(1.5); }
   @utility cs-canvas-circuit { opacity: 0.8; filter: contrast(1.5); }
 }
 
 /* Battery saving mode */
-@media (prefers-reduced-data: reduce) {
-  @utility cs-canvas-dots { animation-duration: 60s !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-canvas-grid { animation-duration: 60s !important; }
   @utility cs-canvas-circuit { animation-duration: 60s !important; }
   @utility cs-canvas-stars { animation-duration: 60s !important; }
@@ -177,4 +174,24 @@
   @utility cs-canvas-triangles { animation-duration: 60s !important; }
   @utility cs-canvas-noise { animation-duration: 60s !important; }
   @utility cs-canvas-bubbles { animation-duration: 60s !important; }
+}
+
+
+/* Utilities extracted from @media queries */
+@utility cs-canvas-dots {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+  }
+}
+
+@utility cs-canvas-dots {
+  @media (prefers-contrast: high) {
+    opacity: 0.8; filter: contrast(1.5);
+  }
+}
+
+@utility cs-canvas-dots {
+  @media (prefers-reduced-data: reduce) {
+    animation-duration: 60s !important;
+  }
 }

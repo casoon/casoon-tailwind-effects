@@ -281,15 +281,13 @@
    Responsive 3D
 ------------------------------------------------------- */
 
-@media (max-width: 768px) {
-  @utility cs-3d-scene { --cs-3d-perspective: 600px; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-3d-cubes { transform: scale(0.8) rotateX(5deg); }
   @utility cs-3d-hexagons { transform: scale(0.8) rotateX(5deg); }
   @utility cs-3d-tunnel { transform: scale(0.8) rotateX(5deg); }
 }
 
-@media (max-width: 480px) {
-  @utility cs-3d-scene { --cs-3d-perspective: 400px; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-3d-depth-layers::before { display: none; }
   @utility cs-3d-depth-layers::after { display: none; }
 }
@@ -298,16 +296,40 @@
    Accessibility & Performance
 ------------------------------------------------------- */
 
-@media (prefers-reduced-motion: reduce) {
-  @utility cs-3d-scene { & * { animation: none !important; transition: none !important; } }
+/* Moved nested utilities to top-level - see end of file */ }
   @utility cs-3d-interactive { &:hover { transform: none !important; } }
 }
 
-@media (prefers-contrast: high) {
-  @utility cs-3d-cubes { filter: contrast(1.5) brightness(1.2); }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-3d-hexagons { filter: contrast(1.5) brightness(1.2); }
   @utility cs-3d-grid-perspective { filter: contrast(1.5) brightness(1.2); }
 }
 
 /* Import 3D Keyframes */
 @import "./3d-keyframes.css";
+
+
+/* Utilities extracted from @media queries */
+@utility cs-3d-scene {
+  @media (max-width: 768px) {
+    --cs-3d-perspective: 600px;
+  }
+}
+
+@utility cs-3d-scene {
+  @media (max-width: 480px) {
+    --cs-3d-perspective: 400px;
+  }
+}
+
+@utility cs-3d-scene {
+  @media (prefers-reduced-motion: reduce) {
+    & * { animation: none !important; transition: none !important;
+  }
+}
+
+@utility cs-3d-cubes {
+  @media (prefers-contrast: high) {
+    filter: contrast(1.5) brightness(1.2);
+  }
+}

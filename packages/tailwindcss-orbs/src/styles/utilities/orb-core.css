@@ -1,7 +1,6 @@
 /* CORE ORB UTILITIES */
 
-/* Base orb styles */
-@utility cs-orb { border-radius: 50%; filter: blur(1px); opacity: .7; pointer-events: none; position: relative; z-index: var(--cs-z-orb); }
+/* Base orb styles are defined at the end with responsive sizing */
 
 /* Orb Sizes */
 @utility cs-orb-xs { width: 50px; height: 50px; }
@@ -47,15 +46,47 @@
 
 @utility cs-orb-gradient-custom { background: var(--cs-orb-fallback-custom); }
 
-/* Progressive enhancement with color-mix */
-@supports (background: color-mix(in srgb, red 50%, transparent)) {
-  @utility cs-orb-gradient-blue { background: var(--cs-orb-gradient-blue); }
-  @utility cs-orb-gradient-purple { background: var(--cs-orb-gradient-purple); }
-  @utility cs-orb-gradient-pink { background: var(--cs-orb-gradient-pink); }
-  @utility cs-orb-gradient-custom { background: var(--cs-orb-gradient-custom); }
+/* Enhanced color gradients with progressive enhancement */
+@utility cs-orb-gradient-blue {
+  background: var(--cs-orb-fallback-blue);
+  @supports (background: color-mix(in srgb, red 50%, transparent)) {
+    background: var(--cs-orb-gradient-blue);
+  }
 }
 
-/* Container-based Responsive Orb Sizing (opt-in via .cs-cq) */
-@container (min-width: 480px) { @utility cs-orb { &[data-size~="responsive"] { width: 120px; height: 120px; } } }
-@container (min-width: 768px) { @utility cs-orb { &[data-size~="responsive"] { width: 180px; height: 180px; } } }
-@container (min-width: 1024px) { @utility cs-orb { &[data-size~="responsive"] { width: 240px; height: 240px; } } }
+@utility cs-orb-gradient-purple {
+  background: var(--cs-orb-fallback-purple);
+  @supports (background: color-mix(in srgb, red 50%, transparent)) {
+    background: var(--cs-orb-gradient-purple);
+  }
+}
+
+@utility cs-orb-gradient-pink {
+  background: var(--cs-orb-fallback-pink);
+  @supports (background: color-mix(in srgb, red 50%, transparent)) {
+    background: var(--cs-orb-gradient-pink);
+  }
+}
+
+@utility cs-orb-gradient-custom {
+  background: var(--cs-orb-fallback-custom);
+  @supports (background: color-mix(in srgb, red 50%, transparent)) {
+    background: var(--cs-orb-gradient-custom);
+  }
+}
+
+/* Responsive orb sizing */
+@utility cs-orb {
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: .7;
+  pointer-events: none;
+  position: relative;
+  z-index: var(--cs-z-orb);
+  
+  &[data-size~="responsive"] {
+    @container (min-width: 480px) { width: 120px; height: 120px; }
+    @container (min-width: 768px) { width: 180px; height: 180px; }
+    @container (min-width: 1024px) { width: 240px; height: 240px; }
+  }
+}

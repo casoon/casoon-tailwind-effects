@@ -1,19 +1,8 @@
 /*!
  * Casoon Cards CSS (modular build)
- * Version: 0.8.0 — Tailwind CSS v4 compatible
+ * Version: 0.8.4 — Tailwind CSS v4 compatible
  * Ready-to-use card presets with integrated effects
  */
 
 /* Base: Tokens and design system */
 @import "./styles/base/tokens.css";
-
-/* Presets: Ready-to-use card types */
-@import "./styles/presets/card-product.css";
-@import "./styles/presets/card-testimonial.css";
-@import "./styles/presets/card-pricing.css";
-@import "./styles/presets/card-feature.css";
-@import "./styles/presets/card-blog.css";
-@import "./styles/presets/card-dashboard.css";
-
-/* Effects: Card interactions and animations */
-@import "./styles/effects/card-effects.css";

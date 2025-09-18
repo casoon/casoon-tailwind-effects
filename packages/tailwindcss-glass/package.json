@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-glass",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "Glassmorphism components and utilities for Tailwind CSS v4",
   "type": "module",
   "exports": {
@@ -17,7 +17,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "npx tailwindcss -i ./src/index.css -o ./dist.css && node ../../scripts/make-dist-js.mjs && npm run minify",
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist.css --minify",
     "validate": "node ../../scripts/validate-css.mjs",
     "prepublishOnly": "npm run build && npm run validate",
     "minify": "node ../../scripts/minify-css.mjs"

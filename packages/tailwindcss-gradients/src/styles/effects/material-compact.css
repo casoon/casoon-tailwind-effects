@@ -9,4 +9,12 @@
 @utility cs-texture-metal { &:hover { filter: brightness(1.1) contrast(1.05); } }
 @utility cs-texture-paper { &:hover { filter: brightness(1.05) saturate(1.1); } }
 @utility cs-texture-glass { &:hover { filter: brightness(1.05) saturate(1.1); } }
-@media (prefers-reduced-motion: reduce) { @utility cs-texture-fabric { &:hover { filter: none !important; } } @utility cs-texture-wood { &:hover { filter: none !important; } } @utility cs-texture-metal { &:hover { filter: none !important; } } @utility cs-texture-paper { &:hover { filter: none !important; } } @utility cs-texture-glass { &:hover { filter: none !important; } } }
+/* Moved nested utilities to top-level - see end of file */ } @utility cs-texture-wood { &:hover { filter: none !important; } } @utility cs-texture-metal { &:hover { filter: none !important; } } @utility cs-texture-paper { &:hover { filter: none !important; } } @utility cs-texture-glass { &:hover { filter: none !important; } } }
+
+
+/* Utilities extracted from @media queries */
+@utility cs-texture-fabric {
+  @media (prefers-reduced-motion: reduce) {
+    &:hover { filter: none !important;
+  }
+}

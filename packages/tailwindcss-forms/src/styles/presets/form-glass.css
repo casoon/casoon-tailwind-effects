@@ -13,7 +13,12 @@
   position: relative;
 }
 
-@supports not (backdrop-filter: blur(12px)) { @utility cs-form-glass { background: var(--cs-surface); border: 1px solid var(--cs-border); } }
+@utility cs-form-glass-fallback {
+  @supports not (backdrop-filter: blur(12px)) {
+    background: var(--cs-surface); 
+    border: 1px solid var(--cs-border);
+  }
+}
 
 /* Glass form field */
 @utility cs-field-glass {
@@ -100,16 +105,18 @@
   width: 100%;
 } }
 
-@utility cs-select-glass::after {
-  content: "▼";
-  position: absolute;
-  right: var(--cs-space-3);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: var(--cs-text);
-  font-size: 12px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+@utility cs-select-glass-arrow {
+  &::after {
+    content: "▼";
+    position: absolute;
+    right: var(--cs-space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--cs-text);
+    font-size: 12px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
 }
 
 @utility cs-select-glass { & select:focus {
@@ -133,19 +140,21 @@
 @utility cs-radio-glass { & input { width: 18px; height: 18px; accent-color: var(--cs-brand); filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)); } }
 
 /* Glass form overlay effects */
-@utility cs-form-glass::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    var(--cs-acrylic-border, rgba(255, 255, 255, 0.5)), 
-    transparent
-  );
-  border-radius: var(--cs-radius-lg) var(--cs-radius-lg) 0 0;
+@utility cs-form-glass-highlight {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      var(--cs-acrylic-border, rgba(255, 255, 255, 0.5)), 
+      transparent
+    );
+    border-radius: var(--cs-radius-lg) var(--cs-radius-lg) 0 0;
+  }
 }
 
 /* Glass form group */

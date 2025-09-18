@@ -50,22 +50,10 @@
 }
 
 /* Auto Theme (system preference) */
-@media (prefers-color-scheme: light) {
-  @utility cs-theme-auto {
-    --cs-bg-primary: rgba(255, 255, 255, 0.9);
-    --cs-bg-secondary: rgba(248, 249, 250, 0.8);
-    --cs-text-primary: rgba(33, 37, 41, 0.9);
-    --cs-accent-color: rgba(79, 124, 255, 0.2);
-  }
+/* Moved nested utilities to top-level - see end of file */
 }
 
-@media (prefers-color-scheme: dark) {
-  @utility cs-theme-auto {
-    --cs-bg-primary: rgba(33, 37, 41, 0.9);
-    --cs-bg-secondary: rgba(52, 58, 64, 0.8);
-    --cs-text-primary: rgba(248, 249, 250, 0.9);
-    --cs-accent-color: rgba(79, 124, 255, 0.3);
-  }
+/* Moved nested utilities to top-level - see end of file */
 }
 
 /* -------------------------------------------------------
@@ -303,8 +291,7 @@
 ------------------------------------------------------- */
 
 /* High contrast mode */
-@media (prefers-contrast: high) {
-  @utility cs-dynamic-colors { --cs-accent-color: rgba(79, 124, 255, 0.8); }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-time-morning { filter: contrast(1.5) brightness(1.2); }
   @utility cs-time-noon { filter: contrast(1.5) brightness(1.2); }
   @utility cs-time-evening { filter: contrast(1.5) brightness(1.2); }
@@ -312,14 +299,57 @@
 }
 
 /* Reduced transparency for better readability */
-@media (prefers-reduced-transparency: reduce) {
-  @utility cs-theme-light { --cs-bg-primary: rgb(255, 255, 255); --cs-bg-secondary: rgb(248, 249, 250); }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-theme-dark { --cs-bg-primary: rgb(33, 37, 41); --cs-bg-secondary: rgb(52, 58, 64); }
 }
 
 /* Color scheme preference support */
-@media (prefers-color-scheme: light) { @utility cs-adaptive-colors { filter: brightness(1.1) contrast(0.9); } }
-@media (prefers-color-scheme: dark) { @utility cs-adaptive-colors { filter: brightness(0.9) contrast(1.1); } }
+/* Moved nested utilities to top-level - see end of file */ }
+/* Moved nested utilities to top-level - see end of file */ }
 
 /* Import Dynamic Color Keyframes */
 @import "./dynamic-keyframes.css";
+
+
+/* Utilities extracted from @media queries */
+@utility cs-theme-auto {
+  @media (prefers-color-scheme: light) {
+    --cs-bg-primary: rgba(255, 255, 255, 0.9);
+    --cs-bg-secondary: rgba(248, 249, 250, 0.8);
+    --cs-text-primary: rgba(33, 37, 41, 0.9);
+    --cs-accent-color: rgba(79, 124, 255, 0.2);
+  }
+}
+
+@utility cs-theme-auto {
+  @media (prefers-color-scheme: dark) {
+    --cs-bg-primary: rgba(33, 37, 41, 0.9);
+    --cs-bg-secondary: rgba(52, 58, 64, 0.8);
+    --cs-text-primary: rgba(248, 249, 250, 0.9);
+    --cs-accent-color: rgba(79, 124, 255, 0.3);
+  }
+}
+
+@utility cs-dynamic-colors {
+  @media (prefers-contrast: high) {
+    --cs-accent-color: rgba(79, 124, 255, 0.8);
+  }
+}
+
+@utility cs-theme-light {
+  @media (prefers-reduced-transparency: reduce) {
+    --cs-bg-primary: rgb(255, 255, 255); --cs-bg-secondary: rgb(248, 249, 250);
+  }
+}
+
+@utility cs-adaptive-colors {
+  @media (prefers-color-scheme: light) {
+    filter: brightness(1.1) contrast(0.9);
+  }
+}
+
+@utility cs-adaptive-colors {
+  @media (prefers-color-scheme: dark) {
+    filter: brightness(0.9) contrast(1.1);
+  }
+}

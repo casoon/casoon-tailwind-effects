@@ -9,21 +9,6 @@
 @import "./styles/base/keyframes.css";
 @import "./styles/variants.css";
 
-/* Components: Core form elements */
-@import "./styles/components/inputs.css";
-@import "./styles/components/buttons.css";
-@import "./styles/components/selects.css";
-@import "./styles/components/textareas.css";
-
 /* Presets: Ready-to-use form styles */
 @import "./styles/presets/form-modern.css";
-@import "./styles/presets/form-minimal.css";
 @import "./styles/presets/form-glass.css";
-@import "./styles/presets/form-validation.css";
-
-/* Patterns: Complex form layouts */
-@import "./styles/patterns/form-layouts.css";
-@import "./styles/patterns/multi-step.css";
-
-/* Effects: Form interactions and animations */
-@import "./styles/effects/interactions.css";

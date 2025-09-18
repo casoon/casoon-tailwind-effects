@@ -19,11 +19,23 @@
 }
 
 /* High-contrast / forced colors support */
-@media (prefers-contrast: more) {
-  @utility cs-focus-ring-2 { &:focus-visible, &:focus { box-shadow: 0 0 0 2px CanvasText; } }
+/* Moved nested utilities to top-level - see end of file */ }
   @utility cs-focus-ring-4 { &:focus-visible, &:focus { box-shadow: 0 0 0 3px CanvasText, 0 0 0 5px Canvas; } }
 }
-@media (forced-colors: active) {
-  @utility cs-focus-ring-2 { &:focus-visible, &:focus { outline: 2px solid Highlight; outline-offset: 2px; box-shadow: none; } }
+/* Moved nested utilities to top-level - see end of file */ }
   @utility cs-focus-ring-4 { &:focus-visible, &:focus { outline: 3px solid Highlight; outline-offset: 2px; box-shadow: none; } }
+}
+
+
+/* Utilities extracted from @media queries */
+@utility cs-focus-ring-2 {
+  @media (prefers-contrast: more) {
+    &:focus-visible, &:focus { box-shadow: 0 0 0 2px CanvasText;
+  }
+}
+
+@utility cs-focus-ring-2 {
+  @media (forced-colors: active) {
+    &:focus-visible, &:focus { outline: 2px solid Highlight; outline-offset: 2px; box-shadow: none;
+  }
 }

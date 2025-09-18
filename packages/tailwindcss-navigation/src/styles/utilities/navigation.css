@@ -18,11 +18,10 @@
   cursor: pointer;
   color: var(--cs-color-text);
 }
-@media (max-width: 768px) { @utility cs-menu-toggle { display: block; } }
+/* Moved nested utilities to top-level - see end of file */ }
 
 /* Responsive Navigation */
-@media (max-width: 768px) {
-  @utility cs-nav-mobile-hidden { display: none; }
+/* Moved nested utilities to top-level - see end of file */
 
   @utility cs-nav-collapse {
     position: absolute;
@@ -46,3 +45,17 @@
 /* Navigation Animations */
 @utility cs-nav-slide-in { animation: cs-nav-slide-in var(--cs-transition-base) var(--cs-ease-out); }
 @utility cs-nav-fade-in { animation: cs-nav-fade-in var(--cs-transition-base) var(--cs-ease-out); }
+
+
+/* Utilities extracted from @media queries */
+@utility cs-menu-toggle {
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+@utility cs-nav-mobile-hidden {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

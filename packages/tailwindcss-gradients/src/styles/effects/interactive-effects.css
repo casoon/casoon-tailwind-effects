@@ -246,8 +246,7 @@
 }
 
 /* Reduced motion alternatives */
-@media (prefers-reduced-motion: reduce) {
-  @utility cs-bg-magnetic { transition: opacity 0.2s ease !important; animation: none !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-bg-spotlight { transition: opacity 0.2s ease !important; animation: none !important; }
   @utility cs-bg-shift { transition: opacity 0.2s ease !important; animation: none !important; }
   @utility cs-bg-warm-cool { transition: opacity 0.2s ease !important; animation: none !important; }
@@ -263,8 +262,7 @@
 }
 
 /* High contrast mode adjustments */
-@media (prefers-contrast: high) {
-  @utility cs-bg-magnetic { filter: contrast(1.5); }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-bg-spotlight { filter: contrast(1.5); }
   @utility cs-bg-progressive { filter: contrast(1.5); }
   @utility cs-bg-focus-glow { &:focus-visible, &:focus-within { outline: 3px solid currentColor; outline-offset: 2px; } }
@@ -291,3 +289,17 @@
   transition-duration: 0.05s !important;
   animation-duration: 0.8s !important;
 } }
+
+
+/* Utilities extracted from @media queries */
+@utility cs-bg-magnetic {
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity 0.2s ease !important; animation: none !important;
+  }
+}
+
+@utility cs-bg-magnetic {
+  @media (prefers-contrast: high) {
+    filter: contrast(1.5);
+  }
+}

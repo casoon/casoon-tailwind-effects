@@ -19,11 +19,18 @@
 @utility cs-particles-intense { opacity: 1; animation-duration: calc(var(--particle-duration, 4s) * 0.7); filter: brightness(1.2); }
 
 /* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  @utility cs-particles-rain-light { animation: none !important; opacity: 0.3; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-particles-rain-heavy { animation: none !important; opacity: 0.3; }
   @utility cs-particles-snow-light { animation: none !important; opacity: 0.3; }
   @utility cs-particles-fire { animation: none !important; opacity: 0.3; }
   @utility cs-particles-smoke { animation: none !important; opacity: 0.3; }
   @utility cs-particles-sparkles { animation: none !important; opacity: 0.3; }
+}
+
+
+/* Utilities extracted from @media queries */
+@utility cs-particles-rain-light {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important; opacity: 0.3;
+  }
 }

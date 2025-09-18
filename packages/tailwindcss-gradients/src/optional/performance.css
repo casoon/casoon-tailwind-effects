@@ -191,11 +191,7 @@
 ------------------------------------------------------- */
 
 /* Mobile optimizations */
-@media (max-width: 768px) {
-  @utility cs-mobile-optimized {
-    animation-duration: calc(var(--cs-duration, 1s) * 1.5);
-    will-change: auto;
-  }
+/* Moved nested utilities to top-level - see end of file */
   
   @utility cs-mobile-optimized { & * { animation-iteration-count: 1; transform: translateZ(0); } }
 }
@@ -209,11 +205,7 @@
 }
 
 /* Desktop optimizations */
-@media (min-width: 1025px) {
-  @utility cs-desktop-optimized {
-    animation-duration: calc(var(--cs-duration, 1s) * 0.8);
-    will-change: transform, opacity, filter;
-  }
+/* Moved nested utilities to top-level - see end of file */
 }
 
 /* -------------------------------------------------------
@@ -221,8 +213,7 @@
 ------------------------------------------------------- */
 
 /* Reduced animations for battery saving */
-@media (prefers-reduced-motion: reduce) {
-  @utility cs-perf-fade-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-perf-slide-up { animation: none !important; opacity: 1 !important; transform: none !important; }
   @utility cs-perf-scale-in { animation: none !important; opacity: 1 !important; transform: none !important; }
   @utility cs-perf-rotate-in { animation: none !important; opacity: 1 !important; transform: none !important; }
@@ -234,8 +225,7 @@
 }
 
 /* Data saver mode */
-@media (prefers-reduced-data: reduce) {
-  @utility cs-gpu-accelerated { will-change: auto !important; transform: none !important; backface-visibility: visible !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-gpu-animate { will-change: auto !important; transform: none !important; backface-visibility: visible !important; }
   @utility cs-performance-high { will-change: auto !important; transform: none !important; backface-visibility: visible !important; }
 }
@@ -316,4 +306,32 @@
 /* Content containment */
 @utility cs-contain-content {
   contain: content;
+}
+
+
+/* Utilities extracted from @media queries */
+@utility cs-mobile-optimized {
+  @media (max-width: 768px) {
+    animation-duration: calc(var(--cs-duration, 1s) * 1.5);
+    will-change: auto;
+  }
+}
+
+@utility cs-desktop-optimized {
+  @media (min-width: 1025px) {
+    animation-duration: calc(var(--cs-duration, 1s) * 0.8);
+    will-change: transform, opacity, filter;
+  }
+}
+
+@utility cs-perf-fade-in {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important; opacity: 1 !important; transform: none !important;
+  }
+}
+
+@utility cs-gpu-accelerated {
+  @media (prefers-reduced-data: reduce) {
+    will-change: auto !important; transform: none !important; backface-visibility: visible !important;
+  }
 }

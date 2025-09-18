@@ -1,24 +1,24 @@
 /* FEATURE CARD PRESETS */
 
 /* Standard feature card */
-.cs-card-feature {
+@utility cs-card-feature {
   display: grid;
   grid-template-rows: auto auto 1fr;
-  gap: var(--cs-card-space-lg);
-  background: var(--cs-card-bg);
-  border: 1px solid var(--cs-card-border);
-  border-radius: var(--cs-card-radius-lg);
-  box-shadow: var(--cs-card-shadow-sm);
-  padding: var(--cs-card-space-xl);
+  gap: var(--cs-card-space-lg, 1.5rem);
+  background: var(--cs-card-bg, #ffffff);
+  border: 1px solid var(--cs-card-border, #e5e7eb);
+  border-radius: var(--cs-card-radius-lg, 12px);
+  box-shadow: var(--cs-card-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
+  padding: var(--cs-card-space-xl, 2rem);
   text-align: center;
   position: relative;
-  transition: var(--cs-card-transition);
+  transition: var(--cs-card-transition, all 0.2s ease);
 }
 
-.cs-card-feature:hover {
-  transform: translateY(var(--cs-card-hover-lift));
-  box-shadow: var(--cs-card-shadow-md);
-}
+@utility cs-card-feature { &:hover {
+  transform: translateY(var(--cs-card-hover-lift, -2px));
+  box-shadow: var(--cs-card-shadow-md, 0 4px 6px rgba(0, 0, 0, 0.07));
+} }
 
 /* Feature icon */
 .cs-card-feature .cs-feature-icon {

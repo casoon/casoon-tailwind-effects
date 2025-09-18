@@ -22,7 +22,7 @@
 @utility cs-texture-glass { &:hover { filter: brightness(1.05) saturate(1.1); } }
 
 /* Accessibility */
-@media (prefers-reduced-motion: reduce) { @utility cs-texture-fabric { &:hover { filter: none !important; } } @utility cs-texture-wood { &:hover { filter: none !important; } } @utility cs-texture-metal { &:hover { filter: none !important; } } @utility cs-texture-paper { &:hover { filter: none !important; } } @utility cs-texture-glass { &:hover { filter: none !important; } } }
+/* Moved nested utilities to top-level - see end of file */ } @utility cs-texture-wood { &:hover { filter: none !important; } } @utility cs-texture-metal { &:hover { filter: none !important; } } @utility cs-texture-paper { &:hover { filter: none !important; } } @utility cs-texture-glass { &:hover { filter: none !important; } } }
 
 /* -------------------------------------------------------
    Metal Textures
@@ -191,9 +191,35 @@
    Accessibility & Performance
 ------------------------------------------------------- */
 
-@media (prefers-reduced-motion: reduce) { @utility cs-texture-interactive { transition: none !important; &:hover { transform: none !important; } } }
+/* Moved nested utilities to top-level - see end of file */ } }
 
-@media (prefers-contrast: high) { @utility cs-texture-paper { filter: contrast(1.5) !important; } @utility cs-texture-canvas { filter: contrast(1.5) !important; } @utility cs-texture-parchment { filter: contrast(1.5) !important; } }
+/* Moved nested utilities to top-level - see end of file */ @utility cs-texture-canvas { filter: contrast(1.5) !important; } @utility cs-texture-parchment { filter: contrast(1.5) !important; } }
 
 /* Reduced complexity for low-end devices */
-@media (max-width: 480px) { @utility cs-texture-wood { background-image: none; filter: none; } @utility cs-texture-marble { background-image: none; filter: none; } @utility cs-texture-leather { background-image: none; filter: none; } }
+/* Moved nested utilities to top-level - see end of file */ @utility cs-texture-marble { background-image: none; filter: none; } @utility cs-texture-leather { background-image: none; filter: none; } }
+
+
+/* Utilities extracted from @media queries */
+@utility cs-texture-fabric {
+  @media (prefers-reduced-motion: reduce) {
+    &:hover { filter: none !important;
+  }
+}
+
+@utility cs-texture-interactive {
+  @media (prefers-reduced-motion: reduce) {
+    transition: none !important; &:hover { transform: none !important;
+  }
+}
+
+@utility cs-texture-paper {
+  @media (prefers-contrast: high) {
+    filter: contrast(1.5) !important;
+  }
+}
+
+@utility cs-texture-wood {
+  @media (max-width: 480px) {
+    background-image: none; filter: none;
+  }
+}

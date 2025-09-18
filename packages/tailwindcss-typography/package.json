@@ -1,6 +1,7 @@
 {
   "name": "@casoon/tailwindcss-typography",
-  "version": "0.8.4",
+  "private": true,
+  "version": "0.8.5",
   "description": "Content-specific typography presets for Tailwind CSS v4 - Blog prose, documentation, marketing copy, and reading optimizations",
   "keywords": [
     "tailwindcss",
@@ -23,13 +24,25 @@
   },
   "author": "Julian Seidel <info@casoon.com> (https://casoon.com)",
   "license": "MIT",
-  "main": "src/index.css",
+  "type": "module",
+  "exports": {
+    ".": "./dist.css",
+    "./dist.css": "./dist.css",
+    "./dist.min.css": "./dist.min.css"
+  },
+  "main": "./dist.css",
   "files": [
-    "src/",
-    "*.css",
-    "*.js",
-    "README.md"
+    "dist.css",
+    "dist.min.css",
+    "README.md",
+    "LICENSE"
   ],
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist.css --minify",
+    "validate": "node ../../scripts/validate-css.mjs",
+    "prepublishOnly": "npm run build && npm run validate",
+    "minify": "node ../../scripts/minify-css.mjs"
+  },
   "publishConfig": {
     "access": "public"
   },

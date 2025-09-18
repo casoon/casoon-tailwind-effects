@@ -211,243 +211,6 @@
     width: 100%;
   }
 }
-.cs-anim {
-  animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
-  animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
-  animation-iteration-count: 1;
-  animation-direction: var(--cs-anim-direction, normal);
-  animation-fill-mode: var(--cs-anim-fill, both);
-  animation-delay: var(--cs-anim-delay, 0ms);
-}
-.cs-anim-xxs {
-  --cs-anim-duration: var(--cs-anim-duration-xxs);
-}
-.cs-anim-xs {
-  --cs-anim-duration: var(--cs-anim-duration-xs);
-}
-.cs-anim-sm {
-  --cs-anim-duration: var(--cs-anim-duration-sm);
-}
-.cs-anim-md {
-  --cs-anim-duration: var(--cs-anim-duration-md);
-}
-.cs-anim-lg {
-  --cs-anim-duration: var(--cs-anim-duration-lg);
-}
-.cs-anim-xl {
-  --cs-anim-duration: var(--cs-anim-duration-xl);
-}
-.cs-anim-2xl {
-  --cs-anim-duration: var(--cs-anim-duration-2xl);
-}
-.cs-ease-standard {
-  --cs-anim-ease: var(--cs-anim-ease-standard);
-}
-.cs-ease-emphasized {
-  --cs-anim-ease: var(--cs-anim-ease-emphasized);
-}
-.cs-ease-decelerate {
-  --cs-anim-ease: var(--cs-anim-ease-decelerate);
-}
-.cs-ease-accelerate {
-  --cs-anim-ease: var(--cs-anim-ease-accelerate);
-}
-.cs-ease-spring {
-  --cs-anim-ease: var(--cs-anim-ease-spring);
-}
-.cs-ease-soft-spring {
-  --cs-anim-ease: var(--cs-anim-ease-soft-spring);
-}
-.cs-delay-0 {
-  --cs-anim-delay: 0ms;
-}
-.cs-delay-75 {
-  --cs-anim-delay: 75ms;
-}
-.cs-delay-100 {
-  --cs-anim-delay: 100ms;
-}
-.cs-delay-150 {
-  --cs-anim-delay: 150ms;
-}
-.cs-delay-200 {
-  --cs-anim-delay: 200ms;
-}
-.cs-delay-300 {
-  --cs-anim-delay: 300ms;
-}
-.cs-delay-500 {
-  --cs-anim-delay: 500ms;
-}
-.cs-delay-700 {
-  --cs-anim-delay: 700ms;
-}
-.cs-delay-1000 {
-  --cs-anim-delay: 1000ms;
-}
-.cs-anim-infinite {
-  animation-iteration-count: infinite;
-}
-.cs-anim-reverse {
-  animation-direction: reverse;
-}
-.cs-anim-alternate {
-  animation-direction: alternate;
-}
-.cs-anim-both {
-  animation-fill-mode: both;
-}
-.cs-anim-forwards {
-  animation-fill-mode: forwards;
-}
-.cs-will-transform {
-  will-change: transform;
-}
-.cs-will-opacity {
-  will-change: opacity;
-}
-.cs-will-filter {
-  will-change: filter;
-}
-.cs-t-origin-top {
-  transform-origin: top;
-}
-.cs-t-origin-center {
-  transform-origin: center;
-}
-.cs-t-origin-bottom {
-  transform-origin: bottom;
-}
-.cs-t-preserve-3d {
-  transform-style: preserve-3d;
-}
-.cs-fade-in {
-  animation-name: anim-fade-in;
-}
-.cs-fade-out {
-  animation-name: anim-fade-out;
-}
-.cs-scale-in {
-  animation-name: anim-scale-in;
-}
-.cs-scale-out {
-  animation-name: anim-scale-out;
-}
-.cs-slide-up {
-  animation-name: anim-slide-up;
-}
-.cs-slide-down {
-  animation-name: anim-slide-down;
-}
-.cs-slide-left {
-  animation-name: anim-slide-left;
-}
-.cs-slide-right {
-  animation-name: anim-slide-right;
-}
-.cs-blur-in {
-  animation-name: anim-blur-in;
-}
-.cs-blur-out {
-  animation-name: anim-blur-out;
-}
-.cs-rotate-in {
-  animation-name: anim-rotate-in;
-}
-.cs-rotate {
-  animation-name: anim-rotate;
-}
-.cs-pulse {
-  animation-name: anim-pulse;
-}
-.cs-bounce {
-  animation-name: anim-bounce;
-}
-.cs-wiggle {
-  animation-name: anim-wiggle;
-}
-.cs-reveal-3d-up {
-  animation-name: anim-reveal-3d-up;
-}
-.cs-reveal-3d-right {
-  animation-name: anim-reveal-3d-right;
-}
-.cs-marquee {
-  animation-name: anim-marquee;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-.cs-parallax-y {
-  animation-name: anim-parallax-y;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-}
-[class*="cs-stagger-"] > .cs-anim {
-  animation-delay: var(--cs-anim-delay);
-}
-.cs-stagger-75 > .cs-anim:nth-child(n) {
-  --cs-anim-delay: calc((var(--cs-stagger-i, 0)) * 75ms);
-}
-.cs-stagger-100 > .cs-anim:nth-child(n) {
-  --cs-anim-delay: calc((var(--cs-stagger-i, 0)) * 100ms);
-}
-.cs-stagger-150 > .cs-anim:nth-child(n) {
-  --cs-anim-delay: calc((var(--cs-stagger-i, 0)) * 150ms);
-}
-.cs-stagger-75 > .cs-anim:nth-child(1) {
-  --cs-stagger-i: 0;
-}
-.cs-stagger-75 > .cs-anim:nth-child(2) {
-  --cs-stagger-i: 1;
-}
-.cs-stagger-75 > .cs-anim:nth-child(3) {
-  --cs-stagger-i: 2;
-}
-.cs-stagger-75 > .cs-anim:nth-child(4) {
-  --cs-stagger-i: 3;
-}
-.cs-stagger-75 > .cs-anim:nth-child(5) {
-  --cs-stagger-i: 4;
-}
-.cs-stagger-75 > .cs-anim:nth-child(6) {
-  --cs-stagger-i: 5;
-}
-.cs-stagger-100 > .cs-anim:nth-child(1) {
-  --cs-stagger-i: 0;
-}
-.cs-stagger-100 > .cs-anim:nth-child(2) {
-  --cs-stagger-i: 1;
-}
-.cs-stagger-100 > .cs-anim:nth-child(3) {
-  --cs-stagger-i: 2;
-}
-.cs-stagger-100 > .cs-anim:nth-child(4) {
-  --cs-stagger-i: 3;
-}
-.cs-stagger-100 > .cs-anim:nth-child(5) {
-  --cs-stagger-i: 4;
-}
-.cs-stagger-100 > .cs-anim:nth-child(6) {
-  --cs-stagger-i: 5;
-}
-.cs-stagger-150 > .cs-anim:nth-child(1) {
-  --cs-stagger-i: 0;
-}
-.cs-stagger-150 > .cs-anim:nth-child(2) {
-  --cs-stagger-i: 1;
-}
-.cs-stagger-150 > .cs-anim:nth-child(3) {
-  --cs-stagger-i: 2;
-}
-.cs-stagger-150 > .cs-anim:nth-child(4) {
-  --cs-stagger-i: 3;
-}
-.cs-stagger-150 > .cs-anim:nth-child(5) {
-  --cs-stagger-i: 4;
-}
-.cs-stagger-150 > .cs-anim:nth-child(6) {
-  --cs-stagger-i: 5;
-}
 @keyframes cs-btn-press-kf {
   0% {
     transform: scale(1);
@@ -458,11 +221,6 @@
   100% {
     transform: scale(1);
   }
-}
-.cs-btn-press {
-  animation-name: cs-btn-press-kf;
-  animation-duration: var(--cs-anim-duration-xxs);
-  animation-timing-function: var(--cs-anim-ease-soft-spring);
 }
 @keyframes cs-ripple-kf {
   0% {
@@ -477,16 +235,6 @@
     background-size: 260% 260%;
     background-color: transparent;
   }
-}
-.cs-btn-ripple {
-  --cs-ripple-color: currentColor;
-  background-image: radial-gradient(circle, var(--cs-ripple-color) 0%, transparent 60%);
-  @supports (color: color-mix(in lab, red, red)) {
-    background-image: radial-gradient(circle, color-mix(in oklab, var(--cs-ripple-color) 20%, transparent) 0%, transparent 60%);
-  }
-  animation-name: cs-ripple-kf;
-  animation-duration: var(--cs-anim-duration-sm);
-  animation-timing-function: var(--cs-anim-ease-soft-spring);
 }
 @keyframes cs-underline-in-kf {
   0% {
@@ -503,26 +251,6 @@
   100% {
     --cs-underline-w: 0%;
   }
-}
-.cs-nav-underline-in, .cs-tab-underline-grow {
-  position: relative;
-}
-.cs-nav-underline-in::after, .cs-tab-underline-grow::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -2px;
-  translate: -50% 0;
-  width: var(--cs-underline-w);
-  height: var(--cs-underline-h);
-  background: currentColor;
-  border-radius: 999px;
-}
-.cs-nav-underline-in {
-  animation: cs-underline-in-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-decelerate) both;
-}
-.cs-nav-underline-out {
-  animation: cs-underline-out-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-accelerate) both;
 }
 @keyframes cs-pill-in-kf {
   0% {
@@ -542,27 +270,5 @@
   100% {
     opacity: 0;
     transform: scale(.92);
-  }
-}
-.cs-pill-in {
-  animation: cs-pill-in-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-decelerate) both;
-}
-.cs-pill-out {
-  animation: cs-pill-out-kf var(--cs-anim-duration-sm) var(--cs-anim-ease-accelerate) both;
-}
-@media (prefers-reduced-motion: reduce) {
-  .cs-anim, .cs-fade-in, .cs-fade-out, .cs-scale-in, .cs-scale-out, .cs-slide-up, .cs-slide-down, .cs-slide-left, .cs-slide-right, .cs-blur-in, .cs-blur-out, .cs-rotate-in, .cs-rotate, .cs-pulse, .cs-bounce, .cs-wiggle, .cs-reveal-3d-up, .cs-reveal-3d-right, .cs-marquee, .cs-parallax-y, .cs-btn-press, .cs-btn-ripple, .cs-nav-underline-in, .cs-nav-underline-out, .cs-tab-underline-grow, .cs-pill-in, .cs-pill-out, .cs-dropdown-in, .cs-dropdown-out, .cs-tooltip-in, .cs-tooltip-out, .cs-modal-in, .cs-modal-out, .cs-backdrop-in, .cs-backdrop-out, .cs-drawer-in-left, .cs-drawer-out-left, .cs-drawer-in-right, .cs-drawer-out-right, .cs-drawer-in-top, .cs-drawer-out-top, .cs-drawer-in-bottom, .cs-drawer-out-bottom, .cs-accordion-in, .cs-accordion-out, .cs-accordion-fade, .cs-toast-in, .cs-toast-out, .cs-chip-in, .cs-chip-out, .cs-badge-pop, .cs-skeleton, .cs-progress-indeterminate, .cs-spinner, .cs-carousel-slide, .cs-carousel-fade {
-    animation-duration: var(--cs-anim-reduced-motion-duration) !important;
-    animation-iteration-count: 1 !important;
-    animation-timing-function: var(--cs-anim-reduced-motion-ease) !important;
-    transition: none !important;
-  }
-  .cs-marquee, .cs-parallax-y {
-    animation-play-state: paused !important;
-  }
-}
-@media (max-width: 480px) {
-  .cs-anim:not(.cs-anim-lg, .cs-anim-xl, .cs-anim-2xl) {
-    animation-duration: var(--cs-anim-duration-sm);
   }
 }

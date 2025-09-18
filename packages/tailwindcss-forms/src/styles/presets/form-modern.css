@@ -102,15 +102,17 @@
   width: 100%;
 } }
 
-@utility cs-select-modern::after {
-  content: "▼";
-  position: absolute;
-  right: var(--cs-space-3);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: var(--cs-text-muted);
-  font-size: 12px;
+@utility cs-select-modern-arrow {
+  &::after {
+    content: "▼";
+    position: absolute;
+    right: var(--cs-space-3);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--cs-text-muted);
+    font-size: 12px;
+  }
 }
 
 @utility cs-select-modern { & select:focus {

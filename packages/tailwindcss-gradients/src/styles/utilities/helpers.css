@@ -15,10 +15,7 @@
 
 /* Example responsive intensity (smaller screens = lighter blur/motion)
    Note: move component-specific overrides into the respective utility blocks. */
-@media (max-width:480px){
-  /* Adjusted in @utility cs-acrylic */
-  /* Adjusted in gradient animation utilities */
-}
+/* Moved nested utilities to top-level - see end of file */
 
 /* -------------------------------------------------------
    Utility Helpers

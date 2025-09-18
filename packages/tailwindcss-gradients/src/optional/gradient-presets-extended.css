@@ -426,8 +426,7 @@
 }
 
 /* Dark mode optimized variants */
-@media (prefers-color-scheme: dark) {
-  @utility cs-bg-preset-auto-dark { filter: brightness(0.8) contrast(1.2); }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-bg-cotton-candy {
     background: 
       radial-gradient(circle at 20% 20%, #701a75 0%, transparent 60%), 
@@ -452,14 +451,12 @@
 }
 
 /* Accessibility optimizations */
-@media (prefers-reduced-motion: reduce) {
-  @utility cs-bg-preset-animated { animation: none !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-bg-preset-breathe { animation: none !important; }
   @utility cs-bg-preset-pulse { animation: none !important; }
 }
 
-@media (prefers-contrast: high) {
-  @utility cs-bg-synthwave { filter: contrast(2) brightness(1.3) !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-bg-vaporwave { filter: contrast(2) brightness(1.3) !important; }
   @utility cs-bg-cyber-punk { filter: contrast(2) brightness(1.3) !important; }
 }
@@ -469,4 +466,24 @@
   @utility cs-bg-galaxy-spiral { background: #f8fafc !important; filter: none !important; }
   @utility cs-bg-aurora-borealis { background: #f8fafc !important; filter: none !important; }
   @utility cs-bg-fairy-dust { background: #f8fafc !important; filter: none !important; }
+}
+
+
+/* Utilities extracted from @media queries */
+@utility cs-bg-preset-auto-dark {
+  @media (prefers-color-scheme: dark) {
+    filter: brightness(0.8) contrast(1.2);
+  }
+}
+
+@utility cs-bg-preset-animated {
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+  }
+}
+
+@utility cs-bg-synthwave {
+  @media (prefers-contrast: high) {
+    filter: contrast(2) brightness(1.3) !important;
+  }
 }

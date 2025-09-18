@@ -1,23 +1,8 @@
 /*!
  * Casoon Typography CSS (modular build)
- * Version: 0.8.0 — Tailwind CSS v4 compatible
+ * Version: 0.8.4 — Tailwind CSS v4 compatible
  * Content-specific typography presets and styles
  */
 
 /* Base: Typography tokens and system */
 @import "./styles/base/tokens.css";
-@import "./styles/base/font-loading.css";
-
-/* Presets: Content-specific typography */
-@import "./styles/presets/prose-blog.css";
-@import "./styles/presets/prose-docs.css";
-@import "./styles/presets/prose-marketing.css";
-@import "./styles/presets/prose-legal.css";
-
-/* Headings: Heading style collections */
-@import "./styles/presets/heading-styles.css";
-@import "./styles/presets/display-text.css";
-
-/* Effects: Text effects and enhancements */
-@import "./styles/effects/text-effects.css";
-@import "./styles/effects/reading-experience.css";

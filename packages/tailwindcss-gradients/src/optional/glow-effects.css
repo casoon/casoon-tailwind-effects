@@ -211,8 +211,7 @@
    Accessibility & Performance
 ------------------------------------------------------- */
 
-@media (prefers-reduced-motion: reduce) {
-  @utility cs-glow-red::after { animation: none !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-glow-blue::after { animation: none !important; }
   @utility cs-glow-green::after { animation: none !important; }
   @utility cs-glow-gold::after { animation: none !important; }
@@ -223,8 +222,7 @@
   @utility cs-glow-rotate::after { animation: none !important; }
 }
 
-@media (prefers-contrast: high) {
-  @utility cs-glow-base::before { opacity: 0.3 !important; }
+/* Moved nested utilities to top-level - see end of file */
   @utility cs-glow-base::after { opacity: 0.3 !important; }
 }
 

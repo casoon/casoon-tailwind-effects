@@ -31,12 +31,20 @@
 /* Glow utilities */
 @utility cs-glow { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
 
-@utility cs-glow-blue { box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-blue) 35%, transparent); }
-
-@utility cs-glow-pink { box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-pink) 35%, transparent); }
-
 /* Glow fallbacks for browsers without color-mix */
-@supports not (color: color-mix(in srgb, red 50%, white)) { @utility cs-glow-blue { box-shadow: 0 0 24px 8px rgba(59,130,246,.35); } @utility cs-glow-pink { box-shadow: 0 0 24px 8px rgba(236,72,153,.35); } }
+@utility cs-glow-blue {
+  box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-blue) 35%, transparent);
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    box-shadow: 0 0 24px 8px rgba(59,130,246,.35);
+  }
+}
+
+@utility cs-glow-pink {
+  box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-pink) 35%, transparent);
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    box-shadow: 0 0 24px 8px rgba(236,72,153,.35);
+  }
+}
 
 /* Sticky & performance helpers */
 @utility cs-sticky-top { position: sticky; top: 0; }

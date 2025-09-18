@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-effects",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "Complete collection of animation and UI effects for Tailwind CSS v4 - Available in 70KB Core and 144KB Full variants",
   "type": "module",
   "exports": {
@@ -47,15 +47,15 @@
     "tailwindcss": "^4.0.0"
   },
   "dependencies": {
-    "@casoon/tailwindcss-animations": "^0.8.4",
-    "@casoon/tailwindcss-glass": "^0.8.4",
-    "@casoon/tailwindcss-gradients": "^0.8.4",
-    "@casoon/tailwindcss-loading": "^0.8.4",
-    "@casoon/tailwindcss-micro-interactions": "^0.8.4",
-    "@casoon/tailwindcss-navigation": "^0.8.4",
-    "@casoon/tailwindcss-orbs": "^0.8.4",
-    "@casoon/tailwindcss-scroll": "^0.8.4",
-    "@casoon/tailwindcss-utilities": "^0.8.4"
+    "@casoon/tailwindcss-animations": "^0.8.5",
+    "@casoon/tailwindcss-glass": "^0.8.5",
+    "@casoon/tailwindcss-gradients": "^0.8.5",
+    "@casoon/tailwindcss-loading": "^0.8.5",
+    "@casoon/tailwindcss-micro-interactions": "^0.8.5",
+    "@casoon/tailwindcss-navigation": "^0.8.5",
+    "@casoon/tailwindcss-orbs": "^0.8.5",
+    "@casoon/tailwindcss-scroll": "^0.8.5",
+    "@casoon/tailwindcss-utilities": "^0.8.5"
   },
   "publishConfig": {
     "access": "public"
