@@ -1,5 +1,6 @@
 {
   "name": "@casoon/tailwindcss-gradients",
+  "private": true,
   "version": "0.8.5",
   "description": "Beautiful gradient utilities for Tailwind CSS v4",
   "type": "module",
