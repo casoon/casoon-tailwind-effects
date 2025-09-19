@@ -7,4 +7,9 @@
  *  * - utilities\n * - animations\n * - glass\n * - orbs
  * 
  * Usage: @import "@casoon/tailwindcss-effects";
- */\n\n@import '../../../tailwindcss-utilities/src/index.css';\n@import '../../../tailwindcss-animations/src/index.css';\n@import '../../../tailwindcss-glass/src/index.css';\n@import '../../../tailwindcss-orbs/src/index.css';
+ */
+
+@import '../../../tailwindcss-utilities/src/index.css';
+@import '../../../tailwindcss-animations/src/index.css';
+@import '../../../tailwindcss-glass/src/index.css';
+@import '../../../tailwindcss-orbs/src/index.css';

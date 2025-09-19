@@ -31,7 +31,7 @@
     "minify": "node ../../scripts/minify-css.mjs",
     "minify:core": "cat dist.core.css | tr -d '\n' | sed 's/  */ /g' > dist.core.min.css",
     "validate": "node ../../scripts/validate-css.mjs",
-    "prepublishOnly": "npm run build:all && npm run minify && npm run minify:core && npm run validate"
+    "prepublishOnly": "echo 'Building via root build system'"
   },
   "files": [
     "dist.css",

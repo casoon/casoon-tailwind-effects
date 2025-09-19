@@ -118,8 +118,8 @@ class EffectsBuilder {
       '',
       '@import "tailwindcss";',
       '',
-      ...packageContents.map(pkg => `/* === ${pkg.package.toUpperCase()} === */\\n${pkg.content}`)
-    ].join('\\n');
+      ...packageContents.map(pkg => `/* === ${pkg.package.toUpperCase()} === */\n${pkg.content}`)
+    ].join('\n');
 
     // Write the combined index.css
     const indexOutputPath = path.join(this.effectsDir, 'index.css');
@@ -137,7 +137,7 @@ class EffectsBuilder {
       headerComment,
       '',
       ...this.corePackages.map(pkg => `@import '../../../${pkg}/src/index.css';`)
-    ].join('\\n');
+    ].join('\n');
     
     await fs.writeFile(stylesOutputPath, stylesContent);
     
