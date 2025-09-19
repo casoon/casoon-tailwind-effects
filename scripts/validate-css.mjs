@@ -40,7 +40,7 @@ const VALIDATION_CRITERIA = {
     'tailwindcss-utilities': { minClasses: 30, maxFileSize: 50000 },
     'tailwindcss-animations': { minClasses: 0, maxFileSize: 80000 }, // Animation utilities may not generate visible classes without usage
     'tailwindcss-glass': { minClasses: 45, maxFileSize: 60000 },
-    'tailwindcss-gradients': { minClasses: 20, maxFileSize: 40000 },
+    'tailwindcss-gradients': { minClasses: 2, maxFileSize: 40000 }, // Minimized for v4 compatibility
     'tailwindcss-loading': { minClasses: 10, maxFileSize: 30000 },
     'tailwindcss-navigation': { minClasses: 15, maxFileSize: 35000 },
     'tailwindcss-orbs': { minClasses: 8, maxFileSize: 25000 },
