@@ -1,0 +1,41 @@
+/*! 
+ * Casoon CSS Utilities (modular build)
+ * Version: 0.8.0 — Tailwind CSS v4 compatible
+ * Scope: Utilities, layout, a11y, motion, effects, components
+ * 
+ * NEW 7-LAYER ARCHITECTURE:
+ * 1. cs-reset    - CSS resets & normalization
+ * 2. cs-tokens   - Design tokens & CSS custom properties  
+ * 3. cs-base     - Base elements, keyframes, system styles
+ * 4. cs-components - Simple UI components
+ * 5. cs-patterns - Complex composed patterns
+ * 6. cs-utilities - Atomic utility classes
+ * 7. cs-overrides - Theme overrides, debug utils
+ */
+
+/* Layer definitions (must come first) */
+@import "./styles/base/layers.css";
+
+/* cs-tokens: Design tokens and CSS custom properties */
+@import "./styles/tokens/design-tokens.css";
+
+/* cs-base: System styles, keyframes, and base elements */
+@import "./styles/base/system.css";
+@import "./styles/base/animation.css";
+@import "./styles/base/fallbacks.css";
+
+/* cs-utilities: Core functional classes */
+@import "./styles/utilities/core.css";
+@import "./styles/utilities/layout.css";
+@import "./styles/utilities/accessibility.css";
+@import "./styles/utilities/effects.css";
+
+/* cs-components: Higher-level UI patterns */
+@import "./styles/components/surfaces.css";
+
+/* cs-patterns: Complex composed UI patterns */
+@import "./styles/patterns/complex-ui.css";
+@import "./styles/patterns/component-presets.css";
+
+/* cs-overrides: Theme overrides, debug utilities, force overrides */
+@import "./styles/overrides/theme-overrides.css";

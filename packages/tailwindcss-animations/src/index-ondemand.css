@@ -1,8 +1,6 @@
 /*!
- * Casoon Animations - Tailwind v4 Directive Definitions
- * Version: 0.8.5 — For processing by Tailwind in consumer projects
- * 
- * Usage: @import "@casoon/tailwindcss-animations/index.css";
+ * Casoon Animations CSS - Tailwind v4 On-Demand
+ * Version: 0.8.5 — Pure @utility/@theme architecture
  */
 
 @import "tailwindcss";
@@ -56,7 +54,7 @@
   --animate-cs-blur-in: cs-blur-in var(--cs-anim-duration-md) var(--cs-anim-ease-standard);
   --animate-cs-blur-out: cs-blur-out var(--cs-anim-duration-md) var(--cs-anim-ease-standard);
   --animate-cs-rotate-in: cs-rotate-in var(--cs-anim-duration-md) var(--cs-anim-ease-standard);
-  --animate-cs-rotate: cs-rotate var(--cs-anim-duration-lg) linear infinite;
+  --animate-cs-rotate: cs-rotate var(--cs-anim-duration-lg) linear;
   --animate-cs-pulse: cs-pulse var(--cs-anim-duration-lg) var(--cs-anim-ease-standard) infinite;
   --animate-cs-bounce: cs-bounce var(--cs-anim-duration-lg) var(--cs-anim-ease-standard) infinite;
   --animate-cs-wiggle: cs-wiggle var(--cs-anim-duration-sm) var(--cs-anim-ease-standard);

@@ -129,20 +129,18 @@
    ========================================================= */
 @utility cs-focus-ring {
   outline: none;
-  
-  &:focus-visible {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px color-mix(in srgb, var(--cs-brand, #4f7cff) 20%, transparent);
-    transition: box-shadow var(--cs-transition);
-  }
 }
 
-@utility cs-focus-ring-within {
-  &:focus-within {
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px color-mix(in srgb, var(--cs-brand, #4f7cff) 22%, transparent);
-    border-radius: var(--cs-radius);
-  }
+@utility cs-focus-ring:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px color-mix(in srgb, var(--cs-brand, #4f7cff) 20%, transparent);
+  transition: box-shadow var(--cs-transition);
+}
+
+@utility cs-focus-ring-within:focus-within {
+  box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px color-mix(in srgb, var(--cs-brand, #4f7cff) 22%, transparent);
+  border-radius: var(--cs-radius);
 }
 
 /* =========================================================
@@ -303,20 +301,20 @@
 @utility cs-btn-primary {
   background: var(--cs-brand);
   color: var(--cs-brand-contrast);
-  
-  &:hover {
-    background: color-mix(in srgb, var(--cs-brand) 85%, black);
-  }
+}
+
+@utility cs-btn-primary:hover {
+  background: color-mix(in srgb, var(--cs-brand) 85%, black);
 }
 
 @utility cs-btn-secondary {
   background: var(--cs-elev1);
   color: var(--cs-text);
   border: 1px solid var(--cs-border);
-  
-  &:hover {
-    background: var(--cs-elev2);
-  }
+}
+
+@utility cs-btn-secondary:hover {
+  background: var(--cs-elev2);
 }
 
 /* =========================================================
