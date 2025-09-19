@@ -2,40 +2,71 @@
   FOCUS RINGS (focus-visible first-class)
  *--------------------------------------*/
 
-/* Fallback when :focus-visible unsupported -> use :focus */
-@supports not selector(:focus-visible) {
-  @utility cs-focus-scale-105 { transition: transform var(--cs-transition); &:focus { transform: scale(1.05); } }
-
-  @utility cs-focus-ring-2 { &:focus { outline: none; box-shadow: 0 0 0 2px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback)); } }
-  @utility cs-focus-ring-4 { &:focus { outline: none; box-shadow: 0 0 0 4px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback)); } }
-}
-
-/* Preferred modern path */
-@supports selector(:focus-visible) {
-  @utility cs-focus-scale-105 { transition: transform var(--cs-transition); &:focus-visible { transform: scale(1.05); } }
-
-  @utility cs-focus-ring-2 { &:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback)); } }
-  @utility cs-focus-ring-4 { &:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback)); } }
-}
-
-/* High-contrast / forced colors support */
-/* Moved nested utilities to top-level - see end of file */ }
-  @utility cs-focus-ring-4 { &:focus-visible, &:focus { box-shadow: 0 0 0 3px CanvasText, 0 0 0 5px Canvas; } }
-}
-/* Moved nested utilities to top-level - see end of file */ }
-  @utility cs-focus-ring-4 { &:focus-visible, &:focus { outline: 3px solid Highlight; outline-offset: 2px; box-shadow: none; } }
-}
-
-
-/* Utilities extracted from @media queries */
-@utility cs-focus-ring-2 {
-  @media (prefers-contrast: more) {
-    &:focus-visible, &:focus { box-shadow: 0 0 0 2px CanvasText;
+/* Core focus utilities - work with both :focus and :focus-visible */
+@utility cs-focus-scale-105 {
+  transition: transform var(--cs-transition);
+  &:focus-visible { transform: scale(1.05); }
+  @supports not selector(:focus-visible) {
+    &:focus { transform: scale(1.05); }
   }
 }
 
 @utility cs-focus-ring-2 {
+  &:focus-visible { 
+    outline: none; 
+    box-shadow: 0 0 0 2px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback)); 
+  }
+  @supports not selector(:focus-visible) {
+    &:focus { 
+      outline: none; 
+      box-shadow: 0 0 0 2px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback)); 
+    }
+  }
+}
+
+@utility cs-focus-ring-4 {
+  &:focus-visible { 
+    outline: none; 
+    box-shadow: 0 0 0 4px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback)); 
+  }
+  @supports not selector(:focus-visible) {
+    &:focus { 
+      outline: none; 
+      box-shadow: 0 0 0 4px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback)); 
+    }
+  }
+}
+
+/* High-contrast support utilities */
+@utility cs-focus-ring-4-high-contrast {
+  &:focus-visible, &:focus { 
+    box-shadow: 0 0 0 3px CanvasText, 0 0 0 5px Canvas; 
+  }
+}
+
+@utility cs-focus-ring-4-forced-colors {
+  &:focus-visible, &:focus { 
+    outline: 3px solid Highlight; 
+    outline-offset: 2px; 
+    box-shadow: none; 
+  }
+}
+
+/* Responsive utilities */
+@utility cs-focus-ring-2 {
+  @media (prefers-contrast: more) {
+    &:focus-visible, &:focus { 
+      box-shadow: 0 0 0 2px CanvasText; 
+    }
+  }
+}
+
+@utility cs-focus-ring-2-forced {
   @media (forced-colors: active) {
-    &:focus-visible, &:focus { outline: 2px solid Highlight; outline-offset: 2px; box-shadow: none;
+    &:focus-visible, &:focus { 
+      outline: 2px solid Highlight; 
+      outline-offset: 2px; 
+      box-shadow: none; 
+    }
   }
 }

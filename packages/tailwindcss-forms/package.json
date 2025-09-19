@@ -1,6 +1,5 @@
 {
   "name": "@casoon/tailwindcss-forms",
-  "private": true,
   "version": "0.8.5",
   "description": "Modern form presets and components for Tailwind CSS v4 - Glass morphism, validation states, and accessibility-first design",
   "keywords": [

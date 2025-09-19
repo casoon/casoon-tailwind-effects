@@ -1,6 +1,5 @@
 {
   "name": "@casoon/tailwindcss-scroll",
-  "private": true,
   "version": "0.8.5",
   "description": "Scroll behavior, snap, and scrollbar styling for Tailwind CSS v4",
   "type": "module",

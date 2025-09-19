@@ -1,6 +1,5 @@
 {
   "name": "@casoon/tailwindcss-cards",
-  "private": true,
   "version": "0.8.5",
   "description": "Ready-to-use card presets for Tailwind CSS v4 - Product cards, pricing tables, testimonials, and feature cards with orb effects",
   "keywords": [

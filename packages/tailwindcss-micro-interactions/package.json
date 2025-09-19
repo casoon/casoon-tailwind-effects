@@ -1,6 +1,5 @@
 {
   "name": "@casoon/tailwindcss-micro-interactions",
-  "private": true,
   "version": "0.8.5",
   "description": "Micro-interactions and subtle animations for Tailwind CSS v4",
   "type": "module",

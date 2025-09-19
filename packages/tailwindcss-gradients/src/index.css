@@ -1,28 +1,8 @@
 /*!
  * Casoon Gradients CSS (modular build)
- * Version: 0.8.0 — Tailwind CSS v4 compatible
- * Gradient utilities, text effects, and animations
+ * Version: 0.8.5 — Tailwind CSS v4 compatible
+ * Core gradient utilities and text effects
  */
 
-/* Base: Tokens and foundational styles */
+/* Base tokens only */
 @import "./styles/base/tokens.css";
-@import "./styles/base/fallbacks.css";
-@import "./styles/variants.css";
-
-/* Utilities: Core gradient classes */
-@import "./styles/utilities/backgrounds.css";
-@import "./styles/utilities/gradient-presets-core.css";
-@import "./styles/utilities/text.css";
-@import "./styles/utilities/shapes.css";
-@import "./styles/utilities/helpers.css";
-/* Components: UI patterns and surfaces */
-@import "./styles/components/borders.css";
-@import "./styles/components/surfaces.css";
-
-/* Effects: Animations and advanced features */
-@import "./styles/effects/animations.css";
-@import "./styles/effects/pro-effects.css";
-@import "./styles/effects/canvas-effects.css";
-@import "./styles/effects/canvas-keyframes.css";
-@import "./styles/effects/interactive-effects.css";
-@import "./styles/effects/material-compact.css";

@@ -1,6 +1,5 @@
 {
   "name": "@casoon/tailwindcss-typography",
-  "private": true,
   "version": "0.8.5",
   "description": "Content-specific typography presets for Tailwind CSS v4 - Blog prose, documentation, marketing copy, and reading optimizations",
   "keywords": [

@@ -1,0 +1,91 @@
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
+/*!
+ * Casoon Forms CSS (modular build)
+ * Version: 0.8.0 — Tailwind CSS v4 compatible
+ * Comprehensive form components, validation states, and presets
+ */
+:root {
+  --cs-form-space-sm: calc(0.75rem * var(--cs-density, 1));
+  --cs-form-space-md: calc(1rem * var(--cs-density, 1));
+  --cs-form-space-lg: calc(1.5rem * var(--cs-density, 1));
+  --cs-form-bg: var(--cs-bg, #ffffff);
+  --cs-form-surface: var(--cs-surface, #f8f9fa);
+  --cs-form-border: var(--cs-border, #dee2e6);
+  --cs-form-text: var(--cs-text, #212529);
+  --cs-form-text-muted: var(--cs-text-muted, #6c757d);
+  --cs-form-focus: var(--cs-brand, #4f7cff);
+  --cs-form-success: var(--cs-success, #22c55e);
+  --cs-form-warning: var(--cs-warning, #f59e0b);
+  --cs-form-danger: var(--cs-danger, #ef4444);
+  --cs-form-info: var(--cs-info, #0ea5e9);
+  --cs-form-transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cs-form-transition-fast: all 0.12s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cs-form-font-family: var(--cs-font-sans, system-ui, -apple-system, sans-serif);
+  --cs-form-font-size: var(--cs-fs-md, 1rem);
+  --cs-form-font-size-sm: var(--cs-fs-sm, 0.875rem);
+  --cs-form-line-height: var(--cs-line, 1.5);
+  --cs-form-border-width: 1px;
+  --cs-form-border-width-focus: 2px;
+  --cs-form-radius: var(--cs-radius, 8px);
+  --cs-form-radius-sm: var(--cs-radius-sm, 4px);
+  --cs-form-radius-lg: var(--cs-radius-lg, 12px);
+  --cs-form-shadow: var(--cs-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.1));
+  --cs-form-shadow-focus: 0 0 0 3px var(--cs-form-focus);
+  --cs-form-glass-bg: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
+  --cs-form-glass-border: var(--cs-acrylic-border, rgba(255, 255, 255, 0.2));
+  --cs-form-glass-blur: saturate(140%) blur(12px);
+}
+@keyframes cs-form-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+@keyframes cs-form-success-bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes cs-form-field-focus {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 var(--cs-form-focus);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 2px var(--cs-form-focus);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 2px var(--cs-form-focus);
+  }
+}
+@keyframes cs-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes cs-form-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

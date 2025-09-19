@@ -1,0 +1,290 @@
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
+/*!
+ * Casoon CSS — Micro Interactions (modular build)
+ * Version: 0.8.0 — Tailwind CSS v4 compatible
+ * Subtle micro-interactions for modern interfaces
+ */
+.cs-root {
+  --cs-color-focus: #3b82f6;
+  --cs-color-shadow: #000000;
+  --cs-opacity-focus-strong: 50%;
+  --cs-opacity-focus-medium: 30%;
+  --cs-opacity-shadow-light: 10%;
+  --cs-focus-ring-strong-fallback: rgba(59,130,246,0.5);
+  --cs-focus-ring-medium-fallback: rgba(59,130,246,0.3);
+  --cs-shadow-light-fallback: rgba(0,0,0,0.10);
+  --cs-ease: cubic-bezier(.2,.8,.2,1);
+  --cs-transition: 0.2s var(--cs-ease);
+  --cs-anim-duration: 240ms;
+  --cs-anim-duration-fast: 140ms;
+  --cs-anim-duration-slow: 360ms;
+  --cs-anim-delay: 0ms;
+  --cs-density: 1;
+}
+@supports (color: color-mix(in srgb, red 50%, white)) {
+  .cs-root {
+    --cs-focus-ring-strong: var(--cs-color-focus);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-focus-ring-strong: color-mix(in srgb, var(--cs-color-focus) var(--cs-opacity-focus-strong), transparent);
+    }
+    --cs-focus-ring-medium: var(--cs-color-focus);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-focus-ring-medium: color-mix(in srgb, var(--cs-color-focus) var(--cs-opacity-focus-medium), transparent);
+    }
+    --cs-shadow-light: var(--cs-color-shadow);
+    @supports (color: color-mix(in lab, red, red)) {
+      --cs-shadow-light: color-mix(in srgb, var(--cs-color-shadow) var(--cs-opacity-shadow-light), transparent);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-hover-scale-95, .cs-hover-scale-105, .cs-hover-scale-110, .cs-hover-rotate-1, .cs-hover-rotate-3, .cs-hover-rotate-6, .cs-hover-translate-y-1, .cs-hover-translate-y-2, .cs-tap-scale-95, .cs-modal-in, .cs-toast-out {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .cs-hover-scale-95:hover, .cs-hover-scale-105:hover, .cs-hover-scale-110:hover, .cs-hover-rotate-1:hover, .cs-hover-rotate-3:hover, .cs-hover-rotate-6:hover, .cs-hover-translate-y-1:hover, .cs-hover-translate-y-2:hover, .cs-tap-scale-95:active {
+    transform: none !important;
+  }
+}
+@media (max-width: 480px) {
+  .cs-hover-rotate-6:hover {
+    transform: rotate(2deg);
+  }
+  .cs-hover-scale-110:hover {
+    transform: scale(1.06);
+  }
+}
+@media print {
+  .cs-acrylic {
+    backdrop-filter: none;
+    background-color: #fff;
+  }
+  .cs-glow-sm, .cs-glow-md, .cs-glow-lg {
+    filter: none;
+  }
+  .cs-interactive {
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-reveal-fade-up, .cs-reveal-scale-in, .cs-focus-pop, .cs-hover-pulse, .cs-tap-bounce {
+    animation: none !important;
+  }
+}
+@media print {
+  .cs-glow-ring, .cs-hover-pulse, .cs-reveal-fade-up, .cs-reveal-scale-in, .cs-focus-pop {
+    animation: none !important;
+    box-shadow: none !important;
+  }
+}
+.cs-cq {
+  container-type: inline-size;
+  container-name: cs;
+}
+@container cs (max-width: 480px) {
+  .cs-hover-translate-y-1:hover {
+    transform: translateY(calc(-0.2rem * var(--cs-density)));
+  }
+  .cs-hover-translate-y-2:hover {
+    transform: translateY(calc(-0.35rem * var(--cs-density)));
+  }
+  .cs-hover-rotate-6:hover {
+    transform: rotate(3deg);
+  }
+  .cs-interactive:hover {
+    transform: translateY(calc(-0.5px * var(--cs-density)));
+  }
+}
+@container cs (min-width: 481px) and (max-width: 900px) {
+  .cs-hover-translate-y-2:hover {
+    transform: translateY(calc(-0.45rem * var(--cs-density)));
+  }
+}
+.cs-hover-scale-95, .cs-hover-scale-105, .cs-hover-scale-110 {
+  transition: transform var(--cs-transition);
+}
+.cs-hover-scale-95:hover {
+  transform: scale(0.95);
+}
+.cs-hover-scale-105:hover {
+  transform: scale(1.05);
+}
+.cs-hover-scale-110:hover {
+  transform: scale(1.10);
+}
+.cs-hover-fade-in {
+  opacity: 0.7;
+  transition: opacity var(--cs-transition);
+}
+.cs-hover-fade-in:hover {
+  opacity: 1;
+}
+.cs-hover-fade-out {
+  opacity: 1;
+  transition: opacity var(--cs-transition);
+}
+.cs-hover-fade-out:hover {
+  opacity: 0.7;
+}
+.cs-hover-brighten {
+  transition: filter var(--cs-transition);
+}
+.cs-hover-brighten:hover {
+  filter: brightness(1.1);
+}
+.cs-hover-darken {
+  transition: filter var(--cs-transition);
+}
+.cs-hover-darken:hover {
+  filter: brightness(0.9);
+}
+.cs-hover-rotate-1, .cs-hover-rotate-3, .cs-hover-rotate-6 {
+  transition: transform var(--cs-transition);
+}
+.cs-hover-rotate-1:hover {
+  transform: rotate(1deg);
+}
+.cs-hover-rotate-3:hover {
+  transform: rotate(3deg);
+}
+.cs-hover-rotate-6:hover {
+  transform: rotate(6deg);
+}
+.cs-hover-translate-y-1, .cs-hover-translate-y-2 {
+  transition: transform var(--cs-transition);
+}
+.cs-hover-translate-y-1:hover {
+  transform: translateY(calc(-0.25rem * var(--cs-density)));
+}
+.cs-hover-translate-y-2:hover {
+  transform: translateY(calc(-0.5rem * var(--cs-density)));
+}
+.cs-active-scale-95:active {
+  transform: scale(0.95);
+}
+.cs-active-scale-98:active {
+  transform: scale(0.98);
+}
+.cs-tap-highlight-none {
+  -webkit-tap-highlight-color: transparent;
+}
+.cs-tap-scale-95 {
+  transition: transform 0.1s var(--cs-ease);
+}
+.cs-tap-scale-95:active {
+  transform: scale(0.95);
+}
+.cs-smooth-interaction {
+  transition: all var(--cs-transition);
+}
+.cs-smooth-interaction-fast {
+  transition: all var(--cs-anim-duration-fast) var(--cs-ease);
+}
+.cs-smooth-interaction-slow {
+  transition: all var(--cs-anim-duration-slow) var(--cs-ease);
+}
+.cs-interactive {
+  cursor: pointer;
+  transition: transform 0.1s var(--cs-ease), box-shadow 0.1s var(--cs-ease);
+}
+.cs-interactive:hover {
+  transform: translateY(calc(-1px * var(--cs-density)));
+  box-shadow: 0 4px 8px var(--cs-shadow-light, var(--cs-shadow-light-fallback));
+}
+.cs-interactive:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px var(--cs-shadow-light, var(--cs-shadow-light-fallback));
+}
+@keyframes cs-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes cs-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@keyframes cs-reveal-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.cs-reveal-fade-up {
+  animation: cs-reveal-fade-up var(--cs-anim-duration) var(--cs-ease) both;
+}
+@keyframes cs-reveal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.cs-reveal-scale-in {
+  animation: cs-reveal-scale-in var(--cs-anim-duration) var(--cs-ease) both;
+}
+.cs-focus-pop:focus-visible {
+  animation: cs-reveal-scale-in var(--cs-anim-duration-fast) var(--cs-ease) both;
+}
+@keyframes cs-pulse-quick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.cs-hover-pulse:hover {
+  animation: cs-pulse-quick 240ms var(--cs-ease);
+}
+@keyframes cs-bounce-tap {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.cs-tap-bounce:active {
+  animation: cs-bounce-tap 200ms ease-in-out;
+}
+.cs-glow-ring {
+  box-shadow: 0 0 0 2px var(--cs-focus-ring-strong, var(--cs-focus-ring-strong-fallback)), 0 0 0 6px var(--cs-focus-ring-medium, var(--cs-focus-ring-medium-fallback));
+}
+[data-interact="pop"]:hover {
+  transform: scale(1.05);
+  transition: transform var(--cs-transition);
+}
+[data-interact="lift"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--cs-shadow-light, var(--cs-shadow-light-fallback));
+}
+[data-interact="pulse"]:hover {
+  animation: cs-pulse-quick 240ms var(--cs-ease);
+}

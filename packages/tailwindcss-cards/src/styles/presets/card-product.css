@@ -1,22 +1,22 @@
 /* PRODUCT CARD PRESETS */
 
 /* Standard product card */
-.cs-card-product {
+@utility cs-card-product {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background: var(--cs-surface);
-  border: 1px solid var(--cs-border);
-  border-radius: var(--cs-radius-lg);
-  box-shadow: var(--cs-shadow-1);
+  background: var(--cs-surface, #ffffff);
+  border: 1px solid var(--cs-border, #e5e7eb);
+  border-radius: var(--cs-radius-lg, 12px);
+  box-shadow: var(--cs-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.1));
   overflow: hidden;
-  transition: all var(--cs-transition);
+  transition: all var(--cs-transition, 0.2s ease);
   position: relative;
 }
 
-.cs-card-product:hover {
+@utility cs-card-product { &:hover {
   transform: translateY(-2px);
-  box-shadow: var(--cs-shadow-2);
-}
+  box-shadow: var(--cs-shadow-2, 0 4px 6px rgba(0, 0, 0, 0.1));
+} }
 
 /* Product image area */
 .cs-card-product .cs-product-image {
