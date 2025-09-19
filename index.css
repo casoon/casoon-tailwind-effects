@@ -1,0 +1,27 @@
+/*!
+ * Casoon Tailwind Effects v0.9.0 - Complete Collection
+ * All-in-one CSS file with Tailwind CSS v4 + all Casoon packages
+ * 
+ * Features:
+ * ✅ 300+ Utilities & Effects
+ * ✅ Tree-shaking support with @utility directives
+ * ✅ Modern animations with stagger system & 3D effects
+ * ✅ Glass-morphism effects with smart fallbacks
+ * ✅ Complete accessibility support (prefers-reduced-motion)
+ * ✅ Performance optimized with hardware acceleration
+ * 
+ * Usage:
+ * @import "path/to/casoon-tailwind-effects/index.css";
+ */
+
+/* === TAILWIND CSS v4 BASE === */
+@import "tailwindcss";
+
+/* === CONSOLIDATED CORE PACKAGES === */
+@import "./packages/tailwindcss-utilities/src/index.css";  /* 200+ utilities */
+@import "./packages/tailwindcss-animations/src/index.css"; /* 80+ animations */
+@import "./packages/tailwindcss-glass/src/index.css";      /* Glass morphism */
+
+/* === SPECIALIZED PACKAGES === */
+@import "./packages/tailwindcss-orbs/src/index.css";       /* Gradient orbs */
+@import "./packages/tailwindcss-core/src/index.css";       /* Design tokens */

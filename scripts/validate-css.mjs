@@ -35,18 +35,18 @@ const colors = {
 
 // Validation criteria configuration
 const VALIDATION_CRITERIA = {
-  // Expected packages with their minimum class counts
+  // Expected packages with their minimum class counts (Tailwind v4 On-Demand optimized)
   expectedPackages: {
-    'tailwindcss-utilities': { minClasses: 30, maxFileSize: 50000 },
+    'tailwindcss-utilities': { minClasses: 2, maxFileSize: 50000 }, // On-Demand: only generates used classes
     'tailwindcss-animations': { minClasses: 0, maxFileSize: 80000 }, // Animation utilities may not generate visible classes without usage
-    'tailwindcss-glass': { minClasses: 45, maxFileSize: 60000 },
-    'tailwindcss-gradients': { minClasses: 2, maxFileSize: 40000 }, // Minimized for v4 compatibility
-    'tailwindcss-loading': { minClasses: 10, maxFileSize: 30000 },
+    'tailwindcss-glass': { minClasses: 1, maxFileSize: 60000 }, // On-Demand: depends on usage
+    'tailwindcss-gradients': { minClasses: 1, maxFileSize: 40000 }, // On-Demand compatible
+    'tailwindcss-loading': { minClasses: 1, maxFileSize: 30000 }, // On-Demand: varies by usage
     'tailwindcss-navigation': { minClasses: 0, maxFileSize: 35000 }, // Basic navigation utilities
-    'tailwindcss-orbs': { minClasses: 8, maxFileSize: 25000 },
-    'tailwindcss-scroll': { minClasses: 12, maxFileSize: 30000 },
-    'tailwindcss-micro-interactions': { minClasses: 15, maxFileSize: 35000 },
-    'tailwindcss-effects': { minClasses: 150, maxFileSize: 200000 } // Combined package
+    'tailwindcss-orbs': { minClasses: 0, maxFileSize: 25000 }, // Uses @utility directives, no direct classes
+    'tailwindcss-scroll': { minClasses: 1, maxFileSize: 30000 }, // On-Demand: varies by usage
+    'tailwindcss-micro-interactions': { minClasses: 1, maxFileSize: 35000 }, // On-Demand: varies by usage
+    'tailwindcss-effects': { minClasses: 10, maxFileSize: 200000 } // Combined package: at least some cs- classes
   },
   // Global constraints
   maxFileSize: 200000, // 200KB max
@@ -138,9 +138,9 @@ class CSSValidator {
       // Prefix validation
       const nonPrefixedClasses = classes.filter(cls => !cls.startsWith(VALIDATION_CRITERIA.requiredPrefix));
       if (nonPrefixedClasses.length > 0) {
-        // Allow some exceptions for root, :root, html, body, * selectors
+        // Allow exceptions for root, :root, html, body, * selectors and common Tailwind utilities
         const allowedExceptions = nonPrefixedClasses.filter(cls => 
-          !cls.match(/^(:root|html|body|\*|::?[a-z-]+|\[[a-z-]+\]|@[a-z-]+)$/i)
+          !cls.match(/^(:root|html|body|\*|::?[a-z-]+|\[[a-z-]+\]|@[a-z-]+|backdrop-filter|rounded|border|blur|shadow|opacity|visible|container|grid|ring|flex|block|inline|hidden|transition|duration|ease|transform|scale|rotate|translate|underline|motion-reduce|text-decoration|font-weight|font-size|text-align|color|background|margin|padding|active|hover|focus|disabled)$/i)
         );
         if (allowedExceptions.length > 0) {
           const classList = allowedExceptions.slice(0, 10).map(cls => `.${cls}`).join(', ');

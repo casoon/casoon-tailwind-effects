@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casoon Packages Test - Konsolidierte Pakete</title>
+    <link rel="stylesheet" href="./casoon-test.css">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8 text-gray-800">Casoon Packages Tree-Shaking Test</h1>
+        
+        <!-- Animation Tests (Neue konsolidierte Pakete) -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-blue-600">Animations - Konsolidiert v0.9.0</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 cs-stagger-100">
+                <div class="cs-fade-in cs-anim cs-anim-sm cs-ease-spring bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold">Fade In + Spring</h3>
+                    <p class="text-gray-600">cs-fade-in cs-anim cs-anim-sm cs-ease-spring</p>
+                </div>
+                <div class="cs-slide-up cs-anim cs-anim-lg cs-ease-bounce bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold">Slide Up + Bounce</h3>
+                    <p class="text-gray-600">cs-slide-up cs-anim-lg cs-ease-bounce</p>
+                </div>
+                <div class="cs-scale-in cs-anim cs-anim-md cs-delay-300 bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold">Scale In + Delay</h3>
+                    <p class="text-gray-600">cs-scale-in cs-anim-md cs-delay-300</p>
+                </div>
+            </div>
+            
+            <!-- 3D Animation Test -->
+            <div class="mt-6 cs-preserve-3d">
+                <div class="cs-reveal-3d-up cs-anim cs-anim-lg bg-gradient-to-br from-blue-500 to-purple-600 text-white p-6 rounded-lg">
+                    <h3 class="font-bold">3D Reveal Animation</h3>
+                    <p>cs-reveal-3d-up cs-preserve-3d Test</p>
+                </div>
+            </div>
+            
+            <!-- Continuous Animations -->
+            <div class="mt-6 flex gap-4">
+                <div class="cs-pulse bg-red-500 text-white p-4 rounded-lg">Pulse</div>
+                <div class="cs-bounce bg-green-500 text-white p-4 rounded-lg">Bounce</div>
+                <div class="cs-float bg-purple-500 text-white p-4 rounded-lg">Float</div>
+            </div>
+        </div>
+        
+        <!-- Glass Effects Tests - Konsolidiert -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-purple-600">Glass Effects - Konsolidiert v0.2.0</h2>
+            <div class="cs-glass bg-white/20 p-6 rounded-lg mb-4">
+                <h3 class="font-bold">Standard Glass</h3>
+                <p class="text-gray-800">cs-glass Basic glass effect</p>
+            </div>
+            <div class="cs-glass-blur bg-white/30 p-6 rounded-lg mb-4">
+                <h3 class="font-bold">Blur Glass</h3>
+                <p class="text-gray-800">cs-glass-blur Enhanced blur</p>
+            </div>
+            <div class="cs-glass-card p-6 rounded-lg">
+                <h3 class="font-bold">Glass Card</h3>
+                <p class="text-gray-800">cs-glass-card Complete glass card styling</p>
+            </div>
+        </div>
+        
+        <!-- Utilities Tests - Konsolidiert -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-green-600">Utilities - Konsolidiert v0.8.0</h2>
+            <div class="cs-card cs-focus-ring p-6 rounded-lg mb-4">
+                <h3 class="font-bold">Enhanced Card</h3>
+                <p class="text-gray-600">cs-card cs-focus-ring mit verbesserter Funktionalität</p>
+            </div>
+            
+            <!-- Button Tests -->
+            <div class="flex flex-wrap gap-4 mb-4">
+                <button class="cs-btn cs-btn-primary">Primary Button</button>
+                <button class="cs-btn cs-btn-secondary">Secondary Button</button>
+                <button class="cs-btn cs-btn-success">Success Button</button>
+                <button class="cs-btn cs-btn-danger">Danger Button</button>
+            </div>
+            
+            <!-- Form Elements -->
+            <div class="space-y-4">
+                <input type="text" class="cs-input" placeholder="Test Input Field">
+                <select class="cs-select">
+                    <option>Test Select</option>
+                    <option>Option 2</option>
+                </select>
+            </div>
+            
+            <!-- Layout Utilities -->
+            <div class="cs-grid-cards mt-6">
+                <div class="cs-card-hover p-4 bg-blue-100 rounded">Hover Card 1</div>
+                <div class="cs-card-hover p-4 bg-green-100 rounded">Hover Card 2</div>
+                <div class="cs-card-hover p-4 bg-purple-100 rounded">Hover Card 3</div>
+            </div>
+        </div>
+        
+        <!-- Performance & Accessibility Test -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibent mb-4 text-orange-600">Performance & Accessibility</h2>
+            <div class="cs-will-transform cs-rotate bg-orange-500 text-white p-4 rounded-lg inline-block mb-4">
+                Hardware Accelerated Rotation
+            </div>
+            <div class="cs-skeleton-shimmer h-8 bg-gray-200 rounded mb-4"></div>
+            <div class="cs-progress-grow h-4 bg-blue-500 rounded-full"></div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-yellow-100 border-l-4 border-yellow-500">
+            <p class="text-yellow-700">
+                <strong>🎯 Konsolidierte Pakete Tree-Shaking Test:</strong><br>
+                • <strong>Animations v0.9.0:</strong> 80+ Utilities mit Stagger-System und 3D-Animationen<br>
+                • <strong>Glass v0.2.0:</strong> Vollständige Glass-Morphism Effekte<br>
+                • <strong>Utilities v0.8.0:</strong> 120+ Layout-, Form- und Component-Utilities<br>
+                • Nur verwendete Klassen sollten im CSS erscheinen<br>
+                • Performance-optimiert mit Hardware-Beschleunigung<br>
+                • Vollständige prefers-reduced-motion Unterstützung
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -12,44 +12,45 @@ npm install @casoon/tailwindcss-effects
 
 ### Usage with Tailwind CSS v4
 
-**🎯 Core Version (70KB - Recommended):**
+**🎯 Tailwind v4 Integration (Recommended):**
 
 ```css
 @import "tailwindcss";
-@import "@casoon/tailwindcss-effects/core.css";
+@import "@casoon/tailwindcss-effects";
 ```
 
-**🎨 Full Version (144KB):**
+**💎 Legacy/Standalone Version (~69KB minified):**
 
-```css
-@import "tailwindcss";
-@import "@casoon/tailwindcss-effects/styles.css";
+```html
+<link rel="stylesheet" href="node_modules/@casoon/tailwindcss-effects/dist.min.css">
 ```
 
-**Or import individual packages:**
+**📦 Individual Core Packages:**
 
 ```css
 @import "tailwindcss";
 @import "@casoon/tailwindcss-animations";
 @import "@casoon/tailwindcss-glass";
 @import "@casoon/tailwindcss-utilities";
+@import "@casoon/tailwindcss-orbs";
 ```
 
 **That's it!** All CSS classes are ready to use with `cs-` prefix.
 
-### Meta Package: `@casoon/tailwindcss-effects`
+## ✨ Version 0.9.0 - Consolidated Architecture
 
-Import-based bundle that brings together all individual modules (animations, gradients, glass, navigation, orbs, scroll, micro-interactions, forms, utilities, typography).
+**🎯 Streamlined from 16 to 4 Core Packages:**
+- `@casoon/tailwindcss-utilities` - Layout, forms, cards, typography, loading, navigation, micro-interactions, scroll
+- `@casoon/tailwindcss-animations` - 50+ animation classes and keyframes  
+- `@casoon/tailwindcss-glass` - Complete glassmorphism system
+- `@casoon/tailwindcss-orbs` - Floating orb backgrounds and effects
 
-```
-@import "tailwindcss";
-@import "@casoon/tailwindcss-effects";
-```
+**📦 Meta Package:** `@casoon/tailwindcss-effects` combines all core packages.
 
-Variants & Media
-- Common `@custom-variant`s are available across packages: `motion-safe`, `motion-reduce`, `contrast-more`, `forced-colors`, `dark`, `light` (e.g. `motion-reduce:cs-anim`).
-- Keyframes live next to their utilities and ship only when referenced.
-- Media/supports/container rules are nested inside utilities for optimal tree‑shaking.
+**🏗️ Build System:**
+- `index.css` - For Tailwind v4 integration (includes `@import "tailwindcss"`)
+- `dist.css` - Standalone CSS for legacy projects (no Tailwind dependency)
+- Full minification and tree-shaking support
 
 ## Common Variants & Usage Patterns
 
@@ -102,31 +103,22 @@ This class provides the CSS variables needed for gradient backgrounds and text e
 ## ✨ What You Get
 
 - **🎯 Pure CSS Architecture** - No JavaScript plugins needed
-- **📦 12 Specialized Packages** - Import only what you need
-- **🎨 100+ Ready-to-Use Presets** - Complete UI components, layouts & effects
-- **🎯 Modern Component Library** - Forms, cards, typography, navigation & more
-- **⚡ CSS Variables** - Fully customizable design system
+- **📦 4 Core Packages** - Consolidated and optimized
+- **🎨 200+ Ready-to-Use Classes** - Complete design system
+- **⚡ CSS Variables & @theme** - Fully customizable with Tailwind v4
 - **♿ Accessibility First** - Motion-safe variants, focus management
-- **🔧 Optional JavaScript** - Enhanced navigation and scroll functionality
+- **🏗️ Modern Build System** - Both Tailwind v4 and standalone support
+- **🗜️ Optimized Sizes** - 69KB minified for full effects library
 
-## 📦 Available Packages
+## 📦 Available Packages (v0.9.0)
 
-| Package | CSS Classes | JavaScript | Size |
-|---------|------------|------------|------|
-| `@casoon/tailwindcss-effects` **(Core)** | Essential utilities + effects | ✅ nav.js, scroll.js | **70KB** |
-| `@casoon/tailwindcss-effects` **(Full)** | All packages combined | ✅ nav.js, scroll.js | 200KB+ |
-| `@casoon/tailwindcss-animations` | 51 animation classes | ❌ | ~9KB |
-| `@casoon/tailwindcss-glass` | 51 glass effect classes | ❌ | ~14KB |
-| `@casoon/tailwindcss-utilities` | Enhanced utilities + component presets | ❌ | ~8KB |
-| `@casoon/tailwindcss-gradients` | Gradient utilities | ❌ | ~4.5KB |
-| `@casoon/tailwindcss-orbs` | Floating orb backgrounds + scenes | ❌ | ~12KB |
-| `@casoon/tailwindcss-forms` | Complete form components & validation | ❌ | ~15KB |
-| `@casoon/tailwindcss-cards` | Card layouts & interactive effects | ❌ | ~18KB |
-| `@casoon/tailwindcss-typography` | Content-focused text styling | ❌ | ~10KB |
-| `@casoon/tailwindcss-loading` | Loading states & spinners | ❌ | ~660B |
-| `@casoon/tailwindcss-scroll` | Scroll animations | ✅ scroll.js | ~2KB |
-| `@casoon/tailwindcss-navigation` | Navigation components | ✅ nav.js | ~1.7KB |
-| `@casoon/tailwindcss-micro-interactions` | Hover & focus effects | ❌ | ~3.2KB |
+| Package | Description | Source Size | Minified |
+|---------|-------------|-------------|----------|
+| **`@casoon/tailwindcss-effects`** | **Meta package - all utilities combined** | **98KB** | **69KB** |
+| `@casoon/tailwindcss-utilities` | Layout, forms, cards, typography, navigation, scroll, micro-interactions | 30KB | 21KB |
+| `@casoon/tailwindcss-animations` | 50+ animation classes and keyframes | 26KB | 18KB |
+| `@casoon/tailwindcss-glass` | Complete glassmorphism system | 33KB | 25KB |
+| `@casoon/tailwindcss-orbs` | Floating orb backgrounds and gradient effects | 7KB | 5KB |
 
 > All CSS classes use the `cs-` prefix to avoid conflicts with Tailwind's built-in classes.
 
@@ -447,6 +439,32 @@ All effects use CSS custom properties for easy customization:
   --cs-container-padding: 2rem;
 }
 ```
+
+## 🔧 Development & Build
+
+**For maintainers and contributors:**
+
+```bash
+# Build all dist.css files for individual packages
+npm run build:dist
+
+# Build meta package (effects) from all core packages  
+npm run build:effects
+
+# Complete build pipeline (dist + effects + minification)
+npm run build:all
+
+# Validate all packages (checks for cs- prefixed classes)
+npm run validate
+
+# Pre-publish workflow (validate + build + minify)
+npm run prepublish
+```
+
+**Architecture:**
+- **`index.css`** - Source files with `@import "tailwindcss"` for v4 integration
+- **`dist.css`** - Standalone CSS files without Tailwind dependency
+- **`dist.min.css`** - Minified versions for production
 
 ## 📋 Requirements
 

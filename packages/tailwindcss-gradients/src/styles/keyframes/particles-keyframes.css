@@ -1,6 +1,0 @@
-/* Essential Particle Keyframes */
-@keyframes cs-rain-fall { 0% { background-position: 10px -30px; } 100% { background-position: 10px calc(100vh + 30px); } }
-@keyframes cs-snow-fall { 0% { background-position: 0 -50px; transform: translateX(0) rotate(0deg); } 25% { transform: translateX(5px) rotate(90deg); } 50% { transform: translateX(-3px) rotate(180deg); } 75% { transform: translateX(8px) rotate(270deg); } 100% { background-position: 0 calc(100vh + 50px); transform: translateX(0) rotate(360deg); } }
-@keyframes cs-fire-dance { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.1); filter: brightness(1.2); } }
-@keyframes cs-smoke-rise { 0% { background-position: 15px bottom; transform: translateY(0) scale(1); opacity: 0.8; } 100% { background-position: 35px calc(100vh * -1); transform: translateY(0) scale(2.2); opacity: 0; } }
-@keyframes cs-sparkles-twinkle { 0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; filter: brightness(1); } 50% { transform: scale(1.4) rotate(180deg); opacity: 0.6; filter: brightness(2); } }

@@ -1,4 +1,0 @@
-/*!
- * Casoon Navigation CSS
- * Version: 0.8.5 — Tailwind CSS v4 compatible
- */@utility cs-nav-basic{align-items:center;background:var(--cs-surface,#fff);border-bottom:1px solid var(--cs-border,#e5e7eb);display:flex;gap:var(--cs-space-4,1rem);padding:var(--cs-space-4,1rem)}

@@ -5,7 +5,7 @@
  * Usage: @import "@casoon/tailwindcss-orbs/index.css";
  */
 
-@import "tailwindcss";
+/* Note: @import "tailwindcss"; should be added by the consumer */
 
 /* =========================================================
    Orbs Theme Tokens

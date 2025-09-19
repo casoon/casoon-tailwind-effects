@@ -1,8 +1,0 @@
-/* Module imports in defined order for animations */
-@import "./styles/theme.css";
-@import "./styles/variants.css";
-@import "./styles/utilities/core.css";
-@import "./styles/utilities/stagger.css";
-@import "./styles/components/button.css";
-@import "./styles/components/navigation.css";
-@import "./styles/fallbacks.css";

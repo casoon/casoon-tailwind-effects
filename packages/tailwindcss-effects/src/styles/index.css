@@ -1,25 +1,10 @@
-/*! 
+/*!
  * @casoon/tailwindcss-effects
- * Complete collection of CSS effects for Tailwind CSS v4
+ * Complete collection of CSS effects for Tailwind CSS v4 
+ * Version 0.9.0 - Consolidated from 4 core packages
  * 
- * This is a meta package that combines all individual effect packages:
- * - Utilities (layout, accessibility, motion helpers)  
- * - Animations (keyframes, components, interactions)
- * - Glass (glassmorphism, backdrop effects)
- * - Gradients (linear, radial, text, animated)
- * - Loading (spinners, overlays, states)
- * - Micro-interactions (hover, focus, transitions)
- * - Navigation (nav, tabs, drawers, breadcrumbs)  
- * - Orbs (blob effects, floating elements)
- * - Scroll (behavior, snap, scrollbar styling)
- */
-
-@import '../../../tailwindcss-utilities/dist.css';
-@import '../../../tailwindcss-animations/dist.css'; 
-@import '../../../tailwindcss-glass/dist.css';
-@import '../../../tailwindcss-gradients/dist.css';
-@import '../../../tailwindcss-loading/dist.css';
-@import '../../../tailwindcss-micro-interactions/dist.css';
-@import '../../../tailwindcss-navigation/dist.css';
-@import '../../../tailwindcss-orbs/dist.css';
-@import '../../../tailwindcss-scroll/dist.css';
+ * This meta package combines the consolidated core packages:
+ *  * - utilities\n * - animations\n * - glass\n * - orbs
+ * 
+ * Usage: @import "@casoon/tailwindcss-effects";
+ */\n\n@import '../../../tailwindcss-utilities/src/index.css';\n@import '../../../tailwindcss-animations/src/index.css';\n@import '../../../tailwindcss-glass/src/index.css';\n@import '../../../tailwindcss-orbs/src/index.css';

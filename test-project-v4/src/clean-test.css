@@ -1,0 +1,32 @@
+/*
+ * Clean Test für echtes Tree-Shaking
+ */
+
+@import "tailwindcss";
+
+/* Used Custom Utilities */
+@utility used-red {
+  background-color: red;
+  color: white;
+  padding: 1rem;
+}
+
+@utility used-blue {
+  background-color: blue;
+  color: white;
+  padding: 1rem;
+}
+
+/* NEVER mentioned utility */
+@utility never-used {
+  background-color: green;
+  color: white;
+  padding: 2rem;
+}
+
+/* Standard Project Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}

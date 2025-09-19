@@ -1,8 +1,0 @@
-/*!
- * Casoon Gradients CSS (modular build)
- * Version: 0.8.5 — Tailwind CSS v4 compatible
- * Core gradient utilities and text effects
- */
-
-/* Base tokens only */
-@import "./styles/base/tokens.css";

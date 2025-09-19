@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Tree-Shaking Test</title>
+    <link rel="stylesheet" href="./clean-test.css">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Clean Tree-Shaking Test</h1>
+        
+        <!-- Only use used-red and used-blue, never mention the other one -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="used-red rounded-lg">
+                <h2 class="text-xl font-semibold mb-4">Used Red</h2>
+                <p>This should be included in output</p>
+            </div>
+            
+            <div class="used-blue rounded-lg">
+                <h2 class="text-xl font-semibold mb-4">Used Blue</h2>
+                <p>This should also be included in output</p>
+            </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-yellow-100">
+            <p>The green utility is never referenced anywhere and should be tree-shaken out.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On-Demand Tree-Shaking Demo</title>
+    <link rel="stylesheet" href="/src/style-ondemand.css" />
+</head>
+<body>
+    <div style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+        
+        <h1 style="text-align: center; margin-bottom: 2rem;">
+            🌳 Tailwind v4 On-Demand Tree-Shaking Demo
+        </h1>
+        
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h2>📋 Test-Klassen in diesem HTML:</h2>
+            <ul style="margin: 1rem 0; line-height: 1.8;">
+                <li>✅ <code>cs-glass</code> - Glass effect</li>
+                <li>✅ <code>cs-glass-blue</code> - Blue glass variant</li>
+                <li>✅ <code>cs-btn</code> - Button utility</li>
+                <li>✅ <code>cs-btn-primary</code> - Primary button</li>
+                <li>✅ <code>cs-fade-in</code> - Fade animation</li>
+                <li>✅ <code>cs-anim</code> - Animation base</li>
+                <li>❌ <code>cs-glass-purple</code> - NICHT verwendet → sollte NICHT im CSS sein</li>
+                <li>❌ <code>cs-orb-massive</code> - NICHT verwendet → sollte NICHT im CSS sein</li>
+                <li>❌ <code>cs-wiggle</code> - NICHT verwendet → sollte NICHT im CSS sein</li>
+            </ul>
+        </div>
+
+        <!-- TATSÄCHLICH VERWENDETE KLASSEN -->
+        <div class="cs-glass" style="padding: 2rem; margin-bottom: 2rem; border-radius: 12px;">
+            <h2>🪟 Glass Effect Demo</h2>
+            <p>Diese Box verwendet die <code>cs-glass</code> Klasse.</p>
+            
+            <div class="cs-glass-blue" style="padding: 1rem; margin: 1rem 0; border-radius: 8px;">
+                <p>Diese Box verwendet <code>cs-glass-blue</code>.</p>
+            </div>
+            
+            <button class="cs-btn cs-btn-primary" style="margin-right: 1rem;">
+                Button mit cs-btn + cs-btn-primary
+            </button>
+        </div>
+
+        <!-- ANIMATION DEMO -->
+        <div style="text-align: center; margin: 2rem 0;">
+            <div class="cs-anim cs-fade-in" style="
+                padding: 2rem; 
+                background: rgba(59, 130, 246, 0.2); 
+                border-radius: 8px;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            ">
+                <h3>🎭 Animation Demo</h3>
+                <p>Diese Box verwendet <code>cs-anim cs-fade-in</code></p>
+            </div>
+        </div>
+
+        <!-- HINWEIS -->
+        <div style="background: rgba(34, 197, 94, 0.2); padding: 1.5rem; border-radius: 8px; border-left: 4px solid #22c55e;">
+            <h3>🎯 Erwartetes Ergebnis:</h3>
+            <p><strong>Im generierten CSS sollten NUR folgende Casoon-Klassen erscheinen:</strong></p>
+            <ul style="margin: 1rem 0; line-height: 1.8;">
+                <li><code>.cs-glass</code></li>
+                <li><code>.cs-glass-blue</code></li>
+                <li><code>.cs-btn</code></li>
+                <li><code>.cs-btn-primary</code></li>
+                <li><code>.cs-anim</code></li>
+                <li><code>.cs-fade-in</code></li>
+            </ul>
+            <p><strong>Alle anderen Casoon-Klassen (cs-glass-purple, cs-orb-massive, cs-wiggle, etc.) sollten NICHT im CSS stehen!</strong></p>
+        </div>
+
+    </div>
+</body>
+</html>

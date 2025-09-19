@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind v4 Simple Test</title>
+    <link rel="stylesheet" href="./test-simple.css">
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Tailwind v4 Simple Test</h1>
+        
+        <!-- Standard Tailwind Classes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4 text-blue-600">Standard Tailwind</h2>
+                <p class="text-gray-600">Diese Klassen sollten funktionieren: bg-white, p-6, rounded-lg, shadow-md</p>
+            </div>
+            
+            <div class="bg-blue-500 text-white p-6 rounded-lg">
+                <h2 class="text-xl font-semibold mb-4">Farben Test</h2>
+                <p>bg-blue-500, text-white sollte funktionieren</p>
+            </div>
+        </div>
+        
+        <!-- Custom @utility Tests -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="test-red rounded-lg">
+                <h2 class="text-xl font-semibold mb-4">Custom Utility: test-red</h2>
+                <p>Diese Klasse sollte nur erscheinen, wenn sie in HTML verwendet wird.</p>
+            </div>
+            
+            <div class="test-blue rounded-lg">
+                <h2 class="text-xl font-semibold mb-4">Custom Utility: test-blue</h2>
+                <p>Diese Klasse sollte auch im Output sein.</p>
+            </div>
+        </div>
+        
+        <!-- test-unused wird NICHT verwendet, sollte daher nicht im Output sein -->
+        
+        <div class="mt-8 p-4 bg-yellow-100 border-l-4 border-yellow-500">
+            <p class="text-yellow-700">
+                <strong>Test Erwartung:</strong>
+                <br>• Standard Tailwind Klassen funktionieren
+                <br>• test-red und test-blue werden generiert (da verwendet)
+                <br>• test-unused wird NICHT generiert (da nicht verwendet)
+            </p>
+        </div>
+    </div>
+</body>
+</html>

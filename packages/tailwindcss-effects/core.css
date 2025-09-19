@@ -1,2 +1,6 @@
-/*! @casoon/tailwindcss-effects - Core Version */
-@import "./dist.core.css";
+/*! 
+ * @casoon/tailwindcss-effects v0.9.0 - Core Version
+ * Essential utilities + animations only (no glass, no orbs)
+ */
+@import '../tailwindcss-utilities/src/index.css';
+@import '../tailwindcss-animations/src/index.css';

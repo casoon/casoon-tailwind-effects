@@ -2,7 +2,14 @@
 
 ## Project Structure & Modules
 - `packages/*`: Publishable CSS modules for Tailwind v4 (pure CSS architecture):
-  - `tailwindcss-utilities`, `tailwindcss-animations`, `tailwindcss-glass`, `tailwindcss-gradients`, `tailwindcss-navigation`, `tailwindcss-orbs`, `tailwindcss-scroll`, `tailwindcss-effects` (meta bundle).
+  - **CONSOLIDATED CORE PACKAGES v0.9.0:**
+    - `tailwindcss-utilities` — Complete utility system (layout, forms, cards, typography, scroll, 120+ utilities)
+    - `tailwindcss-animations` — Modern animation system (80+ utilities, stagger, 3D, scroll-timeline)
+    - `tailwindcss-glass` — Glass-morphism effects library (backdrop-filter, modern fallbacks)
+  - **SPECIALIZED PACKAGES:**
+    - `tailwindcss-orbs` — Complex gradient orb system (specialized decorative elements)
+    - `tailwindcss-core` — Base tokens and design system
+    - `tailwindcss-effects` — Meta bundle for all packages
 - `scripts/`: CSS validation, minification, and utility scripts.
 - Root `package.json`: PNPM workspaces, shared scripts for validation and minification.
 

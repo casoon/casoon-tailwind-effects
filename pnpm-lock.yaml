@@ -9,10 +9,10 @@ importers:
   .:
     devDependencies:
       '@tailwindcss/cli':
-        specifier: ^4.1.13
+        specifier: 4.1.13
         version: 4.1.13
       tailwindcss:
-        specifier: ^4.1.13
+        specifier: 4.1.13
         version: 4.1.13
 
   packages/tailwindcss-animations:
@@ -21,35 +21,41 @@ importers:
         specifier: ^4.0.0
         version: 4.1.13
 
+  packages/tailwindcss-cards:
+    devDependencies:
+      tailwindcss:
+        specifier: ^4.1.13
+        version: 4.1.13
+
   packages/tailwindcss-effects:
     dependencies:
       '@casoon/tailwindcss-animations':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       '@casoon/tailwindcss-glass':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       '@casoon/tailwindcss-gradients':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       '@casoon/tailwindcss-loading':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       '@casoon/tailwindcss-micro-interactions':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       '@casoon/tailwindcss-navigation':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       '@casoon/tailwindcss-orbs':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       '@casoon/tailwindcss-scroll':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       '@casoon/tailwindcss-utilities':
-        specifier: ^0.7.5
-        version: 0.7.5(tailwindcss@4.1.13)
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       tailwindcss:
         specifier: ^4.0.0
         version: 4.1.13
@@ -69,6 +75,12 @@ importers:
       postcss-import:
         specifier: ^16.1.1
         version: 16.1.1(postcss@8.5.6)
+
+  packages/tailwindcss-forms:
+    devDependencies:
+      tailwindcss:
+        specifier: ^4.1.13
+        version: 4.1.13
 
   packages/tailwindcss-glass:
     dependencies:
@@ -108,8 +120,17 @@ importers:
 
   packages/tailwindcss-scroll:
     dependencies:
+      '@casoon/tailwindcss-animations':
+        specifier: ^0.8.5
+        version: 0.8.5(tailwindcss@4.1.13)
       tailwindcss:
         specifier: ^4.0.0
+        version: 4.1.13
+
+  packages/tailwindcss-typography:
+    devDependencies:
+      tailwindcss:
+        specifier: ^4.1.13
         version: 4.1.13
 
   packages/tailwindcss-utilities:
@@ -120,48 +141,48 @@ importers:
 
 packages:
 
-  '@casoon/tailwindcss-animations@0.7.5':
-    resolution: {integrity: sha512-1C61iKy9xEEx0zh7bGLb1We6A/HBPdCJPhm6UrTWMojf1vLJoUJFamfPRdscSAPDRG25cvo5CRWqokFle4zxOA==}
+  '@casoon/tailwindcss-animations@0.8.5':
+    resolution: {integrity: sha512-HqCYYzU8nZSfhJa/vHWHdsFzmS7Pw1+DPwnr9ndwHDM0DCFCtGpIwgJFhcjATQ2N4oyKZ/UxY/wUtTEzDRI9sg==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
-  '@casoon/tailwindcss-glass@0.7.5':
-    resolution: {integrity: sha512-ZuWAAahiWmm7bxKdnktQ2UGbMJvv+Ms8GMZ8F2x59zWXaFvw/8s/RX9+6VZ2Qg8/oaxMu0sD9mQVmo4dTejrbQ==}
+  '@casoon/tailwindcss-glass@0.8.5':
+    resolution: {integrity: sha512-FsPuJxcK2Y1JDWvG7uUNnx4s4NDB/WnUIddgdFjWXipAAg1c7nYxEcHb0EORUFcIP16CkoaPsZxa2JMfuzUldQ==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
-  '@casoon/tailwindcss-gradients@0.7.5':
-    resolution: {integrity: sha512-Cg4/p+my5dS9WkvWe8Nouu+E1ub2o0rNumh0spfTKoltPzrm86I0QwjSLzcrKzNJG7hcwcntEVJO5GAXMdFxcg==}
+  '@casoon/tailwindcss-gradients@0.8.5':
+    resolution: {integrity: sha512-ptU90+nUPb0z8EfkGytsvBp9UvuzhUohGoEd9LqCbsLkijw1LsVkjuOpkXXq+6frWGNkJ++82AdSKp6w3uijKQ==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
-  '@casoon/tailwindcss-loading@0.7.5':
-    resolution: {integrity: sha512-IeLTWMljQxFcDfAzRPlOiingAOUFajLJQ8yRH/ldbu0z8zkc5YY+l3XGlWPhm2OoZvWo6BEEIptU/hltiBKQpA==}
+  '@casoon/tailwindcss-loading@0.8.5':
+    resolution: {integrity: sha512-mYTKZd0+41BR1GJfG0wEA02HxjlQKZd/0POhpog1wzNgqO88wSY5Po/n3omlqkC9Bm0iKgT/Nh7oGcUzI45jkA==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
-  '@casoon/tailwindcss-micro-interactions@0.7.5':
-    resolution: {integrity: sha512-C0g+Cn3GToREXTbibogsJoweUkPhchoRBwl/OQErMgceMN+cDZn759UHA/8C7SR33+RKUmsPrsVPk6XMpHctPw==}
+  '@casoon/tailwindcss-micro-interactions@0.8.5':
+    resolution: {integrity: sha512-dV4NicH4PnurlrDfYAG1b4ETrMposg5VdM2iXdyINz4MKlt8eV4o2WHUGfxLZwA298YAsNO6bi/9nrJSfrcMVA==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
-  '@casoon/tailwindcss-navigation@0.7.5':
-    resolution: {integrity: sha512-so9Hz+td9sZ+NfXkzlfikijiOskJ4vn7wwoCddRavWBE/uWVrSlv31zcAAud7zRUXKbfBlvf2nC654JH9ZwfOA==}
+  '@casoon/tailwindcss-navigation@0.8.5':
+    resolution: {integrity: sha512-ROPQQMwNrjsOzShqblwL1e0eto4CD0dhsmr5l1RKwUKSzG2CjCTLSdzAWYuIkEKY1CjJBpC8Anmq1mFw4NsuwA==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
-  '@casoon/tailwindcss-orbs@0.7.5':
-    resolution: {integrity: sha512-Dixhip4Jkr6M0dVORJBPeZe69BQSUignHqXpB8iZrwhI69RWgvRe2t/xz3cfdwNFMWe53gQk9aYhoEQPaXOVHQ==}
+  '@casoon/tailwindcss-orbs@0.8.5':
+    resolution: {integrity: sha512-6859D8Tvq2GY/VRJ1QZYOCKs3OII8nMwRQdl/Ur9rx3DyyIauLtN0NSkfO+CoR0vAvUjAuAh8tcHe8Yv4u7RCA==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
-  '@casoon/tailwindcss-scroll@0.7.5':
-    resolution: {integrity: sha512-0CqclN6BHafoipEIJswPZCM4wfWVGa5SLapoak3xnb1tTT8pnwxwVkfs5/02EM+rX7o32TMph/sganu8c75PMg==}
+  '@casoon/tailwindcss-scroll@0.8.5':
+    resolution: {integrity: sha512-gKKXMVVxifDzN8CEfXQhrjgLBjaLb0VI3CZVyWssENiPu4L4UwDYjNo6d8QL/MdWVgWKdLaftscv4x4eU/eL5A==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
-  '@casoon/tailwindcss-utilities@0.7.5':
-    resolution: {integrity: sha512-56ZIZcAzcWiBVZJn6IOXSdzmRol6ahQ4q+RD7JgYTRpXM9o/dXTBhfxPH1TyC6DYsUhXnHR/6qIJJF5knlbWcg==}
+  '@casoon/tailwindcss-utilities@0.8.5':
+    resolution: {integrity: sha512-Hj7t46Oi+HUIM6jfSiPDWf1VDQNPgUBRYBx3rwPWzAp0u5O4tBFdYQi0YYJIdFjvYLw3AjPdS8zJ0EO1UGHZ/w==}
     peerDependencies:
       tailwindcss: ^4.0.0
 
@@ -1056,40 +1077,40 @@ packages:
 
 snapshots:
 
-  '@casoon/tailwindcss-animations@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-animations@0.8.5(tailwindcss@4.1.13)':
     dependencies:
       tailwindcss: 4.1.13
 
-  '@casoon/tailwindcss-glass@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-glass@0.8.5(tailwindcss@4.1.13)':
     dependencies:
       tailwindcss: 4.1.13
 
-  '@casoon/tailwindcss-gradients@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-gradients@0.8.5(tailwindcss@4.1.13)':
     dependencies:
       tailwindcss: 4.1.13
 
-  '@casoon/tailwindcss-loading@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-loading@0.8.5(tailwindcss@4.1.13)':
     dependencies:
       tailwindcss: 4.1.13
 
-  '@casoon/tailwindcss-micro-interactions@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-micro-interactions@0.8.5(tailwindcss@4.1.13)':
     dependencies:
       tailwindcss: 4.1.13
 
-  '@casoon/tailwindcss-navigation@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-navigation@0.8.5(tailwindcss@4.1.13)':
     dependencies:
       tailwindcss: 4.1.13
 
-  '@casoon/tailwindcss-orbs@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-orbs@0.8.5(tailwindcss@4.1.13)':
     dependencies:
       tailwindcss: 4.1.13
 
-  '@casoon/tailwindcss-scroll@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-scroll@0.8.5(tailwindcss@4.1.13)':
     dependencies:
-      '@casoon/tailwindcss-animations': 0.7.5(tailwindcss@4.1.13)
+      '@casoon/tailwindcss-animations': 0.8.5(tailwindcss@4.1.13)
       tailwindcss: 4.1.13
 
-  '@casoon/tailwindcss-utilities@0.7.5(tailwindcss@4.1.13)':
+  '@casoon/tailwindcss-utilities@0.8.5(tailwindcss@4.1.13)':
     dependencies:
       tailwindcss: 4.1.13
 

@@ -1,8 +1,0 @@
-/*!
- * Casoon Typography CSS (modular build)
- * Version: 0.8.4 — Tailwind CSS v4 compatible
- * Content-specific typography presets and styles
- */
-
-/* Base: Typography tokens and system */
-@import "./styles/base/tokens.css";

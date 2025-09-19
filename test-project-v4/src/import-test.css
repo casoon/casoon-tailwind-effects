@@ -1,0 +1,5 @@
+/* Test 1: Main export (should get compiled dist.css) */
+@import "tailwindcss";
+@import "@casoon/tailwindcss-animations";
+
+body { margin: 0; }

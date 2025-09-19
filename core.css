@@ -1,0 +1,23 @@
+/*!
+ * Casoon Tailwind Effects v0.9.0 - Core Collection
+ * Essential utilities + animations with Tailwind CSS v4
+ * 
+ * Core Features:
+ * ✅ 200+ Essential Utilities (forms, cards, buttons, typography, scroll)
+ * ✅ 80+ Modern Animations (entrance, continuous, 3D, stagger system)
+ * ✅ Tree-shaking support with @utility directives
+ * ✅ Complete accessibility support (prefers-reduced-motion)
+ * ✅ Performance optimized with hardware acceleration
+ * 
+ * Excluded: Glass effects, Gradient orbs (use full index.css for those)
+ * 
+ * Usage:
+ * @import "path/to/casoon-tailwind-effects/core.css";
+ */
+
+/* === TAILWIND CSS v4 BASE === */
+@import "tailwindcss";
+
+/* === ESSENTIAL CORE PACKAGES === */
+@import "./packages/tailwindcss-utilities/src/index.css";  /* 200+ utilities */
+@import "./packages/tailwindcss-animations/src/index.css"; /* 80+ animations */

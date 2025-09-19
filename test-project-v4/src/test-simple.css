@@ -1,0 +1,31 @@
+/*
+ * Simple Tailwind v4 Test ohne Casoon Packages
+ */
+
+@import "tailwindcss";
+
+/* Test Custom Utilities */
+@utility test-red {
+  background-color: red;
+  color: white;
+  padding: 1rem;
+}
+
+@utility test-blue {
+  background-color: blue;
+  color: white;
+  padding: 1rem;
+}
+
+@utility test-unused {
+  background-color: green;
+  color: white;
+  padding: 2rem;
+}
+
+/* Standard Project Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}

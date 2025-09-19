@@ -1,0 +1,56 @@
+{
+  "name": "@casoon/tailwindcss-core",
+  "version": "0.9.0",
+  "description": "Core utilities, forms, and typography for Tailwind CSS v4 - Essential building blocks for modern web applications",
+  "type": "module",
+  "exports": {
+    ".": "./dist.css",
+    "./index.css": "./src/index.css", 
+    "./dist.css": "./dist.css",
+    "./dist.min.css": "./dist.min.css"
+  },
+  "main": "./dist.css",
+  "style": "./dist.css",
+  "files": [
+    "src/index.css",
+    "dist.css",
+    "dist.min.css",
+    "build-reference.html",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/index.css -o ./dist.css --content './build-reference.html'",
+    "build:watch": "npx tailwindcss -i ./src/index.css -o ./dist.css --content './build-reference.html' --watch",
+    "minify": "node ../../scripts/minify-css.mjs",
+    "validate": "node ../../scripts/validate-css.mjs",
+    "test": "npm run build && npm run validate",
+    "prepublishOnly": "npm run test && npm run minify"
+  },
+  "keywords": [
+    "tailwindcss",
+    "css",
+    "utilities",
+    "forms",
+    "typography",
+    "ui",
+    "components",
+    "tailwind-v4"
+  ],
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/casoon/tailwindcss-effects.git",
+    "directory": "packages/tailwindcss-core"
+  },
+  "bugs": {
+    "url": "https://github.com/casoon/tailwindcss-effects/issues"
+  },
+  "homepage": "https://github.com/casoon/tailwindcss-effects/tree/master/packages/tailwindcss-core#readme"
+}

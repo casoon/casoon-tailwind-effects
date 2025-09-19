@@ -1,7 +1,7 @@
 {
   "name": "casoon-tailwind-effects",
   "private": true,
-  "version": "0.8.5",
+  "version": "0.9.0",
   "type": "module",
   "workspaces": [
     "packages/*"
@@ -12,13 +12,17 @@
     "test": "node scripts/validate-css.mjs",
     "validate": "node scripts/validate-css.mjs",
     "validate:pre-publish": "node scripts/validate-css.mjs",
+    "build:dist": "node scripts/build-dist.mjs",
+    "build:effects": "node scripts/build-effects.mjs",
+    "build:all": "pnpm run build:dist && pnpm run build:effects",
     "minify": "node scripts/minify-css.mjs",
     "minify:all": "node scripts/minify-css.mjs",
-    "build:all": "pnpm run minify:all",
+    "prebuild": "pnpm run build:all && pnpm run minify:all",
     "version:patch": "node scripts/bump-version.mjs patch",
     "version:minor": "node scripts/bump-version.mjs minor",
     "version:major": "node scripts/bump-version.mjs major",
-    "release:all": "pnpm run validate:pre-publish && pnpm run minify:all && echo 'Use pnpm publish -r for publishing all packages'",
+    "prepublish": "pnpm run validate:pre-publish && pnpm run prebuild",
+    "release:all": "pnpm run prepublish && echo 'Use pnpm publish -r for publishing all packages'",
     "dev": "cd test-project-v4 && npm run dev",
     "build:test": "cd test-project-v4 && npm run build",
     "lint": "biome lint .",

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@casoon/tailwindcss-effects/styles.css";
+@import "@casoon/tailwindcss-effects/index.css";
 
 /* Standard web project base styles */
 :root {

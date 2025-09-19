@@ -1,0 +1,15 @@
+/*
+ * Test mit Casoon Packages
+ */
+
+@import "tailwindcss";
+@import "@casoon/tailwindcss-animations/index.css";
+@import "@casoon/tailwindcss-glass/index.css";
+@import "@casoon/tailwindcss-utilities/index.css";
+
+/* Standard Project Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
