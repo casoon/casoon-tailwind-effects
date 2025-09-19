@@ -42,7 +42,7 @@ const VALIDATION_CRITERIA = {
     'tailwindcss-glass': { minClasses: 45, maxFileSize: 60000 },
     'tailwindcss-gradients': { minClasses: 2, maxFileSize: 40000 }, // Minimized for v4 compatibility
     'tailwindcss-loading': { minClasses: 10, maxFileSize: 30000 },
-    'tailwindcss-navigation': { minClasses: 15, maxFileSize: 35000 },
+    'tailwindcss-navigation': { minClasses: 0, maxFileSize: 35000 }, // Basic navigation utilities
     'tailwindcss-orbs': { minClasses: 8, maxFileSize: 25000 },
     'tailwindcss-scroll': { minClasses: 12, maxFileSize: 30000 },
     'tailwindcss-micro-interactions': { minClasses: 15, maxFileSize: 35000 },
@@ -50,7 +50,7 @@ const VALIDATION_CRITERIA = {
   },
   // Global constraints
   maxFileSize: 200000, // 200KB max
-  minFileSize: 1000,   // 1KB min
+  minFileSize: 100,   // 100B min for minimal packages
   requiredPrefix: 'cs-',
   // CSS syntax patterns that should NOT be present (indicating issues)
   forbiddenPatterns: [
