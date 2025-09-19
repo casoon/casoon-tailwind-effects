@@ -25,7 +25,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tailwindcss -i src/styles/index.css -o dist.css --minify",
+    "build": "npx tailwindcss -i src/index.css -o dist.css --minify",
     "build:dev": "tailwindcss -i src/styles/index.css -o dist.css --watch",
     "validate": "node ../../scripts/validate-css.mjs",
     "prepublishOnly": "npm run build && npm run minify && npm run validate",
