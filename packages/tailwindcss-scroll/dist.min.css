@@ -1,4 +1,4 @@
 /*!
  * Casoon Scroll CSS
  * Version: 0.8.5 — Tailwind CSS v4 compatible
- */@utility cs-scroll-smooth{scroll-behavior:smooth}@utility cs-scroll-hidden{overflow:hidden}@utility cs-scroll-auto{overflow:auto}
+ */@utility cs-scroll-smooth{scroll-behavior:smooth}@utility cs-scroll-auto{scroll-behavior:auto}@utility cs-overflow-hidden{overflow:hidden}@utility cs-overflow-auto{overflow:auto}@utility cs-overflow-scroll{overflow:scroll}@utility cs-overflow-visible{overflow:visible}@utility cs-scrollbar-thin{scrollbar-width:thin}@utility cs-scrollbar-none{scrollbar-width:none;-ms-overflow-style:none}@utility cs-scrollbar-hide{&::-webkit-scrollbar{display:none}}@utility cs-snap-x{scroll-snap-type:x mandatory}@utility cs-snap-y{scroll-snap-type:y mandatory}@utility cs-snap-both{scroll-snap-type:both mandatory}@utility cs-snap-none{scroll-snap-type:none}@utility cs-snap-start{scroll-snap-align:start}@utility cs-snap-end{scroll-snap-align:end}@utility cs-snap-center{scroll-snap-align:center}
