@@ -120,3 +120,21 @@
   line-height: 1.6;
   color: var(--cs-text-muted);
 }
+
+/* =========================================================
+   FLUID TYPOGRAPHY UTILITIES
+   Responsive typography using CSS clamp()
+   ========================================================= */
+@utility cs-fs-xs { font-size: var(--cs-fs-xs); }
+@utility cs-fs-sm { font-size: var(--cs-fs-sm); }
+@utility cs-fs-md { font-size: var(--cs-fs-md); }
+@utility cs-fs-lg { font-size: var(--cs-fs-lg); }
+@utility cs-fs-xl { font-size: var(--cs-fs-xl); }
+@utility cs-fs-2xl { font-size: var(--cs-fs-2xl); }
+
+/* Line Height utilities */
+@utility cs-leading-relaxed { line-height: var(--cs-leading-relaxed); }
+@utility cs-leading-loose { line-height: var(--cs-leading-loose); }
+
+/* Text Balance utility */
+@utility cs-text-balance { text-wrap: var(--cs-text-balance); }

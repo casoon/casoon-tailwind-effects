@@ -63,3 +63,35 @@
 @utility cs-z-orb { z-index: var(--cs-z-orb); position: relative; }
 @utility cs-z-overlay { z-index: var(--cs-z-overlay); position: relative; }
 @utility cs-z-sticky { z-index: var(--cs-z-sticky); position: sticky; }
+
+/* =========================================================
+   LAYOUT UTILITIES
+   Page layout and spacing utilities
+   ========================================================= */
+@utility cs-page-max { max-width: var(--cs-page-max); }
+@utility cs-page-pad { padding: var(--cs-page-pad); }
+
+/* Shadow utilities */
+@utility cs-shadow-0 { box-shadow: var(--cs-shadow-0); }
+@utility cs-shadow-1 { box-shadow: var(--cs-shadow-1); }
+@utility cs-shadow-2 { box-shadow: var(--cs-shadow-2); }
+
+/* =========================================================
+   COLOR SYSTEM UTILITIES
+   Core color utilities from design tokens
+   ========================================================= */
+@utility cs-bg { background-color: var(--cs-bg); }
+@utility cs-surface { background-color: var(--cs-surface); }
+@utility cs-surface-2 { background-color: var(--cs-surface-2); }
+@utility cs-elev1 { background-color: var(--cs-elev1); }
+@utility cs-elev2 { background-color: var(--cs-elev2); }
+@utility cs-text { color: var(--cs-text); }
+@utility cs-text-muted { color: var(--cs-text-muted); }
+@utility cs-text-inverse { color: var(--cs-text-inverse); }
+@utility cs-brand { color: var(--cs-brand); }
+@utility cs-brand-contrast { color: var(--cs-brand-contrast); }
+@utility cs-success { color: var(--cs-success); }
+@utility cs-warning { color: var(--cs-warning); }
+@utility cs-danger { color: var(--cs-danger); }
+@utility cs-info { color: var(--cs-info); }
+@utility cs-border { border-color: var(--cs-border); }

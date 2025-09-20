@@ -277,6 +277,18 @@
 .cs-glass-bg-amber  { background: var(--cs-glass-bg-amber); }
 
 /* =========================================================
+   GLASS COLOR UTILITIES
+   Direct color utilities using glass color tokens
+   ========================================================= */
+.cs-glass-white  { color: var(--cs-glass-white); }
+.cs-glass-black  { color: var(--cs-glass-black); }
+.cs-glass-blue  { color: var(--cs-glass-blue); }
+.cs-glass-purple  { color: var(--cs-glass-purple); }
+.cs-glass-green  { color: var(--cs-glass-green); }
+.cs-glass-pink  { color: var(--cs-glass-pink); }
+.cs-glass-amber  { color: var(--cs-glass-amber); }
+
+/* =========================================================
    GLASS BORDER UTILITIES
    ========================================================= */
 .cs-glass-border-xs  { border-color: var(--cs-glass-border-xs); }
@@ -410,6 +422,17 @@
 
 /* Isolation utility for Canvas/Background-Layering issues */
 .cs-glass-isolate  { isolation: isolate; }
+
+/* =========================================================
+   GLASS INTERACTIVE STATE UTILITIES
+   Hover and focus states for glass elements
+   ========================================================= */
+.cs-glass-bg-hover  { background: var(--cs-glass-bg-hover); }
+.cs-glass-bg-light-hover  { background: var(--cs-glass-bg-light-hover); }
+.cs-glass-focus-ring  {
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+}
 
 /* =========================================================
    GLASS CARDS SYSTEM

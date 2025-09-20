@@ -2256,6 +2256,17 @@
 @utility cs-glass-bg-pink { background: var(--cs-glass-bg-pink); }
 @utility cs-glass-bg-amber { background: var(--cs-glass-bg-amber); }
 /* =========================================================
+   GLASS COLOR UTILITIES
+   Direct color utilities using glass color tokens
+   ========================================================= */
+@utility cs-glass-white { color: var(--cs-glass-white); }
+@utility cs-glass-black { color: var(--cs-glass-black); }
+@utility cs-glass-blue { color: var(--cs-glass-blue); }
+@utility cs-glass-purple { color: var(--cs-glass-purple); }
+@utility cs-glass-green { color: var(--cs-glass-green); }
+@utility cs-glass-pink { color: var(--cs-glass-pink); }
+@utility cs-glass-amber { color: var(--cs-glass-amber); }
+/* =========================================================
    GLASS BORDER UTILITIES
    ========================================================= */
 @utility cs-glass-border-xs { border-color: var(--cs-glass-border-xs); }
@@ -2371,6 +2382,16 @@
 @utility cs-glass-will-change { will-change: transform, backdrop-filter; }
 /* Isolation utility for Canvas/Background-Layering issues */
 @utility cs-glass-isolate { isolation: isolate; }
+/* =========================================================
+   GLASS INTERACTIVE STATE UTILITIES
+   Hover and focus states for glass elements
+   ========================================================= */
+@utility cs-glass-bg-hover { background: var(--cs-glass-bg-hover); }
+@utility cs-glass-bg-light-hover { background: var(--cs-glass-bg-light-hover); }
+@utility cs-glass-focus-ring {
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+}
 /* =========================================================
    GLASS CARDS SYSTEM
    Cards with glass backdrop-filter effects
@@ -4367,6 +4388,35 @@
 @utility cs-z-overlay { z-index: var(--cs-z-overlay); position: relative; }
 @utility cs-z-sticky { z-index: var(--cs-z-sticky); position: sticky; }
 /* =========================================================
+   LAYOUT UTILITIES
+   Page layout and spacing utilities
+   ========================================================= */
+@utility cs-page-max { max-width: var(--cs-page-max); }
+@utility cs-page-pad { padding: var(--cs-page-pad); }
+/* Shadow utilities */
+@utility cs-shadow-0 { box-shadow: var(--cs-shadow-0); }
+@utility cs-shadow-1 { box-shadow: var(--cs-shadow-1); }
+@utility cs-shadow-2 { box-shadow: var(--cs-shadow-2); }
+/* =========================================================
+   COLOR SYSTEM UTILITIES
+   Core color utilities from design tokens
+   ========================================================= */
+@utility cs-bg { background-color: var(--cs-bg); }
+@utility cs-surface { background-color: var(--cs-surface); }
+@utility cs-surface-2 { background-color: var(--cs-surface-2); }
+@utility cs-elev1 { background-color: var(--cs-elev1); }
+@utility cs-elev2 { background-color: var(--cs-elev2); }
+@utility cs-text { color: var(--cs-text); }
+@utility cs-text-muted { color: var(--cs-text-muted); }
+@utility cs-text-inverse { color: var(--cs-text-inverse); }
+@utility cs-brand { color: var(--cs-brand); }
+@utility cs-brand-contrast { color: var(--cs-brand-contrast); }
+@utility cs-success { color: var(--cs-success); }
+@utility cs-warning { color: var(--cs-warning); }
+@utility cs-danger { color: var(--cs-danger); }
+@utility cs-info { color: var(--cs-info); }
+@utility cs-border { border-color: var(--cs-border); }
+/* =========================================================
    COMPONENT SYSTEMS - All UI components
    ========================================================= */
 /* Cards System - Feature, product, pricing cards */
@@ -4707,6 +4757,15 @@
   min-width: 0;
 }
 /* =========================================================
+   FORM TOKEN UTILITIES
+   Direct form token utilities from design system
+   ========================================================= */
+@utility cs-form-bg { background-color: var(--cs-form-bg); }
+@utility cs-form-border { border-color: var(--cs-form-border); }
+@utility cs-form-radius { border-radius: var(--cs-form-radius); }
+@utility cs-form-shadow { box-shadow: var(--cs-form-shadow); }
+@utility cs-form-focus { border-color: var(--cs-form-focus); }
+/* =========================================================
    INTEGRATED SYSTEMS - Complex feature systems
    ========================================================= */
 /* Typography System - Prose, callouts, lead text */
@@ -4813,6 +4872,21 @@
   line-height: 1.6;
   color: var(--cs-text-muted);
 }
+/* =========================================================
+   FLUID TYPOGRAPHY UTILITIES
+   Responsive typography using CSS clamp()
+   ========================================================= */
+@utility cs-fs-xs { font-size: var(--cs-fs-xs); }
+@utility cs-fs-sm { font-size: var(--cs-fs-sm); }
+@utility cs-fs-md { font-size: var(--cs-fs-md); }
+@utility cs-fs-lg { font-size: var(--cs-fs-lg); }
+@utility cs-fs-xl { font-size: var(--cs-fs-xl); }
+@utility cs-fs-2xl { font-size: var(--cs-fs-2xl); }
+/* Line Height utilities */
+@utility cs-leading-relaxed { line-height: var(--cs-leading-relaxed); }
+@utility cs-leading-loose { line-height: var(--cs-leading-loose); }
+/* Text Balance utility */
+@utility cs-text-balance { text-wrap: var(--cs-text-balance); }
 /* Navigation System - Navbar, links, brand */
 /* =========================================================
    NAVIGATION SYSTEM

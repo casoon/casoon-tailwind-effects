@@ -2665,6 +2665,18 @@
 .cs-glass-bg-amber  { background: var(--cs-glass-bg-amber); }
 
 /* =========================================================
+   GLASS COLOR UTILITIES
+   Direct color utilities using glass color tokens
+   ========================================================= */
+.cs-glass-white  { color: var(--cs-glass-white); }
+.cs-glass-black  { color: var(--cs-glass-black); }
+.cs-glass-blue  { color: var(--cs-glass-blue); }
+.cs-glass-purple  { color: var(--cs-glass-purple); }
+.cs-glass-green  { color: var(--cs-glass-green); }
+.cs-glass-pink  { color: var(--cs-glass-pink); }
+.cs-glass-amber  { color: var(--cs-glass-amber); }
+
+/* =========================================================
    GLASS BORDER UTILITIES
    ========================================================= */
 .cs-glass-border-xs  { border-color: var(--cs-glass-border-xs); }
@@ -2798,6 +2810,17 @@
 
 /* Isolation utility for Canvas/Background-Layering issues */
 .cs-glass-isolate  { isolation: isolate; }
+
+/* =========================================================
+   GLASS INTERACTIVE STATE UTILITIES
+   Hover and focus states for glass elements
+   ========================================================= */
+.cs-glass-bg-hover  { background: var(--cs-glass-bg-hover); }
+.cs-glass-bg-light-hover  { background: var(--cs-glass-bg-light-hover); }
+.cs-glass-focus-ring  {
+  outline: 2px solid var(--cs-glass-focus-ring);
+  outline-offset: 2px;
+}
 
 /* =========================================================
    GLASS CARDS SYSTEM
@@ -5091,6 +5114,38 @@
 .cs-z-overlay  { z-index: var(--cs-z-overlay); position: relative; }
 .cs-z-sticky  { z-index: var(--cs-z-sticky); position: sticky; }
 
+/* =========================================================
+   LAYOUT UTILITIES
+   Page layout and spacing utilities
+   ========================================================= */
+.cs-page-max  { max-width: var(--cs-page-max); }
+.cs-page-pad  { padding: var(--cs-page-pad); }
+
+/* Shadow utilities */
+.cs-shadow-0  { box-shadow: var(--cs-shadow-0); }
+.cs-shadow-1  { box-shadow: var(--cs-shadow-1); }
+.cs-shadow-2  { box-shadow: var(--cs-shadow-2); }
+
+/* =========================================================
+   COLOR SYSTEM UTILITIES
+   Core color utilities from design tokens
+   ========================================================= */
+.cs-bg  { background-color: var(--cs-bg); }
+.cs-surface  { background-color: var(--cs-surface, #14161a); }
+.cs-surface-2  { background-color: var(--cs-surface, #14161a); }
+.cs-elev1  { background-color: var(--cs-elev1); }
+.cs-elev2  { background-color: var(--cs-elev2); }
+.cs-text  { color: var(--cs-text, #eef1f6); }
+.cs-text-muted  { color: var(--cs-text, #eef1f6); }
+.cs-text-inverse  { color: var(--cs-text, #eef1f6); }
+.cs-brand  { color: var(--cs-brand, #4f7cff); }
+.cs-brand-contrast  { color: var(--cs-brand, #4f7cff); }
+.cs-success  { color: var(--cs-success); }
+.cs-warning  { color: var(--cs-warning); }
+.cs-danger  { color: var(--cs-danger); }
+.cs-info  { color: var(--cs-info); }
+.cs-border  { border-color: var(--cs-border); }
+
 
 /* =========================================================
    COMPONENT SYSTEMS - All UI components
@@ -5486,6 +5541,17 @@
 }
 
 /* =========================================================
+   FORM TOKEN UTILITIES
+   Direct form token utilities from design system
+   ========================================================= */
+.cs-form-bg  { background-color: var(--cs-form-bg); }
+.cs-form-border  { border-color: var(--cs-form-border); }
+.cs-form-radius  { border-radius: var(--cs-form-radius); }
+.cs-form-shadow  { box-shadow: var(--cs-form-shadow); }
+.cs-form-focus  { border-color: var(--cs-form-focus); }
+
+
+/* =========================================================
    INTEGRATED SYSTEMS - Complex feature systems
    ========================================================= */
 
@@ -5612,6 +5678,24 @@
   line-height: 1.6;
   color: var(--cs-text, #eef1f6);
 }
+
+/* =========================================================
+   FLUID TYPOGRAPHY UTILITIES
+   Responsive typography using CSS clamp()
+   ========================================================= */
+.cs-fs-xs  { font-size: var(--cs-fs-xs); }
+.cs-fs-sm  { font-size: var(--cs-fs-sm); }
+.cs-fs-md  { font-size: var(--cs-fs-md); }
+.cs-fs-lg  { font-size: var(--cs-fs-lg); }
+.cs-fs-xl  { font-size: var(--cs-fs-xl); }
+.cs-fs-2xl  { font-size: var(--cs-fs-2xl); }
+
+/* Line Height utilities */
+.cs-leading-relaxed  { line-height: var(--cs-leading-relaxed); }
+.cs-leading-loose  { line-height: var(--cs-leading-loose); }
+
+/* Text Balance utility */
+.cs-text-balance  { text-wrap: var(--cs-text, #eef1f6); }
 
 
 /* Navigation System - Navbar, links, brand */

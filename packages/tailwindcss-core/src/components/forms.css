@@ -198,3 +198,13 @@
   flex: 1;
   min-width: 0;
 }
+
+/* =========================================================
+   FORM TOKEN UTILITIES
+   Direct form token utilities from design system
+   ========================================================= */
+@utility cs-form-bg { background-color: var(--cs-form-bg); }
+@utility cs-form-border { border-color: var(--cs-form-border); }
+@utility cs-form-radius { border-radius: var(--cs-form-radius); }
+@utility cs-form-shadow { box-shadow: var(--cs-form-shadow); }
+@utility cs-form-focus { border-color: var(--cs-form-focus); }
