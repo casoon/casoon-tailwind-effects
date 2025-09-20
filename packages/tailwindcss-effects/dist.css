@@ -1197,7 +1197,7 @@
    ========================================================= */
 @theme {
   /* === DURATION SYSTEM === */
-  --cs-anim-duration-xxs: 75ms;
+  --cs-anim-duration-xxs: 100ms;
   --cs-anim-duration-xs: 150ms;
   --cs-anim-duration-sm: 200ms;
   --cs-anim-duration-md: 300ms;
@@ -1256,57 +1256,57 @@
    ========================================================= */
 
 /* === ENTRANCE ANIMATIONS === */
-@keyframes csFadeIn { 
+@keyframes csFadeIn, anim-fade-in { 
   0% { opacity: 0; } 
   100% { opacity: 1; } 
 }
 
-@keyframes csFadeOut { 
+@keyframes csFadeOut, anim-fade-out { 
   0% { opacity: 1; } 
   100% { opacity: 0; } 
 }
 
-@keyframes csScaleIn { 
+@keyframes csScaleIn, anim-scale-in { 
   0% { opacity: 0; transform: scale(0.9); } 
   100% { opacity: 1; transform: scale(1); } 
 }
 
-@keyframes csScaleOut { 
+@keyframes csScaleOut, anim-scale-out { 
   0% { opacity: 1; transform: scale(1); } 
   100% { opacity: 0; transform: scale(0.9); } 
 }
 
-@keyframes csSlideUp { 
+@keyframes csSlideUp, anim-slide-up { 
   0% { opacity: 0; transform: translateY(20px); } 
   100% { opacity: 1; transform: translateY(0); } 
 }
 
-@keyframes csSlideDown { 
+@keyframes csSlideDown, anim-slide-down { 
   0% { opacity: 0; transform: translateY(-20px); } 
   100% { opacity: 1; transform: translateY(0); } 
 }
 
-@keyframes csSlideLeft { 
+@keyframes csSlideLeft, anim-slide-left { 
   0% { opacity: 0; transform: translateX(20px); } 
   100% { opacity: 1; transform: translateX(0); } 
 }
 
-@keyframes csSlideRight { 
+@keyframes csSlideRight, anim-slide-right { 
   0% { opacity: 0; transform: translateX(-20px); } 
   100% { opacity: 1; transform: translateX(0); } 
 }
 
-@keyframes csBlurIn { 
+@keyframes csBlurIn, anim-blur-in { 
   0% { opacity: 0; filter: blur(4px); } 
   100% { opacity: 1; filter: blur(0); } 
 }
 
-@keyframes csBlurOut { 
+@keyframes csBlurOut, anim-blur-out { 
   0% { opacity: 1; filter: blur(0); } 
   100% { opacity: 0; filter: blur(4px); } 
 }
 
-@keyframes csRotateIn { 
+@keyframes csRotateIn, anim-rotate-in { 
   0% { opacity: 0; transform: rotate(-5deg); } 
   100% { opacity: 1; transform: rotate(0); } 
 }
@@ -1327,22 +1327,22 @@
 }
 
 /* === CONTINUOUS ANIMATIONS === */
-@keyframes csRotate { 
+@keyframes csRotate, anim-rotate { 
   0% { transform: rotate(0deg); } 
   100% { transform: rotate(360deg); } 
 }
 
-@keyframes csPulse { 
+@keyframes csPulse, anim-pulse { 
   0%, 100% { opacity: 1; } 
   50% { opacity: 0.5; } 
 }
 
-@keyframes csBounce { 
+@keyframes csBounce, anim-bounce { 
   0%, 100% { transform: translateY(0); } 
   50% { transform: translateY(-25%); } 
 }
 
-@keyframes csWiggle { 
+@keyframes csWiggle, anim-wiggle { 
   0%, 100% { transform: rotate(0deg); } 
   25% { transform: rotate(-3deg); } 
   75% { transform: rotate(3deg); } 
@@ -1439,9 +1439,146 @@
   40% { transform: scale(1); } 
 }
 
-@keyframes csRippleSpread { 
-  0% { transform: scale(0); opacity: 1; } 
-  100% { transform: scale(4); opacity: 0; } 
+@keyframes csRippleSpread {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* === COMPONENT-SPECIFIC ANIMATIONS === */
+@keyframes csDropdownIn {
+  0% { opacity: 0; transform: scale(0.95) translateY(-5px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes csDropdownOut {
+  0% { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0.95) translateY(-5px); }
+}
+
+@keyframes csTooltipIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes csTooltipOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes csModalIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes csModalOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.9); }
+}
+
+@keyframes csBackdropIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes csBackdropOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes csDrawerInLeft {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes csDrawerOutLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes csDrawerInRight {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes csDrawerOutRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes csDrawerInTop {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes csDrawerOutTop {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes csDrawerInBottom {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes csDrawerOutBottom {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes csAccordionIn {
+  0% { height: 0; opacity: 0; }
+  100% { height: auto; opacity: 1; }
+}
+
+@keyframes csAccordionOut {
+  0% { height: auto; opacity: 1; }
+  100% { height: 0; opacity: 0; }
+}
+
+@keyframes csToastIn {
+  0% { opacity: 0; transform: translateX(100%); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes csToastOut {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes csChipIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes csChipOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes csBadgePop {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes csSpinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes csProgressIndeterminate {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes csCarouselSlide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes csCarouselFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* === MICRO-INTERACTION ANIMATIONS === */
@@ -1562,6 +1699,30 @@
 @utility cs-rotate-in { animation-name: csRotateIn; }
 @utility cs-flip-in { animation-name: csFlipIn; }
 
+/* v0.8.0-kompatible Aliase */
+@utility cs-anim {
+  animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
+  animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
+  animation-iteration-count: 1;
+  animation-direction: var(--cs-anim-direction, normal);
+  animation-fill-mode: var(--cs-anim-fill, both);
+  animation-delay: var(--cs-anim-delay, 0ms);
+}
+
+/* Additional utility classes that match v0.8.0 */
+@utility cs-reveal-3d-up { animation-name: csReveal3DUp; }
+@utility cs-reveal-3d-right { animation-name: csReveal3DRight; }
+@utility cs-marquee {
+  animation-name: csMarqueeLeft;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@utility cs-parallax-y {
+  animation-name: csParallaxY;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
 /* =========================================================
    CONTINUOUS ANIMATION UTILITIES
    Looping and infinite animations
@@ -1669,6 +1830,186 @@
   animation-name: csBtnPress;
   animation-duration: var(--cs-anim-duration-xxs);
   animation-timing-function: var(--cs-anim-ease-soft-spring);
+}
+
+/* Dropdown Animations */
+@utility cs-dropdown-in {
+  animation-name: csDropdownIn;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-dropdown-out {
+  animation-name: csDropdownOut;
+  animation-duration: var(--cs-anim-duration-xs);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Tooltip Animations */
+@utility cs-tooltip-in {
+  animation-name: csTooltipIn;
+  animation-duration: var(--cs-anim-duration-xs);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-tooltip-out {
+  animation-name: csTooltipOut;
+  animation-duration: var(--cs-anim-duration-xxs);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Modal Animations */
+@utility cs-modal-in {
+  animation-name: csModalIn;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-modal-out {
+  animation-name: csModalOut;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Backdrop Animations */
+@utility cs-backdrop-in {
+  animation-name: csBackdropIn;
+  animation-duration: var(--cs-anim-duration-md);
+}
+
+@utility cs-backdrop-out {
+  animation-name: csBackdropOut;
+  animation-duration: var(--cs-anim-duration-sm);
+}
+
+/* Drawer Animations */
+@utility cs-drawer-in-left {
+  animation-name: csDrawerInLeft;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-drawer-out-left {
+  animation-name: csDrawerOutLeft;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+@utility cs-drawer-in-right {
+  animation-name: csDrawerInRight;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-drawer-out-right {
+  animation-name: csDrawerOutRight;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+@utility cs-drawer-in-top {
+  animation-name: csDrawerInTop;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-drawer-out-top {
+  animation-name: csDrawerOutTop;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+@utility cs-drawer-in-bottom {
+  animation-name: csDrawerInBottom;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-drawer-out-bottom {
+  animation-name: csDrawerOutBottom;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Accordion Animations */
+@utility cs-accordion-in {
+  animation-name: csAccordionIn;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-decelerate);
+}
+
+@utility cs-accordion-out {
+  animation-name: csAccordionOut;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+@utility cs-accordion-fade {
+  animation-name: csFadeIn;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-decelerate);
+}
+
+/* Toast Animations */
+@utility cs-toast-in {
+  animation-name: csToastIn;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-toast-out {
+  animation-name: csToastOut;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Chip Animations */
+@utility cs-chip-in {
+  animation-name: csChipIn;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-chip-out {
+  animation-name: csChipOut;
+  animation-duration: var(--cs-anim-duration-xs);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Badge Animation */
+@utility cs-badge-pop {
+  animation-name: csBadgePop;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-bounce);
+}
+
+/* Spinner Animation */
+@utility cs-spinner {
+  animation-name: csSpinner;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Progress Animations */
+@utility cs-progress-indeterminate {
+  animation-name: csProgressIndeterminate;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Carousel Animations */
+@utility cs-carousel-slide {
+  animation-name: csCarouselSlide;
+  animation-duration: var(--cs-anim-duration-lg);
+  animation-timing-function: var(--cs-anim-ease-decelerate);
+}
+
+@utility cs-carousel-fade {
+  animation-name: csCarouselFade;
+  animation-duration: var(--cs-anim-duration-lg);
+  animation-timing-function: var(--cs-anim-ease-standard);
 }
 
 /* Ripple Effect */
@@ -1856,6 +2197,19 @@
 @utility cs-origin-bottom-left { transform-origin: bottom left; }
 @utility cs-origin-left { transform-origin: left; }
 @utility cs-origin-top-left { transform-origin: top left; }
+
+/* v0.8.0-kompatible Aliase für transform-origin */
+@utility cs-t-origin-top { transform-origin: top; }
+@utility cs-t-origin-center { transform-origin: center; }
+@utility cs-t-origin-bottom { transform-origin: bottom; }
+
+/* v0.8.0-kompatible will-change Aliase */
+@utility cs-will-transform { will-change: transform; }
+@utility cs-will-opacity { will-change: opacity; }
+@utility cs-will-filter { will-change: filter; }
+
+/* v0.8.0-kompatible 3D Aliase */
+@utility cs-t-preserve-3d { transform-style: preserve-3d; }
 
 /* 3D Perspective utilities */
 @utility cs-preserve-3d { transform-style: preserve-3d; }
@@ -2161,19 +2515,42 @@
   --cs-glass-tooltip-bg: rgba(0,0,0,0.80);
   --cs-glass-bg-hover: rgba(255,255,255,0.15);
   --cs-glass-bg-light-hover: rgba(255,255,255,0.25);
+  --cs-glass-bg-contrast: rgba(255,255,255,0.20);
+  --cs-glass-bg-dark-contrast: rgba(0,0,0,0.20);
+  --cs-glass-bg-fallback: rgba(255,255,255,0.25);
+  --cs-glass-bg-dark-fallback: rgba(0,0,0,0.25);
+  --cs-glass-bg-blue-fallback: rgba(59,130,246,0.20);
+  --cs-glass-bg-purple-fallback: rgba(147,51,234,0.20);
+  --cs-glass-bg-green-fallback: rgba(34,197,94,0.20);
+  --cs-glass-bg-pink-fallback: rgba(236,72,153,0.20);
+  --cs-glass-bg-amber-fallback: rgba(245,158,11,0.20);
   --cs-glass-focus-ring: rgba(59,130,246,0.50);
+  --cs-glass-backdrop-filter-extra: none;
+  
+  /* Dark mode card adjustments */
+  @media (prefers-color-scheme: dark) {
+    --cs-card-bg: color-mix(in srgb, #ffffff 5%, #1a1a1a);
+    --cs-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+    --cs-card-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.35);
+  }
 
   /* === CARD SYSTEM TOKENS === */
-  --cs-card-bg: var(--cs-surface, #ffffff);
+  /* v0.8.x Compatible Card System */
+  --cs-card-border-radius: 1rem;
+  --cs-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --cs-card-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --cs-card-bg: #ffffff;
+  --cs-card-padding: 1.5rem;
+  --cs-card-spacing: 1rem;
+  
+  /* Extended Card System for compatibility */
   --cs-card-border: var(--cs-border, #e5e7eb);
-  --cs-card-shadow: var(--cs-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.1));
-  --cs-card-shadow-hover: var(--cs-shadow-2, 0 4px 6px rgba(0, 0, 0, 0.1));
-  --cs-card-radius: var(--cs-radius-lg, 12px);
+  --cs-card-radius: var(--cs-card-border-radius);
   --cs-card-text: var(--cs-text, #111827);
   --cs-card-text-muted: var(--cs-text-muted, #6b7280);
   --cs-card-brand: var(--cs-brand, #3b82f6);
   --cs-card-brand-ink: var(--cs-brand-ink, #ffffff);
-  --cs-card-transition: var(--cs-transition, 0.2s ease);
+  --cs-card-transition: var(--cs-transition, 0.3s ease);
   
   /* Card spacing system */
   --cs-card-space-xs: 0.25rem;
@@ -2182,7 +2559,7 @@
   --cs-card-space-lg: 1rem;
   --cs-card-space-xl: 1.5rem;
   --cs-card-space-2xl: 2rem;
-  --cs-card-hover-lift: -2px;
+  --cs-card-hover-lift: -4px;
   
   /* Card typography */
   --cs-card-font-size-xs: 0.75rem;
@@ -2241,204 +2618,232 @@
    Complete glass effect system with all variants
    ========================================================= */
 
-/* Base glass effects */
+/* Base glass effects with complete backdrop-filter support */
 @utility cs-glass {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark {
   background: var(--cs-glass-bg-dark);
   border: 1px solid var(--cs-glass-border-light);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 /* Light glass opacity scale - Complete range */
 @utility cs-glass-xs {
   background: var(--cs-glass-bg-xs);
   border: 1px solid var(--cs-glass-border-xs);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-sm {
   background: var(--cs-glass-bg-sm);
   border: 1px solid var(--cs-glass-border-sm);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-weak {
   background: var(--cs-glass-bg-weak);
   border: 1px solid var(--cs-glass-border-light);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-md {
   background: var(--cs-glass-bg-md);
   border: 1px solid var(--cs-glass-border-md);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-medium {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-lg {
   background: var(--cs-glass-bg-lg);
   border: 1px solid var(--cs-glass-border-lg);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-strong {
   background: var(--cs-glass-bg-medium);
   border: 1px solid var(--cs-glass-border-strong);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-xl {
   background: var(--cs-glass-bg-xl);
   border: 1px solid var(--cs-glass-border-xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-2xl {
   background: var(--cs-glass-bg-2xl);
   border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-3xl {
   background: var(--cs-glass-bg-3xl);
   border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-4xl {
   background: var(--cs-glass-bg-4xl);
   border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-5xl {
   background: var(--cs-glass-bg-5xl);
   border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 /* Dark glass opacity scale - Complete range */
 @utility cs-glass-dark-xs {
   background: var(--cs-glass-bg-dark-xs);
   border: 1px solid var(--cs-glass-border-xs);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark-sm {
   background: var(--cs-glass-bg-dark-sm);
   border: 1px solid var(--cs-glass-border-sm);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark-md {
   background: var(--cs-glass-bg-dark-md);
   border: 1px solid var(--cs-glass-border-md);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark-lg {
   background: var(--cs-glass-bg-dark-lg);
   border: 1px solid var(--cs-glass-border-lg);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark-xl {
   background: var(--cs-glass-bg-dark-xl);
   border: 1px solid var(--cs-glass-border-xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark-2xl {
   background: var(--cs-glass-bg-dark-2xl);
   border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark-3xl {
   background: var(--cs-glass-bg-dark-3xl);
   border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark-4xl {
   background: var(--cs-glass-bg-dark-4xl);
   border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-dark-5xl {
   background: var(--cs-glass-bg-dark-5xl);
   border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 /* Colored glass variants */
 @utility cs-glass-blue {
   background: var(--cs-glass-bg-blue);
   border: 1px solid var(--cs-glass-border-blue);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-purple {
   background: var(--cs-glass-bg-purple);
   border: 1px solid var(--cs-glass-border-purple);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-green {
   background: var(--cs-glass-bg-green);
   border: 1px solid var(--cs-glass-border-green);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-pink {
   background: var(--cs-glass-bg-pink);
   border: 1px solid var(--cs-glass-border-pink);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 @utility cs-glass-amber {
   background: var(--cs-glass-bg-amber);
   border: 1px solid var(--cs-glass-border-amber);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
+  background-clip: padding-box;
 }
 
 /* Glass radius utilities */
@@ -2797,6 +3202,13 @@
   100% { transform: translateX(100%); }
 }
 
+/* Card-specific animations */
+@keyframes cs-orb-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -30px) rotate(120deg); }
+  66% { transform: translate(-20px, 20px) rotate(240deg); }
+}
+
 /* Pro theme presets */
 @utility cs-glass-theme-neon {
   --cs-glass-bg-light: rgba(58, 227, 255, 0.1);
@@ -2900,6 +3312,221 @@
   background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
   backdrop-filter: saturate(140%) blur(12px);
   border: 2px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.3));
+}
+
+/* =========================================================
+   v0.8.x CARD SYSTEM COMPONENTS
+   Complete card system with interactive effects
+   ========================================================= */
+
+/* Card Base - v0.8.x compatible */
+@utility cs-card-base {
+  background: var(--cs-card-bg);
+  border-radius: var(--cs-card-border-radius);
+  box-shadow: var(--cs-card-shadow);
+  transition: all 300ms ease;
+  overflow: hidden;
+  
+  &:hover {
+    box-shadow: var(--cs-card-shadow-hover);
+    transform: translateY(var(--cs-card-hover-lift));
+  }
+}
+
+/* Product Card - v0.8.x compatible */
+@utility cs-card-product {
+  background: var(--cs-card-bg);
+  border-radius: var(--cs-card-border-radius);
+  box-shadow: var(--cs-card-shadow);
+  transition: all 300ms ease;
+  overflow: hidden;
+  max-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    box-shadow: var(--cs-card-shadow-hover);
+    transform: translateY(var(--cs-card-hover-lift));
+  }
+}
+
+/* Card Image */
+@utility cs-card-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  background: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+/* Card Content */
+@utility cs-card-content {
+  padding: var(--cs-card-padding);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Card Title */
+@utility cs-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: color-mix(in srgb, currentColor 95%, transparent);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Card Description */
+@utility cs-card-description {
+  color: color-mix(in srgb, currentColor 70%, transparent);
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+/* Card Price */
+@utility cs-card-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #059669;
+  margin: 0;
+}
+
+/* Card Actions */
+@utility cs-card-actions {
+  padding: 0 var(--cs-card-padding) var(--cs-card-padding);
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Primary Button for Cards */
+@utility cs-button-primary-card {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 200ms ease;
+  flex: 1;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, #3b82f6 40%, transparent);
+  }
+}
+
+/* Testimonial Card - v0.8.x compatible */
+@utility cs-card-testimonial {
+  background: var(--cs-card-bg);
+  border-radius: var(--cs-card-border-radius);
+  box-shadow: var(--cs-card-shadow);
+  transition: all 300ms ease;
+  overflow: hidden;
+  padding: var(--cs-card-padding);
+  max-width: 24rem;
+  text-align: center;
+  position: relative;
+  
+  &:hover {
+    box-shadow: var(--cs-card-shadow-hover);
+    transform: translateY(var(--cs-card-hover-lift));
+  }
+}
+
+/* Testimonial Quote */
+@utility cs-testimonial-quote {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: color-mix(in srgb, currentColor 85%, transparent);
+  margin-bottom: 1.5rem;
+  position: relative;
+  
+  &::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    font-size: 3rem;
+    color: color-mix(in srgb, currentColor 20%, transparent);
+    line-height: 1;
+  }
+}
+
+/* Testimonial Author */
+@utility cs-testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Testimonial Avatar */
+@utility cs-testimonial-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+}
+
+/* Testimonial Info */
+@utility cs-testimonial-info {
+  text-align: left;
+}
+
+/* Testimonial Name */
+@utility cs-testimonial-name {
+  font-weight: 600;
+  color: color-mix(in srgb, currentColor 90%, transparent);
+  margin: 0;
+}
+
+/* Testimonial Role */
+@utility cs-testimonial-role {
+  font-size: 0.875rem;
+  color: color-mix(in srgb, currentColor 60%, transparent);
+  margin: 0;
+}
+
+/* Testimonial with Orbs - v0.8.x compatible */
+@utility cs-card-testimonial-orb {
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, #3b82f6 10%, transparent) 0%,
+    color-mix(in srgb, #8b5cf6 15%, transparent) 50%,
+    color-mix(in srgb, #06b6d4 10%, transparent) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid color-mix(in srgb, #ffffff 20%, transparent);
+  border-radius: var(--cs-card-border-radius);
+  transition: all 300ms ease;
+  overflow: hidden;
+  padding: var(--cs-card-padding);
+  max-width: 24rem;
+  text-align: center;
+  position: relative;
+  
+  &:hover {
+    box-shadow: var(--cs-card-shadow-hover);
+    transform: translateY(var(--cs-card-hover-lift));
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, 
+      color-mix(in srgb, #3b82f6 30%, transparent) 0%,
+      transparent 70%
+    );
+    animation: cs-orb-float 6s ease-in-out infinite;
+    pointer-events: none;
+  }
 }
 
 /* =========================================================
@@ -3079,6 +3706,40 @@
 }
 
 /* =========================================================
+   RESPONSIVE GLASS UTILITIES
+   Container queries and responsive glass blur effects
+   ========================================================= */
+
+/* Responsive glass blur based on container size */
+@utility cs-glass-responsive {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  backdrop-filter: var(--cs-glass-blur-sm);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  background-clip: padding-box;
+  
+  @container (min-width: 320px) {
+    backdrop-filter: var(--cs-glass-blur-sm);
+    -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  }
+  
+  @container (min-width: 640px) {
+    backdrop-filter: var(--cs-glass-blur);
+    -webkit-backdrop-filter: var(--cs-glass-blur);
+  }
+  
+  @container (min-width: 1024px) {
+    backdrop-filter: var(--cs-glass-blur-lg);
+    -webkit-backdrop-filter: var(--cs-glass-blur-lg);
+  }
+}
+
+/* Base backdrop filter utility */
+@utility cs-glass-backdrop-clip {
+  background-clip: padding-box;
+}
+
+/* =========================================================
    GLASS-FIRST FALLBACKS & PERFORMANCE
    Fallback optimizations for legacy browsers
    ========================================================= */
@@ -3095,17 +3756,72 @@
   .cs-glass-toast,
   .cs-glass-tooltip,
   .cs-glass-dropdown {
-    background: var(--cs-glass-bg-xl);
+    background: var(--cs-glass-bg-fallback);
+    box-shadow: 0 4px 16px var(--cs-glass-shadow-medium);
   }
   
   .cs-glass-dark {
-    background: var(--cs-glass-bg-dark-xl);
+    background: var(--cs-glass-bg-dark-fallback);
+  }
+  
+  .cs-glass-blue {
+    background: var(--cs-glass-bg-blue-fallback);
+  }
+  
+  .cs-glass-purple {
+    background: var(--cs-glass-bg-purple-fallback);
+  }
+  
+  .cs-glass-green {
+    background: var(--cs-glass-bg-green-fallback);
+  }
+  
+  .cs-glass-pink {
+    background: var(--cs-glass-bg-pink-fallback);
+  }
+  
+  .cs-glass-amber {
+    background: var(--cs-glass-bg-amber-fallback);
   }
   
   .cs-card-feature-glass,
   .cs-card-product-glass,
   .cs-card-pricing-glass {
     background: rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button {
+    border-width: 2px;
+    background: var(--cs-glass-bg-contrast);
+  }
+  .cs-glass-dark {
+    background: var(--cs-glass-bg-dark-contrast);
+    border-color: var(--cs-glass-border-strong);
+  }
+}
+
+/* Forced colors mode support (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+  .cs-glass-tooltip {
+    background: CanvasText;
+    color: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+}
+
+/* Mobile optimization - reduce blur on small screens */
+@media (max-width: 480px) {
+  :root {
+    --cs-glass-blur: var(--cs-glass-blur-sm);
   }
 }
 
@@ -3125,6 +3841,7 @@
   .cs-glass-card,
   .cs-glass-card-light,
   .cs-glass-button,
+  .cs-glass-toast,
   .cs-glass-3d-hover,
   .cs-card-feature,
   .cs-card-product,
@@ -3135,6 +3852,7 @@
   .cs-glass-card:hover,
   .cs-glass-card-light:hover,
   .cs-glass-button:hover,
+  .cs-glass-toast:hover,
   .cs-glass-3d-hover:hover,
   .cs-card-feature:hover,
   .cs-card-product:hover,
@@ -3142,6 +3860,7 @@
     transform: none !important;
   }
 }
+
 
 /* === ORBS === */
 /*!

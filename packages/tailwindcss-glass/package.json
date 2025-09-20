@@ -1,14 +1,18 @@
 {
   "name": "@casoon/tailwindcss-glass",
   "version": "0.9.0",
-  "description": "Complete glass-morphism effects library for Tailwind CSS v4",
+  "description": "Pure glassmorphism effects and glass cards for Tailwind CSS v4 - backdrop-filter utilities, glass UI components, and glass animations",
   "keywords": [
     "tailwindcss",
     "css",
     "glass-morphism",
     "backdrop-filter",
     "glassmorphism",
-    "effects",
+    "glass-cards",
+    "glass-effects",
+    "blur",
+    "acrylic",
+    "ui",
     "v4"
   ],
   "main": "src/index.css",

@@ -32,7 +32,7 @@
    ========================================================= */
 @theme {
   /* === DURATION SYSTEM === */
-  --cs-anim-duration-xxs: 75ms;
+  --cs-anim-duration-xxs: 100ms;
   --cs-anim-duration-xs: 150ms;
   --cs-anim-duration-sm: 200ms;
   --cs-anim-duration-md: 300ms;
@@ -91,57 +91,57 @@
    ========================================================= */
 
 /* === ENTRANCE ANIMATIONS === */
-@keyframes csFadeIn { 
+@keyframes csFadeIn, anim-fade-in { 
   0% { opacity: 0; } 
   100% { opacity: 1; } 
 }
 
-@keyframes csFadeOut { 
+@keyframes csFadeOut, anim-fade-out { 
   0% { opacity: 1; } 
   100% { opacity: 0; } 
 }
 
-@keyframes csScaleIn { 
+@keyframes csScaleIn, anim-scale-in { 
   0% { opacity: 0; transform: scale(0.9); } 
   100% { opacity: 1; transform: scale(1); } 
 }
 
-@keyframes csScaleOut { 
+@keyframes csScaleOut, anim-scale-out { 
   0% { opacity: 1; transform: scale(1); } 
   100% { opacity: 0; transform: scale(0.9); } 
 }
 
-@keyframes csSlideUp { 
+@keyframes csSlideUp, anim-slide-up { 
   0% { opacity: 0; transform: translateY(20px); } 
   100% { opacity: 1; transform: translateY(0); } 
 }
 
-@keyframes csSlideDown { 
+@keyframes csSlideDown, anim-slide-down { 
   0% { opacity: 0; transform: translateY(-20px); } 
   100% { opacity: 1; transform: translateY(0); } 
 }
 
-@keyframes csSlideLeft { 
+@keyframes csSlideLeft, anim-slide-left { 
   0% { opacity: 0; transform: translateX(20px); } 
   100% { opacity: 1; transform: translateX(0); } 
 }
 
-@keyframes csSlideRight { 
+@keyframes csSlideRight, anim-slide-right { 
   0% { opacity: 0; transform: translateX(-20px); } 
   100% { opacity: 1; transform: translateX(0); } 
 }
 
-@keyframes csBlurIn { 
+@keyframes csBlurIn, anim-blur-in { 
   0% { opacity: 0; filter: blur(4px); } 
   100% { opacity: 1; filter: blur(0); } 
 }
 
-@keyframes csBlurOut { 
+@keyframes csBlurOut, anim-blur-out { 
   0% { opacity: 1; filter: blur(0); } 
   100% { opacity: 0; filter: blur(4px); } 
 }
 
-@keyframes csRotateIn { 
+@keyframes csRotateIn, anim-rotate-in { 
   0% { opacity: 0; transform: rotate(-5deg); } 
   100% { opacity: 1; transform: rotate(0); } 
 }
@@ -162,22 +162,22 @@
 }
 
 /* === CONTINUOUS ANIMATIONS === */
-@keyframes csRotate { 
+@keyframes csRotate, anim-rotate { 
   0% { transform: rotate(0deg); } 
   100% { transform: rotate(360deg); } 
 }
 
-@keyframes csPulse { 
+@keyframes csPulse, anim-pulse { 
   0%, 100% { opacity: 1; } 
   50% { opacity: 0.5; } 
 }
 
-@keyframes csBounce { 
+@keyframes csBounce, anim-bounce { 
   0%, 100% { transform: translateY(0); } 
   50% { transform: translateY(-25%); } 
 }
 
-@keyframes csWiggle { 
+@keyframes csWiggle, anim-wiggle { 
   0%, 100% { transform: rotate(0deg); } 
   25% { transform: rotate(-3deg); } 
   75% { transform: rotate(3deg); } 
@@ -274,9 +274,146 @@
   40% { transform: scale(1); } 
 }
 
-@keyframes csRippleSpread { 
-  0% { transform: scale(0); opacity: 1; } 
-  100% { transform: scale(4); opacity: 0; } 
+@keyframes csRippleSpread {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* === COMPONENT-SPECIFIC ANIMATIONS === */
+@keyframes csDropdownIn {
+  0% { opacity: 0; transform: scale(0.95) translateY(-5px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes csDropdownOut {
+  0% { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0.95) translateY(-5px); }
+}
+
+@keyframes csTooltipIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes csTooltipOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes csModalIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes csModalOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.9); }
+}
+
+@keyframes csBackdropIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes csBackdropOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes csDrawerInLeft {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes csDrawerOutLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes csDrawerInRight {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes csDrawerOutRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes csDrawerInTop {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes csDrawerOutTop {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes csDrawerInBottom {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes csDrawerOutBottom {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes csAccordionIn {
+  0% { height: 0; opacity: 0; }
+  100% { height: auto; opacity: 1; }
+}
+
+@keyframes csAccordionOut {
+  0% { height: auto; opacity: 1; }
+  100% { height: 0; opacity: 0; }
+}
+
+@keyframes csToastIn {
+  0% { opacity: 0; transform: translateX(100%); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes csToastOut {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes csChipIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes csChipOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes csBadgePop {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes csSpinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes csProgressIndeterminate {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes csCarouselSlide {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes csCarouselFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* === MICRO-INTERACTION ANIMATIONS === */
@@ -397,6 +534,30 @@
 @utility cs-rotate-in { animation-name: csRotateIn; }
 @utility cs-flip-in { animation-name: csFlipIn; }
 
+/* v0.8.0-kompatible Aliase */
+@utility cs-anim {
+  animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
+  animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
+  animation-iteration-count: 1;
+  animation-direction: var(--cs-anim-direction, normal);
+  animation-fill-mode: var(--cs-anim-fill, both);
+  animation-delay: var(--cs-anim-delay, 0ms);
+}
+
+/* Additional utility classes that match v0.8.0 */
+@utility cs-reveal-3d-up { animation-name: csReveal3DUp; }
+@utility cs-reveal-3d-right { animation-name: csReveal3DRight; }
+@utility cs-marquee {
+  animation-name: csMarqueeLeft;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@utility cs-parallax-y {
+  animation-name: csParallaxY;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
 /* =========================================================
    CONTINUOUS ANIMATION UTILITIES
    Looping and infinite animations
@@ -504,6 +665,186 @@
   animation-name: csBtnPress;
   animation-duration: var(--cs-anim-duration-xxs);
   animation-timing-function: var(--cs-anim-ease-soft-spring);
+}
+
+/* Dropdown Animations */
+@utility cs-dropdown-in {
+  animation-name: csDropdownIn;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-dropdown-out {
+  animation-name: csDropdownOut;
+  animation-duration: var(--cs-anim-duration-xs);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Tooltip Animations */
+@utility cs-tooltip-in {
+  animation-name: csTooltipIn;
+  animation-duration: var(--cs-anim-duration-xs);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-tooltip-out {
+  animation-name: csTooltipOut;
+  animation-duration: var(--cs-anim-duration-xxs);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Modal Animations */
+@utility cs-modal-in {
+  animation-name: csModalIn;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-modal-out {
+  animation-name: csModalOut;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Backdrop Animations */
+@utility cs-backdrop-in {
+  animation-name: csBackdropIn;
+  animation-duration: var(--cs-anim-duration-md);
+}
+
+@utility cs-backdrop-out {
+  animation-name: csBackdropOut;
+  animation-duration: var(--cs-anim-duration-sm);
+}
+
+/* Drawer Animations */
+@utility cs-drawer-in-left {
+  animation-name: csDrawerInLeft;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-drawer-out-left {
+  animation-name: csDrawerOutLeft;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+@utility cs-drawer-in-right {
+  animation-name: csDrawerInRight;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-drawer-out-right {
+  animation-name: csDrawerOutRight;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+@utility cs-drawer-in-top {
+  animation-name: csDrawerInTop;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-drawer-out-top {
+  animation-name: csDrawerOutTop;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+@utility cs-drawer-in-bottom {
+  animation-name: csDrawerInBottom;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-drawer-out-bottom {
+  animation-name: csDrawerOutBottom;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Accordion Animations */
+@utility cs-accordion-in {
+  animation-name: csAccordionIn;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-decelerate);
+}
+
+@utility cs-accordion-out {
+  animation-name: csAccordionOut;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+@utility cs-accordion-fade {
+  animation-name: csFadeIn;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-decelerate);
+}
+
+/* Toast Animations */
+@utility cs-toast-in {
+  animation-name: csToastIn;
+  animation-duration: var(--cs-anim-duration-md);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-toast-out {
+  animation-name: csToastOut;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Chip Animations */
+@utility cs-chip-in {
+  animation-name: csChipIn;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-spring);
+}
+
+@utility cs-chip-out {
+  animation-name: csChipOut;
+  animation-duration: var(--cs-anim-duration-xs);
+  animation-timing-function: var(--cs-anim-ease-accelerate);
+}
+
+/* Badge Animation */
+@utility cs-badge-pop {
+  animation-name: csBadgePop;
+  animation-duration: var(--cs-anim-duration-sm);
+  animation-timing-function: var(--cs-anim-ease-bounce);
+}
+
+/* Spinner Animation */
+@utility cs-spinner {
+  animation-name: csSpinner;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Progress Animations */
+@utility cs-progress-indeterminate {
+  animation-name: csProgressIndeterminate;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Carousel Animations */
+@utility cs-carousel-slide {
+  animation-name: csCarouselSlide;
+  animation-duration: var(--cs-anim-duration-lg);
+  animation-timing-function: var(--cs-anim-ease-decelerate);
+}
+
+@utility cs-carousel-fade {
+  animation-name: csCarouselFade;
+  animation-duration: var(--cs-anim-duration-lg);
+  animation-timing-function: var(--cs-anim-ease-standard);
 }
 
 /* Ripple Effect */
@@ -691,6 +1032,19 @@
 @utility cs-origin-bottom-left { transform-origin: bottom left; }
 @utility cs-origin-left { transform-origin: left; }
 @utility cs-origin-top-left { transform-origin: top left; }
+
+/* v0.8.0-kompatible Aliase für transform-origin */
+@utility cs-t-origin-top { transform-origin: top; }
+@utility cs-t-origin-center { transform-origin: center; }
+@utility cs-t-origin-bottom { transform-origin: bottom; }
+
+/* v0.8.0-kompatible will-change Aliase */
+@utility cs-will-transform { will-change: transform; }
+@utility cs-will-opacity { will-change: opacity; }
+@utility cs-will-filter { will-change: filter; }
+
+/* v0.8.0-kompatible 3D Aliase */
+@utility cs-t-preserve-3d { transform-style: preserve-3d; }
 
 /* 3D Perspective utilities */
 @utility cs-preserve-3d { transform-style: preserve-3d; }

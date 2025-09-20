@@ -239,6 +239,18 @@
   --cs-nav-font-size-sm: 0.875rem;
   --cs-nav-font-size: 1rem;
   --cs-nav-font-size-lg: 1.125rem;
+  
+  /* === FORMS SYSTEM TOKENS === */
+  /* v0.8.x Compatible Form System */
+  --cs-form-border-radius: 0.5rem;
+  --cs-form-border-color: color-mix(in srgb, currentColor 20%, transparent);
+  --cs-form-focus-color: #3b82f6;
+  --cs-form-error-color: #ef4444;
+  --cs-form-success-color: #10b981;
+  --cs-form-spacing: 1rem;
+  --cs-form-transition: all 200ms ease;
+  --cs-form-padding: 0.75rem 1rem;
+  --cs-form-focus-shadow: 0 0 0 3px;
 }
 
 /* =========================================================
@@ -1155,6 +1167,234 @@
     animation: cs-orb-float 6s ease-in-out infinite;
     pointer-events: none;
   }
+}
+
+/* =========================================================
+   v0.8.x FORMS SYSTEM COMPONENTS
+   Complete form system with validation states
+   ========================================================= */
+
+/* Form Base - v0.8.x compatible */
+@utility cs-form-base {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cs-form-spacing);
+}
+
+/* Input Base - v0.8.x compatible */
+@utility cs-input-base {
+  padding: var(--cs-form-padding);
+  border: 1px solid var(--cs-form-border-color);
+  border-radius: var(--cs-form-border-radius);
+  transition: var(--cs-form-transition);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--cs-form-focus-color);
+    box-shadow: var(--cs-form-focus-shadow) color-mix(in srgb, var(--cs-form-focus-color) 20%, transparent);
+  }
+}
+
+/* Modern Form - v0.8.x compatible */
+@utility cs-form-modern {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cs-form-spacing);
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background: color-mix(in srgb, #ffffff 95%, transparent);
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px color-mix(in srgb, #000000 10%, transparent);
+}
+
+/* Modern Input - v0.8.x compatible */
+@utility cs-input-modern {
+  padding: var(--cs-form-padding);
+  border: 2px solid color-mix(in srgb, currentColor 10%, transparent);
+  border-radius: var(--cs-form-border-radius);
+  transition: var(--cs-form-transition);
+  background: #ffffff;
+  font-size: 1rem;
+  line-height: 1.5;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--cs-form-focus-color);
+    box-shadow: var(--cs-form-focus-shadow) color-mix(in srgb, var(--cs-form-focus-color) 20%, transparent);
+  }
+  
+  &::placeholder {
+    color: color-mix(in srgb, currentColor 60%, transparent);
+  }
+}
+
+/* Modern Label - v0.8.x compatible */
+@utility cs-label-modern {
+  font-weight: 600;
+  color: color-mix(in srgb, currentColor 90%, transparent);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Modern Primary Button - v0.8.x compatible */
+@utility cs-button-primary-modern {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--cs-form-border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--cs-form-transition);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px color-mix(in srgb, #3b82f6 30%, transparent);
+  }
+}
+
+/* Glass Form - v0.8.x compatible */
+@utility cs-form-glass {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cs-form-spacing);
+  backdrop-filter: blur(20px) saturate(180%);
+  background: color-mix(in srgb, #ffffff 10%, transparent);
+  border: 1px solid color-mix(in srgb, #ffffff 20%, transparent);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+/* Glass Input - v0.8.x compatible */
+@utility cs-input-glass {
+  padding: var(--cs-form-padding);
+  background: color-mix(in srgb, #ffffff 15%, transparent);
+  border: 1px solid color-mix(in srgb, #ffffff 30%, transparent);
+  border-radius: var(--cs-form-border-radius);
+  transition: var(--cs-form-transition);
+  color: inherit;
+  backdrop-filter: blur(10px);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--cs-form-focus-color);
+    box-shadow: var(--cs-form-focus-shadow) color-mix(in srgb, var(--cs-form-focus-color) 20%, transparent);
+  }
+  
+  &::placeholder {
+    color: color-mix(in srgb, currentColor 60%, transparent);
+  }
+}
+
+/* Glass Primary Button - v0.8.x compatible */
+@utility cs-button-primary-glass {
+  background: color-mix(in srgb, #ffffff 20%, transparent);
+  border: 1px solid color-mix(in srgb, #ffffff 30%, transparent);
+  backdrop-filter: blur(10px);
+  color: inherit;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--cs-form-border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--cs-form-transition);
+  
+  &:hover {
+    background: color-mix(in srgb, #ffffff 30%, transparent);
+    transform: translateY(-1px);
+  }
+}
+
+/* Form Group - v0.8.x compatible */
+@utility cs-form-group {
+  position: relative;
+  margin-bottom: var(--cs-form-spacing);
+}
+
+/* Input Validation States - v0.8.x compatible */
+@utility cs-input-validation {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@utility cs-validation-error {
+  display: flex;
+  color: var(--cs-form-error-color);
+}
+
+@utility cs-validation-success {
+  display: flex;
+  color: var(--cs-form-success-color);
+}
+
+@utility cs-validation-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+@utility cs-input-error {
+  border-color: var(--cs-form-error-color) !important;
+  box-shadow: var(--cs-form-focus-shadow) color-mix(in srgb, var(--cs-form-error-color) 20%, transparent) !important;
+}
+
+@utility cs-input-success {
+  border-color: var(--cs-form-success-color) !important;
+  box-shadow: var(--cs-form-focus-shadow) color-mix(in srgb, var(--cs-form-success-color) 20%, transparent) !important;
+}
+
+/* Additional Form Utilities */
+@utility cs-input-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+@utility cs-input-addon {
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  border: 1px solid var(--cs-form-border-color);
+  color: color-mix(in srgb, currentColor 70%, transparent);
+  font-size: 0.875rem;
+}
+
+@utility cs-input-addon-left {
+  border-right: none;
+  border-radius: var(--cs-form-border-radius) 0 0 var(--cs-form-border-radius);
+}
+
+@utility cs-input-addon-right {
+  border-left: none;
+  border-radius: 0 var(--cs-form-border-radius) var(--cs-form-border-radius) 0;
+}
+
+@utility cs-input-with-addon-left {
+  border-radius: 0 var(--cs-form-border-radius) var(--cs-form-border-radius) 0;
+  border-left: none;
+}
+
+@utility cs-input-with-addon-right {
+  border-radius: var(--cs-form-border-radius) 0 0 var(--cs-form-border-radius);
+  border-right: none;
+}
+
+@utility cs-form-row {
+  display: flex;
+  gap: var(--cs-form-spacing);
+  align-items: flex-start;
+}
+
+@utility cs-form-col {
+  flex: 1;
+  min-width: 0;
 }
 
 /* =========================================================

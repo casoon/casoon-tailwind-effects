@@ -203,3 +203,792 @@
 @utility cs-cq { 
   container-type: inline-size; 
 }
+
+/* =========================================================
+   ENHANCED ORB ANIMATIONS (v0.8.x)
+   ========================================================= */
+
+/* Float Animation */
+@utility cs-orb-float {
+  animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite;
+}
+
+/* Pulse Animation */
+@utility cs-orb-pulse {
+  animation: cs-orb-pulse-kf var(--cs-anim-duration-pulse) var(--cs-anim-ease-inout) infinite;
+}
+
+/* Drift Animation */
+@utility cs-orb-drift {
+  animation: cs-orb-drift-kf var(--cs-anim-duration-drift) var(--cs-anim-ease-inout) infinite;
+}
+
+/* Morph Animation */
+@utility cs-orb-morph {
+  animation: cs-orb-morph 12s ease-in-out infinite;
+}
+
+/* Shimmer Animation */
+@utility cs-orb-shimmer {
+  background: linear-gradient(270deg, var(--cs-orb-blue), var(--cs-orb-blue-light), var(--cs-orb-blue));
+  background-size: 600% 600%;
+  animation: cs-orb-shimmer 10s infinite;
+}
+
+/* Bloom Animation (hover/focus triggered) */
+@utility cs-orb-bloom {
+  &:hover, &:focus-visible {
+    transform-origin: 50%;
+    animation: cs-orb-bloom 2s ease-in-out infinite;
+  }
+}
+
+/* Zen Animation (combined float + morph) */
+@utility cs-orb-zen {
+  animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite,
+             cs-orb-morph 14s ease-in-out infinite;
+}
+
+/* Advanced Movement Animations */
+@utility cs-orb-orbit {
+  animation: cs-orb-orbit 20s linear infinite;
+}
+
+@utility cs-orb-orbit-reverse {
+  animation: cs-orb-orbit 20s linear infinite reverse;
+}
+
+@utility cs-orb-figure-8 {
+  animation: cs-orb-figure-8 16s ease-in-out infinite;
+}
+
+@utility cs-orb-wander {
+  animation: cs-orb-wander 25s ease-in-out infinite;
+}
+
+@utility cs-orb-swing {
+  animation: cs-orb-swing 8s ease-in-out infinite;
+}
+
+@utility cs-orb-bounce {
+  animation: cs-orb-bounce 3s ease-in-out infinite;
+}
+
+@utility cs-orb-magnetic {
+  animation: cs-orb-magnetic 12s ease-in-out infinite;
+}
+
+/* Color & Visual Effects */
+@utility cs-orb-hue-shift {
+  animation: cs-orb-hue-shift 10s linear infinite;
+}
+
+@utility cs-orb-rainbow {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b, #6c5ce7) 0 0/400% 400%;
+  animation: cs-orb-rainbow 8s infinite;
+}
+
+@utility cs-orb-color-pulse {
+  animation: cs-orb-color-pulse 4s ease-in-out infinite;
+}
+
+@utility cs-orb-color-breathe {
+  animation: cs-orb-color-breathe 6s ease-in-out infinite;
+}
+
+@utility cs-orb-glow {
+  animation: cs-orb-glow 3s ease-in-out infinite;
+}
+
+@utility cs-orb-flicker {
+  animation: cs-orb-flicker 2s ease-in-out infinite;
+}
+
+@utility cs-orb-scale-pulse {
+  animation: cs-orb-scale-pulse 4s ease-in-out infinite;
+}
+
+@utility cs-orb-elastic {
+  animation: cs-orb-elastic 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+/* Complex Combined Animations */
+@utility cs-orb-dream {
+  animation: cs-orb-float-kf 12s ease-in-out infinite,
+             cs-orb-hue-shift 15s linear infinite,
+             cs-orb-scale-pulse 8s ease-in-out infinite;
+}
+
+@utility cs-orb-cosmic {
+  animation: cs-orb-orbit 30s linear infinite,
+             cs-orb-rainbow 10s infinite,
+             cs-orb-glow 4s ease-in-out infinite;
+}
+
+@utility cs-orb-chaos {
+  animation: cs-orb-wander 20s ease-in-out infinite,
+             cs-orb-flicker 1.5s ease-in-out infinite,
+             cs-orb-elastic 5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+/* =========================================================
+   ANIMATION SPEED CONTROLS
+   ========================================================= */
+@utility cs-orb-slow {
+  animation-duration: calc(var(--cs-orb-speed, 1) * 2);
+}
+
+@utility cs-orb-fast {
+  animation-duration: calc(var(--cs-orb-speed, 1) * 0.5);
+}
+
+/* =========================================================
+   INTERACTIVE ANIMATION CONTROLS
+   ========================================================= */
+@utility cs-orb-pause-hover {
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@utility cs-orb-reverse-hover {
+  &:hover {
+    animation-direction: reverse;
+  }
+}
+
+@utility cs-orb-trigger-hover {
+  animation-play-state: paused;
+  
+  &:hover {
+    animation-play-state: running;
+  }
+}
+
+/* =========================================================
+   CORE UTILITY HELPER CLASSES
+   ========================================================= */
+@utility cs-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =========================================================
+   GLOW EFFECTS
+   ========================================================= */
+@utility cs-glow {
+  box-shadow: 0 0 transparent;
+}
+
+@utility cs-glow-blue {
+  box-shadow: 0 0 24px 8px var(--cs-orb-blue);
+  
+  @supports (color: color-mix(in lab, red, red)) {
+    box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-blue) 35%, transparent);
+  }
+  
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    box-shadow: 0 0 24px 8px rgba(59, 130, 246, 0.35);
+  }
+}
+
+@utility cs-glow-pink {
+  box-shadow: 0 0 24px 8px var(--cs-orb-pink);
+  
+  @supports (color: color-mix(in lab, red, red)) {
+    box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-pink) 35%, transparent);
+  }
+  
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    box-shadow: 0 0 24px 8px rgba(236, 72, 153, 0.35);
+  }
+}
+
+/* =========================================================
+   CORE POSITIONING UTILITIES
+   ========================================================= */
+@utility cs-will-transform {
+  will-change: transform;
+}
+
+/* =========================================================
+   CARD COMPONENTS
+   ========================================================= */
+@utility cs-card {
+  position: relative;
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: calc(12px * var(--cs-density));
+  box-shadow: var(--cs-shadow-2);
+  padding: calc(16px * var(--cs-density));
+  transition: box-shadow var(--cs-transition), transform var(--cs-transition);
+  
+  &:hover {
+    box-shadow: var(--cs-shadow-3);
+    transform: translateY(-1px);
+  }
+}
+
+@utility cs-card-title {
+  color: var(--cs-text);
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+@utility cs-card-hover-orb {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    width: 200%;
+    height: 200%;
+    background: var(--cs-orb-fallback-blue);
+    filter: blur(32px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.5s;
+  }
+  
+  &:hover::before {
+    opacity: 0.6;
+  }
+}
+
+@utility cs-card-hover-orb-shimmer {
+  &::before {
+    background: linear-gradient(135deg, #3b82f6, #93c5fd, #3b82f6) 0 0/300% 300%;
+    animation: cs-orb-shimmer 6s linear infinite;
+  }
+}
+
+@utility cs-surface-pop {
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: 12px;
+  box-shadow: var(--cs-shadow-4);
+}
+
+/* =========================================================
+   ACRYLIC/GLASSMORPHISM EFFECT
+   ========================================================= */
+@utility cs-acrylic {
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  
+  @supports (color: color-mix(in lab, red, red)) {
+    background: color-mix(in srgb, var(--cs-surface) 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cs-border) 70%, transparent);
+  }
+  
+  @supports not (backdrop-filter: blur(10px)) {
+    background: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* =========================================================
+   BUTTON COMPONENTS
+   ========================================================= */
+@utility cs-btn {
+  --_pad-y: calc(8px * var(--cs-density));
+  --_pad-x: calc(14px * var(--cs-density));
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: var(--_pad-y) var(--_pad-x);
+  border: 1px solid var(--cs-border);
+  border-radius: calc(10px * var(--cs-density));
+  background: var(--cs-surface-2);
+  color: var(--cs-text);
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: var(--cs-shadow-1);
+  transition: background var(--cs-transition), box-shadow var(--cs-transition), transform var(--cs-transition);
+  
+  &:hover {
+    box-shadow: var(--cs-shadow-2);
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@utility cs-btn-primary {
+  background: var(--cs-orb-blue);
+  border-color: var(--cs-orb-blue);
+  color: var(--cs-text);
+  
+  @supports (color: color-mix(in lab, red, red)) {
+    background: color-mix(in srgb, var(--cs-orb-blue) 12%, var(--cs-surface));
+    border-color: color-mix(in srgb, var(--cs-orb-blue) 35%, var(--cs-border));
+  }
+  
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    background: #eef5ff;
+    border-color: #b8d1ff;
+  }
+}
+
+@utility cs-btn-orb {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle at center, var(--cs-orb-blue-light), transparent 70%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.4s, transform 0.4s;
+    z-index: 0;
+  }
+  
+  &:hover::after {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+}
+
+/* =========================================================
+   LAYOUT COMPONENTS
+   ========================================================= */
+@utility cs-section-orb {
+  position: relative;
+  overflow: clip;
+  
+  & > .cs-orb {
+    position: absolute;
+    inset: auto;
+  }
+}
+
+@utility cs-orb-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--cs-orb-fallback-purple);
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: var(--cs-z-modal);
+}
+
+
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   ========================================================= */
+
+/* Basic Movement Animations */
+@keyframes cs-orb-float-kf {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes cs-orb-pulse-kf {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes cs-orb-drift-kf {
+  0% {
+    transform: translate(0);
+  }
+  33% {
+    transform: translate(30px);
+  }
+  66% {
+    transform: translate(-20px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes cs-orb-morph {
+  0% {
+    border-radius: 50%;
+  }
+  25% {
+    border-radius: 55% 45% 60% 40% / 60% 40% 55% 45%;
+  }
+  50% {
+    border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%;
+  }
+  75% {
+    border-radius: 45% 55% 50% 50% / 50% 50% 45% 55%;
+  }
+  100% {
+    border-radius: 50%;
+  }
+}
+
+@keyframes cs-orb-bloom {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes cs-orb-shimmer {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
+/* Complex Movement Animations */
+@keyframes cs-orb-orbit {
+  0% {
+    transform: rotate(0deg) translate(100px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(100px) rotate(-360deg);
+  }
+}
+
+@keyframes cs-orb-figure-8 {
+  0% {
+    transform: translate(0);
+  }
+  12.5% {
+    transform: translate(30px, -15px);
+  }
+  25% {
+    transform: translate(40px);
+  }
+  37.5% {
+    transform: translate(30px, 15px);
+  }
+  50% {
+    transform: translate(0);
+  }
+  62.5% {
+    transform: translate(-30px, 15px);
+  }
+  75% {
+    transform: translate(-40px);
+  }
+  87.5% {
+    transform: translate(-30px, -15px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes cs-orb-wander {
+  0% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(25px, -30px);
+  }
+  20% {
+    transform: translate(-15px, -45px);
+  }
+  30% {
+    transform: translate(40px, -20px);
+  }
+  40% {
+    transform: translate(10px, 35px);
+  }
+  50% {
+    transform: translate(-35px, 15px);
+  }
+  60% {
+    transform: translate(-20px, -25px);
+  }
+  70% {
+    transform: translate(30px, 40px);
+  }
+  80% {
+    transform: translate(-40px, -10px);
+  }
+  90% {
+    transform: translate(20px, -35px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes cs-orb-swing {
+  0%, 100% {
+    transform: rotate(-15deg) translate(0);
+  }
+  50% {
+    transform: rotate(15deg) translate(0);
+  }
+}
+
+@keyframes cs-orb-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-30px);
+  }
+  70% {
+    transform: translateY(-15px);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes cs-orb-magnetic {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(50px, 20px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, -40px) scale(0.9);
+  }
+  75% {
+    transform: translate(-50px, 30px) scale(1.05);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Color & Visual Effect Animations */
+@keyframes cs-orb-hue-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes cs-orb-rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes cs-orb-color-pulse {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.3) saturate(1.5);
+  }
+}
+
+@keyframes cs-orb-color-breathe {
+  0%, 100% {
+    filter: brightness(0.8) contrast(1.1);
+    opacity: 0.7;
+  }
+  50% {
+    filter: brightness(1.2) contrast(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes cs-orb-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(79, 124, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(79, 124, 255, 0.8), 0 0 80px rgba(79, 124, 255, 0.4);
+  }
+}
+
+@keyframes cs-orb-flicker {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+@keyframes cs-orb-scale-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes cs-orb-elastic {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1, 0.9);
+  }
+  50% {
+    transform: scale(0.9, 1.1);
+  }
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY & RESPONSIVE DESIGN
+   ========================================================= */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cs-orb-float,
+  .cs-orb-pulse,
+  .cs-orb-drift,
+  .cs-orb-bloom,
+  .cs-orb-shimmer,
+  .cs-orb-morph,
+  .cs-orb-zen,
+  .cs-card-hover-orb::before,
+  .cs-btn-orb::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .cs-orb {
+    filter: none;
+    opacity: 0.9;
+  }
+  
+  .cs-card,
+  .cs-btn {
+    box-shadow: var(--cs-shadow-1);
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-orb {
+    opacity: 0.15;
+    background: CanvasText;
+  }
+  
+  .cs-btn {
+    border: 1px solid ButtonText;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
+  .cs-orb:is(.cs-orb-blur-lg, .cs-orb-blur-md) {
+    filter: blur(2px);
+  }
+  
+  .cs-orb-float {
+    animation-duration: calc(var(--cs-anim-duration-float) * 1.25);
+  }
+}
+
+/* Focus styles */
+.cs-focus-ring:focus-visible,
+.cs-btn:focus-visible,
+.cs-card:focus-visible {
+  outline: 2px solid var(--cs-orb-blue);
+  outline-offset: 2px;
+  
+  @supports (color: color-mix(in lab, red, red)) {
+    outline: 2px solid color-mix(in srgb, var(--cs-orb-blue) 60%, transparent);
+  }
+  
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    outline: 2px solid #3b82f6;
+  }
+}
+
+/* Print styles */
+@media print {
+  .cs-orb {
+    filter: none !important;
+    opacity: 0.15 !important;
+  }
+  
+  .cs-card,
+  .cs-btn,
+  .cs-surface-pop {
+    box-shadow: none !important;
+    border: 1px solid black !important;
+  }
+}

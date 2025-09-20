@@ -1,45 +1,13 @@
 /*!
  * Casoon Glass - Complete Glassmorphism System for Tailwind v4
- * Version: 0.9.0 — COMPLETE CONSOLIDATED GLASS SYSTEM
+ * Version: 0.9.0 — Pure Glass Effects & Glass Cards
  * 
- * SYSTEMATICALLY CONSOLIDATED FROM:
- * 
- * === GLASS PACKAGE (9 files) ===
- * - src/index.css (root)
- * - src/styles/base/tokens.css
- * - src/styles/base/glass-core.css  
- * - src/styles/base/fallbacks.css
- * - src/styles/utilities/variants.css
- * - src/styles/utilities/addons.css
- * - src/styles/utilities/responsive.css
- * - src/styles/components/ui-elements.css
- * - src/styles/effects/pro-effects.css
- * 
- * === CARDS PACKAGE (7 files) ===
- * - src/index.css (root)
- * - src/styles/base/tokens.css
- * - src/styles/presets/card-feature.css
- * - src/styles/presets/card-product.css 
- * - src/styles/presets/card-product-clean.css
- * - src/styles/presets/card-pricing.css
- * - src/styles/presets/card-testimonial.css
- * 
- * === NAVIGATION PACKAGE (13 files) ===
- * - src/index.css (root)
- * - src/styles/index.css
- * - src/styles/base/tokens.css
- * - src/styles/variants.css
- * - src/styles/utilities/navigation.css
- * - src/styles/utilities/accessibility.css
- * - src/styles/components/nav.css
- * - src/styles/components/navbar.css
- * - src/styles/components/nav-tabs.css
- * - src/styles/components/nav-pills.css
- * - src/styles/components/breadcrumbs.css
- * - src/styles/components/drawer.css
- * - src/styles/effects/animations.css
- * 
- * TOTAL: 29 CSS FILES → Pure Tailwind v4 (179 classes + 88 @utility)
+ * Features:
+ * - Glass Backdrop Filter Effects
+ * - Glass Background & Border Utilities  
+ * - Glass Cards (with backdrop-filter)
+ * - Glass UI Components (buttons, nav, etc.)
+ * - Glass Animation Effects
  * 
  * Usage: @import "@casoon/tailwindcss-glass/index.css";
  */
@@ -47,8 +15,7 @@
 /* Note: @import "tailwindcss"; should be added by the consumer */
 
 /* =========================================================
-   CONSOLIDATED DESIGN TOKENS & THEME
-   All tokens from glass, cards, navigation packages merged
+   GLASS DESIGN TOKENS & THEME
    ========================================================= */
 @theme {
   /* === GLASS COLOR SYSTEM === */
@@ -143,295 +110,139 @@
   --cs-glass-tooltip-bg: rgba(0,0,0,0.80);
   --cs-glass-bg-hover: rgba(255,255,255,0.15);
   --cs-glass-bg-light-hover: rgba(255,255,255,0.25);
+  --cs-glass-bg-contrast: rgba(255,255,255,0.20);
+  --cs-glass-bg-dark-contrast: rgba(0,0,0,0.20);
+  --cs-glass-bg-fallback: rgba(255,255,255,0.25);
+  --cs-glass-bg-dark-fallback: rgba(0,0,0,0.25);
+  --cs-glass-bg-blue-fallback: rgba(59,130,246,0.20);
+  --cs-glass-bg-purple-fallback: rgba(147,51,234,0.20);
+  --cs-glass-bg-green-fallback: rgba(34,197,94,0.20);
+  --cs-glass-bg-pink-fallback: rgba(236,72,153,0.20);
+  --cs-glass-bg-amber-fallback: rgba(245,158,11,0.20);
   --cs-glass-focus-ring: rgba(59,130,246,0.50);
-
-  /* === CARD SYSTEM TOKENS === */
-  --cs-card-bg: var(--cs-surface, #ffffff);
-  --cs-card-border: var(--cs-border, #e5e7eb);
-  --cs-card-shadow: var(--cs-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.1));
-  --cs-card-shadow-hover: var(--cs-shadow-2, 0 4px 6px rgba(0, 0, 0, 0.1));
-  --cs-card-radius: var(--cs-radius-lg, 12px);
-  --cs-card-text: var(--cs-text, #111827);
-  --cs-card-text-muted: var(--cs-text-muted, #6b7280);
-  --cs-card-brand: var(--cs-brand, #3b82f6);
-  --cs-card-brand-ink: var(--cs-brand-ink, #ffffff);
-  --cs-card-transition: var(--cs-transition, 0.2s ease);
-  
-  /* Card spacing system */
-  --cs-card-space-xs: 0.25rem;
-  --cs-card-space-sm: 0.375rem; 
-  --cs-card-space-md: 0.75rem;
-  --cs-card-space-lg: 1rem;
-  --cs-card-space-xl: 1.5rem;
-  --cs-card-space-2xl: 2rem;
-  --cs-card-hover-lift: -2px;
-  
-  /* Card typography */
-  --cs-card-font-size-xs: 0.75rem;
-  --cs-card-font-size-sm: 0.875rem;
-  --cs-card-font-size: 1rem;
-  --cs-card-font-size-lg: 1.125rem;
-  --cs-card-font-size-xl: 1.25rem;
-  --cs-card-font-size-2xl: 1.5rem;
-  --cs-card-line-height: 1.6;
-  
-  /* Card shadows expanded */
-  --cs-card-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --cs-card-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --cs-card-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --cs-card-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-  
-  /* Card radius system */
-  --cs-card-radius-sm: 0.375rem;
-  --cs-card-radius-md: 0.5rem;
-  --cs-card-radius-lg: 0.75rem;
-  --cs-card-radius-xl: 1rem;
-
-  /* === NAVIGATION TOKENS === */
-  --cs-nav-bg: var(--cs-glass-bg-light);
-  --cs-nav-border: var(--cs-glass-border-medium);
-  --cs-nav-blur: var(--cs-glass-blur);
-  --cs-nav-text: var(--cs-text, #374151);
-  --cs-nav-text-muted: var(--cs-text-muted, #9ca3af);
-  --cs-nav-text-active: var(--cs-brand, #3b82f6);
-  --cs-nav-bg-hover: var(--cs-glass-bg-hover);
-  --cs-nav-bg-active: var(--cs-glass-bg-medium);
-  --cs-nav-transition: var(--cs-transition, 0.2s ease);
-  --cs-nav-shadow: var(--cs-glass-shadow-def);
-  
-  /* Navigation spacing */
-  --cs-nav-space-xs: 0.25rem;
-  --cs-nav-space-sm: 0.5rem;
-  --cs-nav-space-md: 0.75rem;
-  --cs-nav-space-lg: 1rem;
-  --cs-nav-space-xl: 1.5rem;
-  
-  /* Navigation z-index */
-  --cs-nav-z-dropdown: 30;
-  --cs-nav-z-modal: 40;
-  --cs-nav-z-overlay: 50;
-  --cs-nav-z-drawer: 60;
-  
-  /* Navigation typography */
-  --cs-nav-font-size-sm: 0.875rem;
-  --cs-nav-font-size: 1rem;
-  --cs-nav-font-size-lg: 1.125rem;
+  --cs-glass-backdrop-filter-extra: none;
 }
 
 /* =========================================================
    CORE GLASS UTILITIES
-   Complete glass effect system with all variants
+   Base glass backdrop-filter utilities
    ========================================================= */
 
-/* Base glass effects */
+/* Primary glass utility */
 @utility cs-glass {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
+  border-radius: var(--cs-glass-radius-lg);
   backdrop-filter: var(--cs-glass-blur);
   -webkit-backdrop-filter: var(--cs-glass-blur);
+  transition: all var(--cs-glass-transition) ease;
 }
 
+/* Dark glass variant */
 @utility cs-glass-dark {
   background: var(--cs-glass-bg-dark);
-  border: 1px solid var(--cs-glass-border-light);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
-}
-
-/* Light glass opacity scale - Complete range */
-@utility cs-glass-xs {
-  background: var(--cs-glass-bg-xs);
-  border: 1px solid var(--cs-glass-border-xs);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
-}
-
-@utility cs-glass-sm {
-  background: var(--cs-glass-bg-sm);
-  border: 1px solid var(--cs-glass-border-sm);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
-}
-
-@utility cs-glass-weak {
-  background: var(--cs-glass-bg-weak);
-  border: 1px solid var(--cs-glass-border-light);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
-}
-
-@utility cs-glass-md {
-  background: var(--cs-glass-bg-md);
-  border: 1px solid var(--cs-glass-border-md);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
-}
-
-@utility cs-glass-medium {
-  background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
+  border-radius: var(--cs-glass-radius-lg);
   backdrop-filter: var(--cs-glass-blur);
   -webkit-backdrop-filter: var(--cs-glass-blur);
+  transition: all var(--cs-glass-transition) ease;
 }
 
-@utility cs-glass-lg {
-  background: var(--cs-glass-bg-lg);
-  border: 1px solid var(--cs-glass-border-lg);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
-}
+/* =========================================================
+   GLASS BACKGROUND UTILITIES
+   Different opacity levels for glass backgrounds
+   ========================================================= */
+@utility cs-glass-bg-xs { background: var(--cs-glass-bg-xs); }
+@utility cs-glass-bg-sm { background: var(--cs-glass-bg-sm); }
+@utility cs-glass-bg-light { background: var(--cs-glass-bg-light); }
+@utility cs-glass-bg-weak { background: var(--cs-glass-bg-weak); }
+@utility cs-glass-bg-md { background: var(--cs-glass-bg-md); }
+@utility cs-glass-bg-medium { background: var(--cs-glass-bg-medium); }
+@utility cs-glass-bg-lg { background: var(--cs-glass-bg-lg); }
+@utility cs-glass-bg-strong { background: var(--cs-glass-bg-strong); }
+@utility cs-glass-bg-xl { background: var(--cs-glass-bg-xl); }
+@utility cs-glass-bg-2xl { background: var(--cs-glass-bg-2xl); }
+@utility cs-glass-bg-3xl { background: var(--cs-glass-bg-3xl); }
+@utility cs-glass-bg-4xl { background: var(--cs-glass-bg-4xl); }
+@utility cs-glass-bg-5xl { background: var(--cs-glass-bg-5xl); }
 
-@utility cs-glass-strong {
-  background: var(--cs-glass-bg-medium);
-  border: 1px solid var(--cs-glass-border-strong);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
+/* Dark glass backgrounds */
+@utility cs-glass-bg-dark { background: var(--cs-glass-bg-dark); }
+@utility cs-glass-bg-dark-xs { background: var(--cs-glass-bg-dark-xs); }
+@utility cs-glass-bg-dark-sm { background: var(--cs-glass-bg-dark-sm); }
+@utility cs-glass-bg-dark-md { background: var(--cs-glass-bg-dark-md); }
+@utility cs-glass-bg-dark-lg { background: var(--cs-glass-bg-dark-lg); }
+@utility cs-glass-bg-dark-strong { background: var(--cs-glass-bg-dark-strong); }
+@utility cs-glass-bg-dark-xl { background: var(--cs-glass-bg-dark-xl); }
+@utility cs-glass-bg-dark-2xl { background: var(--cs-glass-bg-dark-2xl); }
+@utility cs-glass-bg-dark-3xl { background: var(--cs-glass-bg-dark-3xl); }
+@utility cs-glass-bg-dark-4xl { background: var(--cs-glass-bg-dark-4xl); }
+@utility cs-glass-bg-dark-5xl { background: var(--cs-glass-bg-dark-5xl); }
 
-@utility cs-glass-xl {
-  background: var(--cs-glass-bg-xl);
-  border: 1px solid var(--cs-glass-border-xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
+/* Colored glass backgrounds */
+@utility cs-glass-bg-blue { background: var(--cs-glass-bg-blue); }
+@utility cs-glass-bg-purple { background: var(--cs-glass-bg-purple); }
+@utility cs-glass-bg-green { background: var(--cs-glass-bg-green); }
+@utility cs-glass-bg-pink { background: var(--cs-glass-bg-pink); }
+@utility cs-glass-bg-amber { background: var(--cs-glass-bg-amber); }
 
-@utility cs-glass-2xl {
-  background: var(--cs-glass-bg-2xl);
-  border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
+/* =========================================================
+   GLASS BORDER UTILITIES
+   ========================================================= */
+@utility cs-glass-border-xs { border-color: var(--cs-glass-border-xs); }
+@utility cs-glass-border-sm { border-color: var(--cs-glass-border-sm); }
+@utility cs-glass-border-light { border-color: var(--cs-glass-border-light); }
+@utility cs-glass-border-md { border-color: var(--cs-glass-border-md); }
+@utility cs-glass-border-medium { border-color: var(--cs-glass-border-medium); }
+@utility cs-glass-border-lg { border-color: var(--cs-glass-border-lg); }
+@utility cs-glass-border-strong { border-color: var(--cs-glass-border-strong); }
+@utility cs-glass-border-xl { border-color: var(--cs-glass-border-xl); }
+@utility cs-glass-border-2xl { border-color: var(--cs-glass-border-2xl); }
+@utility cs-glass-border-3xl { border-color: var(--cs-glass-border-3xl); }
 
-@utility cs-glass-3xl {
-  background: var(--cs-glass-bg-3xl);
-  border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
+/* Colored glass borders */
+@utility cs-glass-border-blue { border-color: var(--cs-glass-border-blue); }
+@utility cs-glass-border-purple { border-color: var(--cs-glass-border-purple); }
+@utility cs-glass-border-green { border-color: var(--cs-glass-border-green); }
+@utility cs-glass-border-pink { border-color: var(--cs-glass-border-pink); }
+@utility cs-glass-border-amber { border-color: var(--cs-glass-border-amber); }
 
-@utility cs-glass-4xl {
-  background: var(--cs-glass-bg-4xl);
-  border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
-
-@utility cs-glass-5xl {
-  background: var(--cs-glass-bg-5xl);
-  border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
-
-/* Dark glass opacity scale - Complete range */
-@utility cs-glass-dark-xs {
-  background: var(--cs-glass-bg-dark-xs);
-  border: 1px solid var(--cs-glass-border-xs);
+/* =========================================================
+   GLASS BLUR UTILITIES
+   ========================================================= */
+@utility cs-glass-blur-sm {
   backdrop-filter: var(--cs-glass-blur-sm);
   -webkit-backdrop-filter: var(--cs-glass-blur-sm);
 }
 
-@utility cs-glass-dark-sm {
-  background: var(--cs-glass-bg-dark-sm);
-  border: 1px solid var(--cs-glass-border-sm);
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
-}
-
-@utility cs-glass-dark-md {
-  background: var(--cs-glass-bg-dark-md);
-  border: 1px solid var(--cs-glass-border-md);
+@utility cs-glass-blur {
   backdrop-filter: var(--cs-glass-blur);
   -webkit-backdrop-filter: var(--cs-glass-blur);
 }
 
-@utility cs-glass-dark-lg {
-  background: var(--cs-glass-bg-dark-lg);
-  border: 1px solid var(--cs-glass-border-lg);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
+@utility cs-glass-blur-lg {
+  backdrop-filter: var(--cs-glass-blur-lg);
+  -webkit-backdrop-filter: var(--cs-glass-blur-lg);
 }
 
-@utility cs-glass-dark-xl {
-  background: var(--cs-glass-bg-dark-xl);
-  border: 1px solid var(--cs-glass-border-xl);
+@utility cs-glass-blur-xl {
   backdrop-filter: var(--cs-glass-blur-xl);
   -webkit-backdrop-filter: var(--cs-glass-blur-xl);
 }
 
-@utility cs-glass-dark-2xl {
-  background: var(--cs-glass-bg-dark-2xl);
-  border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
+/* =========================================================
+   GLASS RADIUS UTILITIES
+   ========================================================= */
+@utility cs-glass-radius-sm { border-radius: var(--cs-glass-radius-sm); }
+@utility cs-glass-radius { border-radius: var(--cs-glass-radius); }
+@utility cs-glass-radius-lg { border-radius: var(--cs-glass-radius-lg); }
+@utility cs-glass-radius-xl { border-radius: var(--cs-glass-radius-xl); }
+@utility cs-glass-radius-2xl { border-radius: var(--cs-glass-radius-2xl); }
+@utility cs-glass-radius-3xl { border-radius: var(--cs-glass-radius-3xl); }
 
-@utility cs-glass-dark-3xl {
-  background: var(--cs-glass-bg-dark-3xl);
-  border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
-
-@utility cs-glass-dark-4xl {
-  background: var(--cs-glass-bg-dark-4xl);
-  border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
-
-@utility cs-glass-dark-5xl {
-  background: var(--cs-glass-bg-dark-5xl);
-  border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
-}
-
-/* Colored glass variants */
-@utility cs-glass-blue {
-  background: var(--cs-glass-bg-blue);
-  border: 1px solid var(--cs-glass-border-blue);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
-}
-
-@utility cs-glass-purple {
-  background: var(--cs-glass-bg-purple);
-  border: 1px solid var(--cs-glass-border-purple);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
-}
-
-@utility cs-glass-green {
-  background: var(--cs-glass-bg-green);
-  border: 1px solid var(--cs-glass-border-green);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
-}
-
-@utility cs-glass-pink {
-  background: var(--cs-glass-bg-pink);
-  border: 1px solid var(--cs-glass-border-pink);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
-}
-
-@utility cs-glass-amber {
-  background: var(--cs-glass-bg-amber);
-  border: 1px solid var(--cs-glass-border-amber);
-  backdrop-filter: var(--cs-glass-blur);
-  -webkit-backdrop-filter: var(--cs-glass-blur);
-}
-
-/* Glass radius utilities */
-@utility cs-glass-rounded-sm { border-radius: var(--cs-glass-radius-sm); }
-@utility cs-glass-rounded { border-radius: var(--cs-glass-radius); }
-@utility cs-glass-rounded-lg { border-radius: var(--cs-glass-radius-lg); }
-@utility cs-glass-rounded-xl { border-radius: var(--cs-glass-radius-xl); }
-@utility cs-glass-rounded-2xl { border-radius: var(--cs-glass-radius-2xl); }
-@utility cs-glass-rounded-3xl { border-radius: var(--cs-glass-radius-3xl); }
-
-/* Glass shadow utilities */
+/* =========================================================
+   GLASS SHADOW UTILITIES
+   ========================================================= */
 @utility cs-glass-shadow-sm { box-shadow: var(--cs-glass-shadow-sm-def); }
 @utility cs-glass-shadow { box-shadow: var(--cs-glass-shadow-def); }
 @utility cs-glass-shadow-lg { box-shadow: var(--cs-glass-shadow-lg-def); }
@@ -439,7 +250,6 @@
 
 /* =========================================================
    GLASS ADD-ON UTILITIES
-   Optional effects and add-on features
    ========================================================= */
 
 /* Acrylic look (adds saturation/contrast on the backdrop) */
@@ -504,8 +314,8 @@
 @utility cs-glass-isolate { isolation: isolate; }
 
 /* =========================================================
-   GLASS UI COMPONENTS
-   Ready-to-use glass UI elements
+   GLASS CARDS SYSTEM
+   Cards with glass backdrop-filter effects
    ========================================================= */
 
 /* Glass card base component */
@@ -554,6 +364,79 @@
     outline-offset: 2px;
   }
 }
+
+/* Glass Feature Card Component */
+@utility cs-card-feature-glass {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 1.5rem;
+  border-radius: 20px;
+  box-shadow: var(--cs-glass-shadow-def);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all var(--cs-glass-transition) ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px var(--cs-glass-shadow-strong);
+    background: var(--cs-glass-bg-hover);
+  }
+}
+
+/* Glass Product Card Component */
+@utility cs-card-product-glass {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  border-radius: 20px;
+  box-shadow: var(--cs-glass-shadow-def);
+  overflow: hidden;
+  transition: all var(--cs-glass-transition) ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px var(--cs-glass-shadow-strong);
+    background: var(--cs-glass-bg-hover);
+  }
+}
+
+/* Glass Pricing Card Component */
+@utility cs-card-pricing-glass {
+  background: var(--cs-glass-bg-light);
+  border: 2px solid var(--cs-glass-border-medium);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  border-radius: 20px;
+  box-shadow: var(--cs-glass-shadow-def);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all var(--cs-glass-transition) ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px var(--cs-glass-shadow-xl);
+    background: var(--cs-glass-bg-hover);
+    border-color: var(--cs-glass-border-strong);
+  }
+}
+
+/* =========================================================
+   GLASS UI COMPONENTS
+   Ready-to-use glass UI elements with backdrop-filter
+   ========================================================= */
 
 /* Glass navigation component */
 @utility cs-glass-nav {
@@ -649,6 +532,64 @@
   -webkit-backdrop-filter: var(--cs-glass-blur);
 }
 
+/* Glass Forms System */
+@utility cs-form-glass {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+@utility cs-input-glass {
+  padding: 0.75rem 1rem;
+  background: var(--cs-glass-bg-md);
+  border: 1px solid var(--cs-glass-border-strong);
+  border-radius: 0.75rem;
+  transition: all var(--cs-glass-transition) ease;
+  color: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--cs-glass-focus-ring);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-glass-focus-ring) 20%, transparent);
+  }
+  
+  &::placeholder {
+    color: color-mix(in srgb, currentColor 60%, transparent);
+  }
+}
+
+@utility cs-button-primary-glass {
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: inherit;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--cs-glass-transition) ease;
+  
+  &:hover {
+    background: var(--cs-glass-bg-strong);
+    transform: translateY(-1px);
+  }
+  
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--cs-glass-focus-ring), 0 0 0 4px color-mix(in srgb, var(--cs-glass-focus-ring) 20%, transparent);
+  }
+}
+
 /* =========================================================
    GLASS PRO EFFECTS
    Advanced animations and glass effects
@@ -740,45 +681,6 @@
   }
 }
 
-@utility cs-glass-gloss-bottom {
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0; left: 0; right: 0; height: 20%;
-    background: linear-gradient(to top, rgba(255,255,255,0.3), transparent);
-    pointer-events: none;
-    z-index: 2;
-    mix-blend-mode: soft-light;
-  }
-}
-
-/* Skeleton glass blocks */
-@utility cs-glass-skeleton {
-  position: relative;
-  overflow: hidden;
-  background: var(--cs-glass-bg-light);
-  border: 1px solid var(--cs-glass-border-medium);
-  border-radius: var(--cs-glass-radius);
-  min-height: 2rem;
-  isolation: isolate;
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
-  
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: glassSkeletonShimmer 1.2s infinite;
-  }
-}
-
-@keyframes glassSkeletonShimmer {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
 /* Pro theme presets */
 @utility cs-glass-theme-neon {
   --cs-glass-bg-light: rgba(58, 227, 255, 0.1);
@@ -802,267 +704,40 @@
 }
 
 /* =========================================================
-   CARD SYSTEM COMPONENTS
-   Feature, Product, Pricing & Testimonial cards
+   RESPONSIVE GLASS UTILITIES
    ========================================================= */
 
-/* Feature Card Component */
-@utility cs-card-feature {
-  display: grid;
-  grid-template-rows: auto auto 1fr;
-  gap: var(--cs-card-space-lg, 1.5rem);
-  background: var(--cs-card-bg, #ffffff);
-  border: 1px solid var(--cs-card-border, #e5e7eb);
-  border-radius: var(--cs-card-radius-lg, 12px);
-  box-shadow: var(--cs-card-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
-  padding: var(--cs-card-space-xl, 2rem);
-  text-align: center;
-  position: relative;
-  transition: var(--cs-card-transition, all 0.2s ease);
+/* Responsive glass blur based on container size */
+@utility cs-glass-responsive {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  backdrop-filter: var(--cs-glass-blur-sm);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  background-clip: padding-box;
   
-  &:hover {
-    transform: translateY(var(--cs-card-hover-lift, -2px));
-    box-shadow: var(--cs-card-shadow-md, 0 4px 6px rgba(0, 0, 0, 0.07));
+  @container (min-width: 320px) {
+    backdrop-filter: var(--cs-glass-blur-sm);
+    -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  }
+  
+  @container (min-width: 640px) {
+    backdrop-filter: var(--cs-glass-blur);
+    -webkit-backdrop-filter: var(--cs-glass-blur);
+  }
+  
+  @container (min-width: 1024px) {
+    backdrop-filter: var(--cs-glass-blur-lg);
+    -webkit-backdrop-filter: var(--cs-glass-blur-lg);
   }
 }
 
-/* Feature card with glass styling */
-@utility cs-card-feature-glass {
-  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
-  backdrop-filter: saturate(140%) blur(12px);
-  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.2));
-}
-
-/* Product Card Component */
-@utility cs-card-product {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  background: var(--cs-surface, #ffffff);
-  border: 1px solid var(--cs-border, #e5e7eb);
-  border-radius: var(--cs-radius-lg, 12px);
-  box-shadow: var(--cs-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.1));
-  overflow: hidden;
-  transition: all var(--cs-transition, 0.2s ease);
-  position: relative;
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--cs-shadow-2, 0 4px 6px rgba(0, 0, 0, 0.1));
-  }
-}
-
-/* Product card with glass styling */
-@utility cs-card-product-glass {
-  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
-  backdrop-filter: saturate(140%) blur(12px);
-  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.2));
-}
-
-/* Pricing Card Component */
-@utility cs-card-pricing {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  background: var(--cs-surface);
-  border: 2px solid var(--cs-border);
-  border-radius: var(--cs-radius-lg);
-  box-shadow: var(--cs-shadow-1);
-  padding: var(--cs-space-6);
-  text-align: center;
-  position: relative;
-  transition: all var(--cs-transition);
-  
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--cs-shadow-2);
-  }
-}
-
-/* Pricing card with glass styling */
-@utility cs-card-pricing-glass {
-  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
-  backdrop-filter: saturate(140%) blur(12px);
-  border: 2px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.3));
+/* Base backdrop filter utility */
+@utility cs-glass-backdrop-clip {
+  background-clip: padding-box;
 }
 
 /* =========================================================
-   NAVIGATION COMPONENTS
-   Navbar, Tabs, Pills, Drawer, Breadcrumbs
-   ========================================================= */
-
-/* Navbar Component */
-@utility cs-navbar {
-  position: relative;
-  z-index: var(--cs-z-nav);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--cs-space-2);
-  padding: var(--cs-space-2) var(--cs-space-4);
-  background-color: var(--cs-color-bg);
-  border-bottom: 1px solid var(--cs-color-border);
-  
-  &.cs-navbar--acrylic {
-    background-color: var(--cs-acrylic-bg);
-    border-bottom: 1px solid var(--cs-acrylic-border);
-  }
-  
-  @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
-    &.cs-navbar--acrylic { -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-  }
-}
-
-/* Brand Component */
-@utility cs-navbar-brand {
-  display: inline-block;
-  padding-top: calc(0.3125rem * var(--cs-density));
-  padding-bottom: calc(0.3125rem * var(--cs-density));
-  margin-right: var(--cs-space-4);
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap;
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Navigation Tabs */
-@utility cs-nav-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--cs-color-border);
-  
-  & .cs-nav-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  & .cs-nav-item { display: flex; margin-bottom: -1px; }
-  
-  & .cs-nav-link {
-    display: inline-block;
-    padding: var(--cs-space-3) var(--cs-space-4);
-    color: var(--cs-color-text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.875rem;
-    border: 1px solid transparent;
-    border-bottom: none;
-    border-top-left-radius: var(--cs-radius-md);
-    border-top-right-radius: var(--cs-radius-md);
-    transition: all var(--cs-transition-fast) var(--cs-ease-out);
-    white-space: nowrap;
-    position: relative;
-    
-    &:hover { 
-      color: var(--cs-color-text); 
-      border-color: var(--cs-color-border-light); 
-      background-color: var(--cs-color-bg-hover); 
-    }
-  }
-  
-  & .cs-nav-item.cs-nav-item--active .cs-nav-link {
-    color: var(--cs-color-primary);
-    background-color: var(--cs-color-bg);
-    border-color: var(--cs-color-border) var(--cs-color-border) var(--cs-color-bg);
-    
-    &::after { 
-      content: ''; 
-      position: absolute; 
-      bottom: -1px; 
-      left: 0; 
-      right: 0; 
-      height: 2px; 
-      background-color: var(--cs-color-primary); 
-    }
-  }
-}
-
-/* Tab Content */
-@utility cs-tab-content { 
-  display: none; 
-  padding: var(--cs-space-4); 
-  animation: cs-tab-switch var(--cs-transition-base) var(--cs-ease-out); 
-}
-
-@utility cs-tab-content--active { 
-  display: block; 
-}
-
-/* Drawer Component */
-@utility cs-drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--cs-z-drawer);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 320px;
-  background-color: var(--cs-color-bg);
-  box-shadow: var(--cs-shadow-xl);
-  transform: translateX(-100%);
-  transition: transform var(--cs-transition-fast) var(--cs-ease-out);
-  
-  &[open], &.cs-is-open { 
-    transform: translateX(0); 
-  }
-  
-  &.cs-drawer--right { 
-    left: auto; 
-    right: 0; 
-    transform: translateX(100%); 
-    
-    &[open], &.cs-is-open { 
-      transform: translateX(0); 
-    }
-  }
-}
-
-@utility cs-drawer-header { 
-  padding: var(--cs-space-4); 
-  border-bottom: 1px solid var(--cs-color-border); 
-}
-
-@utility cs-drawer-body { 
-  flex: 1; 
-  padding: var(--cs-space-4); 
-  overflow-y: auto; 
-}
-
-@utility cs-drawer-footer { 
-  padding: var(--cs-space-4); 
-  border-top: 1px solid var(--cs-color-border); 
-}
-
-@utility cs-drawer-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: calc(var(--cs-z-drawer) - 1);
-  width: 100%;
-  height: 100%;
-  background-color: var(--cs-backdrop-bg);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--cs-transition-fast) var(--cs-ease-out), 
-              visibility var(--cs-transition-fast) var(--cs-ease-out);
-}
-
-/* Open state sibling backdrop */
-@utility cs-drawer { 
-  &[open] ~ .cs-drawer-backdrop, 
-  &.cs-is-open ~ .cs-drawer-backdrop { 
-    opacity: 1; 
-    visibility: visible; 
-  } 
-}
-
-/* =========================================================
-   GLASS-FIRST FALLBACKS & PERFORMANCE
-   Fallback optimizations for legacy browsers
+   FALLBACKS & BROWSER SUPPORT
    ========================================================= */
 
 /* For browsers that don't support backdrop-filter,
@@ -1077,11 +752,32 @@
   .cs-glass-toast,
   .cs-glass-tooltip,
   .cs-glass-dropdown {
-    background: var(--cs-glass-bg-xl);
+    background: var(--cs-glass-bg-fallback);
+    box-shadow: 0 4px 16px var(--cs-glass-shadow-medium);
   }
   
   .cs-glass-dark {
-    background: var(--cs-glass-bg-dark-xl);
+    background: var(--cs-glass-bg-dark-fallback);
+  }
+  
+  .cs-glass-blue {
+    background: var(--cs-glass-bg-blue-fallback);
+  }
+  
+  .cs-glass-purple {
+    background: var(--cs-glass-bg-purple-fallback);
+  }
+  
+  .cs-glass-green {
+    background: var(--cs-glass-bg-green-fallback);
+  }
+  
+  .cs-glass-pink {
+    background: var(--cs-glass-bg-pink-fallback);
+  }
+  
+  .cs-glass-amber {
+    background: var(--cs-glass-bg-amber-fallback);
   }
   
   .cs-card-feature-glass,
@@ -1091,36 +787,46 @@
   }
 }
 
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button {
+    border-width: 2px;
+    background: var(--cs-glass-bg-contrast);
+  }
+  .cs-glass-dark {
+    background: var(--cs-glass-bg-dark-contrast);
+    border-color: var(--cs-glass-border-strong);
+  }
+}
+
+/* Forced colors mode support (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-glass, .cs-glass-card, .cs-glass-nav, .cs-glass-button {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+  .cs-glass-tooltip {
+    background: CanvasText;
+    color: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+}
+
+/* Mobile optimization - reduce blur on small screens */
+@media (max-width: 480px) {
+  :root {
+    --cs-glass-blur: var(--cs-glass-blur-sm);
+  }
+}
+
 /* Reduced motion optimizations */
 @media (prefers-reduced-motion: reduce) {
   .cs-glass-morph-in,
-  .cs-glass-morph-out {
+  .cs-glass-morph-out,
+  .cs-glass-3d-hover {
     animation: none !important;
-    transition: opacity 0.1s ease-in-out !important;
-  }
-  
-  .cs-glass-skeleton::after {
-    animation: none !important;
-    opacity: 0.1;
-  }
-  
-  .cs-glass-card,
-  .cs-glass-card-light,
-  .cs-glass-button,
-  .cs-glass-3d-hover,
-  .cs-card-feature,
-  .cs-card-product,
-  .cs-card-pricing {
-    transition: none !important;
-  }
-  
-  .cs-glass-card:hover,
-  .cs-glass-card-light:hover,
-  .cs-glass-button:hover,
-  .cs-glass-3d-hover:hover,
-  .cs-card-feature:hover,
-  .cs-card-product:hover,
-  .cs-card-pricing:hover {
     transform: none !important;
   }
 }
