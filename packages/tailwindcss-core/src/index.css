@@ -59,77 +59,77 @@
 /* TEMPORARY: Remaining systems inline until extracted */
 
 /* SCROLL SYSTEM */
-@utility cs-scrollbar-thin {
+.cs-scrollbar-thin {
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, currentColor 20%, transparent) transparent;
-  
-  &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: color-mix(in srgb, currentColor 20%, transparent);
-    border-radius: 4px;
-    
-    &:hover {
-      background: color-mix(in srgb, currentColor 35%, transparent);
-    }
-  }
-  
-  &::-webkit-scrollbar-corner {
-    background: transparent;
-  }
 }
 
-@utility cs-scrollbar-custom {
+.cs-scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.cs-scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cs-scrollbar-thin::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+}
+
+.cs-scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, currentColor 35%, transparent);
+}
+
+.cs-scrollbar-thin::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.cs-scrollbar-custom {
   scrollbar-width: auto;
   scrollbar-color: var(--cs-brand) color-mix(in srgb, var(--cs-brand) 10%, transparent);
-  
-  &::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: color-mix(in srgb, var(--cs-brand) 5%, transparent);
-    border-radius: 6px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: var(--cs-brand);
-    border-radius: 6px;
-    border: 2px solid color-mix(in srgb, var(--cs-brand) 5%, transparent);
-    
-    &:hover {
-      background: color-mix(in srgb, var(--cs-brand) 85%, #000);
-    }
-  }
 }
 
-@utility cs-scroll-snap-x {
+.cs-scrollbar-custom::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.cs-scrollbar-custom::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--cs-brand) 5%, transparent);
+  border-radius: 6px;
+}
+
+.cs-scrollbar-custom::-webkit-scrollbar-thumb {
+  background: var(--cs-brand);
+  border-radius: 6px;
+  border: 2px solid color-mix(in srgb, var(--cs-brand) 5%, transparent);
+}
+
+.cs-scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--cs-brand) 85%, #000);
+}
+
+.cs-scroll-snap-x {
   scroll-snap-type: x mandatory;
   overflow-x: auto;
   overscroll-behavior-x: contain;
 }
 
-@utility cs-scroll-snap-y {
+.cs-scroll-snap-y {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   overscroll-behavior-y: contain;
 }
 
-@utility cs-snap-start { scroll-snap-align: start; }
-@utility cs-snap-center { scroll-snap-align: center; }
-@utility cs-snap-end { scroll-snap-align: end; }
-@utility cs-scroll-smooth { scroll-behavior: smooth; }
+.cs-snap-start { scroll-snap-align: start; }
+.cs-snap-center { scroll-snap-align: center; }
+.cs-snap-end { scroll-snap-align: end; }
+.cs-scroll-smooth { scroll-behavior: smooth; }
 
 /* LOADING SYSTEM */
-@utility cs-spinner {
+.cs-spinner {
   width: 1.5rem;
   height: 1.5rem;
   border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
@@ -138,13 +138,13 @@
   animation: cs-spin 0.8s linear infinite;
 }
 
-@utility cs-spinner-lg {
+.cs-spinner-lg {
   width: 2rem;
   height: 2rem;
   border-width: 3px;
 }
 
-@utility cs-spinner-sm {
+.cs-spinner-sm {
   width: 1rem;
   height: 1rem;
   border-width: 2px;
@@ -154,7 +154,7 @@
   to { transform: rotate(360deg); }
 }
 
-@utility cs-pulse {
+.cs-pulse {
   animation: cs-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -163,7 +163,7 @@
   50% { opacity: 0.5; }
 }
 
-@utility cs-skeleton {
+.cs-skeleton {
   background: linear-gradient(90deg, 
     color-mix(in srgb, currentColor 10%, transparent) 0%,
     color-mix(in srgb, currentColor 18%, transparent) 50%,
@@ -180,14 +180,14 @@
 }
 
 /* GRADIENT SYSTEM */
-@utility cs-gradient-radial {
+.cs-gradient-radial {
   background: radial-gradient(circle at 50% 50%, 
     var(--cs-brand), 
     color-mix(in srgb, var(--cs-brand) 70%, transparent)
   );
 }
 
-@utility cs-gradient-conic {
+.cs-gradient-conic {
   background: conic-gradient(from 0deg, 
     var(--cs-brand), 
     color-mix(in srgb, var(--cs-brand) 50%, #ff0080),
@@ -195,7 +195,7 @@
   );
 }
 
-@utility cs-gradient-mesh {
+.cs-gradient-mesh {
   background: 
     radial-gradient(at 27% 37%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
     radial-gradient(at 97% 21%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%),
@@ -207,43 +207,43 @@
 }
 
 /* MICRO INTERACTIONS */
-@utility cs-hover-lift {
+.cs-hover-lift {
   transition: transform var(--cs-transition);
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
 }
 
-@utility cs-hover-scale {
-  transition: transform var(--cs-transition);
-  
-  &:hover {
-    transform: scale(1.02);
-  }
+.cs-hover-lift:hover {
+  transform: translateY(-2px);
 }
 
-@utility cs-hover-glow {
+.cs-hover-scale {
+  transition: transform var(--cs-transition);
+}
+
+.cs-hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.cs-hover-glow {
   transition: box-shadow var(--cs-transition);
-  
-  &:hover {
-    box-shadow: 0 8px 25px color-mix(in srgb, var(--cs-brand) 25%, transparent);
-  }
 }
 
-@utility cs-interactive {
+.cs-hover-glow:hover {
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--cs-brand) 25%, transparent);
+}
+
+.cs-interactive {
   transition: all var(--cs-transition);
   cursor: pointer;
-  
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px color-mix(in srgb, currentColor 15%, transparent);
-  }
-  
-  &:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px color-mix(in srgb, currentColor 20%, transparent);
-  }
+}
+
+.cs-interactive:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, currentColor 15%, transparent);
+}
+
+.cs-interactive:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px color-mix(in srgb, currentColor 20%, transparent);
 }
 
 /* =========================================================
@@ -252,15 +252,15 @@
 
 /* Print Optimizations */
 @media print {
-  @utility cs-prose {
+  .cs-prose {
     color: black !important;
   }
   
-  @utility cs-navbar {
+  .cs-navbar {
     display: none !important;
   }
   
-  @utility cs-card {
+  .cs-card {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
   }

@@ -737,81 +737,80 @@
   max-width: 65ch;
   line-height: 1.75;
   font-size: var(--cs-fs-md);
-}
-
-.cs-prose h1,
-@utility cs-prose h2,
-@utility cs-prose h3,
-@utility cs-prose h4,
-@utility cs-prose h5,
-@utility cs-prose h6  {
-  color: var(--cs-prose-headings);
-  font-weight: 700;
-  line-height: 1.25;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-}
-
-.cs-prose h1  { font-size: var(--cs-fs-2xl); }
-.cs-prose h2  { font-size: var(--cs-fs-xl); }
-.cs-prose h3  { font-size: var(--cs-fs-lg); }
-
-.cs-prose p  {
-  margin-bottom: 1.25rem;
-  line-height: 1.7;
-}
-
-.cs-prose a  {
-  color: var(--cs-prose-links);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  
-  &:hover {
-    text-decoration: none;
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    color: var(--cs-prose-headings);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
   }
-}
-
-.cs-prose strong  {
-  color: var(--cs-prose-bold);
-  font-weight: 600;
-}
-
-.cs-prose ul,
-@utility cs-prose ol  {
-  margin-left: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-
-.cs-prose li  {
-  margin-bottom: 0.5rem;
-}
-
-.cs-prose blockquote  {
-  border-left: 4px solid var(--cs-border);
-  padding-left: 1.5rem;
-  margin: 1.5rem 0;
-  font-style: italic;
-  color: var(--cs-prose-quotes);
-}
-
-.cs-prose code  {
-  background: rgba(255, 255, 255, 8%);
-  padding: 0.25rem 0.375rem;
-  border-radius: 0.25rem;
-  font-size: 0.875em;
-  font-family: var(--cs-font-mono);
-}
-
-.cs-prose pre  {
-  background: var(--cs-elev1);
-  padding: 1.25rem;
-  border-radius: var(--cs-radius);
-  overflow-x: auto;
-  margin: 1.5rem 0;
+  
+  & h1 { font-size: var(--cs-fs-2xl); }
+  & h2 { font-size: var(--cs-fs-xl); }
+  & h3 { font-size: var(--cs-fs-lg); }
+  
+  & p {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+  }
+  
+  & a {
+    color: var(--cs-prose-links);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  
+  & strong {
+    color: var(--cs-prose-bold);
+    font-weight: 600;
+  }
+  
+  & ul,
+  & ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  & li {
+    margin-bottom: 0.5rem;
+  }
+  
+  & blockquote {
+    border-left: 4px solid var(--cs-border);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--cs-prose-quotes);
+  }
   
   & code {
-    background: none;
-    padding: 0;
+    background: rgba(255, 255, 255, 8%);
+    padding: 0.25rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    font-family: var(--cs-font-mono);
+  }
+  
+  & pre {
+    background: var(--cs-elev1);
+    padding: 1.25rem;
+    border-radius: var(--cs-radius);
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    
+    & code {
+      background: none;
+      padding: 0;
+    }
   }
 }
 
