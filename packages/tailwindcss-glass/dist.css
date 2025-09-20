@@ -278,15 +278,77 @@
 
 /* =========================================================
    GLASS COLOR UTILITIES
-   Direct color utilities using glass color tokens
+   Complete glass effects with specific color themes
    ========================================================= */
-.cs-glass-white  { color: var(--cs-glass-white); }
-.cs-glass-black  { color: var(--cs-glass-black); }
-.cs-glass-blue  { color: var(--cs-glass-blue); }
-.cs-glass-purple  { color: var(--cs-glass-purple); }
-.cs-glass-green  { color: var(--cs-glass-green); }
-.cs-glass-pink  { color: var(--cs-glass-pink); }
-.cs-glass-amber  { color: var(--cs-glass-amber); }
+.cs-glass-white  {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  color: var(--cs-glass-black);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-black  {
+  background: var(--cs-glass-bg-dark);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  color: var(--cs-glass-white);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-blue  {
+  background: var(--cs-glass-bg-blue);
+  border: 1px solid var(--cs-glass-border-blue);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  color: var(--cs-glass-blue);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-purple  {
+  background: var(--cs-glass-bg-purple);
+  border: 1px solid var(--cs-glass-border-purple);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  color: var(--cs-glass-purple);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-green  {
+  background: var(--cs-glass-bg-green);
+  border: 1px solid var(--cs-glass-border-green);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  color: var(--cs-glass-green);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-pink  {
+  background: var(--cs-glass-bg-pink);
+  border: 1px solid var(--cs-glass-border-pink);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  color: var(--cs-glass-pink);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-amber  {
+  background: var(--cs-glass-bg-amber);
+  border: 1px solid var(--cs-glass-border-amber);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  color: var(--cs-glass-amber);
+  transition: all var(--cs-glass-transition) ease;
+}
 
 /* =========================================================
    GLASS BORDER UTILITIES

@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-core",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "Complete foundation package for Tailwind CSS v4 - Core utilities, forms, cards, navigation, scroll effects, gradients, loading states, micro interactions, advanced typography with prose styles, and accessibility components for modern web applications",
   "type": "module",
   "exports": {

@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-glass",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "Pure glassmorphism effects and glass cards for Tailwind CSS v4 - backdrop-filter utilities, glass UI components, and glass animations",
   "keywords": [
     "tailwindcss",

@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-effects",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "Complete collection of animation and UI effects for Tailwind CSS v4 - Consolidated v0.9.0 with 300+ utilities",
   "type": "module",
   "exports": {
@@ -38,10 +38,10 @@
     "tailwindcss": "^4.0.0"
   },
   "dependencies": {
-    "@casoon/tailwindcss-utilities": "^0.9.6",
-    "@casoon/tailwindcss-animations": "^0.9.6",
-    "@casoon/tailwindcss-glass": "^0.9.6",
-    "@casoon/tailwindcss-orbs": "^0.9.6"
+    "@casoon/tailwindcss-utilities": "^0.9.7",
+    "@casoon/tailwindcss-animations": "^0.9.7",
+    "@casoon/tailwindcss-glass": "^0.9.7",
+    "@casoon/tailwindcss-orbs": "^0.9.7"
   },
   "publishConfig": {
     "access": "public"
