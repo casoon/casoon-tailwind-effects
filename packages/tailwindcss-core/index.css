@@ -92,7 +92,11 @@
   --cs-z-70: 70; --cs-z-80: 80; --cs-z-90: 90; --cs-z-100: 100;
   --cs-z-200: 200; --cs-z-300: 300; --cs-z-400: 400; --cs-z-500: 500;
   --cs-z-600: 600; --cs-z-700: 700; --cs-z-800: 800; --cs-z-900: 900;
-  --cs-z-999: 999; --cs-z-9999: 9999; --cs-z-max: 2147483647;
+  --cs-z-999: 999; --cs-z-high: 9999; --cs-z-9999: 9999; --cs-z-max: 2147483647;
+  /* Additional semantic z-index tokens from v0.8.x */
+  --cs-z-drawer: 1000; --cs-z-dropdown: 1000; --cs-z-fixed: 1030;
+  --cs-z-nav: 1020; --cs-z-nav-overlay: 1010; --cs-z-orb: 5;
+  --cs-z-overlay: 1040; --cs-z-sticky: 1020;
 
   /* Layout tokens */
   --cs-page-max: 1200px;
@@ -137,6 +141,51 @@
   --cs-gradient-sunset: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef);
   --cs-gradient-ocean: linear-gradient(135deg, #667eea, #764ba2);
   --cs-gradient-forest: linear-gradient(135deg, #11998e, #38ef7d);
+
+  /* Extended gradient color stop tokens for comprehensive utilities */
+  --cs-gradient-sunset-start: #ff6b6b;
+  --cs-gradient-sunset-mid: #ffd93d;
+  --cs-gradient-sunset-end: #6bcf7f;
+
+  --cs-gradient-ocean-start: #667eea;
+  --cs-gradient-ocean-end: #764ba2;
+
+  --cs-gradient-fire-start: #f093fb;
+  --cs-gradient-fire-end: #f5576c;
+
+  --cs-gradient-mint-start: #4facfe;
+  --cs-gradient-mint-end: #00f2fe;
+
+  --cs-gradient-purple-start: #a8edea;
+  --cs-gradient-purple-end: #fed6e3;
+
+  --cs-gradient-orange-start: #ffeaa7;
+  --cs-gradient-orange-end: #fab1a0;
+
+  --cs-gradient-blue-start: #74b9ff;
+  --cs-gradient-blue-end: #0984e3;
+
+  --cs-gradient-pink-start: #fd79a8;
+  --cs-gradient-pink-end: #fdcb6e;
+
+  /* Custom gradient variables (user customizable) */
+  --cs-gradient-custom-start: #667eea;
+  --cs-gradient-custom-mid: ;
+  --cs-gradient-custom-end: #764ba2;
+
+  --cs-gradient-white: #ffffff;
+
+  /* Shared stops list fallback (for radial/conic) */
+  --cs-gradient-stops: var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end);
+
+  /* Gradient fade color tokens */
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.6);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.3);
+
+  /* Animation defaults for gradient animations */
+  --cs-anim-gradient-duration: 4s;
+  --cs-anim-gradient-ease: var(--cs-anim-ease-in-out);
+  --cs-anim-gradient-iteration: infinite;
 
   /* Loading system tokens */
   --cs-loading-spinner-size: 40px;
@@ -329,8 +378,19 @@
 @utility cs-z-800 { z-index: var(--cs-z-800); position: relative; }
 @utility cs-z-900 { z-index: var(--cs-z-900); position: relative; }
 @utility cs-z-999 { z-index: var(--cs-z-999); position: relative; }
+@utility cs-z-high { z-index: var(--cs-z-high); position: relative; }
 @utility cs-z-9999 { z-index: var(--cs-z-9999); position: relative; }
 @utility cs-z-max { z-index: var(--cs-z-max); position: relative; }
+
+/* Additional semantic z-index utilities from v0.8.x */
+@utility cs-z-drawer { z-index: var(--cs-z-drawer); position: relative; }
+@utility cs-z-dropdown { z-index: var(--cs-z-dropdown); position: relative; }
+@utility cs-z-fixed { z-index: var(--cs-z-fixed); position: fixed; }
+@utility cs-z-nav { z-index: var(--cs-z-nav); position: relative; }
+@utility cs-z-nav-overlay { z-index: var(--cs-z-nav-overlay); position: relative; }
+@utility cs-z-orb { z-index: var(--cs-z-orb); position: relative; }
+@utility cs-z-overlay { z-index: var(--cs-z-overlay); position: relative; }
+@utility cs-z-sticky { z-index: var(--cs-z-sticky); position: sticky; }
 
 
 /* =========================================================
@@ -921,24 +981,259 @@
 
 /* Gradient System - CASOON signature gradients */
 /* =========================================================
-   GRADIENT SYSTEM - CASOON Signature Backgrounds
+   COMPREHENSIVE GRADIENT SYSTEM - Complete Collection
    ========================================================= */
 
-/* Base Gradient Utilities */
-@utility cs-gradient-radial {
-  background: radial-gradient(circle at 50% 50%, 
-    var(--cs-brand), 
-    color-mix(in srgb, var(--cs-brand) 70%, transparent)
+/* =========================================================
+   Core Gradient Background Utilities
+   ========================================================= */
+
+@utility cs-gradient-sunset {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-sunset-start),
+    var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
+    var(--cs-gradient-sunset-end)
   );
 }
 
-@utility cs-gradient-conic {
-  background: conic-gradient(from 0deg, 
-    var(--cs-brand), 
-    color-mix(in srgb, var(--cs-brand) 50%, #ff0080),
-    var(--cs-brand)
+@utility cs-gradient-ocean {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
   );
 }
+
+@utility cs-gradient-fire {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-fire-start),
+    var(--cs-gradient-fire-end)
+  );
+}
+
+@utility cs-gradient-mint {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-mint-start),
+    var(--cs-gradient-mint-end)
+  );
+}
+
+@utility cs-gradient-purple {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-purple-start),
+    var(--cs-gradient-purple-end)
+  );
+}
+
+@utility cs-gradient-orange {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-orange-start),
+    var(--cs-gradient-orange-end)
+  );
+}
+
+@utility cs-gradient-blue {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-blue-start),
+    var(--cs-gradient-blue-end)
+  );
+}
+
+@utility cs-gradient-pink {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-pink-start),
+    var(--cs-gradient-pink-end)
+  );
+}
+
+/* Custom gradient variants - 2-stop and 3-stop */
+@utility cs-gradient-custom-2 {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-end)
+  );
+}
+
+@utility cs-gradient-custom {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+}
+
+@utility cs-gradient-custom-3 {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+}
+
+/* =========================================================
+   Directional Fade Gradients
+   ========================================================= */
+
+/* Basic directional fades */
+@utility cs-gradient-fade-r {
+  background: linear-gradient(to right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+@utility cs-gradient-fade-l {
+  background: linear-gradient(to left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+@utility cs-gradient-fade-b {
+  background: linear-gradient(to bottom, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+@utility cs-gradient-fade-t {
+  background: linear-gradient(to top, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+/* Diagonal fade variants */
+@utility cs-gradient-fade-br {
+  background: linear-gradient(to bottom right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+@utility cs-gradient-fade-bl {
+  background: linear-gradient(to bottom left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+@utility cs-gradient-fade-tr {
+  background: linear-gradient(to top right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+@utility cs-gradient-fade-tl {
+  background: linear-gradient(to top left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+/* Intensity variants for fade gradients */
+@utility cs-gradient-fade-subtle {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.3);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.1);
+}
+
+@utility cs-gradient-fade-medium {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.6);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.3);
+}
+
+@utility cs-gradient-fade-strong {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.8);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.5);
+}
+
+/* Smooth fade with color-mix support */
+@utility cs-gradient-fade-smooth {
+  background: linear-gradient(135deg, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+  
+  @supports (background: color-mix(in srgb, red 50%, transparent)) {
+    background: linear-gradient(135deg, 
+      var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+      color-mix(in srgb, var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 30%, transparent) 60%,
+      transparent 100%
+    );
+  }
+}
+
+/* =========================================================
+   Radial Gradient Utilities
+   ========================================================= */
+
+@utility cs-gradient-radial-fade {
+  background: radial-gradient(circle at center, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.2)) 40%,
+    transparent 70%
+  );
+}
+
+@utility cs-gradient-radial-fade-tl {
+  background: radial-gradient(circle at top left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+@utility cs-gradient-radial-fade-tr {
+  background: radial-gradient(circle at top right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+@utility cs-gradient-radial-fade-bl {
+  background: radial-gradient(circle at bottom left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+@utility cs-gradient-radial-fade-br {
+  background: radial-gradient(circle at bottom right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+@utility cs-gradient-radial-center {
+  background: radial-gradient(circle at center, var(--cs-gradient-stops));
+}
+
+@utility cs-gradient-radial-top {
+  background: radial-gradient(circle at top, var(--cs-gradient-stops));
+}
+
+@utility cs-gradient-radial-bottom {
+  background: radial-gradient(circle at bottom, var(--cs-gradient-stops));
+}
+
+/* =========================================================
+   Conic Gradient Utilities
+   ========================================================= */
+
+@utility cs-gradient-conic {
+  background: conic-gradient(var(--cs-gradient-stops));
+}
+
+@utility cs-gradient-conic-center {
+  background: conic-gradient(from 0deg at 50% 50%, var(--cs-gradient-stops));
+}
+
+/* =========================================================
+   Mesh Gradient (Multi-layer System)
+   ========================================================= */
 
 @utility cs-gradient-mesh {
   background: 
@@ -1047,6 +1342,222 @@
 }
 
 /* =========================================================
+   GRADIENT TEXT UTILITIES
+   ========================================================= */
+
+@utility cs-gradient-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility cs-gradient-text-sunset {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-sunset-start),
+    var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
+    var(--cs-gradient-sunset-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility cs-gradient-text-ocean {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility cs-gradient-text-fire {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-fire-start),
+    var(--cs-gradient-fire-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility cs-gradient-text-custom-2 {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility cs-gradient-text-custom {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility cs-gradient-text-custom-3 {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================
+   GRADIENT ANIMATION UTILITIES
+   ========================================================= */
+
+@utility cs-gradient-animate {
+  background-size: 400% 400%;
+  animation: cs-gradient-shift var(--cs-anim-gradient-duration) var(--cs-anim-gradient-ease) var(--cs-anim-gradient-iteration);
+}
+
+@utility cs-gradient-shift-x {
+  background-size: 200% 100%;
+  animation: cs-gradient-shift-x 3s linear infinite;
+}
+
+@utility cs-gradient-shift-y {
+  background-size: 100% 200%;
+  animation: cs-gradient-shift-y 3s linear infinite;
+}
+
+@utility cs-gradient-rotate {
+  background-size: 200% 200%;
+  animation: cs-gradient-rotate 8s linear infinite;
+}
+
+@utility cs-gradient-pulse {
+  animation: cs-gradient-pulse 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@utility cs-gradient-pulse-slow {
+  animation: cs-gradient-pulse-slow 4s ease-in-out infinite;
+}
+
+@utility cs-gradient-breathe {
+  animation: cs-gradient-breathe 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@utility cs-gradient-wave {
+  background-size: 300% 300%, 300% 300%;
+  animation: cs-gradient-wave 6s ease-in-out infinite;
+}
+
+@utility cs-gradient-shimmer {
+  background-size: 200% 100%;
+  animation: cs-gradient-shimmer 2s linear infinite;
+}
+
+/* Speed and direction variants */
+@utility cs-gradient-animate-slow {
+  animation-duration: 8s;
+}
+
+@utility cs-gradient-animate-fast {
+  animation-duration: 1.5s;
+}
+
+@utility cs-gradient-animate-reverse {
+  animation-direction: reverse;
+}
+
+@utility cs-gradient-animate-alternate {
+  animation-direction: alternate;
+}
+
+@utility cs-gradient-animate-hover-pause {
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* =========================================================
+   ADVANCED GRADIENT EFFECTS
+   ========================================================= */
+
+@utility cs-gradient-shine {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.05) 100%);
+  background-size: 200% 100%;
+  animation: cs-gradient-shine 3s linear infinite;
+}
+
+@utility cs-hover-ripple {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 10%, transparent 80%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 9999px;
+    animation: none;
+    z-index: 1;
+  }
+  
+  &:active::after {
+    animation: cs-hover-ripple 0.6s ease-out;
+  }
+}
+
+@utility cs-gradient-ambient-rotate {
+  background: conic-gradient(from 0deg, var(--cs-gradient-stops));
+  animation: cs-ambient-rotate 20s linear infinite;
+}
+
+@utility cs-gradient-zoom-fade {
+  animation: cs-gradient-zoom-fade 800ms var(--cs-anim-ease-in-out) both;
+}
+
+/* =========================================================
+   GRADIENT BORDER COMPONENT
+   ========================================================= */
+
+@utility cs-gradient-border {
+  position: relative;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--cs-gradient-white);
+    border-radius: calc(0.5rem - 1px);
+    z-index: 0;
+  }
+  
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* =========================================================
    ANIMATION KEYFRAMES
    ========================================================= */
 
@@ -1059,15 +1570,103 @@
   }
 }
 
+@keyframes cs-gradient-shift-x {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes cs-gradient-shift-y {
+  0% { background-position: 50% 0%; }
+  100% { background-position: 50% 100%; }
+}
+
+@keyframes cs-gradient-rotate {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes cs-gradient-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes cs-gradient-pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes cs-gradient-breathe {
+  0%, 100% { 
+    filter: brightness(0.8) saturate(1.2);
+    transform: scale(1);
+  }
+  50% { 
+    filter: brightness(1.2) saturate(1.8);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes cs-gradient-wave {
+  0% { background-position: 0% 50%, 100% 50%; }
+  25% { background-position: 50% 0%, 50% 100%; }
+  50% { background-position: 100% 50%, 0% 50%; }
+  75% { background-position: 50% 100%, 50% 0%; }
+  100% { background-position: 0% 50%, 100% 50%; }
+}
+
+@keyframes cs-gradient-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes cs-gradient-shine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes cs-hover-ripple {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+@keyframes cs-ambient-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes cs-gradient-zoom-fade {
+  0% { opacity: 0; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 /* =========================================================
    ACCESSIBILITY & PERFORMANCE
    ========================================================= */
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .cs-bg-casoon-animated {
+  .cs-bg-casoon-animated,
+  .cs-gradient-animate,
+  .cs-gradient-shift-x,
+  .cs-gradient-shift-y,
+  .cs-gradient-rotate,
+  .cs-gradient-pulse,
+  .cs-gradient-pulse-slow,
+  .cs-gradient-breathe,
+  .cs-gradient-wave,
+  .cs-gradient-shimmer,
+  .cs-gradient-shine,
+  .cs-gradient-ambient-rotate,
+  .cs-gradient-zoom-fade {
     animation: none !important;
     background-size: 100% 100% !important;
+  }
+  
+  .cs-hover-ripple::after {
+    animation: none !important;
   }
 }
 
@@ -1083,6 +1682,35 @@
     filter: contrast(1.5) brightness(1.2) !important;
   }
 }
+
+/* High-contrast/forced colors mode for gradient border */
+@media (prefers-contrast: more) {
+  .cs-gradient-border::before {
+    outline: 1px solid currentColor;
+    outline-offset: -1px;
+  }
+}
+
+@media (forced-colors: active) {
+  .cs-gradient-border {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  
+  .cs-gradient-border::before {
+    background: Canvas;
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 480px) {
+  .cs-gradient-animate {
+    animation-duration: calc(var(--cs-anim-gradient-duration) * 1.25);
+  }
+}
+
+
 
 
 /* TEMPORARY: Remaining systems inline until extracted */

@@ -146,6 +146,88 @@
   transition: all var(--cs-glass-transition) ease;
 }
 
+/* Glass size variants - all intensity levels */
+.cs-glass-xs  {
+  background: var(--cs-glass-bg-xs);
+  border: 1px solid var(--cs-glass-border-xs);
+  border-radius: var(--cs-glass-radius-sm);
+  backdrop-filter: var(--cs-glass-blur-sm);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-sm  {
+  background: var(--cs-glass-bg-sm);
+  border: 1px solid var(--cs-glass-border-sm);
+  border-radius: var(--cs-glass-radius-sm);
+  backdrop-filter: var(--cs-glass-blur-sm);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-md  {
+  background: var(--cs-glass-bg-md);
+  border: 1px solid var(--cs-glass-border-md);
+  border-radius: var(--cs-glass-radius);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-lg  {
+  background: var(--cs-glass-bg-lg);
+  border: 1px solid var(--cs-glass-border-lg);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-xl  {
+  background: var(--cs-glass-bg-xl);
+  border: 1px solid var(--cs-glass-border-xl);
+  border-radius: var(--cs-glass-radius-xl);
+  backdrop-filter: var(--cs-glass-blur-lg);
+  -webkit-backdrop-filter: var(--cs-glass-blur-lg);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-2xl  {
+  background: var(--cs-glass-bg-2xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+  border-radius: var(--cs-glass-radius-2xl);
+  backdrop-filter: var(--cs-glass-blur-lg);
+  -webkit-backdrop-filter: var(--cs-glass-blur-lg);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-3xl  {
+  background: var(--cs-glass-bg-3xl);
+  border: 1px solid var(--cs-glass-border-3xl);
+  border-radius: var(--cs-glass-radius-3xl);
+  backdrop-filter: var(--cs-glass-blur-xl);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-4xl  {
+  background: var(--cs-glass-bg-4xl);
+  border: 2px solid var(--cs-glass-border-3xl);
+  border-radius: var(--cs-glass-radius-3xl);
+  backdrop-filter: var(--cs-glass-blur-xl);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-5xl  {
+  background: var(--cs-glass-bg-5xl);
+  border: 2px solid var(--cs-glass-border-3xl);
+  border-radius: var(--cs-glass-radius-3xl);
+  backdrop-filter: var(--cs-glass-blur-xl);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  transition: all var(--cs-glass-transition) ease;
+}
+
 /* Dark glass variant */
 .cs-glass-dark  {
   background: var(--cs-glass-bg-dark);
@@ -247,6 +329,14 @@
 .cs-glass-radius-xl  { border-radius: var(--cs-glass-radius-xl); }
 .cs-glass-radius-2xl  { border-radius: var(--cs-glass-radius-2xl); }
 .cs-glass-radius-3xl  { border-radius: var(--cs-glass-radius-3xl); }
+
+/* Glass rounded utilities - aliases for radius utilities */
+.cs-glass-rounded  { border-radius: var(--cs-glass-radius); }
+.cs-glass-rounded-sm  { border-radius: var(--cs-glass-radius-sm); }
+.cs-glass-rounded-lg  { border-radius: var(--cs-glass-radius-lg); }
+.cs-glass-rounded-xl  { border-radius: var(--cs-glass-radius-xl); }
+.cs-glass-rounded-2xl  { border-radius: var(--cs-glass-radius-2xl); }
+.cs-glass-rounded-3xl  { border-radius: var(--cs-glass-radius-3xl); }
 
 /* =========================================================
    GLASS SHADOW UTILITIES

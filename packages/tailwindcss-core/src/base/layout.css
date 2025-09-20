@@ -50,5 +50,16 @@
 @utility cs-z-800 { z-index: var(--cs-z-800); position: relative; }
 @utility cs-z-900 { z-index: var(--cs-z-900); position: relative; }
 @utility cs-z-999 { z-index: var(--cs-z-999); position: relative; }
+@utility cs-z-high { z-index: var(--cs-z-high); position: relative; }
 @utility cs-z-9999 { z-index: var(--cs-z-9999); position: relative; }
 @utility cs-z-max { z-index: var(--cs-z-max); position: relative; }
+
+/* Additional semantic z-index utilities from v0.8.x */
+@utility cs-z-drawer { z-index: var(--cs-z-drawer); position: relative; }
+@utility cs-z-dropdown { z-index: var(--cs-z-dropdown); position: relative; }
+@utility cs-z-fixed { z-index: var(--cs-z-fixed); position: fixed; }
+@utility cs-z-nav { z-index: var(--cs-z-nav); position: relative; }
+@utility cs-z-nav-overlay { z-index: var(--cs-z-nav-overlay); position: relative; }
+@utility cs-z-orb { z-index: var(--cs-z-orb); position: relative; }
+@utility cs-z-overlay { z-index: var(--cs-z-overlay); position: relative; }
+@utility cs-z-sticky { z-index: var(--cs-z-sticky); position: sticky; }

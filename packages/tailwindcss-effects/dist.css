@@ -2534,6 +2534,88 @@
   transition: all var(--cs-glass-transition) ease;
 }
 
+/* Glass size variants - all intensity levels */
+.cs-glass-xs  {
+  background: var(--cs-glass-bg-xs);
+  border: 1px solid var(--cs-glass-border-xs);
+  border-radius: var(--cs-glass-radius-sm);
+  backdrop-filter: var(--cs-glass-blur-sm);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-sm  {
+  background: var(--cs-glass-bg-sm);
+  border: 1px solid var(--cs-glass-border-sm);
+  border-radius: var(--cs-glass-radius-sm);
+  backdrop-filter: var(--cs-glass-blur-sm);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-md  {
+  background: var(--cs-glass-bg-md);
+  border: 1px solid var(--cs-glass-border-md);
+  border-radius: var(--cs-glass-radius);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-lg  {
+  background: var(--cs-glass-bg-lg);
+  border: 1px solid var(--cs-glass-border-lg);
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-xl  {
+  background: var(--cs-glass-bg-xl);
+  border: 1px solid var(--cs-glass-border-xl);
+  border-radius: var(--cs-glass-radius-xl);
+  backdrop-filter: var(--cs-glass-blur-lg);
+  -webkit-backdrop-filter: var(--cs-glass-blur-lg);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-2xl  {
+  background: var(--cs-glass-bg-2xl);
+  border: 1px solid var(--cs-glass-border-2xl);
+  border-radius: var(--cs-glass-radius-2xl);
+  backdrop-filter: var(--cs-glass-blur-lg);
+  -webkit-backdrop-filter: var(--cs-glass-blur-lg);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-3xl  {
+  background: var(--cs-glass-bg-3xl);
+  border: 1px solid var(--cs-glass-border-3xl);
+  border-radius: var(--cs-glass-radius-3xl);
+  backdrop-filter: var(--cs-glass-blur-xl);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-4xl  {
+  background: var(--cs-glass-bg-4xl);
+  border: 2px solid var(--cs-glass-border-3xl);
+  border-radius: var(--cs-glass-radius-3xl);
+  backdrop-filter: var(--cs-glass-blur-xl);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  transition: all var(--cs-glass-transition) ease;
+}
+
+.cs-glass-5xl  {
+  background: var(--cs-glass-bg-5xl);
+  border: 2px solid var(--cs-glass-border-3xl);
+  border-radius: var(--cs-glass-radius-3xl);
+  backdrop-filter: var(--cs-glass-blur-xl);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
+  transition: all var(--cs-glass-transition) ease;
+}
+
 /* Dark glass variant */
 .cs-glass-dark  {
   background: var(--cs-glass-bg-dark);
@@ -2635,6 +2717,14 @@
 .cs-glass-radius-xl  { border-radius: var(--cs-glass-radius-xl); }
 .cs-glass-radius-2xl  { border-radius: var(--cs-glass-radius-2xl); }
 .cs-glass-radius-3xl  { border-radius: var(--cs-glass-radius-3xl); }
+
+/* Glass rounded utilities - aliases for radius utilities */
+.cs-glass-rounded  { border-radius: var(--cs-glass-radius); }
+.cs-glass-rounded-sm  { border-radius: var(--cs-glass-radius-sm); }
+.cs-glass-rounded-lg  { border-radius: var(--cs-glass-radius-lg); }
+.cs-glass-rounded-xl  { border-radius: var(--cs-glass-radius-xl); }
+.cs-glass-rounded-2xl  { border-radius: var(--cs-glass-radius-2xl); }
+.cs-glass-rounded-3xl  { border-radius: var(--cs-glass-radius-3xl); }
 
 /* =========================================================
    GLASS SHADOW UTILITIES
@@ -3252,6 +3342,7 @@
   /* Base palette colors */
   --cs-text: #0f172a;
   --cs-text-inverse: #ffffff;
+  --cs-bg: #ffffff;
   --cs-surface: #ffffff;
   --cs-surface-2: #f8fafc;
   --cs-border: #e5e7eb;
@@ -4231,6 +4322,381 @@
   }
 }
 
+/* =========================================================
+   ORB SCENE PRESETS - Complete Background Compositions
+   ========================================================= */
+
+/* Galaxy Scene - Multiple cosmic orbs */
+.cs-orb-scene-galaxy {
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-orb-scene-galaxy::before,
+.cs-orb-scene-galaxy::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Main galaxy orb */
+.cs-orb-scene-galaxy::before {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, 
+    color-mix(in srgb, var(--cs-orb-purple) 40%, transparent) 0%,
+    color-mix(in srgb, var(--cs-orb-blue) 25%, transparent) 40%,
+    color-mix(in srgb, var(--cs-orb-pink) 15%, transparent) 70%,
+    transparent 100%
+  );
+  filter: blur(60px);
+  top: -150px;
+  right: -150px;
+  animation: cs-orb-float-kf 8s ease-in-out infinite;
+}
+
+/* Secondary galaxy orb */
+.cs-orb-scene-galaxy::after {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--cs-orb-blue) 35%, transparent) 0%,
+    color-mix(in srgb, var(--cs-orb-purple) 20%, transparent) 50%,
+    transparent 100%
+  );
+  filter: blur(40px);
+  bottom: -100px;
+  left: -100px;
+  animation: cs-orb-pulse-kf 6s ease-in-out infinite;
+}
+
+/* Underwater Scene - Blue/turquoise composition */
+.cs-orb-scene-underwater {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--cs-orb-blue) 8%, var(--cs-bg)) 0%,
+    color-mix(in srgb, var(--cs-orb-blue-light) 5%, var(--cs-bg)) 100%
+  );
+}
+
+.cs-orb-scene-underwater::before,
+.cs-orb-scene-underwater::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Large underwater orb */
+.cs-orb-scene-underwater::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, #00bcd4 30%, transparent) 0%,
+    color-mix(in srgb, #4dd0e1 20%, transparent) 40%,
+    color-mix(in srgb, #80deea 10%, transparent) 70%,
+    transparent 100%
+  );
+  filter: blur(80px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: cs-orb-drift-kf 12s ease-in-out infinite;
+}
+
+/* Floating bubbles effect */
+.cs-orb-scene-underwater::after {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, #b2ebf2 25%, transparent) 0%,
+    color-mix(in srgb, #e0f2f1 15%, transparent) 60%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  top: 20%;
+  right: 20%;
+  animation: cs-orb-wander 15s ease-in-out infinite;
+}
+
+/* Aurora Scene - Northern lights effect */
+.cs-orb-scene-aurora {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg,
+    color-mix(in srgb, #1a237e 15%, var(--cs-bg)) 0%,
+    color-mix(in srgb, #283593 10%, var(--cs-bg)) 50%,
+    color-mix(in srgb, #1a237e 15%, var(--cs-bg)) 100%
+  );
+}
+
+.cs-orb-scene-aurora::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, #4fc3f7 20%, transparent) 0%,
+    color-mix(in srgb, #81c784 15%, transparent) 30%,
+    color-mix(in srgb, #ffb74d 10%, transparent) 60%,
+    transparent 100%
+  );
+  filter: blur(60px);
+  animation: cs-aurora-wave 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+@keyframes cs-aurora-wave {
+  0%, 100% { 
+    opacity: 0.6;
+    transform: translateY(0) scaleY(1);
+  }
+  25% { 
+    opacity: 0.8;
+    transform: translateY(-20px) scaleY(1.1);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: translateY(-10px) scaleY(0.9);
+  }
+  75% { 
+    opacity: 0.9;
+    transform: translateY(-30px) scaleY(1.2);
+  }
+}
+
+/* Nebula Scene - Space dust and gas clouds */
+.cs-orb-scene-nebula {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center,
+    color-mix(in srgb, var(--cs-orb-purple) 12%, var(--cs-bg)) 0%,
+    color-mix(in srgb, var(--cs-orb-pink) 8%, var(--cs-bg)) 40%,
+    var(--cs-bg) 100%
+  );
+}
+
+.cs-orb-scene-nebula::before,
+.cs-orb-scene-nebula::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Main nebula cloud */
+.cs-orb-scene-nebula::before {
+  width: 500px;
+  height: 300px;
+  background: linear-gradient(45deg,
+    color-mix(in srgb, var(--cs-orb-purple) 25%, transparent) 0%,
+    color-mix(in srgb, var(--cs-orb-pink) 20%, transparent) 30%,
+    color-mix(in srgb, var(--cs-orb-custom-primary) 15%, transparent) 60%,
+    transparent 100%
+  );
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  filter: blur(100px);
+  top: 10%;
+  left: 20%;
+  animation: cs-orb-morph 25s ease-in-out infinite,
+             cs-orb-drift-kf 30s ease-in-out infinite;
+}
+
+/* Secondary nebula dust */
+.cs-orb-scene-nebula::after {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(ellipse,
+    color-mix(in srgb, var(--cs-orb-blue) 20%, transparent) 0%,
+    color-mix(in srgb, var(--cs-orb-purple-light) 15%, transparent) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(60px);
+  bottom: 20%;
+  right: 15%;
+  animation: cs-orb-shimmer 18s ease-in-out infinite;
+}
+
+/* Forest Scene - Natural, organic orbs */
+.cs-orb-scene-forest {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, #2e7d32 8%, var(--cs-bg)) 0%,
+    color-mix(in srgb, #388e3c 6%, var(--cs-bg)) 50%,
+    color-mix(in srgb, #1b5e20 10%, var(--cs-bg)) 100%
+  );
+}
+
+.cs-orb-scene-forest::before,
+.cs-orb-scene-forest::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Sunlight filtering through trees */
+.cs-orb-scene-forest::before {
+  width: 200px;
+  height: 400px;
+  background: linear-gradient(0deg,
+    transparent 0%,
+    color-mix(in srgb, #ffeb3b 15%, transparent) 20%,
+    color-mix(in srgb, #ffc107 20%, transparent) 50%,
+    color-mix(in srgb, #ff9800 10%, transparent) 80%,
+    transparent 100%
+  );
+  border-radius: 50% 50% 80% 20% / 60% 40% 60% 40%;
+  filter: blur(40px);
+  top: -100px;
+  right: 30%;
+  animation: cs-forest-light 15s ease-in-out infinite;
+  transform: rotate(15deg);
+}
+
+/* Forest fireflies/magic */
+.cs-orb-scene-forest::after {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, #76ff03 30%, transparent) 0%,
+    color-mix(in srgb, #8bc34a 20%, transparent) 40%,
+    color-mix(in srgb, #4caf50 10%, transparent) 70%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  bottom: 30%;
+  left: 25%;
+  animation: cs-orb-flicker 3s ease-in-out infinite,
+             cs-orb-wander 20s ease-in-out infinite;
+}
+
+@keyframes cs-forest-light {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: rotate(15deg) translateY(0);
+  }
+  25% { 
+    opacity: 0.6;
+    transform: rotate(12deg) translateY(-10px);
+  }
+  50% { 
+    opacity: 0.4;
+    transform: rotate(18deg) translateY(-5px);
+  }
+  75% { 
+    opacity: 0.7;
+    transform: rotate(10deg) translateY(-15px);
+  }
+}
+
+/* Sunset Scene - Warm, golden orbs */
+.cs-orb-scene-sunset {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg,
+    color-mix(in srgb, #ff6f00 12%, var(--cs-bg)) 0%,
+    color-mix(in srgb, #ff8f00 8%, var(--cs-bg)) 30%,
+    color-mix(in srgb, #ffc107 6%, var(--cs-bg)) 70%,
+    var(--cs-bg) 100%
+  );
+}
+
+.cs-orb-scene-sunset::before,
+.cs-orb-scene-sunset::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--cs-z-orb);
+}
+
+/* Main sun orb */
+.cs-orb-scene-sunset::before {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle,
+    color-mix(in srgb, #ffeb3b 35%, transparent) 0%,
+    color-mix(in srgb, #ff9800 25%, transparent) 30%,
+    color-mix(in srgb, #ff5722 15%, transparent) 60%,
+    transparent 100%
+  );
+  filter: blur(80px);
+  top: -175px;
+  left: 70%;
+  animation: cs-orb-color-breathe 8s ease-in-out infinite;
+}
+
+/* Warm atmospheric glow */
+.cs-orb-scene-sunset::after {
+  width: 250px;
+  height: 150px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, #ffab40 20%, transparent) 0%,
+    color-mix(in srgb, #ff7043 15%, transparent) 50%,
+    transparent 100%
+  );
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  filter: blur(60px);
+  bottom: 20%;
+  left: 10%;
+  animation: cs-orb-drift-kf 12s ease-in-out infinite;
+}
+
+/* Responsive adjustments for scenes */
+@container (max-width: 768px) {
+  .cs-orb-scene-galaxy::before {
+    width: 200px;
+    height: 200px;
+    filter: blur(40px);
+  }
+  
+  .cs-orb-scene-galaxy::after {
+    width: 150px;
+    height: 150px;
+    filter: blur(30px);
+  }
+  
+  .cs-orb-scene-underwater::before {
+    width: 250px;
+    height: 250px;
+    filter: blur(50px);
+  }
+  
+  .cs-orb-scene-nebula::before {
+    width: 300px;
+    height: 200px;
+    filter: blur(60px);
+  }
+}
+
+/* Accessibility - respect reduced motion for scenes */
+@media (prefers-reduced-motion: reduce) {
+  .cs-orb-scene-galaxy::before,
+  .cs-orb-scene-galaxy::after,
+  .cs-orb-scene-underwater::before,
+  .cs-orb-scene-underwater::after,
+  .cs-orb-scene-aurora::before,
+  .cs-orb-scene-nebula::before,
+  .cs-orb-scene-nebula::after,
+  .cs-orb-scene-forest::before,
+  .cs-orb-scene-forest::after,
+  .cs-orb-scene-sunset::before,
+  .cs-orb-scene-sunset::after {
+    animation: none !important;
+  }
+}
+
 
 /* === CORE === */
 /*!
@@ -4325,7 +4791,11 @@
   --cs-z-70: 70; --cs-z-80: 80; --cs-z-90: 90; --cs-z-100: 100;
   --cs-z-200: 200; --cs-z-300: 300; --cs-z-400: 400; --cs-z-500: 500;
   --cs-z-600: 600; --cs-z-700: 700; --cs-z-800: 800; --cs-z-900: 900;
-  --cs-z-999: 999; --cs-z-9999: 9999; --cs-z-max: 2147483647;
+  --cs-z-999: 999; --cs-z-high: 9999; --cs-z-9999: 9999; --cs-z-max: 2147483647;
+  /* Additional semantic z-index tokens from v0.8.x */
+  --cs-z-drawer: 1000; --cs-z-dropdown: 1000; --cs-z-fixed: 1030;
+  --cs-z-nav: 1020; --cs-z-nav-overlay: 1010; --cs-z-orb: 5;
+  --cs-z-overlay: 1040; --cs-z-sticky: 1020;
 
   /* Layout tokens */
   --cs-page-max: 1200px;
@@ -4370,6 +4840,51 @@
   --cs-gradient-sunset: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef);
   --cs-gradient-ocean: linear-gradient(135deg, #667eea, #764ba2);
   --cs-gradient-forest: linear-gradient(135deg, #11998e, #38ef7d);
+
+  /* Extended gradient color stop tokens for comprehensive utilities */
+  --cs-gradient-sunset-start: #ff6b6b;
+  --cs-gradient-sunset-mid: #ffd93d;
+  --cs-gradient-sunset-end: #6bcf7f;
+
+  --cs-gradient-ocean-start: #667eea;
+  --cs-gradient-ocean-end: #764ba2;
+
+  --cs-gradient-fire-start: #f093fb;
+  --cs-gradient-fire-end: #f5576c;
+
+  --cs-gradient-mint-start: #4facfe;
+  --cs-gradient-mint-end: #00f2fe;
+
+  --cs-gradient-purple-start: #a8edea;
+  --cs-gradient-purple-end: #fed6e3;
+
+  --cs-gradient-orange-start: #ffeaa7;
+  --cs-gradient-orange-end: #fab1a0;
+
+  --cs-gradient-blue-start: #74b9ff;
+  --cs-gradient-blue-end: #0984e3;
+
+  --cs-gradient-pink-start: #fd79a8;
+  --cs-gradient-pink-end: #fdcb6e;
+
+  /* Custom gradient variables (user customizable) */
+  --cs-gradient-custom-start: #667eea;
+  --cs-gradient-custom-mid: ;
+  --cs-gradient-custom-end: #764ba2;
+
+  --cs-gradient-white: #ffffff;
+
+  /* Shared stops list fallback (for radial/conic) */
+  --cs-gradient-stops: var(--cs-gradient-ocean-start), var(--cs-gradient-ocean-end);
+
+  /* Gradient fade color tokens */
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.6);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.3);
+
+  /* Animation defaults for gradient animations */
+  --cs-anim-gradient-duration: 4s;
+  --cs-anim-gradient-ease: var(--cs-anim-ease-in-out);
+  --cs-anim-gradient-iteration: infinite;
 
   /* Loading system tokens */
   --cs-loading-spinner-size: 40px;
@@ -4562,8 +5077,19 @@
 .cs-z-800  { z-index: var(--cs-z-800); position: relative; }
 .cs-z-900  { z-index: var(--cs-z-900); position: relative; }
 .cs-z-999  { z-index: var(--cs-z-999); position: relative; }
+.cs-z-high  { z-index: var(--cs-z-high); position: relative; }
 .cs-z-9999  { z-index: var(--cs-z-9999); position: relative; }
 .cs-z-max  { z-index: var(--cs-z-max); position: relative; }
+
+/* Additional semantic z-index utilities from v0.8.x */
+.cs-z-drawer  { z-index: var(--cs-z-drawer); position: relative; }
+.cs-z-dropdown  { z-index: var(--cs-z-dropdown); position: relative; }
+.cs-z-fixed  { z-index: var(--cs-z-fixed); position: fixed; }
+.cs-z-nav  { z-index: var(--cs-z-nav); position: relative; }
+.cs-z-nav-overlay  { z-index: var(--cs-z-nav-overlay); position: relative; }
+.cs-z-orb  { z-index: var(--cs-z-orb); position: relative; }
+.cs-z-overlay  { z-index: var(--cs-z-overlay); position: relative; }
+.cs-z-sticky  { z-index: var(--cs-z-sticky); position: sticky; }
 
 
 /* =========================================================
@@ -5154,24 +5680,259 @@
 
 /* Gradient System - CASOON signature gradients */
 /* =========================================================
-   GRADIENT SYSTEM - CASOON Signature Backgrounds
+   COMPREHENSIVE GRADIENT SYSTEM - Complete Collection
    ========================================================= */
 
-/* Base Gradient Utilities */
-.cs-gradient-radial  {
-  background: radial-gradient(circle at 50% 50%, 
-    var(--cs-brand, #4f7cff), 
-    rgba(79, 124, 255, 70%)
+/* =========================================================
+   Core Gradient Background Utilities
+   ========================================================= */
+
+.cs-gradient-sunset  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-sunset-start),
+    var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
+    var(--cs-gradient-sunset-end)
   );
 }
 
-.cs-gradient-conic  {
-  background: conic-gradient(from 0deg, 
-    var(--cs-brand, #4f7cff), 
-    rgba(79, 124, 255, 50%),
-    var(--cs-brand, #4f7cff)
+.cs-gradient-ocean  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
   );
 }
+
+.cs-gradient-fire  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-fire-start),
+    var(--cs-gradient-fire-end)
+  );
+}
+
+.cs-gradient-mint  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-mint-start),
+    var(--cs-gradient-mint-end)
+  );
+}
+
+.cs-gradient-purple  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-purple-start),
+    var(--cs-gradient-purple-end)
+  );
+}
+
+.cs-gradient-orange  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-orange-start),
+    var(--cs-gradient-orange-end)
+  );
+}
+
+.cs-gradient-blue  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-blue-start),
+    var(--cs-gradient-blue-end)
+  );
+}
+
+.cs-gradient-pink  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-pink-start),
+    var(--cs-gradient-pink-end)
+  );
+}
+
+/* Custom gradient variants - 2-stop and 3-stop */
+.cs-gradient-custom-2  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-end)
+  );
+}
+
+.cs-gradient-custom  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+}
+
+.cs-gradient-custom-3  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+}
+
+/* =========================================================
+   Directional Fade Gradients
+   ========================================================= */
+
+/* Basic directional fades */
+.cs-gradient-fade-r  {
+  background: linear-gradient(to right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+.cs-gradient-fade-l  {
+  background: linear-gradient(to left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+.cs-gradient-fade-b  {
+  background: linear-gradient(to bottom, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+.cs-gradient-fade-t  {
+  background: linear-gradient(to top, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.3)) 50%,
+    transparent 100%
+  );
+}
+
+/* Diagonal fade variants */
+.cs-gradient-fade-br  {
+  background: linear-gradient(to bottom right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+.cs-gradient-fade-bl  {
+  background: linear-gradient(to bottom left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+.cs-gradient-fade-tr  {
+  background: linear-gradient(to top right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+.cs-gradient-fade-tl  {
+  background: linear-gradient(to top left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+}
+
+/* Intensity variants for fade gradients */
+.cs-gradient-fade-subtle  {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.3);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.1);
+}
+
+.cs-gradient-fade-medium  {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.6);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.3);
+}
+
+.cs-gradient-fade-strong  {
+  --cs-gradient-fade-color: rgba(79, 124, 255, 0.8);
+  --cs-gradient-fade-mid: rgba(79, 124, 255, 0.5);
+}
+
+/* Smooth fade with color-mix support */
+.cs-gradient-fade-smooth  {
+  background: linear-gradient(135deg, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 100%
+  );
+  
+  @supports (background: color-mix(in srgb, red 50%, transparent)) {
+    background: linear-gradient(135deg, 
+      var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+      color-mix(in srgb, var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 30%, transparent) 60%,
+      transparent 100%
+    );
+  }
+}
+
+/* =========================================================
+   Radial Gradient Utilities
+   ========================================================= */
+
+.cs-gradient-radial-fade  {
+  background: radial-gradient(circle at center, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    var(--cs-gradient-fade-mid, rgba(79, 124, 255, 0.2)) 40%,
+    transparent 70%
+  );
+}
+
+.cs-gradient-radial-fade-tl  {
+  background: radial-gradient(circle at top left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+.cs-gradient-radial-fade-tr  {
+  background: radial-gradient(circle at top right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+.cs-gradient-radial-fade-bl  {
+  background: radial-gradient(circle at bottom left, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+.cs-gradient-radial-fade-br  {
+  background: radial-gradient(circle at bottom right, 
+    var(--cs-gradient-fade-color, rgba(79, 124, 255, 0.6)) 0%,
+    transparent 60%
+  );
+}
+
+.cs-gradient-radial-center  {
+  background: radial-gradient(circle at center, var(--cs-gradient-stops));
+}
+
+.cs-gradient-radial-top  {
+  background: radial-gradient(circle at top, var(--cs-gradient-stops));
+}
+
+.cs-gradient-radial-bottom  {
+  background: radial-gradient(circle at bottom, var(--cs-gradient-stops));
+}
+
+/* =========================================================
+   Conic Gradient Utilities
+   ========================================================= */
+
+.cs-gradient-conic  {
+  background: conic-gradient(var(--cs-gradient-stops));
+}
+
+.cs-gradient-conic-center  {
+  background: conic-gradient(from 0deg at 50% 50%, var(--cs-gradient-stops));
+}
+
+/* =========================================================
+   Mesh Gradient (Multi-layer System)
+   ========================================================= */
 
 .cs-gradient-mesh  {
   background: 
@@ -5280,6 +6041,222 @@
 }
 
 /* =========================================================
+   GRADIENT TEXT UTILITIES
+   ========================================================= */
+
+.cs-gradient-text  {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-sunset  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-sunset-start),
+    var(--cs-gradient-sunset-mid, var(--cs-gradient-sunset-end)),
+    var(--cs-gradient-sunset-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-ocean  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-fire  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-fire-start),
+    var(--cs-gradient-fire-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-custom-2  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-custom  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cs-gradient-text-custom-3  {
+  background: linear-gradient(135deg,
+    var(--cs-gradient-custom-start),
+    var(--cs-gradient-custom-mid, var(--cs-gradient-custom-end)),
+    var(--cs-gradient-custom-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================================================
+   GRADIENT ANIMATION UTILITIES
+   ========================================================= */
+
+.cs-gradient-animate  {
+  background-size: 400% 400%;
+  animation: cs-gradient-shift var(--cs-anim-gradient-duration) var(--cs-anim-gradient-ease) var(--cs-anim-gradient-iteration);
+}
+
+.cs-gradient-shift-x  {
+  background-size: 200% 100%;
+  animation: cs-gradient-shift-x 3s linear infinite;
+}
+
+.cs-gradient-shift-y  {
+  background-size: 100% 200%;
+  animation: cs-gradient-shift-y 3s linear infinite;
+}
+
+.cs-gradient-rotate  {
+  background-size: 200% 200%;
+  animation: cs-gradient-rotate 8s linear infinite;
+}
+
+.cs-gradient-pulse  {
+  animation: cs-gradient-pulse 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.cs-gradient-pulse-slow  {
+  animation: cs-gradient-pulse-slow 4s ease-in-out infinite;
+}
+
+.cs-gradient-breathe  {
+  animation: cs-gradient-breathe 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.cs-gradient-wave  {
+  background-size: 300% 300%, 300% 300%;
+  animation: cs-gradient-wave 6s ease-in-out infinite;
+}
+
+.cs-gradient-shimmer  {
+  background-size: 200% 100%;
+  animation: cs-gradient-shimmer 2s linear infinite;
+}
+
+/* Speed and direction variants */
+.cs-gradient-animate-slow  {
+  animation-duration: 8s;
+}
+
+.cs-gradient-animate-fast  {
+  animation-duration: 1.5s;
+}
+
+.cs-gradient-animate-reverse  {
+  animation-direction: reverse;
+}
+
+.cs-gradient-animate-alternate  {
+  animation-direction: alternate;
+}
+
+.cs-gradient-animate-hover-pause  {
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* =========================================================
+   ADVANCED GRADIENT EFFECTS
+   ========================================================= */
+
+.cs-gradient-shine  {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.05) 100%);
+  background-size: 200% 100%;
+  animation: cs-gradient-shine 3s linear infinite;
+}
+
+.cs-hover-ripple  {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 10%, transparent 80%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 9999px;
+    animation: none;
+    z-index: 1;
+  }
+  
+  &:active::after {
+    animation: cs-hover-ripple 0.6s ease-out;
+  }
+}
+
+.cs-gradient-ambient-rotate  {
+  background: conic-gradient(from 0deg, var(--cs-gradient-stops));
+  animation: cs-ambient-rotate 20s linear infinite;
+}
+
+.cs-gradient-zoom-fade  {
+  animation: cs-gradient-zoom-fade 800ms var(--cs-anim-ease-in-out) both;
+}
+
+/* =========================================================
+   GRADIENT BORDER COMPONENT
+   ========================================================= */
+
+.cs-gradient-border  {
+  position: relative;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg,
+    var(--cs-gradient-ocean-start),
+    var(--cs-gradient-ocean-end)
+  );
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--cs-gradient-white);
+    border-radius: calc(0.5rem - 1px);
+    z-index: 0;
+  }
+  
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* =========================================================
    ANIMATION KEYFRAMES
    ========================================================= */
 
@@ -5292,15 +6269,103 @@
   }
 }
 
+@keyframes cs-gradient-shift-x {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes cs-gradient-shift-y {
+  0% { background-position: 50% 0%; }
+  100% { background-position: 50% 100%; }
+}
+
+@keyframes cs-gradient-rotate {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes cs-gradient-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes cs-gradient-pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes cs-gradient-breathe {
+  0%, 100% { 
+    filter: brightness(0.8) saturate(1.2);
+    transform: scale(1);
+  }
+  50% { 
+    filter: brightness(1.2) saturate(1.8);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes cs-gradient-wave {
+  0% { background-position: 0% 50%, 100% 50%; }
+  25% { background-position: 50% 0%, 50% 100%; }
+  50% { background-position: 100% 50%, 0% 50%; }
+  75% { background-position: 50% 100%, 50% 0%; }
+  100% { background-position: 0% 50%, 100% 50%; }
+}
+
+@keyframes cs-gradient-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes cs-gradient-shine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes cs-hover-ripple {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+@keyframes cs-ambient-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes cs-gradient-zoom-fade {
+  0% { opacity: 0; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 /* =========================================================
    ACCESSIBILITY & PERFORMANCE
    ========================================================= */
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .cs-bg-casoon-animated {
+  .cs-bg-casoon-animated,
+  .cs-gradient-animate,
+  .cs-gradient-shift-x,
+  .cs-gradient-shift-y,
+  .cs-gradient-rotate,
+  .cs-gradient-pulse,
+  .cs-gradient-pulse-slow,
+  .cs-gradient-breathe,
+  .cs-gradient-wave,
+  .cs-gradient-shimmer,
+  .cs-gradient-shine,
+  .cs-gradient-ambient-rotate,
+  .cs-gradient-zoom-fade {
     animation: none !important;
     background-size: 100% 100% !important;
+  }
+  
+  .cs-hover-ripple::after {
+    animation: none !important;
   }
 }
 
@@ -5316,6 +6381,35 @@
     filter: contrast(1.5) brightness(1.2) !important;
   }
 }
+
+/* High-contrast/forced colors mode for gradient border */
+@media (prefers-contrast: more) {
+  .cs-gradient-border::before {
+    outline: 1px solid currentColor;
+    outline-offset: -1px;
+  }
+}
+
+@media (forced-colors: active) {
+  .cs-gradient-border {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  
+  .cs-gradient-border::before {
+    background: Canvas;
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 480px) {
+  .cs-gradient-animate {
+    animation-duration: calc(var(--cs-anim-gradient-duration) * 1.25);
+  }
+}
+
+
 
 
 /* TEMPORARY: Remaining systems inline until extracted */
