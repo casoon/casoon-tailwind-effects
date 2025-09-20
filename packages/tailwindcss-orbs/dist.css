@@ -1,16 +1,24 @@
 /*!
+ * tailwindcss-orbs - Plain CSS Distribution
+ * Version: 0.9.0
+ * 
+ * This version can be used WITHOUT Tailwind CSS.
+ * All @utility directives converted to standard CSS classes.
+ */
+
+/*!
  * Casoon Orbs - Tailwind v4 Directive Definitions
  * Version: 0.8.5 — For processing by Tailwind in consumer projects
  * 
- * Usage: @import "@casoon/tailwindcss-orbs/index.css";
+ * Usage: 
  */
 
-/* Note: @import "tailwindcss"; should be added by the consumer */
+/* Note:  should be added by the consumer */
 
 /* =========================================================
    Orbs Theme Tokens
    ========================================================= */
-@theme {
+:root {
   /* Base palette colors */
   --cs-text: #0f172a;
   --cs-text-inverse: #ffffff;
@@ -110,7 +118,7 @@
 /* =========================================================
    Base Orb Utility
    ========================================================= */
-@utility cs-orb {
+.cs-orb  {
   border-radius: 50%;
   filter: blur(1px);
   opacity: .7;
@@ -137,35 +145,35 @@
 /* =========================================================
    Orb Size Utilities
    ========================================================= */
-@utility cs-orb-xs { width: 50px; height: 50px; }
-@utility cs-orb-sm { width: 75px; height: 75px; }
-@utility cs-orb-md { width: 100px; height: 100px; }
-@utility cs-orb-lg { width: 150px; height: 150px; }
-@utility cs-orb-xl { width: 200px; height: 200px; }
-@utility cs-orb-2xl { width: 300px; height: 300px; }
-@utility cs-orb-3xl { width: 400px; height: 400px; }
-@utility cs-orb-4xl { width: 500px; height: 500px; }
-@utility cs-orb-5xl { width: 600px; height: 600px; }
-@utility cs-orb-massive { width: 800px; height: 800px; }
+.cs-orb-xs  { width: 50px; height: 50px; }
+.cs-orb-sm  { width: 75px; height: 75px; }
+.cs-orb-md  { width: 100px; height: 100px; }
+.cs-orb-lg  { width: 150px; height: 150px; }
+.cs-orb-xl  { width: 200px; height: 200px; }
+.cs-orb-2xl  { width: 300px; height: 300px; }
+.cs-orb-3xl  { width: 400px; height: 400px; }
+.cs-orb-4xl  { width: 500px; height: 500px; }
+.cs-orb-5xl  { width: 600px; height: 600px; }
+.cs-orb-massive  { width: 800px; height: 800px; }
 
 /* =========================================================
    Blur Level Utilities
    ========================================================= */
-@utility cs-orb-blur-none { filter: blur(0); }
-@utility cs-orb-blur-sm { filter: blur(2px); }
-@utility cs-orb-blur-md { filter: blur(4px); }
-@utility cs-orb-blur-lg { filter: blur(8px); }
+.cs-orb-blur-none  { filter: blur(0); }
+.cs-orb-blur-sm  { filter: blur(2px); }
+.cs-orb-blur-md  { filter: blur(4px); }
+.cs-orb-blur-lg  { filter: blur(8px); }
 
 /* =========================================================
    Positioning Utilities
    ========================================================= */
-@utility cs-orb-absolute { position: absolute; }
-@utility cs-orb-fixed { position: fixed; }
+.cs-orb-absolute  { position: absolute; }
+.cs-orb-fixed  { position: fixed; }
 
 /* =========================================================
    Color Gradient Utilities with Progressive Enhancement
    ========================================================= */
-@utility cs-orb-gradient-blue {
+.cs-orb-gradient-blue  {
   background: var(--cs-orb-fallback-blue);
   
   @supports (background: color-mix(in srgb, red 50%, transparent)) {
@@ -173,7 +181,7 @@
   }
 }
 
-@utility cs-orb-gradient-purple {
+.cs-orb-gradient-purple  {
   background: var(--cs-orb-fallback-purple);
   
   @supports (background: color-mix(in srgb, red 50%, transparent)) {
@@ -181,7 +189,7 @@
   }
 }
 
-@utility cs-orb-gradient-pink {
+.cs-orb-gradient-pink  {
   background: var(--cs-orb-fallback-pink);
   
   @supports (background: color-mix(in srgb, red 50%, transparent)) {
@@ -189,7 +197,7 @@
   }
 }
 
-@utility cs-orb-gradient-custom {
+.cs-orb-gradient-custom  {
   background: var(--cs-orb-fallback-custom);
   
   @supports (background: color-mix(in srgb, red 50%, transparent)) {
@@ -200,7 +208,7 @@
 /* =========================================================
    Container Query Utility
    ========================================================= */
-@utility cs-cq { 
+.cs-cq  { 
   container-type: inline-size; 
 }
 
@@ -209,34 +217,34 @@
    ========================================================= */
 
 /* Float Animation */
-@utility cs-orb-float {
+.cs-orb-float  {
   animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite;
 }
 
 /* Pulse Animation */
-@utility cs-orb-pulse {
+.cs-orb-pulse  {
   animation: cs-orb-pulse-kf var(--cs-anim-duration-pulse) var(--cs-anim-ease-inout) infinite;
 }
 
 /* Drift Animation */
-@utility cs-orb-drift {
+.cs-orb-drift  {
   animation: cs-orb-drift-kf var(--cs-anim-duration-drift) var(--cs-anim-ease-inout) infinite;
 }
 
 /* Morph Animation */
-@utility cs-orb-morph {
+.cs-orb-morph  {
   animation: cs-orb-morph 12s ease-in-out infinite;
 }
 
 /* Shimmer Animation */
-@utility cs-orb-shimmer {
+.cs-orb-shimmer  {
   background: linear-gradient(270deg, var(--cs-orb-blue), var(--cs-orb-blue-light), var(--cs-orb-blue));
   background-size: 600% 600%;
   animation: cs-orb-shimmer 10s infinite;
 }
 
 /* Bloom Animation (hover/focus triggered) */
-@utility cs-orb-bloom {
+.cs-orb-bloom  {
   &:hover, &:focus-visible {
     transform-origin: 50%;
     animation: cs-orb-bloom 2s ease-in-out infinite;
@@ -244,88 +252,88 @@
 }
 
 /* Zen Animation (combined float + morph) */
-@utility cs-orb-zen {
+.cs-orb-zen  {
   animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite,
              cs-orb-morph 14s ease-in-out infinite;
 }
 
 /* Advanced Movement Animations */
-@utility cs-orb-orbit {
+.cs-orb-orbit  {
   animation: cs-orb-orbit 20s linear infinite;
 }
 
-@utility cs-orb-orbit-reverse {
+.cs-orb-orbit-reverse  {
   animation: cs-orb-orbit 20s linear infinite reverse;
 }
 
-@utility cs-orb-figure-8 {
+.cs-orb-figure-8  {
   animation: cs-orb-figure-8 16s ease-in-out infinite;
 }
 
-@utility cs-orb-wander {
+.cs-orb-wander  {
   animation: cs-orb-wander 25s ease-in-out infinite;
 }
 
-@utility cs-orb-swing {
+.cs-orb-swing  {
   animation: cs-orb-swing 8s ease-in-out infinite;
 }
 
-@utility cs-orb-bounce {
+.cs-orb-bounce  {
   animation: cs-orb-bounce 3s ease-in-out infinite;
 }
 
-@utility cs-orb-magnetic {
+.cs-orb-magnetic  {
   animation: cs-orb-magnetic 12s ease-in-out infinite;
 }
 
 /* Color & Visual Effects */
-@utility cs-orb-hue-shift {
+.cs-orb-hue-shift  {
   animation: cs-orb-hue-shift 10s linear infinite;
 }
 
-@utility cs-orb-rainbow {
+.cs-orb-rainbow  {
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b, #6c5ce7) 0 0/400% 400%;
   animation: cs-orb-rainbow 8s infinite;
 }
 
-@utility cs-orb-color-pulse {
+.cs-orb-color-pulse  {
   animation: cs-orb-color-pulse 4s ease-in-out infinite;
 }
 
-@utility cs-orb-color-breathe {
+.cs-orb-color-breathe  {
   animation: cs-orb-color-breathe 6s ease-in-out infinite;
 }
 
-@utility cs-orb-glow {
+.cs-orb-glow  {
   animation: cs-orb-glow 3s ease-in-out infinite;
 }
 
-@utility cs-orb-flicker {
+.cs-orb-flicker  {
   animation: cs-orb-flicker 2s ease-in-out infinite;
 }
 
-@utility cs-orb-scale-pulse {
+.cs-orb-scale-pulse  {
   animation: cs-orb-scale-pulse 4s ease-in-out infinite;
 }
 
-@utility cs-orb-elastic {
+.cs-orb-elastic  {
   animation: cs-orb-elastic 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
 }
 
 /* Complex Combined Animations */
-@utility cs-orb-dream {
+.cs-orb-dream  {
   animation: cs-orb-float-kf 12s ease-in-out infinite,
              cs-orb-hue-shift 15s linear infinite,
              cs-orb-scale-pulse 8s ease-in-out infinite;
 }
 
-@utility cs-orb-cosmic {
+.cs-orb-cosmic  {
   animation: cs-orb-orbit 30s linear infinite,
              cs-orb-rainbow 10s infinite,
              cs-orb-glow 4s ease-in-out infinite;
 }
 
-@utility cs-orb-chaos {
+.cs-orb-chaos  {
   animation: cs-orb-wander 20s ease-in-out infinite,
              cs-orb-flicker 1.5s ease-in-out infinite,
              cs-orb-elastic 5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
@@ -334,30 +342,30 @@
 /* =========================================================
    ANIMATION SPEED CONTROLS
    ========================================================= */
-@utility cs-orb-slow {
+.cs-orb-slow  {
   animation-duration: calc(var(--cs-orb-speed, 1) * 2);
 }
 
-@utility cs-orb-fast {
+.cs-orb-fast  {
   animation-duration: calc(var(--cs-orb-speed, 1) * 0.5);
 }
 
 /* =========================================================
    INTERACTIVE ANIMATION CONTROLS
    ========================================================= */
-@utility cs-orb-pause-hover {
+.cs-orb-pause-hover  {
   &:hover {
     animation-play-state: paused;
   }
 }
 
-@utility cs-orb-reverse-hover {
+.cs-orb-reverse-hover  {
   &:hover {
     animation-direction: reverse;
   }
 }
 
-@utility cs-orb-trigger-hover {
+.cs-orb-trigger-hover  {
   animation-play-state: paused;
   
   &:hover {
@@ -368,7 +376,7 @@
 /* =========================================================
    CORE UTILITY HELPER CLASSES
    ========================================================= */
-@utility cs-sr-only {
+.cs-sr-only  {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -383,11 +391,11 @@
 /* =========================================================
    GLOW EFFECTS
    ========================================================= */
-@utility cs-glow {
+.cs-glow  {
   box-shadow: 0 0 transparent;
 }
 
-@utility cs-glow-blue {
+.cs-glow-blue  {
   box-shadow: 0 0 24px 8px var(--cs-orb-blue);
   
   @supports (color: color-mix(in lab, red, red)) {
@@ -399,7 +407,7 @@
   }
 }
 
-@utility cs-glow-pink {
+.cs-glow-pink  {
   box-shadow: 0 0 24px 8px var(--cs-orb-pink);
   
   @supports (color: color-mix(in lab, red, red)) {
@@ -414,16 +422,16 @@
 /* =========================================================
    CORE POSITIONING UTILITIES
    ========================================================= */
-@utility cs-will-transform {
+.cs-will-transform  {
   will-change: transform;
 }
 
 /* =========================================================
    CARD COMPONENTS
    ========================================================= */
-@utility cs-card {
+.cs-card  {
   position: relative;
-  background: var(--cs-surface);
+  background: var(--cs-surface, #14161a);
   border: 1px solid var(--cs-border);
   border-radius: calc(12px * var(--cs-density));
   box-shadow: var(--cs-shadow-2);
@@ -436,13 +444,13 @@
   }
 }
 
-@utility cs-card-title {
-  color: var(--cs-text);
+.cs-card-title  {
+  color: var(--cs-text, #eef1f6);
   font-weight: 600;
   margin-bottom: 0.5em;
 }
 
-@utility cs-card-hover-orb {
+.cs-card-hover-orb  {
   position: relative;
   overflow: hidden;
   
@@ -466,15 +474,15 @@
   }
 }
 
-@utility cs-card-hover-orb-shimmer {
+.cs-card-hover-orb-shimmer  {
   &::before {
     background: linear-gradient(135deg, #3b82f6, #93c5fd, #3b82f6) 0 0/300% 300%;
     animation: cs-orb-shimmer 6s linear infinite;
   }
 }
 
-@utility cs-surface-pop {
-  background: var(--cs-surface);
+.cs-surface-pop  {
+  background: var(--cs-surface, #14161a);
   border: 1px solid var(--cs-border);
   border-radius: 12px;
   box-shadow: var(--cs-shadow-4);
@@ -483,14 +491,14 @@
 /* =========================================================
    ACRYLIC/GLASSMORPHISM EFFECT
    ========================================================= */
-@utility cs-acrylic {
-  background: var(--cs-surface);
+.cs-acrylic  {
+  background: var(--cs-surface, #14161a);
   border: 1px solid var(--cs-border);
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   
   @supports (color: color-mix(in lab, red, red)) {
-    background: color-mix(in srgb, var(--cs-surface) 70%, transparent);
+    background: color-mix(in srgb, var(--cs-surface, #14161a) 70%, transparent);
     border: 1px solid color-mix(in srgb, var(--cs-border) 70%, transparent);
   }
   
@@ -502,7 +510,7 @@
 /* =========================================================
    BUTTON COMPONENTS
    ========================================================= */
-@utility cs-btn {
+.cs-btn  {
   --_pad-y: calc(8px * var(--cs-density));
   --_pad-x: calc(14px * var(--cs-density));
   
@@ -513,8 +521,8 @@
   padding: var(--_pad-y) var(--_pad-x);
   border: 1px solid var(--cs-border);
   border-radius: calc(10px * var(--cs-density));
-  background: var(--cs-surface-2);
-  color: var(--cs-text);
+  background: var(--cs-surface, #14161a);
+  color: var(--cs-text, #eef1f6);
   font-weight: 600;
   line-height: 1.2;
   box-shadow: var(--cs-shadow-1);
@@ -530,13 +538,13 @@
   }
 }
 
-@utility cs-btn-primary {
+.cs-btn-primary  {
   background: var(--cs-orb-blue);
   border-color: var(--cs-orb-blue);
-  color: var(--cs-text);
+  color: var(--cs-text, #eef1f6);
   
   @supports (color: color-mix(in lab, red, red)) {
-    background: color-mix(in srgb, var(--cs-orb-blue) 12%, var(--cs-surface));
+    background: color-mix(in srgb, var(--cs-orb-blue) 12%, var(--cs-surface, #14161a));
     border-color: color-mix(in srgb, var(--cs-orb-blue) 35%, var(--cs-border));
   }
   
@@ -546,7 +554,7 @@
   }
 }
 
-@utility cs-btn-orb {
+.cs-btn-orb  {
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -571,7 +579,7 @@
 /* =========================================================
    LAYOUT COMPONENTS
    ========================================================= */
-@utility cs-section-orb {
+.cs-section-orb  {
   position: relative;
   overflow: clip;
   
@@ -581,7 +589,7 @@
   }
 }
 
-@utility cs-orb-modal-backdrop {
+.cs-orb-modal-backdrop  {
   position: absolute;
   inset: 0;
   background: var(--cs-orb-fallback-purple);

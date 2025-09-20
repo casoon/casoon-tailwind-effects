@@ -1,21 +1,18 @@
 /*!
- * @casoon/tailwindcss-effects - dist.css
- * Complete collection of CSS effects for Tailwind CSS v4 
- * Version 0.9.0 - Consolidated dist build
+ * @casoon/tailwindcss-effects - Complete Collection
+ * Version: 0.9.1
  * 
- * This file combines all individual package dist.css files
- * Import this when using without Tailwind CSS setup
+ * This meta package includes all CSS utilities from:
+ * - tailwindcss-utilities
+ * - tailwindcss-animations  
+ * - tailwindcss-glass
+ * - tailwindcss-orbs
+ * - tailwindcss-core
+ * 
+ * Usage: @import "@casoon/tailwindcss-effects/index.css";
  */
 
-/* === UTILITIES === */
-/*!
- * tailwindcss-utilities - Plain CSS Distribution
- * Version: 0.9.0
- * 
- * This version can be used WITHOUT Tailwind CSS.
- * All @utility directives converted to standard CSS classes.
- */
-
+/* === TAILWINDCSS-UTILITIES === */
 /*!
  * Casoon Utilities - Complete Utility System for Tailwind v4
  * Version: 0.9.0 — COMPLETELY CONSOLIDATED & ENHANCED
@@ -1170,15 +1167,7 @@
   }
 }
 
-/* === ANIMATIONS === */
-/*!
- * tailwindcss-animations - Plain CSS Distribution
- * Version: 0.9.0
- * 
- * This version can be used WITHOUT Tailwind CSS.
- * All @utility directives converted to standard CSS classes.
- */
-
+/* === TAILWINDCSS-ANIMATIONS === */
 /*!
  * Casoon Animations - Complete Animation System for Tailwind v4
  * Version: 0.9.0 — COMPLETELY CONSOLIDATED & ENHANCED
@@ -2385,15 +2374,7 @@
   }
 }
 
-/* === GLASS === */
-/*!
- * tailwindcss-glass - Plain CSS Distribution
- * Version: 0.9.0
- * 
- * This version can be used WITHOUT Tailwind CSS.
- * All @utility directives converted to standard CSS classes.
- */
-
+/* === TAILWINDCSS-GLASS === */
 /*!
  * Casoon Glass - Complete Glassmorphism System for Tailwind v4
  * Version: 0.9.0 — Pure Glass Effects & Glass Cards
@@ -3227,15 +3208,7 @@
   }
 }
 
-/* === ORBS === */
-/*!
- * tailwindcss-orbs - Plain CSS Distribution
- * Version: 0.9.0
- * 
- * This version can be used WITHOUT Tailwind CSS.
- * All @utility directives converted to standard CSS classes.
- */
-
+/* === TAILWINDCSS-ORBS === */
 /*!
  * Casoon Orbs - Tailwind v4 Directive Definitions
  * Version: 0.8.5 — For processing by Tailwind in consumer projects
@@ -4232,15 +4205,7 @@
 }
 
 
-/* === CORE === */
-/*!
- * tailwindcss-core - Plain CSS Distribution
- * Version: 0.9.0
- * 
- * This version can be used WITHOUT Tailwind CSS.
- * All @utility directives converted to standard CSS classes.
- */
-
+/* === TAILWINDCSS-CORE === */
 /*!
  * Casoon Core - Tailwind v4 Complete Foundation Package
  * Version: 0.9.0 — Modular Architecture
@@ -5152,6 +5117,171 @@
   }
 }
 
+/* Gradient System - CASOON signature gradients */
+/* =========================================================
+   GRADIENT SYSTEM - CASOON Signature Backgrounds
+   ========================================================= */
+
+/* Base Gradient Utilities */
+.cs-gradient-radial  {
+  background: radial-gradient(circle at 50% 50%, 
+    var(--cs-brand, #4f7cff), 
+    rgba(79, 124, 255, 70%)
+  );
+}
+
+.cs-gradient-conic  {
+  background: conic-gradient(from 0deg, 
+    var(--cs-brand, #4f7cff), 
+    rgba(79, 124, 255, 50%),
+    var(--cs-brand, #4f7cff)
+  );
+}
+
+.cs-gradient-mesh  {
+  background: 
+    radial-gradient(at 27% 37%, rgba(79, 124, 255, 50%) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, color-mix(in srgb, var(--cs-success) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, color-mix(in srgb, var(--cs-warning) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, color-mix(in srgb, var(--cs-danger) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, rgba(79, 124, 255, 50%) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%);
+}
+
+/* =========================================================
+   CASOON SIGNATURE GRADIENT PRESETS
+   ========================================================= */
+
+/* CASOON Original - Your signature gradient */
+.cs-bg-casoon-original  {
+  background: 
+    radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
+    radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
+    radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), 
+    linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* CASOON Theme Variations */
+.cs-bg-casoon-warm  {
+  background: 
+    radial-gradient(circle at 25% 75%, #dc2626 0%, transparent 55%), 
+    radial-gradient(circle at 75% 25%, #f59e0b 0%, transparent 45%), 
+    radial-gradient(circle at 50% 50%, #ea580c 0%, transparent 60%), 
+    linear-gradient(135deg, #1f2937, #374151);
+}
+
+.cs-bg-casoon-cool  {
+  background: 
+    radial-gradient(circle at 30% 70%, #3b82f6 0%, transparent 50%), 
+    radial-gradient(circle at 70% 30%, #06b6d4 0%, transparent 55%), 
+    radial-gradient(circle at 45% 45%, #8b5cf6 0%, transparent 45%), 
+    linear-gradient(135deg, #111827, #1f2937);
+}
+
+.cs-bg-casoon-forest  {
+  background: 
+    radial-gradient(circle at 15% 85%, #059669 0%, transparent 50%), 
+    radial-gradient(circle at 85% 15%, #10b981 0%, transparent 60%), 
+    radial-gradient(circle at 55% 35%, #065f46 0%, transparent 40%), 
+    linear-gradient(135deg, #064e3b, #134e4a);
+}
+
+/* CASOON Utility Variants */
+.cs-bg-casoon-animated  {
+  background: 
+    radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
+    radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
+    radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), 
+    linear-gradient(135deg, #0f172a, #1e293b);
+  background-size: 400% 400%;
+  animation: cs-gradient-shift 8s ease-in-out infinite;
+}
+
+.cs-bg-casoon-subtle  {
+  background: 
+    radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
+    radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
+    radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), 
+    linear-gradient(135deg, #0f172a, #1e293b);
+  filter: brightness(0.8) saturate(0.7) opacity(0.9);
+}
+
+.cs-bg-casoon-intense  {
+  background: 
+    radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
+    radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
+    radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), 
+    linear-gradient(135deg, #0f172a, #1e293b);
+  filter: brightness(1.2) saturate(1.3) contrast(1.1);
+}
+
+/* =========================================================
+   ADDITIONAL SIGNATURE PRESETS
+   ========================================================= */
+
+.cs-bg-nebula-purple  {
+  background: 
+    radial-gradient(circle at 20% 20%, #8b5cf6 0%, transparent 70%), 
+    radial-gradient(circle at 80% 80%, #ec4899 0%, transparent 60%), 
+    radial-gradient(circle at 40% 60%, #3b82f6 0%, transparent 80%), 
+    linear-gradient(135deg, #0c0a1d, #1e1b3b);
+}
+
+.cs-bg-deep-ocean  {
+  background: 
+    radial-gradient(circle at 25% 25%, #1e40af 0%, transparent 65%), 
+    radial-gradient(circle at 75% 75%, #0891b2 0%, transparent 55%), 
+    radial-gradient(circle at 50% 80%, #0e7490 0%, transparent 70%), 
+    linear-gradient(135deg, #0c1e3d, #164e63);
+}
+
+.cs-bg-corporate-blue  {
+  background: 
+    radial-gradient(circle at 30% 30%, #1e40af 0%, transparent 70%), 
+    radial-gradient(circle at 70% 70%, #3b82f6 0%, transparent 60%), 
+    radial-gradient(circle at 50% 50%, #1d4ed8 0%, transparent 80%), 
+    linear-gradient(135deg, #1e3a8a, #1e40af);
+}
+
+/* =========================================================
+   ANIMATION KEYFRAMES
+   ========================================================= */
+
+@keyframes cs-gradient-shift {
+  0%, 100% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY & PERFORMANCE
+   ========================================================= */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cs-bg-casoon-animated {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .cs-bg-casoon-original,
+  .cs-bg-casoon-warm,
+  .cs-bg-casoon-cool,
+  .cs-bg-casoon-forest,
+  .cs-bg-casoon-animated,
+  .cs-bg-casoon-subtle,
+  .cs-bg-casoon-intense {
+    filter: contrast(1.5) brightness(1.2) !important;
+  }
+}
+
 
 /* TEMPORARY: Remaining systems inline until extracted */
 
@@ -5276,32 +5406,6 @@
   100% { background-position: -200% 0; }
 }
 
-/* GRADIENT SYSTEM */
-.cs-gradient-radial  {
-  background: radial-gradient(circle at 50% 50%, 
-    var(--cs-brand, #4f7cff), 
-    rgba(79, 124, 255, 70%)
-  );
-}
-
-.cs-gradient-conic  {
-  background: conic-gradient(from 0deg, 
-    var(--cs-brand, #4f7cff), 
-    rgba(79, 124, 255, 50%),
-    var(--cs-brand, #4f7cff)
-  );
-}
-
-.cs-gradient-mesh  {
-  background: 
-    radial-gradient(at 27% 37%, rgba(79, 124, 255, 50%) 0px, transparent 50%),
-    radial-gradient(at 97% 21%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, color-mix(in srgb, var(--cs-success) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 10% 29%, color-mix(in srgb, var(--cs-warning) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 97% 96%, color-mix(in srgb, var(--cs-danger) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, rgba(79, 124, 255, 50%) 0px, transparent 50%),
-    radial-gradient(at 79% 53%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%);
-}
 
 /* MICRO INTERACTIONS */
 .cs-hover-lift  {

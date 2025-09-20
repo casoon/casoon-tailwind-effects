@@ -1,9 +1,17 @@
 /*!
+ * tailwindcss-utilities - Plain CSS Distribution
+ * Version: 0.9.0
+ * 
+ * This version can be used WITHOUT Tailwind CSS.
+ * All @utility directives converted to standard CSS classes.
+ */
+
+/*!
  * Casoon Utilities - Complete Utility System for Tailwind v4
  * Version: 0.9.0 — COMPLETELY CONSOLIDATED & ENHANCED
  * 
  * SYSTEMATICALLY CONSOLIDATED FROM:
- * - src/index.css (main file with @utility definitions)
+ * - src/index.css (main file with .definitions)
  * - src/styles/base/tokens.css
  * - src/styles/tokens/design-tokens.css
  * - src/styles/utilities/core.css
@@ -22,16 +30,16 @@
  * ✅ Container Queries & Responsive Design
  * ✅ Performance optimized with reduced motion support
  * 
- * Usage: @import "@casoon/tailwindcss-utilities/index.css";
+ * Usage: 
  */
 
-/* Note: @import "tailwindcss"; should be added by the consumer */
+/* Note:  should be added by the consumer */
 
 /* =========================================================
    CONSOLIDATED DESIGN TOKENS & THEME
    Complete design system with light/dark theme support
    ========================================================= */
-@theme {
+:root {
   /* === CORE COLOR SYSTEM === */
   --cs-bg: #0b0c0f;
   --cs-surface: #14161a;
@@ -42,7 +50,7 @@
   --cs-border: #2a2f39;
   --cs-brand: #4f7cff;
   --cs-brand-contrast: #0b0d12;
-  --cs-brand-ink: var(--cs-brand-contrast);
+  --cs-brand-ink: var(--cs-brand, #4f7cff);
 
   /* STATE COLORS */
   --cs-success: #22c55e;
@@ -194,7 +202,7 @@
    Screen readers, focus management, keyboard navigation
    ========================================================= */
 
-@utility cs-sr-only {
+.cs-sr-only  {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -206,20 +214,20 @@
   border: 0;
 }
 
-@utility cs-focus-ring {
+.cs-focus-ring  {
   outline: none;
   
   &:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px color-mix(in srgb, var(--cs-brand, #4f7cff) 20%, transparent);
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px rgba(79, 124, 255, 20%);
     transition: box-shadow var(--cs-transition);
   }
 }
 
-@utility cs-focus-ring-within {
+.cs-focus-ring-within  {
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px color-mix(in srgb, var(--cs-brand, #4f7cff) 22%, transparent);
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px rgba(79, 124, 255, 22%);
     border-radius: var(--cs-radius);
   }
 }
@@ -229,48 +237,48 @@
    Complete z-index scale for modern UI layering
    ========================================================= */
 
-@utility cs-z-0 { z-index: var(--cs-z-0); position: relative; }
-@utility cs-z-1 { z-index: var(--cs-z-1); position: relative; }
-@utility cs-z-base { z-index: var(--cs-z-base); position: relative; }
-@utility cs-z-10 { z-index: var(--cs-z-10); position: relative; }
-@utility cs-z-20 { z-index: var(--cs-z-20); position: relative; }
-@utility cs-z-30 { z-index: var(--cs-z-30); position: relative; }
-@utility cs-z-popover { z-index: var(--cs-z-popover); position: relative; }
-@utility cs-z-40 { z-index: var(--cs-z-40); position: relative; }
-@utility cs-z-tooltip { z-index: var(--cs-z-tooltip); position: relative; }
-@utility cs-z-50 { z-index: var(--cs-z-50); position: relative; }
-@utility cs-z-toast { z-index: var(--cs-z-toast); position: relative; }
-@utility cs-z-60 { z-index: var(--cs-z-60); position: relative; }
-@utility cs-z-modal { z-index: var(--cs-z-modal); position: relative; }
-@utility cs-z-70 { z-index: var(--cs-z-70); position: relative; }
-@utility cs-z-80 { z-index: var(--cs-z-80); position: relative; }
-@utility cs-z-90 { z-index: var(--cs-z-90); position: relative; }
-@utility cs-z-100 { z-index: var(--cs-z-100); position: relative; }
-@utility cs-z-200 { z-index: var(--cs-z-200); position: relative; }
-@utility cs-z-300 { z-index: var(--cs-z-300); position: relative; }
-@utility cs-z-400 { z-index: var(--cs-z-400); position: relative; }
-@utility cs-z-500 { z-index: var(--cs-z-500); position: relative; }
-@utility cs-z-600 { z-index: var(--cs-z-600); position: relative; }
-@utility cs-z-700 { z-index: var(--cs-z-700); position: relative; }
-@utility cs-z-800 { z-index: var(--cs-z-800); position: relative; }
-@utility cs-z-900 { z-index: var(--cs-z-900); position: relative; }
-@utility cs-z-999 { z-index: var(--cs-z-999); position: relative; }
-@utility cs-z-9999 { z-index: var(--cs-z-9999); position: relative; }
-@utility cs-z-max { z-index: var(--cs-z-max); position: relative; }
+.cs-z-0  { z-index: var(--cs-z-0); position: relative; }
+.cs-z-1  { z-index: var(--cs-z-1); position: relative; }
+.cs-z-base  { z-index: var(--cs-z-base); position: relative; }
+.cs-z-10  { z-index: var(--cs-z-10); position: relative; }
+.cs-z-20  { z-index: var(--cs-z-20); position: relative; }
+.cs-z-30  { z-index: var(--cs-z-30); position: relative; }
+.cs-z-popover  { z-index: var(--cs-z-popover); position: relative; }
+.cs-z-40  { z-index: var(--cs-z-40); position: relative; }
+.cs-z-tooltip  { z-index: var(--cs-z-tooltip); position: relative; }
+.cs-z-50  { z-index: var(--cs-z-50); position: relative; }
+.cs-z-toast  { z-index: var(--cs-z-toast); position: relative; }
+.cs-z-60  { z-index: var(--cs-z-60); position: relative; }
+.cs-z-modal  { z-index: var(--cs-z-modal); position: relative; }
+.cs-z-70  { z-index: var(--cs-z-70); position: relative; }
+.cs-z-80  { z-index: var(--cs-z-80); position: relative; }
+.cs-z-90  { z-index: var(--cs-z-90); position: relative; }
+.cs-z-100  { z-index: var(--cs-z-100); position: relative; }
+.cs-z-200  { z-index: var(--cs-z-200); position: relative; }
+.cs-z-300  { z-index: var(--cs-z-300); position: relative; }
+.cs-z-400  { z-index: var(--cs-z-400); position: relative; }
+.cs-z-500  { z-index: var(--cs-z-500); position: relative; }
+.cs-z-600  { z-index: var(--cs-z-600); position: relative; }
+.cs-z-700  { z-index: var(--cs-z-700); position: relative; }
+.cs-z-800  { z-index: var(--cs-z-800); position: relative; }
+.cs-z-900  { z-index: var(--cs-z-900); position: relative; }
+.cs-z-999  { z-index: var(--cs-z-999); position: relative; }
+.cs-z-9999  { z-index: var(--cs-z-9999); position: relative; }
+.cs-z-max  { z-index: var(--cs-z-max); position: relative; }
 
 /* =========================================================
    CORE UTILITIES & COMPONENTS
-   Main utility definitions using modern @utility syntax
+   Main utility definitions using modern .syntax
    ========================================================= */
 
 /* === LOADING & PROGRESS UTILITIES === */
 
-@utility cs-spinner {
+@utility cs-spinner  {
   animation: cs-rotate 1s linear infinite;
   will-change: transform;
 }
 
-@utility cs-skeleton {
+.cs-skeleton  {
   background: linear-gradient(
     90deg, 
     var(--cs-border) 25%, 
@@ -292,7 +300,7 @@
   to { transform: rotate(360deg); }
 }
 
-@utility cs-progress {
+.cs-progress  {
   width: 100%;
   height: 8px;
   background: var(--cs-border);
@@ -301,18 +309,18 @@
   position: relative;
 }
 
-@utility cs-progress-bar {
+.cs-progress-bar  {
   height: 100%;
-  background: var(--cs-brand);
+  background: var(--cs-brand, #4f7cff);
   border-radius: inherit;
   transition: width var(--cs-transition);
 }
 
-@utility cs-progress-indeterminate {
+.cs-progress-indeterminate  {
   background: linear-gradient(
     90deg,
     transparent,
-    var(--cs-brand),
+    var(--cs-brand, #4f7cff),
     transparent
   );
   background-size: 200% 100%;
@@ -326,19 +334,19 @@
 
 /* === SCROLL & OVERFLOW UTILITIES === */
 
-@utility cs-scroll-smooth {
+.cs-scroll-smooth  {
   scroll-behavior: smooth;
 }
 
-@utility cs-scroll-auto {
+.cs-scroll-auto  {
   scroll-behavior: auto;
 }
 
-@utility cs-scrollbar-thin {
+.cs-scrollbar-thin  {
   scrollbar-width: thin;
 }
 
-@utility cs-scrollbar-none {
+.cs-scrollbar-none  {
   scrollbar-width: none;
   -ms-overflow-style: none;
   
@@ -347,37 +355,37 @@
   }
 }
 
-@utility cs-snap-x {
+.cs-snap-x  {
   scroll-snap-type: x mandatory;
 }
 
-@utility cs-snap-y {
+.cs-snap-y  {
   scroll-snap-type: y mandatory;
 }
 
-@utility cs-snap-both {
+.cs-snap-both  {
   scroll-snap-type: both mandatory;
 }
 
-@utility cs-snap-none {
+.cs-snap-none  {
   scroll-snap-type: none;
 }
 
-@utility cs-snap-start {
+.cs-snap-start  {
   scroll-snap-align: start;
 }
 
-@utility cs-snap-end {
+.cs-snap-end  {
   scroll-snap-align: end;
 }
 
-@utility cs-snap-center {
+.cs-snap-center  {
   scroll-snap-align: center;
 }
 
 /* === ENHANCED CARD UTILITIES === */
 
-@utility cs-card-product {
+.cs-card-product  {
   background: var(--cs-elev1);
   border: 1px solid var(--cs-border);
   border-radius: var(--cs-radius-lg);
@@ -389,11 +397,11 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--cs-shadow-2);
-    border-color: var(--cs-brand);
+    border-color: var(--cs-brand, #4f7cff);
   }
 }
 
-@utility cs-card-hero {
+.cs-card-hero  {
   background: linear-gradient(135deg, var(--cs-elev1), var(--cs-elev2));
   border: 1px solid var(--cs-border);
   border-radius: var(--cs-radius-lg);
@@ -409,11 +417,11 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--cs-brand), var(--cs-success), var(--cs-info));
+    background: linear-gradient(90deg, var(--cs-brand, #4f7cff), var(--cs-success), var(--cs-info));
   }
 }
 
-@utility cs-card-compact {
+.cs-card-compact  {
   background: var(--cs-elev1);
   border: 1px solid var(--cs-border);
   border-radius: var(--cs-radius);
@@ -428,7 +436,7 @@
   }
 }
 
-@utility cs-container-fluid {
+.cs-container-fluid  {
   width: 100%;
   padding-left: var(--cs-page-pad);
   padding-right: var(--cs-page-pad);
@@ -453,44 +461,44 @@
    Modern layout patterns and micro-recipes
    ========================================================= */
 
-@utility cs-stack {
+.cs-stack  {
   display: grid;
   gap: var(--cs-space-3);
 }
 
-@utility cs-stack-sm {
+.cs-stack-sm  {
   display: grid;
   gap: var(--cs-space-2);
 }
 
-@utility cs-stack-lg {
+.cs-stack-lg  {
   display: grid;
   gap: var(--cs-space-6);
 }
 
-@utility cs-cluster {
+.cs-cluster  {
   display: flex;
   flex-wrap: wrap;
   gap: var(--cs-space-2);
   align-items: center;
 }
 
-@utility cs-center {
+.cs-center  {
   display: grid;
   place-items: center;
 }
 
-@utility cs-grid-fit {
+.cs-grid-fit  {
   display: grid;
   gap: var(--cs-space-3);
   grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
 }
 
-@utility cs-aspect {
+.cs-aspect  {
   aspect-ratio: var(--cs-aspect, 16 / 9);
 }
 
-@utility cs-bleed-x {
+.cs-bleed-x  {
   margin-inline: calc(var(--cs-page-pad) * -1);
   
   @container (min-width: 960px) {
@@ -498,23 +506,23 @@
   }
 }
 
-@utility cs-safe-pad {
+.cs-safe-pad  {
   padding-inline: max(var(--cs-page-pad), env(safe-area-inset-left));
   padding-inline-end: max(var(--cs-page-pad), env(safe-area-inset-right));
   padding-block-end: max(var(--cs-space-4), env(safe-area-inset-bottom));
 }
 
 /* Layout positioning utilities */
-@utility cs-sticky {
+.cs-sticky  {
   position: sticky;
   top: 0;
 }
 
-@utility cs-will-change-transform {
+.cs-will-change-transform  {
   will-change: transform;
 }
 
-@utility cs-will-change-opacity {
+.cs-will-change-opacity  {
   will-change: opacity;
 }
 
@@ -523,41 +531,41 @@
    Fluid typography with line height optimization
    ========================================================= */
 
-@utility cs-text-xs { 
+.cs-text-xs  { 
   font-size: var(--cs-fs-xs); 
   line-height: var(--cs-line); 
 }
 
-@utility cs-text-sm { 
+.cs-text-sm  { 
   font-size: var(--cs-fs-sm); 
   line-height: var(--cs-line); 
 }
 
-@utility cs-text-md { 
+.cs-text-md  { 
   font-size: var(--cs-fs-md); 
   line-height: var(--cs-line); 
 }
 
-@utility cs-text-lg { 
+.cs-text-lg  { 
   font-size: var(--cs-fs-lg); 
   line-height: calc(var(--cs-line) + 0.05); 
 }
 
-@utility cs-text-xl { 
+.cs-text-xl  { 
   font-size: var(--cs-fs-xl); 
   line-height: calc(var(--cs-line) + 0.1); 
 }
 
-@utility cs-text-2xl { 
+.cs-text-2xl  { 
   font-size: var(--cs-fs-2xl); 
   line-height: calc(var(--cs-line) + 0.12); 
 }
 
-@utility cs-font-sans { 
+.cs-font-sans  { 
   font-family: var(--cs-font-sans); 
 }
 
-@utility cs-font-mono { 
+.cs-font-mono  { 
   font-family: var(--cs-font-mono); 
 }
 
@@ -566,144 +574,144 @@
    Advanced grid system with auto-fit patterns
    ========================================================= */
 
-@utility cs-grid-auto-fit-sm {
+.cs-grid-auto-fit-sm  {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--cs-space-4);
 }
 
-@utility cs-grid-auto-fit-md {
+.cs-grid-auto-fit-md  {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--cs-space-4);
 }
 
-@utility cs-grid-auto-fit-lg {
+.cs-grid-auto-fit-lg  {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: var(--cs-space-4);
 }
 
-@utility cs-grid-12 {
+.cs-grid-12  {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--cs-space-4);
 }
 
 /* Fixed grid columns */
-@utility cs-grid-cols-2 { 
+.cs-grid-cols-2  { 
   display: grid; 
   grid-template-columns: repeat(2, 1fr); 
   gap: var(--cs-space-4); 
 }
 
-@utility cs-grid-cols-3 { 
+.cs-grid-cols-3  { 
   display: grid; 
   grid-template-columns: repeat(3, 1fr); 
   gap: var(--cs-space-4); 
 }
 
-@utility cs-grid-cols-4 { 
+.cs-grid-cols-4  { 
   display: grid; 
   grid-template-columns: repeat(4, 1fr); 
   gap: var(--cs-space-4); 
 }
 
-@utility cs-grid-cols-6 { 
+.cs-grid-cols-6  { 
   display: grid; 
   grid-template-columns: repeat(6, 1fr); 
   gap: var(--cs-space-4); 
 }
 
-@utility cs-grid-cols-8 { 
+.cs-grid-cols-8  { 
   display: grid; 
   grid-template-columns: repeat(8, 1fr); 
   gap: var(--cs-space-4); 
 }
 
-@utility cs-grid-cols-9 { 
+.cs-grid-cols-9  { 
   display: grid; 
   grid-template-columns: repeat(9, 1fr); 
   gap: var(--cs-space-4); 
 }
 
-@utility cs-grid-cols-12 { 
+.cs-grid-cols-12  { 
   display: grid; 
   grid-template-columns: repeat(12, 1fr); 
   gap: var(--cs-space-4); 
 }
 
 /* Column spanning utilities for use within cs-grid-12 */
-@utility cs-col-1 { grid-column: span 1; }
-@utility cs-col-2 { grid-column: span 2; }
-@utility cs-col-3 { grid-column: span 3; }
-@utility cs-col-4 { grid-column: span 4; }
-@utility cs-col-5 { grid-column: span 5; }
-@utility cs-col-6 { grid-column: span 6; }
-@utility cs-col-7 { grid-column: span 7; }
-@utility cs-col-8 { grid-column: span 8; }
-@utility cs-col-9 { grid-column: span 9; }
-@utility cs-col-10 { grid-column: span 10; }
-@utility cs-col-11 { grid-column: span 11; }
-@utility cs-col-12 { grid-column: span 12; }
+.cs-col-1  { grid-column: span 1; }
+.cs-col-2  { grid-column: span 2; }
+.cs-col-3  { grid-column: span 3; }
+.cs-col-4  { grid-column: span 4; }
+.cs-col-5  { grid-column: span 5; }
+.cs-col-6  { grid-column: span 6; }
+.cs-col-7  { grid-column: span 7; }
+.cs-col-8  { grid-column: span 8; }
+.cs-col-9  { grid-column: span 9; }
+.cs-col-10  { grid-column: span 10; }
+.cs-col-11  { grid-column: span 11; }
+.cs-col-12  { grid-column: span 12; }
 
 /* =========================================================
    SPACING UTILITIES
    Gap, padding, margin utilities using design tokens
    ========================================================= */
 
-@utility cs-space-1 { gap: var(--cs-space-1); }
-@utility cs-space-2 { gap: var(--cs-space-2); }
-@utility cs-space-3 { gap: var(--cs-space-3); }
-@utility cs-space-4 { gap: var(--cs-space-4); }
-@utility cs-space-6 { gap: var(--cs-space-6); }
-@utility cs-space-8 { gap: var(--cs-space-8); }
+.cs-space-1  { gap: var(--cs-space-1); }
+.cs-space-2  { gap: var(--cs-space-2); }
+.cs-space-3  { gap: var(--cs-space-3); }
+.cs-space-4  { gap: var(--cs-space-4); }
+.cs-space-6  { gap: var(--cs-space-6); }
+.cs-space-8  { gap: var(--cs-space-8); }
 
-@utility cs-p-1 { padding: var(--cs-space-1); }
-@utility cs-p-2 { padding: var(--cs-space-2); }
-@utility cs-p-3 { padding: var(--cs-space-3); }
-@utility cs-p-4 { padding: var(--cs-space-4); }
-@utility cs-p-6 { padding: var(--cs-space-6); }
-@utility cs-p-8 { padding: var(--cs-space-8); }
+.cs-p-1  { padding: var(--cs-space-1); }
+.cs-p-2  { padding: var(--cs-space-2); }
+.cs-p-3  { padding: var(--cs-space-3); }
+.cs-p-4  { padding: var(--cs-space-4); }
+.cs-p-6  { padding: var(--cs-space-6); }
+.cs-p-8  { padding: var(--cs-space-8); }
 
-@utility cs-m-1 { margin: var(--cs-space-1); }
-@utility cs-m-2 { margin: var(--cs-space-2); }
-@utility cs-m-3 { margin: var(--cs-space-3); }
-@utility cs-m-4 { margin: var(--cs-space-4); }
-@utility cs-m-6 { margin: var(--cs-space-6); }
-@utility cs-m-8 { margin: var(--cs-space-8); }
+.cs-m-1  { margin: var(--cs-space-1); }
+.cs-m-2  { margin: var(--cs-space-2); }
+.cs-m-3  { margin: var(--cs-space-3); }
+.cs-m-4  { margin: var(--cs-space-4); }
+.cs-m-6  { margin: var(--cs-space-6); }
+.cs-m-8  { margin: var(--cs-space-8); }
 
 /* Directional spacing utilities */
-@utility cs-px-1 { padding-inline: var(--cs-space-1); }
-@utility cs-px-2 { padding-inline: var(--cs-space-2); }
-@utility cs-px-3 { padding-inline: var(--cs-space-3); }
-@utility cs-px-4 { padding-inline: var(--cs-space-4); }
+.cs-px-1  { padding-inline: var(--cs-space-1); }
+.cs-px-2  { padding-inline: var(--cs-space-2); }
+.cs-px-3  { padding-inline: var(--cs-space-3); }
+.cs-px-4  { padding-inline: var(--cs-space-4); }
 
-@utility cs-py-1 { padding-block: var(--cs-space-1); }
-@utility cs-py-2 { padding-block: var(--cs-space-2); }
-@utility cs-py-3 { padding-block: var(--cs-space-3); }
-@utility cs-py-4 { padding-block: var(--cs-space-4); }
+.cs-py-1  { padding-block: var(--cs-space-1); }
+.cs-py-2  { padding-block: var(--cs-space-2); }
+.cs-py-3  { padding-block: var(--cs-space-3); }
+.cs-py-4  { padding-block: var(--cs-space-4); }
 
 /* === TYPOGRAPHY UTILITIES === */
 
-@utility cs-text-balance {
-  text-wrap: var(--cs-text-balance);
+.cs-text-balance  {
+  text-wrap: var(--cs-text, #eef1f6);
 }
 
-@utility cs-text-gradient {
-  background: linear-gradient(135deg, var(--cs-brand), var(--cs-success));
+.cs-text-gradient  {
+  background: linear-gradient(135deg, var(--cs-brand, #4f7cff), var(--cs-success));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-@utility cs-prose {
+.cs-prose  {
   max-width: 65ch;
   line-height: var(--cs-leading-relaxed);
   
   & h1, & h2, & h3 {
-    text-wrap: var(--cs-text-balance);
+    text-wrap: var(--cs-text, #eef1f6);
     margin-top: 2em;
     margin-bottom: 1em;
   }
@@ -725,7 +733,7 @@
   }
 }
 
-@utility cs-font-feature-numbers {
+.cs-font-feature-numbers  {
   font-feature-settings: "tnum";
 }
 
@@ -734,49 +742,49 @@
    Full accessibility compliance for motion-sensitive users
    ========================================================= */
 
-@utility cs-surface {
-  background: var(--cs-surface);
-  color: var(--cs-text);
+.cs-surface  {
+  background: var(--cs-surface, #14161a);
+  color: var(--cs-text, #eef1f6);
 }
 
-@utility cs-surface-elevated {
+.cs-surface-elevated  {
   background: var(--cs-elev1);
-  color: var(--cs-text);
+  color: var(--cs-text, #eef1f6);
 }
 
-@utility cs-surface-raised {
+.cs-surface-raised  {
   background: var(--cs-elev2);
-  color: var(--cs-text);
+  color: var(--cs-text, #eef1f6);
 }
 
-@utility cs-bg-brand {
+.cs-bg-brand  {
   background-color: var(--cs-brand, #4f7cff);
-  color: var(--cs-brand-ink, #0b0d12);
+  color: var(--cs-brand, #4f7cff);
 }
 
 /* Radius utilities */
-@utility cs-radius-sm { border-radius: var(--cs-radius-sm); }
-@utility cs-radius { border-radius: var(--cs-radius); }
-@utility cs-radius-lg { border-radius: var(--cs-radius-lg); }
+.cs-radius-sm  { border-radius: var(--cs-radius-sm); }
+.cs-radius  { border-radius: var(--cs-radius); }
+.cs-radius-lg  { border-radius: var(--cs-radius-lg); }
 
 /* Shadow utilities */
-@utility cs-shadow { box-shadow: var(--cs-shadow-1); }
-@utility cs-shadow-lg { box-shadow: var(--cs-shadow-2); }
+.cs-shadow  { box-shadow: var(--cs-shadow-1); }
+.cs-shadow-lg  { box-shadow: var(--cs-shadow-2); }
 
 /* =========================================================
    CARD COMPONENTS
    Complete card system with variants
    ========================================================= */
 
-@utility cs-card {
-  background: var(--cs-surface);
+.cs-card  {
+  background: var(--cs-surface, #14161a);
   border: 1px solid var(--cs-border);
   border-radius: var(--cs-radius);
   padding: var(--cs-space-4);
   box-shadow: var(--cs-shadow-1);
 }
 
-@utility cs-card-elevated {
+.cs-card-elevated  {
   background: var(--cs-elev1);
   border: 1px solid var(--cs-border);
   border-radius: var(--cs-radius);
@@ -789,7 +797,7 @@
    Complete button system with variants
    ========================================================= */
 
-@utility cs-btn {
+.cs-btn  {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -804,24 +812,24 @@
   min-width: 44px;
 }
 
-@utility cs-btn-primary {
-  background: var(--cs-brand);
-  color: var(--cs-brand-contrast);
+.cs-btn-primary  {
+  background: var(--cs-brand, #4f7cff);
+  color: var(--cs-brand, #4f7cff);
   
   &:hover {
-    background: color-mix(in srgb, var(--cs-brand) 85%, black);
+    background: rgba(79, 124, 255, 85%);
   }
   
   &:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-brand), 0 0 0 4px color-mix(in srgb, var(--cs-brand) 25%, transparent);
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px rgba(79, 124, 255, 25%);
   }
 }
 
-@utility cs-btn-secondary {
+.cs-btn-secondary  {
   background: var(--cs-elev1);
-  color: var(--cs-text);
+  color: var(--cs-text, #eef1f6);
   border: 1px solid var(--cs-border);
   
   &:hover {
@@ -831,30 +839,30 @@
   &:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-border), 0 0 0 4px color-mix(in srgb, var(--cs-text) 15%, transparent);
+    box-shadow: 0 0 0 2px var(--cs-border), 0 0 0 4px color-mix(in srgb, var(--cs-text, #eef1f6) 15%, transparent);
   }
 }
 
-@utility cs-btn-outline {
+.cs-btn-outline  {
   background: transparent;
-  color: var(--cs-brand);
-  border: 1px solid var(--cs-brand);
+  color: var(--cs-brand, #4f7cff);
+  border: 1px solid var(--cs-brand, #4f7cff);
   
   &:hover {
-    background: var(--cs-brand);
-    color: var(--cs-brand-contrast);
+    background: var(--cs-brand, #4f7cff);
+    color: var(--cs-brand, #4f7cff);
   }
   
   &:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-brand), 0 0 0 4px color-mix(in srgb, var(--cs-brand) 25%, transparent);
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px rgba(79, 124, 255, 25%);
   }
 }
 
-@utility cs-btn-ghost {
+.cs-btn-ghost  {
   background: transparent;
-  color: var(--cs-text);
+  color: var(--cs-text, #eef1f6);
   border: 1px solid transparent;
   
   &:hover {
@@ -865,19 +873,19 @@
   &:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-border), 0 0 0 4px color-mix(in srgb, var(--cs-text) 15%, transparent);
+    box-shadow: 0 0 0 2px var(--cs-border), 0 0 0 4px color-mix(in srgb, var(--cs-text, #eef1f6) 15%, transparent);
   }
 }
 
 /* Button sizes */
-@utility cs-btn-sm {
+.cs-btn-sm  {
   padding: var(--cs-space-1) var(--cs-space-3);
   font-size: var(--cs-fs-sm);
   min-height: 36px;
   min-width: 36px;
 }
 
-@utility cs-btn-lg {
+.cs-btn-lg  {
   padding: var(--cs-space-3) var(--cs-space-6);
   font-size: var(--cs-fs-lg);
   min-height: 52px;
@@ -889,37 +897,37 @@
    Semantic feedback alerts with state colors
    ========================================================= */
 
-@utility cs-alert {
+.cs-alert  {
   display: flex;
   align-items: center;
   gap: var(--cs-space-3);
   padding: var(--cs-space-4);
   border: 1px solid var(--cs-border);
   border-radius: var(--cs-radius);
-  background: var(--cs-surface);
+  background: var(--cs-surface, #14161a);
 }
 
-@utility cs-alert-info {
+.cs-alert-info  {
   border-color: var(--cs-info, #0ea5e9);
-  background: color-mix(in srgb, var(--cs-info, #0ea5e9) 8%, var(--cs-surface));
+  background: color-mix(in srgb, var(--cs-info, #0ea5e9) 8%, var(--cs-surface, #14161a));
   color: var(--cs-info, #0ea5e9);
 }
 
-@utility cs-alert-success {
+.cs-alert-success  {
   border-color: var(--cs-success, #22c55e);
-  background: color-mix(in srgb, var(--cs-success, #22c55e) 8%, var(--cs-surface));
+  background: color-mix(in srgb, var(--cs-success, #22c55e) 8%, var(--cs-surface, #14161a));
   color: var(--cs-success, #22c55e);
 }
 
-@utility cs-alert-warning {
+.cs-alert-warning  {
   border-color: var(--cs-warning, #f59e0b);
-  background: color-mix(in srgb, var(--cs-warning, #f59e0b) 8%, var(--cs-surface));
+  background: color-mix(in srgb, var(--cs-warning, #f59e0b) 8%, var(--cs-surface, #14161a));
   color: var(--cs-warning, #f59e0b);
 }
 
-@utility cs-alert-danger {
+.cs-alert-danger  {
   border-color: var(--cs-danger, #ef4444);
-  background: color-mix(in srgb, var(--cs-danger, #ef4444) 8%, var(--cs-surface));
+  background: color-mix(in srgb, var(--cs-danger, #ef4444) 8%, var(--cs-surface, #14161a));
   color: var(--cs-danger, #ef4444);
 }
 
@@ -928,7 +936,7 @@
    Status badges and tags with variants
    ========================================================= */
 
-@utility cs-badge {
+.cs-badge  {
   display: inline-flex;
   align-items: center;
   gap: var(--cs-space-1);
@@ -940,32 +948,32 @@
   white-space: nowrap;
 }
 
-@utility cs-badge-primary {
-  background: var(--cs-brand);
-  color: var(--cs-brand-ink);
+.cs-badge-primary  {
+  background: var(--cs-brand, #4f7cff);
+  color: var(--cs-brand, #4f7cff);
 }
 
-@utility cs-badge-secondary {
-  background: var(--cs-text-muted);
+.cs-badge-secondary  {
+  background: var(--cs-text, #eef1f6);
   color: var(--cs-bg);
 }
 
-@utility cs-badge-success {
+.cs-badge-success  {
   background: var(--cs-success, #22c55e);
   color: white;
 }
 
-@utility cs-badge-warning {
+.cs-badge-warning  {
   background: var(--cs-warning, #f59e0b);
   color: white;
 }
 
-@utility cs-badge-danger {
+.cs-badge-danger  {
   background: var(--cs-danger, #ef4444);
   color: white;
 }
 
-@utility cs-badge-outline {
+.cs-badge-outline  {
   background: transparent;
   border: 1px solid currentColor;
 }
@@ -975,7 +983,7 @@
    Modern glass effect with backdrop filtering
    ========================================================= */
 
-@utility cs-acrylic {
+.cs-acrylic  {
   background: var(--cs-acrylic-tint, rgba(20, 22, 26, 0.55));
   border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.06));
   border-radius: var(--cs-radius, 10px);
@@ -995,7 +1003,7 @@
    Performance-optimized micro-interactions
    ========================================================= */
 
-@utility cs-pulse {
+.cs-pulse  {
   animation: csPulse 1.2s ease-in-out infinite;
   will-change: transform, opacity;
 }
@@ -1006,7 +1014,7 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-@utility cs-fade-delayed {
+.cs-fade-delayed  {
   opacity: 0;
   animation: csFadeIn var(--cs-anim-duration-lg, 420ms) var(--cs-anim-ease-out, ease-out) forwards;
   animation-delay: 0.4s;
@@ -1017,7 +1025,7 @@
   to { opacity: 1; }
 }
 
-@utility cs-shimmer {
+.cs-shimmer  {
   position: relative;
   overflow: hidden;
   background: linear-gradient(90deg, var(--cs-elev1), var(--cs-elev2), var(--cs-elev1));
@@ -1030,7 +1038,7 @@
   100% { background-position: -200% 0; }
 }
 
-@utility cs-spin {
+.cs-spin  {
   animation: csSpin 1s linear infinite;
 }
 
@@ -1039,14 +1047,14 @@
 }
 
 /* Glow effect utility */
-@utility cs-glow {
+.cs-glow  {
   box-shadow: 0 0 0 transparent;
   transition: box-shadow 0.4s ease-out;
   
   &.cs-glow-active {
     box-shadow:
-      0 0 0 3px color-mix(in srgb, var(--cs-brand, #4f7cff) 40%, transparent),
-      0 0 12px color-mix(in srgb, var(--cs-brand, #4f7cff) 65%, transparent);
+      0 0 0 3px rgba(79, 124, 255, 40%),
+      0 0 12px rgba(79, 124, 255, 65%);
   }
 }
 
@@ -1108,7 +1116,7 @@
 /* Progressive enhancement for oklch colors */
 @supports (color: oklch(60% 0.2 250)) {
   .cs-theme {
-    --cs-brand-oklch: oklch(from var(--cs-brand) l c h);
+    --cs-brand-oklch: oklch(from var(--cs-brand, #4f7cff) l c h);
   }
 }
 
@@ -1139,7 +1147,7 @@
 @media (prefers-contrast: high) {
   .cs-theme {
     --cs-border: currentColor;
-    --cs-text-muted: var(--cs-text);
+    --cs-text-muted: var(--cs-text, #eef1f6);
   }
   
   .cs-btn {

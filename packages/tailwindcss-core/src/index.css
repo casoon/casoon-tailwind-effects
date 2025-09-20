@@ -55,6 +55,9 @@
 /* Navigation System - Navbar, links, brand */
 @import "./systems/navigation.css";
 
+/* Gradient System - CASOON signature gradients */
+@import "./systems/gradients.css";
+
 
 /* TEMPORARY: Remaining systems inline until extracted */
 
@@ -179,32 +182,6 @@
   100% { background-position: -200% 0; }
 }
 
-/* GRADIENT SYSTEM */
-@utility cs-gradient-radial {
-  background: radial-gradient(circle at 50% 50%, 
-    var(--cs-brand), 
-    color-mix(in srgb, var(--cs-brand) 70%, transparent)
-  );
-}
-
-@utility cs-gradient-conic {
-  background: conic-gradient(from 0deg, 
-    var(--cs-brand), 
-    color-mix(in srgb, var(--cs-brand) 50%, #ff0080),
-    var(--cs-brand)
-  );
-}
-
-@utility cs-gradient-mesh {
-  background: 
-    radial-gradient(at 27% 37%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 97% 21%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, color-mix(in srgb, var(--cs-success) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 10% 29%, color-mix(in srgb, var(--cs-warning) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 97% 96%, color-mix(in srgb, var(--cs-danger) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 79% 53%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%);
-}
 
 /* MICRO INTERACTIONS */
 @utility cs-hover-lift {

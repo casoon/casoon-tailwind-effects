@@ -919,6 +919,171 @@
   }
 }
 
+/* Gradient System - CASOON signature gradients */
+/* =========================================================
+   GRADIENT SYSTEM - CASOON Signature Backgrounds
+   ========================================================= */
+
+/* Base Gradient Utilities */
+@utility cs-gradient-radial {
+  background: radial-gradient(circle at 50% 50%, 
+    var(--cs-brand), 
+    color-mix(in srgb, var(--cs-brand) 70%, transparent)
+  );
+}
+
+@utility cs-gradient-conic {
+  background: conic-gradient(from 0deg, 
+    var(--cs-brand), 
+    color-mix(in srgb, var(--cs-brand) 50%, #ff0080),
+    var(--cs-brand)
+  );
+}
+
+@utility cs-gradient-mesh {
+  background: 
+    radial-gradient(at 27% 37%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, color-mix(in srgb, var(--cs-success) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, color-mix(in srgb, var(--cs-warning) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, color-mix(in srgb, var(--cs-danger) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%);
+}
+
+/* =========================================================
+   CASOON SIGNATURE GRADIENT PRESETS
+   ========================================================= */
+
+/* CASOON Original - Your signature gradient */
+@utility cs-bg-casoon-original {
+  background: 
+    radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
+    radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
+    radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), 
+    linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* CASOON Theme Variations */
+@utility cs-bg-casoon-warm {
+  background: 
+    radial-gradient(circle at 25% 75%, #dc2626 0%, transparent 55%), 
+    radial-gradient(circle at 75% 25%, #f59e0b 0%, transparent 45%), 
+    radial-gradient(circle at 50% 50%, #ea580c 0%, transparent 60%), 
+    linear-gradient(135deg, #1f2937, #374151);
+}
+
+@utility cs-bg-casoon-cool {
+  background: 
+    radial-gradient(circle at 30% 70%, #3b82f6 0%, transparent 50%), 
+    radial-gradient(circle at 70% 30%, #06b6d4 0%, transparent 55%), 
+    radial-gradient(circle at 45% 45%, #8b5cf6 0%, transparent 45%), 
+    linear-gradient(135deg, #111827, #1f2937);
+}
+
+@utility cs-bg-casoon-forest {
+  background: 
+    radial-gradient(circle at 15% 85%, #059669 0%, transparent 50%), 
+    radial-gradient(circle at 85% 15%, #10b981 0%, transparent 60%), 
+    radial-gradient(circle at 55% 35%, #065f46 0%, transparent 40%), 
+    linear-gradient(135deg, #064e3b, #134e4a);
+}
+
+/* CASOON Utility Variants */
+@utility cs-bg-casoon-animated {
+  background: 
+    radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
+    radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
+    radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), 
+    linear-gradient(135deg, #0f172a, #1e293b);
+  background-size: 400% 400%;
+  animation: cs-gradient-shift 8s ease-in-out infinite;
+}
+
+@utility cs-bg-casoon-subtle {
+  background: 
+    radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
+    radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
+    radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), 
+    linear-gradient(135deg, #0f172a, #1e293b);
+  filter: brightness(0.8) saturate(0.7) opacity(0.9);
+}
+
+@utility cs-bg-casoon-intense {
+  background: 
+    radial-gradient(circle at 20% 80%, #1e40af 0%, transparent 50%), 
+    radial-gradient(circle at 80% 20%, #0891b2 0%, transparent 50%), 
+    radial-gradient(circle at 40% 40%, #f97316 0%, transparent 50%), 
+    linear-gradient(135deg, #0f172a, #1e293b);
+  filter: brightness(1.2) saturate(1.3) contrast(1.1);
+}
+
+/* =========================================================
+   ADDITIONAL SIGNATURE PRESETS
+   ========================================================= */
+
+@utility cs-bg-nebula-purple {
+  background: 
+    radial-gradient(circle at 20% 20%, #8b5cf6 0%, transparent 70%), 
+    radial-gradient(circle at 80% 80%, #ec4899 0%, transparent 60%), 
+    radial-gradient(circle at 40% 60%, #3b82f6 0%, transparent 80%), 
+    linear-gradient(135deg, #0c0a1d, #1e1b3b);
+}
+
+@utility cs-bg-deep-ocean {
+  background: 
+    radial-gradient(circle at 25% 25%, #1e40af 0%, transparent 65%), 
+    radial-gradient(circle at 75% 75%, #0891b2 0%, transparent 55%), 
+    radial-gradient(circle at 50% 80%, #0e7490 0%, transparent 70%), 
+    linear-gradient(135deg, #0c1e3d, #164e63);
+}
+
+@utility cs-bg-corporate-blue {
+  background: 
+    radial-gradient(circle at 30% 30%, #1e40af 0%, transparent 70%), 
+    radial-gradient(circle at 70% 70%, #3b82f6 0%, transparent 60%), 
+    radial-gradient(circle at 50% 50%, #1d4ed8 0%, transparent 80%), 
+    linear-gradient(135deg, #1e3a8a, #1e40af);
+}
+
+/* =========================================================
+   ANIMATION KEYFRAMES
+   ========================================================= */
+
+@keyframes cs-gradient-shift {
+  0%, 100% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY & PERFORMANCE
+   ========================================================= */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cs-bg-casoon-animated {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .cs-bg-casoon-original,
+  .cs-bg-casoon-warm,
+  .cs-bg-casoon-cool,
+  .cs-bg-casoon-forest,
+  .cs-bg-casoon-animated,
+  .cs-bg-casoon-subtle,
+  .cs-bg-casoon-intense {
+    filter: contrast(1.5) brightness(1.2) !important;
+  }
+}
+
 
 /* TEMPORARY: Remaining systems inline until extracted */
 
@@ -1043,32 +1208,6 @@
   100% { background-position: -200% 0; }
 }
 
-/* GRADIENT SYSTEM */
-@utility cs-gradient-radial {
-  background: radial-gradient(circle at 50% 50%, 
-    var(--cs-brand), 
-    color-mix(in srgb, var(--cs-brand) 70%, transparent)
-  );
-}
-
-@utility cs-gradient-conic {
-  background: conic-gradient(from 0deg, 
-    var(--cs-brand), 
-    color-mix(in srgb, var(--cs-brand) 50%, #ff0080),
-    var(--cs-brand)
-  );
-}
-
-@utility cs-gradient-mesh {
-  background: 
-    radial-gradient(at 27% 37%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 97% 21%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, color-mix(in srgb, var(--cs-success) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 10% 29%, color-mix(in srgb, var(--cs-warning) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 97% 96%, color-mix(in srgb, var(--cs-danger) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 79% 53%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%);
-}
 
 /* MICRO INTERACTIONS */
 @utility cs-hover-lift {
