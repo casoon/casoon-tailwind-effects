@@ -1,0 +1,54 @@
+/* =========================================================
+   BASE LAYOUT UTILITIES
+   ========================================================= */
+
+/* Container utilities */
+@utility cs-container-fluid {
+  width: 100%;
+  padding-left: var(--cs-page-pad);
+  padding-right: var(--cs-page-pad);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: none;
+  background-color: var(--cs-surface, #14161a);
+  color: var(--cs-text, #eef1f6);
+  
+  @media (min-width: 768px) {
+    padding-left: calc(var(--cs-page-pad) + var(--cs-space-2));
+    padding-right: calc(var(--cs-page-pad) + var(--cs-space-2));
+  }
+  
+  @media (min-width: 1200px) {
+    max-width: var(--cs-page-max);
+  }
+}
+
+/* Z-Index utilities - Complete scale */
+@utility cs-z-0 { z-index: var(--cs-z-0); position: relative; }
+@utility cs-z-1 { z-index: var(--cs-z-1); position: relative; }
+@utility cs-z-base { z-index: var(--cs-z-base); position: relative; }
+@utility cs-z-10 { z-index: var(--cs-z-10); position: relative; }
+@utility cs-z-20 { z-index: var(--cs-z-20); position: relative; }
+@utility cs-z-30 { z-index: var(--cs-z-30); position: relative; }
+@utility cs-z-popover { z-index: var(--cs-z-popover); position: relative; }
+@utility cs-z-40 { z-index: var(--cs-z-40); position: relative; }
+@utility cs-z-tooltip { z-index: var(--cs-z-tooltip); position: relative; }
+@utility cs-z-50 { z-index: var(--cs-z-50); position: relative; }
+@utility cs-z-toast { z-index: var(--cs-z-toast); position: relative; }
+@utility cs-z-60 { z-index: var(--cs-z-60); position: relative; }
+@utility cs-z-modal { z-index: var(--cs-z-modal); position: relative; }
+@utility cs-z-70 { z-index: var(--cs-z-70); position: relative; }
+@utility cs-z-80 { z-index: var(--cs-z-80); position: relative; }
+@utility cs-z-90 { z-index: var(--cs-z-90); position: relative; }
+@utility cs-z-100 { z-index: var(--cs-z-100); position: relative; }
+@utility cs-z-200 { z-index: var(--cs-z-200); position: relative; }
+@utility cs-z-300 { z-index: var(--cs-z-300); position: relative; }
+@utility cs-z-400 { z-index: var(--cs-z-400); position: relative; }
+@utility cs-z-500 { z-index: var(--cs-z-500); position: relative; }
+@utility cs-z-600 { z-index: var(--cs-z-600); position: relative; }
+@utility cs-z-700 { z-index: var(--cs-z-700); position: relative; }
+@utility cs-z-800 { z-index: var(--cs-z-800); position: relative; }
+@utility cs-z-900 { z-index: var(--cs-z-900); position: relative; }
+@utility cs-z-999 { z-index: var(--cs-z-999); position: relative; }
+@utility cs-z-9999 { z-index: var(--cs-z-9999); position: relative; }
+@utility cs-z-max { z-index: var(--cs-z-max); position: relative; }

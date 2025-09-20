@@ -1,10 +1,12 @@
 /*!
- * tailwindcss-core - Plain CSS Distribution
+ * tailwindcss-core - Tailwind v4 Package
  * Version: 0.9.0
  * 
- * This version can be used WITHOUT Tailwind CSS.
- * All @utility directives converted to standard CSS classes.
+ * For use with Tailwind CSS v4
+ * Usage: @import "@casoon/tailwindcss-core/index.css";
  */
+
+/* Note: @import "tailwindcss"; should be added by the consumer */
 
 /*!
  * Casoon Core - Tailwind v4 Complete Foundation Package
@@ -21,10 +23,10 @@
  * 
  * Total: 145+ classes, optimized for production
  * 
- * Usage: 
+ * Usage: @import "@casoon/tailwindcss-core/index.css";
  */
 
-/* Note:  should be added by the consumer */
+/* Note: @import "tailwindcss"; should be added by the consumer */
 
 /* =========================================================
    DESIGN SYSTEM FOUNDATION
@@ -36,7 +38,7 @@
  * Core color, spacing, typography, and motion tokens
  */
 
-:root {
+@theme {
   /* Color tokens - Primary design system */
   --cs-bg: #0b0c0f;
   --cs-surface: #14161a;
@@ -103,7 +105,7 @@
 
   /* Progressive color tokens */
   --cs-brand-oklch: oklch(60% 0.15 255);
-  --cs-brand-ink: var(--cs-brand, #4f7cff);
+  --cs-brand-ink: var(--cs-brand-contrast);
 
   /* Fluid typography tokens */
   --cs-fs-xs: clamp(0.78rem, 0.75rem + 0.2cqi, 0.84rem);
@@ -114,22 +116,22 @@
   --cs-fs-2xl: clamp(1.875rem, 1.4rem + 1.6cqi, 2.25rem);
 
   /* Form tokens */
-  --cs-form-bg: var(--cs-surface, #14161a);
+  --cs-form-bg: var(--cs-surface);
   --cs-form-border: var(--cs-border);
   --cs-form-radius: var(--cs-radius);
   --cs-form-shadow: var(--cs-shadow-1);
-  --cs-form-focus: var(--cs-brand, #4f7cff);
+  --cs-form-focus: var(--cs-brand);
 
   /* Typography component tokens */
-  --cs-prose-headings: var(--cs-text, #eef1f6);
-  --cs-prose-body: var(--cs-text, #eef1f6);
-  --cs-prose-links: var(--cs-brand, #4f7cff);
-  --cs-prose-bold: var(--cs-text, #eef1f6);
-  --cs-prose-quotes: var(--cs-text, #eef1f6);
-  --cs-prose-captions: var(--cs-text, #eef1f6);
+  --cs-prose-headings: var(--cs-text);
+  --cs-prose-body: var(--cs-text-muted);
+  --cs-prose-links: var(--cs-brand);
+  --cs-prose-bold: var(--cs-text);
+  --cs-prose-quotes: var(--cs-text-muted);
+  --cs-prose-captions: var(--cs-text-muted);
 
   /* Gradients system tokens */
-  --cs-gradient-primary: linear-gradient(135deg, var(--cs-brand, #4f7cff), rgba(79, 124, 255, 80%)));
+  --cs-gradient-primary: linear-gradient(135deg, var(--cs-brand), color-mix(in srgb, var(--cs-brand) 80%, var(--cs-info)));
   --cs-gradient-success: linear-gradient(135deg, var(--cs-success), color-mix(in srgb, var(--cs-success) 70%, var(--cs-info)));
   --cs-gradient-warning: linear-gradient(135deg, var(--cs-warning), color-mix(in srgb, var(--cs-warning) 80%, var(--cs-danger)));
   --cs-gradient-sunset: linear-gradient(135deg, #ff9a9e, #fecfef, #fecfef);
@@ -152,7 +154,7 @@
   /* Scrollbar design tokens */
   --cs-scroll-thumb-gray: #6b7280;
   --cs-scroll-thumb-blue: #3b82f6;
-  --cs-scroll-thumb-primary: var(--cs-brand, #4f7cff);
+  --cs-scroll-thumb-primary: var(--cs-brand);
   --cs-scroll-track: rgba(0, 0, 0, 0.08);
   --cs-scroll-track-light: rgba(0, 0, 0, 0.04);
   --cs-scroll-thumb-radius: 8px;
@@ -168,17 +170,17 @@
   --cs-scroll-reveal-scale: 0.96;
 
   /* Navigation design tokens */
-  --cs-nav-primary: var(--cs-brand, #4f7cff);
-  --cs-nav-text: var(--cs-text, #eef1f6);
-  --cs-nav-text-muted: var(--cs-text, #eef1f6);
-  --cs-nav-text-secondary: color-mix(in srgb, var(--cs-text, #eef1f6) 75%, transparent);
-  --cs-nav-text-disabled: color-mix(in srgb, var(--cs-text, #eef1f6) 40%, transparent);
+  --cs-nav-primary: var(--cs-brand);
+  --cs-nav-text: var(--cs-text);
+  --cs-nav-text-muted: var(--cs-text-muted);
+  --cs-nav-text-secondary: color-mix(in srgb, var(--cs-text) 75%, transparent);
+  --cs-nav-text-disabled: color-mix(in srgb, var(--cs-text) 40%, transparent);
   --cs-nav-border: var(--cs-border);
   --cs-nav-border-light: color-mix(in srgb, var(--cs-border) 60%, transparent);
-  --cs-nav-bg: var(--cs-surface, #14161a);
-  --cs-nav-bg-hover: color-mix(in srgb, var(--cs-surface, #14161a) 80%, var(--cs-text, #eef1f6) 8%);
-  --cs-nav-bg-secondary: color-mix(in srgb, var(--cs-surface, #14161a) 60%, var(--cs-bg));
-  --cs-nav-bg-disabled: color-mix(in srgb, var(--cs-surface, #14161a) 50%, transparent);
+  --cs-nav-bg: var(--cs-surface);
+  --cs-nav-bg-hover: color-mix(in srgb, var(--cs-surface) 80%, var(--cs-text) 8%);
+  --cs-nav-bg-secondary: color-mix(in srgb, var(--cs-surface) 60%, var(--cs-bg));
+  --cs-nav-bg-disabled: color-mix(in srgb, var(--cs-surface) 50%, transparent);
   --cs-nav-height: 64px;
   --cs-nav-transition: var(--cs-transition);
   --cs-nav-transition-fast: calc(var(--cs-transition) * 0.75);
@@ -189,8 +191,8 @@
   /* Typography base tokens */
   --cs-prose-font-size: 1rem;
   --cs-prose-line-height: 1.75;
-  --cs-prose-color: rgba(255, 255, 255, 85%);
-  --cs-prose-headings-color: rgba(255, 255, 255, 95%);
+  --cs-prose-color: color-mix(in srgb, currentColor 85%, transparent);
+  --cs-prose-headings-color: color-mix(in srgb, currentColor 95%, transparent);
   --cs-prose-links-color: #3b82f6;
   --cs-prose-links-hover: color-mix(in srgb, #3b82f6 80%, transparent);
   --cs-prose-spacing: 1.5rem;
@@ -228,9 +230,9 @@
   --cs-prose-spacing-loose: 2rem;
   
   /* Code styling tokens */
-  --cs-prose-code-bg: rgba(255, 255, 255, 8%);
-  --cs-prose-code-border: rgba(255, 255, 255, 10%);
-  --cs-prose-pre-bg: rgba(255, 255, 255, 5%);
+  --cs-prose-code-bg: color-mix(in srgb, currentColor 8%, transparent);
+  --cs-prose-code-border: color-mix(in srgb, currentColor 10%, transparent);
+  --cs-prose-pre-bg: color-mix(in srgb, currentColor 5%, transparent);
 }
 
 /* =========================================================
@@ -243,7 +245,7 @@
    ========================================================= */
 
 /* Screen reader only content */
-.cs-sr-only  {
+@utility cs-sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -256,20 +258,20 @@
 }
 
 /* Focus management utilities */
-.cs-focus-ring  {
+@utility cs-focus-ring {
   outline: none;
   
   &:focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px rgba(79, 124, 255, 20%);
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px color-mix(in srgb, var(--cs-brand, #4f7cff) 20%, transparent);
     transition: box-shadow var(--cs-transition);
   }
 }
 
-.cs-focus-ring-within  {
+@utility cs-focus-ring-within {
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px rgba(79, 124, 255, 22%);
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px color-mix(in srgb, var(--cs-brand, #4f7cff) 22%, transparent);
     border-radius: var(--cs-radius);
   }
 }
@@ -280,7 +282,7 @@
    ========================================================= */
 
 /* Container utilities */
-.cs-container-fluid  {
+@utility cs-container-fluid {
   width: 100%;
   padding-left: var(--cs-page-pad);
   padding-right: var(--cs-page-pad);
@@ -301,34 +303,34 @@
 }
 
 /* Z-Index utilities - Complete scale */
-.cs-z-0  { z-index: var(--cs-z-0); position: relative; }
-.cs-z-1  { z-index: var(--cs-z-1); position: relative; }
-.cs-z-base  { z-index: var(--cs-z-base); position: relative; }
-.cs-z-10  { z-index: var(--cs-z-10); position: relative; }
-.cs-z-20  { z-index: var(--cs-z-20); position: relative; }
-.cs-z-30  { z-index: var(--cs-z-30); position: relative; }
-.cs-z-popover  { z-index: var(--cs-z-popover); position: relative; }
-.cs-z-40  { z-index: var(--cs-z-40); position: relative; }
-.cs-z-tooltip  { z-index: var(--cs-z-tooltip); position: relative; }
-.cs-z-50  { z-index: var(--cs-z-50); position: relative; }
-.cs-z-toast  { z-index: var(--cs-z-toast); position: relative; }
-.cs-z-60  { z-index: var(--cs-z-60); position: relative; }
-.cs-z-modal  { z-index: var(--cs-z-modal); position: relative; }
-.cs-z-70  { z-index: var(--cs-z-70); position: relative; }
-.cs-z-80  { z-index: var(--cs-z-80); position: relative; }
-.cs-z-90  { z-index: var(--cs-z-90); position: relative; }
-.cs-z-100  { z-index: var(--cs-z-100); position: relative; }
-.cs-z-200  { z-index: var(--cs-z-200); position: relative; }
-.cs-z-300  { z-index: var(--cs-z-300); position: relative; }
-.cs-z-400  { z-index: var(--cs-z-400); position: relative; }
-.cs-z-500  { z-index: var(--cs-z-500); position: relative; }
-.cs-z-600  { z-index: var(--cs-z-600); position: relative; }
-.cs-z-700  { z-index: var(--cs-z-700); position: relative; }
-.cs-z-800  { z-index: var(--cs-z-800); position: relative; }
-.cs-z-900  { z-index: var(--cs-z-900); position: relative; }
-.cs-z-999  { z-index: var(--cs-z-999); position: relative; }
-.cs-z-9999  { z-index: var(--cs-z-9999); position: relative; }
-.cs-z-max  { z-index: var(--cs-z-max); position: relative; }
+@utility cs-z-0 { z-index: var(--cs-z-0); position: relative; }
+@utility cs-z-1 { z-index: var(--cs-z-1); position: relative; }
+@utility cs-z-base { z-index: var(--cs-z-base); position: relative; }
+@utility cs-z-10 { z-index: var(--cs-z-10); position: relative; }
+@utility cs-z-20 { z-index: var(--cs-z-20); position: relative; }
+@utility cs-z-30 { z-index: var(--cs-z-30); position: relative; }
+@utility cs-z-popover { z-index: var(--cs-z-popover); position: relative; }
+@utility cs-z-40 { z-index: var(--cs-z-40); position: relative; }
+@utility cs-z-tooltip { z-index: var(--cs-z-tooltip); position: relative; }
+@utility cs-z-50 { z-index: var(--cs-z-50); position: relative; }
+@utility cs-z-toast { z-index: var(--cs-z-toast); position: relative; }
+@utility cs-z-60 { z-index: var(--cs-z-60); position: relative; }
+@utility cs-z-modal { z-index: var(--cs-z-modal); position: relative; }
+@utility cs-z-70 { z-index: var(--cs-z-70); position: relative; }
+@utility cs-z-80 { z-index: var(--cs-z-80); position: relative; }
+@utility cs-z-90 { z-index: var(--cs-z-90); position: relative; }
+@utility cs-z-100 { z-index: var(--cs-z-100); position: relative; }
+@utility cs-z-200 { z-index: var(--cs-z-200); position: relative; }
+@utility cs-z-300 { z-index: var(--cs-z-300); position: relative; }
+@utility cs-z-400 { z-index: var(--cs-z-400); position: relative; }
+@utility cs-z-500 { z-index: var(--cs-z-500); position: relative; }
+@utility cs-z-600 { z-index: var(--cs-z-600); position: relative; }
+@utility cs-z-700 { z-index: var(--cs-z-700); position: relative; }
+@utility cs-z-800 { z-index: var(--cs-z-800); position: relative; }
+@utility cs-z-900 { z-index: var(--cs-z-900); position: relative; }
+@utility cs-z-999 { z-index: var(--cs-z-999); position: relative; }
+@utility cs-z-9999 { z-index: var(--cs-z-9999); position: relative; }
+@utility cs-z-max { z-index: var(--cs-z-max); position: relative; }
 
 /* =========================================================
    COMPONENT SYSTEMS - All UI components
@@ -341,7 +343,7 @@
    ========================================================= */
 
 /* Feature Card Component */
-.cs-card-feature  {
+@utility cs-card-feature {
   display: grid;
   grid-template-rows: auto auto 1fr;
   gap: var(--cs-card-space-lg, 1.5rem);
@@ -361,7 +363,7 @@
 }
 
 /* Product Card Component */
-.cs-card-product  {
+@utility cs-card-product {
   background: var(--cs-card-bg, #ffffff);
   border-radius: var(--cs-card-radius, 12px);
   box-shadow: var(--cs-card-shadow, 0 1px 3px rgba(0, 0, 0, 0.1));
@@ -379,7 +381,7 @@
 }
 
 /* Pricing Card Component */
-.cs-card-pricing  {
+@utility cs-card-pricing {
   display: grid;
   grid-template-rows: auto 1fr auto;
   background: var(--cs-card-bg, #ffffff);
@@ -398,7 +400,7 @@
 }
 
 /* Testimonial Card Component */
-.cs-card-testimonial  {
+@utility cs-card-testimonial {
   background: var(--cs-card-bg, #ffffff);
   border-radius: var(--cs-card-radius, 12px);
   box-shadow: var(--cs-card-shadow, 0 1px 3px rgba(0, 0, 0, 0.1));
@@ -420,15 +422,15 @@
    ========================================================= */
 
 /* Card Image */
-.cs-card-image  {
+@utility cs-card-image {
   width: 100%;
   height: 12rem;
   object-fit: cover;
-  background: rgba(255, 255, 255, 5%);
+  background: color-mix(in srgb, currentColor 5%, transparent);
 }
 
 /* Card Content */
-.cs-card-content  {
+@utility cs-card-content {
   padding: var(--cs-card-padding, 1.5rem);
   flex: 1;
   display: flex;
@@ -437,7 +439,7 @@
 }
 
 /* Card Title */
-.cs-card-title  {
+@utility cs-card-title {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--cs-card-text, currentColor);
@@ -446,15 +448,15 @@
 }
 
 /* Card Description */
-.cs-card-description  {
-  color: var(--cs-card-text-muted, rgba(255, 255, 255, 70%));
+@utility cs-card-description {
+  color: var(--cs-card-text-muted, color-mix(in srgb, currentColor 70%, transparent));
   line-height: 1.6;
   margin: 0;
   flex: 1;
 }
 
 /* Card Price */
-.cs-card-price  {
+@utility cs-card-price {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--cs-success, #059669);
@@ -462,18 +464,18 @@
 }
 
 /* Card Actions */
-.cs-card-actions  {
+@utility cs-card-actions {
   padding: 0 var(--cs-card-padding, 1.5rem) var(--cs-card-padding, 1.5rem);
   display: flex;
   gap: 0.75rem;
 }
 
 /* Testimonial Quote */
-.cs-testimonial-quote  {
+@utility cs-testimonial-quote {
   font-size: 1.125rem;
   line-height: 1.6;
   font-style: italic;
-  color: var(--cs-card-text-muted, rgba(255, 255, 255, 85%));
+  color: var(--cs-card-text-muted, color-mix(in srgb, currentColor 85%, transparent));
   margin-bottom: 1.5rem;
   position: relative;
   
@@ -483,13 +485,13 @@
     top: -0.5rem;
     left: -0.5rem;
     font-size: 3rem;
-    color: rgba(255, 255, 255, 20%);
+    color: color-mix(in srgb, currentColor 20%, transparent);
     line-height: 1;
   }
 }
 
 /* Testimonial Author */
-.cs-testimonial-author  {
+@utility cs-testimonial-author {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -498,9 +500,9 @@
 }
 
 /* Primary Button for Cards */
-.cs-button-primary-card  {
-  background: linear-gradient(135deg, var(--cs-brand, #4f7cff), rgba(79, 124, 255, 80%));
-  color: var(--cs-brand, #4f7cff);
+@utility cs-button-primary-card {
+  background: linear-gradient(135deg, var(--cs-brand, #3b82f6), color-mix(in srgb, var(--cs-brand, #3b82f6) 80%, #000000));
+  color: var(--cs-brand-ink, #ffffff);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: calc(var(--cs-radius, 10px) / 2);
@@ -511,13 +513,13 @@
   
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(79, 124, 255, 40%);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--cs-brand, #3b82f6) 40%, transparent);
   }
   
   &:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px rgba(79, 124, 255, 20%);
+    box-shadow: 0 0 0 2px var(--cs-brand, #3b82f6), 0 0 0 4px color-mix(in srgb, var(--cs-brand, #3b82f6) 20%, transparent);
   }
 }
 
@@ -528,20 +530,20 @@
    ========================================================= */
 
 /* Form Base */
-.cs-form-base  {
+@utility cs-form-base {
   display: flex;
   flex-direction: column;
   gap: var(--cs-space-4, 1rem);
 }
 
 /* Input Base */
-.cs-input-base  {
+@utility cs-input-base {
   padding: var(--cs-space-3, 12px) var(--cs-space-4, 16px);
   border: 1px solid var(--cs-form-border, #e5e7eb);
   border-radius: var(--cs-form-radius, 8px);
   transition: var(--cs-transition, 180ms ease);
   background: var(--cs-form-bg, #ffffff);
-  color: var(--cs-text, #eef1f6);
+  color: var(--cs-text, #111827);
   
   &:focus {
     outline: none;
@@ -551,7 +553,7 @@
 }
 
 /* Modern Form */
-.cs-form-modern  {
+@utility cs-form-modern {
   display: flex;
   flex-direction: column;
   gap: var(--cs-space-4, 1rem);
@@ -564,15 +566,15 @@
 }
 
 /* Modern Input */
-.cs-input-modern  {
+@utility cs-input-modern {
   padding: var(--cs-space-3, 12px) var(--cs-space-4, 16px);
-  border: 2px solid rgba(255, 255, 255, 10%);
+  border: 2px solid color-mix(in srgb, currentColor 10%, transparent);
   border-radius: var(--cs-form-radius, 8px);
   transition: var(--cs-transition, 180ms ease);
   background: var(--cs-form-bg, #ffffff);
   font-size: var(--cs-fs-md, 1rem);
   line-height: var(--cs-line, 1.5);
-  color: var(--cs-text, #eef1f6);
+  color: var(--cs-text, #111827);
   
   &:focus {
     outline: none;
@@ -581,23 +583,23 @@
   }
   
   &::placeholder {
-    color: var(--cs-text, #eef1f6);
+    color: var(--cs-text-muted, #6b7280);
   }
 }
 
 /* Modern Label */
-.cs-label-modern  {
+@utility cs-label-modern {
   font-weight: 600;
-  color: var(--cs-text, #eef1f6);
+  color: var(--cs-text, #111827);
   margin-bottom: 0.5rem;
   display: block;
   font-size: var(--cs-fs-sm, 0.875rem);
 }
 
 /* Modern Primary Button */
-.cs-button-primary-modern  {
-  background: linear-gradient(135deg, var(--cs-brand, #4f7cff), rgba(79, 124, 255, 80%));
-  color: var(--cs-brand, #4f7cff);
+@utility cs-button-primary-modern {
+  background: linear-gradient(135deg, var(--cs-brand, #3b82f6), color-mix(in srgb, var(--cs-brand, #3b82f6) 80%, #000000));
+  color: var(--cs-brand-ink, #ffffff);
   border: none;
   padding: 0.875rem 1.5rem;
   border-radius: var(--cs-form-radius, 8px);
@@ -608,18 +610,18 @@
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(79, 124, 255, 30%);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--cs-brand, #3b82f6) 30%, transparent);
   }
   
   &:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px rgba(79, 124, 255, 20%);
+    box-shadow: 0 0 0 2px var(--cs-brand, #3b82f6), 0 0 0 4px color-mix(in srgb, var(--cs-brand, #3b82f6) 20%, transparent);
   }
 }
 
 /* Form Group */
-.cs-form-group  {
+@utility cs-form-group {
   position: relative;
   margin-bottom: var(--cs-space-4, 1rem);
 }
@@ -629,7 +631,7 @@
    ========================================================= */
 
 /* Form Validation States */
-.cs-input-validation  {
+@utility cs-input-validation {
   position: absolute;
   top: 100%;
   left: 0;
@@ -641,27 +643,27 @@
   gap: 0.25rem;
 }
 
-.cs-validation-error  {
+@utility cs-validation-error {
   display: flex;
   color: var(--cs-danger, #ef4444);
 }
 
-.cs-validation-success  {
+@utility cs-validation-success {
   display: flex;
   color: var(--cs-success, #22c55e);
 }
 
-.cs-validation-icon  {
+@utility cs-validation-icon {
   font-size: 1rem;
   line-height: 1;
 }
 
-.cs-input-error  {
+@utility cs-input-error {
   border-color: var(--cs-danger, #ef4444) !important;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-danger, #ef4444) 20%, transparent) !important;
 }
 
-.cs-input-success  {
+@utility cs-input-success {
   border-color: var(--cs-success, #22c55e) !important;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-success, #22c55e) 20%, transparent) !important;
 }
@@ -671,38 +673,38 @@
    ========================================================= */
 
 /* Input Group Utilities */
-.cs-input-group  {
+@utility cs-input-group {
   position: relative;
   display: flex;
   align-items: stretch;
 }
 
-.cs-input-addon  {
+@utility cs-input-addon {
   display: flex;
   align-items: center;
   padding: 0 0.75rem;
-  background: rgba(255, 255, 255, 5%);
+  background: color-mix(in srgb, currentColor 5%, transparent);
   border: 1px solid var(--cs-form-border, #e5e7eb);
-  color: var(--cs-text, #eef1f6);
+  color: var(--cs-text-muted, #6b7280);
   font-size: 0.875rem;
 }
 
-.cs-input-addon-left  {
+@utility cs-input-addon-left {
   border-right: none;
   border-radius: var(--cs-form-radius, 8px) 0 0 var(--cs-form-radius, 8px);
 }
 
-.cs-input-addon-right  {
+@utility cs-input-addon-right {
   border-left: none;
   border-radius: 0 var(--cs-form-radius, 8px) var(--cs-form-radius, 8px) 0;
 }
 
-.cs-input-with-addon-left  {
+@utility cs-input-with-addon-left {
   border-radius: 0 var(--cs-form-radius, 8px) var(--cs-form-radius, 8px) 0;
   border-left: none;
 }
 
-.cs-input-with-addon-right  {
+@utility cs-input-with-addon-right {
   border-radius: var(--cs-form-radius, 8px) 0 0 var(--cs-form-radius, 8px);
   border-right: none;
 }
@@ -712,13 +714,13 @@
    ========================================================= */
 
 /* Form Layout Utilities */
-.cs-form-row  {
+@utility cs-form-row {
   display: flex;
   gap: var(--cs-space-4, 1rem);
   align-items: flex-start;
 }
 
-.cs-form-col  {
+@utility cs-form-col {
   flex: 1;
   min-width: 0;
 }
@@ -732,19 +734,19 @@
    TYPOGRAPHY SYSTEM
    ========================================================= */
 
-.cs-prose  {
+@utility cs-prose {
   color: var(--cs-prose-body);
   max-width: 65ch;
   line-height: 1.75;
   font-size: var(--cs-fs-md);
 }
 
-.cs-prose h1,
+@utility cs-prose h1,
 @utility cs-prose h2,
 @utility cs-prose h3,
 @utility cs-prose h4,
 @utility cs-prose h5,
-@utility cs-prose h6  {
+@utility cs-prose h6 {
   color: var(--cs-prose-headings);
   font-weight: 700;
   line-height: 1.25;
@@ -752,16 +754,16 @@
   margin-bottom: 0.75rem;
 }
 
-.cs-prose h1  { font-size: var(--cs-fs-2xl); }
-.cs-prose h2  { font-size: var(--cs-fs-xl); }
-.cs-prose h3  { font-size: var(--cs-fs-lg); }
+@utility cs-prose h1 { font-size: var(--cs-fs-2xl); }
+@utility cs-prose h2 { font-size: var(--cs-fs-xl); }
+@utility cs-prose h3 { font-size: var(--cs-fs-lg); }
 
-.cs-prose p  {
+@utility cs-prose p {
   margin-bottom: 1.25rem;
   line-height: 1.7;
 }
 
-.cs-prose a  {
+@utility cs-prose a {
   color: var(--cs-prose-links);
   text-decoration: underline;
   text-underline-offset: 0.2em;
@@ -771,22 +773,22 @@
   }
 }
 
-.cs-prose strong  {
+@utility cs-prose strong {
   color: var(--cs-prose-bold);
   font-weight: 600;
 }
 
-.cs-prose ul,
-@utility cs-prose ol  {
+@utility cs-prose ul,
+@utility cs-prose ol {
   margin-left: 1.5rem;
   margin-bottom: 1.25rem;
 }
 
-.cs-prose li  {
+@utility cs-prose li {
   margin-bottom: 0.5rem;
 }
 
-.cs-prose blockquote  {
+@utility cs-prose blockquote {
   border-left: 4px solid var(--cs-border);
   padding-left: 1.5rem;
   margin: 1.5rem 0;
@@ -794,15 +796,15 @@
   color: var(--cs-prose-quotes);
 }
 
-.cs-prose code  {
-  background: rgba(255, 255, 255, 8%);
+@utility cs-prose code {
+  background: color-mix(in srgb, currentColor 8%, transparent);
   padding: 0.25rem 0.375rem;
   border-radius: 0.25rem;
   font-size: 0.875em;
   font-family: var(--cs-font-mono);
 }
 
-.cs-prose pre  {
+@utility cs-prose pre {
   background: var(--cs-elev1);
   padding: 1.25rem;
   border-radius: var(--cs-radius);
@@ -815,39 +817,39 @@
   }
 }
 
-.cs-callout  {
+@utility cs-callout {
   padding: var(--cs-space-4) var(--cs-space-6);
   border-radius: var(--cs-radius);
   border-left: 4px solid var(--cs-info);
-  background: color-mix(in srgb, var(--cs-info) 5%, var(--cs-surface, #14161a));
-  color: var(--cs-text, #eef1f6);
+  background: color-mix(in srgb, var(--cs-info) 5%, var(--cs-surface));
+  color: var(--cs-text);
   margin: 1.5rem 0;
   
   &.cs-callout-info {
     border-left-color: var(--cs-info);
-    background: color-mix(in srgb, var(--cs-info) 5%, var(--cs-surface, #14161a));
+    background: color-mix(in srgb, var(--cs-info) 5%, var(--cs-surface));
   }
   
   &.cs-callout-warning {
     border-left-color: var(--cs-warning);
-    background: color-mix(in srgb, var(--cs-warning) 5%, var(--cs-surface, #14161a));
+    background: color-mix(in srgb, var(--cs-warning) 5%, var(--cs-surface));
   }
   
   &.cs-callout-danger {
     border-left-color: var(--cs-danger);
-    background: color-mix(in srgb, var(--cs-danger) 5%, var(--cs-surface, #14161a));
+    background: color-mix(in srgb, var(--cs-danger) 5%, var(--cs-surface));
   }
   
   &.cs-callout-success {
     border-left-color: var(--cs-success);
-    background: color-mix(in srgb, var(--cs-success) 5%, var(--cs-surface, #14161a));
+    background: color-mix(in srgb, var(--cs-success) 5%, var(--cs-surface));
   }
 }
 
-.cs-lead  {
+@utility cs-lead {
   font-size: var(--cs-fs-lg);
   line-height: 1.6;
-  color: var(--cs-text, #eef1f6);
+  color: var(--cs-text-muted);
 }
 
 /* Navigation System - Navbar, links, brand */
@@ -855,7 +857,7 @@
    NAVIGATION SYSTEM
    ========================================================= */
 
-.cs-navbar  {
+@utility cs-navbar {
   position: relative;
   z-index: var(--cs-z-40, 40);
   display: flex;
@@ -863,12 +865,12 @@
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  background-color: var(--cs-surface, #14161a);
+  background-color: var(--cs-surface, #ffffff);
   border-bottom: 1px solid var(--cs-border, #e5e7eb);
   transition: var(--cs-transition, 180ms ease);
 }
 
-.cs-navbar-brand  {
+@utility cs-navbar-brand {
   display: inline-block;
   padding: 0.3125rem 0;
   margin-right: 1rem;
@@ -877,14 +879,14 @@
   line-height: 1.2;
   white-space: nowrap;
   text-decoration: none;
-  color: var(--cs-text, #eef1f6);
+  color: var(--cs-text, #111827);
   
   &:hover {
     text-decoration: none;
   }
 }
 
-.cs-navbar-nav  {
+@utility cs-navbar-nav {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -893,24 +895,24 @@
   list-style: none;
 }
 
-.cs-navbar-link  {
+@utility cs-navbar-link {
   display: inline-block;
   padding: 0.75rem 1rem;
-  color: var(--cs-text, #eef1f6);
+  color: var(--cs-text-muted, #6b7280);
   text-decoration: none;
   font-weight: 500;
   border-radius: 0.375rem;
   transition: var(--cs-transition, 180ms ease);
   
   &:hover {
-    color: var(--cs-text, #eef1f6);
-    background-color: rgba(255, 255, 255, 8%);
+    color: var(--cs-text);
+    background-color: color-mix(in srgb, currentColor 8%, transparent);
     text-decoration: none;
   }
   
   &.active {
-    color: var(--cs-brand, #4f7cff);
-    background-color: rgba(79, 124, 255, 10%);
+    color: var(--cs-brand);
+    background-color: color-mix(in srgb, var(--cs-brand) 10%, transparent);
   }
 }
 
@@ -918,9 +920,9 @@
 /* TEMPORARY: Remaining systems inline until extracted */
 
 /* SCROLL SYSTEM */
-.cs-scrollbar-thin  {
+@utility cs-scrollbar-thin {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 20%) transparent;
+  scrollbar-color: color-mix(in srgb, currentColor 20%, transparent) transparent;
   
   &::-webkit-scrollbar {
     width: 8px;
@@ -932,11 +934,11 @@
   }
   
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 20%);
+    background: color-mix(in srgb, currentColor 20%, transparent);
     border-radius: 4px;
     
     &:hover {
-      background: rgba(255, 255, 255, 35%);
+      background: color-mix(in srgb, currentColor 35%, transparent);
     }
   }
   
@@ -945,9 +947,9 @@
   }
 }
 
-.cs-scrollbar-custom  {
+@utility cs-scrollbar-custom {
   scrollbar-width: auto;
-  scrollbar-color: var(--cs-brand, #4f7cff) rgba(79, 124, 255, 10%);
+  scrollbar-color: var(--cs-brand) color-mix(in srgb, var(--cs-brand) 10%, transparent);
   
   &::-webkit-scrollbar {
     width: 12px;
@@ -955,55 +957,55 @@
   }
   
   &::-webkit-scrollbar-track {
-    background: rgba(79, 124, 255, 5%);
+    background: color-mix(in srgb, var(--cs-brand) 5%, transparent);
     border-radius: 6px;
   }
   
   &::-webkit-scrollbar-thumb {
-    background: var(--cs-brand, #4f7cff);
+    background: var(--cs-brand);
     border-radius: 6px;
-    border: 2px solid rgba(79, 124, 255, 5%);
+    border: 2px solid color-mix(in srgb, var(--cs-brand) 5%, transparent);
     
     &:hover {
-      background: rgba(79, 124, 255, 85%);
+      background: color-mix(in srgb, var(--cs-brand) 85%, #000);
     }
   }
 }
 
-.cs-scroll-snap-x  {
+@utility cs-scroll-snap-x {
   scroll-snap-type: x mandatory;
   overflow-x: auto;
   overscroll-behavior-x: contain;
 }
 
-.cs-scroll-snap-y  {
+@utility cs-scroll-snap-y {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   overscroll-behavior-y: contain;
 }
 
-.cs-snap-start  { scroll-snap-align: start; }
-.cs-snap-center  { scroll-snap-align: center; }
-.cs-snap-end  { scroll-snap-align: end; }
-.cs-scroll-smooth  { scroll-behavior: smooth; }
+@utility cs-snap-start { scroll-snap-align: start; }
+@utility cs-snap-center { scroll-snap-align: center; }
+@utility cs-snap-end { scroll-snap-align: end; }
+@utility cs-scroll-smooth { scroll-behavior: smooth; }
 
 /* LOADING SYSTEM */
-.cs-spinner  {
+@utility cs-spinner {
   width: 1.5rem;
   height: 1.5rem;
-  border: 2px solid rgba(255, 255, 255, 20%);
+  border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
   border-radius: 50%;
   border-top-color: currentColor;
   animation: cs-spin 0.8s linear infinite;
 }
 
-.cs-spinner-lg  {
+@utility cs-spinner-lg {
   width: 2rem;
   height: 2rem;
   border-width: 3px;
 }
 
-.cs-spinner-sm  {
+@utility cs-spinner-sm {
   width: 1rem;
   height: 1rem;
   border-width: 2px;
@@ -1013,7 +1015,7 @@
   to { transform: rotate(360deg); }
 }
 
-.cs-pulse  {
+@utility cs-pulse {
   animation: cs-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -1022,11 +1024,11 @@
   50% { opacity: 0.5; }
 }
 
-.cs-skeleton  {
+@utility cs-skeleton {
   background: linear-gradient(90deg, 
-    rgba(255, 255, 255, 10%) 0%,
-    rgba(255, 255, 255, 18%) 50%,
-    rgba(255, 255, 255, 10%) 100%
+    color-mix(in srgb, currentColor 10%, transparent) 0%,
+    color-mix(in srgb, currentColor 18%, transparent) 50%,
+    color-mix(in srgb, currentColor 10%, transparent) 100%
   );
   background-size: 200% 100%;
   animation: cs-skeleton 1.5s ease-in-out infinite;
@@ -1039,34 +1041,34 @@
 }
 
 /* GRADIENT SYSTEM */
-.cs-gradient-radial  {
+@utility cs-gradient-radial {
   background: radial-gradient(circle at 50% 50%, 
-    var(--cs-brand, #4f7cff), 
-    rgba(79, 124, 255, 70%)
+    var(--cs-brand), 
+    color-mix(in srgb, var(--cs-brand) 70%, transparent)
   );
 }
 
-.cs-gradient-conic  {
+@utility cs-gradient-conic {
   background: conic-gradient(from 0deg, 
-    var(--cs-brand, #4f7cff), 
-    rgba(79, 124, 255, 50%),
-    var(--cs-brand, #4f7cff)
+    var(--cs-brand), 
+    color-mix(in srgb, var(--cs-brand) 50%, #ff0080),
+    var(--cs-brand)
   );
 }
 
-.cs-gradient-mesh  {
+@utility cs-gradient-mesh {
   background: 
-    radial-gradient(at 27% 37%, rgba(79, 124, 255, 50%) 0px, transparent 50%),
+    radial-gradient(at 27% 37%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
     radial-gradient(at 97% 21%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%),
     radial-gradient(at 52% 99%, color-mix(in srgb, var(--cs-success) 50%, transparent) 0px, transparent 50%),
     radial-gradient(at 10% 29%, color-mix(in srgb, var(--cs-warning) 50%, transparent) 0px, transparent 50%),
     radial-gradient(at 97% 96%, color-mix(in srgb, var(--cs-danger) 50%, transparent) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, rgba(79, 124, 255, 50%) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, color-mix(in srgb, var(--cs-brand) 50%, transparent) 0px, transparent 50%),
     radial-gradient(at 79% 53%, color-mix(in srgb, var(--cs-info) 50%, transparent) 0px, transparent 50%);
 }
 
 /* MICRO INTERACTIONS */
-.cs-hover-lift  {
+@utility cs-hover-lift {
   transition: transform var(--cs-transition);
   
   &:hover {
@@ -1074,7 +1076,7 @@
   }
 }
 
-.cs-hover-scale  {
+@utility cs-hover-scale {
   transition: transform var(--cs-transition);
   
   &:hover {
@@ -1082,26 +1084,26 @@
   }
 }
 
-.cs-hover-glow  {
+@utility cs-hover-glow {
   transition: box-shadow var(--cs-transition);
   
   &:hover {
-    box-shadow: 0 8px 25px rgba(79, 124, 255, 25%);
+    box-shadow: 0 8px 25px color-mix(in srgb, var(--cs-brand) 25%, transparent);
   }
 }
 
-.cs-interactive  {
+@utility cs-interactive {
   transition: all var(--cs-transition);
   cursor: pointer;
   
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 15%);
+    box-shadow: 0 4px 12px color-mix(in srgb, currentColor 15%, transparent);
   }
   
   &:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 20%);
+    box-shadow: 0 2px 4px color-mix(in srgb, currentColor 20%, transparent);
   }
 }
 
@@ -1111,15 +1113,15 @@
 
 /* Print Optimizations */
 @media print {
-  .cs-prose  {
+  @utility cs-prose {
     color: black !important;
   }
   
-  .cs-navbar  {
+  @utility cs-navbar {
     display: none !important;
   }
   
-  .cs-card  {
+  @utility cs-card {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
   }

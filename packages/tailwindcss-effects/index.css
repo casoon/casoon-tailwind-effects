@@ -2012,53 +2012,20 @@
 /* === TAILWINDCSS-GLASS === */
 /*!
  * Casoon Glass - Complete Glassmorphism System for Tailwind v4
- * Version: 0.9.0 — COMPLETE CONSOLIDATED GLASS SYSTEM
+ * Version: 0.9.0 — Pure Glass Effects & Glass Cards
  * 
- * SYSTEMATICALLY CONSOLIDATED FROM:
- * 
- * === GLASS PACKAGE (9 files) ===
- * - src/index.css (root)
- * - src/styles/base/tokens.css
- * - src/styles/base/glass-core.css  
- * - src/styles/base/fallbacks.css
- * - src/styles/utilities/variants.css
- * - src/styles/utilities/addons.css
- * - src/styles/utilities/responsive.css
- * - src/styles/components/ui-elements.css
- * - src/styles/effects/pro-effects.css
- * 
- * === CARDS PACKAGE (7 files) ===
- * - src/index.css (root)
- * - src/styles/base/tokens.css
- * - src/styles/presets/card-feature.css
- * - src/styles/presets/card-product.css 
- * - src/styles/presets/card-product-clean.css
- * - src/styles/presets/card-pricing.css
- * - src/styles/presets/card-testimonial.css
- * 
- * === NAVIGATION PACKAGE (13 files) ===
- * - src/index.css (root)
- * - src/styles/index.css
- * - src/styles/base/tokens.css
- * - src/styles/variants.css
- * - src/styles/utilities/navigation.css
- * - src/styles/utilities/accessibility.css
- * - src/styles/components/nav.css
- * - src/styles/components/navbar.css
- * - src/styles/components/nav-tabs.css
- * - src/styles/components/nav-pills.css
- * - src/styles/components/breadcrumbs.css
- * - src/styles/components/drawer.css
- * - src/styles/effects/animations.css
- * 
- * TOTAL: 29 CSS FILES → Pure Tailwind v4 (179 classes + 88 @utility)
+ * Features:
+ * - Glass Backdrop Filter Effects
+ * - Glass Background & Border Utilities  
+ * - Glass Cards (with backdrop-filter)
+ * - Glass UI Components (buttons, nav, etc.)
+ * - Glass Animation Effects
  * 
  * Usage: @import "@casoon/tailwindcss-glass/index.css";
  */
 /* Note: @import "tailwindcss"; should be added by the consumer */
 /* =========================================================
-   CONSOLIDATED DESIGN TOKENS & THEME
-   All tokens from glass, cards, navigation packages merged
+   GLASS DESIGN TOKENS & THEME
    ========================================================= */
 @theme {
   /* === GLASS COLOR SYSTEM === */
@@ -2154,300 +2121,120 @@
   --cs-glass-bg-amber-fallback: rgba(245,158,11,0.20);
   --cs-glass-focus-ring: rgba(59,130,246,0.50);
   --cs-glass-backdrop-filter-extra: none;
-  /* Dark mode card adjustments */
-  @media (prefers-color-scheme: dark) {
-    --cs-card-bg: color-mix(in srgb, #ffffff 5%, #1a1a1a);
-    --cs-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
-    --cs-card-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.35);
-  }
-  /* === CARD SYSTEM TOKENS === */
-  /* v0.8.x Compatible Card System */
-  --cs-card-border-radius: 1rem;
-  --cs-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --cs-card-shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
-  --cs-card-bg: #ffffff;
-  --cs-card-padding: 1.5rem;
-  --cs-card-spacing: 1rem;
-  /* Extended Card System for compatibility */
-  --cs-card-border: var(--cs-border, #e5e7eb);
-  --cs-card-radius: var(--cs-card-border-radius);
-  --cs-card-text: var(--cs-text, #111827);
-  --cs-card-text-muted: var(--cs-text-muted, #6b7280);
-  --cs-card-brand: var(--cs-brand, #3b82f6);
-  --cs-card-brand-ink: var(--cs-brand-ink, #ffffff);
-  --cs-card-transition: var(--cs-transition, 0.3s ease);
-  /* Card spacing system */
-  --cs-card-space-xs: 0.25rem;
-  --cs-card-space-sm: 0.375rem; 
-  --cs-card-space-md: 0.75rem;
-  --cs-card-space-lg: 1rem;
-  --cs-card-space-xl: 1.5rem;
-  --cs-card-space-2xl: 2rem;
-  --cs-card-hover-lift: -4px;
-  /* Card typography */
-  --cs-card-font-size-xs: 0.75rem;
-  --cs-card-font-size-sm: 0.875rem;
-  --cs-card-font-size: 1rem;
-  --cs-card-font-size-lg: 1.125rem;
-  --cs-card-font-size-xl: 1.25rem;
-  --cs-card-font-size-2xl: 1.5rem;
-  --cs-card-line-height: 1.6;
-  /* Card shadows expanded */
-  --cs-card-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --cs-card-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --cs-card-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --cs-card-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-  /* Card radius system */
-  --cs-card-radius-sm: 0.375rem;
-  --cs-card-radius-md: 0.5rem;
-  --cs-card-radius-lg: 0.75rem;
-  --cs-card-radius-xl: 1rem;
-  /* === NAVIGATION TOKENS === */
-  --cs-nav-bg: var(--cs-glass-bg-light);
-  --cs-nav-border: var(--cs-glass-border-medium);
-  --cs-nav-blur: var(--cs-glass-blur);
-  --cs-nav-text: var(--cs-text, #374151);
-  --cs-nav-text-muted: var(--cs-text-muted, #9ca3af);
-  --cs-nav-text-active: var(--cs-brand, #3b82f6);
-  --cs-nav-bg-hover: var(--cs-glass-bg-hover);
-  --cs-nav-bg-active: var(--cs-glass-bg-medium);
-  --cs-nav-transition: var(--cs-transition, 0.2s ease);
-  --cs-nav-shadow: var(--cs-glass-shadow-def);
-  /* Navigation spacing */
-  --cs-nav-space-xs: 0.25rem;
-  --cs-nav-space-sm: 0.5rem;
-  --cs-nav-space-md: 0.75rem;
-  --cs-nav-space-lg: 1rem;
-  --cs-nav-space-xl: 1.5rem;
-  /* Navigation z-index */
-  --cs-nav-z-dropdown: 30;
-  --cs-nav-z-modal: 40;
-  --cs-nav-z-overlay: 50;
-  --cs-nav-z-drawer: 60;
-  /* Navigation typography */
-  --cs-nav-font-size-sm: 0.875rem;
-  --cs-nav-font-size: 1rem;
-  --cs-nav-font-size-lg: 1.125rem;
 }
 /* =========================================================
    CORE GLASS UTILITIES
-   Complete glass effect system with all variants
+   Base glass backdrop-filter utilities
    ========================================================= */
-/* Base glass effects with complete backdrop-filter support */
+/* Primary glass utility */
 @utility cs-glass {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  transition: all var(--cs-glass-transition) ease;
 }
+/* Dark glass variant */
 @utility cs-glass-dark {
   background: var(--cs-glass-bg-dark);
-  border: 1px solid var(--cs-glass-border-light);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-/* Light glass opacity scale - Complete range */
-@utility cs-glass-xs {
-  background: var(--cs-glass-bg-xs);
-  border: 1px solid var(--cs-glass-border-xs);
-  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-sm {
-  background: var(--cs-glass-bg-sm);
-  border: 1px solid var(--cs-glass-border-sm);
-  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-weak {
-  background: var(--cs-glass-bg-weak);
-  border: 1px solid var(--cs-glass-border-light);
-  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-md {
-  background: var(--cs-glass-bg-md);
-  border: 1px solid var(--cs-glass-border-md);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-medium {
-  background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
+  border-radius: var(--cs-glass-radius-lg);
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
+  transition: all var(--cs-glass-transition) ease;
 }
-@utility cs-glass-lg {
-  background: var(--cs-glass-bg-lg);
-  border: 1px solid var(--cs-glass-border-lg);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
+/* =========================================================
+   GLASS BACKGROUND UTILITIES
+   Different opacity levels for glass backgrounds
+   ========================================================= */
+@utility cs-glass-bg-xs { background: var(--cs-glass-bg-xs); }
+@utility cs-glass-bg-sm { background: var(--cs-glass-bg-sm); }
+@utility cs-glass-bg-light { background: var(--cs-glass-bg-light); }
+@utility cs-glass-bg-weak { background: var(--cs-glass-bg-weak); }
+@utility cs-glass-bg-md { background: var(--cs-glass-bg-md); }
+@utility cs-glass-bg-medium { background: var(--cs-glass-bg-medium); }
+@utility cs-glass-bg-lg { background: var(--cs-glass-bg-lg); }
+@utility cs-glass-bg-strong { background: var(--cs-glass-bg-strong); }
+@utility cs-glass-bg-xl { background: var(--cs-glass-bg-xl); }
+@utility cs-glass-bg-2xl { background: var(--cs-glass-bg-2xl); }
+@utility cs-glass-bg-3xl { background: var(--cs-glass-bg-3xl); }
+@utility cs-glass-bg-4xl { background: var(--cs-glass-bg-4xl); }
+@utility cs-glass-bg-5xl { background: var(--cs-glass-bg-5xl); }
+/* Dark glass backgrounds */
+@utility cs-glass-bg-dark { background: var(--cs-glass-bg-dark); }
+@utility cs-glass-bg-dark-xs { background: var(--cs-glass-bg-dark-xs); }
+@utility cs-glass-bg-dark-sm { background: var(--cs-glass-bg-dark-sm); }
+@utility cs-glass-bg-dark-md { background: var(--cs-glass-bg-dark-md); }
+@utility cs-glass-bg-dark-lg { background: var(--cs-glass-bg-dark-lg); }
+@utility cs-glass-bg-dark-strong { background: var(--cs-glass-bg-dark-strong); }
+@utility cs-glass-bg-dark-xl { background: var(--cs-glass-bg-dark-xl); }
+@utility cs-glass-bg-dark-2xl { background: var(--cs-glass-bg-dark-2xl); }
+@utility cs-glass-bg-dark-3xl { background: var(--cs-glass-bg-dark-3xl); }
+@utility cs-glass-bg-dark-4xl { background: var(--cs-glass-bg-dark-4xl); }
+@utility cs-glass-bg-dark-5xl { background: var(--cs-glass-bg-dark-5xl); }
+/* Colored glass backgrounds */
+@utility cs-glass-bg-blue { background: var(--cs-glass-bg-blue); }
+@utility cs-glass-bg-purple { background: var(--cs-glass-bg-purple); }
+@utility cs-glass-bg-green { background: var(--cs-glass-bg-green); }
+@utility cs-glass-bg-pink { background: var(--cs-glass-bg-pink); }
+@utility cs-glass-bg-amber { background: var(--cs-glass-bg-amber); }
+/* =========================================================
+   GLASS BORDER UTILITIES
+   ========================================================= */
+@utility cs-glass-border-xs { border-color: var(--cs-glass-border-xs); }
+@utility cs-glass-border-sm { border-color: var(--cs-glass-border-sm); }
+@utility cs-glass-border-light { border-color: var(--cs-glass-border-light); }
+@utility cs-glass-border-md { border-color: var(--cs-glass-border-md); }
+@utility cs-glass-border-medium { border-color: var(--cs-glass-border-medium); }
+@utility cs-glass-border-lg { border-color: var(--cs-glass-border-lg); }
+@utility cs-glass-border-strong { border-color: var(--cs-glass-border-strong); }
+@utility cs-glass-border-xl { border-color: var(--cs-glass-border-xl); }
+@utility cs-glass-border-2xl { border-color: var(--cs-glass-border-2xl); }
+@utility cs-glass-border-3xl { border-color: var(--cs-glass-border-3xl); }
+/* Colored glass borders */
+@utility cs-glass-border-blue { border-color: var(--cs-glass-border-blue); }
+@utility cs-glass-border-purple { border-color: var(--cs-glass-border-purple); }
+@utility cs-glass-border-green { border-color: var(--cs-glass-border-green); }
+@utility cs-glass-border-pink { border-color: var(--cs-glass-border-pink); }
+@utility cs-glass-border-amber { border-color: var(--cs-glass-border-amber); }
+/* =========================================================
+   GLASS BLUR UTILITIES
+   ========================================================= */
+@utility cs-glass-blur-sm {
+  backdrop-filter: var(--cs-glass-blur-sm);
+  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
 }
-@utility cs-glass-strong {
-  background: var(--cs-glass-bg-medium);
-  border: 1px solid var(--cs-glass-border-strong);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
+@utility cs-glass-blur {
+  backdrop-filter: var(--cs-glass-blur);
+  -webkit-backdrop-filter: var(--cs-glass-blur);
 }
-@utility cs-glass-xl {
-  background: var(--cs-glass-bg-xl);
-  border: 1px solid var(--cs-glass-border-xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
+@utility cs-glass-blur-lg {
+  backdrop-filter: var(--cs-glass-blur-lg);
+  -webkit-backdrop-filter: var(--cs-glass-blur-lg);
 }
-@utility cs-glass-2xl {
-  background: var(--cs-glass-bg-2xl);
-  border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
+@utility cs-glass-blur-xl {
+  backdrop-filter: var(--cs-glass-blur-xl);
+  -webkit-backdrop-filter: var(--cs-glass-blur-xl);
 }
-@utility cs-glass-3xl {
-  background: var(--cs-glass-bg-3xl);
-  border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-4xl {
-  background: var(--cs-glass-bg-4xl);
-  border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-5xl {
-  background: var(--cs-glass-bg-5xl);
-  border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-/* Dark glass opacity scale - Complete range */
-@utility cs-glass-dark-xs {
-  background: var(--cs-glass-bg-dark-xs);
-  border: 1px solid var(--cs-glass-border-xs);
-  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-dark-sm {
-  background: var(--cs-glass-bg-dark-sm);
-  border: 1px solid var(--cs-glass-border-sm);
-  backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-dark-md {
-  background: var(--cs-glass-bg-dark-md);
-  border: 1px solid var(--cs-glass-border-md);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-dark-lg {
-  background: var(--cs-glass-bg-dark-lg);
-  border: 1px solid var(--cs-glass-border-lg);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-dark-xl {
-  background: var(--cs-glass-bg-dark-xl);
-  border: 1px solid var(--cs-glass-border-xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-dark-2xl {
-  background: var(--cs-glass-bg-dark-2xl);
-  border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-dark-3xl {
-  background: var(--cs-glass-bg-dark-3xl);
-  border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-dark-4xl {
-  background: var(--cs-glass-bg-dark-4xl);
-  border: 1px solid var(--cs-glass-border-2xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-dark-5xl {
-  background: var(--cs-glass-bg-dark-5xl);
-  border: 1px solid var(--cs-glass-border-3xl);
-  backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur-xl) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-/* Colored glass variants */
-@utility cs-glass-blue {
-  background: var(--cs-glass-bg-blue);
-  border: 1px solid var(--cs-glass-border-blue);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-purple {
-  background: var(--cs-glass-bg-purple);
-  border: 1px solid var(--cs-glass-border-purple);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-green {
-  background: var(--cs-glass-bg-green);
-  border: 1px solid var(--cs-glass-border-green);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-pink {
-  background: var(--cs-glass-bg-pink);
-  border: 1px solid var(--cs-glass-border-pink);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-@utility cs-glass-amber {
-  background: var(--cs-glass-bg-amber);
-  border: 1px solid var(--cs-glass-border-amber);
-  backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  -webkit-backdrop-filter: var(--cs-glass-blur) var(--cs-glass-backdrop-filter-extra);
-  background-clip: padding-box;
-}
-/* Glass radius utilities */
-@utility cs-glass-rounded-sm { border-radius: var(--cs-glass-radius-sm); }
-@utility cs-glass-rounded { border-radius: var(--cs-glass-radius); }
-@utility cs-glass-rounded-lg { border-radius: var(--cs-glass-radius-lg); }
-@utility cs-glass-rounded-xl { border-radius: var(--cs-glass-radius-xl); }
-@utility cs-glass-rounded-2xl { border-radius: var(--cs-glass-radius-2xl); }
-@utility cs-glass-rounded-3xl { border-radius: var(--cs-glass-radius-3xl); }
-/* Glass shadow utilities */
+/* =========================================================
+   GLASS RADIUS UTILITIES
+   ========================================================= */
+@utility cs-glass-radius-sm { border-radius: var(--cs-glass-radius-sm); }
+@utility cs-glass-radius { border-radius: var(--cs-glass-radius); }
+@utility cs-glass-radius-lg { border-radius: var(--cs-glass-radius-lg); }
+@utility cs-glass-radius-xl { border-radius: var(--cs-glass-radius-xl); }
+@utility cs-glass-radius-2xl { border-radius: var(--cs-glass-radius-2xl); }
+@utility cs-glass-radius-3xl { border-radius: var(--cs-glass-radius-3xl); }
+/* =========================================================
+   GLASS SHADOW UTILITIES
+   ========================================================= */
 @utility cs-glass-shadow-sm { box-shadow: var(--cs-glass-shadow-sm-def); }
 @utility cs-glass-shadow { box-shadow: var(--cs-glass-shadow-def); }
 @utility cs-glass-shadow-lg { box-shadow: var(--cs-glass-shadow-lg-def); }
 @utility cs-glass-shadow-xl { box-shadow: var(--cs-glass-shadow-xl-def); }
 /* =========================================================
    GLASS ADD-ON UTILITIES
-   Optional effects and add-on features
    ========================================================= */
 /* Acrylic look (adds saturation/contrast on the backdrop) */
 @utility cs-glass-acrylic {
@@ -2502,8 +2289,8 @@
 /* Isolation utility for Canvas/Background-Layering issues */
 @utility cs-glass-isolate { isolation: isolate; }
 /* =========================================================
-   GLASS UI COMPONENTS
-   Ready-to-use glass UI elements
+   GLASS CARDS SYSTEM
+   Cards with glass backdrop-filter effects
    ========================================================= */
 /* Glass card base component */
 @utility cs-glass-card {
@@ -2546,6 +2333,72 @@
     outline-offset: 2px;
   }
 }
+/* Glass Feature Card Component */
+@utility cs-card-feature-glass {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 1.5rem;
+  border-radius: 20px;
+  box-shadow: var(--cs-glass-shadow-def);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all var(--cs-glass-transition) ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px var(--cs-glass-shadow-strong);
+    background: var(--cs-glass-bg-hover);
+  }
+}
+/* Glass Product Card Component */
+@utility cs-card-product-glass {
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  border-radius: 20px;
+  box-shadow: var(--cs-glass-shadow-def);
+  overflow: hidden;
+  transition: all var(--cs-glass-transition) ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px var(--cs-glass-shadow-strong);
+    background: var(--cs-glass-bg-hover);
+  }
+}
+/* Glass Pricing Card Component */
+@utility cs-card-pricing-glass {
+  background: var(--cs-glass-bg-light);
+  border: 2px solid var(--cs-glass-border-medium);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  border-radius: 20px;
+  box-shadow: var(--cs-glass-shadow-def);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: all var(--cs-glass-transition) ease;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px var(--cs-glass-shadow-xl);
+    background: var(--cs-glass-bg-hover);
+    border-color: var(--cs-glass-border-strong);
+  }
+}
+/* =========================================================
+   GLASS UI COMPONENTS
+   Ready-to-use glass UI elements with backdrop-filter
+   ========================================================= */
 /* Glass navigation component */
 @utility cs-glass-nav {
   background: var(--cs-glass-bg-light);
@@ -2631,6 +2484,57 @@
   backdrop-filter: var(--cs-glass-blur);
   -webkit-backdrop-filter: var(--cs-glass-blur);
 }
+/* Glass Forms System */
+@utility cs-form-glass {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: var(--cs-glass-bg-light);
+  border: 1px solid var(--cs-glass-border-medium);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+@utility cs-input-glass {
+  padding: 0.75rem 1rem;
+  background: var(--cs-glass-bg-md);
+  border: 1px solid var(--cs-glass-border-strong);
+  border-radius: 0.75rem;
+  transition: all var(--cs-glass-transition) ease;
+  color: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  &:focus {
+    outline: none;
+    border-color: var(--cs-glass-focus-ring);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-glass-focus-ring) 20%, transparent);
+  }
+  &::placeholder {
+    color: color-mix(in srgb, currentColor 60%, transparent);
+  }
+}
+@utility cs-button-primary-glass {
+  background: var(--cs-glass-bg-medium);
+  border: 1px solid var(--cs-glass-border-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: inherit;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--cs-glass-transition) ease;
+  &:hover {
+    background: var(--cs-glass-bg-strong);
+    transform: translateY(-1px);
+  }
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--cs-glass-focus-ring), 0 0 0 4px color-mix(in srgb, var(--cs-glass-focus-ring) 20%, transparent);
+  }
+}
 /* =========================================================
    GLASS PRO EFFECTS
    Advanced animations and glass effects
@@ -2712,47 +2616,6 @@
     mix-blend-mode: soft-light;
   }
 }
-@utility cs-glass-gloss-bottom {
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0; left: 0; right: 0; height: 20%;
-    background: linear-gradient(to top, rgba(255,255,255,0.3), transparent);
-    pointer-events: none;
-    z-index: 2;
-    mix-blend-mode: soft-light;
-  }
-}
-/* Skeleton glass blocks */
-@utility cs-glass-skeleton {
-  position: relative;
-  overflow: hidden;
-  background: var(--cs-glass-bg-light);
-  border: 1px solid var(--cs-glass-border-medium);
-  border-radius: var(--cs-glass-radius);
-  min-height: 2rem;
-  isolation: isolate;
-  backdrop-filter: var(--cs-glass-blur-sm);
-  -webkit-backdrop-filter: var(--cs-glass-blur-sm);
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: glassSkeletonShimmer 1.2s infinite;
-  }
-}
-@keyframes glassSkeletonShimmer {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-/* Card-specific animations */
-@keyframes cs-orb-float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, -30px) rotate(120deg); }
-  66% { transform: translate(-20px, 20px) rotate(240deg); }
-}
 /* Pro theme presets */
 @utility cs-glass-theme-neon {
   --cs-glass-bg-light: rgba(58, 227, 255, 0.1);
@@ -2773,424 +2636,7 @@
   --cs-glass-focus-ring: rgba(255, 230, 250, 0.6);
 }
 /* =========================================================
-   CARD SYSTEM COMPONENTS
-   Feature, Product, Pricing & Testimonial cards
-   ========================================================= */
-/* Feature Card Component */
-@utility cs-card-feature {
-  display: grid;
-  grid-template-rows: auto auto 1fr;
-  gap: var(--cs-card-space-lg, 1.5rem);
-  background: var(--cs-card-bg, #ffffff);
-  border: 1px solid var(--cs-card-border, #e5e7eb);
-  border-radius: var(--cs-card-radius-lg, 12px);
-  box-shadow: var(--cs-card-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
-  padding: var(--cs-card-space-xl, 2rem);
-  text-align: center;
-  position: relative;
-  transition: var(--cs-card-transition, all 0.2s ease);
-  &:hover {
-    transform: translateY(var(--cs-card-hover-lift, -2px));
-    box-shadow: var(--cs-card-shadow-md, 0 4px 6px rgba(0, 0, 0, 0.07));
-  }
-}
-/* Feature card with glass styling */
-@utility cs-card-feature-glass {
-  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
-  backdrop-filter: saturate(140%) blur(12px);
-  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.2));
-}
-/* Product Card Component */
-@utility cs-card-product {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  background: var(--cs-surface, #ffffff);
-  border: 1px solid var(--cs-border, #e5e7eb);
-  border-radius: var(--cs-radius-lg, 12px);
-  box-shadow: var(--cs-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.1));
-  overflow: hidden;
-  transition: all var(--cs-transition, 0.2s ease);
-  position: relative;
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--cs-shadow-2, 0 4px 6px rgba(0, 0, 0, 0.1));
-  }
-}
-/* Product card with glass styling */
-@utility cs-card-product-glass {
-  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
-  backdrop-filter: saturate(140%) blur(12px);
-  border: 1px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.2));
-}
-/* Pricing Card Component */
-@utility cs-card-pricing {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  background: var(--cs-surface);
-  border: 2px solid var(--cs-border);
-  border-radius: var(--cs-radius-lg);
-  box-shadow: var(--cs-shadow-1);
-  padding: var(--cs-space-6);
-  text-align: center;
-  position: relative;
-  transition: all var(--cs-transition);
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--cs-shadow-2);
-  }
-}
-/* Pricing card with glass styling */
-@utility cs-card-pricing-glass {
-  background: var(--cs-acrylic-tint, rgba(255, 255, 255, 0.1));
-  backdrop-filter: saturate(140%) blur(12px);
-  border: 2px solid var(--cs-acrylic-border, rgba(255, 255, 255, 0.3));
-}
-/* =========================================================
-   v0.8.x CARD SYSTEM COMPONENTS
-   Complete card system with interactive effects
-   ========================================================= */
-/* Card Base - v0.8.x compatible */
-@utility cs-card-base {
-  background: var(--cs-card-bg);
-  border-radius: var(--cs-card-border-radius);
-  box-shadow: var(--cs-card-shadow);
-  transition: all 300ms ease;
-  overflow: hidden;
-  &:hover {
-    box-shadow: var(--cs-card-shadow-hover);
-    transform: translateY(var(--cs-card-hover-lift));
-  }
-}
-/* Product Card - v0.8.x compatible */
-@utility cs-card-product {
-  background: var(--cs-card-bg);
-  border-radius: var(--cs-card-border-radius);
-  box-shadow: var(--cs-card-shadow);
-  transition: all 300ms ease;
-  overflow: hidden;
-  max-width: 20rem;
-  display: flex;
-  flex-direction: column;
-  &:hover {
-    box-shadow: var(--cs-card-shadow-hover);
-    transform: translateY(var(--cs-card-hover-lift));
-  }
-}
-/* Card Image */
-@utility cs-card-image {
-  width: 100%;
-  height: 12rem;
-  object-fit: cover;
-  background: color-mix(in srgb, currentColor 5%, transparent);
-}
-/* Card Content */
-@utility cs-card-content {
-  padding: var(--cs-card-padding);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-/* Card Title */
-@utility cs-card-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: color-mix(in srgb, currentColor 95%, transparent);
-  margin: 0;
-  line-height: 1.3;
-}
-/* Card Description */
-@utility cs-card-description {
-  color: color-mix(in srgb, currentColor 70%, transparent);
-  line-height: 1.6;
-  margin: 0;
-  flex: 1;
-}
-/* Card Price */
-@utility cs-card-price {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #059669;
-  margin: 0;
-}
-/* Card Actions */
-@utility cs-card-actions {
-  padding: 0 var(--cs-card-padding) var(--cs-card-padding);
-  display: flex;
-  gap: 0.75rem;
-}
-/* Primary Button for Cards */
-@utility cs-button-primary-card {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 200ms ease;
-  flex: 1;
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px color-mix(in srgb, #3b82f6 40%, transparent);
-  }
-}
-/* Testimonial Card - v0.8.x compatible */
-@utility cs-card-testimonial {
-  background: var(--cs-card-bg);
-  border-radius: var(--cs-card-border-radius);
-  box-shadow: var(--cs-card-shadow);
-  transition: all 300ms ease;
-  overflow: hidden;
-  padding: var(--cs-card-padding);
-  max-width: 24rem;
-  text-align: center;
-  position: relative;
-  &:hover {
-    box-shadow: var(--cs-card-shadow-hover);
-    transform: translateY(var(--cs-card-hover-lift));
-  }
-}
-/* Testimonial Quote */
-@utility cs-testimonial-quote {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  font-style: italic;
-  color: color-mix(in srgb, currentColor 85%, transparent);
-  margin-bottom: 1.5rem;
-  position: relative;
-  &::before {
-    content: '"';
-    position: absolute;
-    top: -0.5rem;
-    left: -0.5rem;
-    font-size: 3rem;
-    color: color-mix(in srgb, currentColor 20%, transparent);
-    line-height: 1;
-  }
-}
-/* Testimonial Author */
-@utility cs-testimonial-author {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-/* Testimonial Avatar */
-@utility cs-testimonial-avatar {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
-}
-/* Testimonial Info */
-@utility cs-testimonial-info {
-  text-align: left;
-}
-/* Testimonial Name */
-@utility cs-testimonial-name {
-  font-weight: 600;
-  color: color-mix(in srgb, currentColor 90%, transparent);
-  margin: 0;
-}
-/* Testimonial Role */
-@utility cs-testimonial-role {
-  font-size: 0.875rem;
-  color: color-mix(in srgb, currentColor 60%, transparent);
-  margin: 0;
-}
-/* Testimonial with Orbs - v0.8.x compatible */
-@utility cs-card-testimonial-orb {
-  background: linear-gradient(135deg, 
-    color-mix(in srgb, #3b82f6 10%, transparent) 0%,
-    color-mix(in srgb, #8b5cf6 15%, transparent) 50%,
-    color-mix(in srgb, #06b6d4 10%, transparent) 100%
-  );
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid color-mix(in srgb, #ffffff 20%, transparent);
-  border-radius: var(--cs-card-border-radius);
-  transition: all 300ms ease;
-  overflow: hidden;
-  padding: var(--cs-card-padding);
-  max-width: 24rem;
-  text-align: center;
-  position: relative;
-  &:hover {
-    box-shadow: var(--cs-card-shadow-hover);
-    transform: translateY(var(--cs-card-hover-lift));
-  }
-  &::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, 
-      color-mix(in srgb, #3b82f6 30%, transparent) 0%,
-      transparent 70%
-    );
-    animation: cs-orb-float 6s ease-in-out infinite;
-    pointer-events: none;
-  }
-}
-/* =========================================================
-   NAVIGATION COMPONENTS
-   Navbar, Tabs, Pills, Drawer, Breadcrumbs
-   ========================================================= */
-/* Navbar Component */
-@utility cs-navbar {
-  position: relative;
-  z-index: var(--cs-z-nav);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--cs-space-2);
-  padding: var(--cs-space-2) var(--cs-space-4);
-  background-color: var(--cs-color-bg);
-  border-bottom: 1px solid var(--cs-color-border);
-  &.cs-navbar--acrylic {
-    background-color: var(--cs-acrylic-bg);
-    border-bottom: 1px solid var(--cs-acrylic-border);
-  }
-  @supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
-    &.cs-navbar--acrylic { -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-  }
-}
-/* Brand Component */
-@utility cs-navbar-brand {
-  display: inline-block;
-  padding-top: calc(0.3125rem * var(--cs-density));
-  padding-bottom: calc(0.3125rem * var(--cs-density));
-  margin-right: var(--cs-space-4);
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap;
-  text-decoration: none;
-  color: inherit;
-}
-/* Navigation Tabs */
-@utility cs-nav-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--cs-color-border);
-  & .cs-nav-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  & .cs-nav-item { display: flex; margin-bottom: -1px; }
-  & .cs-nav-link {
-    display: inline-block;
-    padding: var(--cs-space-3) var(--cs-space-4);
-    color: var(--cs-color-text-secondary);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.875rem;
-    border: 1px solid transparent;
-    border-bottom: none;
-    border-top-left-radius: var(--cs-radius-md);
-    border-top-right-radius: var(--cs-radius-md);
-    transition: all var(--cs-transition-fast) var(--cs-ease-out);
-    white-space: nowrap;
-    position: relative;
-    &:hover { 
-      color: var(--cs-color-text); 
-      border-color: var(--cs-color-border-light); 
-      background-color: var(--cs-color-bg-hover); 
-    }
-  }
-  & .cs-nav-item.cs-nav-item--active .cs-nav-link {
-    color: var(--cs-color-primary);
-    background-color: var(--cs-color-bg);
-    border-color: var(--cs-color-border) var(--cs-color-border) var(--cs-color-bg);
-    &::after { 
-      content: ''; 
-      position: absolute; 
-      bottom: -1px; 
-      left: 0; 
-      right: 0; 
-      height: 2px; 
-      background-color: var(--cs-color-primary); 
-    }
-  }
-}
-/* Tab Content */
-@utility cs-tab-content { 
-  display: none; 
-  padding: var(--cs-space-4); 
-  animation: cs-tab-switch var(--cs-transition-base) var(--cs-ease-out); 
-}
-@utility cs-tab-content--active { 
-  display: block; 
-}
-/* Drawer Component */
-@utility cs-drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--cs-z-drawer);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  max-width: 320px;
-  background-color: var(--cs-color-bg);
-  box-shadow: var(--cs-shadow-xl);
-  transform: translateX(-100%);
-  transition: transform var(--cs-transition-fast) var(--cs-ease-out);
-  &[open], &.cs-is-open { 
-    transform: translateX(0); 
-  }
-  &.cs-drawer--right { 
-    left: auto; 
-    right: 0; 
-    transform: translateX(100%); 
-    &[open], &.cs-is-open { 
-      transform: translateX(0); 
-    }
-  }
-}
-@utility cs-drawer-header { 
-  padding: var(--cs-space-4); 
-  border-bottom: 1px solid var(--cs-color-border); 
-}
-@utility cs-drawer-body { 
-  flex: 1; 
-  padding: var(--cs-space-4); 
-  overflow-y: auto; 
-}
-@utility cs-drawer-footer { 
-  padding: var(--cs-space-4); 
-  border-top: 1px solid var(--cs-color-border); 
-}
-@utility cs-drawer-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: calc(var(--cs-z-drawer) - 1);
-  width: 100%;
-  height: 100%;
-  background-color: var(--cs-backdrop-bg);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--cs-transition-fast) var(--cs-ease-out), 
-              visibility var(--cs-transition-fast) var(--cs-ease-out);
-}
-/* Open state sibling backdrop */
-@utility cs-drawer { 
-  &[open] ~ .cs-drawer-backdrop, 
-  &.cs-is-open ~ .cs-drawer-backdrop { 
-    opacity: 1; 
-    visibility: visible; 
-  } 
-}
-/* =========================================================
    RESPONSIVE GLASS UTILITIES
-   Container queries and responsive glass blur effects
    ========================================================= */
 /* Responsive glass blur based on container size */
 @utility cs-glass-responsive {
@@ -3217,8 +2663,7 @@
   background-clip: padding-box;
 }
 /* =========================================================
-   GLASS-FIRST FALLBACKS & PERFORMANCE
-   Fallback optimizations for legacy browsers
+   FALLBACKS & BROWSER SUPPORT
    ========================================================= */
 /* For browsers that don't support backdrop-filter,
    provide a fallback with slightly higher opacity background */
@@ -3293,32 +2738,9 @@
 /* Reduced motion optimizations */
 @media (prefers-reduced-motion: reduce) {
   .cs-glass-morph-in,
-  .cs-glass-morph-out {
+  .cs-glass-morph-out,
+  .cs-glass-3d-hover {
     animation: none !important;
-    transition: opacity 0.1s ease-in-out !important;
-  }
-  .cs-glass-skeleton::after {
-    animation: none !important;
-    opacity: 0.1;
-  }
-  .cs-glass-card,
-  .cs-glass-card-light,
-  .cs-glass-button,
-  .cs-glass-toast,
-  .cs-glass-3d-hover,
-  .cs-card-feature,
-  .cs-card-product,
-  .cs-card-pricing {
-    transition: none !important;
-  }
-  .cs-glass-card:hover,
-  .cs-glass-card-light:hover,
-  .cs-glass-button:hover,
-  .cs-glass-toast:hover,
-  .cs-glass-3d-hover:hover,
-  .cs-card-feature:hover,
-  .cs-card-product:hover,
-  .cs-card-pricing:hover {
     transform: none !important;
   }
 }
@@ -3494,4 +2916,692 @@
    ========================================================= */
 @utility cs-cq { 
   container-type: inline-size; 
+}
+/* =========================================================
+   ENHANCED ORB ANIMATIONS (v0.8.x)
+   ========================================================= */
+/* Float Animation */
+@utility cs-orb-float {
+  animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite;
+}
+/* Pulse Animation */
+@utility cs-orb-pulse {
+  animation: cs-orb-pulse-kf var(--cs-anim-duration-pulse) var(--cs-anim-ease-inout) infinite;
+}
+/* Drift Animation */
+@utility cs-orb-drift {
+  animation: cs-orb-drift-kf var(--cs-anim-duration-drift) var(--cs-anim-ease-inout) infinite;
+}
+/* Morph Animation */
+@utility cs-orb-morph {
+  animation: cs-orb-morph 12s ease-in-out infinite;
+}
+/* Shimmer Animation */
+@utility cs-orb-shimmer {
+  background: linear-gradient(270deg, var(--cs-orb-blue), var(--cs-orb-blue-light), var(--cs-orb-blue));
+  background-size: 600% 600%;
+  animation: cs-orb-shimmer 10s infinite;
+}
+/* Bloom Animation (hover/focus triggered) */
+@utility cs-orb-bloom {
+  &:hover, &:focus-visible {
+    transform-origin: 50%;
+    animation: cs-orb-bloom 2s ease-in-out infinite;
+  }
+}
+/* Zen Animation (combined float + morph) */
+@utility cs-orb-zen {
+  animation: cs-orb-float-kf var(--cs-anim-duration-float) var(--cs-anim-ease-inout) infinite,
+             cs-orb-morph 14s ease-in-out infinite;
+}
+/* Advanced Movement Animations */
+@utility cs-orb-orbit {
+  animation: cs-orb-orbit 20s linear infinite;
+}
+@utility cs-orb-orbit-reverse {
+  animation: cs-orb-orbit 20s linear infinite reverse;
+}
+@utility cs-orb-figure-8 {
+  animation: cs-orb-figure-8 16s ease-in-out infinite;
+}
+@utility cs-orb-wander {
+  animation: cs-orb-wander 25s ease-in-out infinite;
+}
+@utility cs-orb-swing {
+  animation: cs-orb-swing 8s ease-in-out infinite;
+}
+@utility cs-orb-bounce {
+  animation: cs-orb-bounce 3s ease-in-out infinite;
+}
+@utility cs-orb-magnetic {
+  animation: cs-orb-magnetic 12s ease-in-out infinite;
+}
+/* Color & Visual Effects */
+@utility cs-orb-hue-shift {
+  animation: cs-orb-hue-shift 10s linear infinite;
+}
+@utility cs-orb-rainbow {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #f0932b, #eb4d4b, #6c5ce7) 0 0/400% 400%;
+  animation: cs-orb-rainbow 8s infinite;
+}
+@utility cs-orb-color-pulse {
+  animation: cs-orb-color-pulse 4s ease-in-out infinite;
+}
+@utility cs-orb-color-breathe {
+  animation: cs-orb-color-breathe 6s ease-in-out infinite;
+}
+@utility cs-orb-glow {
+  animation: cs-orb-glow 3s ease-in-out infinite;
+}
+@utility cs-orb-flicker {
+  animation: cs-orb-flicker 2s ease-in-out infinite;
+}
+@utility cs-orb-scale-pulse {
+  animation: cs-orb-scale-pulse 4s ease-in-out infinite;
+}
+@utility cs-orb-elastic {
+  animation: cs-orb-elastic 3s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+/* Complex Combined Animations */
+@utility cs-orb-dream {
+  animation: cs-orb-float-kf 12s ease-in-out infinite,
+             cs-orb-hue-shift 15s linear infinite,
+             cs-orb-scale-pulse 8s ease-in-out infinite;
+}
+@utility cs-orb-cosmic {
+  animation: cs-orb-orbit 30s linear infinite,
+             cs-orb-rainbow 10s infinite,
+             cs-orb-glow 4s ease-in-out infinite;
+}
+@utility cs-orb-chaos {
+  animation: cs-orb-wander 20s ease-in-out infinite,
+             cs-orb-flicker 1.5s ease-in-out infinite,
+             cs-orb-elastic 5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+/* =========================================================
+   ANIMATION SPEED CONTROLS
+   ========================================================= */
+@utility cs-orb-slow {
+  animation-duration: calc(var(--cs-orb-speed, 1) * 2);
+}
+@utility cs-orb-fast {
+  animation-duration: calc(var(--cs-orb-speed, 1) * 0.5);
+}
+/* =========================================================
+   INTERACTIVE ANIMATION CONTROLS
+   ========================================================= */
+@utility cs-orb-pause-hover {
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+@utility cs-orb-reverse-hover {
+  &:hover {
+    animation-direction: reverse;
+  }
+}
+@utility cs-orb-trigger-hover {
+  animation-play-state: paused;
+  &:hover {
+    animation-play-state: running;
+  }
+}
+/* =========================================================
+   CORE UTILITY HELPER CLASSES
+   ========================================================= */
+@utility cs-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* =========================================================
+   GLOW EFFECTS
+   ========================================================= */
+@utility cs-glow {
+  box-shadow: 0 0 transparent;
+}
+@utility cs-glow-blue {
+  box-shadow: 0 0 24px 8px var(--cs-orb-blue);
+  @supports (color: color-mix(in lab, red, red)) {
+    box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-blue) 35%, transparent);
+  }
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    box-shadow: 0 0 24px 8px rgba(59, 130, 246, 0.35);
+  }
+}
+@utility cs-glow-pink {
+  box-shadow: 0 0 24px 8px var(--cs-orb-pink);
+  @supports (color: color-mix(in lab, red, red)) {
+    box-shadow: 0 0 24px 8px color-mix(in srgb, var(--cs-orb-pink) 35%, transparent);
+  }
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    box-shadow: 0 0 24px 8px rgba(236, 72, 153, 0.35);
+  }
+}
+/* =========================================================
+   CORE POSITIONING UTILITIES
+   ========================================================= */
+@utility cs-will-transform {
+  will-change: transform;
+}
+/* =========================================================
+   CARD COMPONENTS
+   ========================================================= */
+@utility cs-card {
+  position: relative;
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: calc(12px * var(--cs-density));
+  box-shadow: var(--cs-shadow-2);
+  padding: calc(16px * var(--cs-density));
+  transition: box-shadow var(--cs-transition), transform var(--cs-transition);
+  &:hover {
+    box-shadow: var(--cs-shadow-3);
+    transform: translateY(-1px);
+  }
+}
+@utility cs-card-title {
+  color: var(--cs-text);
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+@utility cs-card-hover-orb {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    width: 200%;
+    height: 200%;
+    background: var(--cs-orb-fallback-blue);
+    filter: blur(32px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.5s;
+  }
+  &:hover::before {
+    opacity: 0.6;
+  }
+}
+@utility cs-card-hover-orb-shimmer {
+  &::before {
+    background: linear-gradient(135deg, #3b82f6, #93c5fd, #3b82f6) 0 0/300% 300%;
+    animation: cs-orb-shimmer 6s linear infinite;
+  }
+}
+@utility cs-surface-pop {
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  border-radius: 12px;
+  box-shadow: var(--cs-shadow-4);
+}
+/* =========================================================
+   ACRYLIC/GLASSMORPHISM EFFECT
+   ========================================================= */
+@utility cs-acrylic {
+  background: var(--cs-surface);
+  border: 1px solid var(--cs-border);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  @supports (color: color-mix(in lab, red, red)) {
+    background: color-mix(in srgb, var(--cs-surface) 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cs-border) 70%, transparent);
+  }
+  @supports not (backdrop-filter: blur(10px)) {
+    background: rgba(255, 255, 255, 0.75);
+  }
+}
+/* =========================================================
+   BUTTON COMPONENTS
+   ========================================================= */
+@utility cs-btn {
+  --_pad-y: calc(8px * var(--cs-density));
+  --_pad-x: calc(14px * var(--cs-density));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: var(--_pad-y) var(--_pad-x);
+  border: 1px solid var(--cs-border);
+  border-radius: calc(10px * var(--cs-density));
+  background: var(--cs-surface-2);
+  color: var(--cs-text);
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: var(--cs-shadow-1);
+  transition: background var(--cs-transition), box-shadow var(--cs-transition), transform var(--cs-transition);
+  &:hover {
+    box-shadow: var(--cs-shadow-2);
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+@utility cs-btn-primary {
+  background: var(--cs-orb-blue);
+  border-color: var(--cs-orb-blue);
+  color: var(--cs-text);
+  @supports (color: color-mix(in lab, red, red)) {
+    background: color-mix(in srgb, var(--cs-orb-blue) 12%, var(--cs-surface));
+    border-color: color-mix(in srgb, var(--cs-orb-blue) 35%, var(--cs-border));
+  }
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    background: #eef5ff;
+    border-color: #b8d1ff;
+  }
+}
+@utility cs-btn-orb {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle at center, var(--cs-orb-blue-light), transparent 70%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.4s, transform 0.4s;
+    z-index: 0;
+  }
+  &:hover::after {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+}
+/* =========================================================
+   LAYOUT COMPONENTS
+   ========================================================= */
+@utility cs-section-orb {
+  position: relative;
+  overflow: clip;
+  & > .cs-orb {
+    position: absolute;
+    inset: auto;
+  }
+}
+@utility cs-orb-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--cs-orb-fallback-purple);
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: var(--cs-z-modal);
+}
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   ========================================================= */
+/* Basic Movement Animations */
+@keyframes cs-orb-float-kf {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes cs-orb-pulse-kf {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+@keyframes cs-orb-drift-kf {
+  0% {
+    transform: translate(0);
+  }
+  33% {
+    transform: translate(30px);
+  }
+  66% {
+    transform: translate(-20px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes cs-orb-morph {
+  0% {
+    border-radius: 50%;
+  }
+  25% {
+    border-radius: 55% 45% 60% 40% / 60% 40% 55% 45%;
+  }
+  50% {
+    border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%;
+  }
+  75% {
+    border-radius: 45% 55% 50% 50% / 50% 50% 45% 55%;
+  }
+  100% {
+    border-radius: 50%;
+  }
+}
+@keyframes cs-orb-bloom {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+@keyframes cs-orb-shimmer {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+/* Complex Movement Animations */
+@keyframes cs-orb-orbit {
+  0% {
+    transform: rotate(0deg) translate(100px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(100px) rotate(-360deg);
+  }
+}
+@keyframes cs-orb-figure-8 {
+  0% {
+    transform: translate(0);
+  }
+  12.5% {
+    transform: translate(30px, -15px);
+  }
+  25% {
+    transform: translate(40px);
+  }
+  37.5% {
+    transform: translate(30px, 15px);
+  }
+  50% {
+    transform: translate(0);
+  }
+  62.5% {
+    transform: translate(-30px, 15px);
+  }
+  75% {
+    transform: translate(-40px);
+  }
+  87.5% {
+    transform: translate(-30px, -15px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes cs-orb-wander {
+  0% {
+    transform: translate(0);
+  }
+  10% {
+    transform: translate(25px, -30px);
+  }
+  20% {
+    transform: translate(-15px, -45px);
+  }
+  30% {
+    transform: translate(40px, -20px);
+  }
+  40% {
+    transform: translate(10px, 35px);
+  }
+  50% {
+    transform: translate(-35px, 15px);
+  }
+  60% {
+    transform: translate(-20px, -25px);
+  }
+  70% {
+    transform: translate(30px, 40px);
+  }
+  80% {
+    transform: translate(-40px, -10px);
+  }
+  90% {
+    transform: translate(20px, -35px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes cs-orb-swing {
+  0%, 100% {
+    transform: rotate(-15deg) translate(0);
+  }
+  50% {
+    transform: rotate(15deg) translate(0);
+  }
+}
+@keyframes cs-orb-bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-30px);
+  }
+  70% {
+    transform: translateY(-15px);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+}
+@keyframes cs-orb-magnetic {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(50px, 20px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, -40px) scale(0.9);
+  }
+  75% {
+    transform: translate(-50px, 30px) scale(1.05);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+/* Color & Visual Effect Animations */
+@keyframes cs-orb-hue-shift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+@keyframes cs-orb-rainbow {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+@keyframes cs-orb-color-pulse {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.3) saturate(1.5);
+  }
+}
+@keyframes cs-orb-color-breathe {
+  0%, 100% {
+    filter: brightness(0.8) contrast(1.1);
+    opacity: 0.7;
+  }
+  50% {
+    filter: brightness(1.2) contrast(1.3);
+    opacity: 1;
+  }
+}
+@keyframes cs-orb-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(79, 124, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(79, 124, 255, 0.8), 0 0 80px rgba(79, 124, 255, 0.4);
+  }
+}
+@keyframes cs-orb-flicker {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+@keyframes cs-orb-scale-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+@keyframes cs-orb-elastic {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1, 0.9);
+  }
+  50% {
+    transform: scale(0.9, 1.1);
+  }
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+}
+/* =========================================================
+   ACCESSIBILITY & RESPONSIVE DESIGN
+   ========================================================= */
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .cs-orb-float,
+  .cs-orb-pulse,
+  .cs-orb-drift,
+  .cs-orb-bloom,
+  .cs-orb-shimmer,
+  .cs-orb-morph,
+  .cs-orb-zen,
+  .cs-card-hover-orb::before,
+  .cs-btn-orb::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .cs-orb {
+    filter: none;
+    opacity: 0.9;
+  }
+  .cs-card,
+  .cs-btn {
+    box-shadow: var(--cs-shadow-1);
+  }
+}
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .cs-orb {
+    opacity: 0.15;
+    background: CanvasText;
+  }
+  .cs-btn {
+    border: 1px solid ButtonText;
+  }
+}
+/* Mobile optimizations */
+@media (max-width: 480px) {
+  .cs-orb:is(.cs-orb-blur-lg, .cs-orb-blur-md) {
+    filter: blur(2px);
+  }
+  .cs-orb-float {
+    animation-duration: calc(var(--cs-anim-duration-float) * 1.25);
+  }
+}
+/* Focus styles */
+.cs-focus-ring:focus-visible,
+.cs-btn:focus-visible,
+.cs-card:focus-visible {
+  outline: 2px solid var(--cs-orb-blue);
+  outline-offset: 2px;
+  @supports (color: color-mix(in lab, red, red)) {
+    outline: 2px solid color-mix(in srgb, var(--cs-orb-blue) 60%, transparent);
+  }
+  @supports not (color: color-mix(in srgb, red 50%, white)) {
+    outline: 2px solid #3b82f6;
+  }
+}
+/* Print styles */
+@media print {
+  .cs-orb {
+    filter: none !important;
+    opacity: 0.15 !important;
+  }
+  .cs-card,
+  .cs-btn,
+  .cs-surface-pop {
+    box-shadow: none !important;
+    border: 1px solid black !important;
+  }
 }

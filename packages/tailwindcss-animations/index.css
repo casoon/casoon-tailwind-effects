@@ -1,10 +1,12 @@
 /*!
- * tailwindcss-animations - Plain CSS Distribution
+ * tailwindcss-animations - Tailwind v4 Package
  * Version: 0.9.0
  * 
- * This version can be used WITHOUT Tailwind CSS.
- * All @utility directives converted to standard CSS classes.
+ * For use with Tailwind CSS v4
+ * Usage: @import "@casoon/tailwindcss-animations/index.css";
  */
+
+/* Note: @import "tailwindcss"; should be added by the consumer */
 
 /*!
  * Casoon Animations - Complete Animation System for Tailwind v4
@@ -29,16 +31,16 @@
  * ✅ Comprehensive reduced motion support
  * ✅ Touch-friendly micro-interactions
  * 
- * Usage: 
+ * Usage: @import "@casoon/tailwindcss-animations/index.css";
  */
 
-/* Note:  should be added by the consumer */
+/* Note: @import "tailwindcss"; should be added by the consumer */
 
 /* =========================================================
    CONSOLIDATED ANIMATION THEME & TOKENS
    Complete animation system with timing and easing
    ========================================================= */
-:root {
+@theme {
   /* === DURATION SYSTEM === */
   --cs-anim-duration-xxs: 100ms;
   --cs-anim-duration-xs: 150ms;
@@ -446,7 +448,7 @@
    Flexible animation system with CSS custom properties
    ========================================================= */
 
-.cs-anim  {
+@utility cs-anim {
   animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
   animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
   animation-iteration-count: var(--cs-anim-count, 1);
@@ -460,90 +462,90 @@
    Complete timing scale for fine-tuned control
    ========================================================= */
 
-.cs-anim-xxs  { --cs-anim-duration: var(--cs-anim-duration-xxs); }
-.cs-anim-xs  { --cs-anim-duration: var(--cs-anim-duration-xs); }
-.cs-anim-sm  { --cs-anim-duration: var(--cs-anim-duration-sm); }
-.cs-anim-md  { --cs-anim-duration: var(--cs-anim-duration-md); }
-.cs-anim-lg  { --cs-anim-duration: var(--cs-anim-duration-lg); }
-.cs-anim-xl  { --cs-anim-duration: var(--cs-anim-duration-xl); }
-.cs-anim-2xl  { --cs-anim-duration: var(--cs-anim-duration-2xl); }
-.cs-anim-3xl  { --cs-anim-duration: var(--cs-anim-duration-3xl); }
+@utility cs-anim-xxs { --cs-anim-duration: var(--cs-anim-duration-xxs); }
+@utility cs-anim-xs { --cs-anim-duration: var(--cs-anim-duration-xs); }
+@utility cs-anim-sm { --cs-anim-duration: var(--cs-anim-duration-sm); }
+@utility cs-anim-md { --cs-anim-duration: var(--cs-anim-duration-md); }
+@utility cs-anim-lg { --cs-anim-duration: var(--cs-anim-duration-lg); }
+@utility cs-anim-xl { --cs-anim-duration: var(--cs-anim-duration-xl); }
+@utility cs-anim-2xl { --cs-anim-duration: var(--cs-anim-duration-2xl); }
+@utility cs-anim-3xl { --cs-anim-duration: var(--cs-anim-duration-3xl); }
 
 /* =========================================================
    EASING UTILITIES
    Advanced easing functions for natural motion
    ========================================================= */
 
-.cs-ease-standard  { --cs-anim-ease: var(--cs-anim-ease-standard); }
-.cs-ease-emphasized  { --cs-anim-ease: var(--cs-anim-ease-emphasized); }
-.cs-ease-decelerate  { --cs-anim-ease: var(--cs-anim-ease-decelerate); }
-.cs-ease-accelerate  { --cs-anim-ease: var(--cs-anim-ease-accelerate); }
-.cs-ease-spring  { --cs-anim-ease: var(--cs-anim-ease-spring); }
-.cs-ease-soft-spring  { --cs-anim-ease: var(--cs-anim-ease-soft-spring); }
-.cs-ease-bounce  { --cs-anim-ease: var(--cs-anim-ease-bounce); }
-.cs-ease-elastic  { --cs-anim-ease: var(--cs-anim-ease-elastic); }
-.cs-ease-smooth  { --cs-anim-ease: var(--cs-anim-ease-smooth); }
-.cs-ease-crisp  { --cs-anim-ease: var(--cs-anim-ease-crisp); }
-.cs-ease-overshoot  { --cs-anim-ease: var(--cs-anim-ease-overshoot); }
+@utility cs-ease-standard { --cs-anim-ease: var(--cs-anim-ease-standard); }
+@utility cs-ease-emphasized { --cs-anim-ease: var(--cs-anim-ease-emphasized); }
+@utility cs-ease-decelerate { --cs-anim-ease: var(--cs-anim-ease-decelerate); }
+@utility cs-ease-accelerate { --cs-anim-ease: var(--cs-anim-ease-accelerate); }
+@utility cs-ease-spring { --cs-anim-ease: var(--cs-anim-ease-spring); }
+@utility cs-ease-soft-spring { --cs-anim-ease: var(--cs-anim-ease-soft-spring); }
+@utility cs-ease-bounce { --cs-anim-ease: var(--cs-anim-ease-bounce); }
+@utility cs-ease-elastic { --cs-anim-ease: var(--cs-anim-ease-elastic); }
+@utility cs-ease-smooth { --cs-anim-ease: var(--cs-anim-ease-smooth); }
+@utility cs-ease-crisp { --cs-anim-ease: var(--cs-anim-ease-crisp); }
+@utility cs-ease-overshoot { --cs-anim-ease: var(--cs-anim-ease-overshoot); }
 
 /* =========================================================
    DELAY UTILITIES
    Precise timing control for orchestration
    ========================================================= */
 
-.cs-delay-0  { --cs-anim-delay: 0ms; }
-.cs-delay-50  { --cs-anim-delay: 50ms; }
-.cs-delay-75  { --cs-anim-delay: 75ms; }
-.cs-delay-100  { --cs-anim-delay: 100ms; }
-.cs-delay-150  { --cs-anim-delay: 150ms; }
-.cs-delay-200  { --cs-anim-delay: 200ms; }
-.cs-delay-300  { --cs-anim-delay: 300ms; }
-.cs-delay-500  { --cs-anim-delay: 500ms; }
-.cs-delay-700  { --cs-anim-delay: 700ms; }
-.cs-delay-1000  { --cs-anim-delay: 1000ms; }
-.cs-delay-1500  { --cs-anim-delay: 1500ms; }
+@utility cs-delay-0 { --cs-anim-delay: 0ms; }
+@utility cs-delay-50 { --cs-anim-delay: 50ms; }
+@utility cs-delay-75 { --cs-anim-delay: 75ms; }
+@utility cs-delay-100 { --cs-anim-delay: 100ms; }
+@utility cs-delay-150 { --cs-anim-delay: 150ms; }
+@utility cs-delay-200 { --cs-anim-delay: 200ms; }
+@utility cs-delay-300 { --cs-anim-delay: 300ms; }
+@utility cs-delay-500 { --cs-anim-delay: 500ms; }
+@utility cs-delay-700 { --cs-anim-delay: 700ms; }
+@utility cs-delay-1000 { --cs-anim-delay: 1000ms; }
+@utility cs-delay-1500 { --cs-anim-delay: 1500ms; }
 
 /* =========================================================
    ANIMATION CONTROL UTILITIES
    Direction, iteration, and fill mode controls
    ========================================================= */
 
-.cs-anim-infinite  { --cs-anim-count: infinite; }
-.cs-anim-reverse  { --cs-anim-direction: reverse; }
-.cs-anim-alternate  { --cs-anim-direction: alternate; }
-.cs-anim-alternate-reverse  { --cs-anim-direction: alternate-reverse; }
-.cs-anim-both  { --cs-anim-fill: both; }
-.cs-anim-forwards  { --cs-anim-fill: forwards; }
-.cs-anim-backwards  { --cs-anim-fill: backwards; }
-.cs-anim-none  { --cs-anim-fill: none; }
+@utility cs-anim-infinite { --cs-anim-count: infinite; }
+@utility cs-anim-reverse { --cs-anim-direction: reverse; }
+@utility cs-anim-alternate { --cs-anim-direction: alternate; }
+@utility cs-anim-alternate-reverse { --cs-anim-direction: alternate-reverse; }
+@utility cs-anim-both { --cs-anim-fill: both; }
+@utility cs-anim-forwards { --cs-anim-fill: forwards; }
+@utility cs-anim-backwards { --cs-anim-fill: backwards; }
+@utility cs-anim-none { --cs-anim-fill: none; }
 
 /* Iteration count utilities */
-.cs-anim-once  { --cs-anim-count: 1; }
-.cs-anim-twice  { --cs-anim-count: 2; }
-.cs-anim-thrice  { --cs-anim-count: 3; }
+@utility cs-anim-once { --cs-anim-count: 1; }
+@utility cs-anim-twice { --cs-anim-count: 2; }
+@utility cs-anim-thrice { --cs-anim-count: 3; }
 
 /* =========================================================
    ENTRANCE ANIMATION UTILITIES
    Complete set of entrance animations
    ========================================================= */
 
-.cs-fade-in  { animation-name: csFadeIn; }
-.cs-fade-out  { animation-name: csFadeOut; }
-.cs-scale-in  { animation-name: csScaleIn; }
-.cs-scale-out  { animation-name: csScaleOut; }
-.cs-zoom-in  { animation-name: csZoomIn; }
-.cs-zoom-out  { animation-name: csZoomOut; }
-.cs-slide-up  { animation-name: csSlideUp; }
-.cs-slide-down  { animation-name: csSlideDown; }
-.cs-slide-left  { animation-name: csSlideLeft; }
-.cs-slide-right  { animation-name: csSlideRight; }
-.cs-blur-in  { animation-name: csBlurIn; }
-.cs-blur-out  { animation-name: csBlurOut; }
-.cs-rotate-in  { animation-name: csRotateIn; }
-.cs-flip-in  { animation-name: csFlipIn; }
+@utility cs-fade-in { animation-name: csFadeIn; }
+@utility cs-fade-out { animation-name: csFadeOut; }
+@utility cs-scale-in { animation-name: csScaleIn; }
+@utility cs-scale-out { animation-name: csScaleOut; }
+@utility cs-zoom-in { animation-name: csZoomIn; }
+@utility cs-zoom-out { animation-name: csZoomOut; }
+@utility cs-slide-up { animation-name: csSlideUp; }
+@utility cs-slide-down { animation-name: csSlideDown; }
+@utility cs-slide-left { animation-name: csSlideLeft; }
+@utility cs-slide-right { animation-name: csSlideRight; }
+@utility cs-blur-in { animation-name: csBlurIn; }
+@utility cs-blur-out { animation-name: csBlurOut; }
+@utility cs-rotate-in { animation-name: csRotateIn; }
+@utility cs-flip-in { animation-name: csFlipIn; }
 
 /* v0.8.0-kompatible Aliase */
-.cs-anim  {
+@utility cs-anim {
   animation-duration: var(--cs-anim-duration, var(--cs-anim-duration-md));
   animation-timing-function: var(--cs-anim-ease, var(--cs-anim-ease-standard));
   animation-iteration-count: 1;
@@ -553,14 +555,14 @@
 }
 
 /* Additional utility classes that match v0.8.0 */
-.cs-reveal-3d-up  { animation-name: csReveal3DUp; }
-.cs-reveal-3d-right  { animation-name: csReveal3DRight; }
-.cs-marquee  {
+@utility cs-reveal-3d-up { animation-name: csReveal3DUp; }
+@utility cs-reveal-3d-right { animation-name: csReveal3DRight; }
+@utility cs-marquee {
   animation-name: csMarqueeLeft;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-.cs-parallax-y  {
+@utility cs-parallax-y {
   animation-name: csParallaxY;
   animation-direction: alternate;
   animation-iteration-count: infinite;
@@ -571,49 +573,49 @@
    Looping and infinite animations
    ========================================================= */
 
-.cs-rotate  { 
+@utility cs-rotate { 
   animation-name: csRotate; 
   animation-duration: var(--cs-anim-duration-lg);
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-.cs-pulse  { 
+@utility cs-pulse { 
   animation-name: csPulse; 
   animation-duration: var(--cs-anim-duration-lg);
   animation-iteration-count: infinite;
 }
 
-.cs-bounce  { 
+@utility cs-bounce { 
   animation-name: csBounce; 
   animation-duration: var(--cs-anim-duration-lg);
   animation-iteration-count: infinite;
 }
 
-.cs-wiggle  { animation-name: csWiggle; }
-.cs-shake  { animation-name: csShake; }
-.cs-heartbeat  { 
+@utility cs-wiggle { animation-name: csWiggle; }
+@utility cs-shake { animation-name: csShake; }
+@utility cs-heartbeat { 
   animation-name: csHeartbeat; 
   animation-duration: var(--cs-anim-duration-lg);
   animation-iteration-count: infinite;
 }
 
-.cs-rubber-band  { animation-name: csRubberBand; }
+@utility cs-rubber-band { animation-name: csRubberBand; }
 
 /* =========================================================
    3D ANIMATION UTILITIES
    Perspective and 3D transform animations
    ========================================================= */
 
-.cs-reveal-3d-up  { animation-name: csReveal3DUp; }
-.cs-reveal-3d-right  { animation-name: csReveal3DRight; }
-.cs-reveal-3d-left  { animation-name: csReveal3DLeft; }
-.cs-flip-3d-x  { 
+@utility cs-reveal-3d-up { animation-name: csReveal3DUp; }
+@utility cs-reveal-3d-right { animation-name: csReveal3DRight; }
+@utility cs-reveal-3d-left { animation-name: csReveal3DLeft; }
+@utility cs-flip-3d-x { 
   animation-name: csFlip3DX; 
   animation-duration: var(--cs-anim-duration-lg);
 }
 
-.cs-flip-3d-y  { 
+@utility cs-flip-3d-y { 
   animation-name: csFlip3DY; 
   animation-duration: var(--cs-anim-duration-lg);
 }
@@ -623,41 +625,41 @@
    Scroll-based and parallax animations
    ========================================================= */
 
-.cs-marquee-left  { 
+@utility cs-marquee-left { 
   animation-name: csMarqueeLeft; 
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-.cs-marquee-right  { 
+@utility cs-marquee-right { 
   animation-name: csMarqueeRight; 
   animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 
-.cs-parallax-y  { 
+@utility cs-parallax-y { 
   animation-name: csParallaxY; 
   animation-duration: 6s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }
 
-.cs-parallax-x  { 
+@utility cs-parallax-x { 
   animation-name: csParallaxX; 
   animation-duration: 6s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }
 
-.cs-float  { 
+@utility cs-float { 
   animation-name: csFloat; 
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
 
-.cs-sway  { 
+@utility cs-sway { 
   animation-name: csSway; 
   animation-duration: 4s;
   animation-iteration-count: infinite;
@@ -669,165 +671,165 @@
    ========================================================= */
 
 /* Button Press Animation */
-.cs-btn-press  {
+@utility cs-btn-press {
   animation-name: csBtnPress;
   animation-duration: var(--cs-anim-duration-xxs);
   animation-timing-function: var(--cs-anim-ease-soft-spring);
 }
 
 /* Dropdown Animations */
-.cs-dropdown-in  {
+@utility cs-dropdown-in {
   animation-name: csDropdownIn;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-dropdown-out  {
+@utility cs-dropdown-out {
   animation-name: csDropdownOut;
   animation-duration: var(--cs-anim-duration-xs);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
 /* Tooltip Animations */
-.cs-tooltip-in  {
+@utility cs-tooltip-in {
   animation-name: csTooltipIn;
   animation-duration: var(--cs-anim-duration-xs);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-tooltip-out  {
+@utility cs-tooltip-out {
   animation-name: csTooltipOut;
   animation-duration: var(--cs-anim-duration-xxs);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
 /* Modal Animations */
-.cs-modal-in  {
+@utility cs-modal-in {
   animation-name: csModalIn;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-modal-out  {
+@utility cs-modal-out {
   animation-name: csModalOut;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
 /* Backdrop Animations */
-.cs-backdrop-in  {
+@utility cs-backdrop-in {
   animation-name: csBackdropIn;
   animation-duration: var(--cs-anim-duration-md);
 }
 
-.cs-backdrop-out  {
+@utility cs-backdrop-out {
   animation-name: csBackdropOut;
   animation-duration: var(--cs-anim-duration-sm);
 }
 
 /* Drawer Animations */
-.cs-drawer-in-left  {
+@utility cs-drawer-in-left {
   animation-name: csDrawerInLeft;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-drawer-out-left  {
+@utility cs-drawer-out-left {
   animation-name: csDrawerOutLeft;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
-.cs-drawer-in-right  {
+@utility cs-drawer-in-right {
   animation-name: csDrawerInRight;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-drawer-out-right  {
+@utility cs-drawer-out-right {
   animation-name: csDrawerOutRight;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
-.cs-drawer-in-top  {
+@utility cs-drawer-in-top {
   animation-name: csDrawerInTop;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-drawer-out-top  {
+@utility cs-drawer-out-top {
   animation-name: csDrawerOutTop;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
-.cs-drawer-in-bottom  {
+@utility cs-drawer-in-bottom {
   animation-name: csDrawerInBottom;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-drawer-out-bottom  {
+@utility cs-drawer-out-bottom {
   animation-name: csDrawerOutBottom;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
 /* Accordion Animations */
-.cs-accordion-in  {
+@utility cs-accordion-in {
   animation-name: csAccordionIn;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-decelerate);
 }
 
-.cs-accordion-out  {
+@utility cs-accordion-out {
   animation-name: csAccordionOut;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
-.cs-accordion-fade  {
+@utility cs-accordion-fade {
   animation-name: csFadeIn;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-decelerate);
 }
 
 /* Toast Animations */
-.cs-toast-in  {
+@utility cs-toast-in {
   animation-name: csToastIn;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-toast-out  {
+@utility cs-toast-out {
   animation-name: csToastOut;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
 /* Chip Animations */
-.cs-chip-in  {
+@utility cs-chip-in {
   animation-name: csChipIn;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-spring);
 }
 
-.cs-chip-out  {
+@utility cs-chip-out {
   animation-name: csChipOut;
   animation-duration: var(--cs-anim-duration-xs);
   animation-timing-function: var(--cs-anim-ease-accelerate);
 }
 
 /* Badge Animation */
-.cs-badge-pop  {
+@utility cs-badge-pop {
   animation-name: csBadgePop;
   animation-duration: var(--cs-anim-duration-sm);
   animation-timing-function: var(--cs-anim-ease-bounce);
 }
 
 /* Spinner Animation */
-.cs-spinner  {
+@utility cs-spinner {
   animation-name: csSpinner;
   animation-duration: 1s;
   animation-iteration-count: infinite;
@@ -835,7 +837,7 @@
 }
 
 /* Progress Animations */
-.cs-progress-indeterminate  {
+@utility cs-progress-indeterminate {
   animation-name: csProgressIndeterminate;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
@@ -843,20 +845,20 @@
 }
 
 /* Carousel Animations */
-.cs-carousel-slide  {
+@utility cs-carousel-slide {
   animation-name: csCarouselSlide;
   animation-duration: var(--cs-anim-duration-lg);
   animation-timing-function: var(--cs-anim-ease-decelerate);
 }
 
-.cs-carousel-fade  {
+@utility cs-carousel-fade {
   animation-name: csCarouselFade;
   animation-duration: var(--cs-anim-duration-lg);
   animation-timing-function: var(--cs-anim-ease-standard);
 }
 
 /* Ripple Effect */
-.cs-btn-ripple  {
+@utility cs-btn-ripple {
   position: relative;
   overflow: hidden;
   
@@ -875,7 +877,7 @@
 }
 
 /* Navigation Underline */
-.cs-nav-underline-in  {
+@utility cs-nav-underline-in {
   position: relative;
   
   &::after {
@@ -897,13 +899,13 @@
 }
 
 /* Tab Slide Animation */
-.cs-tab-slide  {
+@utility cs-tab-slide {
   animation-name: csTabSlide;
   animation-duration: var(--cs-anim-duration-sm);
 }
 
 /* Notification Slide */
-.cs-notification-slide  {
+@utility cs-notification-slide {
   animation-name: csNotificationSlide;
   animation-duration: var(--cs-anim-duration-md);
   animation-timing-function: var(--cs-anim-ease-spring);
@@ -914,25 +916,25 @@
    Loading states and progress indicators
    ========================================================= */
 
-.cs-skeleton-shimmer  {
+@utility cs-skeleton-shimmer {
   position: relative;
   overflow: hidden;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 10%),
+    color-mix(in srgb, currentColor 10%, transparent),
     transparent
   );
   background-size: 200% 100%;
   animation: csSkeletonShimmer 1.5s infinite;
 }
 
-.cs-progress-grow  {
+@utility cs-progress-grow {
   animation-name: csProgressGrow;
   animation-timing-function: var(--cs-anim-ease-decelerate);
 }
 
-.cs-dot-loader  {
+@utility cs-dot-loader {
   animation-name: csDotLoader;
   animation-duration: 1.4s;
   animation-iteration-count: infinite;
@@ -944,7 +946,7 @@
    Orchestrated animations with extended support
    ========================================================= */
 
-.cs-stagger-50  {
+@utility cs-stagger-50 {
   > .cs-anim:nth-child(1) { --cs-anim-delay: 0ms; }
   > .cs-anim:nth-child(2) { --cs-anim-delay: 50ms; }
   > .cs-anim:nth-child(3) { --cs-anim-delay: 100ms; }
@@ -959,7 +961,7 @@
   > .cs-anim:nth-child(12) { --cs-anim-delay: 550ms; }
 }
 
-.cs-stagger-75  {
+@utility cs-stagger-75 {
   > .cs-anim:nth-child(1) { --cs-anim-delay: 0ms; }
   > .cs-anim:nth-child(2) { --cs-anim-delay: 75ms; }
   > .cs-anim:nth-child(3) { --cs-anim-delay: 150ms; }
@@ -974,7 +976,7 @@
   > .cs-anim:nth-child(12) { --cs-anim-delay: 825ms; }
 }
 
-.cs-stagger-100  {
+@utility cs-stagger-100 {
   > .cs-anim:nth-child(1) { --cs-anim-delay: 0ms; }
   > .cs-anim:nth-child(2) { --cs-anim-delay: 100ms; }
   > .cs-anim:nth-child(3) { --cs-anim-delay: 200ms; }
@@ -989,7 +991,7 @@
   > .cs-anim:nth-child(12) { --cs-anim-delay: 1100ms; }
 }
 
-.cs-stagger-150  {
+@utility cs-stagger-150 {
   > .cs-anim:nth-child(1) { --cs-anim-delay: 0ms; }
   > .cs-anim:nth-child(2) { --cs-anim-delay: 150ms; }
   > .cs-anim:nth-child(3) { --cs-anim-delay: 300ms; }
@@ -1004,7 +1006,7 @@
   > .cs-anim:nth-child(12) { --cs-anim-delay: 1650ms; }
 }
 
-.cs-stagger-200  {
+@utility cs-stagger-200 {
   > .cs-anim:nth-child(1) { --cs-anim-delay: 0ms; }
   > .cs-anim:nth-child(2) { --cs-anim-delay: 200ms; }
   > .cs-anim:nth-child(3) { --cs-anim-delay: 400ms; }
@@ -1024,50 +1026,50 @@
    Optimization hints for better animation performance
    ========================================================= */
 
-.cs-will-transform  { will-change: transform; }
-.cs-will-opacity  { will-change: opacity; }
-.cs-will-filter  { will-change: filter; }
-.cs-will-scroll  { will-change: scroll-position; }
-.cs-will-auto  { will-change: auto; }
+@utility cs-will-transform { will-change: transform; }
+@utility cs-will-opacity { will-change: opacity; }
+@utility cs-will-filter { will-change: filter; }
+@utility cs-will-scroll { will-change: scroll-position; }
+@utility cs-will-auto { will-change: auto; }
 
 /* Transform origin utilities */
-.cs-origin-center  { transform-origin: center; }
-.cs-origin-top  { transform-origin: top; }
-.cs-origin-top-right  { transform-origin: top right; }
-.cs-origin-right  { transform-origin: right; }
-.cs-origin-bottom-right  { transform-origin: bottom right; }
-.cs-origin-bottom  { transform-origin: bottom; }
-.cs-origin-bottom-left  { transform-origin: bottom left; }
-.cs-origin-left  { transform-origin: left; }
-.cs-origin-top-left  { transform-origin: top left; }
+@utility cs-origin-center { transform-origin: center; }
+@utility cs-origin-top { transform-origin: top; }
+@utility cs-origin-top-right { transform-origin: top right; }
+@utility cs-origin-right { transform-origin: right; }
+@utility cs-origin-bottom-right { transform-origin: bottom right; }
+@utility cs-origin-bottom { transform-origin: bottom; }
+@utility cs-origin-bottom-left { transform-origin: bottom left; }
+@utility cs-origin-left { transform-origin: left; }
+@utility cs-origin-top-left { transform-origin: top left; }
 
 /* v0.8.0-kompatible Aliase für transform-origin */
-.cs-t-origin-top  { transform-origin: top; }
-.cs-t-origin-center  { transform-origin: center; }
-.cs-t-origin-bottom  { transform-origin: bottom; }
+@utility cs-t-origin-top { transform-origin: top; }
+@utility cs-t-origin-center { transform-origin: center; }
+@utility cs-t-origin-bottom { transform-origin: bottom; }
 
 /* v0.8.0-kompatible will-change Aliase */
-.cs-will-transform  { will-change: transform; }
-.cs-will-opacity  { will-change: opacity; }
-.cs-will-filter  { will-change: filter; }
+@utility cs-will-transform { will-change: transform; }
+@utility cs-will-opacity { will-change: opacity; }
+@utility cs-will-filter { will-change: filter; }
 
 /* v0.8.0-kompatible 3D Aliase */
-.cs-t-preserve-3d  { transform-style: preserve-3d; }
+@utility cs-t-preserve-3d { transform-style: preserve-3d; }
 
 /* 3D Perspective utilities */
-.cs-preserve-3d  { transform-style: preserve-3d; }
-.cs-perspective-sm  { perspective: 500px; }
-.cs-perspective  { perspective: 1000px; }
-.cs-perspective-lg  { perspective: 1500px; }
-.cs-backface-hidden  { backface-visibility: hidden; }
-.cs-backface-visible  { backface-visibility: visible; }
+@utility cs-preserve-3d { transform-style: preserve-3d; }
+@utility cs-perspective-sm { perspective: 500px; }
+@utility cs-perspective { perspective: 1000px; }
+@utility cs-perspective-lg { perspective: 1500px; }
+@utility cs-backface-hidden { backface-visibility: hidden; }
+@utility cs-backface-visible { backface-visibility: visible; }
 
 /* =========================================================
    SCROLL-BASED ANIMATIONS
    Modern scroll-timeline and view-timeline support
    ========================================================= */
 
-.cs-scroll-reveal  {
+@utility cs-scroll-reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -1084,7 +1086,7 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
-.cs-scroll-scale  {
+@utility cs-scroll-scale {
   transform: scale(0.8);
   transition: transform 0.6s ease-out;
   
@@ -1100,7 +1102,7 @@
   100% { transform: scale(1); }
 }
 
-.cs-parallax-scroll  {
+@utility cs-parallax-scroll {
   @supports (animation-timeline: scroll()) {
     animation: csParallaxScroll linear;
     animation-timeline: scroll();

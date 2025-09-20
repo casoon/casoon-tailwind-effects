@@ -1,10 +1,12 @@
 /*!
- * tailwindcss-glass - Plain CSS Distribution
+ * tailwindcss-glass - Tailwind v4 Package
  * Version: 0.9.0
  * 
- * This version can be used WITHOUT Tailwind CSS.
- * All @utility directives converted to standard CSS classes.
+ * For use with Tailwind CSS v4
+ * Usage: @import "@casoon/tailwindcss-glass/index.css";
  */
+
+/* Note: @import "tailwindcss"; should be added by the consumer */
 
 /*!
  * Casoon Glass - Complete Glassmorphism System for Tailwind v4
@@ -17,15 +19,15 @@
  * - Glass UI Components (buttons, nav, etc.)
  * - Glass Animation Effects
  * 
- * Usage: 
+ * Usage: @import "@casoon/tailwindcss-glass/index.css";
  */
 
-/* Note:  should be added by the consumer */
+/* Note: @import "tailwindcss"; should be added by the consumer */
 
 /* =========================================================
    GLASS DESIGN TOKENS & THEME
    ========================================================= */
-:root {
+@theme {
   /* === GLASS COLOR SYSTEM === */
   --cs-glass-white: #ffffff;
   --cs-glass-black: #000000;
@@ -137,7 +139,7 @@
    ========================================================= */
 
 /* Primary glass utility */
-.cs-glass  {
+@utility cs-glass {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   border-radius: var(--cs-glass-radius-lg);
@@ -147,7 +149,7 @@
 }
 
 /* Dark glass variant */
-.cs-glass-dark  {
+@utility cs-glass-dark {
   background: var(--cs-glass-bg-dark);
   border: 1px solid var(--cs-glass-border-medium);
   border-radius: var(--cs-glass-radius-lg);
@@ -160,80 +162,80 @@
    GLASS BACKGROUND UTILITIES
    Different opacity levels for glass backgrounds
    ========================================================= */
-.cs-glass-bg-xs  { background: var(--cs-glass-bg-xs); }
-.cs-glass-bg-sm  { background: var(--cs-glass-bg-sm); }
-.cs-glass-bg-light  { background: var(--cs-glass-bg-light); }
-.cs-glass-bg-weak  { background: var(--cs-glass-bg-weak); }
-.cs-glass-bg-md  { background: var(--cs-glass-bg-md); }
-.cs-glass-bg-medium  { background: var(--cs-glass-bg-medium); }
-.cs-glass-bg-lg  { background: var(--cs-glass-bg-lg); }
-.cs-glass-bg-strong  { background: var(--cs-glass-bg-strong); }
-.cs-glass-bg-xl  { background: var(--cs-glass-bg-xl); }
-.cs-glass-bg-2xl  { background: var(--cs-glass-bg-2xl); }
-.cs-glass-bg-3xl  { background: var(--cs-glass-bg-3xl); }
-.cs-glass-bg-4xl  { background: var(--cs-glass-bg-4xl); }
-.cs-glass-bg-5xl  { background: var(--cs-glass-bg-5xl); }
+@utility cs-glass-bg-xs { background: var(--cs-glass-bg-xs); }
+@utility cs-glass-bg-sm { background: var(--cs-glass-bg-sm); }
+@utility cs-glass-bg-light { background: var(--cs-glass-bg-light); }
+@utility cs-glass-bg-weak { background: var(--cs-glass-bg-weak); }
+@utility cs-glass-bg-md { background: var(--cs-glass-bg-md); }
+@utility cs-glass-bg-medium { background: var(--cs-glass-bg-medium); }
+@utility cs-glass-bg-lg { background: var(--cs-glass-bg-lg); }
+@utility cs-glass-bg-strong { background: var(--cs-glass-bg-strong); }
+@utility cs-glass-bg-xl { background: var(--cs-glass-bg-xl); }
+@utility cs-glass-bg-2xl { background: var(--cs-glass-bg-2xl); }
+@utility cs-glass-bg-3xl { background: var(--cs-glass-bg-3xl); }
+@utility cs-glass-bg-4xl { background: var(--cs-glass-bg-4xl); }
+@utility cs-glass-bg-5xl { background: var(--cs-glass-bg-5xl); }
 
 /* Dark glass backgrounds */
-.cs-glass-bg-dark  { background: var(--cs-glass-bg-dark); }
-.cs-glass-bg-dark-xs  { background: var(--cs-glass-bg-dark-xs); }
-.cs-glass-bg-dark-sm  { background: var(--cs-glass-bg-dark-sm); }
-.cs-glass-bg-dark-md  { background: var(--cs-glass-bg-dark-md); }
-.cs-glass-bg-dark-lg  { background: var(--cs-glass-bg-dark-lg); }
-.cs-glass-bg-dark-strong  { background: var(--cs-glass-bg-dark-strong); }
-.cs-glass-bg-dark-xl  { background: var(--cs-glass-bg-dark-xl); }
-.cs-glass-bg-dark-2xl  { background: var(--cs-glass-bg-dark-2xl); }
-.cs-glass-bg-dark-3xl  { background: var(--cs-glass-bg-dark-3xl); }
-.cs-glass-bg-dark-4xl  { background: var(--cs-glass-bg-dark-4xl); }
-.cs-glass-bg-dark-5xl  { background: var(--cs-glass-bg-dark-5xl); }
+@utility cs-glass-bg-dark { background: var(--cs-glass-bg-dark); }
+@utility cs-glass-bg-dark-xs { background: var(--cs-glass-bg-dark-xs); }
+@utility cs-glass-bg-dark-sm { background: var(--cs-glass-bg-dark-sm); }
+@utility cs-glass-bg-dark-md { background: var(--cs-glass-bg-dark-md); }
+@utility cs-glass-bg-dark-lg { background: var(--cs-glass-bg-dark-lg); }
+@utility cs-glass-bg-dark-strong { background: var(--cs-glass-bg-dark-strong); }
+@utility cs-glass-bg-dark-xl { background: var(--cs-glass-bg-dark-xl); }
+@utility cs-glass-bg-dark-2xl { background: var(--cs-glass-bg-dark-2xl); }
+@utility cs-glass-bg-dark-3xl { background: var(--cs-glass-bg-dark-3xl); }
+@utility cs-glass-bg-dark-4xl { background: var(--cs-glass-bg-dark-4xl); }
+@utility cs-glass-bg-dark-5xl { background: var(--cs-glass-bg-dark-5xl); }
 
 /* Colored glass backgrounds */
-.cs-glass-bg-blue  { background: var(--cs-glass-bg-blue); }
-.cs-glass-bg-purple  { background: var(--cs-glass-bg-purple); }
-.cs-glass-bg-green  { background: var(--cs-glass-bg-green); }
-.cs-glass-bg-pink  { background: var(--cs-glass-bg-pink); }
-.cs-glass-bg-amber  { background: var(--cs-glass-bg-amber); }
+@utility cs-glass-bg-blue { background: var(--cs-glass-bg-blue); }
+@utility cs-glass-bg-purple { background: var(--cs-glass-bg-purple); }
+@utility cs-glass-bg-green { background: var(--cs-glass-bg-green); }
+@utility cs-glass-bg-pink { background: var(--cs-glass-bg-pink); }
+@utility cs-glass-bg-amber { background: var(--cs-glass-bg-amber); }
 
 /* =========================================================
    GLASS BORDER UTILITIES
    ========================================================= */
-.cs-glass-border-xs  { border-color: var(--cs-glass-border-xs); }
-.cs-glass-border-sm  { border-color: var(--cs-glass-border-sm); }
-.cs-glass-border-light  { border-color: var(--cs-glass-border-light); }
-.cs-glass-border-md  { border-color: var(--cs-glass-border-md); }
-.cs-glass-border-medium  { border-color: var(--cs-glass-border-medium); }
-.cs-glass-border-lg  { border-color: var(--cs-glass-border-lg); }
-.cs-glass-border-strong  { border-color: var(--cs-glass-border-strong); }
-.cs-glass-border-xl  { border-color: var(--cs-glass-border-xl); }
-.cs-glass-border-2xl  { border-color: var(--cs-glass-border-2xl); }
-.cs-glass-border-3xl  { border-color: var(--cs-glass-border-3xl); }
+@utility cs-glass-border-xs { border-color: var(--cs-glass-border-xs); }
+@utility cs-glass-border-sm { border-color: var(--cs-glass-border-sm); }
+@utility cs-glass-border-light { border-color: var(--cs-glass-border-light); }
+@utility cs-glass-border-md { border-color: var(--cs-glass-border-md); }
+@utility cs-glass-border-medium { border-color: var(--cs-glass-border-medium); }
+@utility cs-glass-border-lg { border-color: var(--cs-glass-border-lg); }
+@utility cs-glass-border-strong { border-color: var(--cs-glass-border-strong); }
+@utility cs-glass-border-xl { border-color: var(--cs-glass-border-xl); }
+@utility cs-glass-border-2xl { border-color: var(--cs-glass-border-2xl); }
+@utility cs-glass-border-3xl { border-color: var(--cs-glass-border-3xl); }
 
 /* Colored glass borders */
-.cs-glass-border-blue  { border-color: var(--cs-glass-border-blue); }
-.cs-glass-border-purple  { border-color: var(--cs-glass-border-purple); }
-.cs-glass-border-green  { border-color: var(--cs-glass-border-green); }
-.cs-glass-border-pink  { border-color: var(--cs-glass-border-pink); }
-.cs-glass-border-amber  { border-color: var(--cs-glass-border-amber); }
+@utility cs-glass-border-blue { border-color: var(--cs-glass-border-blue); }
+@utility cs-glass-border-purple { border-color: var(--cs-glass-border-purple); }
+@utility cs-glass-border-green { border-color: var(--cs-glass-border-green); }
+@utility cs-glass-border-pink { border-color: var(--cs-glass-border-pink); }
+@utility cs-glass-border-amber { border-color: var(--cs-glass-border-amber); }
 
 /* =========================================================
    GLASS BLUR UTILITIES
    ========================================================= */
-.cs-glass-blur-sm  {
+@utility cs-glass-blur-sm {
   backdrop-filter: var(--cs-glass-blur-sm);
   -webkit-backdrop-filter: var(--cs-glass-blur-sm);
 }
 
-.cs-glass-blur  {
+@utility cs-glass-blur {
   backdrop-filter: var(--cs-glass-blur);
   -webkit-backdrop-filter: var(--cs-glass-blur);
 }
 
-.cs-glass-blur-lg  {
+@utility cs-glass-blur-lg {
   backdrop-filter: var(--cs-glass-blur-lg);
   -webkit-backdrop-filter: var(--cs-glass-blur-lg);
 }
 
-.cs-glass-blur-xl  {
+@utility cs-glass-blur-xl {
   backdrop-filter: var(--cs-glass-blur-xl);
   -webkit-backdrop-filter: var(--cs-glass-blur-xl);
 }
@@ -241,41 +243,41 @@
 /* =========================================================
    GLASS RADIUS UTILITIES
    ========================================================= */
-.cs-glass-radius-sm  { border-radius: var(--cs-glass-radius-sm); }
-.cs-glass-radius  { border-radius: var(--cs-glass-radius); }
-.cs-glass-radius-lg  { border-radius: var(--cs-glass-radius-lg); }
-.cs-glass-radius-xl  { border-radius: var(--cs-glass-radius-xl); }
-.cs-glass-radius-2xl  { border-radius: var(--cs-glass-radius-2xl); }
-.cs-glass-radius-3xl  { border-radius: var(--cs-glass-radius-3xl); }
+@utility cs-glass-radius-sm { border-radius: var(--cs-glass-radius-sm); }
+@utility cs-glass-radius { border-radius: var(--cs-glass-radius); }
+@utility cs-glass-radius-lg { border-radius: var(--cs-glass-radius-lg); }
+@utility cs-glass-radius-xl { border-radius: var(--cs-glass-radius-xl); }
+@utility cs-glass-radius-2xl { border-radius: var(--cs-glass-radius-2xl); }
+@utility cs-glass-radius-3xl { border-radius: var(--cs-glass-radius-3xl); }
 
 /* =========================================================
    GLASS SHADOW UTILITIES
    ========================================================= */
-.cs-glass-shadow-sm  { box-shadow: var(--cs-glass-shadow-sm-def); }
-.cs-glass-shadow  { box-shadow: var(--cs-glass-shadow-def); }
-.cs-glass-shadow-lg  { box-shadow: var(--cs-glass-shadow-lg-def); }
-.cs-glass-shadow-xl  { box-shadow: var(--cs-glass-shadow-xl-def); }
+@utility cs-glass-shadow-sm { box-shadow: var(--cs-glass-shadow-sm-def); }
+@utility cs-glass-shadow { box-shadow: var(--cs-glass-shadow-def); }
+@utility cs-glass-shadow-lg { box-shadow: var(--cs-glass-shadow-lg-def); }
+@utility cs-glass-shadow-xl { box-shadow: var(--cs-glass-shadow-xl-def); }
 
 /* =========================================================
    GLASS ADD-ON UTILITIES
    ========================================================= */
 
 /* Acrylic look (adds saturation/contrast on the backdrop) */
-.cs-glass-acrylic  {
+@utility cs-glass-acrylic {
   --cs-glass-backdrop-filter-extra: saturate(135%) contrast(110%);
   backdrop-filter: var(--cs-glass-backdrop-filter-extra) var(--cs-glass-blur);
   -webkit-backdrop-filter: var(--cs-glass-backdrop-filter-extra) var(--cs-glass-blur);
 }
 
 /* Frosted edge (inner highlight for stronger glass rim) */
-.cs-glass-frosted-edge  {
+@utility cs-glass-frosted-edge {
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--cs-glass-white) 40%, transparent),
     var(--cs-glass-shadow-def);
 }
 
 /* Noise/grain overlay */
-.cs-glass-noise  { 
+@utility cs-glass-noise { 
   position: relative; 
   isolation: isolate; 
   &::after {
@@ -292,34 +294,34 @@
 }
 
 /* Text contrast helpers for content placed on glass */
-.cs-glass-on  { color: var(--cs-glass-on, #0f172a); }
-.cs-glass-on-invert  { color: var(--cs-glass-on-invert, #ffffff); }
+@utility cs-glass-on { color: var(--cs-glass-on, #0f172a); }
+@utility cs-glass-on-invert { color: var(--cs-glass-on-invert, #ffffff); }
 
 /* Disabled/read-only helper for interactive glass */
-.cs-glass-disabled  {
+@utility cs-glass-disabled {
   opacity: .6;
   filter: grayscale(20%);
   pointer-events: none;
 }
 
 /* Elevation helpers (z-index layering for overlays on glass) */
-.cs-glass-elev-1  { z-index: 10; }
-.cs-glass-elev-2  { z-index: 20; }
-.cs-glass-elev-3  { z-index: 30; }
-.cs-glass-elev-4  { z-index: 40; }
-.cs-glass-elev-5  { z-index: 50; }
+@utility cs-glass-elev-1 { z-index: 10; }
+@utility cs-glass-elev-2 { z-index: 20; }
+@utility cs-glass-elev-3 { z-index: 30; }
+@utility cs-glass-elev-4 { z-index: 40; }
+@utility cs-glass-elev-5 { z-index: 50; }
 
 /* Blend mode utilities (creative tints over imagery) */
-.cs-glass-blend-overlay  { mix-blend-mode: overlay; }
-.cs-glass-blend-screen  { mix-blend-mode: screen; }
-.cs-glass-blend-multiply  { mix-blend-mode: multiply; }
+@utility cs-glass-blend-overlay { mix-blend-mode: overlay; }
+@utility cs-glass-blend-screen { mix-blend-mode: screen; }
+@utility cs-glass-blend-multiply { mix-blend-mode: multiply; }
 
 /* Layout helpers for sticky bars & performance hints */
-.cs-glass-sticky  { position: sticky; top: 0; }
-.cs-glass-will-change  { will-change: transform, backdrop-filter; }
+@utility cs-glass-sticky { position: sticky; top: 0; }
+@utility cs-glass-will-change { will-change: transform, backdrop-filter; }
 
 /* Isolation utility for Canvas/Background-Layering issues */
-.cs-glass-isolate  { isolation: isolate; }
+@utility cs-glass-isolate { isolation: isolate; }
 
 /* =========================================================
    GLASS CARDS SYSTEM
@@ -327,7 +329,7 @@
    ========================================================= */
 
 /* Glass card base component */
-.cs-glass-card  {
+@utility cs-glass-card {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   border-radius: 20px;
@@ -351,7 +353,7 @@
 }
 
 /* Light glass card variant */
-.cs-glass-card-light  {
+@utility cs-glass-card-light {
   background: var(--cs-glass-bg-medium);
   border: 1px solid var(--cs-glass-border-strong);
   border-radius: 20px;
@@ -374,7 +376,7 @@
 }
 
 /* Glass Feature Card Component */
-.cs-card-feature-glass  {
+@utility cs-card-feature-glass {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   backdrop-filter: saturate(140%) blur(12px);
@@ -397,7 +399,7 @@
 }
 
 /* Glass Product Card Component */
-.cs-card-product-glass  {
+@utility cs-card-product-glass {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   backdrop-filter: saturate(140%) blur(12px);
@@ -419,7 +421,7 @@
 }
 
 /* Glass Pricing Card Component */
-.cs-card-pricing-glass  {
+@utility cs-card-pricing-glass {
   background: var(--cs-glass-bg-light);
   border: 2px solid var(--cs-glass-border-medium);
   backdrop-filter: saturate(140%) blur(12px);
@@ -447,7 +449,7 @@
    ========================================================= */
 
 /* Glass navigation component */
-.cs-glass-nav  {
+@utility cs-glass-nav {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   border-radius: 12px;
@@ -457,7 +459,7 @@
   -webkit-backdrop-filter: var(--cs-glass-blur);
 }
 
-.cs-glass-nav-light  {
+@utility cs-glass-nav-light {
   background: var(--cs-glass-bg-medium);
   border: 1px solid var(--cs-glass-border-strong);
   border-radius: 12px;
@@ -468,7 +470,7 @@
 }
 
 /* Glass button component */
-.cs-glass-button  {
+@utility cs-glass-button {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   border-radius: 12px;
@@ -500,7 +502,7 @@
 }
 
 /* Glass toast component */
-.cs-glass-toast  {
+@utility cs-glass-toast {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   border-radius: 0.75rem;
@@ -513,7 +515,7 @@
 }
 
 /* Glass tooltip component */
-.cs-glass-tooltip  {
+@utility cs-glass-tooltip {
   background: var(--cs-glass-tooltip-bg);
   border: 1px solid var(--cs-glass-border-medium);
   border-radius: 0.5rem;
@@ -528,7 +530,7 @@
 }
 
 /* Glass dropdown component */
-.cs-glass-dropdown  {
+@utility cs-glass-dropdown {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   border-radius: 0.75rem;
@@ -541,7 +543,7 @@
 }
 
 /* Glass Forms System */
-.cs-form-glass  {
+@utility cs-form-glass {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -553,7 +555,7 @@
   padding: 2rem;
 }
 
-.cs-input-glass  {
+@utility cs-input-glass {
   padding: 0.75rem 1rem;
   background: var(--cs-glass-bg-md);
   border: 1px solid var(--cs-glass-border-strong);
@@ -570,11 +572,11 @@
   }
   
   &::placeholder {
-    color: rgba(255, 255, 255, 60%);
+    color: color-mix(in srgb, currentColor 60%, transparent);
   }
 }
 
-.cs-button-primary-glass  {
+@utility cs-button-primary-glass {
   background: var(--cs-glass-bg-medium);
   border: 1px solid var(--cs-glass-border-strong);
   backdrop-filter: blur(10px);
@@ -604,11 +606,11 @@
    ========================================================= */
 
 /* Animated morph effects */
-.cs-glass-morph-in  {
+@utility cs-glass-morph-in {
   animation: glassMorphIn 0.4s ease-out both;
 }
 
-.cs-glass-morph-out  {
+@utility cs-glass-morph-out {
   animation: glassMorphOut 0.3s ease-in both;
 }
 
@@ -637,7 +639,7 @@
 }
 
 /* 3D hover glass effect */
-.cs-glass-3d-hover  {
+@utility cs-glass-3d-hover {
   transform-style: preserve-3d;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
@@ -648,7 +650,7 @@
 }
 
 /* Glossy highlight overlays */
-.cs-glass-gloss-top  {
+@utility cs-glass-gloss-top {
   position: relative;
   &::before {
     content: "";
@@ -663,7 +665,7 @@
   }
 }
 
-.cs-glass-gloss-left  {
+@utility cs-glass-gloss-left {
   position: relative;
   &::before {
     content: "";
@@ -676,7 +678,7 @@
   }
 }
 
-.cs-glass-gloss-right  {
+@utility cs-glass-gloss-right {
   position: relative;
   &::before {
     content: "";
@@ -690,21 +692,21 @@
 }
 
 /* Pro theme presets */
-.cs-glass-theme-neon  {
+@utility cs-glass-theme-neon {
   --cs-glass-bg-light: rgba(58, 227, 255, 0.1);
   --cs-glass-border-medium: rgba(58, 227, 255, 0.25);
   --cs-glass-shadow-def: 0 8px 32px rgba(58, 227, 255, 0.25);
   --cs-glass-focus-ring: rgba(58, 227, 255, 0.6);
 }
 
-.cs-glass-theme-carbon  {
+@utility cs-glass-theme-carbon {
   --cs-glass-bg-light: rgba(30, 30, 30, 0.25);
   --cs-glass-border-medium: rgba(255, 255, 255, 0.08);
   --cs-glass-shadow-def: 0 8px 32px rgba(0,0,0,0.4);
   --cs-glass-focus-ring: rgba(255, 255, 255, 0.3);
 }
 
-.cs-glass-theme-pastel  {
+@utility cs-glass-theme-pastel {
   --cs-glass-bg-light: rgba(255, 230, 250, 0.12);
   --cs-glass-border-medium: rgba(255, 230, 250, 0.25);
   --cs-glass-shadow-def: 0 8px 32px rgba(255, 230, 250, 0.25);
@@ -716,7 +718,7 @@
    ========================================================= */
 
 /* Responsive glass blur based on container size */
-.cs-glass-responsive  {
+@utility cs-glass-responsive {
   background: var(--cs-glass-bg-light);
   border: 1px solid var(--cs-glass-border-medium);
   backdrop-filter: var(--cs-glass-blur-sm);
@@ -740,7 +742,7 @@
 }
 
 /* Base backdrop filter utility */
-.cs-glass-backdrop-clip  {
+@utility cs-glass-backdrop-clip {
   background-clip: padding-box;
 }
 

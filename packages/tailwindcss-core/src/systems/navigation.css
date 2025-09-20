@@ -1,0 +1,62 @@
+/* =========================================================
+   NAVIGATION SYSTEM
+   ========================================================= */
+
+@utility cs-navbar {
+  position: relative;
+  z-index: var(--cs-z-40, 40);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--cs-surface, #ffffff);
+  border-bottom: 1px solid var(--cs-border, #e5e7eb);
+  transition: var(--cs-transition, 180ms ease);
+}
+
+@utility cs-navbar-brand {
+  display: inline-block;
+  padding: 0.3125rem 0;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--cs-text, #111827);
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@utility cs-navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@utility cs-navbar-link {
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  color: var(--cs-text-muted, #6b7280);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  transition: var(--cs-transition, 180ms ease);
+  
+  &:hover {
+    color: var(--cs-text);
+    background-color: color-mix(in srgb, currentColor 8%, transparent);
+    text-decoration: none;
+  }
+  
+  &.active {
+    color: var(--cs-brand);
+    background-color: color-mix(in srgb, var(--cs-brand) 10%, transparent);
+  }
+}

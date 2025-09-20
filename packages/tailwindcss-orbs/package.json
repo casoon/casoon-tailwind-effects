@@ -1,22 +1,22 @@
 {
   "name": "@casoon/tailwindcss-orbs",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Comprehensive orb/blob visual effects for Tailwind CSS v4 - Animated orbs, background effects, interactive components, and glassmorphism elements with advanced motion and visual effects",
   "type": "module",
   "exports": {
-    ".": "./dist.css",
-    "./index.css": "./src/index.css",
+    ".": "./index.css",
+    "./index.css": "./index.css",
     "./dist.css": "./dist.css",
-    "./orb.js": "./orb.js",
     "./dist.min.css": "./dist.min.css"
   },
   "files": [
-    "src/index.css",
+    "src/",
     "dist.css",
     "dist.min.css",
     "README.md",
     "LICENSE",
-    "orb.js"
+    "orb.js",
+    "index.css"
   ],
   "peerDependencies": {
     "tailwindcss": "^4.0.0"

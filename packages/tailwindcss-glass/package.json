@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-glass",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Pure glassmorphism effects and glass cards for Tailwind CSS v4 - backdrop-filter utilities, glass UI components, and glass animations",
   "keywords": [
     "tailwindcss",
@@ -17,10 +17,12 @@
   ],
   "main": "src/index.css",
   "files": [
+    "src/",
     "src/**/*.css",
     "build-reference.html",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "index.css"
   ],
   "repository": {
     "type": "git",
@@ -29,7 +31,10 @@
   },
   "license": "MIT",
   "exports": {
-    ".": "./src/index.css"
+    ".": "./index.css",
+    "./index.css": "./index.css",
+    "./dist.css": "./dist.css",
+    "./dist.min.css": "./dist.min.css"
   },
   "publishConfig": {
     "access": "public"

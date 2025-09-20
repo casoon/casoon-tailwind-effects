@@ -1,0 +1,15 @@
+/*!
+ * @casoon/tailwindcss-effects
+ * Complete collection of CSS effects for Tailwind CSS v4 
+ * Version 0.9.0 - Consolidated from 4 core packages
+ * 
+ * This meta package combines the consolidated core packages:
+ *  * - utilities\n * - animations\n * - glass\n * - orbs
+ * 
+ * Usage: @import "@casoon/tailwindcss-effects";
+ */
+
+@import '../../../tailwindcss-utilities/src/index.css';
+@import '../../../tailwindcss-animations/src/index.css';
+@import '../../../tailwindcss-glass/src/index.css';
+@import '../../../tailwindcss-orbs/src/index.css';

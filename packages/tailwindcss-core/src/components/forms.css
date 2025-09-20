@@ -1,0 +1,200 @@
+/* =========================================================
+   FORMS SYSTEM COMPONENTS
+   Complete form system with modern styling
+   ========================================================= */
+
+/* Form Base */
+@utility cs-form-base {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cs-space-4, 1rem);
+}
+
+/* Input Base */
+@utility cs-input-base {
+  padding: var(--cs-space-3, 12px) var(--cs-space-4, 16px);
+  border: 1px solid var(--cs-form-border, #e5e7eb);
+  border-radius: var(--cs-form-radius, 8px);
+  transition: var(--cs-transition, 180ms ease);
+  background: var(--cs-form-bg, #ffffff);
+  color: var(--cs-text, #111827);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--cs-form-focus, #3b82f6);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-form-focus, #3b82f6) 15%, transparent);
+  }
+}
+
+/* Modern Form */
+@utility cs-form-modern {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cs-space-4, 1rem);
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--cs-card-bg, #ffffff);
+  border-radius: var(--cs-radius, 10px);
+  box-shadow: var(--cs-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.1));
+}
+
+/* Modern Input */
+@utility cs-input-modern {
+  padding: var(--cs-space-3, 12px) var(--cs-space-4, 16px);
+  border: 2px solid color-mix(in srgb, currentColor 10%, transparent);
+  border-radius: var(--cs-form-radius, 8px);
+  transition: var(--cs-transition, 180ms ease);
+  background: var(--cs-form-bg, #ffffff);
+  font-size: var(--cs-fs-md, 1rem);
+  line-height: var(--cs-line, 1.5);
+  color: var(--cs-text, #111827);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--cs-form-focus, #3b82f6);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-form-focus, #3b82f6) 20%, transparent);
+  }
+  
+  &::placeholder {
+    color: var(--cs-text-muted, #6b7280);
+  }
+}
+
+/* Modern Label */
+@utility cs-label-modern {
+  font-weight: 600;
+  color: var(--cs-text, #111827);
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: var(--cs-fs-sm, 0.875rem);
+}
+
+/* Modern Primary Button */
+@utility cs-button-primary-modern {
+  background: linear-gradient(135deg, var(--cs-brand, #3b82f6), color-mix(in srgb, var(--cs-brand, #3b82f6) 80%, #000000));
+  color: var(--cs-brand-ink, #ffffff);
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--cs-form-radius, 8px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--cs-transition, 180ms ease);
+  font-size: var(--cs-fs-md, 1rem);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--cs-brand, #3b82f6) 30%, transparent);
+  }
+  
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--cs-brand, #3b82f6), 0 0 0 4px color-mix(in srgb, var(--cs-brand, #3b82f6) 20%, transparent);
+  }
+}
+
+/* Form Group */
+@utility cs-form-group {
+  position: relative;
+  margin-bottom: var(--cs-space-4, 1rem);
+}
+
+/* =========================================================
+   FORM VALIDATION SYSTEM
+   ========================================================= */
+
+/* Form Validation States */
+@utility cs-input-validation {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@utility cs-validation-error {
+  display: flex;
+  color: var(--cs-danger, #ef4444);
+}
+
+@utility cs-validation-success {
+  display: flex;
+  color: var(--cs-success, #22c55e);
+}
+
+@utility cs-validation-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+@utility cs-input-error {
+  border-color: var(--cs-danger, #ef4444) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-danger, #ef4444) 20%, transparent) !important;
+}
+
+@utility cs-input-success {
+  border-color: var(--cs-success, #22c55e) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cs-success, #22c55e) 20%, transparent) !important;
+}
+
+/* =========================================================
+   INPUT GROUP UTILITIES
+   ========================================================= */
+
+/* Input Group Utilities */
+@utility cs-input-group {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+@utility cs-input-addon {
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  border: 1px solid var(--cs-form-border, #e5e7eb);
+  color: var(--cs-text-muted, #6b7280);
+  font-size: 0.875rem;
+}
+
+@utility cs-input-addon-left {
+  border-right: none;
+  border-radius: var(--cs-form-radius, 8px) 0 0 var(--cs-form-radius, 8px);
+}
+
+@utility cs-input-addon-right {
+  border-left: none;
+  border-radius: 0 var(--cs-form-radius, 8px) var(--cs-form-radius, 8px) 0;
+}
+
+@utility cs-input-with-addon-left {
+  border-radius: 0 var(--cs-form-radius, 8px) var(--cs-form-radius, 8px) 0;
+  border-left: none;
+}
+
+@utility cs-input-with-addon-right {
+  border-radius: var(--cs-form-radius, 8px) 0 0 var(--cs-form-radius, 8px);
+  border-right: none;
+}
+
+/* =========================================================
+   FORM LAYOUT UTILITIES
+   ========================================================= */
+
+/* Form Layout Utilities */
+@utility cs-form-row {
+  display: flex;
+  gap: var(--cs-space-4, 1rem);
+  align-items: flex-start;
+}
+
+@utility cs-form-col {
+  flex: 1;
+  min-width: 0;
+}

@@ -1,18 +1,19 @@
 {
   "name": "@casoon/tailwindcss-core",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Complete foundation package for Tailwind CSS v4 - Core utilities, forms, cards, navigation, scroll effects, gradients, loading states, micro interactions, advanced typography with prose styles, and accessibility components for modern web applications",
   "type": "module",
   "exports": {
-    ".": "./dist.css",
-    "./index.css": "./src/index.css", 
+    ".": "./index.css",
+    "./index.css": "./index.css",
     "./dist.css": "./dist.css",
     "./dist.min.css": "./dist.min.css"
   },
   "main": "./dist.css",
   "style": "./dist.css",
   "files": [
-    "src/index.css",
+    "src/",
+    "index.css",
     "dist.css",
     "dist.min.css",
     "build-reference.html",

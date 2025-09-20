@@ -1,0 +1,35 @@
+/* =========================================================
+   BASE ACCESSIBILITY UTILITIES
+   ========================================================= */
+
+/* Screen reader only content */
+@utility cs-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus management utilities */
+@utility cs-focus-ring {
+  outline: none;
+  
+  &:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 4px color-mix(in srgb, var(--cs-brand, #4f7cff) 20%, transparent);
+    transition: box-shadow var(--cs-transition);
+  }
+}
+
+@utility cs-focus-ring-within {
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--cs-brand, #4f7cff), 0 0 0 6px color-mix(in srgb, var(--cs-brand, #4f7cff) 22%, transparent);
+    border-radius: var(--cs-radius);
+  }
+}

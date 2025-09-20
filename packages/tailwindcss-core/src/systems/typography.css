@@ -1,0 +1,121 @@
+/* =========================================================
+   TYPOGRAPHY SYSTEM
+   ========================================================= */
+
+@utility cs-prose {
+  color: var(--cs-prose-body);
+  max-width: 65ch;
+  line-height: 1.75;
+  font-size: var(--cs-fs-md);
+}
+
+@utility cs-prose h1,
+@utility cs-prose h2,
+@utility cs-prose h3,
+@utility cs-prose h4,
+@utility cs-prose h5,
+@utility cs-prose h6 {
+  color: var(--cs-prose-headings);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+@utility cs-prose h1 { font-size: var(--cs-fs-2xl); }
+@utility cs-prose h2 { font-size: var(--cs-fs-xl); }
+@utility cs-prose h3 { font-size: var(--cs-fs-lg); }
+
+@utility cs-prose p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+
+@utility cs-prose a {
+  color: var(--cs-prose-links);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@utility cs-prose strong {
+  color: var(--cs-prose-bold);
+  font-weight: 600;
+}
+
+@utility cs-prose ul,
+@utility cs-prose ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+@utility cs-prose li {
+  margin-bottom: 0.5rem;
+}
+
+@utility cs-prose blockquote {
+  border-left: 4px solid var(--cs-border);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--cs-prose-quotes);
+}
+
+@utility cs-prose code {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  padding: 0.25rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: var(--cs-font-mono);
+}
+
+@utility cs-prose pre {
+  background: var(--cs-elev1);
+  padding: 1.25rem;
+  border-radius: var(--cs-radius);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  
+  & code {
+    background: none;
+    padding: 0;
+  }
+}
+
+@utility cs-callout {
+  padding: var(--cs-space-4) var(--cs-space-6);
+  border-radius: var(--cs-radius);
+  border-left: 4px solid var(--cs-info);
+  background: color-mix(in srgb, var(--cs-info) 5%, var(--cs-surface));
+  color: var(--cs-text);
+  margin: 1.5rem 0;
+  
+  &.cs-callout-info {
+    border-left-color: var(--cs-info);
+    background: color-mix(in srgb, var(--cs-info) 5%, var(--cs-surface));
+  }
+  
+  &.cs-callout-warning {
+    border-left-color: var(--cs-warning);
+    background: color-mix(in srgb, var(--cs-warning) 5%, var(--cs-surface));
+  }
+  
+  &.cs-callout-danger {
+    border-left-color: var(--cs-danger);
+    background: color-mix(in srgb, var(--cs-danger) 5%, var(--cs-surface));
+  }
+  
+  &.cs-callout-success {
+    border-left-color: var(--cs-success);
+    background: color-mix(in srgb, var(--cs-success) 5%, var(--cs-surface));
+  }
+}
+
+@utility cs-lead {
+  font-size: var(--cs-fs-lg);
+  line-height: 1.6;
+  color: var(--cs-text-muted);
+}
