@@ -1,18 +1,21 @@
 /*!
- * @casoon/tailwindcss-effects - Complete Collection
- * Version: 0.9.1
+ * @casoon/tailwindcss-effects - dist.css
+ * Complete collection of CSS effects for Tailwind CSS v4 
+ * Version 0.9.0 - Consolidated dist build
  * 
- * This meta package includes all CSS utilities from:
- * - tailwindcss-utilities
- * - tailwindcss-animations  
- * - tailwindcss-glass
- * - tailwindcss-orbs
- * - tailwindcss-core
- * 
- * Usage: @import "@casoon/tailwindcss-effects/index.css";
+ * This file combines all individual package dist.css files
+ * Import this when using without Tailwind CSS setup
  */
 
-/* === TAILWINDCSS-UTILITIES === */
+/* === UTILITIES === */
+/*!
+ * tailwindcss-utilities - Plain CSS Distribution
+ * Version: 0.9.0
+ * 
+ * This version can be used WITHOUT Tailwind CSS.
+ * All @utility directives converted to standard CSS classes.
+ */
+
 /*!
  * Casoon Utilities - Complete Utility System for Tailwind v4
  * Version: 0.9.0 — COMPLETELY CONSOLIDATED & ENHANCED
@@ -1167,7 +1170,15 @@
   }
 }
 
-/* === TAILWINDCSS-ANIMATIONS === */
+/* === ANIMATIONS === */
+/*!
+ * tailwindcss-animations - Plain CSS Distribution
+ * Version: 0.9.0
+ * 
+ * This version can be used WITHOUT Tailwind CSS.
+ * All @utility directives converted to standard CSS classes.
+ */
+
 /*!
  * Casoon Animations - Complete Animation System for Tailwind v4
  * Version: 0.9.0 — COMPLETELY CONSOLIDATED & ENHANCED
@@ -2374,7 +2385,15 @@
   }
 }
 
-/* === TAILWINDCSS-GLASS === */
+/* === GLASS === */
+/*!
+ * tailwindcss-glass - Plain CSS Distribution
+ * Version: 0.9.0
+ * 
+ * This version can be used WITHOUT Tailwind CSS.
+ * All @utility directives converted to standard CSS classes.
+ */
+
 /*!
  * Casoon Glass - Complete Glassmorphism System for Tailwind v4
  * Version: 0.9.0 — Pure Glass Effects & Glass Cards
@@ -3208,7 +3227,15 @@
   }
 }
 
-/* === TAILWINDCSS-ORBS === */
+/* === ORBS === */
+/*!
+ * tailwindcss-orbs - Plain CSS Distribution
+ * Version: 0.9.0
+ * 
+ * This version can be used WITHOUT Tailwind CSS.
+ * All @utility directives converted to standard CSS classes.
+ */
+
 /*!
  * Casoon Orbs - Tailwind v4 Directive Definitions
  * Version: 0.8.5 — For processing by Tailwind in consumer projects
@@ -4205,7 +4232,15 @@
 }
 
 
-/* === TAILWINDCSS-CORE === */
+/* === CORE === */
+/*!
+ * tailwindcss-core - Plain CSS Distribution
+ * Version: 0.9.0
+ * 
+ * This version can be used WITHOUT Tailwind CSS.
+ * All @utility directives converted to standard CSS classes.
+ */
+
 /*!
  * Casoon Core - Tailwind v4 Complete Foundation Package
  * Version: 0.9.0 — Modular Architecture
