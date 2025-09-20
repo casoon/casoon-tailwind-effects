@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-effects",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Complete collection of animation and UI effects for Tailwind CSS v4 - Consolidated v0.9.0 with 300+ utilities",
   "type": "module",
   "exports": {
@@ -18,12 +18,7 @@
     "./dist.min.css"
   ],
   "scripts": {
-    "build": "postcss src/styles/index.css -o dist.css",
-    "build:core": "postcss src/styles/core.css -o dist.core.css",
-    "build:all": "npm run build && npm run build:core",
-    "build:dev": "postcss src/styles/index.css -o dist.css --watch",
     "minify": "node ../../scripts/minify-css.mjs",
-    "minify:core": "cat dist.core.css | tr -d '\n' | sed 's/  */ /g' > dist.core.min.css",
     "validate": "node ../../scripts/validate-css.mjs",
     "prepublishOnly": "echo 'Building via root build system'"
   },
@@ -43,10 +38,10 @@
     "tailwindcss": "^4.0.0"
   },
   "dependencies": {
-    "@casoon/tailwindcss-utilities": "^0.9.3",
-    "@casoon/tailwindcss-animations": "^0.9.3",
-    "@casoon/tailwindcss-glass": "^0.9.3",
-    "@casoon/tailwindcss-orbs": "^0.9.3"
+    "@casoon/tailwindcss-utilities": "^0.9.4",
+    "@casoon/tailwindcss-animations": "^0.9.4",
+    "@casoon/tailwindcss-glass": "^0.9.4",
+    "@casoon/tailwindcss-orbs": "^0.9.4"
   },
   "publishConfig": {
     "access": "public"

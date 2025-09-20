@@ -1,6 +1,6 @@
 {
   "name": "@casoon/tailwindcss-animations",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Complete animation system for Tailwind CSS v4 - 80+ animations with tree-shaking and modern features",
   "type": "module",
   "exports": {

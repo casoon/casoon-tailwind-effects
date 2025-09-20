@@ -55,14 +55,16 @@ class EffectsBuilder {
   }
 
   async readPackageIndex(packageName) {
-    const indexPath = path.join(this.packagesDir, packageName, 'src', 'index.css');
+    // Use the generated index.css files which have @import statements resolved
+    const indexPath = path.join(this.packagesDir, packageName, 'index.css');
     
     try {
       const content = await fs.readFile(indexPath, 'utf8');
       
-      // Remove @import "tailwindcss"; and clean up extra whitespace
+      // Remove @import "tailwindcss"; and header comments, clean up extra whitespace
       const cleanContent = content
         .replace(/^@import\s+["']tailwindcss["'];?\s*$/gm, '')
+        .replace(/^\/\*![\s\S]*?\*\/\s*/m, '') // Remove header comment blocks
         .replace(/^\s*\n/gm, '')
         .trim();
       
@@ -128,21 +130,8 @@ class EffectsBuilder {
     
     this.log(`\\n✅ Generated combined index.css (${combinedContent.length} chars)`, 'green');
 
-    // Also create styles/index.css (legacy path)
-    const stylesDir = path.join(this.effectsDir, 'src', 'styles');
-    await fs.mkdir(stylesDir, { recursive: true });
-    const stylesOutputPath = path.join(stylesDir, 'index.css');
-    
-    // For styles/index.css, import from the main packages without tailwindcss import
-    const stylesContent = [
-      headerComment,
-      '',
-      ...this.corePackages.map(pkg => `@import '../../../${pkg}/src/index.css';`)
-    ].join('\n');
-    
-    await fs.writeFile(stylesOutputPath, stylesContent);
-    
-    this.log(`✅ Generated src/styles/index.css`, 'green');
+    // Note: No longer creating src/styles/index.css as it contains @import statements
+    // which are not compatible with Tailwind v4. All content is directly combined in index.css
 
     return combinedContent;
   }
