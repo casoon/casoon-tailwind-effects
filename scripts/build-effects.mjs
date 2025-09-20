@@ -41,7 +41,8 @@ class EffectsBuilder {
       'tailwindcss-utilities',
       'tailwindcss-animations', 
       'tailwindcss-glass',
-      'tailwindcss-orbs'
+      'tailwindcss-orbs',
+      'tailwindcss-core'
     ];
   }
 
